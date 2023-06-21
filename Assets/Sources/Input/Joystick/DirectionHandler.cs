@@ -31,8 +31,6 @@ public class DirectionHandler : MonoBehaviour, IDragHandler
 
     private void Update()
     {
-        //Debug.Log(Direction);
-
         if (_input.Player.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Started)
             OnDownTouch();
     }
@@ -62,4 +60,5 @@ public class DirectionHandler : MonoBehaviour, IDragHandler
         Direction = Vector2.zero;
         Deactivated?.Invoke();
     }
+
 }

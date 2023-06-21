@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private RectTransform _slidingArea;
-
     [SerializeField] private RectTransform _handle;
     [SerializeField] private RectTransform _handleBackground;
 
