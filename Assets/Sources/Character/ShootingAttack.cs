@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ShootingAttack : CharacterAttack
@@ -6,7 +7,7 @@ public class ShootingAttack : CharacterAttack
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private Character _target;
 
-    public override void Attack()
+    protected override void Attack()
     {
         Bullet bullet = Instantiate(_bullet, _shootingPoint.transform.position, Quaternion.identity);
         bullet.Init(_target.transform.position - transform.position);

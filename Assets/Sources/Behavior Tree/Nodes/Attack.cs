@@ -8,7 +8,7 @@ namespace Clones.BehaviorTree
 
         public override TaskStatus OnUpdate()
         {
-            SharedCharacterAttack.Value.Attack();
+            SharedCharacterAttack.Value.TryAttack();
 
             return TaskStatus.Success;
         }
