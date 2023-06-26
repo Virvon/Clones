@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(SurfaceSlider))]
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 10;
@@ -9,10 +9,12 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private DirectionHandler _directionHandler;
 
     private Rigidbody _rigidbody;
+    private SurfaceSlider _surfaceSlider;
 
     private void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _surfaceSlider = GetComponent<SurfaceSlider>();
 
         _directionHandler.Activated += Move;
         _directionHandler.Deactivated += Stop;
@@ -27,8 +29,10 @@ public class CharacterMovement : MonoBehaviour
     private void Move()
     {
         Vector3 direction = Quaternion.Euler(0, _directionOffset, 0) * new Vector3(_directionHandler.Direction.x, 0, _directionHandler.Direction.y);
+        direction = _surfaceSlider.Project(direction.normalized);
+        Vector3 offset = direction * _movementSpeed * Time.deltaTime;
 
-        _rigidbody.velocity = direction * _movementSpeed;
+        _rigidbody.MovePosition(_rigidbody.position + offset);
 
         RotateTo(direction);
     }
