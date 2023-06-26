@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class JoystickColorHandler : MonoBehaviour
+public class JoystickColorHandler : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Image _handle;
     [SerializeField] private Image _handleBackground;
@@ -18,7 +19,6 @@ public class JoystickColorHandler : MonoBehaviour
     {
         _directionHandler = GetComponent<DirectionHandler>();
 
-        _directionHandler.Activated += SetActivateColor;
         _directionHandler.Deactivated += SetDeactivateColor;
 
         SetDeactivateColor();
@@ -28,6 +28,10 @@ public class JoystickColorHandler : MonoBehaviour
     {
         _directionHandler.Activated -= SetActivateColor;
         _directionHandler.Deactivated -= SetDeactivateColor;
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        SetActivateColor();
     }
 
     private void SetActivateColor()
@@ -41,4 +45,5 @@ public class JoystickColorHandler : MonoBehaviour
         _handle.color = _deactivateHandleColor;
         _handleBackground.color = _deactivateHandleBackgroundColor;
     }
+
 }
