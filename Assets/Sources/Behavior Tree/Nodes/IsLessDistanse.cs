@@ -6,10 +6,10 @@ namespace Clones.BehaviorTree
     public class IsLessDistanse : Conditional
     {
         public SharedCharacter SelfCharacter;
-        public SharedCharacter TargetCharacter;
+        public SharedTargetArea TargetArea;
 
         public SharedFloat Distance;
 
-        public override TaskStatus OnUpdate() => (SelfCharacter.Value.transform.position - TargetCharacter.Value.transform.position).magnitude >= Distance.Value ? TaskStatus.Failure : TaskStatus.Success;
+        public override TaskStatus OnUpdate() => (SelfCharacter.Value.transform.position - TargetArea.Value.transform.position).magnitude < Distance.Value ? TaskStatus.Success : TaskStatus.Failure;
     }
 }

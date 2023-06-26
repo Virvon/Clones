@@ -19,6 +19,7 @@ namespace Clones.BehaviorTree
         {
             _targetPoint = SelfCharacter.Value.transform.position;
             _agent = SelfCharacter.Value.GetComponent<NavMeshAgent>();
+            _agent.isStopped = false;
         }
 
         public override TaskStatus OnUpdate()
@@ -37,6 +38,11 @@ namespace Clones.BehaviorTree
             Debug.DrawLine(SelfCharacter.Value.transform.position, _targetPoint);
 
             return TaskStatus.Running;
+        }
+
+        public override void OnEnd()
+        {
+            _agent.isStopped = true;
         }
 
         private Vector3 GetPointInTargetRadius()
