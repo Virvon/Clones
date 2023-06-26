@@ -119,7 +119,7 @@ public class WorldGenerator : MonoBehaviour
     {
         tile.transform.position = position;
         tile.SetActive(true);
-        tile.transform.rotation = Quaternion.Euler(0f, Random.Range(0, CountRotateOptionsTile) * AngleStepRotateTile, 0f);
+        tile.transform.rotation = Quaternion.Euler(0f, Mathf.RoundToInt(Random.Range(0, CountRotateOptionsTile)) * AngleStepRotateTile, 0f);
     }
 
     private Vector3 WorldToTilePosition(Vector3 worldPosition)
