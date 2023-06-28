@@ -1,6 +1,6 @@
 namespace Clones.StateMachine
 {
-    public class StoppedTransition : Transition
+    public class IdleTransition : Transition
     {
         protected override void OnEnable()
         {
