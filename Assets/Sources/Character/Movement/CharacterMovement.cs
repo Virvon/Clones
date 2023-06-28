@@ -39,6 +39,9 @@ public class CharacterMovement : MonoBehaviour
 
     private void RotateTo(Vector3 direction)
     {
+        if (direction == Vector3.zero)
+            return;
+
         var targetRotation = Quaternion.LookRotation(direction, Vector3.up);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
