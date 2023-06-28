@@ -13,8 +13,8 @@ namespace Clones.StateMachine
         {
             if(enabled == false)
             {
-                enabled = true;
                 DirectionHandler = directionHandler;
+                enabled = true;
 
                 foreach(var transition in _transitions)
                 {
