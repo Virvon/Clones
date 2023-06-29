@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Character : MonoBehaviour, IDamageble
+public abstract class Character : MonoBehaviour, IDamageble
 {
     [SerializeField] private float _health;
 
@@ -15,8 +15,15 @@ public class Character : MonoBehaviour, IDamageble
         _health -= damage;
 
         if (_health <= 0)
+        {
             Died?.Invoke();
+            Die();
+        }
         else
+        {
             DamageTaked?.Invoke();
+        }
     }
+
+    private void Die() => Destroy(gameObject);
 }

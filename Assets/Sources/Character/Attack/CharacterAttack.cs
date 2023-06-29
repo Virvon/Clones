@@ -8,11 +8,14 @@ public abstract class CharacterAttack : MonoBehaviour
     private bool _canAttack = true;
     private Coroutine _coroutine;
 
-    public void TryAttack()
+    protected Character Target { get; private set; }
+
+    public void TryAttack(Character target)
     {
         if (_canAttack == false)
             return;
 
+        Target = target;
         Attack();
 
         if (_coroutine != null)

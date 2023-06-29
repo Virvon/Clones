@@ -6,7 +6,7 @@ namespace Clones.BehaviorTree
 {
     public class CanAttack : Conditional
     {
-        public SharedCharacter TargetCharacter;
+        public SharedEnemy TargetCharacter;
         public SharedFloat TargetRadius;
 
         private Vector3 _targetPoint;

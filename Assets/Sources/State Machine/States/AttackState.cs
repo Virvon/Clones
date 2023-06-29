@@ -19,9 +19,16 @@ namespace Clones.StateMachine
             {
                 if(_overlapColliders[i].TryGetComponent(out IDamageble idamageble) && _overlapColliders[i].TryGetComponent(out Enemy enemy))
                 {
-                    _characterAttack.TryAttack();
+                    _characterAttack.TryAttack(enemy);
+                    RotateTo(enemy.transform.position);
+                    break;
                 }
             }
+        }
+
+        private void RotateTo(Vector3 target)
+        {
+            transform.rotation = Quaternion.LookRotation(target - transform.position, Vector3.up);
         }
 
         private void OnDrawGizmos()
