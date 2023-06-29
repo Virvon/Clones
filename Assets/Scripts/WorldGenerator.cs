@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldGenerator : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private string _playerTag;
     [SerializeField] private List<GameObject> _tilePrefabs;
     [SerializeField] private float _generationRadius;
     [SerializeField] private float _deactivationRadius;
@@ -11,6 +12,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] private float _tileSize;
     [SerializeField] private float _updateInterval;
 
+    private Transform _playerTransform;
     private List<GameObject> _tilePool;
     private Dictionary<Vector3, GameObject> _activeTiles;
     private Queue<GameObject> _inactiveTiles = new Queue<GameObject>();
@@ -20,6 +22,11 @@ public class WorldGenerator : MonoBehaviour
     private const float CountRotateOptionsTile = 4f;
     private const float AngleStepRotateTile = 90f;
 
+    private void Awake()
+    {
+        FindPlayerTransform();
+    }
+
     private void Start()
     {
         _tilePool = new List<GameObject>(_tilePoolSize);
@@ -27,7 +34,7 @@ public class WorldGenerator : MonoBehaviour
 
         for (int i = 0; i < _tilePoolSize; i++)
         {
-            GameObject newTile = Instantiate(_tilePrefabs[Random.Range(0, _tilePrefabs.Count)], transform);
+            GameObject newTile = Instantiate(_tilePrefabs[UnityEngine.Random.Range(0, _tilePrefabs.Count)], transform);
             newTile.SetActive(false);
             _tilePool.Add(newTile);
             _inactiveTiles.Enqueue(newTile);
@@ -104,7 +111,7 @@ public class WorldGenerator : MonoBehaviour
         if (_inactiveTiles.Count > 0)
             return _inactiveTiles.Dequeue();
 
-        GameObject newTile = Instantiate(_tilePrefabs[Random.Range(0, _tilePrefabs.Count)], transform);
+        GameObject newTile = Instantiate(_tilePrefabs[UnityEngine.Random.Range(0, _tilePrefabs.Count)], transform);
         _tilePool.Add(newTile);
         return newTile;
     }
@@ -119,7 +126,7 @@ public class WorldGenerator : MonoBehaviour
     {
         tile.transform.position = position;
         tile.SetActive(true);
-        tile.transform.rotation = Quaternion.Euler(0f, Mathf.RoundToInt(Random.Range(0, CountRotateOptionsTile)) * AngleStepRotateTile, 0f);
+        tile.transform.rotation = Quaternion.Euler(0f, Mathf.RoundToInt(UnityEngine.Random.Range(0, CountRotateOptionsTile)) * AngleStepRotateTile, 0f);
     }
 
     private Vector3 WorldToTilePosition(Vector3 worldPosition)
@@ -133,5 +140,21 @@ public class WorldGenerator : MonoBehaviour
     public void SetTileUpdatesEnabled(bool enabled)
     {
         _canUpdateTiles = enabled;
+    }
+
+    private Transform FindPlayerTransform()
+    {
+        if (_playerTransform == null)
+        {
+            if (_playerTag == "")
+                _playerTag = "Player";
+
+            _playerTransform = GameObject.FindGameObjectWithTag(_playerTag).transform;
+
+            if (_playerTransform == null)
+                throw new NullReferenceException("The MovementController does not have a controlled object!");
+        }
+
+        return _playerTransform;
     }
 }
