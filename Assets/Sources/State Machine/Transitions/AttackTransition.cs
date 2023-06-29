@@ -14,7 +14,7 @@ namespace Clones.StateMachine
 
             for (var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out IDamageble idamageble) && _overlapColliders[i].TryGetComponent(out Enemy enemy))
+                if (_overlapColliders[i].TryGetComponent(out Enemy enemy))
                 {
                     NeedTransit = true;
                 }

@@ -2,39 +2,51 @@ using UnityEngine;
 
 namespace Clones.StateMachine
 {
-    public class AttackState : State
+    public abstract class AttackState : State
     {
-        [SerializeField] private float _attackRadius;
-        [SerializeField] private CharacterAttack _characterAttack;
+        [SerializeField] private Player _player;
 
         private readonly Collider[] _overlapColliders = new Collider[64];
+
+        private float _attackRadius => _player.AttackRadius;
+        private float _lookRotationSpeed => _player.LookRotationSpeed;
+        private CharacterAttack _characterAttack => _player.CharacterAttack;
 
         private void Update() => Attack();
 
         private void Attack()
         {
-            int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _attackRadius, _overlapColliders);
+            IDamageble target = GetNearTarget();
 
-            for(var i = 0; i < overlapCount; i++)
-            {
-                if(_overlapColliders[i].TryGetComponent(out IDamageble idamageble) && _overlapColliders[i].TryGetComponent(out Enemy enemy))
-                {
-                    _characterAttack.TryAttack(enemy);
-                    RotateTo(enemy.transform.position);
-                    break;
-                }
-            }
+            if (target == null)
+                return;
+
+            _characterAttack.TryAttack(target);
+            RotateTo(target.Position);
         }
 
         private void RotateTo(Vector3 target)
         {
-            transform.rotation = Quaternion.LookRotation(target - transform.position, Vector3.up);
+            var direction = Quaternion.LookRotation(target - transform.position, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _lookRotationSpeed * Time.deltaTime);
         }
 
-        private void OnDrawGizmos()
+        private IDamageble GetNearTarget()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _attackRadius);
+            int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _attackRadius, _overlapColliders);
+
+            for (var i = 0; i < overlapCount; i++)
+            {
+                if (_overlapColliders[i].TryGetComponent(out IDamageble iDamageble) && !(iDamageble is Player))
+                {
+                    if(IsRequiredTarget(iDamageble))
+                        return iDamageble;
+                }
+            }
+
+            return null;
         }
+
+        protected abstract bool IsRequiredTarget(IDamageble iDamageble);
     }
 }

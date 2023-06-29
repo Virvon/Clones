@@ -21,7 +21,7 @@ namespace Clones.StateMachine
                     transition.Init(directionHandler);
                     transition.enabled = true;
                 }
-            } 
+            }
         }
 
         public void Exit()

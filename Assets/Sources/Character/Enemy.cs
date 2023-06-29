@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Enemy : Character
 {
     public TargetArea TargetArea { get; private set; }

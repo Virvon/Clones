@@ -1,5 +1,6 @@
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Clones.BehaviorTree
 {
@@ -19,7 +20,8 @@ namespace Clones.BehaviorTree
 
         private void RotateTo(Vector3 target)
         {
-            transform.rotation = Quaternion.LookRotation(target - transform.position, Vector3.up);
+            var direction = Quaternion.LookRotation(target - transform.position, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, 1080 * Time.deltaTime);
         }
     }
 }

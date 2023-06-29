@@ -7,6 +7,8 @@ public abstract class Character : MonoBehaviour, IDamageble
 
     public float Health => _health;
 
+    public Vector3 Position => transform.position;
+
     public event Action DamageTaked;
     public event Action Died;
 

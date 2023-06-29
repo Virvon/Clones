@@ -8,6 +8,6 @@ public class ShootingAttack : CharacterAttack
     protected override void Attack()
     {
         Bullet bullet = Instantiate(_bullet, _shootingPoint.transform.position, Quaternion.identity);
-        bullet.Init(Target.transform.position - transform.position);
+        bullet.Init(Target.Position - transform.position);
     }
 }
