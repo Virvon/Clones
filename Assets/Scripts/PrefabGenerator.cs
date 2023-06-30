@@ -31,17 +31,27 @@ public class PrefabGenerator : MonoBehaviour
         {
             int pointsToGenerate = Mathf.RoundToInt((float)list.PercentageFilled / Percent * list.SpawnPoints.Count);
 
+            List<Transform> availableSpawnPoints = new List<Transform>(list.SpawnPoints);
+
             for (int i = 0; i < pointsToGenerate; i++)
             {
                 int randomIndex = UnityEngine.Random.Range(0, list.PrefabsToGenerate.Count);
                 GameObject prefabToGenerate = list.PrefabsToGenerate[randomIndex];
-                Transform spawnPoint = GetRandomSpawnPoint(list.SpawnPoints);
+
+                if (availableSpawnPoints.Count == 0)
+                {
+                    Debug.LogWarning("No more available spawn points.");
+                    break;
+                }
+
+                int spawnIndex = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
+                Transform spawnPoint = availableSpawnPoints[spawnIndex];
+                availableSpawnPoints.RemoveAt(spawnIndex);
 
                 if (prefabToGenerate != null && spawnPoint != null)
                 {
                     GameObject spawnedPrefab = Instantiate(prefabToGenerate, spawnPoint.position, spawnPoint.rotation);
                     list.SpawnedPrefabs.Add(spawnedPrefab);
-
                     spawnedPrefab.transform.SetParent(transform);
                 }
             }

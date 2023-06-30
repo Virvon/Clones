@@ -12,6 +12,6 @@ public class ResourcePrefab : MonoBehaviour
     private void Update()
     {
         float speed = 5f;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
     }
 }
