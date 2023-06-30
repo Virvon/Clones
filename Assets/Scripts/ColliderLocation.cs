@@ -9,12 +9,12 @@ public class ColliderLocation : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == _plaerTag)
-            print("Выполняется скрипт, который находит UI и в нём использует метод ShowCurrentLocation(string locationName)");
+            print("Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ СЃРєСЂРёРїС‚, РєРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґРёС‚ UI Рё РІ РЅС‘Рј РёСЃРїРѕР»СЊР·СѓРµС‚ РјРµС‚РѕРґ ShowCurrentLocation(string locationName) => Р›РµСЃ");
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == _plaerTag)
-            print("Выполняется скрипт, который находит UI и в нём использует метод ShowCurrentLocation(string locationName) - Пустошь");
+            print("Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ СЃРєСЂРёРїС‚, РєРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґРёС‚ UI Рё РІ РЅС‘Рј РёСЃРїРѕР»СЊР·СѓРµС‚ РјРµС‚РѕРґ ShowCurrentLocation(string locationName) => РїСѓСЃС‚РѕС€СЊ");
     }
 }

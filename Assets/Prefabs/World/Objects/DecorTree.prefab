@@ -107,6 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1303317441861549087}
+  - component: {fileID: -5888278709353532424}
   m_Layer: 0
   m_Name: DecorTree
   m_TagString: Untagged
@@ -131,6 +132,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5888278709353532424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7755662640463774323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ddd10ec7e9db0419fc824ffa86f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resources:
+  - name: "\u0420\u0435\u0441\u0443\u0440\u0441"
+    prefab: {fileID: 1850121823618502846, guid: 299e0b0e78cb92947817340ae9a0ab80, type: 3}
+    minDroppedResources: 5
+    maxDroppedResources: 10
 --- !u!1 &7916756864059776290
 GameObject:
   m_ObjectHideFlags: 0

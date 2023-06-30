@@ -15,13 +15,15 @@ public class DestructibleObject : MonoBehaviour
 {
     public List<ResourceData> resources;
 
-    private void OnDestroy()
+    private void OnDisable()
     {
+        if(gameObject.scene.isLoaded == false) return;
+        
         foreach (ResourceData resource in resources)
         {
             int numResources = Random.Range(resource.minDroppedResources, resource.maxDroppedResources + 1);
 
-            print("Выпало " + numResources + " ресурсов");
+            print("Р’С‹РїР°Р»Рѕ " + numResources + " СЂРµСЃСѓСЂСЃРѕРІ");
 
             for (int i = 0; i < numResources; i++)
             {
@@ -40,11 +42,3 @@ public class DestructibleObject : MonoBehaviour
         return targetPosition;
     }
 }
-
-/*public class ResourcePrefab : MonoBehaviour
-{
-    public void SetTargetPosition(Vector3 targetPosition)
-    {
-        GetComponent<ResourcePrefabScript>().GetTargetPosition(targetPosition);
-    }
-}*/
