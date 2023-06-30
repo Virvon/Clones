@@ -8,7 +8,13 @@ public class ColliderLocation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == _plaerTag)
-            other.gameObject.SetActive(false);
+        if (other.tag == _plaerTag)
+            print("Выполняется скрипт, который находит UI и в нём использует метод ShowCurrentLocation(string locationName)");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == _plaerTag)
+            print("Выполняется скрипт, который находит UI и в нём использует метод ShowCurrentLocation(string locationName) - Пустошь");
     }
 }
