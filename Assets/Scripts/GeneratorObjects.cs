@@ -6,17 +6,15 @@ using UnityEngine;
 public class PrefabList
 {
     public string ListName;
-    [Range(0, 100)]
-    public int PercentageFilled;
+    [Range(0, 100)] public int PercentageFilled;
     public List<GameObject> PrefabsToGenerate;
     public List<Transform> SpawnPoints;
     [HideInInspector] public List<GameObject> SpawnedPrefabs;
 }
 
-public class PrefabGenerator : MonoBehaviour
+public class GeneratorObjects : MonoBehaviour
 {
-    [SerializeField]
-    private List<PrefabList> _prefabLists = new List<PrefabList>();
+    [SerializeField] private List<PrefabList> _prefabLists = new List<PrefabList>();
 
     private const int Percent = 100;
 

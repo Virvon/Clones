@@ -142,7 +142,7 @@ public class WorldGenerator : MonoBehaviour
         _canUpdateTiles = enabled;
     }
 
-    private Transform FindPlayerTransform()
+    private void FindPlayerTransform()
     {
         if (_playerTransform == null)
         {
@@ -154,7 +154,5 @@ public class WorldGenerator : MonoBehaviour
             if (_playerTransform == null)
                 throw new NullReferenceException("The MovementController does not have a controlled object!");
         }
-
-        return _playerTransform;
     }
 }
