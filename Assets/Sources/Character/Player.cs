@@ -4,7 +4,7 @@ using System;
 using UnityEditor;
 #endif
 
-public class Player : Character
+public class Player : MonoBehaviour, IDamageble
 {
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _lookRotationSpeed;
@@ -15,12 +15,22 @@ public class Player : Character
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
 
-    public override void TakeDamage(float damage)
+    public Vector3 Position => throw new NotImplementedException();
+
+    public event Action<IDamageble> Died;
+
+    public void TakeDamage(float damage)
     {
         _health -= damage;
 
         if (_health <= 0)
             Die();
+    }
+
+    private void Die()
+    {
+        Died?.Invoke(this);
+        Destroy(gameObject);
     }
 
 #if UNITY_EDITOR

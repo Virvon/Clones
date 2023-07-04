@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
-    public int Money {get; private set;}
-    public int DNA {get; private set;}
+    public int Money { get; private set; }
+    public int DNA { get; private set; }
 
     public event Action MoneyCountChanged;
     public event Action DNACountChanged;

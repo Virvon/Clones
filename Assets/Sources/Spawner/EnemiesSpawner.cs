@@ -21,6 +21,8 @@ public class EnemiesSpawner : MonoBehaviour
     private void CreateWave()
     {
         _wave++;
+        Debug.Log("---------------------");
+        Debug.Log("wave " + _wave);
         _weightCounter = new EnemyWeightCounter(_wave);
 
         Stats enemyStats;

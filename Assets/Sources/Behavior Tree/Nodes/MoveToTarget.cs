@@ -7,19 +7,18 @@ namespace Clones.BehaviorTree
 {
     public class MoveToTarget : Action
     {
-        public SharedCharacter SelfCharacter;
         public SharedEnemy Enemy;
         public SharedFloat TargetRadius;
 
         private NavMeshAgent _agent;
         private Vector3 _targetPoint;
-        private Character _target => Enemy.Value.Target;
-        private float _distanceToTarget => (SelfCharacter.Value.transform.position - _target.transform.position).magnitude;
+        private Player _target => Enemy.Value.Target;
+        private float _distanceToTarget => (Enemy.Value.transform.position - _target.transform.position).magnitude;
 
         public override void OnStart()
         {
-            _targetPoint = SelfCharacter.Value.transform.position;
-            _agent = SelfCharacter.Value.GetComponent<NavMeshAgent>();
+            _targetPoint = Enemy.Value.transform.position;
+            _agent = Enemy.Value.GetComponent<NavMeshAgent>();
             _agent.isStopped = false;
         }
 
@@ -36,7 +35,7 @@ namespace Clones.BehaviorTree
             }
 
             _agent.SetDestination(_targetPoint);
-            Debug.DrawLine(SelfCharacter.Value.transform.position, _targetPoint);
+            Debug.DrawLine(Enemy.Value.transform.position, _targetPoint);
 
             return TaskStatus.Running;
         }

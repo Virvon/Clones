@@ -2427,8 +2427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 2674497639100704801, guid: 600e4bafb3f99a0459ba47d16b02efda, type: 3}
-  _delay: 40
-  _count: 4
+  _delay: 10
   _targetArea: {fileID: 1243814470}
   _target: {fileID: 1640585379}
 --- !u!4 &966598045
@@ -4537,10 +4536,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8125ee16ca2b8b44b8b0062470a14042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
   _attackRadius: 10
   _lookRotationSpeed: 1080
   _characterAttack: {fileID: 1028065672}
+  _health: 5000
 --- !u!114 &1640585380
 MonoBehaviour:
   m_ObjectHideFlags: 0

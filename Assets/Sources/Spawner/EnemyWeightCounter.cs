@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-public class EnemyWeightCounter : MonoBehaviour
+public class EnemyWeightCounter
 {
     private ComplexityCounter _сomplexityCounter;
     private float _weight;
+
     public EnemyWeightCounter(int wave)
     {
         _сomplexityCounter = new ComplexityCounter(wave);
