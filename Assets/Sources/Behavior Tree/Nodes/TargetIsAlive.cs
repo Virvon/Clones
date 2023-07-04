@@ -16,7 +16,7 @@ namespace Clones.BehaviorTree
 
         public override TaskStatus OnUpdate() => _isAlive ? TaskStatus.Success : TaskStatus.Failure;
 
-        private void OnDied()
+        private void OnDied(IDamageble damageble)
         {
             _isAlive = false;
             Enemy.Value.Target.Died -= OnDied;

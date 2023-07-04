@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Clones.StateMachine
@@ -12,17 +13,28 @@ namespace Clones.StateMachine
         private float _lookRotationSpeed => _player.LookRotationSpeed;
         private CharacterAttack _characterAttack => _player.CharacterAttack;
 
+        private IDamageble _target;
+
+        public event Action<ITargetable> TargetSelected;
+        public event Action TargetRejected;
+
         private void Update() => Attack();
 
         private void Attack()
         {
-            IDamageble target = GetNearTarget();
+            if (_target == null)
+            {
+                if (TryGetNearTarget(out _target))
+                    _target.Died += OnTargetDied;
+                else
+                    return;
+            }           
 
-            if (target == null)
-                return;
+            if (_target is ITargetable targetable)
+                TargetSelected?.Invoke(targetable);
 
-            _characterAttack.TryAttack(target);
-            RotateTo(target.Position);
+            _characterAttack.TryAttack(_target);
+            RotateTo(_target.Position);
         }
 
         private void RotateTo(Vector3 target)
@@ -31,7 +43,7 @@ namespace Clones.StateMachine
             transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _lookRotationSpeed * Time.deltaTime);
         }
 
-        private IDamageble GetNearTarget()
+        private bool TryGetNearTarget(out IDamageble target)
         {
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _attackRadius, _overlapColliders);
 
@@ -40,11 +52,22 @@ namespace Clones.StateMachine
                 if (_overlapColliders[i].TryGetComponent(out IDamageble iDamageble) && !(iDamageble is Player))
                 {
                     if(IsRequiredTarget(iDamageble))
-                        return iDamageble;
+                    {
+                        target = iDamageble;
+                        return true;
+                    }
                 }
             }
 
-            return null;
+            target = null;
+            return false;
+        }
+
+        private void OnTargetDied(IDamageble damageble)
+        {
+            _target.Died -= OnTargetDied;
+            TargetRejected?.Invoke();
+            _target = null;
         }
 
         protected abstract bool IsRequiredTarget(IDamageble iDamageble);
