@@ -4,7 +4,7 @@ using System;
 using UnityEditor;
 #endif
 
-public class Player : MonoBehaviour, IDamageble
+public class Player : MonoBehaviour, IDamageble, IAttackble
 {
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _lookRotationSpeed;
@@ -14,8 +14,10 @@ public class Player : MonoBehaviour, IDamageble
     public float AttackRadius => _attackRadius;
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
+    public Vector3 Position => transform.position;
+    public int Damage => 4;
 
-    public Vector3 Position => throw new NotImplementedException();
+    //private Stats _stats;
 
     public event Action<IDamageble> Died;
 

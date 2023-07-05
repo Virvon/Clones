@@ -18,7 +18,6 @@ public class ComplexityCounter
 
         int damage = (int)(Config.BaseEnemyDamage * coefficient);
         int health = (int)(Config.BaseEnemyHealth * coefficient);
-        Debug.Log("enemy coefficient " + coefficient);
 
         return new Stats(health, damage, Config.BaseEnemyAttackSpeed);
     }
@@ -26,7 +25,6 @@ public class ComplexityCounter
     public float GetTotalWeight()
     {
         float coefficient = (float)Math.Pow(e, (float)_wave / 6f);
-        Debug.Log("weight coefficient " + coefficient);
 
         return (float)(Config.BaseTotalWeight * coefficient);
     }

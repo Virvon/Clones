@@ -8,7 +8,7 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private float _delay;
 
-    [SerializeField] private TargetArea _targetArea;
+    [SerializeField] private PlayerArea _targetArea;
     [SerializeField] private Player _target;
 
     private int _wave;
@@ -21,8 +21,6 @@ public class EnemiesSpawner : MonoBehaviour
     private void CreateWave()
     {
         _wave++;
-        Debug.Log("---------------------");
-        Debug.Log("wave " + _wave);
         _weightCounter = new EnemyWeightCounter(_wave);
 
         Stats enemyStats;

@@ -15,10 +15,12 @@ namespace Clones.StateMachine
 
         private IDamageble _target;
 
-        public event Action<ITargetable> TargetSelected;
+        public event Action<Transform> TargetSelected;
         public event Action TargetRejected;
 
         private void Update() => Attack();
+
+        private void OnDisable() => TargetRejected?.Invoke();
 
         private void Attack()
         {
@@ -28,13 +30,12 @@ namespace Clones.StateMachine
                     _target.Died += OnTargetDied;
                 else
                     return;
-            }           
+            }
 
-            if (_target is ITargetable targetable)
-                TargetSelected?.Invoke(targetable);
+            TargetSelected?.Invoke(((MonoBehaviour)_target).transform);
 
             _characterAttack.TryAttack(_target);
-            RotateTo(_target.Position);
+            RotateTo(((MonoBehaviour)_target).transform.position);
         }
 
         private void RotateTo(Vector3 target)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TargetArea : MonoBehaviour
+public class PlayerArea : MonoBehaviour
 {
     [SerializeField] private Player _target;
     [SerializeField] private float _radius;

@@ -37,8 +37,8 @@ public class TestKillsController : MonoBehaviour
 
     private void OnDied(IDamageble damageble)
     {
-        if(damageble is IVisitoreble)
-            _currencyCounter.OnKill((IVisitoreble)damageble);
+        if(damageble is IRewardle )
+            _currencyCounter.OnKill((IRewardle )damageble);
 
         damageble.Died -= OnDied;
         _damagebles.Remove(damageble);

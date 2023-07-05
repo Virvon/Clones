@@ -20,7 +20,7 @@ public class CurrencyCounter : MonoBehaviour
         _visitor.MiningFacilityBroked -= OnMiningFacilityBroked;
     }
 
-    public void OnKill(IVisitoreble visitoreble) => visitoreble.Accept(_visitor);
+    public void OnKill(IRewardle  visitoreble) => visitoreble.Accept(_visitor);
 
     private void OnDNATaked(int DNACoutnt) => _wallet.TakeDNA(DNACoutnt);
 

@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, ITargetable, IVisitoreble, IDamageble
+public class Enemy : MonoBehaviour, IRewardle , IDamageble, IAttackble
 {
-    public TargetArea TargetArea { get; private set; }
+    public PlayerArea TargetArea { get; private set; }
     public Player Target { get; private set; }
     public Vector3 Scale => transform.localScale;
-    public Vector3 Position => throw new NotImplementedException();
+    public Vector3 Position => transform.position;
     public Stats Stats { get; private set; }
+    public int Damage => Stats.Damage;
+
 
     private float _health;
 
@@ -15,14 +17,12 @@ public class Enemy : MonoBehaviour, ITargetable, IVisitoreble, IDamageble
 
     public void Accept(IVisitor visitor) => visitor.Visit(this);
 
-    public void Init(Player target, TargetArea targetArea, Stats stats)
+    public void Init(Player target, PlayerArea targetArea, Stats stats)
     {
         Target = target;
         TargetArea = targetArea;
         Stats = stats;
         _health = stats.Health;
-
-        Debug.Log("health " + _health);
     }
 
     public void TakeDamage(float damage)

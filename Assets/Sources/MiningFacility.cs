@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MiningFacility : MonoBehaviour, IDamageble, ITargetable, IVisitoreble
+public class MiningFacility : MonoBehaviour, IDamageble, IRewardle 
 {
     [SerializeField] private float _health;
     public Vector3 Position => transform.position;
@@ -20,10 +20,6 @@ public class MiningFacility : MonoBehaviour, IDamageble, ITargetable, IVisitoreb
         {
             Died?.Invoke(this);
             Destroy(gameObject);
-        }
-        else
-        {
-            
         }
     }
 }

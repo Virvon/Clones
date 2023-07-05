@@ -3,14 +3,14 @@ using Clones.StateMachine;
 
 namespace Clones.UI
 {
-    public class TargetPoint : MonoBehaviour
+    public class SelectedToAttackTarget : MonoBehaviour
     {
         [SerializeField] private GameObject _pointPrefab;
         [SerializeField] private AttackState[] _attackStates;
         [SerializeField] private Vector3 _pointOffset;
 
         private GameObject _point;
-        private ITargetable _target;
+        private Vector3 _targetPosition;
 
         private void OnEnable()
         {
@@ -34,11 +34,10 @@ namespace Clones.UI
 
         private void Update()
         {
-            if (_target == null)
+            if (_targetPosition == null)
                 return;
 
-            _point.SetActive(true);
-            _point.transform.position = _target.Position + _pointOffset;
+            _point.transform.position = _targetPosition + _pointOffset;
         }
 
         private void InitPoint()
@@ -47,12 +46,18 @@ namespace Clones.UI
             _point.SetActive(false);
         }
 
-        private void OnTargetSelected(ITargetable target) => _target = target;
+        private void OnTargetSelected(Transform targetTransform)
+        {
+            _targetPosition = targetTransform.position;
+            _point.SetActive(true);
+        }
 
         private void OnTargetRejected()
         {
-            _target = null;
-            _point.SetActive(false);
+            if(_point != null )
+                _point.SetActive(false);
+
+            _targetPosition = Vector3.zero;
         }
     }
 }
