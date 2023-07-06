@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IDamageble, IAttackble
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
     public Vector3 Position => transform.position;
-    public int Damage => 4;
+    public int Damage => 2;
 
     //private Stats _stats;
 

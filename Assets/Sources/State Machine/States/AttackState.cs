@@ -20,7 +20,10 @@ namespace Clones.StateMachine
 
         private void Update() => Attack();
 
-        private void OnDisable() => TargetRejected?.Invoke();
+        private void OnDisable()
+        {
+            TargetRejected?.Invoke();
+        }
 
         private void Attack()
         {

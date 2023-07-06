@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using Clones.Data;
 
 public class EnemyWeightCounter
 {
     private ComplexityCounter _сomplexityCounter;
     private float _weight;
 
-    public EnemyWeightCounter(int wave)
+    public EnemyWeightCounter(int wave,EnemyData enemyData, float baseTotalWeight)
     {
-        _сomplexityCounter = new ComplexityCounter(wave);
+        _сomplexityCounter = new ComplexityCounter(wave, enemyData, baseTotalWeight);
         _weight = 0;
     }
 

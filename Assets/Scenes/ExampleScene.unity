@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570430ac83fec649b56b6e5c7d2ebfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 3
 --- !u!65 &600546026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2429,7 +2429,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 2674497639100704801, guid: 600e4bafb3f99a0459ba47d16b02efda, type: 3}
   _delay: 10
   _targetArea: {fileID: 1243814470}
-  _target: {fileID: 1640585379}
+  _target: {fileID: 1640585383}
 --- !u!4 &966598045
 Transform:
   m_ObjectHideFlags: 0
@@ -2754,6 +2754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coolDown: 0.4
+  _attackbleBehavior: {fileID: 1640585383}
   _bullet: {fileID: 2378299709043555804, guid: 2e726a4093fb3394fb1cc483db0a87ca, type: 3}
   _shootingPoint: {fileID: 1907562944}
 --- !u!23 &1028065674
@@ -3062,7 +3063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a672d5f7daf3094c9915d3088bbb812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 1640585379}
+  _target: {fileID: 1640585383}
   _radius: 4
 --- !u!4 &1243814471
 Transform:
@@ -3405,7 +3406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570430ac83fec649b56b6e5c7d2ebfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 3
 --- !u!65 &1295829708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3761,7 +3762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570430ac83fec649b56b6e5c7d2ebfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 3
 --- !u!65 &1392671414
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4038,7 +4039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570430ac83fec649b56b6e5c7d2ebfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 3
 --- !u!65 &1436542100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4211,7 +4212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570430ac83fec649b56b6e5c7d2ebfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 3
 --- !u!65 &1569403626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4288,6 +4289,7 @@ GameObject:
   - component: {fileID: 1640585367}
   - component: {fileID: 1640585366}
   - component: {fileID: 1640585365}
+  - component: {fileID: 1640585383}
   - component: {fileID: 1640585376}
   - component: {fileID: 1640585375}
   - component: {fileID: 1640585373}
@@ -4298,7 +4300,6 @@ GameObject:
   - component: {fileID: 1640585377}
   - component: {fileID: 1640585380}
   - component: {fileID: 1640585374}
-  - component: {fileID: 1640585379}
   - component: {fileID: 1640585382}
   m_Layer: 0
   m_Name: Player
@@ -4506,7 +4507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 1640585378}
-  _player: {fileID: 1640585379}
+  _player: {fileID: 1640585383}
 --- !u!114 &1640585378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4523,23 +4524,7 @@ MonoBehaviour:
   - {fileID: 1640585372}
   - {fileID: 1640585371}
   - {fileID: 1640585380}
-  _player: {fileID: 1640585379}
---- !u!114 &1640585379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640585362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8125ee16ca2b8b44b8b0062470a14042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackRadius: 10
-  _lookRotationSpeed: 1080
-  _characterAttack: {fileID: 1028065672}
-  _health: 5000
+  _player: {fileID: 1640585383}
 --- !u!114 &1640585380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4553,7 +4538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 1640585381}
-  _player: {fileID: 1640585379}
+  _player: {fileID: 1640585383}
 --- !u!114 &1640585381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4570,7 +4555,7 @@ MonoBehaviour:
   - {fileID: 1640585377}
   - {fileID: 1640585371}
   - {fileID: 1640585372}
-  _player: {fileID: 1640585379}
+  _player: {fileID: 1640585383}
 --- !u!114 &1640585382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4588,6 +4573,22 @@ MonoBehaviour:
   - {fileID: 1640585378}
   - {fileID: 1640585381}
   _pointOffset: {x: 0, y: -0.99, z: 0}
+--- !u!114 &1640585383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640585362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8125ee16ca2b8b44b8b0062470a14042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRadius: 10
+  _lookRotationSpeed: 1080
+  _characterAttack: {fileID: 1028065672}
+  _health: 5000
 --- !u!1 &1663153483
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Clones.Data;
 
 public class EnemiesSpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private EnemyData _enemyData;
+    [SerializeField] private SpawnerData _spawnerData;
     [SerializeField] private float _delay;
 
     [SerializeField] private PlayerArea _targetArea;
@@ -21,13 +23,13 @@ public class EnemiesSpawner : MonoBehaviour
     private void CreateWave()
     {
         _wave++;
-        _weightCounter = new EnemyWeightCounter(_wave);
+        _weightCounter = new EnemyWeightCounter(_wave, _enemyData, _spawnerData.BaseTotalWeight);
 
         Stats enemyStats;
 
         while(_weightCounter.TryGetEnemyStats(out enemyStats))
         {
-            var enemy = Instantiate(_enemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);
+            var enemy = Instantiate(_enemyData.EnemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);
             enemy.Init(_target, _targetArea, enemyStats);
 
             EnemyCreated?.Invoke(enemy);
