@@ -108,6 +108,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6788785912145675603}
   - component: {fileID: -6664164221806136675}
+  - component: {fileID: 6934815329554027673}
+  - component: {fileID: 3388893290480975065}
+  - component: {fileID: 1683207834297275847}
   m_Layer: 0
   m_Name: DecorTree (1)
   m_TagString: Untagged
@@ -124,8 +127,8 @@ Transform:
   m_GameObject: {fileID: 1408893473023221517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7210697315309072077}
   - {fileID: 3446473296393749269}
@@ -144,11 +147,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ddd10ec7e9db0419fc824ffa86f26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resources:
-  - name: "\u0420\u0435\u0441\u0443\u0440\u0441"
-    prefab: {fileID: 1850121823618502846, guid: 299e0b0e78cb92947817340ae9a0ab80, type: 3}
-    minDroppedResources: 5
-    maxDroppedResources: 10
+  _resources: []
+  _radiusDropResource: 0
+--- !u!114 &6934815329554027673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408893473023221517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e570430ac83fec649b56b6e5c7d2ebfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 3
+--- !u!208 &3388893290480975065
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408893473023221517}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.55, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!65 &1683207834297275847
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408893473023221517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0.55, z: 0}
 --- !u!1 &8485456330200141329
 GameObject:
   m_ObjectHideFlags: 0

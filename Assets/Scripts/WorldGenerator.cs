@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshSurface))]
 public class WorldGenerator : MonoBehaviour
 {
-    [SerializeField] private string _playerTag;
+    [SerializeField] private Player _player;
     [SerializeField] private List<GameObject> _tilePrefabs;
     [SerializeField] private float _generationRadius;
     [SerializeField] private float _deactivationRadius;
@@ -18,6 +20,7 @@ public class WorldGenerator : MonoBehaviour
     private Queue<GameObject> _inactiveTiles = new Queue<GameObject>();
     private float _timer;
     private bool _canUpdateTiles = true;
+    private NavMeshSurface _navMeshSurface;
 
     private const float CountRotateOptionsTile = 4f;
     private const float AngleStepRotateTile = 90f;
@@ -29,6 +32,8 @@ public class WorldGenerator : MonoBehaviour
 
     private void Start()
     {
+        _navMeshSurface = GetComponent<NavMeshSurface>();
+
         _tilePool = new List<GameObject>(_tilePoolSize);
         _activeTiles = new Dictionary<Vector3, GameObject>(_tilePoolSize);
 
@@ -75,6 +80,7 @@ public class WorldGenerator : MonoBehaviour
                     GameObject newTile = GetTileFromPool();
                     PlaceTile(newTile, tilePosition);
                     _activeTiles.Add(tilePosition, newTile);
+                    _navMeshSurface.BuildNavMesh();
                 }
             }
         }
@@ -146,10 +152,7 @@ public class WorldGenerator : MonoBehaviour
     {
         if (_playerTransform == null)
         {
-            if (_playerTag == "")
-                _playerTag = "Player";
-
-            _playerTransform = GameObject.FindGameObjectWithTag(_playerTag).transform;
+            _playerTransform = _player.transform;
 
             if (_playerTransform == null)
                 throw new NullReferenceException("The MovementController does not have a controlled object!");
