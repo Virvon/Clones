@@ -17,6 +17,8 @@ public class Player : MonoBehaviour, IDamageble, IAttackble
     public Vector3 Position => transform.position;
     public int Damage => 2;
 
+    public float AttackSpeed => 0.6f;
+
     //private Stats _stats;
 
     public event Action<IDamageble> Died;
@@ -32,7 +34,6 @@ public class Player : MonoBehaviour, IDamageble, IAttackble
     private void Die()
     {
         Died?.Invoke(this);
-        Destroy(gameObject);
     }
 
 #if UNITY_EDITOR

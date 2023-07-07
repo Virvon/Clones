@@ -4,9 +4,11 @@ using UnityEngine;
 public class MiningFacility : MonoBehaviour, IDamageble, IRewardle 
 {
     [SerializeField] private float _health;
+    [SerializeField] private MiningFacilityType _type;
     public Vector3 Position => transform.position;
     public Vector3 Scale => transform.localScale;
     public float Health => _health;
+    public MiningFacilityType Type => _type;
 
     public event Action<IDamageble> Died;
 

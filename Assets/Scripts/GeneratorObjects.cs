@@ -18,10 +18,18 @@ public class GeneratorObjects : MonoBehaviour
 
     private const int Percent = 100;
 
-    private void Start()
+    private List<MiningFacility> _miningFacilities = new List<MiningFacility>();
+
+    public IReadOnlyList<MiningFacility> MiningFacilities => _miningFacilities;
+
+    public event Action<GeneratorObjects> GeneratorObjectsDisabled;
+
+    private void Awake()
     {
         GeneratePrefabs();
     }
+
+    private void OnDisable() => GeneratorObjectsDisabled?.Invoke(this);
 
     private void GeneratePrefabs()
     {
@@ -51,6 +59,9 @@ public class GeneratorObjects : MonoBehaviour
                     GameObject spawnedPrefab = Instantiate(prefabToGenerate, spawnPoint.position, spawnPoint.rotation);
                     list.SpawnedPrefabs.Add(spawnedPrefab);
                     spawnedPrefab.transform.SetParent(transform);
+
+                    if(spawnedPrefab.TryGetComponent(out MiningFacility miningFacility))
+                        _miningFacilities.Add(miningFacility);
                 }
             }
         }

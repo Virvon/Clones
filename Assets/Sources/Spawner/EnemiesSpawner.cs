@@ -13,24 +13,16 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private PlayerArea _targetArea;
     [SerializeField] private Player _target;
 
-    private int _wave;
-    private EnemyWeightCounter _weightCounter;
-
     public event Action<Enemy> EnemyCreated;
 
     private void Start() => StartCoroutine(Spawner());
 
     private void CreateWave()
     {
-        _wave++;
-        _weightCounter = new EnemyWeightCounter(_wave, _enemyData, _spawnerData.BaseTotalWeight);
-
-        Stats enemyStats;
-
-        while(_weightCounter.TryGetEnemyStats(out enemyStats))
+        for(var i = 0; i < 4; i++)
         {
             var enemy = Instantiate(_enemyData.EnemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);
-            enemy.Init(_target, _targetArea, enemyStats);
+            enemy.Init(_target, _targetArea, _enemyData.GetStats());
 
             EnemyCreated?.Invoke(enemy);
         }

@@ -7,7 +7,7 @@ public class CurrencyCounter : MonoBehaviour
 
     private readonly TargetVisitor _visitor = new TargetVisitor();
 
-    public event Action MiningFacilityBroked;
+    public event Action<MiningFacilityType> MiningFacilityBroked;
 
     private void OnEnable()
     {
@@ -24,11 +24,11 @@ public class CurrencyCounter : MonoBehaviour
 
     private void OnDNATaked(int DNACoutnt) => _wallet.TakeDNA(DNACoutnt);
 
-    private void OnMiningFacilityBroked() => MiningFacilityBroked?.Invoke();
+    private void OnMiningFacilityBroked(MiningFacilityType type) => MiningFacilityBroked?.Invoke(type);
 
     private class TargetVisitor : IVisitor
     {
-        public event Action MiningFacilityBroked;
+        public event Action<MiningFacilityType> MiningFacilityBroked;
         public event Action<int> DNATaked;
 
         public void Visit(Enemy enemy)
@@ -39,7 +39,7 @@ public class CurrencyCounter : MonoBehaviour
         public void Visit(MiningFacility miningFacility)
         {
             DNATaked?.Invoke(1);
-            MiningFacilityBroked?.Invoke();
+            MiningFacilityBroked?.Invoke(miningFacility.Type);
         }
     }
 }

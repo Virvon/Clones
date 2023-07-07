@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IRewardle , IDamageble, IAttackble
     public Vector3 Position => transform.position;
     public Stats Stats { get; private set; }
     public int Damage => Stats.Damage;
+    public float AttackSpeed => Stats.AttackSpeed;
 
 
     private float _health;

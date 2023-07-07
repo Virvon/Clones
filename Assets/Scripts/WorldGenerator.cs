@@ -69,6 +69,8 @@ public class WorldGenerator : MonoBehaviour
         int horizontalTiles = Mathf.CeilToInt(_generationRadius / _tileSize);
         int verticalTiles = Mathf.CeilToInt(_generationRadius / _tileSize);
 
+        bool isBuild = false;
+
         for (int x = -horizontalTiles; x <= horizontalTiles; x++)
         {
             for (int z = -verticalTiles; z <= verticalTiles; z++)
@@ -80,10 +82,14 @@ public class WorldGenerator : MonoBehaviour
                     GameObject newTile = GetTileFromPool();
                     PlaceTile(newTile, tilePosition);
                     _activeTiles.Add(tilePosition, newTile);
-                    _navMeshSurface.BuildNavMesh();
+                    isBuild = true;
                 }
             }
         }
+        if (isBuild)
+        {
+            _navMeshSurface.BuildNavMesh();
+        }    
     }
 
     private void DeactivateTiles()

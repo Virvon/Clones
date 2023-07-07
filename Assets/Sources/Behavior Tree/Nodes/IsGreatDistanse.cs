@@ -9,8 +9,8 @@ namespace Clones.BehaviorTree
 
         public SharedNavMeshAgent NavMeshAgent;
 
-        private PlayerArea _targetArea => Enemy.Value.TargetArea;
-        private Player _target => Enemy.Value.Target;
+        private PlayerArea _playerArea => Enemy.Value.TargetArea;
+        private Player _player => Enemy.Value.Target;
         private float _distance => NavMeshAgent.Value.stoppingDistance;
 
         private float _stoppingDistance;
@@ -19,11 +19,11 @@ namespace Clones.BehaviorTree
 
         public override TaskStatus OnUpdate()
         {
-            if ((Enemy.Value.transform.position - _target.transform.position).magnitude <= _distance && (Enemy.Value.transform.position - _targetArea.transform.position).magnitude <= _distance)
+            if ((Enemy.Value.transform.position - _player.transform.position).magnitude <= _distance && (Enemy.Value.transform.position - _playerArea.transform.position).magnitude <= _distance)
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(transform.position, _target.transform.position - transform.position, out hit, _distance))
+                if (Physics.Raycast(transform.position, _player.transform.position - transform.position, out hit, _distance))
                 {
                     if (hit.collider.TryGetComponent(out Player player))
                     {

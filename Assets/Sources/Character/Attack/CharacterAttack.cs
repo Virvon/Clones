@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class CharacterAttack : MonoBehaviour
 {
-    [SerializeField] private float _coolDown;
     [SerializeField] private MonoBehaviour _attackbleBehavior;
 
     private bool _canAttack = true;
@@ -35,7 +34,7 @@ public abstract class CharacterAttack : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(CoolDownTimer(_coolDown));
+        _coroutine = StartCoroutine(CoolDownTimer(Attackble.AttackSpeed));
     }
 
     protected abstract void Attack();
