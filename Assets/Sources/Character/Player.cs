@@ -4,7 +4,7 @@ using System;
 using UnityEditor;
 #endif
 
-public class Player : MonoBehaviour, IDamageble, IAttackble
+public class Player : MonoBehaviour, IDamageable, IAttackble
 {
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _lookRotationSpeed;
@@ -15,13 +15,13 @@ public class Player : MonoBehaviour, IDamageble, IAttackble
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
     public Vector3 Position => transform.position;
-    public int Damage => 2;
+    public int Damage => 20;
 
     public float AttackSpeed => 0.6f;
 
     //private Stats _stats;
 
-    public event Action<IDamageble> Died;
+    public event Action<IDamageable> Died;
 
     public void TakeDamage(float damage)
     {

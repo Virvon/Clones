@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Clones.Data;
+using Clones.Progression;
 
 public class EnemiesSpawner : MonoBehaviour
 {
@@ -13,19 +14,42 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private PlayerArea _targetArea;
     [SerializeField] private Player _target;
 
+    private WeightProgression _weightProgression = new WeightProgression();
+    private StatsProgression _statsProgression = new StatsProgression();
+
+    private float _maxWeight;
+    private float _currentWeight;
+
+    private int _currentWave;
+
     public event Action<Enemy> EnemyCreated;
 
     private void Start() => StartCoroutine(Spawner());
 
     private void CreateWave()
     {
-        for(var i = 0; i < 4; i++)
+        Stats stats = _statsProgression.GetStats(_currentWave, _enemyData.GetStats());
+        float enemyWeight = GetEnemyWeight(stats);
+
+        _maxWeight = _weightProgression.GetMaxWeight(_currentWave, _spawnerData.BaseTotalWeight);
+        _currentWeight = 0;
+
+        //Debug.Log("max weight " + _maxWeight + " enemy weight " + enemyWeight);
+
+        while (_currentWeight < _maxWeight)
         {
             var enemy = Instantiate(_enemyData.EnemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);
-            enemy.Init(_target, _targetArea, _enemyData.GetStats());
+            enemy.Init(_target, _targetArea, stats);
 
             EnemyCreated?.Invoke(enemy);
+
+            _currentWeight += enemyWeight;
         }
+    }
+
+    private float GetEnemyWeight(Stats stats)
+    {
+        return (1 / stats.AttackSpeed) * stats.Damage + (stats.Health / 3);
     }
 
     private Vector3 GetRandomPositionOutSideScreen()
@@ -41,6 +65,7 @@ public class EnemiesSpawner : MonoBehaviour
 
         while(isFinish == false)
         {
+            _currentWave++;
             CreateWave();
             yield return new WaitForSeconds(_delay);
         }

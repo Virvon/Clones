@@ -18,18 +18,14 @@ public class GeneratorObjects : MonoBehaviour
 
     private const int Percent = 100;
 
-    private List<MiningFacility> _miningFacilities = new List<MiningFacility>();
+    private List<PreyResource> _preyResources = new List<PreyResource>();
 
-    public IReadOnlyList<MiningFacility> MiningFacilities => _miningFacilities;
-
-    public event Action<GeneratorObjects> GeneratorObjectsDisabled;
+    public IReadOnlyList<PreyResource> PreyResources => _preyResources;
 
     private void Awake()
     {
         GeneratePrefabs();
     }
-
-    private void OnDisable() => GeneratorObjectsDisabled?.Invoke(this);
 
     private void GeneratePrefabs()
     {
@@ -60,11 +56,13 @@ public class GeneratorObjects : MonoBehaviour
                     list.SpawnedPrefabs.Add(spawnedPrefab);
                     spawnedPrefab.transform.SetParent(transform);
 
-                    if(spawnedPrefab.TryGetComponent(out MiningFacility miningFacility))
-                        _miningFacilities.Add(miningFacility);
+                    if(spawnedPrefab.TryGetComponent(out PreyResource miningFacility))
+                        _preyResources.Add(miningFacility);
                 }
             }
         }
+
+        //Debug.Log("generation preyResourses ended " + _preyResources.Count);
     }
 
     private Transform GetRandomSpawnPoint(List<Transform> spawnPoints)

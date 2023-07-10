@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
     private Vector3 _direction;
 
-    public event Action<IDamageble> s_Hitted;
+    public event Action<IDamageable> s_Hitted;
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         StartCoroutine(LifiTimer());
     }
 
-    public void Shoot(Vector3 direction, Action<IDamageble> Hitted = null)
+    public void Shoot(Vector3 direction, Action<IDamageable> Hitted = null)
     {
         _direction = direction;
         s_Hitted = Hitted;
@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IDamageble iDamageble))
+        if (other.TryGetComponent(out IDamageable iDamageble))
         {
             s_Hitted?.Invoke(iDamageble);
             Destroy(gameObject);

@@ -1,5 +1,5 @@
 ﻿public interface IVisitor
 {
     void Visit(Enemy enemy);
-    void Visit(MiningFacility miningFacility);
+    void Visit(PreyResource miningFacility);
 }

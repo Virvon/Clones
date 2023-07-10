@@ -9,7 +9,7 @@ public class Quest : MonoBehaviour
     [SerializeField] private CurrencyCounter _currencyCounter;
     [SerializeField] private Wallet _wallet;
 
-    public MiningFacilityType s_MiningFacilityType { get; private set; } 
+    public PreyResourceType s_MiningFacilityType { get; private set; } 
 
     public int TargetResourcesCount => _questData.BaseItemsCount;
 
@@ -25,7 +25,7 @@ public class Quest : MonoBehaviour
 
     private void OnDisable() => _currencyCounter.MiningFacilityBroked -= OnMiningFacilityBroked;
 
-    private void OnMiningFacilityBroked(MiningFacilityType type)
+    private void OnMiningFacilityBroked(PreyResourceType type)
     {
         if (s_MiningFacilityType == type)
             ResourcesCount++;
@@ -40,10 +40,10 @@ public class Quest : MonoBehaviour
         ResourcesCountChanged?.Invoke();
     }
 
-    private MiningFacilityType GetQuest()
+    private PreyResourceType GetQuest()
     {
-        int miningFacilictyTypes = Random.Range(0, 2);
+        int miningFacilictyTypes = Random.Range(0, 3);
 
-        return (MiningFacilityType)miningFacilictyTypes;
+        return (PreyResourceType)miningFacilictyTypes;
     }
 }

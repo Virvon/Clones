@@ -1,4 +1,4 @@
-﻿public enum MiningFacilityType
+﻿public enum PreyResourceType
 {
     Purple,
     Blue,

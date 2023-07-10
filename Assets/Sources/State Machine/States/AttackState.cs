@@ -13,12 +13,18 @@ namespace Clones.StateMachine
         private float _lookRotationSpeed => _player.LookRotationSpeed;
         private CharacterAttack _characterAttack => _player.CharacterAttack;
 
-        private IDamageble _target;
+        private IDamageable _target;
 
         public event Action<Transform> TargetSelected;
         public event Action TargetRejected;
 
         private void Update() => Attack();
+
+        private void OnEnable()
+        {
+            if (_target != null)
+                OnTargetDied(null);
+        }
 
         private void OnDisable()
         {
@@ -47,13 +53,13 @@ namespace Clones.StateMachine
             transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _lookRotationSpeed * Time.deltaTime);
         }
 
-        private bool TryGetNearTarget(out IDamageble target)
+        private bool TryGetNearTarget(out IDamageable target)
         {
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _attackRadius, _overlapColliders);
 
             for (var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out IDamageble iDamageble) && !(iDamageble is Player))
+                if (_overlapColliders[i].TryGetComponent(out IDamageable iDamageble) && !(iDamageble is Player))
                 {
                     if(IsRequiredTarget(iDamageble))
                     {
@@ -67,13 +73,13 @@ namespace Clones.StateMachine
             return false;
         }
 
-        private void OnTargetDied(IDamageble damageble)
+        private void OnTargetDied(IDamageable damageble)
         {
             _target.Died -= OnTargetDied;
             TargetRejected?.Invoke();
             _target = null;
         }
 
-        protected abstract bool IsRequiredTarget(IDamageble iDamageble);
+        protected abstract bool IsRequiredTarget(IDamageable iDamageble);
     }
 }

@@ -6,7 +6,7 @@ public class ShootingAttack : CharacterAttack
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform _shootingPoint;
 
-    private event Action<IDamageble> Hitted;
+    private event Action<IDamageable> Hitted;
 
     private Vector3 _targetPosition => ((MonoBehaviour)Target).transform.position;
 
@@ -20,7 +20,7 @@ public class ShootingAttack : CharacterAttack
         bullet.Shoot(_targetPosition - transform.position, Hitted);
     }
 
-    private void MakeDamage(IDamageble damageble)
+    private void MakeDamage(IDamageable damageble)
     {
         damageble.TakeDamage(Attackble.Damage);
     }

@@ -23,7 +23,7 @@ namespace Clones.StateMachine
 
             for (var i = 0; i < overlapCount; i++)
             {
-                if ((_overlapColliders[i].TryGetComponent(out Enemy enemy)) || (_overlapColliders[i].TryGetComponent(out MiningFacility miningFacility)))
+                if ((_overlapColliders[i].TryGetComponent(out Enemy enemy)) || (_overlapColliders[i].TryGetComponent(out PreyResource miningFacility)))
                     return;
             }
 

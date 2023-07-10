@@ -9,7 +9,7 @@ public abstract class CharacterAttack : MonoBehaviour
     private Coroutine _coroutine;
 
     protected IAttackble Attackble { get; private set; }
-    protected IDamageble Target { get; private set; }
+    protected IDamageable Target { get; private set; }
 
     private void Awake() => Attackble = (IAttackble)_attackbleBehavior;
 
@@ -22,7 +22,7 @@ public abstract class CharacterAttack : MonoBehaviour
         }
     }
 
-    public void TryAttack(IDamageble target)
+    public void TryAttack(IDamageable target)
     {
         if (_canAttack == false)
             return;

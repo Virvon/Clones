@@ -526,6 +526,8 @@ GameObject:
   - component: {fileID: 87327349}
   - component: {fileID: 87327351}
   - component: {fileID: 87327352}
+  - component: {fileID: 87327354}
+  - component: {fileID: 87327353}
   m_Layer: 0
   m_Name: Wallet
   m_TagString: Untagged
@@ -585,9 +587,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33db2147142f8344805edbe11c83c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: 966598044}
-  _map: {fileID: 1438389782}
   _currencyCounter: {fileID: 87327351}
+--- !u!114 &87327353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87327348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384b00e816fa36149984ba984c856170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _worldGenerator: {fileID: 811721898}
+--- !u!114 &87327354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87327348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84eb4db9fadf8514d91686089d3301bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 966598044}
 --- !u!1 &108010726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2154,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744609438}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &811721898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
+  m_PrefabInstance: {fileID: 194937978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a0fde3bf9aab34191eb1ce8647779f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &837245317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,7 +2604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: 6f6c7c71ca785654aac91557d3cc8da1, type: 2}
   _spawnerData: {fileID: 11400000, guid: 05259f8e6b11c94439f5c5ecf563a63d, type: 2}
-  _delay: 30
+  _delay: 10
   _targetArea: {fileID: 1243814470}
   _target: {fileID: 1640585383}
 --- !u!4 &966598045

@@ -25,6 +25,9 @@ public class WorldGenerator : MonoBehaviour
     private const float CountRotateOptionsTile = 4f;
     private const float AngleStepRotateTile = 90f;
 
+    public event Action<IReadOnlyList<GeneratorObjects>> TilesGenerated;
+    public event Action<IReadOnlyList<GeneratorObjects>> TilesDiactivated;
+
     private void Awake()
     {
         FindPlayerTransform();
@@ -69,6 +72,8 @@ public class WorldGenerator : MonoBehaviour
         int horizontalTiles = Mathf.CeilToInt(_generationRadius / _tileSize);
         int verticalTiles = Mathf.CeilToInt(_generationRadius / _tileSize);
 
+        List<GeneratorObjects> generatorsObjects = new List<GeneratorObjects>();
+
         bool isBuild = false;
 
         for (int x = -horizontalTiles; x <= horizontalTiles; x++)
@@ -82,13 +87,22 @@ public class WorldGenerator : MonoBehaviour
                     GameObject newTile = GetTileFromPool();
                     PlaceTile(newTile, tilePosition);
                     _activeTiles.Add(tilePosition, newTile);
+
+                    if(newTile.TryGetComponent(out GeneratorObjects generatorObjects))
+                    {
+                        generatorsObjects.Add(generatorObjects);
+                    }
+
                     isBuild = true;
                 }
             }
         }
+
         if (isBuild)
         {
+            //Debug.Log("buid tiles " + generatorsObjects.Count);
             _navMeshSurface.BuildNavMesh();
+            TilesGenerated?.Invoke(generatorsObjects);
         }    
     }
 
@@ -98,6 +112,9 @@ public class WorldGenerator : MonoBehaviour
         int verticalTiles = Mathf.CeilToInt(_deactivationRadius / _tileSize);
 
         List<Vector3> tilesToDeactivate = new List<Vector3>();
+        List<GeneratorObjects> generatorsObjects = new List<GeneratorObjects>();
+
+        bool isDeativate = false;
 
         foreach (KeyValuePair<Vector3, GameObject> tileEntry in _activeTiles)
         {
@@ -107,6 +124,11 @@ public class WorldGenerator : MonoBehaviour
                 Mathf.Abs(tilePosition.z - _playerTransform.position.z) > verticalTiles * _tileSize)
             {
                 tilesToDeactivate.Add(tilePosition);
+
+                if (_activeTiles[tilePosition].TryGetComponent(out GeneratorObjects generatorObjects))
+                    generatorsObjects.Add(generatorObjects);
+
+                isDeativate = true;
             }
         }
 
@@ -115,6 +137,12 @@ public class WorldGenerator : MonoBehaviour
             GameObject tileToDeactivate = _activeTiles[tilePosition];
             _activeTiles.Remove(tilePosition);
             ReturnTileToPool(tileToDeactivate);
+        }
+
+        if(isDeativate == true)
+        {
+            //Debug.Log("tiles deactivate " + generatorsObjects.Count);
+            TilesDiactivated?.Invoke(generatorsObjects);
         }
     }
 

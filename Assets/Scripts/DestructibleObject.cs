@@ -18,6 +18,8 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     
     private float _health = 1f;
 
+    public event System.Action<IDamageable> Died;
+
     public void TakeDamage(float damage)
     {
         ChargeHealth(-damage);

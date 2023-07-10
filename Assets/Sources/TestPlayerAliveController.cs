@@ -15,7 +15,7 @@ public class TestPlayerAliveController : MonoBehaviour
         _player.Died -= Ondied;
     }
 
-    private void Ondied(IDamageble obj)
+    private void Ondied(IDamageable obj)
     {
         _testSceneManager.LoadScene();
     }

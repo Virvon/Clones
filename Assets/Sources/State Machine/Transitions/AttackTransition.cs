@@ -20,7 +20,7 @@ namespace Clones.StateMachine
         {
             for (var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out IDamageble iDamageble))
+                if (_overlapColliders[i].TryGetComponent(out IDamageable iDamageble))
                 {
                     if(IsRequiredTarget(iDamageble))
                         return true;
@@ -30,6 +30,6 @@ namespace Clones.StateMachine
             return false;
         }
 
-        protected abstract bool IsRequiredTarget(IDamageble iDamageble);
+        protected abstract bool IsRequiredTarget(IDamageable iDamageble);
     }
 }

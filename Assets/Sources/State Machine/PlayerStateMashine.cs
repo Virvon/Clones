@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Clones.StateMachine
 {
-    public class CharacterStateMashine : MonoBehaviour
+    public class PlayerStateMashine : MonoBehaviour
     {
         [SerializeField] private State _firstState;
         [SerializeField] private DirectionHandler _directionHandler;
