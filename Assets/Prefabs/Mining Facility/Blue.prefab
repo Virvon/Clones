@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4332226604009089661}
   - component: {fileID: 2132969101031452348}
   - component: {fileID: 3284527955164882244}
+  - component: {fileID: -6346266620639196624}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -112,3 +113,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 4
   _type: 1
+--- !u!114 &-6346266620639196624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252030334517038437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ddd10ec7e9db0419fc824ffa86f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resources:
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  _radiusDropResource: 5

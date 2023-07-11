@@ -10,17 +10,17 @@ public class QuestView : MonoBehaviour
 
     private void OnEnable()
     {
-        _questValue.text = _quest.TargetResourcesCount.ToString();
-        _quest.ResourcesCountChanged += OnResourcesCountChanged;
+        //_questValue.text = _quest.TargetResourcesCount.ToString();
+        //_quest.ResourcesCountChanged += OnResourcesCountChanged;
     }
 
-    private void Start() => _description.text = _quest.s_MiningFacilityType.ToString();
+    //private void Start() => _description.text = _quest.s_MiningFacilityType.ToString();
 
-    private void OnDisable() => _quest.ResourcesCountChanged -= OnResourcesCountChanged;
+    //private void OnDisable() => _quest.ResourcesCountChanged -= OnResourcesCountChanged;
 
     private void OnResourcesCountChanged()
     {
-        _value.text = _quest.ResourcesCount.ToString();
-        _description.text = _quest.s_MiningFacilityType.ToString();
+        //_value.text = _quest.ResourcesCount.ToString();
+        //_description.text = _quest.s_MiningFacilityType.ToString();
     }
 }

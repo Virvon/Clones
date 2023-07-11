@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6815931773526012438}
   - component: {fileID: 1740278318843124903}
   - component: {fileID: 48553145359045075}
+  - component: {fileID: 9585777670455080}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -112,3 +113,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 4
   _type: 2
+--- !u!114 &9585777670455080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4324417728525946500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ddd10ec7e9db0419fc824ffa86f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resources:
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  - name: 
+    prefab: {fileID: 0}
+    minDroppedResources: 0
+    maxDroppedResources: 0
+  _radiusDropResource: 5
