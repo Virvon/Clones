@@ -126,24 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resources:
-  - name: 
-    prefab: {fileID: 0}
-    minDroppedResources: 0
-    maxDroppedResources: 0
-  - name: 
-    prefab: {fileID: 0}
-    minDroppedResources: 0
-    maxDroppedResources: 0
-  - name: 
-    prefab: {fileID: 0}
-    minDroppedResources: 0
-    maxDroppedResources: 0
-  - name: 
-    prefab: {fileID: 0}
-    minDroppedResources: 0
-    maxDroppedResources: 0
-  - name: 
-    prefab: {fileID: 0}
-    minDroppedResources: 0
-    maxDroppedResources: 0
-  _radiusDropResource: 5
+  - name: test resource
+    prefab: {fileID: 1850121823618502846, guid: 299e0b0e78cb92947817340ae9a0ab80, type: 3}
+    minDroppedResources: 1
+    maxDroppedResources: 5
+  _radiusDropResource: 2
+  _dropOffset: {x: 0, y: -1, z: 0}

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,31 +10,17 @@ public class ResourceData
     public int maxDroppedResources;
 }
 
-public class DestructibleObject : MonoBehaviour, IDamageable
+public class ResourceDrop : MonoBehaviour
 {
     [SerializeField] private List<ResourceData> _resources;
     [SerializeField] private float _radiusDropResource;
-    
-    private float _health = 1f;
+    [SerializeField] private Vector3 _dropOffset;
 
-    public event System.Action<IDamageable> Died;
-
-    public void TakeDamage(float damage)
+    private void OnDestroy()
     {
-        ChargeHealth(-damage);
+        GenerateResources();
     }
-    
-    private void ChargeHealth(float value)
-    {
-        _health += value;
 
-        if (_health <= 0)
-        {
-            GenerateResources();
-            Destroy(gameObject);
-        }
-    }
-    
     private void GenerateResources()
     {
         if(gameObject.scene.isLoaded == false) return;
@@ -44,11 +29,9 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         {
             int numResources = Random.Range(resource.minDroppedResources, resource.maxDroppedResources + 1);
 
-            print("Выпало " + numResources + " ресурсов");
-
             for (int i = 0; i < numResources; i++)
             {
-                GameObject resourceInstance = Instantiate(resource.prefab, transform.position, Quaternion.identity);
+                GameObject resourceInstance = Instantiate(resource.prefab, transform.position + _dropOffset, Quaternion.identity);
                 Vector3 targetPosition = GetRandomTargetPosition(resourceInstance.transform);
                 resourceInstance.GetComponent<ResourcePrefab>().SetTargetPosition(targetPosition);
             }

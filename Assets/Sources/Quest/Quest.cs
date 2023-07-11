@@ -12,7 +12,7 @@ public class Quest : MonoBehaviour
     [SerializeField] private Wallet _wallet;
 
     private QuestProgression _questProgression = new QuestProgression();
-    private int _questLevel = 99;
+    private int _questLevel = 0;
     private List<QuestCell> _quests = new List<QuestCell>();
 
     //public event Action ResourcesCountChanged;
