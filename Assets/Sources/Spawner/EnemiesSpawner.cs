@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 using Clones.Data;
 using Clones.Progression;
 
-public class EnemiesSpawner : MonoBehaviour
+public class EnemiesSpawner : MonoBehaviour, IComplexityble
 {
     [SerializeField] private EnemyData _enemyData;
     [SerializeField] private SpawnerData _spawnerData;
@@ -14,15 +14,18 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private PlayerArea _targetArea;
     [SerializeField] private Player _target;
 
+    [SerializeField] private ComplexityCounter _complexityCounter;
+
     private WeightProgression _weightProgression = new WeightProgression();
     private StatsProgression _statsProgression = new StatsProgression();
 
     private float _maxWeight;
     private float _currentWeight;
 
-    private int _currentWave;
+    private int _currentWave => _complexityCounter.complexity;
 
     public event Action<Enemy> EnemyCreated;
+    public event Action ComplexityIncreased;
 
     private void Start() => StartCoroutine(Spawner());
 
@@ -65,7 +68,7 @@ public class EnemiesSpawner : MonoBehaviour
 
         while(isFinish == false)
         {
-            _currentWave++;
+            ComplexityIncreased?.Invoke();
             CreateWave();
             yield return new WaitForSeconds(_delay);
         }

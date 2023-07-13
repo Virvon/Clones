@@ -17,10 +17,12 @@
     {
         if (type != Type)
             return false;
-        else if(CurrentCount + count > MaxCount)
+        else if (IsFull)
             return false;
-
-        CurrentCount += count;
+        else if (CurrentCount + count > MaxCount)
+            CurrentCount = MaxCount;
+        else
+            CurrentCount += count;
 
         return true;
     }

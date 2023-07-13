@@ -5,17 +5,21 @@ using Random = UnityEngine.Random;
 using Clones.Progression;
 using System.Collections.Generic;
 
-public class Quest : MonoBehaviour
+public class Quest : MonoBehaviour, IComplexityble
 {
     [SerializeField] private QuestData _questData;
     [SerializeField] private CurrencyCounter _currencyCounter;
     [SerializeField] private Wallet _wallet;
+    [SerializeField] private ComplexityCounter _complexityCounter;
 
     private QuestProgression _questProgression = new QuestProgression();
-    private int _questLevel = 0;
+    private int _questLevel => _complexityCounter.complexity;
     private List<QuestCell> _quests = new List<QuestCell>();
 
-    //public event Action ResourcesCountChanged;
+    private RewardProgression _rewardProgression = new RewardProgression();
+
+    public event Action ComplexityIncreased;
+
 
     private void OnEnable()
     {
@@ -25,7 +29,7 @@ public class Quest : MonoBehaviour
 
     private void OnDisable() => _currencyCounter.MiningFacilityBroked -= OnMiningFacilityBroked;
 
-    private void OnMiningFacilityBroked(PreyResourceType type)
+    private void OnMiningFacilityBroked(PreyResourceType type, int count)
     {     
         bool isQuestEnded = true;
 
@@ -33,8 +37,8 @@ public class Quest : MonoBehaviour
         {
             if(cell.Type == type && cell.IsFull == false)
             {
-                cell.TryGetItems(1, type);
-                Debug.Log("required item");
+                cell.TryGetItems(count, type);
+                Debug.Log("required item " + count);
             }
 
             if(cell.IsFull == false)
@@ -43,7 +47,7 @@ public class Quest : MonoBehaviour
 
         if (isQuestEnded)
         {
-            _wallet.TekeMoney(1);
+            _wallet.TekeMoney(_rewardProgression.GetRewardCount(_questLevel, _questData.BaseReward));
             _quests = GetQuest();
             //ResourcesCountChanged?.Invoke();
         }
@@ -51,7 +55,7 @@ public class Quest : MonoBehaviour
 
     private List<QuestCell> GetQuest()
     {
-        _questLevel++;
+        ComplexityIncreased?.Invoke();
         Debug.Log("quest level " + _questLevel);
 
         List<QuestCell> cells = new List<QuestCell>();

@@ -575,6 +575,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wallet: {fileID: 87327349}
+  _currecncyCounterData: {fileID: 11400000, guid: e2a61d35ff3d8ff4da3594fc23e1e8ae, type: 2}
+  _waveCounter: {fileID: 966598046}
+  _questCounter: {fileID: 1013341239}
 --- !u!114 &87327352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,6 +2586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 966598045}
   - component: {fileID: 966598044}
+  - component: {fileID: 966598046}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -2607,6 +2611,7 @@ MonoBehaviour:
   _delay: 10
   _targetArea: {fileID: 1243814470}
   _target: {fileID: 1640585383}
+  _complexityCounter: {fileID: 966598046}
 --- !u!4 &966598045
 Transform:
   m_ObjectHideFlags: 0
@@ -2622,6 +2627,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966598046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966598043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574ce5d1b1ee98346be103c2d8a57245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _complexibleBehavior: {fileID: 966598044}
 --- !u!1 &974478952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,6 +2954,7 @@ GameObject:
   - component: {fileID: 1013341235}
   - component: {fileID: 1013341238}
   - component: {fileID: 1013341237}
+  - component: {fileID: 1013341239}
   m_Layer: 5
   m_Name: Quest View
   m_TagString: Untagged
@@ -3020,6 +3039,7 @@ MonoBehaviour:
   _questData: {fileID: 11400000, guid: 854b2acc6bbc8014db791e6a5a0ecef8, type: 2}
   _currencyCounter: {fileID: 87327351}
   _wallet: {fileID: 87327349}
+  _complexityCounter: {fileID: 1013341239}
 --- !u!114 &1013341238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3036,6 +3056,19 @@ MonoBehaviour:
   _value: {fileID: 1272473735}
   _questValue: {fileID: 1177236266}
   _description: {fileID: 997646896}
+--- !u!114 &1013341239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013341233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574ce5d1b1ee98346be103c2d8a57245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _complexibleBehavior: {fileID: 1013341237}
 --- !u!1 &1028065671
 GameObject:
   m_ObjectHideFlags: 0

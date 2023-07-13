@@ -1,45 +1,66 @@
 using System;
 using UnityEngine;
+using Clones.Progression;
+using Clones.Data;
 
 public class CurrencyCounter : MonoBehaviour
 {
     [SerializeField] private Wallet _wallet;
+    [SerializeField] private CurrecncyCounterData _currecncyCounterData;
 
-    private readonly TargetVisitor _visitor = new TargetVisitor();
+    [SerializeField] private ComplexityCounter _waveCounter;
+    [SerializeField] private ComplexityCounter _questCounter;
 
-    public event Action<PreyResourceType> MiningFacilityBroked;
+    private TargetVisitor _visitor;
 
-    private void OnEnable()
+    public event Action<PreyResourceType, int> MiningFacilityBroked;
+    public event Action<int> DNATaked;
+
+    private void Start()
     {
-        _visitor.DNATaked += OnDNATaked;
-        _visitor.MiningFacilityBroked += OnMiningFacilityBroked;
+        DNATaked += OnDNATaked;
+
+        _visitor = new TargetVisitor(_currecncyCounterData, _waveCounter, _questCounter, MiningFacilityBroked: MiningFacilityBroked, DNATaked: DNATaked);
     }
 
-    private void OnDisable()
-    {
-        _visitor.MiningFacilityBroked -= OnMiningFacilityBroked;
-    }
+    private void OnDisable() => DNATaked -= OnDNATaked;
 
-    public void OnKill(IRewardle  visitoreble) => visitoreble.Accept(_visitor);
+    public void OnKill(IRewardle visitoreble) => visitoreble.Accept(_visitor);
 
-    private void OnDNATaked(int DNACoutnt) => _wallet.TakeDNA(DNACoutnt);
-
-    private void OnMiningFacilityBroked(PreyResourceType type) => MiningFacilityBroked?.Invoke(type);
+    private void OnDNATaked(int count) => _wallet.TakeDNA(count);
 
     private class TargetVisitor : IVisitor
     {
-        public event Action<PreyResourceType> MiningFacilityBroked;
-        public event Action<int> DNATaked;
+        private CurrecncyCounterData _currecncyCounterData;
+        private RewardProgression _rewardProgression;
+        private DropProgression _dropProgression;
+
+        ComplexityCounter _waveCounter;
+        ComplexityCounter _questCounter;
+
+        private event Action<PreyResourceType, int> s_MiningFacilityBroked;
+        private event Action<int> s_DNATaked;
+
+        public TargetVisitor(CurrecncyCounterData currecncyCounterData, ComplexityCounter waveCounter, ComplexityCounter questCounter, Action<PreyResourceType, int> MiningFacilityBroked = null, Action<int> DNATaked = null)
+        {
+            _currecncyCounterData = currecncyCounterData;
+            _rewardProgression = new RewardProgression();
+            _dropProgression = new DropProgression();
+            _waveCounter = waveCounter;
+            _questCounter = questCounter;
+            s_MiningFacilityBroked = MiningFacilityBroked;
+            s_DNATaked = DNATaked;
+        }
 
         public void Visit(Enemy enemy)
         {
-            DNATaked?.Invoke(1);
+            s_DNATaked?.Invoke(_rewardProgression.GetRewardCount(_waveCounter.complexity, _currecncyCounterData.BaseEnemyDNAReward));
         }
 
         public void Visit(PreyResource miningFacility)
         {
-            DNATaked?.Invoke(1);
-            MiningFacilityBroked?.Invoke(miningFacility.Type);
+            s_DNATaked?.Invoke(_rewardProgression.GetRewardCount(_waveCounter.complexity, _currecncyCounterData.BasePreyRecourceDNAReward));
+            s_MiningFacilityBroked?.Invoke(miningFacility.Type, _dropProgression.GetDropCount(_questCounter.complexity, _currecncyCounterData.BasePreyRecourceDropCount));
         }
     }
 }
