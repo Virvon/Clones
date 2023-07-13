@@ -32,8 +32,6 @@ public class CurrencyCounter : MonoBehaviour
     private class TargetVisitor : IVisitor
     {
         private CurrecncyCounterData _currecncyCounterData;
-        private RewardProgression _rewardProgression;
-        private DropProgression _dropProgression;
 
         ComplexityCounter _waveCounter;
         ComplexityCounter _questCounter;
@@ -44,8 +42,6 @@ public class CurrencyCounter : MonoBehaviour
         public TargetVisitor(CurrecncyCounterData currecncyCounterData, ComplexityCounter waveCounter, ComplexityCounter questCounter, Action<PreyResourceType, int> MiningFacilityBroked = null, Action<int> DNATaked = null)
         {
             _currecncyCounterData = currecncyCounterData;
-            _rewardProgression = new RewardProgression();
-            _dropProgression = new DropProgression();
             _waveCounter = waveCounter;
             _questCounter = questCounter;
             s_MiningFacilityBroked = MiningFacilityBroked;
@@ -54,13 +50,13 @@ public class CurrencyCounter : MonoBehaviour
 
         public void Visit(Enemy enemy)
         {
-            s_DNATaked?.Invoke(_rewardProgression.GetRewardCount(_waveCounter.complexity, _currecncyCounterData.BaseEnemyDNAReward));
+            s_DNATaked?.Invoke(1);
         }
 
         public void Visit(PreyResource miningFacility)
         {
-            s_DNATaked?.Invoke(_rewardProgression.GetRewardCount(_waveCounter.complexity, _currecncyCounterData.BasePreyRecourceDNAReward));
-            s_MiningFacilityBroked?.Invoke(miningFacility.Type, _dropProgression.GetDropCount(_questCounter.complexity, _currecncyCounterData.BasePreyRecourceDropCount));
+            s_DNATaked?.Invoke(1);
+            s_MiningFacilityBroked?.Invoke(miningFacility.Type, 1);
         }
     }
 }

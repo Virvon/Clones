@@ -10,20 +10,24 @@ public class Quest : MonoBehaviour, IComplexityble
     [SerializeField] private QuestData _questData;
     [SerializeField] private CurrencyCounter _currencyCounter;
     [SerializeField] private Wallet _wallet;
-    [SerializeField] private ComplexityCounter _complexityCounter;
+    [SerializeField] private Complexity _complexity;
 
-    private QuestProgression _questProgression = new QuestProgression();
-    private int _questLevel => _complexityCounter.complexity;
+    public int Complexity => _questLevel;
+
+    private int _questLevel;
     private List<QuestCell> _quests = new List<QuestCell>();
-
-    private RewardProgression _rewardProgression = new RewardProgression();
+    private int _reward;
 
     public event Action ComplexityIncreased;
-
+    public event Action<QuestCell> QuestCellUpdated;
+    public event Action<IReadOnlyList<QuestCell>> QuestCreated;
 
     private void OnEnable()
     {
-        _quests = GetQuest();
+        _quests = GetQuest(out _reward);
+
+        QuestCreated?.Invoke(_quests);
+
         _currencyCounter.MiningFacilityBroked += OnMiningFacilityBroked;
     }
 
@@ -38,7 +42,7 @@ public class Quest : MonoBehaviour, IComplexityble
             if(cell.Type == type && cell.IsFull == false)
             {
                 cell.TryGetItems(count, type);
-                Debug.Log("required item " + count);
+                //Debug.Log("required item " + count);
             }
 
             if(cell.IsFull == false)
@@ -47,27 +51,29 @@ public class Quest : MonoBehaviour, IComplexityble
 
         if (isQuestEnded)
         {
-            _wallet.TekeMoney(_rewardProgression.GetRewardCount(_questLevel, _questData.BaseReward));
-            _quests = GetQuest();
-            //ResourcesCountChanged?.Invoke();
+            _wallet.TekeMoney(_reward);
+            _quests = GetQuest(out _reward);
+
+            QuestCreated?.Invoke(_quests);
         }
     }
 
-    private List<QuestCell> GetQuest()
+    private List<QuestCell> GetQuest(out int reward)
     {
+        _questLevel++;
         ComplexityIncreased?.Invoke();
-        Debug.Log("quest level " + _questLevel);
+        //Debug.Log("quest level " + _questLevel);
 
         List<QuestCell> cells = new List<QuestCell>();
         List<PreyResourceType> availableTypes = new List<PreyResourceType>();
         int preyResourcesTypesCount = Enum.GetNames(typeof(PreyResourceType)).Length;
-        int maxItemsCount = _questProgression.GetItemsCount(_questLevel, _questData.BaseItemsCount);
+        int maxItemsCount = (int)(_questData.BaseItemsCount * _complexity.ResultComplexity);
         int minItemsCount = (int)(maxItemsCount * _questData.MinimumPercentageItemCountInQuest);
         int totalItemsCount = 0;
 
-        Debug.Log("max items count " + maxItemsCount);
-        Debug.Log("available types " + availableTypes.Count + " preyResourcesTypes count " + preyResourcesTypesCount);
-        Debug.Log("random min " + minItemsCount + " random max " + maxItemsCount);
+        //Debug.Log("max items count " + maxItemsCount);
+        //Debug.Log("available types " + availableTypes.Count + " preyResourcesTypes count " + preyResourcesTypesCount);
+        //Debug.Log("random min " + minItemsCount + " random max " + maxItemsCount);
 
         while (totalItemsCount < maxItemsCount)
         {
@@ -76,15 +82,15 @@ public class Quest : MonoBehaviour, IComplexityble
             if (availableTypes.Count + 1 == preyResourcesTypesCount)
             {
                 itemsCount = maxItemsCount - totalItemsCount;
-                Debug.Log("get max items count");
+                //Debug.Log("get max items count");
             }
             else
             {
-                Debug.Log("get random items count");
+                //Debug.Log("get random items count");
                 itemsCount = GetItemsCount(minItemsCount, maxItemsCount, totalItemsCount);
             }
 
-            Debug.Log("items count " + itemsCount);
+            //Debug.Log("items count " + itemsCount);
 
             PreyResourceType type = GetUniquePreyResourceType(availableTypes, preyResourcesTypesCount);
 
@@ -100,6 +106,8 @@ public class Quest : MonoBehaviour, IComplexityble
         foreach (var cell in cells)
             Debug.Log(cell.Type + " " + cell.MaxCount);
 
+        reward = (int)(_questData.BaseReward * _complexity.ResultComplexity);
+
         return cells;
     }
 
@@ -112,14 +120,14 @@ public class Quest : MonoBehaviour, IComplexityble
         {
             itemsCount = Random.Range(minItemsCount, (maxItemsCount - totalItemsCount) + 1);
 
-            Debug.Log("random " + itemsCount);
+            //Debug.Log("random " + itemsCount);
 
             if (itemsCount == 0)
                 isCorrectCount = false;
             else if (maxItemsCount - (itemsCount + totalItemsCount) < minItemsCount)
             {
-                Debug.Log("else if after random");
-                Debug.Log("items count " + itemsCount + " max " + maxItemsCount + " min " + minItemsCount + " total " + totalItemsCount);
+                //Debug.Log("else if after random");
+                //Debug.Log("items count " + itemsCount + " max " + maxItemsCount + " min " + minItemsCount + " total " + totalItemsCount);
                 itemsCount = maxItemsCount - totalItemsCount;
                 isCorrectCount = true;
             }

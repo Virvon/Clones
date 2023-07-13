@@ -3,24 +3,23 @@ using UnityEngine;
 
 public class QuestView : MonoBehaviour
 {
-    [SerializeField] private Quest _quest;
     [SerializeField] private TMP_Text _value;
     [SerializeField] private TMP_Text _questValue;
     [SerializeField] private TMP_Text _description;
 
-    private void OnEnable()
+    private QuestCell _cell;
+
+    public void Init(QuestCell questCell)
     {
-        //_questValue.text = _quest.TargetResourcesCount.ToString();
-        //_quest.ResourcesCountChanged += OnResourcesCountChanged;
+        _cell = questCell;
+        _description.text = questCell.Type.ToString();
+
+        UpdateInfo();
     }
 
-    //private void Start() => _description.text = _quest.s_MiningFacilityType.ToString();
-
-    //private void OnDisable() => _quest.ResourcesCountChanged -= OnResourcesCountChanged;
-
-    private void OnResourcesCountChanged()
+    public void UpdateInfo()
     {
-        //_value.text = _quest.ResourcesCount.ToString();
-        //_description.text = _quest.s_MiningFacilityType.ToString();
+        _value.text = _cell.CurrentCount.ToString();
+        _questValue.text = _cell.MaxCount.ToString();
     }
 }

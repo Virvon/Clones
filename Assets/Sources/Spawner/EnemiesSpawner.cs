@@ -14,15 +14,15 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
     [SerializeField] private PlayerArea _targetArea;
     [SerializeField] private Player _target;
 
-    [SerializeField] private ComplexityCounter _complexityCounter;
+    [SerializeField] private Complexity _complexity;
 
-    private WeightProgression _weightProgression = new WeightProgression();
-    private StatsProgression _statsProgression = new StatsProgression();
+    public int Complexity => _currentWave;
 
     private float _maxWeight;
     private float _currentWeight;
 
-    private int _currentWave => _complexityCounter.complexity;
+    private int _currentWave = 0;
+
 
     public event Action<Enemy> EnemyCreated;
     public event Action ComplexityIncreased;
@@ -31,13 +31,13 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
     private void CreateWave()
     {
-        Stats stats = _statsProgression.GetStats(_currentWave, _enemyData.GetStats());
+        Stats stats = GetEnemyStats(_enemyData.GetStats());
         float enemyWeight = GetEnemyWeight(stats);
 
-        _maxWeight = _weightProgression.GetMaxWeight(_currentWave, _spawnerData.BaseTotalWeight);
+        _maxWeight = _spawnerData.BaseTotalWeight * _complexity.ResultComplexity;
         _currentWeight = 0;
 
-        //Debug.Log("max weight " + _maxWeight + " enemy weight " + enemyWeight);
+        Debug.Log("max weight " + _maxWeight + " enemy weight " + enemyWeight);
 
         while (_currentWeight < _maxWeight)
         {
@@ -48,6 +48,19 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
             _currentWeight += enemyWeight;
         }
+    }
+
+    private Stats GetEnemyStats(Stats baseStats)
+    {
+        float halfResultComplexity = _complexity.ResultComplexity / 2;
+
+        if (halfResultComplexity < 1)
+            halfResultComplexity = 1;
+
+        int health = (int)(baseStats.Health * halfResultComplexity);
+        int damage = (int)(baseStats.Damage * halfResultComplexity);
+
+        return new Stats(health, damage, baseStats.AttackSpeed);
     }
 
     private float GetEnemyWeight(Stats stats)
@@ -68,6 +81,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
         while(isFinish == false)
         {
+            _currentWave++;
             ComplexityIncreased?.Invoke();
             CreateWave();
             yield return new WaitForSeconds(_delay);

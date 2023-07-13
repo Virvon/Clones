@@ -101,7 +101,9 @@ public class WorldGenerator : MonoBehaviour
         if (isBuild)
         {
             //Debug.Log("buid tiles " + generatorsObjects.Count);
+            _navMeshSurface.RemoveData();
             _navMeshSurface.BuildNavMesh();
+            
             TilesGenerated?.Invoke(generatorsObjects);
         }    
     }
