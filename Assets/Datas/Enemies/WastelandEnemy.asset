@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5431a7ae00c2fb498e9466e8207ab3e, type: 3}
+  m_Name: WastelandEnemy
+  m_EditorClassIdentifier: 
+  _baseDamage: 1
+  _baseHealth: 3
+  _baseAttackSpeed: 1
+  _enemyPrefab: {fileID: 2674497639100704801, guid: 600e4bafb3f99a0459ba47d16b02efda, type: 3}
+  _biomeType: 0

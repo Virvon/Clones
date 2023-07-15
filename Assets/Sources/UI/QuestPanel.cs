@@ -8,27 +8,25 @@ namespace Clones.UI
         [SerializeField] private Quest _quest;
         [SerializeField] private QuestView _questViewPrefab;
 
-        private Dictionary<PreyResourceType, QuestView> _questViews;
+        private Dictionary<PreyResourceType, QuestView> _questViews = new Dictionary<PreyResourceType, QuestView>();
 
         private void OnEnable()
         {
             _quest.QuestCreated += OnQuestCreated;
+            _quest.QuestCellUpdated += OnQuestCellUpdated;
         }
 
         private void OnDisable()
         {
             _quest.QuestCreated -= OnQuestCreated;
+            _quest.QuestCellUpdated -= OnQuestCellUpdated;
         }
 
         private void OnQuestCreated(IReadOnlyList<QuestCell> cells)
         {
-            if(_questViews.Count != 0)
-            {
-                foreach (var view in _questViews)
-                    Destroy(view.Value);
-            }
+            Clear();
 
-            foreach(var cell in cells)
+            foreach (var cell in cells)
             {
                 QuestView view = Instantiate(_questViewPrefab, transform);
 
@@ -37,9 +35,24 @@ namespace Clones.UI
             }
         }
 
-        private void OnQuestCellUpdated()
+        private void OnQuestCellUpdated(QuestCell questCell)
         {
+            QuestView view = _questViews[questCell.Type];
 
+            view.UpdateInfo();
+        }
+
+        private void Clear()
+        {
+            if (_questViews.Count == 0)
+                return;
+
+            foreach(var view in _questViews.Values)
+            {
+                Destroy(view.gameObject);
+            }
+
+            _questViews.Clear();
         }
     }
 }

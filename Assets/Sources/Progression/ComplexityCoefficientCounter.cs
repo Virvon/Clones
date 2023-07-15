@@ -47,7 +47,7 @@ namespace Clones.Progression
             float moneyCoefficient = _wallet.Money / 50f;
             float dnaCoefficient = _wallet.DNA / 10f;
 
-            return waveCoefficient * waveCoefficient + questCoefficient * moneyCoefficient * dnaCoefficient;
+            return (waveCoefficient + waveCoefficient + questCoefficient + moneyCoefficient + dnaCoefficient) / 4;
         }
     }
 }

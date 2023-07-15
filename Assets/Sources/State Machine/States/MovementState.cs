@@ -30,7 +30,9 @@ namespace Clones.StateMachine
         private void Move()
         {
             Vector3 direction = Quaternion.Euler(0, _directionOffset, 0) * new Vector3(DirectionHandler.Direction.x, 0, DirectionHandler.Direction.y);
+
             direction = _surfaceSlider.Project(direction.normalized);
+
             Vector3 offset = direction * _movementSpeed * Time.deltaTime;
 
             _rigidbody.MovePosition(_rigidbody.position + offset);

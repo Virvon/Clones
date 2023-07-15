@@ -4,10 +4,12 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Clones.Data;
 using Clones.Progression;
+using Clones.Biomes;
+using System.Collections.Generic;
 
 public class EnemiesSpawner : MonoBehaviour, IComplexityble
 {
-    [SerializeField] private EnemyData _enemyData;
+    [SerializeField] private List<EnemyData> _enemyDatas;
     [SerializeField] private SpawnerData _spawnerData;
     [SerializeField] private float _delay;
 
@@ -15,6 +17,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
     [SerializeField] private Player _target;
 
     [SerializeField] private Complexity _complexity;
+    [SerializeField] private CurrentBiome _currentBiome;
 
     public int Complexity => _currentWave;
 
@@ -27,21 +30,40 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
     public event Action<Enemy> EnemyCreated;
     public event Action ComplexityIncreased;
 
-    private void Start() => StartCoroutine(Spawner());
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(2);
+
+        StartCoroutine(Spawner());
+    }
 
     private void CreateWave()
     {
-        Stats stats = GetEnemyStats(_enemyData.GetStats());
-        float enemyWeight = GetEnemyWeight(stats);
+        BiomeType targetBiome = _currentBiome.Biome;
+        List<EnemyData> targetEnemyDatas = new List<EnemyData>();
+
+        Debug.Log(_currentBiome.Biome);
+
+        foreach(var enemyData in _enemyDatas)
+        {
+            if (enemyData.BiomeType == targetBiome)
+                targetEnemyDatas.Add(enemyData);
+        }
+
+        if (targetEnemyDatas.Count == 0)
+            throw new Exception("enemies to create wave not found");
 
         _maxWeight = _spawnerData.BaseTotalWeight * _complexity.ResultComplexity;
         _currentWeight = 0;
 
-        Debug.Log("max weight " + _maxWeight + " enemy weight " + enemyWeight);
-
         while (_currentWeight < _maxWeight)
         {
-            var enemy = Instantiate(_enemyData.EnemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);
+            EnemyData currentEnemyData = targetEnemyDatas[Random.Range(0, targetEnemyDatas.Count)];
+
+            Stats stats = currentEnemyData.GetStats();
+            float enemyWeight = GetEnemyWeight(stats);
+
+            var enemy = Instantiate(currentEnemyData.EnemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);
             enemy.Init(_target, _targetArea, stats);
 
             EnemyCreated?.Invoke(enemy);

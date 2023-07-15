@@ -1,3 +1,4 @@
+using Clones.Biomes;
 using UnityEngine;
 
 namespace Clones.Data
@@ -9,8 +10,10 @@ namespace Clones.Data
         [SerializeField] private int _baseHealth;
         [SerializeField] private float _baseAttackSpeed;
         [SerializeField] private Enemy _enemyPrefab;
+        [SerializeField] private BiomeType _biomeType;
 
         public Enemy EnemyPrefab => _enemyPrefab;
+        public BiomeType BiomeType => _biomeType;
 
         public Stats GetStats() => new Stats(_baseHealth, _baseDamage, _baseAttackSpeed);
     }

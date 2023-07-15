@@ -103,6 +103,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2965586213671339218}
   - component: {fileID: 8678680675255420745}
+  - component: {fileID: 5573238512407593774}
+  - component: {fileID: 3044019117863643461}
   m_Layer: 0
   m_Name: Tile 4
   m_TagString: Untagged
@@ -165,6 +167,31 @@ MonoBehaviour:
     - {fileID: 3972884754440248692}
     - {fileID: 8238298618289515994}
     SpawnedPrefabs: []
+--- !u!135 &5573238512407593774
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 43.66
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3044019117863643461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252282bcebdbac44b8db1d2706714e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2965586213898344238
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,8 +32,6 @@ public class PreyResourcesVault : MonoBehaviour
                 damageables.Add(preyResource);
         }
 
-        //Debug.Log("generated preyResources " + damageables.Count);
-
         _dieReporter.TakeIDamagebles(damageables);
     }
 
@@ -46,8 +44,6 @@ public class PreyResourcesVault : MonoBehaviour
             foreach (var preyResource in generator.PreyResources)
                 damageables.Add(preyResource);
         }
-
-        //Debug.Log("deactivated preyResources " + damageables.Count);
 
         _dieReporter.DeactivateIDamagebles(damageables);
     }

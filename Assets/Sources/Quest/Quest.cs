@@ -41,7 +41,8 @@ public class Quest : MonoBehaviour, IComplexityble
         {
             if(cell.Type == type && cell.IsFull == false)
             {
-                cell.TryGetItems(count, type);
+                if(cell.TryGetItems(count, type))
+                    QuestCellUpdated?.Invoke(cell);
                 //Debug.Log("required item " + count);
             }
 
@@ -101,10 +102,8 @@ public class Quest : MonoBehaviour, IComplexityble
             totalItemsCount += itemsCount;
         }
 
-        Debug.Log("finish total count " + totalItemsCount);
+        //Debug.Log("finish total count " + totalItemsCount);
 
-        foreach (var cell in cells)
-            Debug.Log(cell.Type + " " + cell.MaxCount);
 
         reward = (int)(_questData.BaseReward * _complexity.ResultComplexity);
 
