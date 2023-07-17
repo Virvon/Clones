@@ -17,7 +17,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
     public Vector3 Position => transform.position;
-    public int Damage => 20;
+    public int Damage => 1;
 
     public float AttackSpeed => 0.6f;
 

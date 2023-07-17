@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble
+public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthble
 {
     public PlayerArea TargetArea { get; private set; }
     public Player Target { get; private set; }
@@ -10,11 +10,12 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble
     public Stats Stats { get; private set; }
     public int Damage => Stats.Damage;
     public float AttackSpeed => Stats.AttackSpeed;
+    public int Health => _health;
 
-
-    private float _health;
+    private int _health;
 
     public event Action<IDamageable> Died;
+    public event Action DamageTaked;
 
     public void Accept(IDropVisitor visitor) => visitor.Visit(this);
 
@@ -28,10 +29,12 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble
 
     public void TakeDamage(float damage)
     {
-        _health -= damage;
+        _health -=(int)damage;
 
         if (_health <= 0)
             Die();
+        else
+            DamageTaked?.Invoke();
     }
 
     private void Die()
