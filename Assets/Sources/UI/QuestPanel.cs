@@ -22,11 +22,11 @@ namespace Clones.UI
             _quest.QuestCellUpdated -= OnQuestCellUpdated;
         }
 
-        private void OnQuestCreated(IReadOnlyList<QuestCell> cells)
+        private void OnQuestCreated()
         {
             Clear();
 
-            foreach (var cell in cells)
+            foreach (var cell in _quest.Quests)
             {
                 QuestView view = Instantiate(_questViewPrefab, transform);
 

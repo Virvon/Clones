@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IRewardle , IDamageable, IAttackble
+public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble
 {
     public PlayerArea TargetArea { get; private set; }
     public Player Target { get; private set; }
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour, IRewardle , IDamageable, IAttackble
 
     public event Action<IDamageable> Died;
 
-    public void Accept(IVisitor visitor) => visitor.Visit(this);
+    public void Accept(IDropVisitor visitor) => visitor.Visit(this);
 
     public void Init(Player target, PlayerArea targetArea, Stats stats)
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PreyResource : MonoBehaviour, IDamageable, IRewardle 
+public class PreyResource : MonoBehaviour, IDamageable, IDropble 
 {
     [SerializeField] private float _health;
     [SerializeField] private PreyResourceType _type;
@@ -12,7 +12,7 @@ public class PreyResource : MonoBehaviour, IDamageable, IRewardle
 
     public event Action<IDamageable> Died;
 
-    public void Accept(IVisitor visitor) => visitor.Visit(this);
+    public void Accept(IDropVisitor visitor) => visitor.Visit(this);
 
     public void TakeDamage(float damage)
     {

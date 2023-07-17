@@ -9,50 +9,61 @@ public class CurrencyCounter : MonoBehaviour
     [SerializeField] private CurrecncyCounterData _currecncyCounterData;
 
     [SerializeField] private Complexity _complexity;
+    [SerializeField] private Quest _quest;
 
-    private TargetVisitor _visitor;
+    private ItemVisitor _visitor;
 
-    public event Action<PreyResourceType, int> MiningFacilityBroked;
-    public event Action<int> DNATaked;
+    private event Action<PreyResourceType> PreyResourceTaked;
+    private event Action DNATaked;
 
     private void Start()
     {
         DNATaked += OnDNATaked;
-
-        _visitor = new TargetVisitor(_currecncyCounterData, _complexity, MiningFacilityBroked: MiningFacilityBroked, DNATaked: DNATaked);
+        PreyResourceTaked += OnPreyResourceTaked;
+        
+        _visitor = new ItemVisitor(DNATaked: DNATaked, PreyResourceTaked: PreyResourceTaked);    
     }
 
-    private void OnDisable() => DNATaked -= OnDNATaked;
-
-    public void OnKill(IRewardle visitoreble) => visitoreble.Accept(_visitor);
-
-    private void OnDNATaked(int count) => _wallet.TakeDNA(count);
-
-    private class TargetVisitor : IVisitor
+    private void OnEnable()
     {
-        private CurrecncyCounterData _currecncyCounterData;
-        private Complexity _complexity;
+        DNATaked -= OnDNATaked;
+        PreyResourceTaked -= OnPreyResourceTaked;
+    }
 
-        private event Action<PreyResourceType, int> s_MiningFacilityBroked;
-        private event Action<int> s_DNATaked;
+    public void OnTakeItem(Item item)
+    {
+        item.Accept(_visitor);
+    }
 
-        public TargetVisitor(CurrecncyCounterData currecncyCounterData, Complexity complexity, Action<PreyResourceType, int> MiningFacilityBroked = null, Action<int> DNATaked = null)
+    private void OnDNATaked()
+    {
+        _wallet.TakeDNA(1);
+    }
+
+    private void OnPreyResourceTaked(PreyResourceType type)
+    {
+        _quest.TakePreyResourceItem(type, 1);
+    }
+
+    private class ItemVisitor : IItemVisitor
+    {
+        private event Action<PreyResourceType> s_PreyResourceTaked;
+        private event Action s_DNATaked;
+
+        public ItemVisitor(Action<PreyResourceType> PreyResourceTaked = null, Action DNATaked = null)
         {
-            _currecncyCounterData = currecncyCounterData;
-            _complexity = complexity;
-            s_MiningFacilityBroked = MiningFacilityBroked;
+            s_PreyResourceTaked = PreyResourceTaked;
             s_DNATaked = DNATaked;
         }
 
-        public void Visit(Enemy enemy)
+        public void Visit(DNAItem DNA)
         {
-            s_DNATaked?.Invoke((int)(_currecncyCounterData.BaseEnemyDNAReward * _complexity.ResultComplexity));
+            s_DNATaked?.Invoke();
         }
 
-        public void Visit(PreyResource preyResource)
+        public void Visit(PreyResourceItem preyResource)
         {
-            s_DNATaked?.Invoke((int)(_currecncyCounterData.BasePreyRecourceDNAReward * _complexity.ResultComplexity));
-            s_MiningFacilityBroked?.Invoke(preyResource.Type, (int)(_currecncyCounterData.BasePreyRecourceDropCount * _complexity.ResultComplexity));
+            s_PreyResourceTaked?.Invoke(preyResource.Type);
         }
     }
 }

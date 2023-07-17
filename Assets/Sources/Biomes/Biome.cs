@@ -16,7 +16,6 @@ namespace Clones.Biomes
             if (other.TryGetComponent(out Player player))
             {
                 PlayerEntered?.Invoke(this);
-                Debug.Log("player entered into " + Type);
             }
         }
 
@@ -25,7 +24,6 @@ namespace Clones.Biomes
             if (other.TryGetComponent(out Player player))
             {
                 PlayerExited?.Invoke();
-                Debug.Log("player entered into " + Type);
             }
         }
     }

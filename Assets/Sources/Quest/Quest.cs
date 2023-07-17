@@ -7,12 +7,14 @@ using System.Collections.Generic;
 
 public class Quest : MonoBehaviour, IComplexityble
 {
+    [SerializeField] private List<PreyResourceData> _resourceDatas;
     [SerializeField] private QuestData _questData;
     [SerializeField] private CurrencyCounter _currencyCounter;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Complexity _complexity;
 
     public int Complexity => _questLevel;
+    public IReadOnlyList<QuestCell> Quests => _quests;
 
     private int _questLevel;
     private List<QuestCell> _quests = new List<QuestCell>();
@@ -20,33 +22,49 @@ public class Quest : MonoBehaviour, IComplexityble
 
     public event Action ComplexityIncreased;
     public event Action<QuestCell> QuestCellUpdated;
-    public event Action<IReadOnlyList<QuestCell>> QuestCreated;
+    public event Action QuestCreated;
 
     private void OnEnable()
     {
         _quests = GetQuest(out _reward);
 
-        QuestCreated?.Invoke(_quests);
-
-        _currencyCounter.MiningFacilityBroked += OnMiningFacilityBroked;
+        QuestCreated?.Invoke();
     }
 
-    private void OnDisable() => _currencyCounter.MiningFacilityBroked -= OnMiningFacilityBroked;
+    public bool TryGetPreyResourceData(out PreyResourceData data, PreyResource preyResource)
+    {
+        foreach (var cell in _quests)
+        {
+            if (cell.Type == preyResource.Type && cell.IsFull == false)
+            {
+                foreach(var resourceData in _resourceDatas)
+                {
+                    if(resourceData.Type == preyResource.Type)
+                    {
+                        data = resourceData;
+                        return true;
+                    }
+                }
+            }
+        }
 
-    private void OnMiningFacilityBroked(PreyResourceType type, int count)
-    {     
+        data = null;
+        return false;
+    }
+
+    public void TakePreyResourceItem(PreyResourceType type, int count)
+    {
         bool isQuestEnded = true;
 
-        foreach(var cell in _quests)
+        foreach (var cell in _quests)
         {
             if(cell.Type == type && cell.IsFull == false)
             {
-                if(cell.TryGetItems(count, type))
+                if (cell.TryGetItems(count, type))
                     QuestCellUpdated?.Invoke(cell);
-                //Debug.Log("required item " + count);
             }
 
-            if(cell.IsFull == false)
+            if (cell.IsFull == false)
                 isQuestEnded = false;
         }
 
@@ -55,7 +73,7 @@ public class Quest : MonoBehaviour, IComplexityble
             _wallet.TekeMoney(_reward);
             _quests = GetQuest(out _reward);
 
-            QuestCreated?.Invoke(_quests);
+            QuestCreated?.Invoke();
         }
     }
 
@@ -63,7 +81,6 @@ public class Quest : MonoBehaviour, IComplexityble
     {
         _questLevel++;
         ComplexityIncreased?.Invoke();
-        //Debug.Log("quest level " + _questLevel);
 
         List<QuestCell> cells = new List<QuestCell>();
         List<PreyResourceType> availableTypes = new List<PreyResourceType>();
@@ -72,26 +89,14 @@ public class Quest : MonoBehaviour, IComplexityble
         int minItemsCount = (int)(maxItemsCount * _questData.MinimumPercentageItemCountInQuest);
         int totalItemsCount = 0;
 
-        //Debug.Log("max items count " + maxItemsCount);
-        //Debug.Log("available types " + availableTypes.Count + " preyResourcesTypes count " + preyResourcesTypesCount);
-        //Debug.Log("random min " + minItemsCount + " random max " + maxItemsCount);
-
         while (totalItemsCount < maxItemsCount)
         {
             int itemsCount;
 
             if (availableTypes.Count + 1 == preyResourcesTypesCount)
-            {
                 itemsCount = maxItemsCount - totalItemsCount;
-                //Debug.Log("get max items count");
-            }
             else
-            {
-                //Debug.Log("get random items count");
                 itemsCount = GetItemsCount(minItemsCount, maxItemsCount, totalItemsCount);
-            }
-
-            //Debug.Log("items count " + itemsCount);
 
             PreyResourceType type = GetUniquePreyResourceType(availableTypes, preyResourcesTypesCount);
 
@@ -101,9 +106,6 @@ public class Quest : MonoBehaviour, IComplexityble
 
             totalItemsCount += itemsCount;
         }
-
-        //Debug.Log("finish total count " + totalItemsCount);
-
 
         reward = (int)(_questData.BaseReward * _complexity.ResultComplexity);
 
@@ -119,14 +121,10 @@ public class Quest : MonoBehaviour, IComplexityble
         {
             itemsCount = Random.Range(minItemsCount, (maxItemsCount - totalItemsCount) + 1);
 
-            //Debug.Log("random " + itemsCount);
-
             if (itemsCount == 0)
                 isCorrectCount = false;
             else if (maxItemsCount - (itemsCount + totalItemsCount) < minItemsCount)
             {
-                //Debug.Log("else if after random");
-                //Debug.Log("items count " + itemsCount + " max " + maxItemsCount + " min " + minItemsCount + " total " + totalItemsCount);
                 itemsCount = maxItemsCount - totalItemsCount;
                 isCorrectCount = true;
             }

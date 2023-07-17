@@ -42,8 +42,6 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
         BiomeType targetBiome = _currentBiome.Biome;
         List<EnemyData> targetEnemyDatas = new List<EnemyData>();
 
-        Debug.Log(_currentBiome.Biome);
-
         foreach(var enemyData in _enemyDatas)
         {
             if (enemyData.BiomeType == targetBiome)

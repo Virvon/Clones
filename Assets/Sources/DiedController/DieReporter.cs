@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DieReporter : MonoBehaviour
 {
-    [SerializeField] private CurrencyCounter _currencyCounter;
+    [SerializeField] private ResourceDrop _resourceDrop;
 
     public void TakeIDamagebles(List<IDamageable> damageables)
     {
@@ -19,8 +19,8 @@ public class DieReporter : MonoBehaviour
 
     private void OnDied(IDamageable damageble)
     {
-        if(damageble is IRewardle)
-            _currencyCounter.OnKill((IRewardle )damageble);
+        if(damageble is IDropble)
+            _resourceDrop.OnKill((IDropble)damageble);
 
         damageble.Died -= OnDied;
     }

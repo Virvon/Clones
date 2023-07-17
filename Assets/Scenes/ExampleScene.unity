@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 87327352}
   - component: {fileID: 87327354}
   - component: {fileID: 87327353}
+  - component: {fileID: 87327355}
   m_Layer: 0
   m_Name: Wallet
   m_TagString: Untagged
@@ -555,7 +556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87327348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1520.4907, y: 1011.3195, z: 0.050922576}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -577,6 +578,7 @@ MonoBehaviour:
   _wallet: {fileID: 87327349}
   _currecncyCounterData: {fileID: 11400000, guid: e2a61d35ff3d8ff4da3594fc23e1e8ae, type: 2}
   _complexity: {fileID: 945969275}
+  _resourceDrop: {fileID: 87327355}
 --- !u!114 &87327352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33db2147142f8344805edbe11c83c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currencyCounter: {fileID: 87327351}
+  _resourceDrop: {fileID: 87327355}
 --- !u!114 &87327353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,6 +618,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawner: {fileID: 966598044}
+--- !u!114 &87327355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87327348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ddd10ec7e9db0419fc824ffa86f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceDropData: {fileID: 11400000, guid: ffca97ba273947246a637e064cb76928, type: 2}
+  _quest: {fileID: 1058451616}
+  _DNAData: {fileID: 11400000, guid: 598668f0d535a9949a9fe4e4c60442e4, type: 2}
 --- !u!1 &108010726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2721,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61fc74e93771f3c4cb2ab0aa9dda35a7, type: 2}
   - {fileID: 11400000, guid: 76249dd253692974f922bedb2e3fef84, type: 2}
   _spawnerData: {fileID: 11400000, guid: 05259f8e6b11c94439f5c5ecf563a63d, type: 2}
-  _delay: 30
+  _delay: 10
   _targetArea: {fileID: 1243814470}
   _target: {fileID: 1640585383}
   _complexity: {fileID: 945969275}
@@ -3105,6 +3122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29a415bb9b26ce40a1d4d9a6de3897b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resourceDatas:
+  - {fileID: 11400000, guid: 0668a9188a1039641916b2c452a6abd0, type: 2}
+  - {fileID: 11400000, guid: 88fffa9b0849f3c43b250f3480aec607, type: 2}
+  - {fileID: 11400000, guid: ac7efeff814848d4fb5c8e6547c181a0, type: 2}
   _questData: {fileID: 11400000, guid: 854b2acc6bbc8014db791e6a5a0ecef8, type: 2}
   _currencyCounter: {fileID: 87327351}
   _wallet: {fileID: 87327349}
@@ -4337,6 +4358,7 @@ GameObject:
   - component: {fileID: 1640585380}
   - component: {fileID: 1640585374}
   - component: {fileID: 1640585382}
+  - component: {fileID: 1640585384}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4622,9 +4644,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRadius: 10
+  _dropCollectingRadius: 5
   _lookRotationSpeed: 1080
   _characterAttack: {fileID: 1028065672}
   _health: 5000
+--- !u!114 &1640585384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640585362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6eb9153f238fe4e8b8238ed0838a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1640585383}
 --- !u!1 &1663153483
 GameObject:
   m_ObjectHideFlags: 0
