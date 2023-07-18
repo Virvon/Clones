@@ -43,10 +43,14 @@ public class WorldGenerator : MonoBehaviour
 
         for (int i = 0; i < _tilePoolSize; i++)
         {
-            GameObject newTile = Instantiate(_biomeDatas[UnityEngine.Random.Range(0, _biomeDatas.Count)].TilePrefab, transform);
+            BiomeData biomeData = _biomeDatas[UnityEngine.Random.Range(0, _biomeDatas.Count)];
+            GameObject newTile = Instantiate(biomeData.TilePrefab, transform);
             newTile.SetActive(false);
             _tilePool.Add(newTile);
             _inactiveTiles.Enqueue(newTile);
+
+            if(newTile.TryGetComponent(out GeneratorObjects generatorObjects))
+                generatorObjects.Init(biomeData.PreyResources)
         }
 
         GenerateTiles();
