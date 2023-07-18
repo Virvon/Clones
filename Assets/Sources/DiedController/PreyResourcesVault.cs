@@ -26,10 +26,14 @@ public class PreyResourcesVault : MonoBehaviour
     {
         List<IDamageable> damageables = new List<IDamageable>();
 
+        
+
         foreach(var generator in generatorsObjects)
         {
             foreach(var preyResource in generator.PreyResources)
+            {
                 damageables.Add(preyResource);
+            }
         }
 
         _dieReporter.TakeIDamagebles(damageables);

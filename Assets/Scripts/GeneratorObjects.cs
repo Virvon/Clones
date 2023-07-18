@@ -1,68 +1,60 @@
+using Clones.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class PrefabList
-{
-    public string ListName;
-    [Range(0, 100)] public int PercentageFilled;
-    public List<GameObject> PrefabsToGenerate;
-    public List<Transform> SpawnPoints;
-    [HideInInspector] public List<GameObject> SpawnedPrefabs;
-}
-
 public class GeneratorObjects : MonoBehaviour
 {
-    [SerializeField] private List<PrefabList> _prefabLists = new List<PrefabList>();
+    [SerializeField ,Range(0, 100)] private int _percentageFilled;
+    [SerializeField] private BiomeData _biomeData;
 
     private const int Percent = 100;
 
     private List<PreyResource> _preyResources = new List<PreyResource>();
+    private Point[] _spawnPoints;
+    private List<PreyResource> _prefabsToGenerate;
+    private List<PreyResource> _spawnedPrefabs = new List<PreyResource>();
 
-    public IReadOnlyList<PreyResource> PreyResources => _preyResources;
+    public List<PreyResource> PreyResources => _preyResources;
 
     private void Awake()
     {
+        _prefabsToGenerate = (List<PreyResource>)_biomeData.PreyResources;
+        _spawnPoints = GetComponentsInChildren<Point>();
         GeneratePrefabs();
     }
 
     private void GeneratePrefabs()
     {
-        foreach (PrefabList list in _prefabLists)
+        int pointsToGenerate = Mathf.RoundToInt((float)_percentageFilled / Percent * _spawnPoints.Length);
+
+        List<Point> availableSpawnPoints = new List<Point>(_spawnPoints);
+
+        for (int i = 0; i < pointsToGenerate; i++)
         {
-            int pointsToGenerate = Mathf.RoundToInt((float)list.PercentageFilled / Percent * list.SpawnPoints.Count);
+            int randomIndex = UnityEngine.Random.Range(0, _prefabsToGenerate.Count);
+            PreyResource prefabToGenerate = _prefabsToGenerate[randomIndex];
 
-            List<Transform> availableSpawnPoints = new List<Transform>(list.SpawnPoints);
-
-            for (int i = 0; i < pointsToGenerate; i++)
+            if (availableSpawnPoints.Count == 0)
             {
-                int randomIndex = UnityEngine.Random.Range(0, list.PrefabsToGenerate.Count);
-                GameObject prefabToGenerate = list.PrefabsToGenerate[randomIndex];
+                Debug.LogWarning("No more available spawn points.");
+                break;
+            }
 
-                if (availableSpawnPoints.Count == 0)
-                {
-                    Debug.LogWarning("No more available spawn points.");
-                    break;
-                }
+            int spawnIndex = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
+            Point spawnPoint = availableSpawnPoints[spawnIndex];
+            availableSpawnPoints.RemoveAt(spawnIndex);
 
-                int spawnIndex = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
-                Transform spawnPoint = availableSpawnPoints[spawnIndex];
-                availableSpawnPoints.RemoveAt(spawnIndex);
+            if (prefabToGenerate != null && spawnPoint != null)
+            {
+                PreyResource spawnedPrefab = Instantiate(prefabToGenerate, spawnPoint.transform.position, spawnPoint.transform.rotation);
+                _spawnedPrefabs.Add(spawnedPrefab);
+                spawnedPrefab.transform.SetParent(transform);
 
-                if (prefabToGenerate != null && spawnPoint != null)
-                {
-                    GameObject spawnedPrefab = Instantiate(prefabToGenerate, spawnPoint.position, spawnPoint.rotation);
-                    list.SpawnedPrefabs.Add(spawnedPrefab);
-                    spawnedPrefab.transform.SetParent(transform);
-
-                    if(spawnedPrefab.TryGetComponent(out PreyResource miningFacility))
-                        _preyResources.Add(miningFacility);
-                }
+                if (spawnedPrefab.TryGetComponent(out PreyResource miningFacility))
+                    _preyResources.Add(miningFacility);
             }
         }
-
-        //Debug.Log("generation preyResourses ended " + _preyResources.Count);
     }
 
     private Transform GetRandomSpawnPoint(List<Transform> spawnPoints)
@@ -79,17 +71,14 @@ public class GeneratorObjects : MonoBehaviour
 
     public void DeleteSpawnedPrefabs(GameObject tile)
     {
-        foreach (PrefabList list in _prefabLists)
+        for (int i = _spawnedPrefabs.Count - 1; i >= 0; i--)
         {
-            for (int i = list.SpawnedPrefabs.Count - 1; i >= 0; i--)
-            {
-                GameObject spawnedPrefab = list.SpawnedPrefabs[i];
+            PreyResource spawnedPrefab = _spawnedPrefabs[i];
 
-                if (spawnedPrefab != null && spawnedPrefab.transform.IsChildOf(tile.transform))
-                {
-                    Destroy(spawnedPrefab);
-                    list.SpawnedPrefabs.RemoveAt(i);
-                }
+            if (spawnedPrefab != null && spawnedPrefab.transform.IsChildOf(tile.transform))
+            {
+                Destroy(spawnedPrefab);
+                _spawnedPrefabs.RemoveAt(i);
             }
         }
     }

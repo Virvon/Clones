@@ -1,4 +1,3 @@
-using Clones.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +7,7 @@ using UnityEngine.AI;
 public class WorldGenerator : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private List<BiomeData> _biomeDatas;
+    [SerializeField] private List<GameObject> _tilePrefabs;
     [SerializeField] private float _generationRadius;
     [SerializeField] private float _deactivationRadius;
     [SerializeField] private int _tilePoolSize;
@@ -31,26 +30,21 @@ public class WorldGenerator : MonoBehaviour
 
     private void Awake()
     {
+        _navMeshSurface = GetComponent<NavMeshSurface>();
         FindPlayerTransform();
     }
 
     private void Start()
     {
-        _navMeshSurface = GetComponent<NavMeshSurface>();
-
         _tilePool = new List<GameObject>(_tilePoolSize);
         _activeTiles = new Dictionary<Vector3, GameObject>(_tilePoolSize);
 
         for (int i = 0; i < _tilePoolSize; i++)
         {
-            BiomeData biomeData = _biomeDatas[UnityEngine.Random.Range(0, _biomeDatas.Count)];
-            GameObject newTile = Instantiate(biomeData.TilePrefab, transform);
+            GameObject newTile = Instantiate(_tilePrefabs[UnityEngine.Random.Range(0, _tilePrefabs.Count)], transform);
             newTile.SetActive(false);
             _tilePool.Add(newTile);
             _inactiveTiles.Enqueue(newTile);
-
-            if(newTile.TryGetComponent(out GeneratorObjects generatorObjects))
-                generatorObjects.Init(biomeData.PreyResources)
         }
 
         GenerateTiles();
@@ -105,7 +99,6 @@ public class WorldGenerator : MonoBehaviour
 
         if (isBuild)
         {
-            //Debug.Log("buid tiles " + generatorsObjects.Count);
             _navMeshSurface.RemoveData();
             _navMeshSurface.BuildNavMesh();
             

@@ -39,8 +39,6 @@ public class ResourceDrop : MonoBehaviour
 
         if(_quest.TryGetPreyResourceData(out data, preyResource))
             Drop(data, preyResource.transform.position);
-
-        Debug.Log("data " + data + " preyresourcetype " + preyResource.Type);
     }
 
     private void Drop(ItemData itemData, Vector3 dropPosition)
