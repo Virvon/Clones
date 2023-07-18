@@ -13,7 +13,7 @@ namespace Clones.BehaviorTree
 
         private NavMeshAgent _agent;
         private Vector3 _targetPoint;
-        private Character _target => Enemy.Value.Target;
+        private Clone _target => Enemy.Value.Target;
         private float _distanceToTarget => (SelfCharacter.Value.transform.position - _target.transform.position).magnitude;
 
         public override void OnStart()

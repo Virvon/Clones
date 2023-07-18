@@ -1,9 +1,9 @@
-public class Enemy : Character
+public class Enemy : Clone
 {
     public TargetArea TargetArea { get; private set; }
-    public Character Target { get; private set; }
+    public Clone Target { get; private set; }
 
-    public void Init(Character target, TargetArea targetArea)
+    public void Init(Clone target, TargetArea targetArea)
     {
         Target = target;
         TargetArea = targetArea;

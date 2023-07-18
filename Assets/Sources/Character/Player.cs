@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : Character
+public class Player : Clone
 {
     [SerializeField] private float _attackRadius;
     [SerializeField] private float _lookRotationSpeed;

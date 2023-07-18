@@ -11,7 +11,7 @@ namespace Clones.BehaviorTree
         public SharedNavMeshAgent NavMeshAgent;
 
         private TargetArea _targetArea => Enemy.Value.TargetArea;
-        private Character _target => Enemy.Value.Target;
+        private Clone _target => Enemy.Value.Target;
         private float _distance => NavMeshAgent.Value.stoppingDistance;
 
         private float _stoppingDistance;

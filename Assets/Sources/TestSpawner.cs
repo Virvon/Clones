@@ -4,7 +4,7 @@ public class TestSpawner : MonoBehaviour
 {
     [SerializeField] private Enemy _characterPrefab;
     [SerializeField] private TargetArea _targetArea;
-    [SerializeField] private Character _target;
+    [SerializeField] private Clone _target;
 
     private Enemy current;
 

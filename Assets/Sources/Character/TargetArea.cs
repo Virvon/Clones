@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TargetArea : MonoBehaviour
 {
-    [SerializeField] private Character _target;
+    [SerializeField] private Clone _target;
     [SerializeField] private float _radius;
 
     private void Start()

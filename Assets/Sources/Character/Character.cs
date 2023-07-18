@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour, IDamageble
+public abstract class Clone : MonoBehaviour, IDamageble
 {
     [SerializeField] private float _health;
 
