@@ -13,7 +13,7 @@ public class CurrencyCounter : MonoBehaviour
 
     private ItemVisitor _visitor;
 
-    private event Action<PreyResourceType> PreyResourceTaked;
+    private event Action<PreyResourceItem> PreyResourceTaked;
     private event Action DNATaked;
 
     private void Start()
@@ -40,17 +40,17 @@ public class CurrencyCounter : MonoBehaviour
         _wallet.TakeDNA(1);
     }
 
-    private void OnPreyResourceTaked(PreyResourceType type)
+    private void OnPreyResourceTaked(PreyResourceItem type)
     {
-        _quest.TakePreyResourceItem(type, 1);
+        _quest.TakePreyResourceItem(1);
     }
 
     private class ItemVisitor : IItemVisitor
     {
-        private event Action<PreyResourceType> s_PreyResourceTaked;
+        private event Action<PreyResourceItem> s_PreyResourceTaked;
         private event Action s_DNATaked;
 
-        public ItemVisitor(Action<PreyResourceType> PreyResourceTaked = null, Action DNATaked = null)
+        public ItemVisitor(Action<PreyResourceItem> PreyResourceTaked = null, Action DNATaked = null)
         {
             s_PreyResourceTaked = PreyResourceTaked;
             s_DNATaked = DNATaked;
@@ -63,7 +63,7 @@ public class CurrencyCounter : MonoBehaviour
 
         public void Visit(PreyResourceItem preyResource)
         {
-            s_PreyResourceTaked?.Invoke(preyResource.Type);
+            s_PreyResourceTaked?.Invoke(preyResource);
         }
     }
 }

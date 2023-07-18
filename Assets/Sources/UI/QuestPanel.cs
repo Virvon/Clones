@@ -10,7 +10,7 @@ namespace Clones.UI
         [SerializeField] private QuestView _questViewPrefab;
         [SerializeField] private TMP_Text _rewrdValue;
 
-        private Dictionary<PreyResourceType, QuestView> _questViews = new Dictionary<PreyResourceType, QuestView>();
+        //private Dictionary<PreyResourceType, QuestView> _questViews = new Dictionary<PreyResourceType, QuestView>();
 
         private void OnEnable()
         {
@@ -35,28 +35,28 @@ namespace Clones.UI
                 QuestView view = Instantiate(_questViewPrefab, transform);
 
                 view.Init(cell);
-                _questViews.Add(cell.Type, view);
+                //_questViews.Add(cell.Type, view);
             }
         }
 
         private void OnQuestCellUpdated(QuestCell questCell)
         {
-            QuestView view = _questViews[questCell.Type];
+            //QuestView view = _questViews[questCell.Type];
 
-            view.UpdateInfo();
+            //view.UpdateInfo();
         }
 
         private void Clear()
         {
-            if (_questViews.Count == 0)
-                return;
+            //if (_questViews.Count == 0)
+            //    return;
 
-            foreach(var view in _questViews.Values)
-            {
-                Destroy(view.gameObject);
-            }
+            //foreach(var view in _questViews.Values)
+            //{
+            //    Destroy(view.gameObject);
+            //}
 
-            _questViews.Clear();
+            //_questViews.Clear();
         }
     }
 }

@@ -19,7 +19,9 @@ public class GeneratorObjects : MonoBehaviour
 
     private void Awake()
     {
-        _prefabsToGenerate = (List<PreyResource>)_biomeData.PreyResources;
+        foreach(var preyResourceData in _biomeData.PreyResourcesDatas)
+            _prefabsToGenerate.Add(preyResourceData.PreyResourcePrefab);
+
         _spawnPoints = GetComponentsInChildren<Point>();
         GeneratePrefabs();
     }
