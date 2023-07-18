@@ -15,6 +15,7 @@ public class Quest : MonoBehaviour, IComplexityble
 
     public int Complexity => _questLevel;
     public IReadOnlyList<QuestCell> Quests => _quests;
+    public int Reward => _reward;
 
     private int _questLevel;
     private List<QuestCell> _quests = new List<QuestCell>();

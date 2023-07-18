@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8783298802331718221}
   - component: {fileID: -8980994850781659773}
   m_Layer: 0
-  m_Name: Purple
+  m_Name: Orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d41ed71d6510812478b1f5d04a7d1df2, type: 2}
+  - {fileID: 2100000, guid: 776b0c4f1866ffe4db7086201b1eab38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 4
-  _type: 0
+  _type: 3
 --- !u!208 &-8980994850781659773
 NavMeshObstacle:
   m_ObjectHideFlags: 0

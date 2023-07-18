@@ -26,10 +26,7 @@ namespace Clones.StateMachine
                 OnTargetDied(null);
         }
 
-        private void OnDisable()
-        {
-            TargetRejected?.Invoke();
-        }
+        private void OnDisable() => TargetRejected?.Invoke();
 
         private void Attack()
         {

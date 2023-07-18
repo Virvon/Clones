@@ -5,6 +5,7 @@
         Wasteland,
         Forest,
         IceCrystals,
-        ViscousSaliva
+        ViscousSaliva,
+        PoisonForest
     }
 }

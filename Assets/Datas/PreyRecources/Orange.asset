@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac488b5f37358964692ef32494d48e16, type: 3}
-  m_Name: Blue
+  m_Name: Orange
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 4451697115011864279, guid: 79343fcc38e34fb458b51fb55d053305, type: 3}
+  _prefab: {fileID: -6122700532985972864, guid: b8d4092c3b751ff4ca889afac403def3, type: 3}
   _dropOffset: {x: 0, y: -0.5, z: 0}
   _dropSpeed: 7
-  _type: 1
+  _type: 0

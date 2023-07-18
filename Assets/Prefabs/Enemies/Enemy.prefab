@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 2674497639100704814}
   - component: {fileID: 2674497639100704801}
   - component: {fileID: 2674497639100704800}
+  - component: {fileID: 2597976189051525478}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -321,7 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e55178302668346aa04470d50118b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coolDown: 0.7
   _attackbleBehavior: {fileID: 2674497639100704801}
   _bullet: {fileID: 2378299709043555804, guid: 2e726a4093fb3394fb1cc483db0a87ca, type: 3}
   _shootingPoint: {fileID: 2674497638112485094}
@@ -349,5 +349,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0b5df323d9e6340972c154609d9dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coolDown: 1
   _attackbleBehavior: {fileID: 2674497639100704801}
+--- !u!114 &2597976189051525478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674497639100704803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff

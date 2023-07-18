@@ -2,8 +2,6 @@
 
 public class EnemyHealthbar : Healthbar
 {
-    [SerializeField] private Vector3 _offSet;
-
     protected override IHealthble Healthble => _healthble;
 
     private IHealthble _healthble;
@@ -11,12 +9,11 @@ public class EnemyHealthbar : Healthbar
 
     protected override void Start()
     {
-        
         _camera = Camera.main;
         base.Start();
     }
 
-    public void Init(IHealthble healthble) => _healthble = healthble;
+    public void Init(Enemy enemy) => _healthble = enemy;
 
     private void LateUpdate()
     {

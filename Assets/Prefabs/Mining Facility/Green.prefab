@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6815931773526012438}
   - component: {fileID: 1740278318843124903}
   - component: {fileID: 48553145359045075}
-  - component: {fileID: 9585777670455080}
+  - component: {fileID: 1310657838023757354}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -113,22 +113,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 4
   _type: 2
---- !u!114 &9585777670455080
-MonoBehaviour:
+--- !u!208 &1310657838023757354
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4324417728525946500}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ddd10ec7e9db0419fc824ffa86f26b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _resources:
-  - name: test resource
-    prefab: {fileID: 1850121823618502846, guid: 299e0b0e78cb92947817340ae9a0ab80, type: 3}
-    minDroppedResources: 1
-    maxDroppedResources: 5
-  _radiusDropResource: 2
-  _dropOffset: {x: 0, y: -1, z: 0}
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

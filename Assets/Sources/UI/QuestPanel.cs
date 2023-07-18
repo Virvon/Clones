@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Clones.UI
@@ -7,6 +8,7 @@ namespace Clones.UI
     {
         [SerializeField] private Quest _quest;
         [SerializeField] private QuestView _questViewPrefab;
+        [SerializeField] private TMP_Text _rewrdValue;
 
         private Dictionary<PreyResourceType, QuestView> _questViews = new Dictionary<PreyResourceType, QuestView>();
 
@@ -25,6 +27,8 @@ namespace Clones.UI
         private void OnQuestCreated()
         {
             Clear();
+
+            //_rewrdValue.text = _quest.Reward.ToString();
 
             foreach (var cell in _quest.Quests)
             {

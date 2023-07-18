@@ -50,9 +50,9 @@ public abstract class Healthbar : MonoBehaviour
 
         while(_slider.value != targetValue)
         {
-            time += _animationSpeed / Time.deltaTime;
-            _slider.value = Mathf.Lerp(startValue, targetValue, time);
-            
+            time += Time.deltaTime;
+            _slider.value = Mathf.Lerp(startValue, targetValue, time / _animationSpeed);
+
             yield return null;
         }
     }
