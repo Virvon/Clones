@@ -9,8 +9,6 @@ namespace Clones.Biomes
         public event Action<Biome> PlayerEntered;
         public event Action PlayerExited;
 
-        public abstract BiomeType Type { get;}
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Player player))

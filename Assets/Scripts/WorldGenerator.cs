@@ -1,3 +1,4 @@
+using Clones.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.AI;
 public class WorldGenerator : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private List<GameObject> _tilePrefabs;
+    [SerializeField] private List<BiomeData> _biomeDatas;
     [SerializeField] private float _generationRadius;
     [SerializeField] private float _deactivationRadius;
     [SerializeField] private int _tilePoolSize;
@@ -42,7 +43,7 @@ public class WorldGenerator : MonoBehaviour
 
         for (int i = 0; i < _tilePoolSize; i++)
         {
-            GameObject newTile = Instantiate(_tilePrefabs[UnityEngine.Random.Range(0, _tilePrefabs.Count)], transform);
+            GameObject newTile = Instantiate(_biomeDatas[UnityEngine.Random.Range(0, _biomeDatas.Count)].TilePrefab, transform);
             newTile.SetActive(false);
             _tilePool.Add(newTile);
             _inactiveTiles.Enqueue(newTile);

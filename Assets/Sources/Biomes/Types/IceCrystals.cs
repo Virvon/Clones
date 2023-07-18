@@ -2,6 +2,5 @@
 {
     public class IceCrystals : Biome
     {
-        public override BiomeType Type => BiomeType.IceCrystals;
     }
 }

@@ -39,13 +39,13 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
     private void CreateWave()
     {
-        BiomeType targetBiome = _currentBiome.Biome;
+        //BiomeType targetBiome = _currentBiome.Biome;
         List<EnemyData> targetEnemyDatas = new List<EnemyData>();
 
         foreach(var enemyData in _enemyDatas)
         {
-            if (enemyData.BiomeType == targetBiome)
-                targetEnemyDatas.Add(enemyData);
+            //if (enemyData.BiomeType == targetBiome)
+                //targetEnemyDatas.Add(enemyData);
         }
 
         if (targetEnemyDatas.Count == 0)
