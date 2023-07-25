@@ -1,14 +1,20 @@
+using Clones.Data;
 using System;
 using UnityEngine;
 
 public class PreyResource : MonoBehaviour, IDamageable, IDropble 
 {
     [SerializeField] private float _health;
-    public Vector3 Position => transform.position;
-    public Vector3 Scale => transform.localScale;
-    public float Health => _health;
+
+    public PreyResourceData Data { get; private set; }
 
     public event Action<IDamageable> Died;
+
+    public void Init(PreyResourceData data)
+    {
+        if(Data == null)
+            Data = data;
+    }
 
     public void Accept(IDropVisitor visitor) => visitor.Visit(this);
 

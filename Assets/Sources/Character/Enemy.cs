@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
     public int Damage => Stats.Damage;
     public float AttackSpeed => Stats.AttackSpeed;
     public int Health => _health;
+    public float KnockbackForce => 800;
 
     private int _health;
 

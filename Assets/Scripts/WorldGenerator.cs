@@ -141,7 +141,6 @@ public class WorldGenerator : MonoBehaviour
 
         if(isDeativate == true)
         {
-            //Debug.Log("tiles deactivate " + generatorsObjects.Count);
             TilesDiactivated?.Invoke(generatorsObjects);
         }
     }

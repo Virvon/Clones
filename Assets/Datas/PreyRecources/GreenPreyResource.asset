@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac488b5f37358964692ef32494d48e16, type: 3}
   m_Name: GreenPreyResource
   m_EditorClassIdentifier: 
-  _prefab: {fileID: -4116840488700619171, guid: 850e7f55777aaa940925b90d6bf73aef, type: 3}
-  _dropOffset: {x: 0, y: -0.5, z: 0}
-  _dropSpeed: 7
-  _type: 2
+  _prefab: {fileID: 48553145359045075, guid: c6099aecb4ee4f94c85e1e62865f9fc1, type: 3}
+  _itemData: {fileID: 11400000, guid: 6603e10c266fe394da062a2d0b7d97db, type: 2}

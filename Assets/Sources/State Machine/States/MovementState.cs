@@ -2,20 +2,22 @@ using UnityEngine;
 
 namespace Clones.StateMachine
 {
-    [RequireComponent(typeof(Rigidbody), typeof(SurfaceSlider))]
+    [RequireComponent(typeof(Rigidbody), typeof(SurfaceSlider), typeof(Player))]
     public class MovementState : State
     {
-        [SerializeField] private float _movementSpeed = 10;
         [SerializeField] private float _rotationSpeed = 1080;
         [SerializeField] private float _directionOffset;
 
         private Rigidbody _rigidbody;
         private SurfaceSlider _surfaceSlider;
+        private Player _player;
+        private float _movementSpeed => _player.MovementSpeed;
 
         private void OnEnable()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _surfaceSlider = GetComponent<SurfaceSlider>();
+            _player = GetComponent<Player>();
 
             DirectionHandler.Activated += Move;
             DirectionHandler.Deactivated += Stop;

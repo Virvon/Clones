@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac488b5f37358964692ef32494d48e16, type: 3}
   m_Name: BluePreyResource
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 4451697115011864279, guid: 79343fcc38e34fb458b51fb55d053305, type: 3}
-  _dropOffset: {x: 0, y: -0.5, z: 0}
-  _dropSpeed: 7
-  _type: 1
+  _prefab: {fileID: 3284527955164882244, guid: 7d97502d4668adb44a37af2d02af8545, type: 3}
+  _itemData: {fileID: 11400000, guid: d46938295fcd0e341b04520404561ec7, type: 2}

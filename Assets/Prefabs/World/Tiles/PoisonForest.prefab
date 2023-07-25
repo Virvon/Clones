@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 2965586213671339218}
   - component: {fileID: 6248151207860650319}
   - component: {fileID: 4446269014300696725}
+  - component: {fileID: 7096604463225863518}
   m_Layer: 0
   m_Name: PoisonForest
   m_TagString: Untagged
@@ -180,10 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16e4f1acd613ae4e9b75296e83e52a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabLists:
-  - ListName: Oranges
-    PercentageFilled: 86
-    SpawnedPrefabs: []
+  _percentageFilled: 0
   _biomeData: {fileID: 11400000, guid: 374444b47c2230a4592a7874eebed154, type: 2}
 --- !u!135 &4446269014300696725
 SphereCollider:
@@ -198,6 +196,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 36.31
   m_Center: {x: 7.73, y: 0, z: 3.4}
+--- !u!114 &7096604463225863518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed4490c03c90b840afefa99f09a9d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _biomeData: {fileID: 11400000, guid: 374444b47c2230a4592a7874eebed154, type: 2}
 --- !u!1 &2965586213898344238
 GameObject:
   m_ObjectHideFlags: 0

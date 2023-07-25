@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 7657323019211970201}
-  _healthValue: {fileID: 1012279994803622590}
   _animationSpeed: 0.2
+  _healthValue: {fileID: 1012279994803622590}
 --- !u!1 &2475263914068516255
 GameObject:
   m_ObjectHideFlags: 0

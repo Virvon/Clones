@@ -5,6 +5,7 @@ public class DropCollecting : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private CurrencyCounter _currecyCounter;
+    [SerializeField] private float _speed = 20;
 
     private readonly Collider[] _overlapColliders = new Collider[64];
     private List<Item> _collictingItems = new List<Item>();
@@ -17,7 +18,7 @@ public class DropCollecting : MonoBehaviour
             return;
 
         foreach (var item in items)
-            item.TakeMove(transform, 20);
+            item.TakeMove(transform, _speed);
 
         _collictingItems.AddRange(items);
     }

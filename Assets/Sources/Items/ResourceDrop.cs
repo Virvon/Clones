@@ -35,10 +35,8 @@ public class ResourceDrop : MonoBehaviour
 
     private void OnPreyResourceBroked(PreyResource preyResource)
     {
-        PreyResourceData data;
-
-        if(_quest.TryGetPreyResourceData(out data, preyResource))
-            Drop(data, preyResource.transform.position);
+        if (_quest.IsQuestItem(preyResource.Data.ItemData))
+            Drop(preyResource.Data.ItemData, preyResource.transform.position);
     }
 
     private void Drop(ItemData itemData, Vector3 dropPosition)
@@ -49,6 +47,7 @@ public class ResourceDrop : MonoBehaviour
         {
             Item item = Instantiate(itemData.Prefab, dropPosition + itemData.DropOffset, Quaternion.identity, transform);
 
+            item.Init(itemData);
             item.TakeMove(GetIncideCirclePosition(dropPosition + itemData.DropOffset), itemData.DropSpeed);
         }
     }

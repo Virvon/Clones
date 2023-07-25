@@ -4,6 +4,7 @@ using System;
 using UnityEditor;
 #endif
 
+
 public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
 {
     [SerializeField] private float _attackRadius;
@@ -16,12 +17,15 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public float DropCollectingRadius => _dropCollectingRadius;
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
-    public Vector3 Position => transform.position;
-    public int Damage => 20;
-    public float AttackSpeed => 0.6f;
+    public int Damage => 1;
+    public float AttackSpeed => _movementStats.AttakcSpeed;
     public int Health => _health;
+    public float MovementSpeed => _movementStats.MovementSpeed;
+    public MovementStats MovementStats => _movementStats;
+    public float KnockbackForce => 800;
 
     //private Stats _stats;
+    private MovementStats _movementStats = new MovementStats(10, 0.78f);
 
     public event Action<IDamageable> Died;
     public event Action DamageTaked;

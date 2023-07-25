@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
-  m_Name: IceCrystals
+  m_Name: ViscousSaliva
   m_EditorClassIdentifier: 
-  _preyResourceDatas:
-  - {fileID: 11400000, guid: 0668a9188a1039641916b2c452a6abd0, type: 2}
+  _preyResourceDatas: []
   _enemyDatas:
-  - {fileID: 11400000, guid: 3beff77e0fb92f545b645be1d980beb1, type: 2}
+  - {fileID: 11400000, guid: 1e5de66453ea7e24985e259578d95cd4, type: 2}

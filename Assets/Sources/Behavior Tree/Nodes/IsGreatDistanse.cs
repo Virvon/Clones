@@ -12,14 +12,13 @@ namespace Clones.BehaviorTree
         private PlayerArea _playerArea => Enemy.Value.TargetArea;
         private Player _player => Enemy.Value.Target;
         private float _distance => NavMeshAgent.Value.stoppingDistance;
-
         private float _stoppingDistance;
 
         public override void OnStart() => _stoppingDistance = NavMeshAgent.Value.stoppingDistance;
 
         public override TaskStatus OnUpdate()
         {
-            if ((Enemy.Value.transform.position - _player.transform.position).magnitude <= _distance && (Enemy.Value.transform.position - _playerArea.transform.position).magnitude <= _distance)
+            if ((Enemy.Value.transform.position - _playerArea.transform.position).magnitude <= _distance || (Enemy.Value.transform.position - _player.transform.position).magnitude <= _distance) 
             {
                 RaycastHit hit;
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  _tilePrefab: {fileID: 0}
-  _preyResources: []
-  _enemyDatas: []
+  _preyResourceDatas:
+  - {fileID: 11400000, guid: 88fffa9b0849f3c43b250f3480aec607, type: 2}
+  _enemyDatas:
+  - {fileID: 11400000, guid: 1e5de66453ea7e24985e259578d95cd4, type: 2}

@@ -12,7 +12,7 @@ public class GeneratorObjects : MonoBehaviour
 
     private List<PreyResource> _preyResources = new List<PreyResource>();
     private Point[] _spawnPoints;
-    private List<PreyResource> _prefabsToGenerate;
+    private List<PreyResourceData> _prefabsToGenerate = new List<PreyResourceData>();
     private List<PreyResource> _spawnedPrefabs = new List<PreyResource>();
 
     public List<PreyResource> PreyResources => _preyResources;
@@ -20,7 +20,7 @@ public class GeneratorObjects : MonoBehaviour
     private void Awake()
     {
         foreach(var preyResourceData in _biomeData.PreyResourcesDatas)
-            _prefabsToGenerate.Add(preyResourceData.PreyResourcePrefab);
+            _prefabsToGenerate.Add(preyResourceData);
 
         _spawnPoints = GetComponentsInChildren<Point>();
         GeneratePrefabs();
@@ -35,7 +35,7 @@ public class GeneratorObjects : MonoBehaviour
         for (int i = 0; i < pointsToGenerate; i++)
         {
             int randomIndex = UnityEngine.Random.Range(0, _prefabsToGenerate.Count);
-            PreyResource prefabToGenerate = _prefabsToGenerate[randomIndex];
+            PreyResourceData prefabToGenerate = _prefabsToGenerate[randomIndex];
 
             if (availableSpawnPoints.Count == 0)
             {
@@ -49,12 +49,15 @@ public class GeneratorObjects : MonoBehaviour
 
             if (prefabToGenerate != null && spawnPoint != null)
             {
-                PreyResource spawnedPrefab = Instantiate(prefabToGenerate, spawnPoint.transform.position, spawnPoint.transform.rotation);
+                PreyResource spawnedPrefab = Instantiate(prefabToGenerate.Prefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
                 _spawnedPrefabs.Add(spawnedPrefab);
                 spawnedPrefab.transform.SetParent(transform);
 
                 if (spawnedPrefab.TryGetComponent(out PreyResource miningFacility))
+                {
                     _preyResources.Add(miningFacility);
+                    miningFacility.Init(prefabToGenerate);
+                }
             }
         }
     }

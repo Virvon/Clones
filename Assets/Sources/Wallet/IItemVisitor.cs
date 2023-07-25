@@ -2,5 +2,5 @@
 {
     public void Visit(DNAItem DNA);
 
-    public void Visit(PreyResourceItem preyResource);
+    public void Visit(CollectingItem preyResource);
 }

@@ -5,11 +5,13 @@ using UnityEngine;
 namespace Clones.Biomes
 {
     [RequireComponent(typeof(Collider))]
-    public abstract class Biome : MonoBehaviour
+    public class Biome : MonoBehaviour
     {
         [SerializeField] private BiomeData _biomeData;
 
         public BiomeData BiomeData => _biomeData;
+
+        protected Player Player { get; private set; }
 
         public event Action<Biome> PlayerEntered;
         public event Action PlayerExited;
@@ -18,6 +20,7 @@ namespace Clones.Biomes
         {
             if (other.TryGetComponent(out Player player))
             {
+                Player = player;
                 PlayerEntered?.Invoke(this);
             }
         }
@@ -26,6 +29,7 @@ namespace Clones.Biomes
         {
             if (other.TryGetComponent(out Player player))
             {
+                Player = null;
                 PlayerExited?.Invoke();
             }
         }

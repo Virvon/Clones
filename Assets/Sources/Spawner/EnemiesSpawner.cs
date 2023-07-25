@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 public class EnemiesSpawner : MonoBehaviour, IComplexityble
 {
-    [SerializeField] private List<EnemyData> _enemyDatas;
     [SerializeField] private SpawnerData _spawnerData;
     [SerializeField] private float _delay;
 
@@ -39,19 +38,13 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
     private void CreateWave()
     {
-        //BiomeType targetBiome = _currentBiome.Biome;
-        List<EnemyData> targetEnemyDatas = new List<EnemyData>();
-
-        foreach(var enemyData in _enemyDatas)
-        {
-            //if (enemyData.BiomeType == targetBiome)
-                //targetEnemyDatas.Add(enemyData);
-        }
+        BiomeData targetBiomeData = _currentBiome.BiomeData;
+        IReadOnlyList<EnemyData> targetEnemyDatas = targetBiomeData.EnemyDatas;
 
         if (targetEnemyDatas.Count == 0)
             throw new Exception("enemies to create wave not found");
 
-        _maxWeight = _spawnerData.BaseTotalWeight * _complexity.ResultComplexity;
+        _maxWeight = _spawnerData.BaseTotalWeight;
         _currentWeight = 0;
 
         while (_currentWeight < _maxWeight)

@@ -22,6 +22,15 @@ public class ShootingAttack : CharacterAttack
 
     private void MakeDamage(IDamageable damageble)
     {
+        //if (((MonoBehaviour)Target).TryGetComponent(out Rigidbody rigidbody))
+        //{
+        //    Vector3 force = ((MonoBehaviour)damageble).transform.position - ((MonoBehaviour)Attackble).transform.position;
+        //    force.y = 0;
+        //    rigidbody.AddForce(force.normalized * Attackble.KnockbackForce);
+
+        //    Debug.Log("knockbacked");
+        //}
+
         damageble.TakeDamage(Attackble.Damage);
     }
 }

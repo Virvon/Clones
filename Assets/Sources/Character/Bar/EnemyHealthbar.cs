@@ -2,18 +2,11 @@
 
 public class EnemyHealthbar : Healthbar
 {
-    protected override IHealthble Healthble => _healthble;
-
-    private IHealthble _healthble;
     private Camera _camera;
 
-    protected override void Start()
-    {
-        _camera = Camera.main;
-        base.Start();
-    }
+    private void Awake() => _camera = Camera.main;
 
-    public void Init(Enemy enemy) => _healthble = enemy;
+    public void Init(Enemy enemy) => TakeHealthble(enemy);
 
     private void LateUpdate()
     {

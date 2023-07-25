@@ -31,6 +31,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfDamageable)
         {
+            if (_selfDamageable is Enemy && damageable is Enemy)
+                return;
+
             s_Hitted?.Invoke(damageable);
             Destroy(gameObject);
         }

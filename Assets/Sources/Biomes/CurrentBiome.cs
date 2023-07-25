@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Clones.Data;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +7,13 @@ namespace Clones.Biomes
     public class CurrentBiome : MonoBehaviour
     {
         [SerializeField] private WorldGenerator _worldGenerator;
+        [SerializeField] private BiomeData _defaultBiomeData;
 
-        public Biome Biome { get; private set; }
+        public BiomeData BiomeData { get; private set; }
 
         private void OnEnable()
         {
+            BiomeData = _defaultBiomeData;
             _worldGenerator.TilesGenerated += OnTilesGenerated;
             _worldGenerator.TilesDiactivated += OnTilesDeactivated;
         }
@@ -50,8 +52,8 @@ namespace Clones.Biomes
             }
         }
 
-        private void OnPlayerEntered(Biome biome) => Biome = biome;
+        private void OnPlayerEntered(Biome biome) => BiomeData = biome.BiomeData;
 
-        private void OnPlayerExited() => Biome = null;
+        private void OnPlayerExited() => BiomeData = _defaultBiomeData;
     }
 }

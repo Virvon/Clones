@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Clones.Data
 {
     [CreateAssetMenu(fileName = "New PreyRecource", menuName = "Data/Create new prey recource", order = 51)]
-    public class PreyResourceData : ItemData
+    public class PreyResourceData : ScriptableObject
     {
-        [SerializeField] private PreyResource _preyResourcePrefab;
-        [SerializeField] private List<ItemData> _itemDatas;
+        [SerializeField] private PreyResource _prefab;
+        [SerializeField] private ItemData _itemData;
 
-        public PreyResource PreyResourcePrefab => _preyResourcePrefab;
-        public IReadOnlyList<ItemData> ItemDatas => _itemDatas;
+        public PreyResource Prefab => _prefab;
+        public ItemData ItemData => _itemData;
     }
 }

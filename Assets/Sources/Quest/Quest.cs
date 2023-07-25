@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 public class Quest : MonoBehaviour, IComplexityble
 {
-    [SerializeField] private List<PreyResourceData> _resourceDatas;
     [SerializeField] private QuestData _questData;
     [SerializeField] private CurrencyCounter _currencyCounter;
     [SerializeField] private Wallet _wallet;
@@ -27,43 +26,33 @@ public class Quest : MonoBehaviour, IComplexityble
 
     private void OnEnable()
     {
-        //_quests = GetQuest(out _reward);
+        _quests = GetQuest(out _reward);
 
         QuestCreated?.Invoke();
     }
 
-    public bool TryGetPreyResourceData(out PreyResourceData data, PreyResource preyResource)
+    public bool IsQuestItem(ItemData itemData)
     {
-        //foreach (var cell in _quests)
-        //{
-        //    if (cell.Type == preyResource.Type && cell.IsFull == false)
-        //    {
-        //        foreach(var resourceData in _resourceDatas)
-        //        {
-        //            if(resourceData.Type == preyResource.Type)
-        //            {
-        //                data = resourceData;
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //}
+        foreach(var cell in _quests)
+        {
+            if(cell.Type == itemData && cell.IsFull == false)
+                return true;
+        }
 
-        data = null;
         return false;
     }
 
-    public void TakePreyResourceItem(int count)
+    public void TakePreyResourceItem(ItemData itemData, int count)
     {
         bool isQuestEnded = true;
 
         foreach (var cell in _quests)
         {
-            //if(cell.Type == type && cell.IsFull == false)
-            //{
-            //    if (cell.TryGetItems(count, type))
-            //        QuestCellUpdated?.Invoke(cell);
-            //}
+            if (cell.Type == itemData && cell.IsFull == false)
+            {
+                if (cell.TryGetItems(itemData, count))
+                    QuestCellUpdated?.Invoke(cell);
+            }
 
             if (cell.IsFull == false)
                 isQuestEnded = false;
@@ -72,46 +61,45 @@ public class Quest : MonoBehaviour, IComplexityble
         if (isQuestEnded)
         {
             _wallet.TekeMoney(_reward);
-            //_quests = GetQuest(out _reward);
+            _quests = GetQuest(out _reward);
 
             QuestCreated?.Invoke();
         }
     }
 
-    //private List<QuestCell> GetQuest(out int reward)
-    //{
-    //    _questLevel++;
-    //    ComplexityIncreased?.Invoke();
+    private List<QuestCell> GetQuest(out int reward)
+    {
+        _questLevel++;
+        ComplexityIncreased?.Invoke();
 
-    //    List<QuestCell> cells = new List<QuestCell>();
-    //    List<PreyResourceType> availableTypes = new List<PreyResourceType>();
-    //    int preyResourcesTypesCount = Enum.GetNames(typeof(PreyResourceType)).Length;
-    //    int maxItemsCount = (int)(_questData.BaseItemsCount * _complexity.ResultComplexity);
-    //    int minItemsCount = (int)(maxItemsCount * _questData.MinimumPercentageItemCountInQuest);
-    //    int totalItemsCount = 0;
+        List<QuestCell> cells = new List<QuestCell>();
+        List<ItemData> usedItems = new List<ItemData>();
+        int availableItemsCount = _questData.QuestItemDatas.Count;
+        int maxItemsCount = _questData.BaseItemsCount;
+        int minItemsCount = (int)(maxItemsCount * _questData.MinimumPercentageItemCountInQuest);
+        int totalItemsCount = 0;
 
-    //    while (totalItemsCount < maxItemsCount)
-    //    {
-    //        int itemsCount;
+        while(totalItemsCount < maxItemsCount)
+        {
+            int itemsCount;
 
-    //        if (availableTypes.Count + 1 == preyResourcesTypesCount)
-    //            itemsCount = maxItemsCount - totalItemsCount;
-    //        else
-    //            itemsCount = GetItemsCount(minItemsCount, maxItemsCount, totalItemsCount);
+            if(usedItems.Count + 1 == availableItemsCount)
+                itemsCount = maxItemsCount - totalItemsCount;
+            else
+                itemsCount = GetItemsCount(minItemsCount, maxItemsCount, totalItemsCount);
 
-    //        PreyResourceType type = GetUniquePreyResourceType(availableTypes, preyResourcesTypesCount);
+            ItemData itemData = GetUniqueItem(usedItems, availableItemsCount);
 
-    //        availableTypes.Add(type);
+            usedItems.Add(itemData);
+            cells.Add(new QuestCell(itemData, itemsCount));
 
-    //        cells.Add(new QuestCell(itemsCount, type));
+            totalItemsCount += itemsCount;
+        }
 
-    //        totalItemsCount += itemsCount;
-    //    }
+        reward = _questData.BaseReward;
 
-    //    reward = (int)(_questData.BaseReward * _complexity.ResultComplexity);
-
-    //    return cells;
-    //}
+        return cells;
+    }
 
     private int GetItemsCount(int minItemsCount, int maxItemsCount, int totalItemsCount)
     {
@@ -136,30 +124,30 @@ public class Quest : MonoBehaviour, IComplexityble
         return itemsCount;
     }
 
-    //private PreyResourceType GetUniquePreyResourceType(List<PreyResourceType> availableTypes, int preyResourcesTypesCount)
-    //{
-    //    if(availableTypes.Count == preyResourcesTypesCount)
-    //        throw new Exception("impossible to find unique objects");
+    private ItemData GetUniqueItem(List<ItemData> usedItems, int avaliableItemsCount)
+    {
+        if (usedItems.Count == avaliableItemsCount)
+            throw new Exception("impossible to find unique objects");
 
-    //    bool isUniqueType = false;
-    //    PreyResourceType type = 0;
+        bool isUniqueType = false;
+        ItemData item = null;
 
-    //    while(isUniqueType == false)
-    //    {
-    //        type = (PreyResourceType)Random.Range(0, preyResourcesTypesCount);
+        while (isUniqueType == false)
+        {
+            item = _questData.QuestItemDatas[Random.Range(0, avaliableItemsCount)];
 
-    //        isUniqueType = true;
+            isUniqueType = true;
 
-    //        foreach(var availableType in availableTypes)
-    //        {
-    //            if (availableType == type)
-    //            {
-    //                isUniqueType = false;
-    //                break;
-    //            }
-    //        }
-    //    }
+            foreach (var usedItem in usedItems)
+            {
+                if (usedItem == item)
+                {
+                    isUniqueType = false;
+                    break;
+                }
+            }
+        }
 
-    //    return type;
-    //}
+        return item;
+    }
 }

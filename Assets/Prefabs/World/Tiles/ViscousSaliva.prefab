@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6248151207860650319}
   - component: {fileID: 4446269014300696725}
   m_Layer: 0
-  m_Name: Tile 5
+  m_Name: ViscousSaliva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,6 +165,7 @@ Transform:
   - {fileID: 2860092883049011076}
   - {fileID: 3938007589209302641}
   - {fileID: 2247239045368947049}
+  - {fileID: 6936555575867027396}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -180,23 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16e4f1acd613ae4e9b75296e83e52a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabLists:
-  - ListName: Purpules
-    PercentageFilled: 86
-    PrefabsToGenerate:
-    - {fileID: 3521294033719723598, guid: 8a1b51758a43dba458e62bd9c7778a9f, type: 3}
-    SpawnPoints:
-    - {fileID: 2653507770023098875}
-    - {fileID: 1971495157761481261}
-    - {fileID: 6180691181997359251}
-    - {fileID: 7019031525806704821}
-    - {fileID: 3585317520270924835}
-    - {fileID: 6360307735911157122}
-    - {fileID: 5199849284034997886}
-    - {fileID: 2860092883049011076}
-    - {fileID: 3938007589209302641}
-    - {fileID: 2247239045368947049}
-    SpawnedPrefabs: []
+  _percentageFilled: 0
+  _biomeData: {fileID: 11400000, guid: a5066535da48fc541828234fa6edb713, type: 2}
 --- !u!135 &4446269014300696725
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -386,6 +372,64 @@ Transform:
   m_Father: {fileID: 2965586213671339218}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5396774903177400489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6936555575867027396}
+  - component: {fileID: 1426765133132023381}
+  - component: {fileID: 9057517117995516756}
+  m_Layer: 0
+  m_Name: Sticky Puddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6936555575867027396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396774903177400489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2965586213671339218}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1426765133132023381
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396774903177400489}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16.12
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9057517117995516756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396774903177400489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03d2cd63601f844ca2b48afea6a7c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5564620835532880915
 GameObject:
   m_ObjectHideFlags: 0

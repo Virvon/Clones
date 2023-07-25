@@ -12,7 +12,7 @@ public class QuestView : MonoBehaviour
     public void Init(QuestCell questCell)
     {
         _cell = questCell;
-        //_description.text = questCell.Type.ToString();
+        _description.text = questCell.Type.name;
 
         UpdateInfo();
     }

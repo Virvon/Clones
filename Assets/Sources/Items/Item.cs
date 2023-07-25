@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using Clones.Data;
+using System.Collections;
 using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    public ItemData Data { get; private set; }
+
     private Coroutine _move;
 
     public abstract void Accept(IItemVisitor visitor);
+
+    public void Init(ItemData itemData) => Data = itemData;
 
     public void TakeMove(Vector3 targetPosition, float speed)
     {
