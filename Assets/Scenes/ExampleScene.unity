@@ -581,7 +581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
       propertyPath: _tilePrefabs.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
       propertyPath: _biomeDatas.Array.data[0]
@@ -602,7 +602,7 @@ PrefabInstance:
     - target: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
       propertyPath: _tilePrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2965586213671339217, guid: 8f597fa2879c35d4cae84ca4735c0766, type: 3}
+      objectReference: {fileID: 2965586213671339217, guid: 4657b8542e82b0a44bde28377efe1fa1, type: 3}
     - target: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
       propertyPath: _tilePrefabs.Array.data[1]
       value: 
@@ -1221,6 +1221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1305,6 +1306,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &723018149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,7 +2252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 12c468e9414e6be40bff6560c9d1c766, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3286,7 +3307,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 12c468e9414e6be40bff6560c9d1c766, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3854,6 +3875,7 @@ GameObject:
   - component: {fileID: 1856713548}
   - component: {fileID: 1856713547}
   - component: {fileID: 1856713546}
+  - component: {fileID: 1856713550}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3919,7 +3941,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 32.96973
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3935,7 +3957,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -3960,7 +3982,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.44, y: 0, z: 0}
+--- !u!114 &1856713550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856713545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630954c3bc3a87b45959e79db3419b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shaderTexture: {fileID: 2100000, guid: 986fcfa1649b9a24d8907a87cb1e78af, type: 2}
 --- !u!1 &1887178551
 GameObject:
   m_ObjectHideFlags: 3
