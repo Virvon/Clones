@@ -17,11 +17,11 @@ namespace Clones.BehaviorTree
             return TaskStatus.Running;
         }
 
-        private void RotateTo(Vector3 target)
+        private void RotateTo(Vector3 targetPosition)
         {
-            target.y = transform.position.y;
+            targetPosition.y = transform.position.y;
 
-            var direction = Quaternion.LookRotation(target - transform.position, Vector3.up);
+            var direction = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, 1080 * Time.deltaTime);
         }
     }

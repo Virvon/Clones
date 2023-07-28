@@ -44,9 +44,11 @@ namespace Clones.StateMachine
             RotateTo(((MonoBehaviour)_target).transform.position);
         }
 
-        private void RotateTo(Vector3 target)
+        private void RotateTo(Vector3 targetPosition)
         {
-            var direction = Quaternion.LookRotation(target - transform.position, Vector3.up);
+            targetPosition.y = transform.position.y;
+
+            var direction = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _lookRotationSpeed * Time.deltaTime);
         }
 
