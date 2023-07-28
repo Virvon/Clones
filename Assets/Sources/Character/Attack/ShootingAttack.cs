@@ -17,7 +17,7 @@ public class ShootingAttack : CharacterAttack
     protected override void Attack()
     {
         Bullet bullet = Instantiate(_bullet, _shootingPoint.transform.position, Quaternion.identity);
-        bullet.Shoot(_targetPosition - transform.position, (IDamageable)Attackble, Hitted);
+        bullet.Shoot(_targetPosition - _shootingPoint.transform.position, (IDamageable)Attackble, Hitted);
     }
 
     private void MakeDamage(IDamageable damageble)
