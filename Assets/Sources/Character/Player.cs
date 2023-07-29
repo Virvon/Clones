@@ -17,7 +17,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public float DropCollectingRadius => _dropCollectingRadius;
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
-    public int Damage => 1;
+    public int Damage => 0;
     public float AttackSpeed => _movementStats.AttakcSpeed;
     public int Health => _health;
     public float MovementSpeed => _movementStats.MovementSpeed;
