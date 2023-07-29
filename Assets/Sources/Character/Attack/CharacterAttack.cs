@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public abstract class CharacterAttack : MonoBehaviour
 
     protected IAttackble Attackble { get; private set; }
     protected IDamageable Target { get; private set; }
+
+    public event Action Attacked;
 
     private void Awake() => Attackble = (IAttackble)_attackbleBehavior;
 
@@ -30,6 +33,7 @@ public abstract class CharacterAttack : MonoBehaviour
         Target = target;
 
         Attack();
+        Attacked?.Invoke();
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
