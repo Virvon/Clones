@@ -6,28 +6,26 @@ using UnityEngine.UI;
 public class UpgradeClone : MonoBehaviour
 {
     [SerializeField] private CardClone _cardClone;
-    [Space]
-    [Header("Health")]
-    [SerializeField] private Button _healthUpgrade;
-    [SerializeField] private int _priceHealthUpgrade;
-    [SerializeField] private int _priceIncreaseHealthUpgrade;
-    [SerializeField] private int _CountHealthUpgrade;
-    [Space]
-    [Header("Wand")]
-    [SerializeField] private Button _wandUpgrade;
-    [SerializeField] private int _priceWandUpgrade;
-    [SerializeField] private int _priceIncreaseWandUpgrade;
-    [SerializeField] private int _CountDamageUpgrade;
-    [SerializeField] private float _CountAttackSpeedUpgrade;
-    [SerializeField] private float _CountResourceMultiplierUpgrade;
+    [SerializeField] private int _priceUpgrade;
+    [SerializeField] private int _incrementPriceUpgrade;
+    [SerializeField] private int _countHealthUpgrade;
+    [SerializeField] private int _countDamageUpgrade;
+    [SerializeField] private float _countAttackSpeedUpgrade;
+    [SerializeField] private float _countResourceMultiplierUpgrade;
 
-    public void UpgrageWand()
-    {
-        //_dictionaryCharacters.Character.Upgrade();
-    }
+    public int PriceUpgrade => _priceUpgrade;
 
     public void UpgrageHealth()
     {
-        //_dictionaryCharacters.Character.Upgrade();
+        _cardClone.Wallet.ChangeDNACount(-_priceUpgrade);
+        _priceUpgrade += _incrementPriceUpgrade;
+        _cardClone.Stats.Upgrade(_countHealthUpgrade, 0, 0, 0);
+    }
+
+    public void UpgrageWand()
+    {
+        _cardClone.Wallet.ChangeDNACount(-_priceUpgrade);
+        _priceUpgrade += _incrementPriceUpgrade;
+        _cardClone.Stats.Upgrade(0, _countDamageUpgrade, _countAttackSpeedUpgrade, _countResourceMultiplierUpgrade);
     }
 }

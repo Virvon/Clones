@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-public class NumberFormatter : MonoBehaviour
+public static class NumberFormatter //Возможно проблема в том, что класс static
 {
-    public string FormatNumberWithCommas(int number)
+    public static string FormatNumberWithCommas(int number)
     {
         string numberAsString = number.ToString();
 
@@ -34,6 +35,8 @@ public class NumberFormatter : MonoBehaviour
                 commaCount++;
             }
         }
+
+        Debug.Log(new string(formattedNumber));
 
         return new string(formattedNumber);
     }

@@ -6,21 +6,29 @@ using UnityEngine.Events;
 
 public class Wallet : MonoBehaviour
 {
-    public int DNA { get; private set; }
-    public int Coins { get; private set; }
+    [SerializeField] private int _dna;
+    [SerializeField] private int _coins;
+    [SerializeField] private TMP_Text _dnaText;
+    [SerializeField] private TMP_Text _coinsText;
 
-    public UnityEvent<int> ChangedDNACount = new UnityEvent<int>();
-    public UnityEvent<int> ChangedCoinsCount = new UnityEvent<int>();
+    public int DNA => _dna;
+    public int Coins => _coins;
 
     public void ChangeDNACount(int value)
     {
-       DNA += value;
-       ChangedDNACount.Invoke(DNA); 
+        _dna += value;
+        UpdateTexts();
     }
 
     public void ChangeCoinsCount(int value)
     {
-        Coins += value;
-        ChangedCoinsCount.Invoke(Coins);
+        _coins += value;
+        UpdateTexts();
+    }
+    
+    public void UpdateTexts()
+    {
+        _dnaText.text = NumberFormatter.FormatNumberWithCommas(_dna);
+        _coinsText.text = NumberFormatter.FormatNumberWithCommas(_coins);
     }
 }
