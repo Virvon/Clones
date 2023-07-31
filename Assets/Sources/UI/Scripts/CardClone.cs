@@ -15,6 +15,8 @@ public class CardClone : MonoBehaviour
 
     public Stats Stats => _stats;
     public UpgradeClone UpgradeClone => _upgradeClone;
+
+    public DisplayStats DisplayStats => _displayStats;
     public Wallet Wallet => _wallet;
 
     public void Selected()

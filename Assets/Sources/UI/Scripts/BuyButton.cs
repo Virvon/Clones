@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UpgradeButton : MonoBehaviour
+public class BuyButton : MonoBehaviour
 {
     [SerializeField] private Wallet _wallet;
     [SerializeField] private GameObject _lockButton;
@@ -20,35 +20,32 @@ public class UpgradeButton : MonoBehaviour
         UpdateStatus();
     }
 
-    public void Invoke()
+    public void UpgradeClone()
     {
-        if (_lockButton.active)
+        if (_lockButton.active == true)
             return;
 
         if (_isUseDNA)
             _card.UpgradeClone.UpgrageHealth();
 
-        if(_isUseCoins)
+        if (_isUseCoins)
             _card.UpgradeClone.UpgrageWand();
+            
+        
 
         UpdateStatus();
     }
 
     private void UpdateStatus()
     {
-        if (_isUseDNA)
-        {
-            _price.text = NumberFormatter.FormatNumberWithCommas(_card.UpgradeClone.PriceUpgrade);
+        _price.text = NumberFormatter.FormatNumberWithCommas(_card.UpgradeClone.PriceUpgrade);
+        _price.text = NumberFormatter.FormatNumberWithCommas(_card.UpgradeClone.PriceUpgrade);
 
+        if (_isUseDNA)
             SetLock(_card.UpgradeClone.PriceUpgrade >= _wallet.DNA);
-        }
 
         if (_isUseCoins)
-        {
-            _price.text = NumberFormatter.FormatNumberWithCommas(_card.UpgradeClone.PriceUpgrade);
-
             SetLock(_card.UpgradeClone.PriceUpgrade >= _wallet.Coins);
-        }
     }
 
     private void SetLock(bool isLocked)

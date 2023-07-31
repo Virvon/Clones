@@ -20,12 +20,14 @@ public class UpgradeClone : MonoBehaviour
         _cardClone.Wallet.ChangeDNACount(-_priceUpgrade);
         _priceUpgrade += _incrementPriceUpgrade;
         _cardClone.Stats.Upgrade(_countHealthUpgrade, 0, 0, 0);
+        _cardClone.DisplayStats.ShowStats();
     }
 
     public void UpgrageWand()
     {
-        _cardClone.Wallet.ChangeDNACount(-_priceUpgrade);
+        _cardClone.Wallet.ChangeCoinsCount(-_priceUpgrade);
         _priceUpgrade += _incrementPriceUpgrade;
         _cardClone.Stats.Upgrade(0, _countDamageUpgrade, _countAttackSpeedUpgrade, _countResourceMultiplierUpgrade);
+        _cardClone.DisplayStats.ShowStats();
     }
 }

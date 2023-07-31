@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-public static class NumberFormatter //Возможно проблема в том, что класс static
+public static class NumberFormatter
 {
     public static string FormatNumberWithCommas(int number)
     {
@@ -17,7 +17,9 @@ public static class NumberFormatter //Возможно проблема в том, что класс static
         int numLength = numberAsString.Length;
         int numCommas = (numLength - 1) / 3;
 
-        char[] formattedNumber = new char[numLength + numCommas];
+        int formattedLength = numLength + numCommas;
+
+        System.Text.StringBuilder formattedNumber = new System.Text.StringBuilder(formattedLength);
 
         int commaCount = 0;
 
@@ -25,19 +27,14 @@ public static class NumberFormatter //Возможно проблема в том, что класс static
         {
             if (commaCount == 3)
             {
-                formattedNumber[i + numCommas] = ',';
+                formattedNumber.Insert(0, ',');
                 commaCount = 0;
-                numCommas--;
             }
-            else
-            {
-                formattedNumber[i + numCommas] = numberAsString[i];
-                commaCount++;
-            }
+
+            formattedNumber.Insert(0, numberAsString[i]);
+            commaCount++;
         }
 
-        Debug.Log(new string(formattedNumber));
-
-        return new string(formattedNumber);
+        return formattedNumber.ToString();
     }
 }
