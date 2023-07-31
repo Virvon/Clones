@@ -12,15 +12,37 @@ public class CardClone : MonoBehaviour
     [SerializeField] private UpgradeClone _upgradeClone;
     [SerializeField] private DisplayStats _displayStats;
     [SerializeField] private Wallet _wallet;
+    [SerializeField] private bool _isPurchased;
+    [SerializeField] private int _price;
+    [SerializeField] private GameObject _unlockPanel;
+    [SerializeField] private GameObject _diePanel;
+    [SerializeField] private GameObject _buyPanel;
 
     public Stats Stats => _stats;
     public UpgradeClone UpgradeClone => _upgradeClone;
 
     public DisplayStats DisplayStats => _displayStats;
     public Wallet Wallet => _wallet;
+    public bool IsPurchased => _isPurchased;
+    public int Price => _price;
+
+    private void Start()
+    {
+        if (_isPurchased)
+            SwitchWisiblePanels(true, false, false);
+        else
+            SwitchWisiblePanels(false, false, true);
+    }
 
     public void Selected()
     {
         _displayStats.ShowStats();
+    }
+
+    public void SwitchWisiblePanels(bool isActiveUnlockPanel, bool isActiveDiePanel, bool isActiveBuyPanel)
+    {
+        _unlockPanel.SetActive(isActiveUnlockPanel);
+        _diePanel.SetActive(isActiveDiePanel);
+        _buyPanel.SetActive(isActiveBuyPanel);
     }
 }

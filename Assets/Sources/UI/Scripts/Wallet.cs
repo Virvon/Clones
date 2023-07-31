@@ -11,19 +11,21 @@ public class Wallet : MonoBehaviour
     [SerializeField] private TMP_Text _dnaText;
     [SerializeField] private TMP_Text _coinsText;
 
+    public UnityEvent ValuesChanged;
+
     public int DNA => _dna;
     public int Coins => _coins;
 
     public void ChangeDNACount(int value)
     {
         _dna += value;
-        UpdateTexts();
+        ValuesChanged.Invoke();
     }
 
     public void ChangeCoinsCount(int value)
     {
         _coins += value;
-        UpdateTexts();
+        ValuesChanged.Invoke();
     }
     
     public void UpdateTexts()

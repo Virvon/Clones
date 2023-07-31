@@ -11,13 +11,37 @@ public class BuyButton : MonoBehaviour
     [SerializeField] private TMP_Text _price;
     [SerializeField] private bool _isUseDNA;
     [SerializeField] private bool _isUseCoins;
+    [SerializeField] private CardClone _cardClone;
 
-    private CardClone _card;
+    private CardClone _selectedCard;
+
+    private void Start()
+    {
+        if(_cardClone != null)
+        {
+            _lockButton.SetActive(_cardClone.Price > _wallet.Coins);
+            _unlockButton.SetActive(_cardClone.Price <= _wallet.Coins);
+        }
+    }
 
     public void GetClone(CardClone card)
     {
-        _card = card;
+        _selectedCard = card;
         UpdateStatus();
+    }
+
+    public void SetAvailabilityBuy()
+    {
+        SetLock(_cardClone.Price > _wallet.Coins);
+    }
+
+    public void BuyClone()
+    {
+        if (_lockButton.active == true)
+            return;
+
+        _wallet.ChangeCoinsCount(-_cardClone.Price);
+        _cardClone.SwitchWisiblePanels(true, false, false);
     }
 
     public void UpgradeClone()
@@ -26,26 +50,30 @@ public class BuyButton : MonoBehaviour
             return;
 
         if (_isUseDNA)
-            _card.UpgradeClone.UpgrageHealth();
+            _selectedCard.UpgradeClone.UpgrageHealth();
 
         if (_isUseCoins)
-            _card.UpgradeClone.UpgrageWand();
+            _selectedCard.UpgradeClone.UpgrageWand();
             
-        
-
         UpdateStatus();
     }
 
     private void UpdateStatus()
     {
-        _price.text = NumberFormatter.FormatNumberWithCommas(_card.UpgradeClone.PriceUpgrade);
-        _price.text = NumberFormatter.FormatNumberWithCommas(_card.UpgradeClone.PriceUpgrade);
+        _price.text = NumberFormatter.FormatNumberWithCommas(_selectedCard.UpgradeClone.PriceUpgrade);
+        _price.text = NumberFormatter.FormatNumberWithCommas(_selectedCard.UpgradeClone.PriceUpgrade);
+
+        if (!_selectedCard.IsPurchased)
+        {
+            SetLock(true);
+            return;
+        }
 
         if (_isUseDNA)
-            SetLock(_card.UpgradeClone.PriceUpgrade >= _wallet.DNA);
+            SetLock(_selectedCard.UpgradeClone.PriceUpgrade >= _wallet.DNA);
 
         if (_isUseCoins)
-            SetLock(_card.UpgradeClone.PriceUpgrade >= _wallet.Coins);
+            SetLock(_selectedCard.UpgradeClone.PriceUpgrade >= _wallet.Coins);
     }
 
     private void SetLock(bool isLocked)
