@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3709345554291709546}
   - component: {fileID: 3162805202428057032}
   - component: {fileID: 280869923026614653}
-  - component: {fileID: 4166728002606952590}
-  - component: {fileID: 1382728982938350207}
+  - component: {fileID: 5277294758942254463}
+  - component: {fileID: 7803728612361435392}
   m_Layer: 2
-  m_Name: Bullet4
+  m_Name: SingleBullet_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4166728002606952590
+--- !u!114 &5277294758942254463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,24 +73,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2325161460478379165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 425bb26ff16d40942acfd6d3a6769990, type: 3}
+  m_Script: {fileID: 11500000, guid: 664324c7d13287947ac2dd5fabe9300e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 864631508924260458, guid: 6374160aea209474e893734952762019, type: 3}
+  HitEffectPrefab: {fileID: 1492905714608668122, guid: 9553a5ebdf54fbd47bfaaa77fad24400, type: 3}
+  MuzzlePrefab: {fileID: 7432887521812716825, guid: bbec6b2d0935d2348b89f9778f5fcef0, type: 3}
+--- !u!114 &7803728612361435392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2325161460478379165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f5ebaea98588443855497086228fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _force: 10
   _lifeTime: 5
-  _radius: 3
---- !u!114 &1382728982938350207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2325161460478379165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c9fe5e07bc675449a45e731c06c0d31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 1746672929845058, guid: 066d7c4cdca7a744fb9457e7b49580db, type: 3}
-  HitEffectPrefab: {fileID: 1723818010802918, guid: 166411891e2093f4d925dda5b3574076, type: 3}
-  MuzzlePrefab: {fileID: 1056950820860086, guid: 7d8816c2affc47a47b8122d23a9e8a09, type: 3}

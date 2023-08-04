@@ -1,3 +1,4 @@
+using Clones.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Wand : CharacterAttack
 {
-    [SerializeField] private Bullet _bullet;
+    [SerializeField] private BulletData _bulletData;
     [SerializeField] private float _damageMultiply;
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private float _knockbackForce;
@@ -19,7 +20,8 @@ public class Wand : CharacterAttack
 
     protected override void Attack()
     {
-        Bullet bullet = Instantiate(_bullet);
+        Bullet bullet = Instantiate(_bulletData.BulletPrefab);
+        bullet.Init(_bulletData);
         bullet.Shoot(Target, (IDamageable)Attackble,_shootingPoint, Hitted);
     }
 

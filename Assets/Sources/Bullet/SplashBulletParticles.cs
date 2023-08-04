@@ -1,44 +1,27 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SplashBullet))]
-public class SplashBulletParticles : MonoBehaviour
+public class SplashBulletParticles : BulletParticles
 {
-    [SerializeField] private GameObject ProjectilePrefab;
-    [SerializeField] private GameObject HitEffectPrefab;
-    [SerializeField] private GameObject MuzzlePrefab;
-
-    private Bullet _bullet;
     private GameObject _projectile;
 
-    private void OnEnable()
+    protected override void OnShooted()
     {
-        _bullet = GetComponent<Bullet>();
+        Bullet.Hitted += OnHitted;
 
-        _bullet.Hitted += OnHitted;
-    }
-
-    private void Start()
-    {
         CreateMuzzle();
         CreateProjectile();
     }
 
-    private void OnDisable() => _bullet.Hitted -= OnHitted;
+    protected override void CreateProjectile() => _projectile = Instantiate(Bullet.BulletData.BulletProjectile, transform.position, transform.rotation, transform);
 
-    private void CreateMuzzle()
-    {
-        Instantiate(MuzzlePrefab, transform.position, transform.rotation);
-    }
+    protected override void CreateMuzzle() => Instantiate(Bullet.BulletData.BulletMuzzle, transform.position, transform.rotation);
 
-    private void CreateProjectile()
-    {
-        _projectile = Instantiate(ProjectilePrefab, transform.position, transform.rotation, transform);
-    }
-
-    private void OnHitted()
+    protected override void OnHitted()
     {
         Destroy(_projectile);
 
-        Instantiate(HitEffectPrefab, transform.position, Quaternion.identity);
+        Instantiate(Bullet.BulletData.BulletHitEffect, transform.position, Quaternion.identity);
+
+        Bullet.Hitted -= OnHitted;
     }
 }

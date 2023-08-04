@@ -1,14 +1,19 @@
+using Clones.Data;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public abstract class Bullet : MonoBehaviour
 {
+    public abstract BulletData BulletData { get; }
+
     public abstract event Action Hitted;
+    public abstract event Action Shooted;
 
     protected abstract event Action<List<DamageableCell>> s_Hitted;
 
     public abstract void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted = null);
+
+    public abstract void Init(BulletData bulletData);
 }

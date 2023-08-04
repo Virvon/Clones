@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3709345554291709546}
   - component: {fileID: 3162805202428057032}
   - component: {fileID: 280869923026614653}
-  - component: {fileID: 5277294758942254463}
-  - component: {fileID: 7803728612361435392}
+  - component: {fileID: -5130222664579085091}
+  - component: {fileID: 7165285350616609750}
   m_Layer: 2
-  m_Name: Bullet2
+  m_Name: TopDownBullet_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &280869923026614653
 Rigidbody:
@@ -64,7 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5277294758942254463
+--- !u!114 &-5130222664579085091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,13 +73,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2325161460478379165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664324c7d13287947ac2dd5fabe9300e, type: 3}
+  m_Script: {fileID: 11500000, guid: c635abd514927a04692efae16614e742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 864631508924260458, guid: 6374160aea209474e893734952762019, type: 3}
-  HitEffectPrefab: {fileID: 1492905714608668122, guid: 9553a5ebdf54fbd47bfaaa77fad24400, type: 3}
-  MuzzlePrefab: {fileID: 7432887521812716825, guid: bbec6b2d0935d2348b89f9778f5fcef0, type: 3}
---- !u!114 &7803728612361435392
+  _upOffset: 15
+  _horizontalOffset: 0.5
+  _lifeTime: 1.5
+--- !u!114 &7165285350616609750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,8 +88,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2325161460478379165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f5ebaea98588443855497086228fa1, type: 3}
+  m_Script: {fileID: 11500000, guid: fa35a9ce3c13b834f9e1990105da6d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 10
-  _lifeTime: 5
+  ProjectilePrefab: {fileID: 1911396424614741943, guid: eaf3aad2cdcd6624d98dbaaeeccf9d38, type: 3}
+  HitEffectPrefab: {fileID: 8014254520184742362, guid: 710a4b4167a0b884bb6f6238346ebc1b, type: 3}
+  MuzzlePrefab: {fileID: 1340992293834908, guid: a489afa43ee836647b6b99a9c38b6f13, type: 3}

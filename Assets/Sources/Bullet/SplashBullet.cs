@@ -1,3 +1,4 @@
+using Clones.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,10 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SplashBullet : Bullet
 {
-    [SerializeField] private float _force;
-    [SerializeField] private float _lifeTime = 5;
-    [SerializeField] private float _radius;
+    public override BulletData BulletData => _bulletData;
 
+    private SplashBulletData _bulletData;
     private Vector3 _direction;
     private IDamageable _selfDamageable;
     private readonly Collider[] _overlapColliders = new Collider[64];
@@ -17,10 +17,11 @@ public class SplashBullet : Bullet
 
     public override event Action Hitted;
     protected override event Action<List<DamageableCell>> s_Hitted;
+    public override event Action Shooted;
 
     private void Start()
     {
-        GetComponent<Rigidbody>().velocity = _direction.normalized * _force;
+        GetComponent<Rigidbody>().velocity = _direction.normalized * _bulletData.Force;
 
         StartCoroutine(LifiTimer());
     }
@@ -34,7 +35,11 @@ public class SplashBullet : Bullet
 
         _selfDamageable = selfDamageable;
         s_Hitted = Hitted;
+
+        Shooted?.Invoke();
     }
+
+    public override void Init(BulletData bulletData) => _bulletData = (SplashBulletData)bulletData;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,7 +54,7 @@ public class SplashBullet : Bullet
             _isCollisioned = true;
 
             List<DamageableCell> damageableCells = new List<DamageableCell>();
-            int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _radius, _overlapColliders);
+            int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _bulletData.Radius, _overlapColliders);
 
             for(var i = 0; i < overlapCount; i++)
             {
@@ -65,7 +70,7 @@ public class SplashBullet : Bullet
 
     private IEnumerator LifiTimer()
     {
-        yield return new WaitForSeconds(_lifeTime);
+        yield return new WaitForSeconds(_bulletData.LifeTime);
 
         Destroy(gameObject);
     }
