@@ -1,48 +1,14 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour
+
+public abstract class Bullet : MonoBehaviour
 {
-    [SerializeField] private float _force;
-    [SerializeField] private float _lifeTime = 5;
+    public abstract event Action Hitted;
 
-    private Vector3 _direction;
-    private IDamageable _selfDamageable;
+    protected abstract event Action<List<IDamageable>> s_Hitted;
 
-    public event Action<IDamageable> s_Hitted;
-
-    private void Start()
-    {
-        GetComponent<Rigidbody>().velocity = _direction.normalized * _force;
-
-        StartCoroutine(LifiTimer());
-    }
-
-    public void Shoot(Vector3 direction, IDamageable selfDamageable, Action<IDamageable> Hitted = null)
-    {
-        _direction = direction;
-        _selfDamageable = selfDamageable;
-        s_Hitted = Hitted;
-    } 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfDamageable)
-        {
-            if (_selfDamageable is Enemy && damageable is Enemy)
-                return;
-
-            s_Hitted?.Invoke(damageable);
-            Destroy(gameObject);
-        }
-    }
-
-    private IEnumerator LifiTimer()
-    {
-        yield return new WaitForSeconds(_lifeTime);
-
-        Destroy(gameObject);
-    }
+    public abstract void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<IDamageable>> Hitted = null);
 }

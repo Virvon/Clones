@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingAttack : CharacterAttack
@@ -6,7 +7,7 @@ public class ShootingAttack : CharacterAttack
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform _shootingPoint;
 
-    private event Action<IDamageable> Hitted;
+    private event Action<List<IDamageable>> Hitted;
 
     private Vector3 _targetPosition => ((MonoBehaviour)Target).transform.position;
 
@@ -16,21 +17,13 @@ public class ShootingAttack : CharacterAttack
 
     protected override void Attack()
     {
-        Bullet bullet = Instantiate(_bullet, _shootingPoint.transform.position, Quaternion.identity);
-        bullet.Shoot(_targetPosition - _shootingPoint.transform.position, (IDamageable)Attackble, Hitted);
+        Bullet bullet = Instantiate(_bullet);
+        bullet.Shoot(Target, (IDamageable)Attackble,_shootingPoint, Hitted);
     }
 
-    private void MakeDamage(IDamageable damageble)
+    private void MakeDamage(List<IDamageable> damagebles)
     {
-        //if (((MonoBehaviour)Target).TryGetComponent(out Rigidbody rigidbody))
-        //{
-        //    Vector3 force = ((MonoBehaviour)damageble).transform.position - ((MonoBehaviour)Attackble).transform.position;
-        //    force.y = 0;
-        //    rigidbody.AddForce(force.normalized * Attackble.KnockbackForce);
-
-        //    Debug.Log("knockbacked");
-        //}
-
-        damageble.TakeDamage(Attackble.Damage);
+        foreach (var damageble in damagebles)
+            damageble.TakeDamage(Attackble.Damage);
     }
 }

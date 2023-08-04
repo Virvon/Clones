@@ -1,7 +1,7 @@
-// Shader created with Shader Forge v1.38 
+// Shader created with Shader Forge v1.40 
 // Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:False,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:0,x:33560,y:32563,varname:node_0,prsc:2|diff-270-RGB,spec-1906-OUT,gloss-8495-OUT,lwrap-272-RGB;n:type:ShaderForge.SFN_Color,id:270,x:33250,y:32393,ptovrint:False,ptlb:Diffuse,ptin:_Diffuse,varname:_Diffuse,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9117647,c2:0.8760425,c3:0.8179066,c4:1;n:type:ShaderForge.SFN_Color,id:272,x:33250,y:32735,ptovrint:False,ptlb:Light Wrapping,ptin:_LightWrapping,varname:_LightWrapping,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9058824,c2:0.4941176,c3:0.4901961,c4:1;n:type:ShaderForge.SFN_Vector1,id:1906,x:33250,y:32541,varname:node_1906,prsc:2,v1:0;n:type:ShaderForge.SFN_Slider,id:8495,x:33093,y:32628,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:node_8495,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;proporder:272-270-8495;pass:END;sub:END;*/
+/*SF_DATA;ver:1.40;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,cpap:True,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:False,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:0,x:33560,y:32563,varname:node_0,prsc:2|diff-270-RGB,spec-1906-OUT,gloss-8495-OUT,lwrap-272-RGB;n:type:ShaderForge.SFN_Color,id:270,x:33250,y:32393,ptovrint:False,ptlb:Diffuse,ptin:_Diffuse,varname:_Diffuse,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9117647,c2:0.8760425,c3:0.8179066,c4:1;n:type:ShaderForge.SFN_Color,id:272,x:33250,y:32735,ptovrint:False,ptlb:Light Wrapping,ptin:_LightWrapping,varname:_LightWrapping,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.9058824,c2:0.4941176,c3:0.4901961,c4:1;n:type:ShaderForge.SFN_Vector1,id:1906,x:33250,y:32541,varname:node_1906,prsc:2,v1:0;n:type:ShaderForge.SFN_Slider,id:8495,x:33093,y:32628,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:node_8495,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;proporder:272-270-8495;pass:END;sub:END;*/
 
 Shader "Shader Forge/Examples/LightWrapping" {
     Properties {
@@ -25,6 +25,7 @@ Shader "Shader Forge/Examples/LightWrapping" {
             #pragma fragment frag
             #define SHOULD_SAMPLE_SH ( defined (LIGHTMAP_OFF) && defined(DYNAMICLIGHTMAP_OFF) )
             #define _GLOSSYENV 1
+            #pragma multi_compile_instancing
             #include "UnityCG.cginc"
             #include "AutoLight.cginc"
             #include "Lighting.cginc"
@@ -34,12 +35,14 @@ Shader "Shader Forge/Examples/LightWrapping" {
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
-            #pragma only_renderers d3d9 d3d11 glcore gles gles3 metal d3d11_9x xboxone ps4 psp2 n3ds wiiu 
             #pragma target 3.0
-            uniform float4 _Diffuse;
-            uniform float4 _LightWrapping;
-            uniform float _Gloss;
+            UNITY_INSTANCING_BUFFER_START( Props )
+                UNITY_DEFINE_INSTANCED_PROP( float4, _Diffuse)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _LightWrapping)
+                UNITY_DEFINE_INSTANCED_PROP( float, _Gloss)
+            UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
+                UNITY_VERTEX_INPUT_INSTANCE_ID
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
                 float4 tangent : TANGENT;
@@ -48,6 +51,7 @@ Shader "Shader Forge/Examples/LightWrapping" {
             };
             struct VertexOutput {
                 float4 pos : SV_POSITION;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
                 float2 uv1 : TEXCOORD0;
                 float2 uv2 : TEXCOORD1;
                 float4 posWorld : TEXCOORD2;
@@ -61,6 +65,8 @@ Shader "Shader Forge/Examples/LightWrapping" {
             };
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
+                UNITY_SETUP_INSTANCE_ID( v );
+                UNITY_TRANSFER_INSTANCE_ID( v, o );
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
                 #ifdef LIGHTMAP_ON
@@ -81,6 +87,7 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 return o;
             }
             float4 frag(VertexOutput i) : COLOR {
+                UNITY_SETUP_INSTANCE_ID( i );
                 i.normalDir = normalize(i.normalDir);
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
@@ -95,8 +102,9 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 float Pi = 3.141592654;
                 float InvPi = 0.31830988618;
 ///////// Gloss:
-                float gloss = _Gloss;
-                float perceptualRoughness = 1.0 - _Gloss;
+                float _Gloss_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Gloss );
+                float gloss = _Gloss_var;
+                float perceptualRoughness = 1.0 - _Gloss_var;
                 float roughness = perceptualRoughness * perceptualRoughness;
                 float specPow = exp2( gloss * 10.0 + 1.0 );
 /////// GI Data:
@@ -144,7 +152,8 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 float LdotH = saturate(dot(lightDirection, halfDirection));
                 float3 specularColor = 0.0;
                 float specularMonochrome;
-                float3 diffuseColor = _Diffuse.rgb; // Need this for specular when using metallic
+                float4 _Diffuse_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Diffuse );
+                float3 diffuseColor = _Diffuse_var.rgb; // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -175,7 +184,8 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 float3 specular = (directSpecular + indirectSpecular);
 /////// Diffuse:
                 NdotL = dot( normalDirection, lightDirection );
-                float3 w = _LightWrapping.rgb*0.5; // Light wrapping
+                float4 _LightWrapping_var = UNITY_ACCESS_INSTANCED_PROP( Props, _LightWrapping );
+                float3 w = _LightWrapping_var.rgb*0.5; // Light wrapping
                 float3 NdotLWrap = NdotL * ( 1.0 - w );
                 float3 forwardLight = max(float3(0.0,0.0,0.0), NdotLWrap + w );
                 NdotL = max(0.0,dot( normalDirection, lightDirection ));
@@ -205,6 +215,7 @@ Shader "Shader Forge/Examples/LightWrapping" {
             #pragma fragment frag
             #define SHOULD_SAMPLE_SH ( defined (LIGHTMAP_OFF) && defined(DYNAMICLIGHTMAP_OFF) )
             #define _GLOSSYENV 1
+            #pragma multi_compile_instancing
             #include "UnityCG.cginc"
             #include "AutoLight.cginc"
             #include "Lighting.cginc"
@@ -214,12 +225,14 @@ Shader "Shader Forge/Examples/LightWrapping" {
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
-            #pragma only_renderers d3d9 d3d11 glcore gles gles3 metal d3d11_9x xboxone ps4 psp2 n3ds wiiu 
             #pragma target 3.0
-            uniform float4 _Diffuse;
-            uniform float4 _LightWrapping;
-            uniform float _Gloss;
+            UNITY_INSTANCING_BUFFER_START( Props )
+                UNITY_DEFINE_INSTANCED_PROP( float4, _Diffuse)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _LightWrapping)
+                UNITY_DEFINE_INSTANCED_PROP( float, _Gloss)
+            UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
+                UNITY_VERTEX_INPUT_INSTANCE_ID
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
                 float4 tangent : TANGENT;
@@ -228,6 +241,7 @@ Shader "Shader Forge/Examples/LightWrapping" {
             };
             struct VertexOutput {
                 float4 pos : SV_POSITION;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
                 float2 uv1 : TEXCOORD0;
                 float2 uv2 : TEXCOORD1;
                 float4 posWorld : TEXCOORD2;
@@ -238,6 +252,8 @@ Shader "Shader Forge/Examples/LightWrapping" {
             };
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
+                UNITY_SETUP_INSTANCE_ID( v );
+                UNITY_TRANSFER_INSTANCE_ID( v, o );
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
@@ -250,6 +266,7 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 return o;
             }
             float4 frag(VertexOutput i) : COLOR {
+                UNITY_SETUP_INSTANCE_ID( i );
                 i.normalDir = normalize(i.normalDir);
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
@@ -263,8 +280,9 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 float Pi = 3.141592654;
                 float InvPi = 0.31830988618;
 ///////// Gloss:
-                float gloss = _Gloss;
-                float perceptualRoughness = 1.0 - _Gloss;
+                float _Gloss_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Gloss );
+                float gloss = _Gloss_var;
+                float perceptualRoughness = 1.0 - _Gloss_var;
                 float roughness = perceptualRoughness * perceptualRoughness;
                 float specPow = exp2( gloss * 10.0 + 1.0 );
 ////// Specular:
@@ -272,7 +290,8 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 float LdotH = saturate(dot(lightDirection, halfDirection));
                 float3 specularColor = 0.0;
                 float specularMonochrome;
-                float3 diffuseColor = _Diffuse.rgb; // Need this for specular when using metallic
+                float4 _Diffuse_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Diffuse );
+                float3 diffuseColor = _Diffuse_var.rgb; // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -293,7 +312,8 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 float3 specular = directSpecular;
 /////// Diffuse:
                 NdotL = dot( normalDirection, lightDirection );
-                float3 w = _LightWrapping.rgb*0.5; // Light wrapping
+                float4 _LightWrapping_var = UNITY_ACCESS_INSTANCED_PROP( Props, _LightWrapping );
+                float3 w = _LightWrapping_var.rgb*0.5; // Light wrapping
                 float3 NdotLWrap = NdotL * ( 1.0 - w );
                 float3 forwardLight = max(float3(0.0,0.0,0.0), NdotLWrap + w );
                 NdotL = max(0.0,dot( normalDirection, lightDirection ));
@@ -321,6 +341,7 @@ Shader "Shader Forge/Examples/LightWrapping" {
             #define UNITY_PASS_META 1
             #define SHOULD_SAMPLE_SH ( defined (LIGHTMAP_OFF) && defined(DYNAMICLIGHTMAP_OFF) )
             #define _GLOSSYENV 1
+            #pragma multi_compile_instancing
             #include "UnityCG.cginc"
             #include "Lighting.cginc"
             #include "UnityPBSLighting.cginc"
@@ -331,23 +352,28 @@ Shader "Shader Forge/Examples/LightWrapping" {
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
-            #pragma only_renderers d3d9 d3d11 glcore gles gles3 metal d3d11_9x xboxone ps4 psp2 n3ds wiiu 
             #pragma target 3.0
-            uniform float4 _Diffuse;
-            uniform float _Gloss;
+            UNITY_INSTANCING_BUFFER_START( Props )
+                UNITY_DEFINE_INSTANCED_PROP( float4, _Diffuse)
+                UNITY_DEFINE_INSTANCED_PROP( float, _Gloss)
+            UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
+                UNITY_VERTEX_INPUT_INSTANCE_ID
                 float4 vertex : POSITION;
                 float2 texcoord1 : TEXCOORD1;
                 float2 texcoord2 : TEXCOORD2;
             };
             struct VertexOutput {
                 float4 pos : SV_POSITION;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
                 float2 uv1 : TEXCOORD0;
                 float2 uv2 : TEXCOORD1;
                 float4 posWorld : TEXCOORD2;
             };
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
+                UNITY_SETUP_INSTANCE_ID( v );
+                UNITY_TRANSFER_INSTANCE_ID( v, o );
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
@@ -355,17 +381,20 @@ Shader "Shader Forge/Examples/LightWrapping" {
                 return o;
             }
             float4 frag(VertexOutput i) : SV_Target {
+                UNITY_SETUP_INSTANCE_ID( i );
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
                 UnityMetaInput o;
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
                 o.Emission = 0;
                 
-                float3 diffColor = _Diffuse.rgb;
+                float4 _Diffuse_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Diffuse );
+                float3 diffColor = _Diffuse_var.rgb;
                 float specularMonochrome;
                 float3 specColor;
                 diffColor = DiffuseAndSpecularFromMetallic( diffColor, 0.0, specColor, specularMonochrome );
-                float roughness = 1.0 - _Gloss;
+                float _Gloss_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Gloss );
+                float roughness = 1.0 - _Gloss_var;
                 o.Albedo = diffColor + specColor * roughness * roughness * 0.5;
                 
                 return UnityMetaFragment( o );

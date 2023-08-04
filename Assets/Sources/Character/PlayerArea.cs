@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerArea : MonoBehaviour
@@ -18,4 +19,11 @@ public class PlayerArea : MonoBehaviour
         if((transform.position - _player.transform.position).magnitude > _radius)
             transform.position = _player.transform.position;
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, Vector3.up, _radius);    }
+#endif
 }
