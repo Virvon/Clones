@@ -13,7 +13,7 @@ public class SingleBullet : Bullet
     private IDamageable _selfDamageable;
 
     public override event Action Hitted;
-    protected override event Action<List<IDamageable>> s_Hitted;
+    protected override event Action<List<DamageableCell>> s_Hitted;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class SingleBullet : Bullet
         StartCoroutine(LifiTimer());
     }
 
-    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<IDamageable>> Hitted)
+    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
         _direction = ((MonoBehaviour)targetDamageable).transform.position - shootPoint.transform.position;
         transform.position = shootPoint.transform.position;
@@ -40,7 +40,7 @@ public class SingleBullet : Bullet
             if (_selfDamageable is Enemy && damageable is Enemy)
                 return;
 
-            s_Hitted?.Invoke(new List<IDamageable> { damageable });
+            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, (other.transform.position - transform.position).normalized) });
             Hitted?.Invoke();
             Destroy(gameObject);
         }

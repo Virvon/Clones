@@ -230,8 +230,8 @@ Rigidbody:
   m_GameObject: {fileID: 2674497639100704803}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 20
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -323,8 +323,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackbleBehavior: {fileID: 2674497639100704801}
+  _attackSpeed: 1
   _bullet: {fileID: 2891856192422379681, guid: 2e726a4093fb3394fb1cc483db0a87ca, type: 3}
+  _damageMultiply: 1
   _shootingPoint: {fileID: 2674497638112485094}
+  _knockbackForce: 0
 --- !u!114 &2674497639100704801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackbleBehavior: {fileID: 2674497639100704801}
+  _attackSpeed: 1
 --- !u!114 &6455081752979435769
 MonoBehaviour:
   m_ObjectHideFlags: 0

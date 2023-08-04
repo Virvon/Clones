@@ -27,7 +27,7 @@ public class AirBulletParticles : MonoBehaviour
 
     private void CreateProjectile()
     {
-        Instantiate(ProjectilePrefab, _bullet.TargetPosition + _bullet.Offset, ProjectilePrefab.transform.rotation, transform);
+        Instantiate(ProjectilePrefab, new Vector3(_bullet.TargetPosition.x, _bullet.TargetPosition.y + _bullet.UpOffset, _bullet.TargetPosition.z), ProjectilePrefab.transform.rotation, transform);
     }
 
     private void CreateHit()

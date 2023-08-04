@@ -4906,8 +4906,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackbleBehavior: {fileID: 7859807253966476231}
+  _attackSpeed: 1
   _bullet: {fileID: 4166728002606952590, guid: a0f45d4e11ad44f418f4262715594fe2, type: 3}
+  _damageMultiply: 1
   _shootingPoint: {fileID: 1305523559}
+  _knockbackForce: 800
+  _knockbackOffset: 400
 --- !u!4 &8228443404798736856
 Transform:
   m_ObjectHideFlags: 0

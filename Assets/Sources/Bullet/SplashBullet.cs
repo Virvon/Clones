@@ -16,7 +16,7 @@ public class SplashBullet : Bullet
     private bool _isCollisioned = false;
 
     public override event Action Hitted;
-    protected override event Action<List<IDamageable>> s_Hitted;
+    protected override event Action<List<DamageableCell>> s_Hitted;
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class SplashBullet : Bullet
         StartCoroutine(LifiTimer());
     }
 
-    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<IDamageable>> Hitted)
+    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
         _direction = ((MonoBehaviour)targetDamageable).transform.position - shootPoint.transform.position;
         transform.position = shootPoint.transform.position;
@@ -48,16 +48,16 @@ public class SplashBullet : Bullet
 
             _isCollisioned = true;
 
-            List<IDamageable> damageables = new List<IDamageable>();
+            List<DamageableCell> damageableCells = new List<DamageableCell>();
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _radius, _overlapColliders);
 
             for(var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1))
-                    damageables.Add(damageable1);
+                if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1) && damageable1 != _selfDamageable)
+                    damageableCells.Add(new DamageableCell(damageable1, ((MonoBehaviour)damageable1).transform.position - transform.position));
             }
 
-            s_Hitted?.Invoke(damageables);
+            s_Hitted?.Invoke(damageableCells);
             Hitted?.Invoke();
             Destroy(gameObject);
         }

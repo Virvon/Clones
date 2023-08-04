@@ -22,13 +22,17 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public int Health => _health;
     public float MovementSpeed => _movementStats.MovementSpeed;
     public MovementStats MovementStats => _movementStats;
-    public float KnockbackForce => 800;
 
     //private Stats _stats;
-    private MovementStats _movementStats = new MovementStats(10, 0.78f);
+    private MovementStats _movementStats;
 
     public event Action<IDamageable> Died;
     public event Action DamageTaked;
+
+    private void Awake()
+    {
+        _movementStats = new MovementStats(10, _characterAttack.AttackSpeed);
+    }
 
     public void TakeDamage(float damage)
     {

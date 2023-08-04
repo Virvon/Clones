@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class CharacterAttack : MonoBehaviour
 {
     [SerializeField] private MonoBehaviour _attackbleBehavior;
+    [SerializeField] private float _attackSpeed;
+
+    public float AttackSpeed => _attackSpeed;
 
     private bool _canAttack = true;
     private Coroutine _coroutine;
