@@ -26,21 +26,6 @@ public class SplashBullet : Bullet
         StartCoroutine(LifiTimer());
     }
 
-    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
-    {
-        _direction = ((MonoBehaviour)targetDamageable).transform.position - shootPoint.transform.position;
-        transform.position = shootPoint.transform.position;
-
-        transform.rotation = Quaternion.LookRotation(_direction);
-
-        _selfDamageable = selfDamageable;
-        s_Hitted = Hitted;
-
-        Shooted?.Invoke();
-    }
-
-    public override void Init(BulletData bulletData) => _bulletData = (SplashBulletData)bulletData;
-
     private void OnTriggerEnter(Collider other)
     {
         if (_isCollisioned)
@@ -56,7 +41,7 @@ public class SplashBullet : Bullet
             List<DamageableCell> damageableCells = new List<DamageableCell>();
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _bulletData.Radius, _overlapColliders);
 
-            for(var i = 0; i < overlapCount; i++)
+            for (var i = 0; i < overlapCount; i++)
             {
                 if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1) && damageable1 != _selfDamageable)
                     damageableCells.Add(new DamageableCell(damageable1, ((MonoBehaviour)damageable1).transform.position - transform.position));
@@ -67,6 +52,22 @@ public class SplashBullet : Bullet
             Destroy(gameObject);
         }
     }
+
+    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
+    {
+        _direction = ((MonoBehaviour)targetDamageable).transform.position - shootPoint.transform.position;
+        transform.position = shootPoint.transform.position;
+
+        transform.rotation = Quaternion.LookRotation(_direction);
+    
+        _selfDamageable = selfDamageable;
+        s_Hitted = Hitted;
+
+        Shooted?.Invoke();
+    }
+
+    public override void Init(BulletData bulletData) => _bulletData = (SplashBulletData)bulletData;
+
 
     private IEnumerator LifiTimer()
     {
