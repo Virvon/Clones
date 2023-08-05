@@ -26,6 +26,8 @@ public class CardClone : MonoBehaviour
     public bool IsPurchased => _isPurchased;
     public int Price => _price;
 
+    public UnityEvent Buyed;
+
     private void Start()
     {
         if (_isPurchased)
@@ -44,5 +46,11 @@ public class CardClone : MonoBehaviour
         _unlockPanel.SetActive(isActiveUnlockPanel);
         _diePanel.SetActive(isActiveDiePanel);
         _buyPanel.SetActive(isActiveBuyPanel);
+    }
+
+    public void Buy()
+    {
+        _isPurchased = true;
+        Buyed.Invoke();
     }
 }

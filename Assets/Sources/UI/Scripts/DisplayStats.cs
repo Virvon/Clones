@@ -13,8 +13,8 @@ public class DisplayStats : MonoBehaviour
     [SerializeField] private TMP_Text _textAttackSpeed;
     [SerializeField] private TMP_Text _textMultiplierResources;
     [SerializeField] private TMP_Text _textSecondsRecovery;
-    [SerializeField] private BuyButton _upgradeButtonByDNA;
-    [SerializeField] private BuyButton _upgradeButtonByCoins;
+    [SerializeField] private UpgradeCloneButton _upgradeButtonByDNA;
+    [SerializeField] private UpgradeCloneButton _upgradeButtonByCoins;
 
     public void ShowStats()
     {

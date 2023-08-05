@@ -16,6 +16,11 @@ public class Wallet : MonoBehaviour
     public int DNA => _dna;
     public int Coins => _coins;
 
+    private void Start()
+    {
+        ValuesChanged.Invoke();
+    }
+
     public void ChangeDNACount(int value)
     {
         _dna += value;
