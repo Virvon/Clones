@@ -9,10 +9,12 @@ namespace Clones.Data
         [SerializeField] private float _upOffset;
         [SerializeField] private float _horizontalOffset;
         [SerializeField] private float _lifeTime;
+        [SerializeField] private float _shootTime;
 
         public float UpOffset => _upOffset;
         public float HorizontalOffset => _horizontalOffset;
         public float LifeTime => _lifeTime;
+        public float ShootTime => _shootTime;
         public override Bullet BulletPrefab => _bulletPrefab;
     }
 }

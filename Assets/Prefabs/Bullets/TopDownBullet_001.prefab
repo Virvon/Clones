@@ -76,9 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c635abd514927a04692efae16614e742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upOffset: 15
-  _horizontalOffset: 0.5
-  _lifeTime: 1.5
 --- !u!114 &7165285350616609750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +88,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa35a9ce3c13b834f9e1990105da6d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 1911396424614741943, guid: eaf3aad2cdcd6624d98dbaaeeccf9d38, type: 3}
-  HitEffectPrefab: {fileID: 8014254520184742362, guid: 710a4b4167a0b884bb6f6238346ebc1b, type: 3}
-  MuzzlePrefab: {fileID: 1340992293834908, guid: a489afa43ee836647b6b99a9c38b6f13, type: 3}
