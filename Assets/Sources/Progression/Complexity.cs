@@ -8,7 +8,7 @@ namespace Clones.Progression
         private ComplexityCounter _complexityCounter;
         private ComplexityCoefficientCounter _complexityCoefficientCounter;
 
-        public float ResultComplexity => _complexityCounter.Complexity * _complexityCoefficientCounter.Coefficient;
+        public float Value => _complexityCounter.Complexity * _complexityCoefficientCounter.Coefficient;
 
         private void Awake()
         {

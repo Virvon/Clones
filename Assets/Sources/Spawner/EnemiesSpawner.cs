@@ -65,7 +65,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
     private Stats GetEnemyStats(Stats baseStats)
     {
-        float halfResultComplexity = _complexity.ResultComplexity / 2;
+        float halfResultComplexity = _complexity.Value / 2;
 
         if (halfResultComplexity < 1)
             halfResultComplexity = 1;

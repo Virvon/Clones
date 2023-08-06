@@ -43,12 +43,12 @@ namespace Clones.Progression
 
         private void OnSpawnerComplexityIncreased()
         {
-            Complexity += 0.2f;
+            Complexity *= 1.2f;
         }
 
         private void OnQuestComplexityIncreased()
         {
-            Complexity += 0.2f;
+            Complexity *= 1.2f;
         }
     }
 }
