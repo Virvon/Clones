@@ -31,7 +31,10 @@ public class SingleBullet : Bullet
             if (_selfDamageable is Enemy && damageable is Enemy)
                 return;
 
-            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, (other.transform.position - transform.position).normalized) });
+            Vector3 knockbakcDirection = other.transform.position - ((MonoBehaviour)_selfDamageable).transform.position;
+            //knockbakcDirection.x = 0;
+
+            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, knockbakcDirection) });
             Hitted?.Invoke();
             Destroy(gameObject);
         }

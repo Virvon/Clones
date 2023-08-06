@@ -4517,7 +4517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07584ba2b204842409660bee086bfe4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezingMovementSpeed: 2
+  _freezingMovementSpeed: 3
   _freezingAttackSpeed: 2.5
 --- !u!114 &7859807253966476218
 MonoBehaviour:
@@ -4907,7 +4907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackbleBehavior: {fileID: 7859807253966476231}
   _attackSpeed: 1
-  _bulletData: {fileID: 11400000, guid: dc2c946fb9037fa4093ee03a57ae64d6, type: 2}
+  _bulletData: {fileID: 11400000, guid: c72afcac9e320a942975e59b9b5b6652, type: 2}
   _damageMultiply: 1
   _shootingPoint: {fileID: 1305523559}
   _knockbackForce: 800

@@ -14,6 +14,9 @@ public class Wand : CharacterAttack
 
     private event Action<List<DamageableCell>> Hitted;
 
+    private Vector3 x;
+    private Vector3 y;
+
     private void OnEnable() => Hitted += OnHitted;
 
     private void OnDisable() => Hitted -= OnHitted;
@@ -39,11 +42,25 @@ public class Wand : CharacterAttack
 
     private void Knockback(List<DamageableCell> damageableCells)
     {
+        x = ((MonoBehaviour)damageableCells[0].Damageable).transform.position;
+        y = damageableCells[0].KnockbackDirection;
+
+        if (name == "magic wand")
+            Debug.Log(damageableCells[0].KnockbackDirection);
+
         foreach (var cell in damageableCells)
         {
             if (((MonoBehaviour)cell.Damageable).TryGetComponent(out Rigidbody rigidbody))
-                rigidbody.AddForce(cell.ForceDirection * (_knockbackForce + Random.Range(-_knockbackOffset, _knockbackOffset)));
+                rigidbody.AddForce(cell.KnockbackDirection.normalized * (_knockbackForce + Random.Range(-_knockbackOffset, _knockbackOffset)));
         }
+    }
 
+    private void OnDrawGizmos()
+    {
+        if (name != "magic wand")
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(x, y + x);
     }
 }
