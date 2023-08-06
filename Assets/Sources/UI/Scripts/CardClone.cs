@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CardClone : MonoBehaviour
+public class CardClone : MonoBehaviour, IPurchasable
 {
     //[SerializeField] private GameObject _prefab;
     [SerializeField] private Stats _stats;
@@ -23,7 +23,6 @@ public class CardClone : MonoBehaviour
 
     public DisplayStats DisplayStats => _displayStats;
     public Wallet Wallet => _wallet;
-    public bool IsPurchased => _isPurchased;
     public int Price => _price;
 
     public UnityEvent Buyed;
@@ -52,5 +51,10 @@ public class CardClone : MonoBehaviour
     {
         _isPurchased = true;
         Buyed.Invoke();
+    }
+
+    public bool ReturnPurchased()
+    {
+        return _isPurchased;
     }
 }

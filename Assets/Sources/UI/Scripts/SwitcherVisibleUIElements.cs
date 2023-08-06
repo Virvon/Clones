@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SwitcherVisibleUIElements : MonoBehaviour
@@ -8,6 +9,8 @@ public class SwitcherVisibleUIElements : MonoBehaviour
 
     public void SwitchVisiblePanels()
     {
+        
+
         foreach (var obj in _objectsActivate)
             obj.SetActive(true);
 
