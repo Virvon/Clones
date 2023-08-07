@@ -6,14 +6,24 @@ using UnityEngine;
 public class SwitcherVisibleUIElements : MonoBehaviour
 {
     [SerializeField] private GameObject _objectActivate;
-    [SerializeField] private List<GameObject> _objectsDeactivate = new List<GameObject>();
+    [SerializeField] private List<GameObject> _objectsDeactivate;
 
     private IPurchasable _purchasableActiveteObject;
-    private List<IPurchasable> _purchasableDeactivateObject = new List<IPurchasable>();
+    private List<IPurchasable> _purchasableDeactivateObject;
+
+    private void Start()
+    {
+        if (_objectsDeactivate == null)
+            _objectsDeactivate = new List<GameObject>();
+
+        if (_purchasableDeactivateObject == null)
+            _purchasableDeactivateObject = new List<IPurchasable>();
+    }
 
     public void SwitchVisiblePanels()
     {
-        _purchasableActiveteObject = _objectActivate.GetComponent<IPurchasable>();
+        if (_objectActivate != null)
+            _purchasableActiveteObject = _objectActivate.GetComponent<IPurchasable>();
 
         _purchasableDeactivateObject.Clear();
 
@@ -21,8 +31,6 @@ public class SwitcherVisibleUIElements : MonoBehaviour
         {
             if (obj.GetComponent<IPurchasable>() != null)
                 _purchasableDeactivateObject.Add(obj.GetComponent<IPurchasable>());
-            else
-                return;
         }
 
         if (_purchasableActiveteObject != null)
@@ -34,17 +42,17 @@ public class SwitcherVisibleUIElements : MonoBehaviour
                 foreach (var obj in _purchasableDeactivateObject)
                     obj.SetVisibleActivePanel(false);
             }
-            else
-            {
-                return;
-            }
         }
         else
         {
-            _objectActivate.SetActive(true);
+            if (_objectActivate != null)
+                _objectActivate.SetActive(true);
 
             foreach (var obj in _objectsDeactivate)
-                obj.SetActive(false);
+            {
+                if (obj != null)
+                    obj.SetActive(false);
+            }
         }
     }
 }
