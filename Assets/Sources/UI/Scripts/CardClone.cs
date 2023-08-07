@@ -17,6 +17,7 @@ public class CardClone : MonoBehaviour, IPurchasable
     [SerializeField] private GameObject _unlockPanel;
     [SerializeField] private GameObject _diePanel;
     [SerializeField] private GameObject _buyPanel;
+    [SerializeField] private GameObject _frameFocus;
 
     public Stats Stats => _stats;
     public UpgradeClone UpgradeClone => _upgradeClone;
@@ -53,8 +54,13 @@ public class CardClone : MonoBehaviour, IPurchasable
         Buyed.Invoke();
     }
 
-    public bool ReturnPurchased()
+    public bool ReturnIsPurchased()
     {
         return _isPurchased;
+    }
+
+    public void SetVisibleActivePanel(bool isVisible)
+    {
+        _frameFocus.SetActive(isVisible);
     }
 }

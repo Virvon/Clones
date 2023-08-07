@@ -9,6 +9,7 @@ public class CardWand : MonoBehaviour, IPurchasable
     [SerializeField] private bool _isPurchased;
     [SerializeField] private GameObject _unlockPanel;
     [SerializeField] private GameObject _buyPanel;
+    [SerializeField] private GameObject _frameFocus;
 
     public int Price => _price;
     public bool IsPurchased => _isPurchased;
@@ -27,8 +28,13 @@ public class CardWand : MonoBehaviour, IPurchasable
         Buyed.Invoke();
     }
 
-    public bool ReturnPurchased()
+    public bool ReturnIsPurchased()
     {
         return _isPurchased;
+    }
+
+    public void SetVisibleActivePanel(bool isVisible)
+    {
+        _frameFocus.SetActive(isVisible);
     }
 }

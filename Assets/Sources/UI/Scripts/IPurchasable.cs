@@ -1,4 +1,5 @@
 public interface IPurchasable 
 {
-    public bool ReturnPurchased();
+    public bool ReturnIsPurchased();
+    public void SetVisibleActivePanel(bool isVisible);
 }

@@ -47,7 +47,7 @@ public class UpgradeCloneButton : MonoBehaviour
 
     private void SetLock(bool isLocked)
     {
-        if (_selectedCard.ReturnPurchased() == false)
+        if (_selectedCard.ReturnIsPurchased() == false)
             isLocked = true;
 
         _lockButton.SetActive(isLocked);
