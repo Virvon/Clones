@@ -76,7 +76,7 @@ public class Quest : MonoBehaviour, IComplexityble
         List<ItemData> usedItems = new List<ItemData>();
 
         int availableItemsCount = _questData.QuestItemDatas.Count;
-        int maxItemsCount = (int)(_questData.BaseItemsCount * _complexity.Value);
+        int maxItemsCount = (int)(_questData.ItemsCount * _complexity.Value);
         int minItemsCount = (int)(maxItemsCount * _questData.MinimumPercentageItemCountInQuest);
         int totalItemsCount = 0;
 
@@ -97,7 +97,7 @@ public class Quest : MonoBehaviour, IComplexityble
             totalItemsCount += itemsCount;
         }
 
-        reward = (int)(_questData.BaseReward * _complexity.Value);
+        reward = (int)(_questData.Reward * _complexity.Value);
 
         return cells;
     }

@@ -44,7 +44,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
         if (targetEnemyDatas.Count == 0)
             throw new Exception("enemies to create wave not found");
 
-        _maxWeight = _spawnerData.BaseTotalWeight * _complexity.Value;
+        _maxWeight = _spawnerData.TotalWeight * _complexity.Value;
         _currentWeight = 0;
 
         while (_currentWeight < _maxWeight)
