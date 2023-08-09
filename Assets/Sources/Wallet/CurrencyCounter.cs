@@ -19,40 +19,40 @@ public class CurrencyCounter : MonoBehaviour
     private void Start()
     {
         DNATaked += OnDNATaked;
-        PreyResourceTaked += OnPreyResourceTaked;
+        PreyResourceTaked += OnCollectingItemTaked;
         
-        _visitor = new ItemVisitor(DNATaked: DNATaked, PreyResourceTaked: PreyResourceTaked);    
+        _visitor = new ItemVisitor(DNATaked: DNATaked, CollectingTaked: PreyResourceTaked);    
     }
 
     private void OnEnable()
     {
         DNATaked -= OnDNATaked;
-        PreyResourceTaked -= OnPreyResourceTaked;
+        PreyResourceTaked -= OnCollectingItemTaked;
     }
 
-    public void OnTakeItem(Item item)
+    public void OnTakeCollectingItem(Item item)
     {
         item.Accept(_visitor);
     }
 
     private void OnDNATaked()
     {
-        _wallet.TakeDNA(1);
+        _wallet.TakeDNA((int)(_currecncyCounterData.DNAReward * _complexity.Value));
     }
 
-    private void OnPreyResourceTaked(CollectingItem collectingItem)
+    private void OnCollectingItemTaked(CollectingItem collectingItem)
     {
-        _quest.TakePreyResourceItem(collectingItem.Data, 1);
+        _quest.TakePreyResourceItem(collectingItem.Data, (int)(_currecncyCounterData.CollectingItemReward * _complexity.Value));
     }
 
     private class ItemVisitor : IItemVisitor
     {
-        private event Action<CollectingItem> s_PreyResourceTaked;
+        private event Action<CollectingItem> s_CollectingItemTaked;
         private event Action s_DNATaked;
 
-        public ItemVisitor(Action<CollectingItem> PreyResourceTaked = null, Action DNATaked = null)
+        public ItemVisitor(Action<CollectingItem> CollectingTaked = null, Action DNATaked = null)
         {
-            s_PreyResourceTaked = PreyResourceTaked;
+            s_CollectingItemTaked = CollectingTaked;
             s_DNATaked = DNATaked;
         }
 
@@ -63,7 +63,7 @@ public class CurrencyCounter : MonoBehaviour
 
         public void Visit(CollectingItem collectingItem)
         {
-            s_PreyResourceTaked?.Invoke(collectingItem);
+            s_CollectingItemTaked?.Invoke(collectingItem);
         }
     }
 }

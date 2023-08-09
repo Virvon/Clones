@@ -18,7 +18,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
     [SerializeField] private Complexity _complexity;
     [SerializeField] private CurrentBiome _currentBiome;
 
-    public int Complexity => _currentWave;
+    public int QuestLevel => _currentWave;
 
     private float _maxWeight;
     private float _currentWeight;
@@ -44,14 +44,14 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
         if (targetEnemyDatas.Count == 0)
             throw new Exception("enemies to create wave not found");
 
-        _maxWeight = _spawnerData.BaseTotalWeight;
+        _maxWeight = _spawnerData.BaseTotalWeight * _complexity.Value;
         _currentWeight = 0;
 
         while (_currentWeight < _maxWeight)
         {
             EnemyData currentEnemyData = targetEnemyDatas[Random.Range(0, targetEnemyDatas.Count)];
 
-            Stats stats = currentEnemyData.GetStats();
+            Stats stats = GetEnemyStats(currentEnemyData.GetStats());
             float enemyWeight = GetEnemyWeight(stats);
 
             var enemy = Instantiate(currentEnemyData.EnemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);

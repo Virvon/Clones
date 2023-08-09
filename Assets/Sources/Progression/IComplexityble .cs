@@ -6,6 +6,6 @@ namespace Clones.Progression
     {
         public event Action ComplexityIncreased;
 
-        public int Complexity { get; }
+        public int QuestLevel { get; }
     }
 }

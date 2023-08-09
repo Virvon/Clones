@@ -12,7 +12,7 @@ public class Quest : MonoBehaviour, IComplexityble
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Complexity _complexity;
 
-    public int Complexity => _questLevel;
+    public int QuestLevel => _questLevel;
     public IReadOnlyList<QuestCell> Quests => _quests;
     public int Reward => _reward;
 
@@ -74,8 +74,9 @@ public class Quest : MonoBehaviour, IComplexityble
 
         List<QuestCell> cells = new List<QuestCell>();
         List<ItemData> usedItems = new List<ItemData>();
+
         int availableItemsCount = _questData.QuestItemDatas.Count;
-        int maxItemsCount = _questData.BaseItemsCount;
+        int maxItemsCount = (int)(_questData.BaseItemsCount * _complexity.Value);
         int minItemsCount = (int)(maxItemsCount * _questData.MinimumPercentageItemCountInQuest);
         int totalItemsCount = 0;
 
@@ -96,7 +97,7 @@ public class Quest : MonoBehaviour, IComplexityble
             totalItemsCount += itemsCount;
         }
 
-        reward = _questData.BaseReward;
+        reward = (int)(_questData.BaseReward * _complexity.Value);
 
         return cells;
     }

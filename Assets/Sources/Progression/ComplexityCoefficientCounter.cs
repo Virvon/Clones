@@ -42,8 +42,8 @@ namespace Clones.Progression
 
         private float UpdateCoefficient()
         {
-            float waveCoefficient = _spawnerComplexityble.Complexity / 10f;
-            float questCoefficient = _questComplexityble.Complexity / 10f;
+            float waveCoefficient = _spawnerComplexityble.QuestLevel / 10f;
+            float questCoefficient = _questComplexityble.QuestLevel / 10f;
             float moneyCoefficient = _wallet.Money / 50f;
             float dnaCoefficient = _wallet.DNA / 10f;
 

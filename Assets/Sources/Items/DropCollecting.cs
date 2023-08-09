@@ -27,7 +27,7 @@ public class DropCollecting : MonoBehaviour
     {
         if (other.TryGetComponent(out Item item))
         {
-            _currecyCounter.OnTakeItem(item);
+            _currecyCounter.OnTakeCollectingItem(item);
             _collictingItems.Remove(item);
             Destroy(item.gameObject);
         }
