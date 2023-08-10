@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5431a7ae00c2fb498e9466e8207ab3e, type: 3}
   m_Name: IceCrystalsEnemy
   m_EditorClassIdentifier: 
-  _baseDamage: 1
-  _baseHealth: 3
-  _baseAttackSpeed: 1
+  _damage: 1
+  _health: 3
+  _attackSpeed: 1
   _enemyPrefab: {fileID: 2674497639100704801, guid: 5dd8ee6d3ef777a44a1c13b82966810a, type: 3}

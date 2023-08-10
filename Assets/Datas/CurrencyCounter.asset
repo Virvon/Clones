@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8494e7d9378c2a49b1c1fb0ae994bd1, type: 3}
   m_Name: CurrencyCounter
   m_EditorClassIdentifier: 
-  _baseEnemyDNAReward: 2
-  _basePreyRecourceDNAReward: 1
-  _basePreyRecourceDropCount: 1
+  _dnaReward: 1
+  _collectingItemReward: 1

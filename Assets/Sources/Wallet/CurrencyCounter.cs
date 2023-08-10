@@ -7,8 +7,7 @@ public class CurrencyCounter : MonoBehaviour
 {
     [SerializeField] private Wallet _wallet;
     [SerializeField] private CurrecncyCounterData _currecncyCounterData;
-
-    [SerializeField] private Complexity _complexity;
+    [SerializeField] private Player _player;
     [SerializeField] private Quest _quest;
 
     private ItemVisitor _visitor;
@@ -37,12 +36,12 @@ public class CurrencyCounter : MonoBehaviour
 
     private void OnDNATaked()
     {
-        _wallet.TakeDNA((int)(_currecncyCounterData.DNAReward * _complexity.Value));
+        _wallet.TakeDNA((int)(_currecncyCounterData.DNAReward * _player.ResourceMultiplier));
     }
 
     private void OnCollectingItemTaked(CollectingItem collectingItem)
     {
-        _quest.TakePreyResourceItem(collectingItem.Data, (int)(_currecncyCounterData.CollectingItemReward * _complexity.Value));
+        _quest.TakePreyResourceItem(collectingItem.Data, (int)(_currecncyCounterData.CollectingItemReward * _player.ResourceMultiplier));
     }
 
     private class ItemVisitor : IItemVisitor

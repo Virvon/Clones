@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5431a7ae00c2fb498e9466e8207ab3e, type: 3}
   m_Name: ForestEnemy
   m_EditorClassIdentifier: 
-  _baseDamage: 1
-  _baseHealth: 3
-  _baseAttackSpeed: 1
+  _damage: 1
+  _health: 3
+  _attackSpeed: 1
   _enemyPrefab: {fileID: 2674497639100704801, guid: 73fb39274389b3d4e906f33279330323, type: 3}
-  _biomeType: 1

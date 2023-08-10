@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public int Health => _health;
     public float MovementSpeed => _movementStats.MovementSpeed;
     public MovementStats MovementStats => _movementStats;
+    public float ResourceMultiplier => 1;
 
     //private Stats _stats;
     private MovementStats _movementStats;

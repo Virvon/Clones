@@ -28,7 +28,7 @@ public class Wand : CharacterAttack
     private void OnHitted(List<DamageableCell> damageableCells)
     {
         MakeDamage(damageableCells);
-        Knockback(damageableCells);
+        //Knockback(damageableCells);
     }
 
     private void MakeDamage(List<DamageableCell> damageableCells)
@@ -41,8 +41,8 @@ public class Wand : CharacterAttack
     {
         foreach (var cell in damageableCells)
         {
-            if (((MonoBehaviour)cell.Damageable).TryGetComponent(out Rigidbody rigidbody))
-                rigidbody.AddForce(cell.KnockbackDirection.normalized * (_knockbackForce + Random.Range(-_knockbackOffset, _knockbackOffset)));
+            //if (((MonoBehaviour)cell.Damageable).TryGetComponent(out Rigidbody rigidbody))
+                //rigidbody.AddForce(cell.KnockbackDirection.normalized * (_knockbackForce + Random.Range(-_knockbackOffset, _knockbackOffset)));
         }
     }
 }

@@ -11,6 +11,7 @@ public class Quest : MonoBehaviour, IComplexityble
     [SerializeField] private CurrencyCounter _currencyCounter;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Complexity _complexity;
+    [SerializeField] private Player _player;
 
     public int QuestLevel => _questLevel;
     public IReadOnlyList<QuestCell> Quests => _quests;
@@ -97,7 +98,7 @@ public class Quest : MonoBehaviour, IComplexityble
             totalItemsCount += itemsCount;
         }
 
-        reward = (int)(_questData.Reward * _complexity.Value);
+        reward = (int)(totalItemsCount * _questData.Reward * _player.ResourceMultiplier);
 
         return cells;
     }

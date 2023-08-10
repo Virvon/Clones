@@ -9,8 +9,10 @@ namespace Clones.Data
     {
         [SerializeField] private float _totalWeight;
         [SerializeField] private float _cooldown;
+        [SerializeField] private float _spawnRadius;
 
         public float TotalWeight => _totalWeight;
         public float Cooldown => _cooldown;
+        public float SpawnRadius => _spawnRadius;
     }
 }

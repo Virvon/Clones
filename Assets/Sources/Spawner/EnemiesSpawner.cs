@@ -10,7 +10,6 @@ using System.Collections.Generic;
 public class EnemiesSpawner : MonoBehaviour, IComplexityble
 {
     [SerializeField] private SpawnerData _spawnerData;
-    [SerializeField] private float _delay;
 
     [SerializeField] private PlayerArea _targetArea;
     [SerializeField] private Player _target;
@@ -83,7 +82,22 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
     private Vector3 GetRandomPositionOutSideScreen()
     {
-        Vector2 point = Random.insideUnitCircle.normalized * 20 + new Vector2(_target.transform.position.x, _target.transform.position.z);
+        //Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+
+        Vector3 point = Vector3.zero;
+        bool isCorrectPoint = false;
+        int i = 0;
+
+        while(isCorrectPoint == false)
+        {
+            point = Random.insideUnitCircle * _spawnerData.SpawnRadius + new Vector2(_target.transform.position.x, _target.transform.position.z);
+
+            Vector3 viewportPoint = Camera.main.WorldToViewportPoint(point);
+
+            if ((viewportPoint.y < 0 || viewportPoint.y > 2) || (viewportPoint.x < -0.65f || viewportPoint.x > 1.65f))
+                isCorrectPoint = true;
+            
+        }
 
         return new Vector3(point.x, 1, point.y);
     }
@@ -97,7 +111,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
             _currentWave++;
             ComplexityIncreased?.Invoke();
             CreateWave();
-            yield return new WaitForSeconds(_delay);
+            yield return new WaitForSeconds(_spawnerData.Cooldown);
         }
     }
 }

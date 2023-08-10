@@ -42,9 +42,9 @@ public class SplashBullet : Bullet
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _bulletData.Radius, _overlapColliders);
 
             for (var i = 0; i < overlapCount; i++)
-            {
+            {//((MonoBehaviour)damageable1).transform.position - transform.position)
                 if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1) && damageable1 != _selfDamageable)
-                    damageableCells.Add(new DamageableCell(damageable1, ((MonoBehaviour)damageable1).transform.position - transform.position));
+                    damageableCells.Add(new DamageableCell(damageable1));
             }
 
             s_Hitted?.Invoke(damageableCells);

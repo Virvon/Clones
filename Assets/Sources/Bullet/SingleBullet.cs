@@ -12,6 +12,7 @@ public class SingleBullet : Bullet
     private SingleBulletData _bulletData;
     private Vector3 _direction;
     private IDamageable _selfDamageable;
+    private bool _isCollisioned = false;
 
     public override event Action Hitted;
     protected override event Action<List<DamageableCell>> s_Hitted;
@@ -26,15 +27,19 @@ public class SingleBullet : Bullet
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_isCollisioned)
+            return;
+
         if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfDamageable)
         {
             if (_selfDamageable is Enemy && damageable is Enemy)
                 return;
 
-            Vector3 knockbakcDirection = other.transform.position - ((MonoBehaviour)_selfDamageable).transform.position;
-            //knockbakcDirection.x = 0;
+            _isCollisioned = true;
 
-            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, knockbakcDirection) });
+            //Vector3 knockbakcDirection = other.transform.position - ((MonoBehaviour)_selfDamageable).transform.position;
+
+            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable) });
             Hitted?.Invoke();
             Destroy(gameObject);
         }
