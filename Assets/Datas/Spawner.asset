@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd274d5c04003c4280ec07884f6ce86, type: 3}
   m_Name: Spawner
   m_EditorClassIdentifier: 
-  _totalWeight: 1000
-  _cooldown: 5
+  _totalWeight: 8
+  _cooldown: 16
   _spawnRadius: 30

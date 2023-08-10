@@ -2,12 +2,13 @@ using UnityEngine;
 
 namespace Clones.SaveUtility
 {
-    public static class SaveUtility
+    public static class SaveSystem
     {
-        public static void Save<T>(string key, T saveData)
+        public static void Save<T>(string key, T saveProfile)
         {
-            string jsonData = JsonUtility.ToJson(saveData, true);
-            PlayerPrefs.SetString(key, jsonData);
+            string jsonProfile = JsonUtility.ToJson(saveProfile, true);
+
+            PlayerPrefs.SetString(key, jsonProfile);
             PlayerPrefs.Save();
         }
 
@@ -16,6 +17,7 @@ namespace Clones.SaveUtility
             if (PlayerPrefs.HasKey(key))
             {
                 var loadedString = PlayerPrefs.GetString(key);
+
                 return JsonUtility.FromJson<T>(loadedString);
             }
             else

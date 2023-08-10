@@ -320,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wallet: {fileID: 87327349}
   _currecncyCounterData: {fileID: 11400000, guid: e2a61d35ff3d8ff4da3594fc23e1e8ae, type: 2}
-  _complexity: {fileID: 945969275}
+  _player: {fileID: 7859807253966476231}
   _quest: {fileID: 1058451616}
 --- !u!114 &87327353
 MonoBehaviour:
@@ -1909,6 +1909,7 @@ MonoBehaviour:
   _currencyCounter: {fileID: 87327351}
   _wallet: {fileID: 87327349}
   _complexity: {fileID: 945969275}
+  _player: {fileID: 7859807253966476231}
 --- !u!4 &1058451617
 Transform:
   m_ObjectHideFlags: 0
