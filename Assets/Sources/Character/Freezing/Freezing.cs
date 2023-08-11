@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class Freezing : MonoBehaviour
 {
-    [SerializeField] private float _freezingMovementSpeed;
-    [SerializeField] private float _freezingAttackSpeed;
+    [SerializeField] private float _freezingMovementSpeedProcent;
+    [SerializeField] private float _freezingAttackCooldownProcent;
 
     public float FreezPrecent { get; private set; }
 
@@ -14,10 +14,13 @@ public class Freezing : MonoBehaviour
     private MovementStats _playerMovementStats;
 
     private float _currentMovementSpeed;
-    private float _currentAttackSpeed;
+    private float _currentAttackCooldown;
 
     private float _movementSpeed;
-    private float _attackSpeed;
+    private float _attackCooldown;
+
+    private float _freezingMovementSpeed;
+    private float _freezingAttackSpeed;
 
     public event Action FreePrecentChanged;
 
@@ -26,7 +29,10 @@ public class Freezing : MonoBehaviour
         _playerMovementStats = GetComponent<Player>().MovementStats;
 
         _movementSpeed = _playerMovementStats.MovementSpeed;
-        _attackSpeed = _playerMovementStats.AttakcSpeed;
+        _attackCooldown = _playerMovementStats.AttakcCooldown;
+
+        _freezingMovementSpeed = _playerMovementStats.MovementSpeed * (_freezingMovementSpeedProcent / 100);
+        _freezingAttackSpeed = _playerMovementStats.AttakcCooldown * (_freezingAttackCooldownProcent / 100);
     }
 
     public void Freez(float targetFreezPrecent, float speed)
@@ -53,9 +59,9 @@ public class Freezing : MonoBehaviour
 
             FreezPrecent = Mathf.Lerp(startFreezPrecent, targetFreezPrecent, time / freezingSpeed);
             _currentMovementSpeed = Mathf.Lerp(_movementSpeed, _freezingMovementSpeed, FreezPrecent);
-            _currentAttackSpeed = Mathf.Lerp(_attackSpeed, _freezingAttackSpeed, FreezPrecent);
+            _currentAttackCooldown = Mathf.Lerp(_attackCooldown, _freezingAttackSpeed, FreezPrecent);
 
-            _playerMovementStats.Freez(_currentMovementSpeed, _currentAttackSpeed);
+            _playerMovementStats.Freez(_currentMovementSpeed, _currentAttackCooldown);
             FreePrecentChanged?.Invoke();
 
             yield return null;

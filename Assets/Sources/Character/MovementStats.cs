@@ -3,7 +3,7 @@
 public class MovementStats
 {
     public float MovementSpeed => _movementSpeed * (1 - _slowDownPercent);
-    public float AttakcSpeed => _attackSpeed;
+    public float AttakcCooldown => _attackSpeed;
 
     private float _movementSpeed;
     private float _attackSpeed;

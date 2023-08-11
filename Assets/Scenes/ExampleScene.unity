@@ -1430,6 +1430,7 @@ MonoBehaviour:
   _spawnerComplexitybleBehavior: {fileID: 966598044}
   _questComplexitybleBehavior: {fileID: 1058451616}
   _wallet: {fileID: 87327349}
+  _savedCoefficientsCount: 0
 --- !u!114 &945969277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4517,8 +4518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07584ba2b204842409660bee086bfe4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezingMovementSpeed: 3
-  _freezingAttackSpeed: 2.5
+  _freezingMovementSpeedProcent: 20
+  _freezingAttackCooldownProcent: 170
 --- !u!114 &7859807253966476218
 MonoBehaviour:
   m_ObjectHideFlags: 0

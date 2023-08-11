@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public float LookRotationSpeed => _lookRotationSpeed;
     public CharacterAttack CharacterAttack => _characterAttack;
     public int Damage => 1;
-    public float AttackSpeed => _movementStats.AttakcSpeed;
+    public float AttackSpeed => _movementStats.AttakcCooldown;
     public int Health => _health;
     public float MovementSpeed => _movementStats.MovementSpeed;
     public MovementStats MovementStats => _movementStats;
