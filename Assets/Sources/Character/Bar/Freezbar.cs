@@ -4,9 +4,9 @@ public class Freezbar : Bar
 {
     [SerializeField] private Freezing _freezing;
 
-    private void OnEnable() => _freezing.FreePrecentChanged += OnFreezPrecentChanged;
+    private void OnEnable() => _freezing.FreezingPrecentChanged += OnFreezPrecentChanged;
 
-    private void OnDisable() => _freezing.FreePrecentChanged -= OnFreezPrecentChanged;
+    private void OnDisable() => _freezing.FreezingPrecentChanged -= OnFreezPrecentChanged;
 
     private void Start()
     {

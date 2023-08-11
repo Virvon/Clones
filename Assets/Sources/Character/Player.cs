@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public float MovementSpeed => _movementStats.MovementSpeed;
     public MovementStats MovementStats => _movementStats;
     public float ResourceMultiplier => 1;
+    public int MaxHealth { get; private set; }
 
     //private Stats _stats;
     private MovementStats _movementStats;
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     private void Awake()
     {
         _movementStats = new MovementStats(10, _characterAttack.AttackSpeed);
+        MaxHealth = _health;
     }
 
     public void TakeDamage(float damage)

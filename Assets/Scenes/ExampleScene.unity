@@ -1876,7 +1876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 1781036552}
   _animationSpeed: 0.2
-  _freezing: {fileID: 7859807253966476217}
+  _freezing: {fileID: 7859807253966476238}
 --- !u!1 &1058451615
 GameObject:
   m_ObjectHideFlags: 0
@@ -4496,9 +4496,11 @@ GameObject:
   - component: {fileID: 7859807253966476220}
   - component: {fileID: 7859807253966476219}
   - component: {fileID: 7859807253966476218}
-  - component: {fileID: 7859807253966476217}
   - component: {fileID: 7859807253966476235}
   - component: {fileID: 7859807253966476234}
+  - component: {fileID: 7859807253966476238}
+  - component: {fileID: 7859807253966476237}
+  - component: {fileID: 7859807253966476236}
   m_Layer: 0
   m_Name: Character 1
   m_TagString: Untagged
@@ -4506,20 +4508,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7859807253966476217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7859807253966476216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07584ba2b204842409660bee086bfe4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _freezingMovementSpeedProcent: 20
-  _freezingAttackCooldownProcent: 170
 --- !u!114 &7859807253966476218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4796,6 +4784,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7859807253966476236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7859807253966476216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830e99f177e900847bf36de04952758d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _freezingMovementSpeedPercent: 30
+  _freezingAttackCooldownPercent: 170
+--- !u!114 &7859807253966476237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7859807253966476216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bf0fae49cf7fe44a6d6e74fb9bbb28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePrecent: 15
+  DamageCooldown: 1
+--- !u!114 &7859807253966476238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7859807253966476216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08177831ed539024da22eb3fa52aa65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7941166938755181511
 Transform:
   m_ObjectHideFlags: 0
