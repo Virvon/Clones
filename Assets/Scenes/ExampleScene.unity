@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.5731577, g: 0.5752937, b: 0.754717, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.31118724, g: 0.39132464, b: 0.5943396, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: d4befbdff69a182458b0c9ea564a544a, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 02e608f13bb5f3946a321b5ec630250e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1060,7 +1060,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
-  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1125,7 +1124,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 0, z: 0, w: -241.76282}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1145,18 +1144,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &705507996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &723018149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,7 +1417,7 @@ MonoBehaviour:
   _spawnerComplexitybleBehavior: {fileID: 966598044}
   _questComplexitybleBehavior: {fileID: 1058451616}
   _wallet: {fileID: 87327349}
-  _savedCoefficientsCount: 0
+  _savedCoefficientsCount: 7
 --- !u!114 &945969277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2947,6 +2934,7 @@ GameObject:
   - component: {fileID: 1856713547}
   - component: {fileID: 1856713546}
   - component: {fileID: 1856713550}
+  - component: {fileID: 1856713551}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3028,7 +3016,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: 3
+  m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -3067,6 +3055,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shaderTexture: {fileID: 2100000, guid: 986fcfa1649b9a24d8907a87cb1e78af, type: 2}
+--- !u!114 &1856713551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856713545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892dbffb29e424d46a4fe82f2c282d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraShader: {fileID: 1856713550}
+  _freezing: {fileID: 7859807253966476238}
+  _minSize: 25
+  _maxSize: 8
 --- !u!1 &1905954711
 GameObject:
   m_ObjectHideFlags: 0

@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 8678680675255420745}
   - component: {fileID: 5573238512407593774}
   - component: {fileID: 8079421623956834331}
+  - component: {fileID: -8146874460850396009}
   m_Layer: 0
   m_Name: IceCrystals
   m_TagString: Untagged
@@ -217,6 +218,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _biomeData: {fileID: 11400000, guid: b1e749d62efd08f47823a0bab541e58a, type: 2}
+--- !u!114 &-8146874460850396009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71356e515ed06844eaa6559921cf5985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _density: 0.03
+  _foggingSpeed: 1
+  _color: {r: 0.7305091, g: 0.83408296, b: 0.9056604, a: 0}
 --- !u!1 &2965586213898344238
 GameObject:
   m_ObjectHideFlags: 0

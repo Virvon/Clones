@@ -35,7 +35,6 @@ public class FreezingDamage : MonoBehaviour
 
     private IEnumerator Damager()
     {
-        Debug.Log("startDamage");
         WaitForSeconds delay = new (DamageCooldown);
 
         while(_freezing.FreezPrecent == 1)
