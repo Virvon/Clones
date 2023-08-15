@@ -1,4 +1,5 @@
 using Clones.Biomes;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -52,7 +53,7 @@ public class Fog : MonoBehaviour
         {
             time += Time.deltaTime;
 
-            RenderSettings.fogDensity = Mathf.Lerp(startDensity, targetDensity, time / foggingSpeed);
+            RenderSettings.fogDensity = (float)Math.Round(Mathf.Lerp(startDensity, targetDensity, time / foggingSpeed), 3);
 
             yield return null;
         }

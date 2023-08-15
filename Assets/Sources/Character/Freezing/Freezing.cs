@@ -32,7 +32,7 @@ public class Freezing : MonoBehaviour
         {
             time += Time.deltaTime;
 
-            FreezPrecent = Mathf.Lerp(startFreezPrecent, targetFreezPrecent, time / freezingSpeed);
+            FreezPrecent = (float)Math.Round(Mathf.Lerp(startFreezPrecent, targetFreezPrecent, time / freezingSpeed), 3);
             
             FreezingPrecentChanged?.Invoke();
 

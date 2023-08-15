@@ -25,6 +25,8 @@ public abstract class Bar : MonoBehaviour
         float time = 0;
         float startValue = _slider.value;
 
+        targetValue = (float)Math.Round(targetValue, 3);
+
         while (_slider.value != targetValue)
         {
             time += Time.deltaTime;

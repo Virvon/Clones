@@ -60,6 +60,8 @@ public class SnowFall : MonoBehaviour
 
         yield return new WaitForSeconds(_destroyTime);
 
+        Debug.Log("destroyed");
+
         Destroy(_currentSnowFall.gameObject);
     }
 }

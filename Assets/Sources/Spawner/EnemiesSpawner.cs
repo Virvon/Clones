@@ -52,8 +52,10 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
             Stats stats = GetEnemyStats(currentEnemyData.GetStats());
             float enemyWeight = GetEnemyWeight(stats);
+            Vector3 currentEnemyPosition = GetRandomPosition();
 
-            var enemy = Instantiate(currentEnemyData.EnemyPrefab, GetRandomPositionOutSideScreen(), Quaternion.identity, transform);
+
+            var enemy = Instantiate(currentEnemyData.EnemyPrefab, currentEnemyPosition, Quaternion.LookRotation(_target.transform.position - currentEnemyPosition), transform);
             enemy.Init(_target, _targetArea, stats);
 
             EnemyCreated?.Invoke(enemy);
@@ -80,25 +82,11 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
         return (1 / stats.AttackSpeed) * stats.Damage + (stats.Health / 3);
     }
 
-    private Vector3 GetRandomPositionOutSideScreen()
+    private Vector3 GetRandomPosition()
     {
-        //Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-
-        Vector3 point = Vector3.zero;
-        bool isCorrectPoint = false;
-        int i = 0;
-
-        while(isCorrectPoint == false)
-        {
-            point = Random.insideUnitCircle * _spawnerData.SpawnRadius + new Vector2(_target.transform.position.x, _target.transform.position.z);
-
-            Vector3 viewportPoint = Camera.main.WorldToViewportPoint(point);
-
-            if ((viewportPoint.y < 0 || viewportPoint.y > 2) || (viewportPoint.x < -0.65f || viewportPoint.x > 1.65f))
-                isCorrectPoint = true;
-            
-        }
-
+        float distance = Random.Range(_spawnerData.MinSpawnRadius, _spawnerData.MaxSpawnRadius + 1);
+        Vector2 point = Random.insideUnitCircle.normalized * distance + new Vector2(_target.transform.position.x, _target.transform.position.z);
+        
         return new Vector3(point.x, 1, point.y);
     }
 

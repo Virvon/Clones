@@ -10,7 +10,6 @@ namespace Clones.Animation
         [SerializeField] private Player _player; 
         [SerializeField] private DirectionHandler _directionHandler;
 
-        private UnityEngine.Animation _animation;
         private float _movementSpeed;
         private float _movementAnimationSpeed => _player.MovementSpeed / _movementSpeed;
 
@@ -18,7 +17,6 @@ namespace Clones.Animation
 
         private void OnEnable()
         {
-            _animation = GetComponent<UnityEngine.Animation>();
             _animator = GetComponent<Animator>();
             _movementSpeed = _player.MovementSpeed;
 
