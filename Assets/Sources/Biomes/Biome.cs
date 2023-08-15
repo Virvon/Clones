@@ -11,7 +11,7 @@ namespace Clones.Biomes
 
         public BiomeData BiomeData => _biomeData;
 
-        protected Player Player { get; private set; }
+        public Player Player { get; private set; }
 
         public event Action<Biome> PlayerEntered;
         public event Action PlayerExited;

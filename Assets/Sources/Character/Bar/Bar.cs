@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,7 @@ public abstract class Bar : MonoBehaviour
         while (_slider.value != targetValue)
         {
             time += Time.deltaTime;
-            _slider.value = Mathf.Lerp(startValue, targetValue, time / _animationSpeed);
+            _slider.value = (float)Math.Round(Mathf.Lerp(startValue, targetValue, time / _animationSpeed), 3);
 
             yield return null;
         }

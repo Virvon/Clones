@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 5573238512407593774}
   - component: {fileID: 8079421623956834331}
   - component: {fileID: -8146874460850396009}
+  - component: {fileID: -7830017424829049167}
   m_Layer: 0
   m_Name: IceCrystals
   m_TagString: Untagged
@@ -233,6 +234,22 @@ MonoBehaviour:
   _density: 0.03
   _foggingSpeed: 1
   _color: {r: 0.7305091, g: 0.83408296, b: 0.9056604, a: 0}
+--- !u!114 &-7830017424829049167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7887c60a56c5b784faa061b12aa7eda8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snowFallsPrefabs:
+  - {fileID: 4674563067806913774, guid: 7b7fb2738decad84999dfdd4c61aedae, type: 3}
+  _spawnChancePercent: 100
+  _destroyTime: 2
 --- !u!1 &2965586213898344238
 GameObject:
   m_ObjectHideFlags: 0
