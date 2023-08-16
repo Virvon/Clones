@@ -5,6 +5,8 @@ namespace Clones.Biomes
 {
     public class PoisonForest : Biome
     {
+        [SerializeField, Range(0, 100)] private float _damagePercentage;
+        [SerializeField] private float _coolDown;
         private void OnEnable() => PlayerEntered += OnPlayerEntered;
 
         private void OnDisable() => PlayerEntered -= OnPlayerEntered;
@@ -20,9 +22,9 @@ namespace Clones.Biomes
                 if (isFirstAttack)
                     isFirstAttack = false;
                 else
-                    Player.TakeDamage(4);
+                    Player.TakeDamage(Player.MaxHealth * (_damagePercentage / 100));
 
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(_coolDown);
             }
         }
     }

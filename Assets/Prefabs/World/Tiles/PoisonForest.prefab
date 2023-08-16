@@ -136,6 +136,9 @@ GameObject:
   - component: {fileID: 6248151207860650319}
   - component: {fileID: 4446269014300696725}
   - component: {fileID: 7096604463225863518}
+  - component: {fileID: 4033493399923682826}
+  - component: {fileID: 5703955213186874919}
+  - component: {fileID: -5128233410949631147}
   m_Layer: 0
   m_Name: PoisonForest
   m_TagString: Untagged
@@ -209,6 +212,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _biomeData: {fileID: 11400000, guid: 374444b47c2230a4592a7874eebed154, type: 2}
+  _damagePercentage: 1.5
+  _coolDown: 1
+--- !u!114 &4033493399923682826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c50c36599cfb934a89267912a63ec96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnChancePercent: 100
+--- !u!114 &5703955213186874919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7887c60a56c5b784faa061b12aa7eda8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _precipitationsPrefabs:
+  - {fileID: 4674563067806913774, guid: c8716c13a991f9c4885ba46837989615, type: 3}
+  _destroyTime: 2
+--- !u!114 &-5128233410949631147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965586213671339217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71356e515ed06844eaa6559921cf5985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _density: 0.05
+  _foggingSpeed: 0.5
+  _color: {r: 0.3965379, g: 0.4245283, b: 0.39048594, a: 1}
 --- !u!1 &2965586213898344238
 GameObject:
   m_ObjectHideFlags: 0

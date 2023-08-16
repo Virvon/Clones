@@ -1,40 +1,39 @@
-using Clones.Biomes;
 using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Biome))]
+[RequireComponent(typeof(BiomeEffects))]
 public class Fog : MonoBehaviour
 {
     [SerializeField] private float _density;
     [SerializeField] private float _foggingSpeed;
     [SerializeField] private Color _color;
 
-    private Biome _biome;
+    private BiomeEffects _biomeEffects;
     private Coroutine _fogDensity;
 
     private void OnEnable()
     {
-        _biome = GetComponent<Biome>();
+        _biomeEffects = GetComponent<BiomeEffects>();
 
-        _biome.PlayerEntered += OnPlayerEntered;
-        _biome.PlayerExited += OnPlayerExited;
+        _biomeEffects.EffectStateChanged += OnEffectStateChanged;
     }
 
-    private void OnDisable()
+    private void OnDisable() => _biomeEffects.EffectStateChanged -= OnEffectStateChanged;
+
+    private void OnEffectStateChanged()
     {
-        _biome.PlayerEntered -= OnPlayerEntered;
-        _biome.PlayerExited -= OnPlayerExited;
+        if(_biomeEffects.EffectIsPlayed)
+        {
+            RenderSettings.fogColor = _color;
+
+            SetFogDensity(_density, _foggingSpeed);
+        }
+        else
+        {
+            SetFogDensity(0, _foggingSpeed);
+        }
     }
-
-    private void OnPlayerEntered(Biome biome)
-    {
-        RenderSettings.fogColor = _color;
-
-        SetFogDensity(_density, _foggingSpeed);
-    }
-
-    private void OnPlayerExited() => SetFogDensity(0, _foggingSpeed);
 
     private void SetFogDensity(float targetDensity, float foggingSpeed)
     {

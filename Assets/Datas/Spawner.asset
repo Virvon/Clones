@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totalWeight: 8
   _cooldown: 16
-  _spawnRadius: 30
+  _minSpawnRadius: 20
+  _maxSpawnRadius: 30

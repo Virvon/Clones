@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5731577, g: 0.5752937, b: 0.754717, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.03
+  m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -602,11 +602,11 @@ PrefabInstance:
     - target: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
       propertyPath: _tilePrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2965586213671339217, guid: 4657b8542e82b0a44bde28377efe1fa1, type: 3}
+      objectReference: {fileID: 2965586213671339217, guid: 996adbbc7efe9414489c2385ce3ccdf7, type: 3}
     - target: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
       propertyPath: _tilePrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 2965586213671339217, guid: 4657b8542e82b0a44bde28377efe1fa1, type: 3}
+      objectReference: {fileID: 2965586213671339217, guid: 996adbbc7efe9414489c2385ce3ccdf7, type: 3}
     - target: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
       propertyPath: _tilePrefabs.Array.data[2]
       value: 
