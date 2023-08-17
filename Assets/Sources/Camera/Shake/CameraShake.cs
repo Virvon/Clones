@@ -6,33 +6,30 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     private CinemachineVirtualCamera _virtualCamera;
-    private static CinemachineBasicMultiChannelPerlin _virtualCameraPerlin;
 
+    private static CinemachineBasicMultiChannelPerlin _virtualCameraPerlin;
+    private Coroutine _shaker;
 
     private void Start()
     {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
         _virtualCameraPerlin = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
-        SetVirtualCameraPerlin(0, 0);
+        SetShake(0, 0);
     }
 
-    public static void Shake(float amplitudeGain, float frequencyGain) => SetVirtualCameraPerlin(amplitudeGain, frequencyGain);
-
-    public IEnumerator Shake(float amplitudeGain, float frequencyGain, float delay = float.MaxValue)
-    {
-        SetVirtualCameraPerlin(amplitudeGain, frequencyGain);
-
-        yield return new WaitForSeconds(delay);
-
-        SetVirtualCameraPerlin(0, 0);
-    }
-
-    public static void Stop() => SetVirtualCameraPerlin(0, 0);
-
-    private static void SetVirtualCameraPerlin(float amplitudeGain, float frequencyGain)
+    public static void SetShake(float amplitudeGain, float frequencyGain)
     {
         _virtualCameraPerlin.m_AmplitudeGain = amplitudeGain;
         _virtualCameraPerlin.m_FrequencyGain = frequencyGain;
+    }
+
+    private static IEnumerator Shaker(float amplitudeGain, float frequencyGain, float delay)
+    {
+        SetShake(amplitudeGain, frequencyGain);
+
+        yield return new WaitForSeconds(delay);
+
+        SetShake(0, 0);
     }
 }

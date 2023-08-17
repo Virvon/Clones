@@ -14,8 +14,6 @@ namespace Clones.BehaviorTree
         {
             SharedCharacterAttack.Value.TryAttack(_target);
 
-            Debug.Log(_target.transform.position);
-
             RotateTo(_target.transform.position);
             return TaskStatus.Running;
         }
