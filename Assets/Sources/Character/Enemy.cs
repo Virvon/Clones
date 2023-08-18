@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthble
 {
-    public PlayerArea TargetArea { get; private set; }
     public Player Target { get; private set; }
     public Vector3 Scale => transform.localScale;
     public Vector3 Position => transform.position;
@@ -20,10 +19,9 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
 
     public void Accept(IDropVisitor visitor) => visitor.Visit(this);
 
-    public void Init(Player target, PlayerArea targetArea, Stats stats)
+    public void Init(Player target, Stats stats)
     {
         Target = target;
-        TargetArea = targetArea;
         Stats = stats;
         _health = stats.Health;
     }

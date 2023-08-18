@@ -9,6 +9,7 @@ namespace Clones.BehaviorTree
     {
         public SharedEnemy Enemy;
         public SharedFloat TargetRadius;
+        public SharedEnemyAnimationSwithcer _animationSwithcer;
 
         private NavMeshAgent _agent;
         private Vector3 _targetPoint;
@@ -20,6 +21,8 @@ namespace Clones.BehaviorTree
             _targetPoint = Enemy.Value.transform.position;
             _agent = Enemy.Value.GetComponent<NavMeshAgent>();
             _agent.isStopped = false;
+
+            _animationSwithcer.Value.SetMovement(true);
         }
 
         public override TaskStatus OnUpdate()
@@ -43,6 +46,8 @@ namespace Clones.BehaviorTree
         public override void OnEnd()
         {
             _agent.isStopped = true;
+
+            _animationSwithcer.Value.SetMovement(false);
         }
 
         private Vector3 GetPointInTargetRadius()

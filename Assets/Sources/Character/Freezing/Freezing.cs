@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Freezing : MonoBehaviour
 {
-    public float FreezPrecent { get; private set; }
+    public float FreezingPercent { get; private set; }
 
     private Coroutine _coroutine;
 
-    public event Action FreezingPrecentChanged;
+    public event Action FreezingPercentChanged;
 
     public void Freez(float targetFreezPrecent, float speed)
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        if (targetFreezPrecent < FreezPrecent)
-            speed = speed * FreezPrecent;
+        if (targetFreezPrecent < FreezingPercent)
+            speed = speed * FreezingPercent;
         else
-            speed = speed - speed * FreezPrecent;
+            speed = speed - speed * FreezingPercent;
 
         _coroutine = StartCoroutine(FreezController(targetFreezPrecent, speed));
     }
@@ -26,15 +26,15 @@ public class Freezing : MonoBehaviour
     private IEnumerator FreezController(float targetFreezPrecent, float freezingSpeed)
     {
         float time = 0;
-        float startFreezPrecent = FreezPrecent;
+        float startFreezPrecent = FreezingPercent;
 
-        while(FreezPrecent != targetFreezPrecent)
+        while(FreezingPercent != targetFreezPrecent)
         {
             time += Time.deltaTime;
 
-            FreezPrecent = (float)Math.Round(Mathf.Lerp(startFreezPrecent, targetFreezPrecent, time / freezingSpeed), 3);
+            FreezingPercent = (float)Math.Round(Mathf.Lerp(startFreezPrecent, targetFreezPrecent, time / freezingSpeed), 3);
             
-            FreezingPrecentChanged?.Invoke();
+            FreezingPercentChanged?.Invoke();
 
             yield return null;
         }

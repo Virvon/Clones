@@ -16,6 +16,7 @@ public abstract class CharacterAttack : MonoBehaviour
     protected IDamageable Target { get; private set; }
 
     public event Action Attacked;
+    public event Action AttackStarted;
 
     private void Awake() => Attackble = (IAttackble)_attackbleBehavior;
 
@@ -35,13 +36,18 @@ public abstract class CharacterAttack : MonoBehaviour
 
         Target = target;
 
-        Attack();
-        Attacked?.Invoke();
+        AttackStarted?.Invoke();
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(CoolDownTimer(Attackble.AttackSpeed));
+    }
+
+    public void AnimationAttack()
+    {
+        Attack();
+        Attacked?.Invoke();
     }
 
     protected abstract void Attack();

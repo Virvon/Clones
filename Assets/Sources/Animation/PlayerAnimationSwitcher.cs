@@ -20,7 +20,7 @@ namespace Clones.Animation
             _animator = GetComponent<Animator>();
             _movementSpeed = _player.MovementSpeed;
 
-            _characterAttack.Attacked += OnAttacked;
+            _characterAttack.AttackStarted += OnAttackStarted;
 
             _directionHandler.Activated += OnMove;
             _directionHandler.Deactivated += OnStop;
@@ -30,7 +30,7 @@ namespace Clones.Animation
 
         private void OnDisable()
         {
-            _characterAttack.Attacked -= OnAttacked;
+            _characterAttack.AttackStarted -= OnAttackStarted;
 
             _directionHandler.Activated += OnMove;
             _directionHandler.Deactivated += OnStop;
@@ -38,24 +38,12 @@ namespace Clones.Animation
             _player.MovementStats.MovementSpeedChanged += OnMovementSpeedChanged;
         }
 
-        private void OnAttacked()
-        {
-            _animator.SetTrigger(PlayerAnimations.Triggers.Attack);
-        }
+        private void OnAttackStarted() => _animator.SetTrigger(Animations.Player.Triggers.Attack);
 
-        private void OnMove()
-        {
-            _animator.SetBool(PlayerAnimations.Bools.IsMove, true);
-        }
+        private void OnMove() => _animator.SetBool(Animations.Player.Bools.IsMoved, true);
 
-        private void OnStop()
-        {
-            _animator.SetBool(PlayerAnimations.Bools.IsMove, false);
-        }
+        private void OnStop() => _animator.SetBool(Animations.Player.Bools.IsMoved, false);
 
-        private void OnMovementSpeedChanged()
-        {
-            _animator.SetFloat(PlayerAnimations.Floats.MovementAnimationSpeed, _movementAnimationSpeed);
-        }
+        private void OnMovementSpeedChanged() => _animator.SetFloat(Animations.Player.Floats.MovementAnimationSpeed, _movementAnimationSpeed);
     }
 }

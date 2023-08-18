@@ -20,7 +20,7 @@ public class FreezingMovement : MonoBehaviour
     {   
         _freezing = GetComponent<Freezing>();
 
-        _freezing.FreezingPrecentChanged += OnFreezPrecentChanged;
+        _freezing.FreezingPercentChanged += OnFreezPrecentChanged;
     }
 
     private void Start()
@@ -34,12 +34,12 @@ public class FreezingMovement : MonoBehaviour
         _freezingAttackSpeed = _playerMovementStats.AttakcCooldown * (_freezingAttackCooldownPercent / 100);
     }
 
-    private void OnDisable() => _freezing.FreezingPrecentChanged -= OnFreezPrecentChanged;
+    private void OnDisable() => _freezing.FreezingPercentChanged -= OnFreezPrecentChanged;
 
     private void OnFreezPrecentChanged()
     {
-        var currentMovementSpeed = Mathf.Lerp(_movementSpeed, _freezingMovementSpeed, _freezing.FreezPrecent);
-        var currentAttackCooldown = Mathf.Lerp(_attackCooldown, _freezingAttackSpeed, _freezing.FreezPrecent);
+        var currentMovementSpeed = Mathf.Lerp(_movementSpeed, _freezingMovementSpeed, _freezing.FreezingPercent);
+        var currentAttackCooldown = Mathf.Lerp(_attackCooldown, _freezingAttackSpeed, _freezing.FreezingPercent);
 
         currentMovementSpeed = (float)Math.Round((double)currentMovementSpeed, 2);
         currentAttackCooldown = (float)Math.Round((double)currentAttackCooldown, 2);

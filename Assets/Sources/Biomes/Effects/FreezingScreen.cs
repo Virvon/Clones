@@ -13,14 +13,14 @@ public class FreezingScreen : MonoBehaviour
     {
         _cameraShader.enabled = false;
 
-        _freezing.FreezingPrecentChanged += OnFrezeengPrecentChanged;
+        _freezing.FreezingPercentChanged += OnFrezeengPrecentChanged;
     }
 
-    private void OnDisable() => _freezing.FreezingPrecentChanged -= OnFrezeengPrecentChanged;
+    private void OnDisable() => _freezing.FreezingPercentChanged -= OnFrezeengPrecentChanged;
 
     private void OnFrezeengPrecentChanged()
     {
-        if (_freezing.FreezPrecent == 0)
+        if (_freezing.FreezingPercent == 0)
         {
             _cameraShader.enabled = false;
 
@@ -31,7 +31,7 @@ public class FreezingScreen : MonoBehaviour
             _cameraShader.enabled = true;
         }
 
-        float size = Mathf.Lerp(_minSize, _maxSize, _freezing.FreezPrecent);
+        float size = Mathf.Lerp(_minSize, _maxSize, _freezing.FreezingPercent);
 
         size = (float)Math.Round(size, 2);
 

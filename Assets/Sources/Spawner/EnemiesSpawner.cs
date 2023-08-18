@@ -11,7 +11,6 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 {
     [SerializeField] private SpawnerData _spawnerData;
 
-    [SerializeField] private PlayerArea _targetArea;
     [SerializeField] private Player _target;
 
     [SerializeField] private Complexity _complexity;
@@ -54,9 +53,9 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
             float enemyWeight = GetEnemyWeight(stats);
             Vector3 currentEnemyPosition = GetRandomPosition();
 
-
             var enemy = Instantiate(currentEnemyData.EnemyPrefab, currentEnemyPosition, Quaternion.LookRotation(_target.transform.position - currentEnemyPosition), transform);
-            enemy.Init(_target, _targetArea, stats);
+
+            enemy.Init(_target, stats);
 
             EnemyCreated?.Invoke(enemy);
 
@@ -87,7 +86,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
         float distance = Random.Range(_spawnerData.MinSpawnRadius, _spawnerData.MaxSpawnRadius + 1);
         Vector2 point = Random.insideUnitCircle.normalized * distance + new Vector2(_target.transform.position.x, _target.transform.position.z);
         
-        return new Vector3(point.x, 1, point.y);
+        return new Vector3(point.x, 0, point.y);
     }
 
     private IEnumerator Spawner()

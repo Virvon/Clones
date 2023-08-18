@@ -17,14 +17,14 @@ public class FreezingDamage : MonoBehaviour
         _freezing = GetComponent<Freezing>();
         _player = GetComponent<Player>();
 
-        _freezing.FreezingPrecentChanged += OnFreezingPrecentChanged;
+        _freezing.FreezingPercentChanged += OnFreezingPrecentChanged;
     }
 
-    private void OnDisable() => _freezing.FreezingPrecentChanged -= OnFreezingPrecentChanged;
+    private void OnDisable() => _freezing.FreezingPercentChanged -= OnFreezingPrecentChanged;
     
     private void OnFreezingPrecentChanged()
     {
-        if (_freezing.FreezPrecent < 1)
+        if (_freezing.FreezingPercent < 1)
             return;
 
         if (_damager != null)
@@ -37,7 +37,7 @@ public class FreezingDamage : MonoBehaviour
     {
         WaitForSeconds delay = new (DamageCooldown);
 
-        while(_freezing.FreezPrecent == 1)
+        while(_freezing.FreezingPercent == 1)
         {
             _player.TakeDamage(_damage);
 
