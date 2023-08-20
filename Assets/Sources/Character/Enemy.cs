@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
     public float AttackSpeed => Stats.AttackSpeed;
     public int Health => _health;
     public float KnockbackForce => 800;
+    public bool IsAlive => _isAlive;
 
+    private bool _isAlive;
     private int _health;
 
     public event Action<IDamageable> Died;
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
         Target = target;
         Stats = stats;
         _health = stats.Health;
+        _isAlive = true;
     }
 
     public void TakeDamage(float damage)
@@ -38,6 +41,7 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
 
     private void Die()
     {
+        _isAlive = false;
         Died?.Invoke(this);
         Destroy(gameObject);
     }

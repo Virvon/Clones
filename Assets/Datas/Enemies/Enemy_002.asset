@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5431a7ae00c2fb498e9466e8207ab3e, type: 3}
-  m_Name: ForestEnemy_002
+  m_Name: Enemy_002
   m_EditorClassIdentifier: 
   _damage: 1
   _health: 3
   _attackSpeed: 1
-  _enemyPrefab: {fileID: 3161901784802158710, guid: e77415e863ea79f448e0a7ed4f78ee72, type: 3}
+  _enemyPrefab: {fileID: 7957187247392612316, guid: d4ff58a5d3bc29e40b484230c6d8a80e, type: 3}

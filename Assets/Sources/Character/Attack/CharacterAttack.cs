@@ -5,9 +5,8 @@ using UnityEngine;
 public abstract class CharacterAttack : MonoBehaviour
 {
     [SerializeField] private MonoBehaviour _attackbleBehavior;
-    [SerializeField] private float _attackSpeed;
 
-    public float AttackSpeed => _attackSpeed;
+    public abstract float AttackSpeed { get; }
 
     private bool _canAttack = true;
     private Coroutine _coroutine;
@@ -34,20 +33,23 @@ public abstract class CharacterAttack : MonoBehaviour
         if (_canAttack == false)
             return;
 
-        Target = target;
-
-        AttackStarted?.Invoke();
-
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(CoolDownTimer(Attackble.AttackSpeed));
+
+        Target = target;
+
+        AttackStarted?.Invoke();
     }
 
     public void AnimationAttack()
     {
-        Attack();
-        Attacked?.Invoke();
+        if(Target.IsAlive)
+        {
+            Attack();
+            Attacked?.Invoke();
+        }
     }
 
     protected abstract void Attack();

@@ -10,6 +10,9 @@ public class Wand : CharacterAttack
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private float _knockbackForce;
     [SerializeField] private float _knockbackOffset;
+    [SerializeField] private float _attackSpeed;
+
+    public override float AttackSpeed => _attackSpeed;
 
     private event Action<List<DamageableCell>> Hitted;
 
@@ -21,7 +24,7 @@ public class Wand : CharacterAttack
     {
         Bullet bullet = Instantiate(_bulletData.BulletPrefab);
         bullet.Init(_bulletData);
-        bullet.Shoot(Target, (IDamageable)Attackble,_shootingPoint, Hitted);
+        bullet.Shoot(Target, (IDamageable)Attackble, _shootingPoint, Hitted);
     }
 
     private void OnHitted(List<DamageableCell> damageableCells)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemsCount: 2
   _reward: 10
-  _minimumPercentageItemCountInQuest: 11
+  _minimumPercentageItemCountInQuest: 20
   _questItemDatas:
   - {fileID: 11400000, guid: d46938295fcd0e341b04520404561ec7, type: 2}
   - {fileID: 11400000, guid: 6603e10c266fe394da062a2d0b7d97db, type: 2}

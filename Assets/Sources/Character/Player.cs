@@ -24,15 +24,18 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public MovementStats MovementStats => _movementStats;
     public float ResourceMultiplier => 1;
     public int MaxHealth { get; private set; }
+    public bool IsAlive => _isAlive;
 
     //private Stats _stats;
     private MovementStats _movementStats;
+    private bool _isAlive;
 
     public event Action<IDamageable> Died;
     public event Action DamageTaked;
 
     private void Awake()
     {
+        _isAlive = true;
         _movementStats = new MovementStats(10, _characterAttack.AttackSpeed);
         MaxHealth = _health;
     }
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
 
     private void Die()
     {
+        _isAlive = false;
         Died?.Invoke(this);
     }
 
