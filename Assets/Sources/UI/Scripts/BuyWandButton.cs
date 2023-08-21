@@ -16,7 +16,7 @@ public class BuyWandButton : MonoBehaviour
         _price.text = NumberFormatter.FormatNumberWithCommas(_cardWand.Price);
     }
 
-    public void BuyClone()
+    public void BuyWand()
     {
         if (_lockButton.activeInHierarchy == true)
             return;
