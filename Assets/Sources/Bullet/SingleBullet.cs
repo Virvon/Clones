@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SingleBullet : Bullet
 {
+    public IDamageable HitTarget { get; private set; }
     public override BulletData BulletData => _bulletData;
 
     private SingleBulletData _bulletData;
@@ -36,6 +37,7 @@ public class SingleBullet : Bullet
                 return;
 
             _isCollisioned = true;
+            HitTarget = damageable;
 
             //Vector3 knockbakcDirection = other.transform.position - ((MonoBehaviour)_selfDamageable).transform.position;
 
@@ -49,7 +51,7 @@ public class SingleBullet : Bullet
 
     public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
-        _direction = ((MonoBehaviour)targetDamageable).transform.position - shootPoint.transform.position;
+        _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1, 0)) - shootPoint.transform.position;
         transform.position = shootPoint.transform.position;
 
         transform.rotation = Quaternion.LookRotation(_direction);

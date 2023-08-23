@@ -2,6 +2,14 @@
 {
     public static class Animations
     {
+        public static class UI
+        {
+            public static class Bools
+            {
+                public const string IsOpened = nameof(IsOpened);
+            }
+        }
+
         public static class Enemy
         {
             public static class Triggers

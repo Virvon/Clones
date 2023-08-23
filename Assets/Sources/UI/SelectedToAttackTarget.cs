@@ -7,7 +7,7 @@ namespace Clones.UI
     {
         [SerializeField] private GameObject _pointPrefab;
         [SerializeField] private AttackState[] _attackStates;
-        [SerializeField] private Vector3 _pointOffset;
+        [SerializeField] private float _pointVerticalOffset;
 
         private GameObject _point;
         private Vector3 _targetPosition;
@@ -32,12 +32,12 @@ namespace Clones.UI
             }
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (_targetPosition == null)
                 return;
 
-            _point.transform.position = _targetPosition + _pointOffset;
+            _point.transform.position = new Vector3(_targetPosition.x, _pointVerticalOffset, _targetPosition.z);
         }
 
         private void InitPoint()

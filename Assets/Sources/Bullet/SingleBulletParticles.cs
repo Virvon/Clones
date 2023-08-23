@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SingleBulletParticles : BulletParticles
 {
-    private GameObject _projectile;
+    protected GameObject Projectile { get; private set; }
 
     protected override void OnShooted()
     {
@@ -12,13 +12,13 @@ public class SingleBulletParticles : BulletParticles
         CreateProjectile();
     }
 
-    protected override void CreateProjectile() => _projectile = Instantiate(Bullet.BulletData.BulletProjectile, transform.position, transform.rotation, transform);
+    protected override void CreateProjectile() => Projectile = Instantiate(Bullet.BulletData.BulletProjectile, transform.position, transform.rotation, transform);
 
     protected override void CreateMuzzle() => Instantiate(Bullet.BulletData.BulletMuzzle, transform.position, transform.rotation);
 
     protected override void OnHitted()
     {
-        Destroy(_projectile);
+        Destroy(Projectile);
 
         Instantiate(Bullet.BulletData.BulletHitEffect, transform.position, Quaternion.identity);
 

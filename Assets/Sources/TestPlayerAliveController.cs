@@ -4,6 +4,7 @@ public class TestPlayerAliveController : MonoBehaviour
 {
     [SerializeField] private TestSceneManager _testSceneManager;
     [SerializeField] private Player _player;
+    [SerializeField] private GameOverView _gameOverView;
 
     private void OnEnable()
     {
@@ -17,6 +18,7 @@ public class TestPlayerAliveController : MonoBehaviour
 
     private void Ondied(IDamageable obj)
     {
-        _testSceneManager.LoadScene();
+        //_testSceneManager.LoadScene();
+        _gameOverView.Open();
     }
 }
