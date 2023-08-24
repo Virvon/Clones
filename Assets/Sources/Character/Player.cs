@@ -20,8 +20,8 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     public int Damage => 1;
     public float AttackSpeed => _movementStats.AttakcCooldown;
     public int Health => _health;
-    //public float MovementSpeed => _movementStats.MovementSpeed;
-    public float MovementSpeed => 10;
+    public float MovementSpeed => _movementStats.MovementSpeed;
+    //public float MovementSpeed => 10;
     public MovementStats MovementStats => _movementStats;
     public float ResourceMultiplier => 1;
     public int MaxHealth { get; private set; }
@@ -45,10 +45,10 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     {
         _health -= (int)damage;
 
+        DamageTaked?.Invoke();
+
         if (_health <= 0)
-            Die();
-        else
-            DamageTaked?.Invoke();
+            Die();            
     }
 
     private void Die()
