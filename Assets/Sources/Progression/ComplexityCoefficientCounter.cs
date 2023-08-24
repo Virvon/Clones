@@ -11,6 +11,7 @@ namespace Clones.Progression
         [SerializeField] private MonoBehaviour _questComplexitybleBehavior;
         [SerializeField] private Wallet _wallet;
         [SerializeField] private float _savedCoefficientsCount;
+        [SerializeField] private Player _player;
 
         public float Coefficient { get; private set; }
 
@@ -26,11 +27,8 @@ namespace Clones.Progression
             _questComplexityble = (IComplexityble)_questComplexitybleBehavior;
 
             Coefficient = GetCoefficient();
-        }
 
-        private void OnDisable()
-        {
-            UpdateCoefficient();
+            _player.Died += OnPlayerDied;
         }
 
         private void OnValidate()
@@ -45,6 +43,13 @@ namespace Clones.Progression
                 Debug.LogError(nameof(_questComplexitybleBehavior) + " needs to implement " + nameof(IComplexityble));
                 _questComplexitybleBehavior = null;
             }
+        }
+
+        private void OnPlayerDied(IDamageable damageable)
+        {
+            UpdateCoefficient();
+
+            _player.Died -= OnPlayerDied;
         }
 
         private void UpdateCoefficient()
