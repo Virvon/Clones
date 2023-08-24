@@ -1,3 +1,4 @@
+using Clones.UI;
 using UnityEngine;
 
 public class TestPlayerAliveController : MonoBehaviour

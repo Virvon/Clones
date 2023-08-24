@@ -1,21 +1,24 @@
 ﻿using UnityEngine;
 
-public class LoadingPanel : MonoBehaviour
+namespace Clones.UI
 {
-    [SerializeField] private GameObject _background;
-
-    private void Start()
+    public class LoadingPanel : MonoBehaviour
     {
-        Close();
-    }
+        [SerializeField] private GameObject _background;
 
-    public void Open()
-    {
-        _background.SetActive(true);
-    }
+        private void Start()
+        {
+            Close();
+        }
 
-    public void Close()
-    {
-        _background.SetActive(false);
+        public void Open()
+        {
+            _background.SetActive(true);
+        }
+
+        public void Close()
+        {
+            _background.SetActive(false);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using Agava.YandexGames;
 using Clones.SceneLoadUtility;
 using System.Collections;
+using Clones.UI;
 
 public class SceneTransitionManager : MonoBehaviour
 {

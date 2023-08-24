@@ -30,7 +30,7 @@ public abstract class CharacterAttack : MonoBehaviour
 
     public void TryAttack(IDamageable target)
     {
-        if (_canAttack == false)
+        if (_canAttack == false && Target.IsAlive == false)
             return;
 
         if (_coroutine != null)

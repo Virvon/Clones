@@ -4,5 +4,5 @@ public interface IHealthble
 {
     public int Health { get; }
 
-    public event Action DamageTaked;
+    public event Action HealthChanged;
 }

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
     private int _health;
 
     public event Action<IDamageable> Died;
-    public event Action DamageTaked;
+    public event Action HealthChanged;
 
     public void Accept(IDropVisitor visitor) => visitor.Visit(this);
 
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
         if (_health <= 0)
             Die();
         else
-            DamageTaked?.Invoke();
+            HealthChanged?.Invoke();
     }
 
     private void Die()

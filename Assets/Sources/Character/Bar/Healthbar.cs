@@ -8,7 +8,7 @@ public abstract class Healthbar : Bar
 
     private int _health;
 
-    private void OnDisable() => _healthble.DamageTaked -= OnDamageTaked;
+    private void OnDisable() => _healthble.HealthChanged -= OnDamageTaked;
 
     protected void TakeHealthble(IHealthble healthble)
     {
@@ -18,7 +18,7 @@ public abstract class Healthbar : Bar
 
         Slider.value = Mathf.Clamp(_healthble.Health / _health, 0, 1);
 
-        _healthble.DamageTaked += OnDamageTaked;
+        _healthble.HealthChanged += OnDamageTaked;
     }
 
     private void OnDamageTaked()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     [SerializeField] private float _lookRotationSpeed;
     [SerializeField] private CharacterAttack _characterAttack;
     [SerializeField] private int _health;
+    [SerializeField] private float _invulnerabilityTime;
 
     public float AttackRadius => _attackRadius;
     public float DropCollectingRadius => _dropCollectingRadius;
@@ -30,31 +32,56 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     //private Stats _stats;
     private MovementStats _movementStats;
     private bool _isAlive;
+    private bool _isInvulnerable;
 
     public event Action<IDamageable> Died;
-    public event Action DamageTaked;
+    public event Action HealthChanged;
 
     private void Awake()
     {
         _movementStats = new MovementStats(10, _characterAttack.AttackSpeed);
         _isAlive = true;
+        _isInvulnerable = false;
         MaxHealth = _health;
     }
 
     public void TakeDamage(float damage)
     {
+
+        if (_isInvulnerable)
+            return;
+
         _health -= (int)damage;
 
-        DamageTaked?.Invoke();
+        HealthChanged?.Invoke();
 
         if (_health <= 0)
             Die();            
+    }
+
+    public void Reborn(int health)
+    {
+        StartCoroutine(InvulnerabilityTimer());
+
+        _health = health;
+        _isAlive = true;
+
+        HealthChanged?.Invoke();
     }
 
     private void Die()
     {
         _isAlive = false;
         Died?.Invoke(this);
+    }
+
+    private IEnumerator InvulnerabilityTimer()
+    {
+        _isInvulnerable = true;
+
+        yield return new WaitForSeconds(_invulnerabilityTime);
+
+        _isInvulnerable = false;
     }
 
 #if UNITY_EDITOR

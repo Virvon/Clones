@@ -24,10 +24,10 @@ public class HitColor : MonoBehaviour
     {
         _healthble = (IHealthble)_healthbleBehaviour;
 
-        _healthble.DamageTaked += OnDamageTaked;
+        _healthble.HealthChanged += OnDamageTaked;
     }
 
-    private void OnDisable() => _healthble.DamageTaked -= OnDamageTaked;
+    private void OnDisable() => _healthble.HealthChanged -= OnDamageTaked;
 
     private void OnDamageTaked() => _materialColor.SetPulseColor(_color, _emission, _delay);
 }

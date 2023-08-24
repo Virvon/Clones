@@ -1,30 +1,30 @@
 using Clones.Animation;
-using Clones.SceneLoadUtility;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class GameOverView : MonoBehaviour
+namespace Clones.UI
 {
-    [SerializeField] private GameObject _view;
-
-    private Animator _animator;
-
-    private void Start()
+    [RequireComponent(typeof(Animator))]
+    public class GameOverView : MonoBehaviour
     {
-        _animator = GetComponent<Animator>();   
-        _view.SetActive(false);
-    }
+        private Animator _animator;
 
-    public void Open() => _animator.SetBool(Animations.UI.Bools.IsOpened, true);
+        private void Start() => _animator = GetComponent<Animator>();
 
-    public void Close() => _animator.SetBool(Animations.UI.Bools.IsOpened, false);
-
-    public void Test()
-    {
-        SceneLoader.Load("TestMainScene", ()=>
+        private void OnDisable()
         {
-            Debug.Log("callbacked");
-            SceneLoader.Switch();
-        });
+            Time.timeScale = 1;
+        }
+
+        public void Open()
+        {
+            _animator.SetBool(Animations.UI.Bools.IsOpened, true);
+            Time.timeScale = 0;
+        }
+
+        public void Close()
+        {
+            _animator.SetBool(Animations.UI.Bools.IsOpened, false);
+            Time.timeScale = 1;
+        }
     }
 }

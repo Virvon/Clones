@@ -778,6 +778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextScene: TestMainScene
+  _loadingPanel: {fileID: 1081450007}
+  _showAdd: 1
 --- !u!1 &326505396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,8 +1789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
-  m_FrequencyGain: 0
+  m_AmplitudeGain: 2
+  m_FrequencyGain: 0.1
   mNoiseOffsets: {x: -642.9076, y: -195.59396, z: -888.14136}
 --- !u!1 &1013341233
 GameObject:
@@ -2063,7 +2065,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -18, y: -18}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1081450007
 MonoBehaviour:
@@ -5410,7 +5412,7 @@ MonoBehaviour:
   _shootingPoint: {fileID: 1305523559}
   _knockbackForce: 800
   _knockbackOffset: 400
-  _attackSpeed: 0.65
+  _attackSpeed: 0.5
 --- !u!4 &7941166938755181511
 Transform:
   m_ObjectHideFlags: 0
