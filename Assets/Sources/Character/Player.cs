@@ -40,6 +40,7 @@ public class Player : MonoBehaviour, IDamageable, IAttackble, IHealthble
     private void Awake()
     {
         _movementStats = new MovementStats(10, _characterAttack.AttackSpeed);
+
         _isAlive = true;
         _isInvulnerable = false;
         MaxHealth = _health;

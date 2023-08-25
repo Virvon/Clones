@@ -41,7 +41,12 @@ public class TopDownBullet : Bullet
 
         s_Hitted = Hitted;
         Muzzle = shootPoint;
-        TargetPosition = new Vector3(Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.x, ((MonoBehaviour)targetDamageable).transform.position.y, Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.z);
+
+        if (targetDamageable.IsAlive)
+            TargetPosition = new Vector3(Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.x, ((MonoBehaviour)targetDamageable).transform.position.y, Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.z);
+        else
+            TargetPosition = ((MonoBehaviour)selfDamageable).transform.position + ((MonoBehaviour)selfDamageable).transform.forward * 3;
+
         transform.position = TargetPosition;
         _selfDamageable = selfDamageable;
 

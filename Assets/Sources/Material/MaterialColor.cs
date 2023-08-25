@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(SkinnedMeshRenderer))]
 public class MaterialColor : MonoBehaviour
 {
-    [SerializeField] private Color _test;
     public Color StartColor { get; private set; }
     public Color StartEmission { get; private set; }
     public Color CurrentColor { get; private set; }
@@ -22,8 +21,6 @@ public class MaterialColor : MonoBehaviour
         StartEmission = _material.GetColor("_EmissionColor");
         CurrentColor = StartColor;
         CurrentEmission = StartEmission;
-
-        _test = StartColor;
     }
 
     public void LerpColor(Color start, Color end, float interpolation)

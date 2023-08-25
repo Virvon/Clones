@@ -644,6 +644,7 @@ GameObject:
   - component: {fileID: 307398974}
   - component: {fileID: 307398976}
   - component: {fileID: 307398977}
+  - component: {fileID: 307398978}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -780,6 +781,21 @@ MonoBehaviour:
   _nextScene: TestMainScene
   _loadingPanel: {fileID: 1081450007}
   _showAdd: 1
+--- !u!114 &307398978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307398969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5afdfa4c952c6147a0b0948060041ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 7859807253966476231}
+  _restoredHealthPercentage: 100
+  _maxRevivivalsCount: 1
 --- !u!1 &326505396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,6 +1486,7 @@ MonoBehaviour:
   _questComplexitybleBehavior: {fileID: 1058451616}
   _wallet: {fileID: 87327349}
   _savedCoefficientsCount: 7
+  _player: {fileID: 7859807253966476231}
 --- !u!114 &945969277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1625,17 @@ MonoBehaviour:
   _healthbarPrefab: {fileID: 225129561776973190, guid: f10aafe082f7e34448236a2b93dfd016, type: 3}
   _emiesSpawner: {fileID: 966598044}
   _healthbarOffset: {x: 0, y: 2.5, z: 0}
+--- !u!114 &969543502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3543535922482527550, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+  m_PrefabInstance: {fileID: 1578158945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa25a3913288664798f3f703fd7ac50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974478952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,8 +1817,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 2
-  m_FrequencyGain: 0.1
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
   mNoiseOffsets: {x: -642.9076, y: -195.59396, z: -888.14136}
 --- !u!1 &1013341233
 GameObject:
@@ -3110,14 +3138,54 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -88.69145
       objectReference: {fileID: 0}
+    - target: {fileID: 2800742649325094125, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800742649325094125, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800742649325094125, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 969543502}
+    - target: {fileID: 2800742649325094125, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800742649325094125, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Revival
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800742649325094125, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Clones.UI.RevivalButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800742649325094125, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2800742649418512258, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3543535922482527550, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: _gameoverView
+      value: 
+      objectReference: {fileID: 736881068}
+    - target: {fileID: 3543535922482527550, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: _playerRevival
+      value: 
+      objectReference: {fileID: 307398978}
     - target: {fileID: 6603451467763587113, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
       propertyPath: _view
       value: 
       objectReference: {fileID: 592883293}
+    - target: {fileID: 7288432916246177226, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef2ecc1f4049b744388b67c892a379fe, type: 3}
 --- !u!1 &1622606374
@@ -4574,7 +4642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebaa4350cefae824b90207e8e122a3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _test: {r: 0.6981132, g: 0.14818443, b: 0.14818443, a: 0}
 --- !u!114 &4343531917496159239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5289,6 +5356,7 @@ MonoBehaviour:
   _lookRotationSpeed: 1080
   _characterAttack: {fileID: 7859807253966476239}
   _health: 2
+  _invulnerabilityTime: 2
 --- !u!54 &7859807253966476232
 Rigidbody:
   m_ObjectHideFlags: 0

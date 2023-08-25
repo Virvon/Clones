@@ -7,6 +7,7 @@ public class MeleeAttack : CharacterAttack
 
     protected override void Attack()
     {
-        Target.TakeDamage(Attackble.Damage);
+        if(Target.IsAlive)
+            Target.TakeDamage(Attackble.Damage);
     }
 }

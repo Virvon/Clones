@@ -55,7 +55,11 @@ public class SplashBullet : Bullet
 
     public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
-        _direction = ((MonoBehaviour)targetDamageable).transform.position - shootPoint.transform.position;
+        if (targetDamageable.IsAlive)
+            _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1, 0)) - shootPoint.transform.position;
+        else
+            _direction = shootPoint.transform.forward;
+
         transform.position = shootPoint.transform.position;
 
         transform.rotation = Quaternion.LookRotation(_direction);

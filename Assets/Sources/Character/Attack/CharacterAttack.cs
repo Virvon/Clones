@@ -30,7 +30,7 @@ public abstract class CharacterAttack : MonoBehaviour
 
     public void TryAttack(IDamageable target)
     {
-        if (_canAttack == false && Target.IsAlive == false)
+        if (_canAttack == false || target.IsAlive == false)
             return;
 
         if (_coroutine != null)
@@ -45,11 +45,8 @@ public abstract class CharacterAttack : MonoBehaviour
 
     public void AnimationAttack()
     {
-        if(Target.IsAlive)
-        {
-            Attack();
-            Attacked?.Invoke();
-        }
+        Attack();
+        Attacked?.Invoke();
     }
 
     protected abstract void Attack();
