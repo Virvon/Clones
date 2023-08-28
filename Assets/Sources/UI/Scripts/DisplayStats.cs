@@ -19,7 +19,7 @@ public class DisplayStats : MonoBehaviour
         _textLevel.text = _card.Stats.Level.ToString();
         _textHealth.text = _card.Stats.Health.ToString();
         _textDamage.text = _card.Stats.Damage.ToString();
-        _textAttackSpeed.text = _card.Stats.AttackSpeed.ToString();
+        _textAttackSpeed.text = _card.Stats.AttackSpeedWand.ToString();
         _textMultiplierResources.text = _card.Stats.MultiplierResources.ToString();
         _upgradeButtonByDNA.GetClone(_card);
         _upgradeButtonByCoins.GetClone(_card);

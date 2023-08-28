@@ -29,7 +29,7 @@ public class UpgradeCloneButton : MonoBehaviour
             _selectedCard.UpgradeClone.UpgrageHealth();
 
         if (_isUseCoins)
-            _selectedCard.UpgradeClone.UpgrageWand();
+            _selectedCard.UpgradeClone.UpgragePower();
             
         UpdateStatus();
     }

@@ -20,7 +20,7 @@ public class SwitcherVisibleUIElements : MonoBehaviour
             _purchasableDeactivateObject = new List<IPurchasable>();
     }
 
-    public void SwitchVisiblePanels()
+    public void SwitchVisibleObjects()
     {
         if (_objectActivate != null)
             _purchasableActiveteObject = _objectActivate.GetComponent<IPurchasable>();
@@ -37,10 +37,10 @@ public class SwitcherVisibleUIElements : MonoBehaviour
         {
             if (_purchasableActiveteObject.ReturnIsPurchased())
             {
-                _purchasableActiveteObject.SetVisibleActivePanel(true);
+                _purchasableActiveteObject.Select(true);
 
                 foreach (var obj in _purchasableDeactivateObject)
-                    obj.SetVisibleActivePanel(false);
+                    obj.Select(false);
             }
         }
         else

@@ -10,11 +10,17 @@ public class CardWand : MonoBehaviour, IPurchasable
     [SerializeField] private GameObject _unlockPanel;
     [SerializeField] private GameObject _buyPanel;
     [SerializeField] private GameObject _frameFocus;
+    [SerializeField] private int _damage;
+    [SerializeField] private float _attackSpeed;
+
 
     public int Price => _price;
     public bool IsPurchased => _isPurchased;
+    public int Damage => _damage;
+    public float AttackSpeed => _attackSpeed;
 
     public UnityEvent Buyed;
+    public UnityEvent Selected;
 
     public void SwitchWisiblePanels(bool isActiveUnlockPanel, bool isActiveBuyPanel)
     {
@@ -33,8 +39,9 @@ public class CardWand : MonoBehaviour, IPurchasable
         return _isPurchased;
     }
 
-    public void SetVisibleActivePanel(bool isVisible)
+    public void Select(bool isVisible)
     {
         _frameFocus.SetActive(isVisible);
+        Selected.Invoke();
     }
 }

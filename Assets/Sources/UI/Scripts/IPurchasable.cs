@@ -1,5 +1,5 @@
 public interface IPurchasable 
 {
     public bool ReturnIsPurchased();
-    public void SetVisibleActivePanel(bool isVisible);
+    public void Select(bool isVisible);
 }

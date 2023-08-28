@@ -18,7 +18,7 @@ public class StartUI : MonoBehaviour
     private void Invoke()
     {
         _startSelectedCardClone.Selected();
-        _switcherVisibleUIElements.SwitchVisiblePanels();
+        _switcherVisibleUIElements.SwitchVisibleObjects();
         _wallet.ValuesChanged.Invoke();
     }
 }

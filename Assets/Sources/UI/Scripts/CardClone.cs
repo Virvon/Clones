@@ -59,7 +59,7 @@ public class CardClone : MonoBehaviour, IPurchasable
         return _isPurchased;
     }
 
-    public void SetVisibleActivePanel(bool isVisible)
+    public void Select(bool isVisible)
     {
         _frameFocus.SetActive(isVisible);
     }
