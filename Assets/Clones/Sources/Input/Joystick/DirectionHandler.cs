@@ -54,10 +54,7 @@ public class DirectionHandler : MonoBehaviour, IDragHandler
     private void OnDownTouch()
     {
         if (Direction != Vector2.zero)
-        {
             Activated?.Invoke();
-            Debug.Log("touch");
-        }
     }
 
     private void OnUpTouch()
