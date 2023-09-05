@@ -8,7 +8,7 @@
 
         public Game()
         {
-            _stateMachine = new GameStateMachine();
+            _stateMachine = new GameStateMachine(new SceneLoader());
         }
     }
 }

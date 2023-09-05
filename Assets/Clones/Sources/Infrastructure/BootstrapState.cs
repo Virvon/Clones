@@ -4,16 +4,21 @@ namespace Clones.Infrastructure
 {
     public class BootstrapState : IState
     {
-        private GameStateMachine _stateMachine;
+        private const string Scene = "Init2";
 
-        public BootstrapState(GameStateMachine stateMachine)
+        private readonly GameStateMachine _stateMachine;
+        private readonly SceneLoader _sceneLoader;
+
+        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader)
         {
             _stateMachine = stateMachine;
+            _sceneLoader = sceneLoader;
         }
 
         public void Enter()
         {
             RegisterServices();
+            _sceneLoader.Load(Scene, callback:  EnterLoadLevel);
         }
 
         public void Exit()
@@ -24,6 +29,11 @@ namespace Clones.Infrastructure
         private void RegisterServices()
         {
             Game.InputService = new MobileInputService();
+        }
+
+        private void EnterLoadLevel()
+        {
+            
         }
     }
 }

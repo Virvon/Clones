@@ -8,11 +8,11 @@ namespace Clones.Infrastructure
         private Dictionary<Type, IState> _states;
         private IState _currentState;
 
-        public GameStateMachine()
+        public GameStateMachine(SceneLoader sceneLoader)
         {
             _states = new Dictionary<Type, IState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this)
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader)
             };
         }
 

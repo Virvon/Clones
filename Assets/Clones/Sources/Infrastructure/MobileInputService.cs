@@ -10,17 +10,7 @@ public class MobileInputService : IInputService
 
     public MobileInputService()
     {
-        DirectionHandler.Activated += X;
-        DirectionHandler.Deactivated += Y;
-    }
-
-    private void X()
-    {
-        Activated?.Invoke();
-    }
-
-    private void Y()
-    {
-        Deactivated?.Invoke();
+        DirectionHandler.Activated += ()=> Activated?.Invoke();
+        DirectionHandler.Deactivated += () => Deactivated?.Invoke();
     }
 }
