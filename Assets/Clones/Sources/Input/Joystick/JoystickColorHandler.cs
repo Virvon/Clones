@@ -13,21 +13,18 @@ public class JoystickColorHandler : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Color _activateHandleBackgroundColor;
     [SerializeField] private Color _deactivateHandleBackgroundColor;
 
-    private DirectionHandler _directionHandler;
-
     private void OnEnable()
     {
-        _directionHandler = GetComponent<DirectionHandler>();
-
-        _directionHandler.Deactivated += SetDeactivateColor;
+        DirectionHandler.Deactivated += SetDeactivateColor;
+        DirectionHandler.Activated += SetActivateColor;
 
         SetDeactivateColor();
     }
 
     private void OnDisable()
     {
-        _directionHandler.Activated -= SetActivateColor;
-        _directionHandler.Deactivated -= SetDeactivateColor;
+        DirectionHandler.Activated -= SetActivateColor;
+        DirectionHandler.Deactivated -= SetDeactivateColor;
     }
     public void OnPointerDown(PointerEventData eventData)
     {

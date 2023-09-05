@@ -1,3 +1,4 @@
+using Clones.Infrastructure;
 using UnityEngine;
 
 namespace Clones.StateMachine
@@ -5,9 +6,15 @@ namespace Clones.StateMachine
     public class PlayerStateMashine : MonoBehaviour
     {
         [SerializeField] private State _firstState;
-        [SerializeField] private DirectionHandler _directionHandler;
+
+        private IInputService _inputService;
 
         public State CurrentState { get; private set; }
+
+        private void Awake()
+        {
+            _inputService = Game.InputService;
+        }
 
         private void Start() => Reset();
 
@@ -30,7 +37,7 @@ namespace Clones.StateMachine
             CurrentState = state;
 
             if (CurrentState != null)
-                CurrentState.Enter(_directionHandler);
+                CurrentState.Enter(_inputService);
         }
 
         private void Reset()
@@ -38,7 +45,7 @@ namespace Clones.StateMachine
             CurrentState = _firstState;
 
             if (CurrentState != null)
-                CurrentState.Enter(_directionHandler);
+                CurrentState.Enter(_inputService);
         }
     }
 }

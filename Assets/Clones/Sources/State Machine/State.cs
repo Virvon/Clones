@@ -7,18 +7,18 @@ namespace Clones.StateMachine
     {
         [SerializeField] private List<Transition> _transitions;
 
-        protected DirectionHandler DirectionHandler { get; private set; }
+        protected IInputService InputServiece { get; private set; }
 
-        public void Enter(DirectionHandler directionHandler)
+        public void Enter(IInputService inputService)
         {
             if(enabled == false)
             {
-                DirectionHandler = directionHandler;
+                InputServiece = inputService;
                 enabled = true;
 
                 foreach(var transition in _transitions)
                 {
-                    transition.Init(directionHandler);
+                    transition.Init(inputService);
                     transition.enabled = true;
                 }
             }

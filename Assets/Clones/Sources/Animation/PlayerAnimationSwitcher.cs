@@ -22,8 +22,8 @@ namespace Clones.Animation
 
             _characterAttack.AttackStarted += OnAttackStarted;
 
-            _directionHandler.Activated += OnMove;
-            _directionHandler.Deactivated += OnStop;
+            //_directionHandler.Activated += OnMove;
+            //_directionHandler.Deactivated += OnStop;
 
             _player.MovementStats.MovementSpeedChanged += OnMovementSpeedChanged;
         }
@@ -32,8 +32,8 @@ namespace Clones.Animation
         {
             _characterAttack.AttackStarted -= OnAttackStarted;
 
-            _directionHandler.Activated += OnMove;
-            _directionHandler.Deactivated += OnStop;
+            //_directionHandler.Activated += OnMove;
+            //_directionHandler.Deactivated += OnStop;
 
             _player.MovementStats.MovementSpeedChanged += OnMovementSpeedChanged;
         }

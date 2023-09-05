@@ -19,19 +19,19 @@ namespace Clones.StateMachine
             _surfaceSlider = GetComponent<SurfaceSlider>();
             _player = GetComponent<Player>();
 
-            DirectionHandler.Activated += Move;
-            DirectionHandler.Deactivated += Stop;
+            InputServiece.Activated += Move;
+            InputServiece.Deactivated += Stop;
         }
 
         private void OnDisable()
         {
-            DirectionHandler.Activated -= Move;
-            DirectionHandler.Deactivated -= Stop;
+            InputServiece.Activated -= Move;
+            InputServiece.Deactivated -= Stop;
         }
 
         private void Move()
         {
-            Vector3 direction = Quaternion.Euler(0, _directionOffset, 0) * new Vector3(DirectionHandler.Direction.x, 0, DirectionHandler.Direction.y);
+            Vector3 direction = Quaternion.Euler(0, _directionOffset, 0) * new Vector3(InputServiece.Direction.x, 0, InputServiece.Direction.y);
 
             direction = _surfaceSlider.Project(direction.normalized);
 

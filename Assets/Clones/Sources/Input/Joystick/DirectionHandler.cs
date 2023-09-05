@@ -7,12 +7,14 @@ public class DirectionHandler : MonoBehaviour, IDragHandler
 {
     [SerializeField] private RectTransform _handleBackground;
 
-    public Vector2 Direction { get; private set; }
+    public static Vector2 Direction { get; private set; }
+    public static DirectionHandler Instance => _instance ?? (_instance = new DirectionHandler());
 
+    private static DirectionHandler _instance;
     private PlayerInput _input;
 
-    public event Action Activated;
-    public event Action Deactivated;
+    public static event Action Activated;
+    public static event Action Deactivated;
 
     private void OnEnable()
     {
@@ -52,7 +54,10 @@ public class DirectionHandler : MonoBehaviour, IDragHandler
     private void OnDownTouch()
     {
         if (Direction != Vector2.zero)
+        {
             Activated?.Invoke();
+            Debug.Log("touch");
+        }
     }
 
     private void OnUpTouch()

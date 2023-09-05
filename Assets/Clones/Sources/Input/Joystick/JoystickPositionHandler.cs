@@ -8,22 +8,20 @@ public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler
     [SerializeField] private RectTransform _handle;
     [SerializeField] private RectTransform _handleBackground;
 
-    private DirectionHandler _directionHandler;
     private Vector2 _handleBackgroundStartPosition;
 
     private void OnEnable()
     {
         _handleBackgroundStartPosition = _handleBackground.anchoredPosition;
-        _directionHandler = GetComponent<DirectionHandler>();
 
-        _directionHandler.Activated += OnActivated;
-        _directionHandler.Deactivated += OnDeactivated;
+        DirectionHandler.Activated += OnActivated;
+        DirectionHandler.Deactivated += OnDeactivated;
     }
 
     private void OnDisable()
     {
-        _directionHandler.Activated -= OnActivated;
-        _directionHandler.Deactivated -= OnDeactivated;
+        DirectionHandler.Activated -= OnActivated;
+        DirectionHandler.Deactivated -= OnDeactivated;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -36,7 +34,7 @@ public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler
 
     private void OnActivated()
     {
-        _handle.anchoredPosition = _directionHandler.Direction * (_handleBackground.sizeDelta / 2);
+        _handle.anchoredPosition = DirectionHandler.Direction * (_handleBackground.sizeDelta / 2);
     }
 
     private void OnDeactivated()
