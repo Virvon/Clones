@@ -4,7 +4,7 @@
     {
         private static AllServices _instance;
 
-        public static AllServices Instance => _instance ??= new AllServices();
+        public static AllServices Instance => _instance ??= new();
 
         public void RegisterSingle<TService>(TService implementation) where TService : IService => 
             Implementatioin<TService>.ServiceInstance = implementation;

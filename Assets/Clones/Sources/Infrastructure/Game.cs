@@ -8,7 +8,7 @@ namespace Clones.Infrastructure
 
         public Game(LoadingPanel loadingPanel)
         {
-            _stateMachine = new GameStateMachine(new SceneLoader(), loadingPanel);
+            _stateMachine = new GameStateMachine(new SceneLoader(), loadingPanel, AllServices.Instance);
         }
     }
 }

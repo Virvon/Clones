@@ -13,10 +13,10 @@ namespace Clones.StateMachine
 
         private void Awake()
         {
-            _inputService = Game.InputService;
+            _inputService = AllServices.Instance.Single<IInputService>();
+            Reset();
         }
 
-        private void Start() => Reset();
 
         private void Update()
         {

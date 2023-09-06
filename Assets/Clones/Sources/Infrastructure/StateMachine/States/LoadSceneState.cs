@@ -30,6 +30,7 @@ namespace Clones.Infrastructure
         private void OnLoaded()
         {
             GameObject player = _gameFactory.CreatePlayer();
+            _gameFactory.CreateHud();
 
             _stateMachine.Enter<GameLoopState>();
         }

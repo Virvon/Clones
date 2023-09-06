@@ -9,12 +9,12 @@ namespace Clones.Infrastructure
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _currentState;
 
-        public GameStateMachine(SceneLoader sceneLoader, LoadingPanel loadingPanel)
+        public GameStateMachine(SceneLoader sceneLoader, LoadingPanel loadingPanel, AllServices services)
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel, services.Single<IGameFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState(this)
             };
         }

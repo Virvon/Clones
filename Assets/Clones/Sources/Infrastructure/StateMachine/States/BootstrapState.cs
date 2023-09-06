@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Clones.Infrastructure
 {
@@ -9,18 +10,19 @@ namespace Clones.Infrastructure
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
+        private readonly AllServices _services;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader)
+        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
+            _services = services;
+
+            RegisterServices();
         }
 
-        public void Enter()
-        {
-            RegisterServices();
-            _sceneLoader.Load(InitScene, callback:  EnterLoadLevel);
-        }
+        public void Enter() => 
+            _sceneLoader.Load(InitScene, callback: EnterLoadLevel);
 
         public void Exit()
         {
@@ -29,8 +31,9 @@ namespace Clones.Infrastructure
 
         private void RegisterServices()
         {
-            AllServices.Instance.RegisterSingle<IInputService>(new MobileInputService());
-            AllServices.Instance.RegisterSingle<IGameFactory>(new GameFactory(AllServices.Instance.Single<IAssetProvider>()));
+            _services.RegisterSingle<IInputService>(new MobileInputService());
+            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
+            _services.RegisterSingle<IGameFactory>(new GameFactory(AllServices.Instance.Single<IAssetProvider>()));
         }
 
         private void EnterLoadLevel() => 
