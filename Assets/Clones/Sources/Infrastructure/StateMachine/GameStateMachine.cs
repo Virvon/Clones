@@ -1,19 +1,21 @@
-﻿using System;
+﻿using Clones.UI;
+using System;
 using System.Collections.Generic;
 
 namespace Clones.Infrastructure
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _currentState;
 
-        public GameStateMachine(SceneLoader sceneLoader)
+        public GameStateMachine(SceneLoader sceneLoader, LoadingPanel loadingPanel)
         {
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader)
+                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel),
+                [typeof(GameLoopState)] = new GameLoopState(this)
             };
         }
 
@@ -29,7 +31,7 @@ namespace Clones.Infrastructure
             state.Enter(payload);
         }
 
-        private TState GetState<TState>() where TState : class, IExitableState => 
+        private TState GetState<TState>() where TState : class, IExitableState =>
             _states[typeof(TState)] as TState;
 
         private TState ChangeState<TState>() where TState : class, IExitableState

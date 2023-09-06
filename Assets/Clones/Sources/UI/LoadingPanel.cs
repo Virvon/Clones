@@ -6,9 +6,9 @@ namespace Clones.UI
     {
         [SerializeField] private GameObject _background;
 
-        private void Start()
+        private void Awake()
         {
-            Close();
+            DontDestroyOnLoad(this);
         }
 
         public void Open()

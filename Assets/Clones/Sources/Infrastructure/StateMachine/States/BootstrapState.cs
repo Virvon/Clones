@@ -29,7 +29,8 @@ namespace Clones.Infrastructure
 
         private void RegisterServices()
         {
-            Game.InputService = new MobileInputService();
+            AllServices.Instance.RegisterSingle<IInputService>(new MobileInputService());
+            AllServices.Instance.RegisterSingle<IGameFactory>(new GameFactory(AllServices.Instance.Single<IAssetProvider>()));
         }
 
         private void EnterLoadLevel() => 

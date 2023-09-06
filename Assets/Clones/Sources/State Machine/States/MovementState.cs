@@ -1,3 +1,4 @@
+using Clones.Infrastructure;
 using UnityEngine;
 
 namespace Clones.StateMachine
@@ -11,6 +12,7 @@ namespace Clones.StateMachine
         private Rigidbody _rigidbody;
         private SurfaceSlider _surfaceSlider;
         private Player _player;
+        private IInputService _input;
         private float _movementSpeed => _player.MovementSpeed;
 
         private void OnEnable()
@@ -18,15 +20,16 @@ namespace Clones.StateMachine
             _rigidbody = GetComponent<Rigidbody>();
             _surfaceSlider = GetComponent<SurfaceSlider>();
             _player = GetComponent<Player>();
+            _input = AllServices.Instance.Single<IInputService>(); 
 
-            InputServiece.Activated += Move;
-            InputServiece.Deactivated += Stop;
+            _input.Activated += Move;
+            _input.Deactivated += Stop;
         }
 
         private void OnDisable()
         {
-            InputServiece.Activated -= Move;
-            InputServiece.Deactivated -= Stop;
+            _input.Activated -= Move;
+            _input.Deactivated -= Stop;
         }
 
         private void Move()

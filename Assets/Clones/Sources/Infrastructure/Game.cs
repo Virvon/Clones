@@ -1,14 +1,14 @@
-﻿namespace Clones.Infrastructure
+﻿using Clones.UI;
+
+namespace Clones.Infrastructure
 {
     public class Game
     {
-        public static IInputService InputService;
-
         public GameStateMachine _stateMachine { get; private set; }
 
-        public Game()
+        public Game(LoadingPanel loadingPanel)
         {
-            _stateMachine = new GameStateMachine(new SceneLoader());
+            _stateMachine = new GameStateMachine(new SceneLoader(), loadingPanel);
         }
     }
 }
