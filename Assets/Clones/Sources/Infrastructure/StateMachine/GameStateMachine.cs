@@ -14,8 +14,9 @@ namespace Clones.Infrastructure
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel, services.Single<IGameFactory>()),
-                [typeof(GameLoopState)] = new GameLoopState(this)
+                [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IGameFactory>()),
+                [typeof(MainMenuLoopState)] = new MainMenuLoopState(this, services.Single<IMainMenuFactory>()),
+                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel)
             };
         }
 
@@ -25,10 +26,10 @@ namespace Clones.Infrastructure
             state.Enter();
         }
 
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
+        public void Enter<TState, TPayload>(TPayload payload, Action callback) where TState : class, IPayloadState<TPayload>
         {
             TState state = ChangeState<TState>();
-            state.Enter(payload);
+            state.Enter(payload, callback);
         }
 
         private TState GetState<TState>() where TState : class, IExitableState =>

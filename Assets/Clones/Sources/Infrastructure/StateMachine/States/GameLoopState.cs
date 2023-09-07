@@ -1,15 +1,20 @@
-﻿namespace Clones.Infrastructure
+﻿using UnityEngine;
+
+namespace Clones.Infrastructure
 {
     public class GameLoopState : IState
     {
-        public GameLoopState(GameStateMachine stateMachine)
-        {
+        private IGameFactory _gameFactory;
 
+        public GameLoopState(GameStateMachine stateMachine, IGameFactory gameFactory)
+        {
+            _gameFactory = gameFactory;
         }
 
         public void Enter()
         {
-            
+            GameObject player = _gameFactory.CreatePlayer();
+            _gameFactory.CreateHud();
         }
 
         public void Exit()

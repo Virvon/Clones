@@ -1,5 +1,5 @@
 ﻿using Clones.UI;
-using UnityEngine;
+using System;
 
 namespace Clones.Infrastructure
 {
@@ -8,31 +8,22 @@ namespace Clones.Infrastructure
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingPanel _loadingPanel;
-        private readonly IGameFactory _gameFactory;
 
-        public LoadSceneState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingPanel loadingPanel, IGameFactory gameFactory)
+        public LoadSceneState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingPanel loadingPanel)
         {
             _stateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _loadingPanel = loadingPanel;
-            _gameFactory = gameFactory;
         }
 
-        public void Enter(string sceneName)
+        public void Enter(string sceneName, Action callback)
         {
-            _sceneLoader.Load(sceneName, callback: OnLoaded);
+            _sceneLoader.Load(sceneName, callback);
+
             _loadingPanel.Open();
         }
 
-        public void Exit() => 
+        public void Exit() =>
             _loadingPanel.Close();
-
-        private void OnLoaded()
-        {
-            GameObject player = _gameFactory.CreatePlayer();
-            _gameFactory.CreateHud();
-
-            _stateMachine.Enter<GameLoopState>();
-        }
     }
 }

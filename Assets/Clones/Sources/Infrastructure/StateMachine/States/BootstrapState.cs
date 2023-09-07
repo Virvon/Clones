@@ -1,12 +1,9 @@
-﻿using System;
-using UnityEngine;
-
-namespace Clones.Infrastructure
+﻿namespace Clones.Infrastructure
 {
     public class BootstrapState : IState
     {
-        private const string InitScene = "Init2";
-        private const string GameScene = "ExampleScene2";
+        private const string InitScene = "InitInfrastructure";
+        private const string MainMenuScene = "MainInfrasructureScene";
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
@@ -22,7 +19,7 @@ namespace Clones.Infrastructure
         }
 
         public void Enter() => 
-            _sceneLoader.Load(InitScene, callback: EnterLoadLevel);
+            _sceneLoader.Load(InitScene, callback: EnterMainMenu);
 
         public void Exit()
         {
@@ -31,12 +28,15 @@ namespace Clones.Infrastructure
 
         private void RegisterServices()
         {
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<IInputService>(new MobileInputService());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(AllServices.Instance.Single<IAssetProvider>()));
+            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
+            _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
+            _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>()));
         }
 
-        private void EnterLoadLevel() => 
-            _stateMachine.Enter<LoadSceneState, string>(GameScene);
+        private void EnterMainMenu() => 
+            _stateMachine.Enter<LoadSceneState, string>(MainMenuScene, _stateMachine.Enter<MainMenuLoopState>);
     }
 }
