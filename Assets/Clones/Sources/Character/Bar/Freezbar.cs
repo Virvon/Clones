@@ -1,26 +1,28 @@
-﻿using UnityEngine;
-
-public class Freezbar : Bar
+﻿public class Freezbar : Bar
 {
-    [SerializeField] private Freezing _freezing;
+    private IFreezingPercentChanger _freezingPercentChanger;
 
-    private void OnEnable() => _freezing.FreezingPercentChanged += OnFreezPrecentChanged;
-
-    private void OnDisable() => _freezing.FreezingPercentChanged -= OnFreezPrecentChanged;
+    private void OnDisable() => _freezingPercentChanger.FreezingPercentChanged -= OnFreezPrecentChanged;
 
     private void Start()
     {
-        Slider.value = _freezing.FreezingPercent;
+        Slider.value = _freezingPercentChanger.FreezingPercent;
         Slider.gameObject.SetActive(false);
+    }
+
+    public void Init(IFreezingPercentChanger freezingPercentChanger)
+    {
+        _freezingPercentChanger = freezingPercentChanger;
+        _freezingPercentChanger.FreezingPercentChanged += OnFreezPrecentChanged;
     }
 
     private void OnFreezPrecentChanged()
     {
-        if (_freezing.FreezingPercent <= 0)
+        if (_freezingPercentChanger.FreezingPercent <= 0)
             Slider.gameObject.SetActive(false);
-        else if (_freezing.FreezingPercent > 0 && Slider.IsActive() == false)
+        else if (_freezingPercentChanger.FreezingPercent > 0 && Slider.IsActive() == false)
             Slider.gameObject.SetActive(true);
 
-        StartAnimation(_freezing.FreezingPercent);
+        StartAnimation(_freezingPercentChanger.FreezingPercent);
     }
 }

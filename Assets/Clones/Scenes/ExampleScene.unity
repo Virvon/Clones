@@ -320,7 +320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wallet: {fileID: 87327349}
   _currecncyCounterData: {fileID: 11400000, guid: e2a61d35ff3d8ff4da3594fc23e1e8ae, type: 2}
-  _player: {fileID: 7859807253966476231}
   _quest: {fileID: 1058451616}
 --- !u!114 &87327353
 MonoBehaviour:
@@ -751,9 +750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da53850cc036f3f46bdf38605a87e486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testSceneManager: {fileID: 0}
-  _player: {fileID: 7859807253966476231}
-  _gameOverView: {fileID: 736881068}
 --- !u!114 &307398976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5afdfa4c952c6147a0b0948060041ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 7859807253966476231}
   _restoredHealthPercentage: 100
   _maxRevivivalsCount: 1
 --- !u!1 &326505396
@@ -1337,7 +1332,7 @@ MonoBehaviour:
   _slider: {fileID: 1905954713}
   _animationSpeed: 0.2
   _healthValue: {fileID: 99902745}
-  _player: {fileID: 7859807253966476231}
+  Health: {fileID: 0}
 --- !u!114 &811721898 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4136646571826402782, guid: 2851f8be121075843b5b3717ec3c37a1, type: 3}
@@ -1486,7 +1481,6 @@ MonoBehaviour:
   _questComplexitybleBehavior: {fileID: 1058451616}
   _wallet: {fileID: 87327349}
   _savedCoefficientsCount: 7
-  _player: {fileID: 7859807253966476231}
 --- !u!114 &945969277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,7 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnerData: {fileID: 11400000, guid: 05259f8e6b11c94439f5c5ecf563a63d, type: 2}
-  _target: {fileID: 7859807253966476231}
+  _target: {fileID: 0}
   _complexity: {fileID: 945969275}
   _currentBiome: {fileID: 811721901}
 --- !u!4 &966598045
@@ -1960,7 +1954,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 1781036552}
   _animationSpeed: 0.2
-  _freezing: {fileID: 7859807253966476238}
 --- !u!1 &1058451615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,7 +1987,6 @@ MonoBehaviour:
   _currencyCounter: {fileID: 87327351}
   _wallet: {fileID: 87327349}
   _complexity: {fileID: 945969275}
-  _player: {fileID: 7859807253966476231}
 --- !u!4 &1058451617
 Transform:
   m_ObjectHideFlags: 0

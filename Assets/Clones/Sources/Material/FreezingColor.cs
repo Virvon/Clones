@@ -3,7 +3,7 @@
 public class FreezingColor : MonoBehaviour
 {
     [SerializeField] private MaterialColor _materialColor;
-    [SerializeField] private Freezing _freezing;
+    [SerializeField] private PlayerFreezing _freezing;
 
     [SerializeField] private Color _color;
     [SerializeField] private Color _emission;

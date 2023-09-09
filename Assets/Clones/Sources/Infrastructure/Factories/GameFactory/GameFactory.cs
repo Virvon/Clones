@@ -17,8 +17,13 @@ namespace Clones.Infrastructure
             _inputService = inputService;
         }
 
-        public void CreateHud() => 
-            _assets.Instantiate(AssetPath.HudPath);
+        public void CreateHud()
+        {
+            var had = _assets.Instantiate(AssetPath.HudPath);
+
+            had.GetComponentInChildren<Freezbar>()
+                .Init(_playerObject.GetComponentInChildren<PlayerFreezing>());
+        }
 
         public GameObject CreatePlayer()
         {

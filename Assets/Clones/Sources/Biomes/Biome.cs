@@ -22,6 +22,7 @@ namespace Clones.Biomes
             {
                 Player = player;
                 PlayerEntered?.Invoke(this);
+                OnPlayerEntered();
             }
         }
 
@@ -31,7 +32,12 @@ namespace Clones.Biomes
             {
                 Player = null;
                 PlayerExited?.Invoke();
+                OnPlayerExited();
             }
         }
+
+        protected virtual void OnPlayerEntered() { }
+
+        protected virtual void OnPlayerExited() { }
     }
 }

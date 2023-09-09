@@ -4,7 +4,7 @@ using UnityEngine;
 public class FreezingScreen : MonoBehaviour
 {
     [SerializeField] private CameraShader _cameraShader;
-    [SerializeField] private Freezing _freezing;
+    [SerializeField] private PlayerFreezing _freezing;
 
     [SerializeField] private float _minSize;
     [SerializeField] private float _maxSize;

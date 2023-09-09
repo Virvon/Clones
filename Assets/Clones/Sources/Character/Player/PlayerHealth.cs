@@ -3,16 +3,23 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 {
-    public bool IsAlive => throw new NotImplementedException();
+    [SerializeField] private int health;
 
-    public int Health => throw new NotImplementedException();
+    public bool IsAlive => true;
+
+    public int Health => health;
     public int MaxHealth { get; private set; }
 
     public event Action<IDamageable> Died;
     public event Action HealthChanged;
 
+    private void Start()
+    {
+        MaxHealth = health;
+    }
+
     public void TakeDamage(float damage)
     {
-        throw new NotImplementedException();
+        Debug.Log("damaged " + damage);
     }
 }
