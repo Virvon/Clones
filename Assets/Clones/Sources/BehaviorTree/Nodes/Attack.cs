@@ -8,13 +8,13 @@ namespace Clones.BehaviorTree
         public SharedCharacterAttack SharedCharacterAttack;
         public SharedEnemy Enemy;
 
-        private Player _target => Enemy.Value.Target;
+        //private Player _target => Enemy.Value.Target;
 
         public override TaskStatus OnUpdate()
         {
-            SharedCharacterAttack.Value.TryAttack(_target);
+            //SharedCharacterAttack.Value.TryAttack(_target);
 
-            RotateTo(_target.transform.position);
+            //RotateTo(_target.transform.position);
             return TaskStatus.Running;
         }
 

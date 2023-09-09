@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Player), typeof(Freezing))]
+[RequireComponent(typeof(Freezing))]
 public class FreezingMovement : MonoBehaviour 
 {
     [SerializeField] private float _freezingMovementSpeedPercent;
     [SerializeField] private float _freezingAttackCooldownPercent;
 
-    private MovementStats _playerMovementStats;
+    //private MovementStats _playerMovementStats;
     private Freezing _freezing;
 
     private float _movementSpeed;
@@ -25,13 +25,13 @@ public class FreezingMovement : MonoBehaviour
 
     private void Start()
     {
-        _playerMovementStats = GetComponent<Player>().MovementStats;
+        //_playerMovementStats = GetComponent<Player>().MovementStats;
 
-        _movementSpeed = _playerMovementStats.MovementSpeed;
-        _attackCooldown = _playerMovementStats.AttakcCooldown;
+        //_movementSpeed = _playerMovementStats.MovementSpeed;
+        //_attackCooldown = _playerMovementStats.AttakcCooldown;
 
-        _freezingMovementSpeed = _playerMovementStats.MovementSpeed * (_freezingMovementSpeedPercent / 100);
-        _freezingAttackSpeed = _playerMovementStats.AttakcCooldown * (_freezingAttackCooldownPercent / 100);
+        //_freezingMovementSpeed = _playerMovementStats.MovementSpeed * (_freezingMovementSpeedPercent / 100);
+        //_freezingAttackSpeed = _playerMovementStats.AttakcCooldown * (_freezingAttackCooldownPercent / 100);
     }
 
     private void OnDisable() => _freezing.FreezingPercentChanged -= OnFreezPrecentChanged;
@@ -44,6 +44,6 @@ public class FreezingMovement : MonoBehaviour
         currentMovementSpeed = (float)Math.Round((double)currentMovementSpeed, 2);
         currentAttackCooldown = (float)Math.Round((double)currentAttackCooldown, 2);
 
-        _playerMovementStats.Freez(currentMovementSpeed, currentAttackCooldown);
+        //_playerMovementStats.Freez(currentMovementSpeed, currentAttackCooldown);
     }
 }

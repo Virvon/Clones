@@ -1,25 +1,28 @@
 using Clones.Infrastructure;
+using System;
 using UnityEngine;
 
 namespace Clones.StateMachine
 {
-    [RequireComponent(typeof(Rigidbody), typeof(SurfaceSlider), typeof(Player))]
+    [RequireComponent(typeof(Rigidbody), typeof(SurfaceSlider))]
     public class MovementState : State
     {
+        [SerializeField] private float _movementSpeed;
         [SerializeField] private float _rotationSpeed = 1080;
         [SerializeField] private float _directionOffset;
 
         private Rigidbody _rigidbody;
         private SurfaceSlider _surfaceSlider;
-        private Player _player;
         private IInputService _input;
-        private float _movementSpeed => _player.MovementSpeed;
+
+        public float MovementSpeed => _movementSpeed;
+
+        public event Action MovementSpeedChanged;
 
         private void OnEnable()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _surfaceSlider = GetComponent<SurfaceSlider>();
-            _player = GetComponent<Player>();
             _input = AllServices.Instance.Single<IInputService>(); 
 
             _input.Activated += Move;

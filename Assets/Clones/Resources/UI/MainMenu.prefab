@@ -440,7 +440,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2087395897080371944}
         m_TargetAssemblyTypeName: Clones.UI.PlayButton, Assembly-CSharp
-        m_MethodName: Test
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,21 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Player), typeof(Freezing))]
+[RequireComponent(typeof(PlayerHealth), typeof(Freezing))]
 public class FreezingDamage : MonoBehaviour
 {
     [SerializeField] private float DamagePrecent;
     [SerializeField] private float DamageCooldown;
 
     private Freezing _freezing;
-    private Player _player;
+    private PlayerHealth _playerHealth;
     private Coroutine _damager;
-    private float _damage => _player.MaxHealth * (DamagePrecent / 100);
+    private float _damage => _playerHealth.MaxHealth * (DamagePrecent / 100);
 
     private void OnEnable()
     {
         _freezing = GetComponent<Freezing>();
-        _player = GetComponent<Player>();
+        _playerHealth = GetComponent<PlayerHealth>();
 
         _freezing.FreezingPercentChanged += OnFreezingPrecentChanged;
     }
@@ -39,7 +39,7 @@ public class FreezingDamage : MonoBehaviour
 
         while(_freezing.FreezingPercent == 1)
         {
-            _player.TakeDamage(_damage);
+            _playerHealth.TakeDamage(_damage);
 
             yield return delay;
         }

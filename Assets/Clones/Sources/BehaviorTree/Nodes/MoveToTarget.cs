@@ -13,8 +13,8 @@ namespace Clones.BehaviorTree
 
         private NavMeshAgent _agent;
         private Vector3 _targetPoint;
-        private Player _target => Enemy.Value.Target;
-        private float _distanceToTarget => (Enemy.Value.transform.position - _target.transform.position).magnitude;
+        //private Player _target => Enemy.Value.Target;
+        //private float _distanceToTarget => (Enemy.Value.transform.position - _target.transform.position).magnitude;
 
         public override void OnStart()
         {
@@ -27,15 +27,15 @@ namespace Clones.BehaviorTree
 
         public override TaskStatus OnUpdate()
         {
-            if (_distanceToTarget > TargetRadius.Value + _agent.stoppingDistance)
-            {
-                if ((_target.transform.position - _targetPoint).magnitude > TargetRadius.Value)
-                    _targetPoint = GetPointInTargetRadius();
-            }
-            else if (_targetPoint != _target.transform.position)
-            {
-                _targetPoint = _target.transform.position;
-            }
+            //if (_distanceToTarget > TargetRadius.Value + _agent.stoppingDistance)
+            //{
+            //    if ((_target.transform.position - _targetPoint).magnitude > TargetRadius.Value)
+            //        _targetPoint = GetPointInTargetRadius();
+            //}
+            //else if (_targetPoint != _target.transform.position)
+            //{
+            //    _targetPoint = _target.transform.position;
+            //}
 
             _agent.SetDestination(_targetPoint);
             Debug.DrawLine(Enemy.Value.transform.position, _targetPoint);
@@ -53,9 +53,10 @@ namespace Clones.BehaviorTree
         private Vector3 GetPointInTargetRadius()
         {
             NavMeshHit hit;
-            NavMesh.SamplePosition(Random.insideUnitSphere * TargetRadius.Value + _target.transform.position, out hit, TargetRadius.Value, NavMesh.AllAreas);
+            //NavMesh.SamplePosition(Random.insideUnitSphere * TargetRadius.Value + _target.transform.position, out hit, TargetRadius.Value, NavMesh.AllAreas);
 
-            return hit.position;
+            //return hit.position;
+            return Vector3.zero;
         }
     }
 }

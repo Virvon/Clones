@@ -4,7 +4,7 @@ namespace Clones.Infrastructure
 {
     public class GameLoopState : IState
     {
-        private IGameFactory _gameFactory;
+        private readonly IGameFactory _gameFactory;
 
         public GameLoopState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
@@ -13,8 +13,10 @@ namespace Clones.Infrastructure
 
         public void Enter()
         {
-            GameObject player = _gameFactory.CreatePlayer();
+            _gameFactory.CreatePlayer();
+            _gameFactory.CreateWorldGenerator();
             _gameFactory.CreateHud();
+            _gameFactory.CreateVirtualCamera();
         }
 
         public void Exit()

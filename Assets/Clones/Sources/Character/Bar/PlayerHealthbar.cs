@@ -2,7 +2,7 @@
 
 public class PlayerHealthbar : Healthbar
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerHealth Health;
 
-    private void Awake() => TakeHealthble(_player);
+    private void Awake() => TakeHealthble(Health);
 }

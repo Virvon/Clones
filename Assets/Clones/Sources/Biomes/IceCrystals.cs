@@ -18,7 +18,7 @@
 
         private void OnPlayerEntered(Biome biome)
         {
-            _freezing = Player.GetComponent<Freezing>();
+            //_freezing = Player.GetComponent<Freezing>();
             _freezing.Freez(1, 15);
         }
 

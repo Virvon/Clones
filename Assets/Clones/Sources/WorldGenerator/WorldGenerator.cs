@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshSurface))]
 public class WorldGenerator : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    //[SerializeField] private Player _player;
     [SerializeField] private List<GameObject> _tilePrefabs;
     [SerializeField] private float _generationRadius;
     [SerializeField] private float _deactivationRadius;
@@ -185,7 +185,7 @@ public class WorldGenerator : MonoBehaviour
     {
         if (_playerTransform == null)
         {
-            _playerTransform = _player.transform;
+            //_playerTransform = _player.transform;
 
             if (_playerTransform == null)
                 throw new NullReferenceException("The MovementController does not have a controlled object!");

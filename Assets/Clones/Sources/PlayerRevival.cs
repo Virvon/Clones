@@ -4,7 +4,7 @@ using System;
 
 public class PlayerRevival : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    //[SerializeField] private Player _player;
     [SerializeField, Range(0, 100)] int _restoredHealthPercentage;
     [SerializeField] private int _maxRevivivalsCount;
 
@@ -29,7 +29,7 @@ public class PlayerRevival : MonoBehaviour
 #else
         _revivivalsCount++;
 
-        _player.Reborn((int)((_restoredHealthPercentage / 100) * _player.MaxHealth));
+        //_player.Reborn((int)((_restoredHealthPercentage / 100) * _player.MaxHealth));
 
         callback?.Invoke();
 #endif

@@ -17,15 +17,17 @@ namespace Clones.Biomes
         {
             bool isFirstAttack = true;
 
-            while (Player != null)
-            {
-                if (isFirstAttack)
-                    isFirstAttack = false;
-                else
-                    Player.TakeDamage(Player.MaxHealth * (_damagePercentage / 100));
+            //while (Player != null)
+            //{
+            //    if (isFirstAttack)
+            //        isFirstAttack = false;
+            //    else
+            //        Player.TakeDamage(Player.MaxHealth * (_damagePercentage / 100));
 
-                yield return new WaitForSeconds(_coolDown);
-            }
+            //    yield return new WaitForSeconds(_coolDown);
+            //}
+
+            yield return null;
         }
     }
 }

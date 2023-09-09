@@ -11,7 +11,7 @@ namespace Clones.BehaviorTree
         public override void OnAwake()
         {
             _isAlive = true;
-            Enemy.Value.Target.Died += OnDied;
+            //Enemy.Value.Target.Died += OnDied;
         }
 
         public override TaskStatus OnUpdate() => _isAlive ? TaskStatus.Success : TaskStatus.Failure;
@@ -19,7 +19,7 @@ namespace Clones.BehaviorTree
         private void OnDied(IDamageable damageble)
         {
             _isAlive = false;
-            Enemy.Value.Target.Died -= OnDied;
+            //Enemy.Value.Target.Died -= OnDied;
         }
     }
 }

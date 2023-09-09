@@ -11,7 +11,7 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 {
     [SerializeField] private SpawnerData _spawnerData;
 
-    [SerializeField] private Player _target;
+    [SerializeField] private GameObject _target;
 
     [SerializeField] private Complexity _complexity;
     [SerializeField] private CurrentBiome _currentBiome;

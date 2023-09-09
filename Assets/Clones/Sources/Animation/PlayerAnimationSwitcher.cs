@@ -1,41 +1,47 @@
 using UnityEngine;
-using System.Collections;
+using Clones.Infrastructure;
+using Clones.StateMachine;
 
 namespace Clones.Animation
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimationSwitcher : MonoBehaviour
     {
-        [SerializeField] private CharacterAttack _characterAttack;
-        [SerializeField] private Player _player; 
-        [SerializeField] private DirectionHandler _directionHandler;
+        //[SerializeField] private CharacterAttack _characterAttack;
+        [SerializeField] private MovementState _movementState;
 
+        private IInputService _inputService;
         private float _movementSpeed;
-        private float _movementAnimationSpeed => _player.MovementSpeed / _movementSpeed;
-
         private Animator _animator;
+
+        private float _animationMovementSpeed => _movementState.MovementSpeed / _movementSpeed;
 
         private void OnEnable()
         {
             _animator = GetComponent<Animator>();
-            _movementSpeed = _player.MovementSpeed;
+            _movementSpeed = _movementState.MovementSpeed;
 
-            _characterAttack.AttackStarted += OnAttackStarted;
+            //_characterAttack.AttackStarted += OnAttackStarted;
 
-            //_directionHandler.Activated += OnMove;
-            //_directionHandler.Deactivated += OnStop;
-
-            _player.MovementStats.MovementSpeedChanged += OnMovementSpeedChanged;
+            _movementState.MovementSpeedChanged += OnMovementSpeedChanged;
         }
 
         private void OnDisable()
         {
-            _characterAttack.AttackStarted -= OnAttackStarted;
+            //_characterAttack.AttackStarted -= OnAttackStarted;
 
-            //_directionHandler.Activated += OnMove;
-            //_directionHandler.Deactivated += OnStop;
+            _inputService.Activated -= OnMove;
+            _inputService.Deactivated -= OnStop;
 
-            _player.MovementStats.MovementSpeedChanged += OnMovementSpeedChanged;
+            _movementState.MovementSpeedChanged += OnMovementSpeedChanged;
+        }
+
+        public void Init(IInputService inputService)
+        {
+            _inputService = inputService;
+
+            _inputService.Activated += OnMove;
+            _inputService.Deactivated += OnStop;
         }
 
         private void OnAttackStarted() => _animator.SetTrigger(Animations.Player.Triggers.Attack);
@@ -44,6 +50,6 @@ namespace Clones.Animation
 
         private void OnStop() => _animator.SetBool(Animations.Player.Bools.IsMoved, false);
 
-        private void OnMovementSpeedChanged() => _animator.SetFloat(Animations.Player.Floats.MovementAnimationSpeed, _movementAnimationSpeed);
+        private void OnMovementSpeedChanged() => _animator.SetFloat(Animations.Player.Floats.MovementAnimationSpeed, _animationMovementSpeed);
     }
 }

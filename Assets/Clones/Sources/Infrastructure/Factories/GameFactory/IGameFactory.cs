@@ -6,5 +6,7 @@ namespace Clones.Infrastructure
     {
         GameObject CreatePlayer();
         void CreateHud();
+        void CreateWorldGenerator();
+        void CreateVirtualCamera();
     }
 }

@@ -11,7 +11,7 @@ namespace Clones.Progression
         [SerializeField] private MonoBehaviour _questComplexitybleBehavior;
         [SerializeField] private Wallet _wallet;
         [SerializeField] private float _savedCoefficientsCount;
-        [SerializeField] private Player _player;
+        //[SerializeField] private Player _player;
 
         public float Coefficient { get; private set; }
 
@@ -28,7 +28,7 @@ namespace Clones.Progression
 
             Coefficient = GetCoefficient();
 
-            _player.Died += OnPlayerDied;
+            //_player.Died += OnPlayerDied;
         }
 
         private void OnValidate()
@@ -49,7 +49,7 @@ namespace Clones.Progression
         {
             UpdateCoefficient();
 
-            _player.Died -= OnPlayerDied;
+            //_player.Died -= OnPlayerDied;
         }
 
         private void UpdateCoefficient()

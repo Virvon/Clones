@@ -6,13 +6,13 @@ namespace Clones.StateMachine
 {
     public abstract class AttackState : State
     {
-        [SerializeField] private Player _player;
+        //[SerializeField] private Player _player;
 
         private readonly Collider[] _overlapColliders = new Collider[64];
 
-        private float _attackRadius => _player.AttackRadius;
-        private float _lookRotationSpeed => _player.LookRotationSpeed;
-        private CharacterAttack _characterAttack => _player.CharacterAttack;
+        //private float _attackRadius => _player.AttackRadius;
+        //private float _lookRotationSpeed => _player.LookRotationSpeed;
+        //private CharacterAttack _characterAttack => _player.CharacterAttack;
 
         private IDamageable _target;
 
@@ -41,7 +41,7 @@ namespace Clones.StateMachine
 
             TargetSelected?.Invoke(((MonoBehaviour)_target).transform);
 
-            _characterAttack.TryAttack(_target);
+            //_characterAttack.TryAttack(_target);
             RotateTo(((MonoBehaviour)_target).transform.position);
         }
 
@@ -50,24 +50,24 @@ namespace Clones.StateMachine
             targetPosition.y = transform.position.y;
 
             var direction = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _lookRotationSpeed * Time.deltaTime);
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _lookRotationSpeed * Time.deltaTime);
         }
 
         private bool TryGetNearTarget(out IDamageable target)
         {
-            int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _attackRadius, _overlapColliders);
+            //int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _attackRadius, _overlapColliders);
 
-            for (var i = 0; i < overlapCount; i++)
-            {
-                if (_overlapColliders[i].TryGetComponent(out IDamageable iDamageble) && !(iDamageble is Player))
-                {
-                    if(IsRequiredTarget(iDamageble))
-                    {
-                        target = iDamageble;
-                        return true;
-                    }
-                }
-            }
+            //for (var i = 0; i < overlapCount; i++)
+            //{
+            //    if (_overlapColliders[i].TryGetComponent(out IDamageable iDamageble) && !(iDamageble is Player))
+            //    {
+            //        if(IsRequiredTarget(iDamageble))
+            //        {
+            //            target = iDamageble;
+            //            return true;
+            //        }
+            //    }
+            //}
 
             target = null;
             return false;

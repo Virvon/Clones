@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16e4f1acd613ae4e9b75296e83e52a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _percentageFilled: 81
+  _percentageFilled: 0
   _biomeData: {fileID: 11400000, guid: 43c81de387e14a748aae0f729ed8afd8, type: 2}
 --- !u!135 &1075116201438331404
 SphereCollider:

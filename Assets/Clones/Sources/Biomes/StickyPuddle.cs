@@ -7,14 +7,14 @@ namespace Clones.Biomes
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Player player))
-                player.MovementStats.SlowDown(0.5f);
+            //if (other.TryGetComponent(out Player player))
+            //    player.MovementStats.SlowDown(0.5f);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.TryGetComponent(out Player player))
-                player.MovementStats.SlowDown(0);
+            //if (other.TryGetComponent(out Player player))
+            //    player.MovementStats.SlowDown(0);
         }
     }
 }

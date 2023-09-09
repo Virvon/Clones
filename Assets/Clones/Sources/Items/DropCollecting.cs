@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DropCollecting : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private float _radius;
     [SerializeField] private CurrencyCounter _currecyCounter;
     [SerializeField] private float _speed = 20;
 
@@ -36,7 +36,7 @@ public class DropCollecting : MonoBehaviour
     private bool TryGetNearDrop(out List<Item> items)
     {
         items = new List<Item>();
-        int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _player.DropCollectingRadius, _overlapColliders);
+        int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _radius, _overlapColliders);
 
         for(var i = 0; i < overlapCount; i++)
         {
