@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16e4f1acd613ae4e9b75296e83e52a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _percentageFilled: 83
+  _percentageFilled: 0
   _biomeData: {fileID: 11400000, guid: b1e749d62efd08f47823a0bab541e58a, type: 2}
 --- !u!135 &5573238512407593774
 SphereCollider:
@@ -220,6 +220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _biomeData: {fileID: 11400000, guid: b1e749d62efd08f47823a0bab541e58a, type: 2}
+  _freezingSpeed: 15
+  _defrostSpeed: 200
+  _movementSpeedFreezePercent: 100
 --- !u!114 &-8146874460850396009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +230,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2965586213671339217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71356e515ed06844eaa6559921cf5985, type: 3}
   m_Name: 
@@ -242,7 +245,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2965586213671339217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7887c60a56c5b784faa061b12aa7eda8, type: 3}
   m_Name: 
@@ -259,7 +262,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2965586213671339217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c50c36599cfb934a89267912a63ec96, type: 3}
   m_Name: 

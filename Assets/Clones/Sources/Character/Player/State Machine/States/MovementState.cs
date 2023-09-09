@@ -1,3 +1,4 @@
+using Clones.Biomes;
 using Clones.Infrastructure;
 using System;
 using UnityEngine;
@@ -14,8 +15,10 @@ namespace Clones.StateMachine
         private Rigidbody _rigidbody;
         private SurfaceSlider _surfaceSlider;
         private IInputService _input;
+        private IMovementSpeedChanger _movementSpeedChanger;
 
-        public float MovementSpeed => _movementSpeed;
+        public float MaxMovementSpeed => _movementSpeed;
+        public float MovementSpeed => _movementSpeedChanger != null ? _movementSpeedChanger.MovementSpeed : _movementSpeed;
 
         public event Action MovementSpeedChanged;
 
@@ -35,13 +38,16 @@ namespace Clones.StateMachine
             _input.Deactivated -= Stop;
         }
 
+        public void GetMovementSpeedChanger(IMovementSpeedChanger movementSpeedChanger) => 
+            _movementSpeedChanger = movementSpeedChanger;
+
         private void Move()
         {
             Vector3 direction = Quaternion.Euler(0, _directionOffset, 0) * new Vector3(InputServiece.Direction.x, 0, InputServiece.Direction.y);
 
             direction = _surfaceSlider.Project(direction.normalized);
 
-            Vector3 offset = direction * _movementSpeed * Time.deltaTime;
+            Vector3 offset = direction * MovementSpeed * Time.deltaTime;
 
             _rigidbody.MovePosition(_rigidbody.position + offset);
 

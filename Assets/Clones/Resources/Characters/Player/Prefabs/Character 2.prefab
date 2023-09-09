@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 417230066172185970}
-  _movementSpeed: 6
+  _movementSpeed: 10
   _rotationSpeed: 1080
   _directionOffset: 0
 --- !u!114 &417230066172185970
