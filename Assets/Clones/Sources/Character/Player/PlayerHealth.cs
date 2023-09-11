@@ -20,6 +20,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("damaged " + damage);
+        health -= (int)damage;
+
+        if (health > 0)
+            HealthChanged?.Invoke();
+        else
+            Died?.Invoke(this);
     }
 }

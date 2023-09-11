@@ -754,7 +754,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -970,7 +970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1043352356551612224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,6 @@ MonoBehaviour:
   _slider: {fileID: 4048058420840207439}
   _animationSpeed: 0.2
   _healthValue: {fileID: 7316276513514917134}
-  Health: {fileID: 0}
 --- !u!1001 &1844941618534219527
 PrefabInstance:
   m_ObjectHideFlags: 0

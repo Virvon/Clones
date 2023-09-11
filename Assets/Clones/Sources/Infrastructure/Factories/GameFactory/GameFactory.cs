@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using Clones.Animation;
+using Clones.Data;
 using UnityEngine;
 
 namespace Clones.Infrastructure
@@ -7,22 +8,26 @@ namespace Clones.Infrastructure
     public class GameFactory : IGameFactory
     {
         private GameObject _playerObject;
-
+        private readonly IStaticDataService _staticData;
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData)
         {
             _assets = assets;
             _inputService = inputService;
+            _staticData = staticData;
         }
 
         public void CreateHud()
         {
-            var had = _assets.Instantiate(AssetPath.HudPath);
+            var hud = _assets.Instantiate(AssetPath.HudPath);
 
-            had.GetComponentInChildren<Freezbar>()
+            hud.GetComponentInChildren<Freezbar>()
                 .Init(_playerObject.GetComponentInChildren<PlayerFreezing>());
+
+            hud.GetComponentInChildren<PlayerHealthbar>()
+                .Init(_playerObject.GetComponent<PlayerHealth>());
         }
 
         public GameObject CreatePlayer()
@@ -37,9 +42,10 @@ namespace Clones.Infrastructure
 
         public void CreateWorldGenerator()
         {
-            _assets.Instantiate(AssetPath.WorldGeneratorPath)
-                .GetComponent<WorldGenerator2>()
-                .Init(_playerObject.transform);
+            WorldGeneratorData worldGeneratorData = _staticData.GetWorldGeneratorData();
+            WorldGenerator2 worldGenerator = Object.Instantiate(worldGeneratorData.Prefab);
+
+            worldGenerator.Init(_playerObject.transform);
         }
 
         public void CreateVirtualCamera()

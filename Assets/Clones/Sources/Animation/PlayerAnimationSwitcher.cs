@@ -11,15 +11,13 @@ namespace Clones.Animation
         [SerializeField] private MovementState _movementState;
 
         private IInputService _inputService;
-        private float _movementSpeed;
         private Animator _animator;
 
-        private float _animationMovementSpeed => _movementState.MovementSpeed / _movementSpeed;
+        private float _animationMovementSpeed => _movementState.MovementSpeed / _movementState.MaxMovementSpeed;
 
         private void OnEnable()
         {
             _animator = GetComponent<Animator>();
-            _movementSpeed = _movementState.MovementSpeed;
 
             //_characterAttack.AttackStarted += OnAttackStarted;
 
@@ -44,12 +42,16 @@ namespace Clones.Animation
             _inputService.Deactivated += OnStop;
         }
 
-        private void OnAttackStarted() => _animator.SetTrigger(Animations.Player.Triggers.Attack);
+        private void OnAttackStarted() => 
+            _animator.SetTrigger(Animations.Player.Triggers.Attack);
 
-        private void OnMove() => _animator.SetBool(Animations.Player.Bools.IsMoved, true);
+        private void OnMove() => 
+            _animator.SetBool(Animations.Player.Bools.IsMoved, true);
 
-        private void OnStop() => _animator.SetBool(Animations.Player.Bools.IsMoved, false);
+        private void OnStop() => 
+            _animator.SetBool(Animations.Player.Bools.IsMoved, false);
 
-        private void OnMovementSpeedChanged() => _animator.SetFloat(Animations.Player.Floats.MovementAnimationSpeed, _animationMovementSpeed);
+        private void OnMovementSpeedChanged() => 
+            _animator.SetFloat(Animations.Player.Floats.MovementAnimationSpeed, _animationMovementSpeed);
     }
 }

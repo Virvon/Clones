@@ -21,6 +21,7 @@ public class PlayerFreezing : MonoBehaviour, IMovementSpeedChanger, IFreezingPer
     public float MovementSpeed { get; private set; }
 
     public event Action FreezingPercentChanged;
+    public event Action MovementSpeedChanged;
 
     public void Freez() => 
         ChangeFreezePercent(1, _freezingSpeed);
@@ -37,6 +38,8 @@ public class PlayerFreezing : MonoBehaviour, IMovementSpeedChanger, IFreezingPer
             speed *= FreezingPercent;
         else
             speed -= speed * FreezingPercent;
+
+        _movementState.SetMovementSpeedChanger(this);
 
         _freezer = StartCoroutine(Freezer(targetFreezPrecent, speed));
     }
@@ -59,6 +62,7 @@ public class PlayerFreezing : MonoBehaviour, IMovementSpeedChanger, IFreezingPer
             MovementSpeed = (float)Math.Round(Mathf.Lerp(_movementState.MaxMovementSpeed, _movementState.MaxMovementSpeed * (_movementSpeedFreezePercent / 100f), FreezingPercent), MathRoundValue);
 
             FreezingPercentChanged?.Invoke();
+            MovementSpeedChanged?.Invoke();
 
             yield return null;
         }

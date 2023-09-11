@@ -37,8 +37,11 @@ namespace Clones.StateMachine
             _input.Deactivated -= Stop;
         }
 
-        public void GetMovementSpeedChanger(IMovementSpeedChanger movementSpeedChanger) => 
+        public void SetMovementSpeedChanger(IMovementSpeedChanger movementSpeedChanger)
+        {
             _movementSpeedChanger = movementSpeedChanger;
+            _movementSpeedChanger.MovementSpeedChanged += MovementSpeedChanged;
+        }
 
         private void Move()
         {
