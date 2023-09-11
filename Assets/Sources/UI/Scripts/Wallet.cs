@@ -18,19 +18,19 @@ public class Wallet : MonoBehaviour
 
     private void Start()
     {
-        ValuesChanged.Invoke();
+        ValuesChanged?.Invoke();
     }
 
     public void ChangeDNACount(int value)
     {
         _dna += value;
-        ValuesChanged.Invoke();
+        ValuesChanged?.Invoke();
     }
 
     public void ChangeCoinsCount(int value)
     {
         _coins += value;
-        ValuesChanged.Invoke();
+        ValuesChanged?.Invoke();
     }
     
     public void UpdateTexts()
