@@ -1,4 +1,6 @@
-﻿namespace Clones.Infrastructure
+﻿using System;
+
+namespace Clones.Infrastructure
 {
     public class BootstrapState : IState
     {
@@ -28,13 +30,21 @@
 
         private void RegisterServices()
         {
+            RegisterStaticData();
+
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<IInputService>(new MobileInputService());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            _services.RegisterSingle<IStaticDataService>(new StaticDataService());
             _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IInputService>(), _services.Single<IStaticDataService>()));
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>()));
+        }
+
+        private void RegisterStaticData()
+        {
+            IStaticDataService staticData = new StaticDataService();
+            staticData.Load();
+            _services.RegisterSingle<IStaticDataService>(staticData);
         }
 
         private void EnterMainMenu() => 

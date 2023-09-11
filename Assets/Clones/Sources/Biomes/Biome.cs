@@ -1,4 +1,4 @@
-using Clones.Data;
+using Clones.StaticData;
 using System;
 using UnityEngine;
 
@@ -7,9 +7,9 @@ namespace Clones.Biomes
     [RequireComponent(typeof(Collider))]
     public class Biome : MonoBehaviour
     {
-        [SerializeField] private BiomeData _biomeData;
+        [SerializeField] private BiomeStaticData _biomeData;
 
-        public BiomeData BiomeData => _biomeData;
+        public BiomeStaticData BiomeData => _biomeData;
 
         public Player Player { get; private set; }
 

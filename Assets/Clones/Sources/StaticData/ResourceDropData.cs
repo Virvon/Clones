@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New Resource Drop", menuName = "Data/Create new resource drop", order = 51)]
     public class ResourceDropData : ScriptableObject

@@ -1,4 +1,4 @@
-using Clones.Data;
+using Clones.StaticData;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

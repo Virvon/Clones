@@ -1,4 +1,5 @@
 ﻿using Clones.Data;
+using Clones.StaticData;
 using System.Collections;
 using UnityEngine;
 

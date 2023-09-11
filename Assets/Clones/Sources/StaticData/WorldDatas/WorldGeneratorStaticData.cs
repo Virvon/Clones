@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New WorldGenerator", menuName = "Data/Create new world generator", order = 51)]
-    public class WorldGeneratorData : ScriptableObject
+    public class WorldGeneratorStaticData : ScriptableObject
     {
-        public WorldGenerator2 Prefab;
+        public WorldGenerator Prefab;
         public float ViewRadius;
         public float CellSize;
-        public BiomeData[] BiomeDatas;
+        public BiomeType[] GenerationBiomes;
     }
 }

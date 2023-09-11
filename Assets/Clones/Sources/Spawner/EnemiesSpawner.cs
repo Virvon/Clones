@@ -6,6 +6,7 @@ using Clones.Data;
 using Clones.Progression;
 using Clones.Biomes;
 using System.Collections.Generic;
+using Clones.StaticData;
 
 public class EnemiesSpawner : MonoBehaviour, IComplexityble
 {
@@ -36,30 +37,30 @@ public class EnemiesSpawner : MonoBehaviour, IComplexityble
 
     private void CreateWave()
     {
-        BiomeData targetBiomeData = _currentBiome.BiomeData;
-        IReadOnlyList<EnemyData> targetEnemyDatas = targetBiomeData.EnemyDatas;
+        BiomeStaticData targetBiomeData = _currentBiome.BiomeData;
+        //IReadOnlyList<EnemyData> targetEnemyDatas = targetBiomeData.EnemyDatas;
 
-        if (targetEnemyDatas.Count == 0)
-            throw new Exception("enemies to create wave not found");
+        //if (targetEnemyDatas.Count == 0)
+            //throw new Exception("enemies to create wave not found");
 
         _maxWeight = _spawnerData.TotalWeight * _complexity.Value;
         _currentWeight = 0;
 
         while (_currentWeight < _maxWeight)
         {
-            EnemyData currentEnemyData = targetEnemyDatas[Random.Range(0, targetEnemyDatas.Count)];
+            //EnemyData currentEnemyData = targetEnemyDatas[Random.Range(0, targetEnemyDatas.Count)];
 
-            Stats stats = GetEnemyStats(currentEnemyData.GetStats());
-            float enemyWeight = GetEnemyWeight(stats);
+            //Stats stats = GetEnemyStats(currentEnemyData.GetStats());
+            //float enemyWeight = GetEnemyWeight(stats);
             Vector3 currentEnemyPosition = GetRandomPosition();
 
-            var enemy = Instantiate(currentEnemyData.EnemyPrefab, currentEnemyPosition, Quaternion.LookRotation(_target.transform.position - currentEnemyPosition), transform);
+            //var enemy = Instantiate(currentEnemyData.EnemyPrefab, currentEnemyPosition, Quaternion.LookRotation(_target.transform.position - currentEnemyPosition), transform);
 
-            enemy.Init(_target, stats);
+            //enemy.Init(_target, stats);
 
-            EnemyCreated?.Invoke(enemy);
+            //EnemyCreated?.Invoke(enemy);
 
-            _currentWeight += enemyWeight;
+            //_currentWeight += enemyWeight;
         }
     }
 

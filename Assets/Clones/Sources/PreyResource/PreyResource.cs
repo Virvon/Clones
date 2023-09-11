@@ -1,4 +1,5 @@
 using Clones.Data;
+using Clones.StaticData;
 using System;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class PreyResource : MonoBehaviour, IDamageable, IDropble
 {
     [SerializeField] private float _health;
 
-    public PreyResourceData Data { get; private set; }
+    public PreyResourceStaticData Data { get; private set; }
     public bool IsAlive => _isAlive;
 
     private bool _isAlive;
@@ -14,7 +15,7 @@ public class PreyResource : MonoBehaviour, IDamageable, IDropble
     public event Action<IDamageable> Died;
 
 
-    public void Init(PreyResourceData data)
+    public void Init(PreyResourceStaticData data)
     {
         _isAlive = true;
 

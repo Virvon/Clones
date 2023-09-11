@@ -2,6 +2,7 @@ using UnityEngine;
 using Clones.Data;
 using System;
 using Random = UnityEngine.Random;
+using Clones.StaticData;
 
 public class ResourceDrop : MonoBehaviour
 {

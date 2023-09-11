@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New Quest", menuName = "Data/Create new quest", order = 51)]
     public class QuestData : ScriptableObject

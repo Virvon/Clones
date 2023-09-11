@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New Spawner", menuName = "Data/Create new spawner", order = 51)]
     public class SpawnerData : ScriptableObject

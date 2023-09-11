@@ -1,4 +1,4 @@
-﻿using Clones.Data;
+﻿using Clones.StaticData;
 
 public class QuestCell
 {

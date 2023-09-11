@@ -4,6 +4,7 @@ using Clones.Data;
 using Random = UnityEngine.Random;
 using Clones.Progression;
 using System.Collections.Generic;
+using Clones.StaticData;
 
 public class Quest : MonoBehaviour, IComplexityble
 {

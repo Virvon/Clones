@@ -1,194 +1,107 @@
-using System;
+﻿using Clones.Infrastructure;
+using Clones.StaticData;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshSurface))]
 public class WorldGenerator : MonoBehaviour
 {
-    //[SerializeField] private Player _player;
-    [SerializeField] private List<GameObject> _tilePrefabs;
-    [SerializeField] private float _generationRadius;
-    [SerializeField] private float _deactivationRadius;
-    [SerializeField] private int _tilePoolSize;
-    [SerializeField] private float _tileSize;
-    [SerializeField] private float _updateInterval;
+    private IGameFactory _gameFactory;
+    private Transform _player;
+    BiomeType[] _generationBiomes;
+    private float _viewRadius;
+    private float _cellSize;
+    private HashSet<GameObject> _tilesMatrix = new();
 
-    private Transform _playerTransform;
-    private List<GameObject> _tilePool;
-    private Dictionary<Vector3, GameObject> _activeTiles;
-    private Queue<GameObject> _inactiveTiles = new Queue<GameObject>();
-    private float _timer;
-    private bool _canUpdateTiles = true;
-    private NavMeshSurface _navMeshSurface;
-
-    private const float CountRotateOptionsTile = 4f;
-    private const float AngleStepRotateTile = 90f;
-
-    public event Action<IReadOnlyList<GeneratorObjects>> TilesGenerated;
-    public event Action<IReadOnlyList<GeneratorObjects>> TilesDiactivated;
-
-    private void Awake()
+    private void Update()
     {
-        _navMeshSurface = GetComponent<NavMeshSurface>();
-        FindPlayerTransform();
-    }
-
-    private void Start()
-    {
-        _tilePool = new List<GameObject>(_tilePoolSize);
-        _activeTiles = new Dictionary<Vector3, GameObject>(_tilePoolSize);
-
-        for (int i = 0; i < _tilePoolSize; i++)
-        {
-            GameObject newTile = Instantiate(_tilePrefabs[UnityEngine.Random.Range(0, _tilePrefabs.Count)], transform);
-            newTile.SetActive(false);
-            _tilePool.Add(newTile);
-            _inactiveTiles.Enqueue(newTile);
-        }
-
-        GenerateTiles();
-    }
-
-    private void FixedUpdate()
-    {
-        if (!_canUpdateTiles)
+        if (_player == null)
             return;
 
-        _timer += Time.deltaTime;
-
-        if (_timer >= _updateInterval)
-        {
-            GenerateTiles();
-            DeactivateTiles();
-            _timer = 0f;
-        }
+        FillRadius(_player.position, _viewRadius);
+        EmptyAroundRadius(_player.position, _viewRadius);
     }
 
-    private void GenerateTiles()
+    public void Init(IGameFactory gameFactory, Transform player, BiomeType[] templates, float viewRadius, float cellSize)
     {
-        Vector3 currentPlayerTilePosition = WorldToTilePosition(_playerTransform.position);
-        int horizontalTiles = Mathf.CeilToInt(_generationRadius / _tileSize);
-        int verticalTiles = Mathf.CeilToInt(_generationRadius / _tileSize);
+        _gameFactory = gameFactory;
+        _generationBiomes = templates;
+        _viewRadius = viewRadius;
+        _cellSize = cellSize;
+        _player = player;
+    }
 
-        List<GeneratorObjects> generatorsObjects = new List<GeneratorObjects>();
+    private void FillRadius(Vector3 center, float viewRadius)
+    {
+        var cellCountOnAxis = (int)(viewRadius / _cellSize);
+        var fillAreaCenter = WorldToGridPosition(center);
 
-        bool isBuild = false;
+        
 
-        for (int x = -horizontalTiles; x <= horizontalTiles; x++)
+        for (int x = -cellCountOnAxis; x < cellCountOnAxis; x++)
         {
-            for (int z = -verticalTiles; z <= verticalTiles; z++)
+            for (int z = -cellCountOnAxis; z < cellCountOnAxis; z++)
             {
-                Vector3 tilePosition = currentPlayerTilePosition + new Vector3(x * _tileSize, 0, z * _tileSize);
-
-                if (!_activeTiles.ContainsKey(tilePosition))
-                {
-                    GameObject newTile = GetTileFromPool();
-                    PlaceTile(newTile, tilePosition);
-                    _activeTiles.Add(tilePosition, newTile);
-
-                    if(newTile.TryGetComponent(out GeneratorObjects generatorObjects))
-                    {
-                        generatorsObjects.Add(generatorObjects);
-                    }
-
-                    isBuild = true;
-                }
+                TryCreate(fillAreaCenter + new Vector3Int(x, (int)transform.position.y, z));
             }
         }
-
-        if (isBuild)
-        {
-            _navMeshSurface.RemoveData();
-            _navMeshSurface.BuildNavMesh();
-            
-            TilesGenerated?.Invoke(generatorsObjects);
-        }    
     }
 
-    private void DeactivateTiles()
+    private void EmptyAroundRadius(Vector3 center, float viewRadius)
     {
-        int horizontalTiles = Mathf.CeilToInt(_deactivationRadius / _tileSize);
-        int verticalTiles = Mathf.CeilToInt(_deactivationRadius / _tileSize);
+        HashSet<GameObject> removeTileMatrix = new();
 
-        List<Vector3> tilesToDeactivate = new List<Vector3>();
-        List<GeneratorObjects> generatorsObjects = new List<GeneratorObjects>();
-
-        bool isDeativate = false;
-
-        foreach (KeyValuePair<Vector3, GameObject> tileEntry in _activeTiles)
+        foreach(var tile in _tilesMatrix)
         {
-            Vector3 tilePosition = tileEntry.Key;
-
-            if (Mathf.Abs(tilePosition.x - _playerTransform.position.x) > horizontalTiles * _tileSize ||
-                Mathf.Abs(tilePosition.z - _playerTransform.position.z) > verticalTiles * _tileSize)
-            {
-                tilesToDeactivate.Add(tilePosition);
-
-                if (_activeTiles[tilePosition].TryGetComponent(out GeneratorObjects generatorObjects))
-                    generatorsObjects.Add(generatorObjects);
-
-                isDeativate = true;
-            }
+            if (Vector3.Distance(center, tile.transform.position) > viewRadius)
+                removeTileMatrix.Add(tile);
         }
 
-        foreach (Vector3 tilePosition in tilesToDeactivate)
-        {
-            GameObject tileToDeactivate = _activeTiles[tilePosition];
-            _activeTiles.Remove(tilePosition);
-            ReturnTileToPool(tileToDeactivate);
-        }
+        Remove(removeTileMatrix);
+    }
 
-        if(isDeativate == true)
+    private void Remove(HashSet<GameObject> tilesMatrix)
+    {
+        foreach(var tile in tilesMatrix)
         {
-            TilesDiactivated?.Invoke(generatorsObjects);
+            _tilesMatrix.Remove(tile);
+            Destroy(tile);
         }
     }
 
-    private GameObject GetTileFromPool()
+    private void TryCreate(Vector3Int gridPosition)
     {
-        if (_inactiveTiles.Count > 0)
-            return _inactiveTiles.Dequeue();
+        gridPosition.y = (int)transform.position.y;
 
-        GameObject newTile = Instantiate(_tilePrefabs[UnityEngine.Random.Range(0, _tilePrefabs.Count)], transform);
-        _tilePool.Add(newTile);
-        return newTile;
+        if (_tilesMatrix.Any(tile => WorldToGridPosition(tile.transform.position) == gridPosition))
+            return;
+
+
+        var template = GetRandomBiomeType();
+
+        var position = GridToWorldPosition(gridPosition);
+
+        GameObject tileObject = _gameFactory.CreateTile(template, position, Quaternion.identity, transform);
+
+        _tilesMatrix.Add(tileObject);
     }
 
-    private void ReturnTileToPool(GameObject tile)
-    {
-        tile.SetActive(false);
-        _inactiveTiles.Enqueue(tile);
-    }
+    private BiomeType GetRandomBiomeType() => 
+        _generationBiomes[Random.Range(0, _generationBiomes.Length)];
 
-    private void PlaceTile(GameObject tile, Vector3 position)
-    {
-        tile.transform.position = position;
-        tile.SetActive(true);
-        tile.transform.rotation = Quaternion.Euler(0f, Mathf.RoundToInt(UnityEngine.Random.Range(0, CountRotateOptionsTile)) * AngleStepRotateTile, 0f);
-    }
-
-    private Vector3 WorldToTilePosition(Vector3 worldPosition)
+    private Vector3 GridToWorldPosition(Vector3Int gridPosition)
     {
         return new Vector3(
-            Mathf.Floor(worldPosition.x / _tileSize) * _tileSize,
-            0f,
-            Mathf.Floor(worldPosition.z / _tileSize) * _tileSize
-        );
-    }
-    public void SetTileUpdatesEnabled(bool enabled)
-    {
-        _canUpdateTiles = enabled;
+            gridPosition.x * _cellSize,
+            gridPosition.y * _cellSize,
+            gridPosition.z * _cellSize);
     }
 
-    private void FindPlayerTransform()
+    private Vector3Int WorldToGridPosition(Vector3 worldPosition)
     {
-        if (_playerTransform == null)
-        {
-            //_playerTransform = _player.transform;
-
-            if (_playerTransform == null)
-                throw new NullReferenceException("The MovementController does not have a controlled object!");
-        }
+        return new Vector3Int(
+            (int)(worldPosition.x / _cellSize),
+            (int)(worldPosition.y / _cellSize),
+            (int)(worldPosition.z / _cellSize));
     }
 }

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Clones.Progression;
 using Clones.Data;
+using Clones.StaticData;
 
 public class CurrencyCounter : MonoBehaviour
 {

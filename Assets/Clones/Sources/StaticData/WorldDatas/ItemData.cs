@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New Item", menuName = "Data/Create new item", order = 51)]
     public class ItemData : ScriptableObject
