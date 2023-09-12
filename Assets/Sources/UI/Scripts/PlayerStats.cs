@@ -11,19 +11,35 @@ public class PlayerStats : MonoBehaviour
     private float _attackSpeed;
     private float _resourceMultiplier;
 
-    public void SelectCardClone(CardClone cardClone)
+    private CardClone _cardClone;
+    private CardWand _cardWand;
+
+    private const float _baseResourceMultiplier = 0.75f;
+    private const float _upgradeResourceMultiplier = 0.25f;
+
+    public void SelectCard(CardClone cardClone)
     {
-        
+        _cardClone = cardClone;
+        UpdateStats();
     }
 
-    public void SelectCardWand(CardWand cardWand)
+    public void SelectCard(CardWand cardWand)
     {
-        
+        _cardWand = cardWand;
+        UpdateStats();
     }
 
     public void UpdateWalletValues(Wallet wallet)
     {
         _countDNA = wallet.DNA;
         _countCoins = wallet.Coins;
+    }
+
+    private void UpdateStats()
+    {
+        _health = _cardClone.Helath;
+        _damage = _cardClone.Damage + _cardWand.Damage;
+        _attackSpeed = _cardWand.AttackSpeed;
+        _resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);
     }
 }

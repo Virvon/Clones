@@ -17,12 +17,16 @@ public class Card : MonoBehaviour
     [SerializeField] private List<Card> _unselectedÑards;
     [Space]
     [SerializeField] private int _secondsToRestore;
+    [SerializeField] private float _baseMultiplyRecourceByRare;
     [Space]
     [SerializeField] private Player _player;
     [SerializeField] private Wallet _wallet;
 
     private int _level;
     private bool _isDead;
+
+    public int Level => _level;
+    public float BaseMultiplyRecourceByRare => _baseMultiplyRecourceByRare;
 
     public void Select()
     {
