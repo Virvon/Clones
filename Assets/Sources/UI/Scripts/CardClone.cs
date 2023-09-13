@@ -9,4 +9,6 @@ public class CardClone : Card
 
     public float Helath => _helath;
     public float Damage => _damage;
+
+    public CardClone ReturnCard() => this;
 }

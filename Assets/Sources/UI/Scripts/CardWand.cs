@@ -9,4 +9,6 @@ public class CardWand : Card
 
     public float Damage => _damage;
     public float AttackSpeed => _attackSpeed;
+
+    public CardWand ReturnCard() => this;
 }
