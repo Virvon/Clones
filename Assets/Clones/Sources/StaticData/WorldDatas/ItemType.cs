@@ -3,6 +3,7 @@
     public enum ItemType
     {
         DNA,
-        Green
+        Green,
+        Blue
     }
 }

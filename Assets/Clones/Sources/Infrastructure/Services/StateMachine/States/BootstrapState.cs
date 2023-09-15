@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clones.GameLogic;
+using System;
 
 namespace Clones.Infrastructure
 {
@@ -40,7 +41,8 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>()));
 
             _services.RegisterSingle<IDestroyDroppableReporter>(new DestroyDroppableReporter(_services.Single<IGameFactory>()));
-            _services.RegisterSingle<IItemsDropper>(new ItemsDropper(_services.Single<IGameFactory>(), _services.Single<IDestroyDroppableReporter>()));
+            _services.RegisterSingle<IQuestsCreator>(new QuestsCreator());
+            _services.RegisterSingle<IItemsDropper>(new ItemsDropper(_services.Single<IGameFactory>(), _services.Single<IDestroyDroppableReporter>(), _services.Single<IQuestsCreator>()));
         }
 
         private void RegisterStaticData()

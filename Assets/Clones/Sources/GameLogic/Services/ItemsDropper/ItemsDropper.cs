@@ -12,9 +12,9 @@ namespace Clones.GameLogic
         private readonly IDestroyDroppableReporter _destroyDroppableReporter;
         private readonly IDroppableVisitor _visitor;
 
-        public ItemsDropper(IGameFactory gameFactory, IDestroyDroppableReporter destroyDroppableReporter)
+        public ItemsDropper(IGameFactory gameFactory, IDestroyDroppableReporter destroyDroppableReporter, IQuestsCreator questsCreator)
         {
-            _visitor = new DroppableVisitor(gameFactory);
+            _visitor = new DroppableVisitor(gameFactory, questsCreator);
 
             _destroyDroppableReporter = destroyDroppableReporter;
 
@@ -26,11 +26,16 @@ namespace Clones.GameLogic
 
         private class DroppableVisitor : IDroppableVisitor
         {
-            private readonly IGameFactory _gameFactory;
+            private const int MinPreyResourceItemsDropCount = 1;
+            private const int MaxPreyResourceItemsDropCount = 5;
 
-            public DroppableVisitor(IGameFactory gameFactory)
+            private readonly IGameFactory _gameFactory;
+            private readonly IQuestsCreator _questsCreator;
+
+            public DroppableVisitor(IGameFactory gameFactory, IQuestsCreator questsCreator)
             {
                 _gameFactory = gameFactory;
+                _questsCreator = questsCreator;
             }
 
             public void Visit(Enemy enemy)
@@ -40,7 +45,10 @@ namespace Clones.GameLogic
 
             public void Visit(PreyResource preyResource)
             {
-                Drop(preyResource.DroppedItem, preyResource.transform.position, 1, 5);
+                ItemType droppedItem = preyResource.DroppedItem;
+
+                if(_questsCreator.IsQuestItem(droppedItem))
+                    Drop(droppedItem, preyResource.transform.position, MinPreyResourceItemsDropCount, MaxPreyResourceItemsDropCount);
             }
 
             private void Drop(ItemType type, Vector3 position, int minCount, int maxCount)
