@@ -6,6 +6,8 @@ namespace Clones.StaticData
     public class PreyResourceStaticData : ScriptableObject
     {
         public PreyResourceType Type;
+        public ItemType DroppetItem;
         public PreyResource Prefab;
+        public int HitsCountToDie;
     }
 }

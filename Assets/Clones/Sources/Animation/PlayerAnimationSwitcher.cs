@@ -7,7 +7,7 @@ namespace Clones.Animation
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimationSwitcher : MonoBehaviour
     {
-        //[SerializeField] private CharacterAttack _characterAttack;
+        [SerializeField] private CharacterAttack _characterAttack;
         [SerializeField] private MovementState _movementState;
 
         private IInputService _inputService;
@@ -19,14 +19,14 @@ namespace Clones.Animation
         {
             _animator = GetComponent<Animator>();
 
-            //_characterAttack.AttackStarted += OnAttackStarted;
+            _characterAttack.AttackStarted += OnAttackStarted;
 
             _movementState.MovementSpeedChanged += OnMovementSpeedChanged;
         }
 
         private void OnDisable()
         {
-            //_characterAttack.AttackStarted -= OnAttackStarted;
+            _characterAttack.AttackStarted -= OnAttackStarted;
 
             _inputService.Activated -= OnMove;
             _inputService.Deactivated -= OnStop;
@@ -44,6 +44,7 @@ namespace Clones.Animation
 
         private void OnAttackStarted() => 
             _animator.SetTrigger(Animations.Player.Triggers.Attack);
+
 
         private void OnMove() => 
             _animator.SetBool(Animations.Player.Bools.IsMoved, true);

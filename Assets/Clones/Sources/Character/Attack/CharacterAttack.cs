@@ -1,62 +1,42 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public abstract class CharacterAttack : MonoBehaviour
 {
-    [SerializeField] private MonoBehaviour _attackbleBehavior;
+    [SerializeField] private float _cooldown;
+    [SerializeField] private float _damage;
 
-    public abstract float AttackSpeed { get; }
+    private float _currentCooldown;
+    private bool _isAttacking = false;
 
-    private bool _canAttack = true;
-    private Coroutine _coroutine;
-
-    protected IAttackble Attackble { get; private set; }
     protected IDamageable Target { get; private set; }
+    protected float Damage => _damage;
 
     public event Action Attacked;
     public event Action AttackStarted;
 
-    private void Awake() => Attackble = (IAttackble)_attackbleBehavior;
-
-    private void OnValidate()
+    private void OnAttack()
     {
-        if(_attackbleBehavior && _attackbleBehavior is not IAttackble)
-        {
-            Debug.LogError(nameof(_attackbleBehavior) + " needs to implement " + nameof(IAttackble));
-            _attackbleBehavior = null;
-        }
+        Attack();
+        Attacked?.Invoke();
+
+        _isAttacking = false;
+        _currentCooldown = _cooldown;
     }
 
     public void TryAttack(IDamageable target)
     {
-        if (_canAttack == false || target.IsAlive == false)
+        if(_currentCooldown > 0)
+            _currentCooldown -= Time.deltaTime;
+
+        if (_currentCooldown > 0 || target.IsAlive == false || _isAttacking)
             return;
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(CoolDownTimer(Attackble.AttackSpeed));
 
         Target = target;
 
+        _isAttacking = true;
         AttackStarted?.Invoke();
     }
 
-    public void AnimationAttack()
-    {
-        Attack();
-        Attacked?.Invoke();
-    }
-
     protected abstract void Attack();
-
-    private IEnumerator CoolDownTimer(float delay)
-    {
-        _canAttack = false;
-
-        yield return new WaitForSeconds(delay);
-
-        _canAttack = true;
-    }
 }

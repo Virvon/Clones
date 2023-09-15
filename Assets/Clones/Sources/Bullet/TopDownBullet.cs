@@ -34,7 +34,7 @@ public class TopDownBullet : Bullet
         }
     }
 
-    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint = null, Action<List<DamageableCell>> Hitted = null)
+    public override void Shoot(IDamageable targetDamageable, GameObject _selfObject, Transform shootPoint = null, Action<List<DamageableCell>> Hitted = null)
     {
         _collider = GetComponent<SphereCollider>();
         _collider.center = new Vector3(0, UpOffset, 0);
@@ -44,11 +44,11 @@ public class TopDownBullet : Bullet
 
         if (targetDamageable.IsAlive)
             TargetPosition = new Vector3(Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.x, ((MonoBehaviour)targetDamageable).transform.position.y, Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.z);
-        else
-            TargetPosition = ((MonoBehaviour)selfDamageable).transform.position + ((MonoBehaviour)selfDamageable).transform.forward * 3;
+        //else
+            //TargetPosition = ((MonoBehaviour)_selfObject).transform.position + ((MonoBehaviour)_selfObject).transform.forward * 3;
 
         transform.position = TargetPosition;
-        _selfDamageable = selfDamageable;
+        //_selfDamageable = _selfObject;
 
         Shooted?.Invoke();
 

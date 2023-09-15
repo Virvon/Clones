@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthble
+public class Enemy : MonoBehaviour, IDroppable, IAttackble, IHealthble
 {
     public GameObject Target { get; private set; }
     public Vector3 Scale => transform.localScale;
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, IDropble , IDamageable, IAttackble, IHealthb
     public event Action<IDamageable> Died;
     public event Action HealthChanged;
 
-    public void Accept(IDropVisitor visitor) => visitor.Visit(this);
+    public void Accept(IDroppableVisitor visitor) => visitor.Visit(this);
 
     public void Init(GameObject target, Stats stats)
     {

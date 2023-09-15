@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: IceCrystals
   m_EditorClassIdentifier: 
-  _preyResourceDatas:
-  - {fileID: 11400000, guid: 0668a9188a1039641916b2c452a6abd0, type: 2}
-  _enemyDatas:
-  - {fileID: 11400000, guid: 7514f93f87913df439299b966ce5335f, type: 2}
+  Type: 1
+  Prefab: {fileID: 0}
+  PercentageFilled: 0
+  PreyResourcesTamplates: 

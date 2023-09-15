@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac488b5f37358964692ef32494d48e16, type: 3}
   m_Name: GreenPreyResource
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 48553145359045075, guid: c6099aecb4ee4f94c85e1e62865f9fc1, type: 3}
-  _itemData: {fileID: 11400000, guid: 6603e10c266fe394da062a2d0b7d97db, type: 2}
+  Type: 0
+  DroppetItem: 0
+  Prefab: {fileID: 48553145359045075, guid: c6099aecb4ee4f94c85e1e62865f9fc1, type: 3}
+  HitsCountToDie: 2

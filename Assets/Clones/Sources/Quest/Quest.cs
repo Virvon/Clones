@@ -33,7 +33,7 @@ public class Quest : MonoBehaviour, IComplexityble
         QuestCreated?.Invoke();
     }
 
-    public bool IsQuestItem(ItemData itemData)
+    public bool IsQuestItem(ItemStaticData itemData)
     {
         foreach(var cell in _quests)
         {
@@ -44,7 +44,7 @@ public class Quest : MonoBehaviour, IComplexityble
         return false;
     }
 
-    public void TakePreyResourceItem(ItemData itemData, int count)
+    public void TakePreyResourceItem(ItemStaticData itemData, int count)
     {
         bool isQuestEnded = true;
 
@@ -75,7 +75,7 @@ public class Quest : MonoBehaviour, IComplexityble
         ComplexityIncreased?.Invoke();
 
         List<QuestCell> cells = new List<QuestCell>();
-        List<ItemData> usedItems = new List<ItemData>();
+        List<ItemStaticData> usedItems = new List<ItemStaticData>();
 
         int availableItemsCount = _questData.QuestItemDatas.Count;
         int maxItemsCount = (int)(_questData.ItemsCount * _complexity.Value);
@@ -91,7 +91,7 @@ public class Quest : MonoBehaviour, IComplexityble
             else
                 itemsCount = GetItemsCount(minItemsCount, maxItemsCount, totalItemsCount);
 
-            ItemData itemData = GetUniqueItem(usedItems, availableItemsCount);
+            ItemStaticData itemData = GetUniqueItem(usedItems, availableItemsCount);
 
             usedItems.Add(itemData);
             cells.Add(new QuestCell(itemData, itemsCount));
@@ -128,13 +128,13 @@ public class Quest : MonoBehaviour, IComplexityble
         return itemsCount;
     }
 
-    private ItemData GetUniqueItem(List<ItemData> usedItems, int avaliableItemsCount)
+    private ItemStaticData GetUniqueItem(List<ItemStaticData> usedItems, int avaliableItemsCount)
     {
         if (usedItems.Count == avaliableItemsCount)
             throw new Exception("impossible to find unique objects");
 
         bool isUniqueType = false;
-        ItemData item = null;
+        ItemStaticData item = null;
 
         while (isUniqueType == false)
         {

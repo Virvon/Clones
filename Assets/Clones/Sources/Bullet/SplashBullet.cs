@@ -53,7 +53,7 @@ public class SplashBullet : Bullet
         }
     }
 
-    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
+    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
         if (targetDamageable.IsAlive)
             _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1, 0)) - shootPoint.transform.position;
@@ -64,7 +64,7 @@ public class SplashBullet : Bullet
 
         transform.rotation = Quaternion.LookRotation(_direction);
     
-        _selfDamageable = selfDamageable;
+        //_selfDamageable = selfObject;
         s_Hitted = Hitted;
 
         Shooted?.Invoke();

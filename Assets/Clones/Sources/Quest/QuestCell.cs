@@ -4,18 +4,18 @@ public class QuestCell
 {
     public int MaxCount { get; private set; }
     public int CurrentCount { get; private set; }
-    public ItemData Type { get; private set; }
+    public ItemStaticData Type { get; private set; }
 
     public bool IsFull => CurrentCount == MaxCount;
 
-    public QuestCell(ItemData item, int count)
+    public QuestCell(ItemStaticData item, int count)
     {
         Type = item;
         MaxCount = count;
         CurrentCount = 0;
     }
 
-    public bool TryGetItems(ItemData type, int count)
+    public bool TryGetItems(ItemStaticData type, int count)
     {
         if(type != Type)
             return false;

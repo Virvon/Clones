@@ -13,7 +13,7 @@ public abstract class Bullet : MonoBehaviour
 
     protected abstract event Action<List<DamageableCell>> s_Hitted;
 
-    public abstract void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted = null);
+    public abstract void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted = null);
 
     public abstract void Init(BulletData bulletData);
 }

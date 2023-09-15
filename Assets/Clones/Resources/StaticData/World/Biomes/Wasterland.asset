@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: Wasterland
   m_EditorClassIdentifier: 
-  _preyResourceDatas: []
-  _enemyDatas: []
+  Type: 4
+  Prefab: {fileID: 0}
+  PercentageFilled: 0
+  PreyResourcesTamplates: 

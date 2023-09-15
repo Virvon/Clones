@@ -11,7 +11,7 @@ namespace Clones.UI
         [SerializeField] private QuestView _questViewPrefab;
         [SerializeField] private TMP_Text _rewrdValue;
 
-        private Dictionary<ItemData, QuestView> _questViews = new Dictionary<ItemData, QuestView>();
+        private Dictionary<ItemStaticData, QuestView> _questViews = new Dictionary<ItemStaticData, QuestView>();
 
         private void OnEnable()
         {

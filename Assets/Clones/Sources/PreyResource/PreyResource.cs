@@ -1,36 +1,36 @@
-using Clones.Data;
 using Clones.StaticData;
 using System;
 using UnityEngine;
 
-public class PreyResource : MonoBehaviour, IDamageable, IDropble 
+public class PreyResource : MonoBehaviour, IDroppable 
 {
-    [SerializeField] private float _health;
+    private bool _isAlive;
+    private int _hitsCountToDie;
 
-    public PreyResourceStaticData Data { get; private set; }
     public bool IsAlive => _isAlive;
 
-    private bool _isAlive;
+    public ItemType DroppedItem { get; private set; }
 
     public event Action<IDamageable> Died;
 
-
-    public void Init(PreyResourceStaticData data)
+    public void Init(int hitsCountToDie, ItemType droppedItem)
     {
         _isAlive = true;
 
-        if(Data == null)
-            Data = data;
+        _hitsCountToDie = hitsCountToDie;
+        DroppedItem = droppedItem;
     }
 
-    public void Accept(IDropVisitor visitor) => visitor.Visit(this);
+    public void Accept(IDroppableVisitor visitor) => 
+        visitor.Visit(this);
 
     public void TakeDamage(float damage)
     {
-        _health -= damage;
+        _hitsCountToDie--;
 
-        if(_health <= 0)
+        if(_hitsCountToDie <= 0)
         {
+
             _isAlive = false;
             Died?.Invoke(this);
             Destroy(gameObject);

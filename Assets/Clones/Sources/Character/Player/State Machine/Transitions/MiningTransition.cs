@@ -15,6 +15,7 @@ namespace Clones.StateMachine
             return base.IsTargetsEnter(overlapCount);
         }
 
-        protected override bool IsRequiredTarget(IDamageable iDamageble) => iDamageble is PreyResource ? true : false;
+        protected override bool IsRequiredTarget(IDamageable iDamageble) => 
+            iDamageble is PreyResource;
     }
 }

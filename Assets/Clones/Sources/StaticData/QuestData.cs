@@ -9,11 +9,11 @@ namespace Clones.StaticData
         [SerializeField] private int _itemsCount;
         [SerializeField] private int _reward;
         [SerializeField, Range(0, 100)] private float _minimumPercentageItemCountInQuest;
-        [SerializeField] private List<ItemData> _questItemDatas;
+        [SerializeField] private List<ItemStaticData> _questItemDatas;
 
         public int ItemsCount => _itemsCount;
         public int Reward => _reward;
         public float MinimumPercentageItemCountInQuest => _minimumPercentageItemCountInQuest / 100;
-        public List<ItemData> QuestItemDatas => _questItemDatas;
+        public List<ItemStaticData> QuestItemDatas => _questItemDatas;
     }
 }

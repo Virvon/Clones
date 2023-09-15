@@ -12,7 +12,7 @@ public class SingleBullet : Bullet
 
     private SingleBulletData _bulletData;
     private Vector3 _direction;
-    private IDamageable _selfDamageable;
+    private GameObject _selfObject;
     private bool _isCollisioned = false;
 
     public override event Action Hitted;
@@ -31,9 +31,9 @@ public class SingleBullet : Bullet
         if (_isCollisioned)
             return;
 
-        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfDamageable)
+        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfObject.GetComponent<IDamageable>())
         {
-            if (_selfDamageable is Enemy && damageable is Enemy)
+            if (_selfObject.TryGetComponent(out Enemy enemy) && damageable is Enemy)
                 return;
 
             _isCollisioned = true;
@@ -49,7 +49,7 @@ public class SingleBullet : Bullet
 
     public override void Init(BulletData bulletData) => _bulletData = (SingleBulletData)bulletData;
 
-    public override void Shoot(IDamageable targetDamageable, IDamageable selfDamageable, Transform shootPoint, Action<List<DamageableCell>> Hitted)
+    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
         if (targetDamageable.IsAlive)
             _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1, 0)) - shootPoint.transform.position;
@@ -60,7 +60,7 @@ public class SingleBullet : Bullet
 
         transform.rotation = Quaternion.LookRotation(_direction);
 
-        _selfDamageable = selfDamageable;
+        _selfObject = selfObject;
         s_Hitted = Hitted;
 
         Shooted?.Invoke();

@@ -8,7 +8,6 @@ public class PreyResourcesSpawner : MonoBehaviour
     private Point[] _spawnPoints;
     private PreyResourceType[] _preyResourcesTemplates;
     private int _percentageFilled;
-   
 
     public void Init(IGameFactory gameFactory, PreyResourceType[] preyResourcesTemplates, int percentageFilled)
     {

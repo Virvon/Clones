@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: PoisonForest
   m_EditorClassIdentifier: 
-  _preyResourceDatas: []
-  _enemyDatas:
-  - {fileID: 11400000, guid: 0f488415100c57d49917aca1e20a519f, type: 2}
-  - {fileID: 11400000, guid: cab2a5c0df13b544389f2988fa27ae1d, type: 2}
+  Type: 2
+  Prefab: {fileID: 0}
+  PercentageFilled: 0
+  PreyResourcesTamplates: 

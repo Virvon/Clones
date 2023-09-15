@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cdf083785206a84f8cbc49707f33a35, type: 3}
   m_Name: WorldGenerator
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
-  ViewRadius: 0
-  CellSize: 0
-  BiomeDatas: []
+  Prefab: {fileID: 4369433237527862174, guid: 5800ae72453bb0d4cb76438114ab591b, type: 3}
+  ViewRadius: 200
+  CellSize: 100
+  GenerationBiomes: 00000000
