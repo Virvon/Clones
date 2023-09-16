@@ -1,6 +1,6 @@
 using UnityEngine;
-using Clones.Infrastructure;
 using Clones.StateMachine;
+using Clones.Services;
 
 namespace Clones.Animation
 {

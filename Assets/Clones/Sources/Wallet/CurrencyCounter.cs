@@ -9,7 +9,7 @@ public class CurrencyCounter : MonoBehaviour
     [SerializeField] private Wallet _wallet;
     [SerializeField] private CurrecncyCounterData _currecncyCounterData;
     //[SerializeField] private Player _player;
-    [SerializeField] private Quest _quest;
+    //[SerializeField] private Quest _quest;
 
     private ItemVisitor _visitor;
 
