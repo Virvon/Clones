@@ -1,3 +1,4 @@
+using Clones.Data;
 using TMPro;
 using UnityEngine;
 
@@ -5,12 +6,24 @@ namespace Clones.UI
 {
     public abstract class CurrencyView : MonoBehaviour
     {
-        [SerializeField] private Wallet _wallet;
         [SerializeField] private TMP_Text _currencyValue;
 
-        protected Wallet Wallet => _wallet; 
+        protected Wallet Wallet { get; private set; }
         protected TMP_Text CurrencyValue => _currencyValue;
 
-        protected abstract void OnCurrencyCountChanged();
+        public void Init(Wallet wallet)
+        {
+            Wallet = wallet;
+
+            Wallet.CurrencyCountChanged += UpdateCurrencyValue;
+        }
+
+        private void Start() => 
+            UpdateCurrencyValue();
+
+        private void OnDisable() => 
+            Wallet.CurrencyCountChanged -= UpdateCurrencyValue;
+
+        protected abstract void UpdateCurrencyValue();
     }
 }

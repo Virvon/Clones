@@ -11,7 +11,7 @@ namespace Clones.UI
         private IQuestsCreator _questsCreator;
         private IGameFactory _gameFactory;
 
-        private Dictionary<ItemType, QuestView> _questViews = new Dictionary<ItemType, QuestView>();
+        private Dictionary<QuestItemType, QuestView> _questViews = new Dictionary<QuestItemType, QuestView>();
 
         private void OnDisable()
         {

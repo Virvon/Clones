@@ -13,7 +13,8 @@ namespace Clones.Infrastructure
         GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent);
         void CreateVirtualCamera();
         void CreatePreyResource(PreyResourceType type, Vector3 position, Quaternion rotation, Transform parent);
-        GameObject CreateItem(ItemType type, Vector3 position);
+        GameObject CreateItem(CurrencyItemType type, Vector3 position);
+        GameObject CreateItem(QuestItemType type, Vector3 position);
         GameObject CreateQuestView(Quest quest, Transform parent);
     }
 }

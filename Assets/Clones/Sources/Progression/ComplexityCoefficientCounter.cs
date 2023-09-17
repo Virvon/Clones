@@ -9,7 +9,7 @@ namespace Clones.Progression
     {
         [SerializeField] private MonoBehaviour _spawnerComplexitybleBehavior;
         [SerializeField] private MonoBehaviour _questComplexitybleBehavior;
-        [SerializeField] private Wallet _wallet;
+        //[SerializeField] private Wallet _wallet;
         [SerializeField] private float _savedCoefficientsCount;
         //[SerializeField] private Player _player;
 
@@ -56,10 +56,10 @@ namespace Clones.Progression
         {
             float waveCoefficient = _spawnerComplexityble.QuestLevel / 10f;
             float questCoefficient = _questComplexityble.QuestLevel / 10f;
-            float moneyCoefficient = _wallet.Money / 50f;
-            float dnaCoefficient = _wallet.DNA / 10f;
+            //float moneyCoefficient = _wallet.Money / 50f;
+            //float dnaCoefficient = _wallet.DNA / 10f;
 
-            float currentCoefficient = (waveCoefficient + waveCoefficient + questCoefficient + moneyCoefficient + dnaCoefficient) / 4;
+            //float currentCoefficient = (waveCoefficient + waveCoefficient + questCoefficient + moneyCoefficient + dnaCoefficient) / 4;
 
             Queue<float> coefficients = LoadCoefficients();
 
@@ -69,7 +69,7 @@ namespace Clones.Progression
             if (coefficients.Count >= _savedCoefficientsCount)
                 coefficients.Dequeue();
 
-            coefficients.Enqueue(currentCoefficient);
+            //coefficients.Enqueue(currentCoefficient);
 
             SaveCoefficients(coefficients);
         }

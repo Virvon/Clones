@@ -11,9 +11,9 @@ public class CurrencyCounter : MonoBehaviour
     //[SerializeField] private Player _player;
     //[SerializeField] private Quest _quest;
 
-    private ItemVisitor _visitor;
+    //private ItemVisitor _visitor;
 
-    private event Action<CollectingItem> PreyResourceTaked;
+    private event Action<QuestItem> PreyResourceTaked;
     private event Action DNATaked;
 
     private void Start()
@@ -21,7 +21,7 @@ public class CurrencyCounter : MonoBehaviour
         DNATaked += OnDNATaked;
         PreyResourceTaked += OnCollectingItemTaked;
         
-        _visitor = new ItemVisitor(DNATaked: DNATaked, CollectingTaked: PreyResourceTaked);    
+        //_visitor = new ItemVisitor(DNATaked: DNATaked, CollectingTaked: PreyResourceTaked);    
     }
 
     private void OnEnable()
@@ -30,9 +30,9 @@ public class CurrencyCounter : MonoBehaviour
         PreyResourceTaked -= OnCollectingItemTaked;
     }
 
-    public void OnTakeCollectingItem(Item item)
+    public void OnTakeCollectingItem(ItemMovement item)
     {
-        item.Accept(_visitor);
+        //item.Accept(_visitor);
     }
 
     private void OnDNATaked()
@@ -40,30 +40,30 @@ public class CurrencyCounter : MonoBehaviour
         //_wallet.TakeDNA((int)(_currecncyCounterData.DNAReward * _player.ResourceMultiplier));
     }
 
-    private void OnCollectingItemTaked(CollectingItem collectingItem)
+    private void OnCollectingItemTaked(QuestItem collectingItem)
     {
         //_quest.TakePreyResourceItem(collectingItem.Data, (int)(_currecncyCounterData.CollectingItemReward * _player.ResourceMultiplier));
     }
 
-    private class ItemVisitor : IItemVisitor
-    {
-        private event Action<CollectingItem> s_CollectingItemTaked;
-        private event Action s_DNATaked;
+    //private class ItemVisitor : IItemVisitor
+    //{
+    //    private event Action<QuestItem> s_CollectingItemTaked;
+    //    private event Action s_DNATaked;
 
-        public ItemVisitor(Action<CollectingItem> CollectingTaked = null, Action DNATaked = null)
-        {
-            s_CollectingItemTaked = CollectingTaked;
-            s_DNATaked = DNATaked;
-        }
+    //    public ItemVisitor(Action<QuestItem> CollectingTaked = null, Action DNATaked = null)
+    //    {
+    //        s_CollectingItemTaked = CollectingTaked;
+    //        s_DNATaked = DNATaked;
+    //    }
 
-        public void Visit(DNAItem DNA)
-        {
-            s_DNATaked?.Invoke();
-        }
+    //    public void Visit(CurrencyItem DNA)
+    //    {
+    //        s_DNATaked?.Invoke();
+    //    }
 
-        public void Visit(CollectingItem collectingItem)
-        {
-            s_CollectingItemTaked?.Invoke(collectingItem);
-        }
-    }
+    //    public void Visit(QuestItem collectingItem)
+    //    {
+    //        s_CollectingItemTaked?.Invoke(collectingItem);
+    //    }
+    //}
 }

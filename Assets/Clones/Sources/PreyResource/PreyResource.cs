@@ -1,19 +1,20 @@
+using Clones.GameLogic;
 using Clones.StaticData;
 using System;
 using UnityEngine;
 
-public class PreyResource : MonoBehaviour, IDroppable 
+public class PreyResource : MonoBehaviour, IDroppable
 {
     private bool _isAlive;
     private int _hitsCountToDie;
 
     public bool IsAlive => _isAlive;
 
-    public ItemType DroppedItem { get; private set; }
+    public QuestItemType DroppedItem { get; private set; }
 
     public event Action<IDamageable> Died;
 
-    public void Init(int hitsCountToDie, ItemType droppedItem)
+    public void Init(int hitsCountToDie, QuestItemType droppedItem)
     {
         _isAlive = true;
 

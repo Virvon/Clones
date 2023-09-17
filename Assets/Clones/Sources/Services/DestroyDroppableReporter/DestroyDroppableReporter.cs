@@ -1,4 +1,4 @@
-﻿using Clones.Infrastructure;
+﻿using Clones.GameLogic;
 using System;
 
 namespace Clones.Services

@@ -7,9 +7,9 @@ namespace Clones.Services
         public bool IsDone => TargetItemsCount <= CurrentItemsCount;
         public int CurrentItemsCount { get; private set; }
         public int TargetItemsCount { get; private set; }
-        public ItemType Type { get; private set; }
+        public QuestItemType Type { get; private set; }
 
-        public Quest(ItemType type, int targetItemsCount)
+        public Quest(QuestItemType type, int targetItemsCount)
         {
             CurrentItemsCount = 0;
 
@@ -17,7 +17,7 @@ namespace Clones.Services
             Type = type;
         }
 
-        public void TryTakeItem(ItemType type, int count)
+        public void TryTakeItem(QuestItemType type, int count)
         {
             if (IsDone || type != Type)
                 return;

@@ -1,5 +1,4 @@
-﻿using Clones.Infrastructure;
-using Clones.StaticData;
+﻿using Clones.StaticData;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +11,8 @@ namespace Clones.Services
         event Action Created;
         event Action<Quest> Updated;
 
-        bool IsQuestItem(ItemType type);
+        void Create();
+        bool IsQuestItem(QuestItemType type);
+        void TakeItem(QuestItemType type, int count);
     }
 }

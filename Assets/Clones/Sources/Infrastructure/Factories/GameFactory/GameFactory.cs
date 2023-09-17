@@ -2,7 +2,6 @@
 using Clones.Animation;
 using Clones.StaticData;
 using UnityEngine;
-using System;
 using Object = UnityEngine.Object;
 using Clones.Services;
 using Clones.UI;
@@ -18,14 +17,18 @@ namespace Clones.Infrastructure
         private readonly IInputService _inputService;
         private readonly IQuestsCreator _questsCreator;
         private readonly IDestroyDroppableReporter _destroyDroppableReporter;
+        private readonly IItemsCounter _itemsCounter;
+        private readonly IPersistentProgressService _persistentProgressService;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, IQuestsCreator questsCreator, IDestroyDroppableReporter destroyDroppableReporter)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, IQuestsCreator questsCreator, IDestroyDroppableReporter destroyDroppableReporter, IItemsCounter itemsCounter, IPersistentProgressService persistentProgressService)
         {
             _assets = assets;
             _inputService = inputService;
             _staticData = staticData;
             _questsCreator = questsCreator;
             _destroyDroppableReporter = destroyDroppableReporter;
+            _itemsCounter = itemsCounter;
+            _persistentProgressService = persistentProgressService;
         }
 
         public void CreateHud()
@@ -40,6 +43,12 @@ namespace Clones.Infrastructure
 
             hud.GetComponentInChildren<QuestPanel>()
                 .Init(_questsCreator, this);
+
+            hud.GetComponentInChildren<MoneyView>()
+                .Init(_persistentProgressService.Progress.Wallet);
+
+            hud.GetComponentInChildren<DnaView>()
+                .Init(_persistentProgressService.Progress.Wallet);
         }
 
         public GameObject CreatePlayer()
@@ -48,6 +57,9 @@ namespace Clones.Infrastructure
 
             _playerObject.GetComponent<PlayerAnimationSwitcher>()
                 .Init(_inputService);
+
+            _playerObject.GetComponent<DropCollecting>()
+                .Init(_itemsCounter);
 
             return _playerObject;
         }
@@ -91,9 +103,16 @@ namespace Clones.Infrastructure
             _destroyDroppableReporter.AddDroppable(preyResource);
         }
 
-        public GameObject CreateItem(ItemType type, Vector3 position)
+        public GameObject CreateItem(CurrencyItemType type, Vector3 position)
         {
-            ItemStaticData itemData = _staticData.GetItemStaticData(type);
+            CurrencyItemStaticData itemData = _staticData.GetItemStaticData(type);
+
+            return Object.Instantiate(itemData.Prefab, position, Quaternion.identity);
+        }
+
+        public GameObject CreateItem(QuestItemType type, Vector3 position)
+        {
+            QuestItemStaticData itemData = _staticData.GetItemStaticData(type); 
 
             return Object.Instantiate(itemData.Prefab, position, Quaternion.identity);
         }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GreenPreyResource
   m_EditorClassIdentifier: 
   Type: 0
-  DroppetItem: 1
+  DroppetItem: 0
   Prefab: {fileID: 48553145359045075, guid: c6099aecb4ee4f94c85e1e62865f9fc1, type: 3}
   HitsCountToDie: 2

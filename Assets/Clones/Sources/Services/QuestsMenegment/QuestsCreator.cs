@@ -11,7 +11,7 @@ namespace Clones.Services
     {
         private const int MaxItemsCoutn = 10;
         private const int MinItemsCountInQuest = 4;
-        private readonly ItemType[] _questTypes = { ItemType.Green, ItemType.Blue };
+        private readonly QuestItemType[] _questTypes = { QuestItemType.Green, QuestItemType.Blue };
         public IReadOnlyList<Quest> Quests => _quests;
 
         private List<Quest> _quests;
@@ -19,19 +19,31 @@ namespace Clones.Services
         public event Action Created;
         public event Action<Quest> Updated;
 
-
         public QuestsCreator()
         {
             _quests = GetQuests();
         }
 
-        public bool IsQuestItem(ItemType type) => 
+        public void Create()
+        {
+            
+        }
+
+        public bool IsQuestItem(QuestItemType type) => 
             _quests.Any(quest => quest.Type == type && quest.IsDone == false);
+
+        public void TakeItem(QuestItemType type, int count)
+        {
+            var updatedQuest = _quests.First(quest => quest.Type == type);
+            updatedQuest.TryTakeItem(type, count);
+
+            Updated?.Invoke(updatedQuest);
+        }
 
         private List<Quest> GetQuests()
         {
             List<Quest> quests = new();
-            HashSet<ItemType> usedTypes = new();
+            HashSet<QuestItemType> usedTypes = new();
 
             int availableTypesCount = _questTypes.Length;
             int maxItemsCount = MaxItemsCoutn;
@@ -47,7 +59,7 @@ namespace Clones.Services
                 else
                     itemsCount = GetItemsCount(minItemsCountInQuest, maxItemsCount, totalItemsCount);
 
-                ItemType type = GetUniqueType(usedTypes);
+                QuestItemType type = GetUniqueType(usedTypes);
 
                 usedTypes.Add(type);
                 quests.Add(new Quest(type, itemsCount));
@@ -60,9 +72,9 @@ namespace Clones.Services
             return quests;
         }
 
-        private ItemType GetUniqueType(HashSet<ItemType> usedTypes)
+        private QuestItemType GetUniqueType(HashSet<QuestItemType> usedTypes)
         {
-            ItemType[] availableTypes = _questTypes.Except(usedTypes).ToArray();
+            QuestItemType[] availableTypes = _questTypes.Except(usedTypes).ToArray();
 
             if (availableTypes.Length == 0)
                 throw new Exception(typeof(QuestsCreator) + " cannot find unique objects");

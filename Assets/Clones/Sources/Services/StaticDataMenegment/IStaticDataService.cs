@@ -1,4 +1,5 @@
 ﻿using Clones.StaticData;
+using System;
 
 namespace Clones.Services
 {
@@ -8,6 +9,7 @@ namespace Clones.Services
         WorldGeneratorStaticData GetWorldGeneratorData();
         BiomeStaticData GetBiomeStaticData(BiomeType type);
         PreyResourceStaticData GetPreyResourceStaticData(PreyResourceType type);
-        ItemStaticData GetItemStaticData(ItemType type);
+        QuestItemStaticData GetItemStaticData(QuestItemType type);
+        CurrencyItemStaticData GetItemStaticData(CurrencyItemType type);
     }
 }

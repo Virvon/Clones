@@ -15,7 +15,8 @@ namespace Clones.Infrastructure
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-                [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IGameFactory>()),
+                [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>()),
+                [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IGameFactory>(), services.Single<IDestroyDroppableReporter>(), services.Single<IQuestsCreator>()),
                 [typeof(MainMenuLoopState)] = new MainMenuLoopState(this, services.Single<IMainMenuFactory>()),
                 [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel)
             };
