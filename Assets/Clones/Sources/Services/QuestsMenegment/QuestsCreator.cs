@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Clones.Services
@@ -11,7 +10,7 @@ namespace Clones.Services
     {
         private const int MaxItemsCoutn = 10;
         private const int MinItemsCountInQuest = 4;
-        private readonly QuestItemType[] _questTypes = { QuestItemType.Green, QuestItemType.Blue };
+        private readonly QuestItemType[] _questTypes = { QuestItemType.Green, QuestItemType.Blue};
         public IReadOnlyList<Quest> Quests => _quests;
 
         private List<Quest> _quests;
@@ -19,14 +18,10 @@ namespace Clones.Services
         public event Action Created;
         public event Action<Quest> Updated;
 
-        public QuestsCreator()
-        {
-            _quests = GetQuests();
-        }
-
         public void Create()
         {
-            
+            _quests = GetQuests();
+            Created?.Invoke();
         }
 
         public bool IsQuestItem(QuestItemType type) => 
@@ -38,6 +33,9 @@ namespace Clones.Services
             updatedQuest.TryTakeItem(type, count);
 
             Updated?.Invoke(updatedQuest);
+
+            if (_quests.All(quest => quest.IsDone))
+                Create();
         }
 
         private List<Quest> GetQuests()
@@ -66,8 +64,6 @@ namespace Clones.Services
 
                 totalItemsCount += itemsCount;
             }
-
-            Created?.Invoke();
 
             return quests;
         }

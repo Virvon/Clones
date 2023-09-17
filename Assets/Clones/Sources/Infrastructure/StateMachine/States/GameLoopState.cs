@@ -25,6 +25,8 @@ namespace Clones.Infrastructure
             _gameFactory.CreateWorldGenerator();
             _gameFactory.CreateHud();
             _gameFactory.CreateVirtualCamera();
+
+            _questsCreator.Create();
         }
 
         public void Exit()

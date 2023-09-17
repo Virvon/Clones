@@ -24,8 +24,6 @@ namespace Clones.Infrastructure
         {
             LoadProgressOrInitNew();
 
-            Debug.Log("dna count " + _persistentProgressService.Progress.Wallet.Dna);
-
             _stateMachine.Enter<LoadSceneState, string>(MainMenuScene, _stateMachine.Enter<MainMenuLoopState>);
         }
 

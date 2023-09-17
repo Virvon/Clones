@@ -11,7 +11,7 @@ namespace Clones.UI
         private IQuestsCreator _questsCreator;
         private IGameFactory _gameFactory;
 
-        private Dictionary<QuestItemType, QuestView> _questViews = new Dictionary<QuestItemType, QuestView>();
+        private Dictionary<QuestItemType, QuestView> _questViews = new();
 
         private void OnDisable()
         {
@@ -26,13 +26,12 @@ namespace Clones.UI
 
             _questsCreator.Created += OnQuestCreated;
             _questsCreator.Updated += OnQuestCellUpdated;
-
-            OnQuestCreated();
         }
 
         private void OnQuestCreated()
         {
             Clear();
+
 
             foreach (var quest in _questsCreator.Quests)
             {
