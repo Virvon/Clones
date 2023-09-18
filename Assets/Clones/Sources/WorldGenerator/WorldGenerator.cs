@@ -1,8 +1,10 @@
 ﻿using Clones.Infrastructure;
 using Clones.StaticData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WorldGenerator : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class WorldGenerator : MonoBehaviour
     private float _viewRadius;
     private float _cellSize;
     private HashSet<GameObject> _tilesMatrix = new();
+
+    public event Action<GameObject> TileCreated;
+    public event Action<GameObject> TileDestroyed;
 
     private void Update()
     {
@@ -35,8 +40,6 @@ public class WorldGenerator : MonoBehaviour
     {
         var cellCountOnAxis = (int)(viewRadius / _cellSize);
         var fillAreaCenter = WorldToGridPosition(center);
-
-        
 
         for (int x = -cellCountOnAxis; x < cellCountOnAxis; x++)
         {
@@ -64,6 +67,7 @@ public class WorldGenerator : MonoBehaviour
     {
         foreach(var tile in tilesMatrix)
         {
+            TileDestroyed?.Invoke(tile);
             _tilesMatrix.Remove(tile);
             Destroy(tile);
         }
@@ -83,6 +87,7 @@ public class WorldGenerator : MonoBehaviour
 
         GameObject tileObject = _gameFactory.CreateTile(template, position, Quaternion.identity, transform);
 
+        TileCreated?.Invoke(tileObject);
         _tilesMatrix.Add(tileObject);
     }
 

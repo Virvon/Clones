@@ -15,7 +15,7 @@ public class EnemiesSpawnerOld : MonoBehaviour, IComplexityble
     [SerializeField] private GameObject _target;
 
     [SerializeField] private Complexity _complexity;
-    [SerializeField] private CurrentBiome _currentBiome;
+    //[SerializeField] private CurrentBiome _currentBiome;
 
     public int QuestLevel => _currentWave;
 
@@ -37,7 +37,7 @@ public class EnemiesSpawnerOld : MonoBehaviour, IComplexityble
 
     private void CreateWave()
     {
-        BiomeStaticData targetBiomeData = _currentBiome.BiomeData;
+        //BiomeStaticData targetBiomeData = _currentBiome.BiomeData;
         //IReadOnlyList<EnemyData> targetEnemyDatas = targetBiomeData.EnemyDatas;
 
         //if (targetEnemyDatas.Count == 0)

@@ -1,4 +1,5 @@
-﻿using Clones.GameLogic;
+﻿using Clones.Biomes;
+using Clones.GameLogic;
 using Clones.Services;
 using Clones.StaticData;
 using System;
@@ -12,7 +13,7 @@ namespace Clones.Infrastructure
 
         GameObject CreatePlayer(IItemsCounter itemsCounter);
         void CreateHud(IQuestsCreator questsCreator);
-        void CreateWorldGenerator();
+        WorldGenerator CreateWorldGenerator();
         GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent);
         void CreateVirtualCamera();
         void CreatePreyResource(PreyResourceType type, Vector3 position, Quaternion rotation, Transform parent);

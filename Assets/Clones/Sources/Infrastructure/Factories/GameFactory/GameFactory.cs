@@ -7,6 +7,7 @@ using Clones.UI;
 using Clones.GameLogic;
 using System;
 using Object = UnityEngine.Object;
+using Clones.Biomes;
 
 namespace Clones.Infrastructure
 {
@@ -62,12 +63,14 @@ namespace Clones.Infrastructure
             return _playerObject;
         }
 
-        public void CreateWorldGenerator()
+        public WorldGenerator CreateWorldGenerator()
         {
             WorldGeneratorStaticData worldGeneratorData = _staticData.GetWorldGeneratorData();
 
             WorldGenerator worldGenerator = Object.Instantiate(worldGeneratorData.Prefab);
             worldGenerator.Init(this, _playerObject.transform, worldGeneratorData.GenerationBiomes, worldGeneratorData.ViewRadius, worldGeneratorData.CellSize);
+
+            return worldGenerator;
         }
 
         public GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent)
@@ -78,6 +81,9 @@ namespace Clones.Infrastructure
 
             tile.GetComponent<PreyResourcesSpawner>()?
                 .Init(this, biomeData.PreyResourcesTamplates, biomeData.PercentageFilled);
+
+            tile.GetComponent<Biome>()
+                .Init(type);
 
             return tile;
         }

@@ -11,6 +11,7 @@ namespace Clones.Infrastructure
 
         private IQuestsCreator _questsCreator;
         private IItemsCounter _itemsCounter;
+        private WorldGenerator _worldGenerator;
 
         public GameLoopState(GameStateMachine stateMachine, IGameFactory gameFactory, ICoroutineRunner coroutineRunner, IPersistentProgressService persistentProgress)
         {
@@ -25,6 +26,7 @@ namespace Clones.Infrastructure
             CreateGameWorld();           
 
             _questsCreator.Create();
+            new CurrentBiome(_worldGenerator);
         }
 
         public void Exit()
@@ -37,8 +39,9 @@ namespace Clones.Infrastructure
             _questsCreator = new QuestsCreator(_persistentProgress);
             IDestroyDroppableReporter destroyDroppableReporter = new DestroyDroppableReporter(_gameFactory);
             _itemsCounter = new ItemsCounter(_questsCreator, _persistentProgress);
-            new EnemiesSpawner(_coroutineRunner);
 
+            
+            new EnemiesSpawner(_coroutineRunner);
             new CurrencyDropper(_gameFactory, destroyDroppableReporter);
             new QuestItemsDropper(_gameFactory, destroyDroppableReporter, _questsCreator);
         }
@@ -46,7 +49,7 @@ namespace Clones.Infrastructure
         private void CreateGameWorld()
         {
             _gameFactory.CreatePlayer(_itemsCounter);
-            _gameFactory.CreateWorldGenerator();
+            _worldGenerator = _gameFactory.CreateWorldGenerator();
             _gameFactory.CreateHud(_questsCreator);
             _gameFactory.CreateVirtualCamera();
         }

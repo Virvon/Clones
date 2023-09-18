@@ -7,11 +7,8 @@ namespace Clones.Biomes
     [RequireComponent(typeof(Collider))]
     public class Biome : MonoBehaviour
     {
-        [SerializeField] private BiomeStaticData _biomeData;
-
-        public BiomeStaticData BiomeData => _biomeData;
-
         public Player Player { get; private set; }
+        public BiomeType Type { get; private set; }
 
         public event Action<Biome> PlayerEntered;
         public event Action PlayerExited;
@@ -22,6 +19,7 @@ namespace Clones.Biomes
             {
                 Player = player;
                 PlayerEntered?.Invoke(this);
+
                 OnPlayerEntered();
             }
         }
@@ -32,9 +30,13 @@ namespace Clones.Biomes
             {
                 Player = null;
                 PlayerExited?.Invoke();
+
                 OnPlayerExited();
             }
         }
+
+        public void Init(BiomeType type) =>
+            Type = type;
 
         protected virtual void OnPlayerEntered() { }
 
