@@ -1,4 +1,4 @@
-﻿namespace Clones.Services
+﻿namespace Clones.GameLogic
 {
     public interface IItemVisitor
     {

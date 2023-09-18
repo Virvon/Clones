@@ -1,7 +1,7 @@
 ﻿using Clones.Infrastructure;
 using System.Collections;
 
-namespace Clones.Services
+namespace Clones.GameLogic
 {
     public class EnemiesSpawner : IEnemiesSpawner
     {

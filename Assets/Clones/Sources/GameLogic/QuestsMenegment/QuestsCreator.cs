@@ -1,10 +1,11 @@
-﻿using Clones.StaticData;
+﻿using Clones.Services;
+using Clones.StaticData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Random = UnityEngine.Random;
 
-namespace Clones.Services
+namespace Clones.GameLogic
 {
     public class QuestsCreator : IQuestsCreator
     {

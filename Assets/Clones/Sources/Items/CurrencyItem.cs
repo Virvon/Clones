@@ -1,4 +1,4 @@
-﻿using Clones.Services;
+﻿using Clones.GameLogic;
 using UnityEngine;
 
 public class CurrencyItem : MonoBehaviour, IItem

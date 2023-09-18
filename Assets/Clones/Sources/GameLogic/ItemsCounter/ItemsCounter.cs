@@ -1,4 +1,7 @@
-﻿namespace Clones.Services
+﻿using Clones.Services;
+using UnityEngine;
+
+namespace Clones.GameLogic
 {
     public class ItemsCounter : IItemsCounter
     {

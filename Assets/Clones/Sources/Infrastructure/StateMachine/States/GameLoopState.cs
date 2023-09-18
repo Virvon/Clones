@@ -6,25 +6,23 @@ namespace Clones.Infrastructure
     public class GameLoopState : IState
     {
         private readonly IGameFactory _gameFactory;
-        private readonly IDestroyDroppableReporter _destroyDroppableReporter;
-        private readonly IQuestsCreator _questsCreator;
+        private readonly IPersistentProgressService _persistentProgress;
+        private readonly ICoroutineRunner _coroutineRunner;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFactory gameFactory, IDestroyDroppableReporter destroyDroppableReporter, IQuestsCreator questsCreator)
+        private IQuestsCreator _questsCreator;
+        private IItemsCounter _itemsCounter;
+
+        public GameLoopState(GameStateMachine stateMachine, IGameFactory gameFactory, ICoroutineRunner coroutineRunner, IPersistentProgressService persistentProgress)
         {
             _gameFactory = gameFactory;
-            _destroyDroppableReporter = destroyDroppableReporter;
-            _questsCreator = questsCreator;
+            _coroutineRunner = coroutineRunner;
+            _persistentProgress = persistentProgress;
         }
 
         public void Enter()
         {
-            new CurrencyDropper(_gameFactory, _destroyDroppableReporter);
-            new QuestItemsDropper(_gameFactory, _destroyDroppableReporter, _questsCreator);
-
-            _gameFactory.CreatePlayer();
-            _gameFactory.CreateWorldGenerator();
-            _gameFactory.CreateHud();
-            _gameFactory.CreateVirtualCamera();
+            CreateGameInfrustructure();
+            CreateGameWorld();           
 
             _questsCreator.Create();
         }
@@ -32,6 +30,25 @@ namespace Clones.Infrastructure
         public void Exit()
         {
             
+        }
+
+        private void CreateGameInfrustructure()
+        {
+            _questsCreator = new QuestsCreator(_persistentProgress);
+            IDestroyDroppableReporter destroyDroppableReporter = new DestroyDroppableReporter(_gameFactory);
+            _itemsCounter = new ItemsCounter(_questsCreator, _persistentProgress);
+            new EnemiesSpawner(_coroutineRunner);
+
+            new CurrencyDropper(_gameFactory, destroyDroppableReporter);
+            new QuestItemsDropper(_gameFactory, destroyDroppableReporter, _questsCreator);
+        }
+
+        private void CreateGameWorld()
+        {
+            _gameFactory.CreatePlayer(_itemsCounter);
+            _gameFactory.CreateWorldGenerator();
+            _gameFactory.CreateHud(_questsCreator);
+            _gameFactory.CreateVirtualCamera();
         }
     }
 }

@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace Clones.Services
+namespace Clones.GameLogic
 {
-    public interface IQuestsCreator : IService
+    public interface IQuestsCreator
     {
         int Reward { get; }
         IReadOnlyList<Quest> Quests { get; }

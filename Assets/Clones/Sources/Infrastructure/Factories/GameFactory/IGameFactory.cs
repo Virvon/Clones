@@ -1,4 +1,5 @@
-﻿using Clones.Services;
+﻿using Clones.GameLogic;
+using Clones.Services;
 using Clones.StaticData;
 using System;
 using UnityEngine;
@@ -7,8 +8,10 @@ namespace Clones.Infrastructure
 {
     public interface IGameFactory : IService
     {
-        GameObject CreatePlayer();
-        void CreateHud();
+        event Action<IDroppable> DroppableCreated;
+
+        GameObject CreatePlayer(IItemsCounter itemsCounter);
+        void CreateHud(IQuestsCreator questsCreator);
         void CreateWorldGenerator();
         GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent);
         void CreateVirtualCamera();

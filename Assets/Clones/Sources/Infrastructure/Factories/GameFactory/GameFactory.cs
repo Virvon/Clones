@@ -2,9 +2,11 @@
 using Clones.Animation;
 using Clones.StaticData;
 using UnityEngine;
-using Object = UnityEngine.Object;
 using Clones.Services;
 using Clones.UI;
+using Clones.GameLogic;
+using System;
+using Object = UnityEngine.Object;
 
 namespace Clones.Infrastructure
 {
@@ -15,23 +17,19 @@ namespace Clones.Infrastructure
         private readonly IStaticDataService _staticData;
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
-        private readonly IQuestsCreator _questsCreator;
-        private readonly IDestroyDroppableReporter _destroyDroppableReporter;
-        private readonly IItemsCounter _itemsCounter;
         private readonly IPersistentProgressService _persistentProgressService;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, IQuestsCreator questsCreator, IDestroyDroppableReporter destroyDroppableReporter, IItemsCounter itemsCounter, IPersistentProgressService persistentProgressService)
+        public event Action<IDroppable> DroppableCreated;
+
+        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, IPersistentProgressService persistentProgressService)
         {
             _assets = assets;
             _inputService = inputService;
             _staticData = staticData;
-            _questsCreator = questsCreator;
-            _destroyDroppableReporter = destroyDroppableReporter;
-            _itemsCounter = itemsCounter;
             _persistentProgressService = persistentProgressService;
         }
 
-        public void CreateHud()
+        public void CreateHud(IQuestsCreator questsCreator)
         {
             var hud = _assets.Instantiate(AssetPath.Hud);
 
@@ -42,7 +40,7 @@ namespace Clones.Infrastructure
                 .Init(_playerObject.GetComponent<PlayerHealth>());
 
             hud.GetComponentInChildren<QuestPanel>()
-                .Init(_questsCreator, this);
+                .Init(questsCreator, this);
 
             hud.GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgressService.Progress.Wallet);
@@ -51,7 +49,7 @@ namespace Clones.Infrastructure
                 .Init(_persistentProgressService.Progress.Wallet);
         }
 
-        public GameObject CreatePlayer()
+        public GameObject CreatePlayer(IItemsCounter itemsCounter)
         {
             _playerObject = _assets.Instantiate(AssetPath.Player);
 
@@ -59,7 +57,7 @@ namespace Clones.Infrastructure
                 .Init(_inputService);
 
             _playerObject.GetComponent<DropCollecting>()
-                .Init(_itemsCounter);
+                .Init(itemsCounter);
 
             return _playerObject;
         }
@@ -100,7 +98,7 @@ namespace Clones.Infrastructure
             preyResource.GetComponent<PreyResource>()
                 .Init(preyResourceData.HitsCountToDie, preyResourceData.DroppetItem);
 
-            _destroyDroppableReporter.AddDroppable(preyResource);
+            DroppableCreated?.Invoke(preyResource);
         }
 
         public GameObject CreateItem(CurrencyItemType type, Vector3 position)

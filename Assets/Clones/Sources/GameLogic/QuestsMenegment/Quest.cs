@@ -1,6 +1,6 @@
 ﻿using Clones.StaticData;
 
-namespace Clones.Services
+namespace Clones.GameLogic
 {
     public class Quest
     {
