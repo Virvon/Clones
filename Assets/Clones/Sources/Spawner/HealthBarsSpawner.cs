@@ -3,7 +3,7 @@ using UnityEngine;
 public class HealthBarsSpawner : MonoBehaviour
 {
     [SerializeField] private EnemyHealthbar _healthbarPrefab;
-    [SerializeField] private EnemiesSpawner _emiesSpawner;
+    [SerializeField] private EnemiesSpawnerOld _emiesSpawner;
     [SerializeField] private Vector3 _healthbarOffset;
 
     private void OnEnable() => _emiesSpawner.EnemyCreated += OnEnemyCreated;

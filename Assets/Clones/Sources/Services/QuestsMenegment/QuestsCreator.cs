@@ -10,17 +10,29 @@ namespace Clones.Services
     {
         private const int MaxItemsCoutn = 10;
         private const int MinItemsCountInQuest = 4;
+        private const int MaxReward = 10;
+
         private readonly QuestItemType[] _questTypes = { QuestItemType.Green, QuestItemType.Blue};
-        public IReadOnlyList<Quest> Quests => _quests;
+        private readonly IPersistentProgressService _persistentProgress;
 
         private List<Quest> _quests;
+
+        public IReadOnlyList<Quest> Quests => _quests;
+        public int Reward { get; private set; }
 
         public event Action Created;
         public event Action<Quest> Updated;
 
+        public QuestsCreator(IPersistentProgressService persistentProgress)
+        {
+            _persistentProgress = persistentProgress;
+        }
+
         public void Create()
         {
-            _quests = GetQuests();
+            _quests = GetQuests(out int reward);
+            Reward = reward;
+
             Created?.Invoke();
         }
 
@@ -35,10 +47,14 @@ namespace Clones.Services
             Updated?.Invoke(updatedQuest);
 
             if (_quests.All(quest => quest.IsDone))
+            {
+                _persistentProgress.Progress.Wallet.CollectMoney(Reward);
+
                 Create();
+            }
         }
 
-        private List<Quest> GetQuests()
+        private List<Quest> GetQuests(out int reward)
         {
             List<Quest> quests = new();
             HashSet<QuestItemType> usedTypes = new();
@@ -64,6 +80,8 @@ namespace Clones.Services
 
                 totalItemsCount += itemsCount;
             }
+
+            reward = MaxReward;
 
             return quests;
         }

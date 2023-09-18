@@ -64,6 +64,8 @@ public class PlayerFreezing : MonoBehaviour, IMovementSpeedChanger, IFreezingPer
             FreezingPercentChanged?.Invoke();
             MovementSpeedChanged?.Invoke();
 
+
+
             yield return null;
         }
 

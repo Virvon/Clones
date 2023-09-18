@@ -8,7 +8,7 @@ using Clones.Biomes;
 using System.Collections.Generic;
 using Clones.StaticData;
 
-public class EnemiesSpawner : MonoBehaviour, IComplexityble
+public class EnemiesSpawnerOld : MonoBehaviour, IComplexityble
 {
     [SerializeField] private SpawnerData _spawnerData;
 

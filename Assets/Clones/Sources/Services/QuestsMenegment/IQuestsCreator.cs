@@ -6,6 +6,7 @@ namespace Clones.Services
 {
     public interface IQuestsCreator : IService
     {
+        int Reward { get; }
         IReadOnlyList<Quest> Quests { get; }
 
         event Action Created;

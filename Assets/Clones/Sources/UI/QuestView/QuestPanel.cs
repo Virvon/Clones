@@ -2,12 +2,15 @@ using Clones.Infrastructure;
 using Clones.Services;
 using Clones.StaticData;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Clones.UI
 {
     public class QuestPanel : MonoBehaviour
     {
+        [SerializeField] private TMP_Text _rewardValue;
+
         private IQuestsCreator _questsCreator;
         private IGameFactory _gameFactory;
 
@@ -32,13 +35,14 @@ namespace Clones.UI
         {
             Clear();
 
-
             foreach (var quest in _questsCreator.Quests)
             {
                 GameObject view = _gameFactory.CreateQuestView(quest, transform);
 
                 _questViews.Add(quest.Type, view.GetComponent<QuestView>());
             }
+
+            _rewardValue.text = _questsCreator.Reward.ToString();
         }
 
         private void OnQuestCellUpdated(Quest quest)
@@ -54,6 +58,7 @@ namespace Clones.UI
                 Destroy(view.gameObject);
 
             _questViews.Clear();
+            _rewardValue.text = "";
         }
     }
 }
