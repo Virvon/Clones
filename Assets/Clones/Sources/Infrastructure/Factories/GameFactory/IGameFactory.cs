@@ -20,5 +20,6 @@ namespace Clones.Infrastructure
         GameObject CreateItem(CurrencyItemType type, Vector3 position);
         GameObject CreateItem(QuestItemType type, Vector3 position);
         GameObject CreateQuestView(Quest quest, Transform parent);
+        void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, out float weight);
     }
 }

@@ -38,16 +38,10 @@ namespace Clones.GameLogic
             }
         }
 
-        private void OnPlayerEntered(Biome biome)
-        {
+        private void OnPlayerEntered(Biome biome) => 
             Type = biome.Type;
-            Debug.Log(Type);
-        }
 
-        private void OnPlayerExited()
-        {
+        private void OnPlayerExited() => 
             Type = DefaultType;
-            Debug.Log(Type);
-        }
     }
 }

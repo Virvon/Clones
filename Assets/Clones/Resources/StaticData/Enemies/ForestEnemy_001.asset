@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5431a7ae00c2fb498e9466e8207ab3e, type: 3}
-  m_Name: IceCrystalsEnemy
+  m_Name: ForestEnemy_001
   m_EditorClassIdentifier: 
-  _damage: 1
-  _health: 3
-  _attackSpeed: 1
-  _enemyPrefab: {fileID: 2674497639100704801, guid: 5dd8ee6d3ef777a44a1c13b82966810a, type: 3}
+  Prefab: {fileID: 8257744498499342390, guid: a2c99e3f405631549990d7ba63bfd18e, type: 3}
+  Type: 0
+  Damage: 3
+  Health: 2
+  AttackCooldown: 1

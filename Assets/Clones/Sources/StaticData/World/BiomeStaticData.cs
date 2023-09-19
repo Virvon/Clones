@@ -8,6 +8,7 @@ namespace Clones.StaticData
         public BiomeType Type;
         public GameObject Prefab;
         [Range(0, 100)] public int PercentageFilled;
-        public PreyResourceType[] PreyResourcesTamplates;
+        public PreyResourceType[] PreyResourcesTemplates;
+        public EnemyType[] EnemiesTemplated;
     }
 }

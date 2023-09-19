@@ -16,7 +16,7 @@ namespace Clones.Infrastructure
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>()),
-                [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IGameFactory>(), coroutineRunner, services.Single<IPersistentProgressService>()),
+                [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IGameFactory>(), coroutineRunner, services.Single<IPersistentProgressService>(), services.Single<IStaticDataService>()),
                 [typeof(MainMenuLoopState)] = new MainMenuLoopState(this, services.Single<IMainMenuFactory>()),
                 [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel)
             };

@@ -7,24 +7,26 @@ namespace Clones.Services
 {
     public class StaticDataService : IStaticDataService
     {
-        Dictionary<BiomeType, BiomeStaticData> _biomes;
-        Dictionary<PreyResourceType, PreyResourceStaticData> _preyResources;
-        Dictionary<QuestItemType, QuestItemStaticData> _questItems;
-        Dictionary<CurrencyItemType, CurrencyItemStaticData> _currencyItems;
+        private Dictionary<BiomeType, BiomeStaticData> _biomes;
+        private Dictionary<PreyResourceType, PreyResourceStaticData> _preyResources;
+        private Dictionary<QuestItemType, QuestItemStaticData> _questItems;
+        private Dictionary<CurrencyItemType, CurrencyItemStaticData> _currencyItems;
+        private Dictionary<EnemyType, EnemyStaticData> _enemies;
 
         public void Load()
         {
-            _biomes = Resources.LoadAll<BiomeStaticData>(StaticDataPath.BiomesStaticData).ToDictionary(value => value.Type, value => value);
-            _preyResources = Resources.LoadAll<PreyResourceStaticData>(StaticDataPath.PreyResourcesStaticData).ToDictionary(value => value.Type, value => value);
-            _questItems = Resources.LoadAll<QuestItemStaticData>(StaticDataPath.QuestItemsStaticData).ToDictionary(value => value.Type, value => value);
-            _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(StaticDataPath.CurrencyItemsStaticData).ToDictionary(value => value.Type, value => value);
+            _biomes = Resources.LoadAll<BiomeStaticData>(StaticDataPath.Biomes).ToDictionary(value => value.Type, value => value);
+            _preyResources = Resources.LoadAll<PreyResourceStaticData>(StaticDataPath.PreyResources).ToDictionary(value => value.Type, value => value);
+            _questItems = Resources.LoadAll<QuestItemStaticData>(StaticDataPath.QuestItems).ToDictionary(value => value.Type, value => value);
+            _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(StaticDataPath.CurrencyItems).ToDictionary(value => value.Type, value => value);
+            _enemies = Resources.LoadAll<EnemyStaticData>(StaticDataPath.Enemies).ToDictionary(value => value.Type, value => value);
         }
 
         public BiomeStaticData GetBiomeStaticData(BiomeType type) => 
             _biomes.TryGetValue(type, out BiomeStaticData staticData) ? staticData : null;
 
         public WorldGeneratorStaticData GetWorldGeneratorData() =>
-            Resources.Load<WorldGeneratorStaticData>(StaticDataPath.WorldGeneratorStaticData);
+            Resources.Load<WorldGeneratorStaticData>(StaticDataPath.WorldGenerator);
 
         public PreyResourceStaticData GetPreyResourceStaticData(PreyResourceType type) => 
             _preyResources.TryGetValue(type, out PreyResourceStaticData staticData) ? staticData : null;
@@ -34,5 +36,8 @@ namespace Clones.Services
 
         public CurrencyItemStaticData GetItemStaticData(CurrencyItemType type) => 
             _currencyItems.TryGetValue(type, out CurrencyItemStaticData staticData) ? staticData : null;
+
+        public EnemyStaticData GetEnemyStaticData(EnemyType type) => 
+            _enemies.TryGetValue(type, out EnemyStaticData staticData) ? staticData : null;
     }
 }

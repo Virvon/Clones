@@ -80,7 +80,7 @@ namespace Clones.Infrastructure
             var tile = Object.Instantiate(biomeData.Prefab, position, rotation, parent);
 
             tile.GetComponent<PreyResourcesSpawner>()?
-                .Init(this, biomeData.PreyResourcesTamplates, biomeData.PercentageFilled);
+                .Init(this, biomeData.PreyResourcesTemplates, biomeData.PercentageFilled);
 
             tile.GetComponent<Biome>()
                 .Init(type);
@@ -130,5 +130,17 @@ namespace Clones.Infrastructure
 
             return view;
         }
+
+        public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, out float weight)
+        {
+            EnemyStaticData enemyData = _staticData.GetEnemyStaticData(type);
+
+            weight = GetEnemyWeight(enemyData);
+
+            Object.Instantiate(enemyData.Prefab, position, rotation);
+        }
+
+        private float GetEnemyWeight(EnemyStaticData enemyData) => 
+            (1 / enemyData.AttackCooldown) * enemyData.Damage + (enemyData.Health / 3);
     }
 }

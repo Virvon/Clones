@@ -5,14 +5,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDroppable, IAttackble, IHealthble
 {
-    public GameObject Target { get; private set; }
-    public Vector3 Scale => transform.localScale;
-    public Vector3 Position => transform.position;
-    public Stats Stats { get; private set; }
-    public int Damage => Stats.Damage;
-    public float AttackSpeed => Stats.AttackSpeed;
+    public int Damage { get; private set; }
+    public float AttackSpeed { get; private set; }
     public int Health => _health;
-    public float KnockbackForce => 800;
     public bool IsAlive => _isAlive;
 
     private bool _isAlive;
@@ -23,11 +18,8 @@ public class Enemy : MonoBehaviour, IDroppable, IAttackble, IHealthble
 
     public void Accept(IDroppableVisitor visitor) => visitor.Visit(this);
 
-    public void Init(GameObject target, Stats stats)
+    public void Init()
     {
-        Target = target;
-        Stats = stats;
-        _health = stats.Health;
         _isAlive = true;
     }
 
