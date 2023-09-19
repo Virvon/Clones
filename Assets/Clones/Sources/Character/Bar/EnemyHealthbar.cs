@@ -6,7 +6,7 @@ public class EnemyHealthbar : Healthbar
 
     private void Awake() => _camera = Camera.main;
 
-    public void Init(Enemy enemy) => TakeHealthble(enemy);
+    //public void Init(Enemy enemy) => TakeHealthble(enemy);
 
     private void LateUpdate()
     {

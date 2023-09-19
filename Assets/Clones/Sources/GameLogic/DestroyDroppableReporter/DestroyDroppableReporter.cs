@@ -1,5 +1,6 @@
 ﻿using Clones.Infrastructure;
 using System;
+using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -19,7 +20,8 @@ namespace Clones.GameLogic
         public void AddDroppable(IDroppable droppable) => 
             droppable.Died += OnDroppableDied;
 
-        private void OnDroppableCreated(IDroppable droppable) => droppable.Died += OnDroppableDied;
+        private void OnDroppableCreated(IDroppable droppable) => 
+            droppable.Died += OnDroppableDied;
 
         private void OnDroppableDied(IDamageable damageable)
         {

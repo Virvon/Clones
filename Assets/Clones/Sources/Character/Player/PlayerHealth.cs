@@ -22,9 +22,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
     {
         health -= (int)damage;
 
-        if (health > 0)
-            HealthChanged?.Invoke();
-        else
+        HealthChanged?.Invoke();
+
+        if (health <= 0)
+        {
+            health = 0;
             Died?.Invoke(this);
+        }           
     }
 }

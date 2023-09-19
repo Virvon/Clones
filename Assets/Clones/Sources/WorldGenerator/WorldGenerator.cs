@@ -4,16 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class WorldGenerator : MonoBehaviour
 {
+    [SerializeField] private NavMeshSurface _navMeshSurface;
+
     private IGameFactory _gameFactory;
     private Transform _player;
     BiomeType[] _generationBiomes;
     private float _viewRadius;
     private float _cellSize;
     private HashSet<GameObject> _tilesMatrix = new();
+
+    private static int i;
 
     public event Action<GameObject> TileCreated;
     public event Action<GameObject> TileDestroyed;
@@ -38,12 +43,12 @@ public class WorldGenerator : MonoBehaviour
 
     private void FillRadius(Vector3 center, float viewRadius)
     {
-        var cellCountOnAxis = (int)(viewRadius / _cellSize);
+        var cellsCountOnAxis = (int)(viewRadius / _cellSize);
         var fillAreaCenter = WorldToGridPosition(center);
 
-        for (int x = -cellCountOnAxis; x < cellCountOnAxis; x++)
+        for (int x = -cellsCountOnAxis; x < cellsCountOnAxis; x++)
         {
-            for (int z = -cellCountOnAxis; z < cellCountOnAxis; z++)
+            for (int z = -cellsCountOnAxis; z < cellsCountOnAxis; z++)
             {
                 TryCreate(fillAreaCenter + new Vector3Int(x, (int)transform.position.y, z));
             }
@@ -52,11 +57,18 @@ public class WorldGenerator : MonoBehaviour
 
     private void EmptyAroundRadius(Vector3 center, float viewRadius)
     {
+        var cellsCountOnAxis = (int)(viewRadius / _cellSize);
+        var fillAreaCenter = WorldToGridPosition(center);
+
         HashSet<GameObject> removeTileMatrix = new();
 
         foreach(var tile in _tilesMatrix)
         {
-            if (Vector3.Distance(center, tile.transform.position) > viewRadius)
+            Vector3Int tileGridPosition = WorldToGridPosition(tile.transform.position);
+            Vector3Int upBorder = fillAreaCenter + new Vector3Int(cellsCountOnAxis, (int)transform.position.y, cellsCountOnAxis);
+            Vector3Int downBorder = fillAreaCenter - new Vector3Int(cellsCountOnAxis, (int)transform.position.y, cellsCountOnAxis);
+
+            if((tileGridPosition.x > upBorder.x || tileGridPosition.x < downBorder.x) || (tileGridPosition.z > upBorder.z || tileGridPosition.z < downBorder.z))
                 removeTileMatrix.Add(tile);
         }
 
@@ -80,12 +92,13 @@ public class WorldGenerator : MonoBehaviour
         if (_tilesMatrix.Any(tile => WorldToGridPosition(tile.transform.position) == gridPosition))
             return;
 
-
         var template = GetRandomBiomeType();
 
         var position = GridToWorldPosition(gridPosition);
 
         GameObject tileObject = _gameFactory.CreateTile(template, position, Quaternion.identity, transform);
+
+        _navMeshSurface.BuildNavMesh();
 
         TileCreated?.Invoke(tileObject);
         _tilesMatrix.Add(tileObject);

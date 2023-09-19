@@ -10,6 +10,10 @@ public class Wand : CharacterAttack
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private float _knockbackForce;
     [SerializeField] private float _knockbackOffset;
+    [SerializeField] private float _cooldown;
+    [SerializeField] private float _damage;
+
+    protected override float CoolDown => _cooldown;
 
     private event Action<List<DamageableCell>> Hitted;
 
@@ -33,7 +37,7 @@ public class Wand : CharacterAttack
     private void MakeDamage(List<DamageableCell> damageableCells)
     {
         foreach (var cell in damageableCells)
-            cell.Damageable.TakeDamage(Damage * _damageMultiply);
+            cell.Damageable.TakeDamage(_damage * _damageMultiply);
     }
 
     private void Knockback(List<DamageableCell> damageableCells)

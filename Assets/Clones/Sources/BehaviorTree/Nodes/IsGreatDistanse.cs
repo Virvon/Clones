@@ -9,7 +9,7 @@ namespace Clones.BehaviorTree
 
         public SharedNavMeshAgent NavMeshAgent;
 
-        //private Player _player => Enemy.Value.Target;
+        private GameObject _target => Enemy.Value.Target;
         private float _distance => NavMeshAgent.Value.stoppingDistance;
         private float _stoppingDistance;
 
@@ -17,29 +17,29 @@ namespace Clones.BehaviorTree
 
         public override TaskStatus OnUpdate()
         {
-            //float distanceToPlayer = (Enemy.Value.transform.position - _player.transform.position).magnitude;
+            float distanceToPlayer = (Enemy.Value.transform.position - _target.transform.position).magnitude;
 
-            //if (distanceToPlayer <= _distance) 
-            //{
-            //    RaycastHit hit;
+            if (distanceToPlayer <= _distance)
+            {
+                RaycastHit hit;
 
-            //    if (Physics.Raycast(transform.position, _player.transform.position - transform.position, out hit, _distance))
-            //    {
-            //        if (hit.collider.TryGetComponent(out Player player))
-            //        {
-            //            NavMeshAgent.Value.stoppingDistance = _stoppingDistance;
-            //            return TaskStatus.Failure;
-            //        }
-            //        else
-            //        {
-            //            NavMeshAgent.Value.stoppingDistance -= 0.1f;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    return TaskStatus.Success;
-            //}
+                if (Physics.Raycast(transform.position, _target.transform.position - transform.position, out hit, _distance))
+                {
+                    if (hit.collider.TryGetComponent(out Player player))
+                    {
+                        NavMeshAgent.Value.stoppingDistance = _stoppingDistance;
+                        return TaskStatus.Failure;
+                    }
+                    else
+                    {
+                        NavMeshAgent.Value.stoppingDistance -= 0.1f;
+                    }
+                }
+            }
+            else
+            {
+                return TaskStatus.Success;
+            }
 
             return TaskStatus.Running;
         }

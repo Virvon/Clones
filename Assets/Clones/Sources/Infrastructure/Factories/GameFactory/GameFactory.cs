@@ -8,6 +8,7 @@ using Clones.GameLogic;
 using System;
 using Object = UnityEngine.Object;
 using Clones.Biomes;
+using Clones.BehaviorTree;
 
 namespace Clones.Infrastructure
 {
@@ -137,7 +138,10 @@ namespace Clones.Infrastructure
 
             weight = GetEnemyWeight(enemyData);
 
-            Object.Instantiate(enemyData.Prefab, position, rotation);
+            var enemyObject = Object.Instantiate(enemyData.Prefab, position, rotation);
+
+            enemyObject.GetComponent<Enemy>()
+                .Init(_playerObject);
         }
 
         private float GetEnemyWeight(EnemyStaticData enemyData) => 

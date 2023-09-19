@@ -1,8 +1,10 @@
-﻿namespace Clones.GameLogic
+﻿using System;
+
+namespace Clones.GameLogic
 {
     public interface IDroppable : IDamageable
     {
-        public abstract void Accept(IDroppableVisitor visitor);
+        void Accept(IDroppableVisitor visitor);
     }
 
 }
