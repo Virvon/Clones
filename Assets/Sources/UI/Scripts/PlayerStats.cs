@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] private Transform _playerPrefabPlace;
+
     private int _countDNA;
     private int _countCoins;
     private float _health;
@@ -14,6 +16,8 @@ public class PlayerStats : MonoBehaviour
     private CardClone _cardClone;
     private CardWand _cardWand;
 
+    private GameObject _clonePrefab;
+
     private const float _baseResourceMultiplier = 0.75f;
     private const float _upgradeResourceMultiplier = 0.25f;
 
@@ -21,12 +25,17 @@ public class PlayerStats : MonoBehaviour
     {
         _cardClone = cardClone;
         UpdateStats();
+
+        Destroy(_clonePrefab?.gameObject);
+        _clonePrefab = Instantiate(_cardClone.ObjectPrefab, _playerPrefabPlace);
     }
 
     public void SelectCard(CardWand cardWand)
     {
         _cardWand = cardWand;
         UpdateStats();
+
+        _cardClone?.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
     }
 
     public void UpdateWalletValues(Wallet wallet)

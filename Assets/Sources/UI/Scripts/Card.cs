@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Card : MonoBehaviour //Написать последовательность действий > сделать функционал по требованиям (Нажал на карту, нажал прокачать...)
+public class Card : MonoBehaviour
 {
+    [SerializeField] private GameObject _objectPrefab;
+    [Space]
     [SerializeField] private int _buyPrice;
     [SerializeField] private int _startUpgradePrice;
     [SerializeField] private int _increasePrice;
@@ -11,7 +13,7 @@ public class Card : MonoBehaviour //Написать последовательность действий > сдела
     [SerializeField] private bool _useCoins;
     [Space]
     [SerializeField] private bool _isPurchased;
-    [SerializeField] private bool _isAvailableForPurchase;
+    [SerializeField] private bool _isMomentalRestore;
     [Space]
     [SerializeField] private GameObject _canBuyVisuals;
     [SerializeField] private GameObject _cantBuyVisuals;
@@ -22,16 +24,18 @@ public class Card : MonoBehaviour //Написать последовательность действий > сдела
     [SerializeField] private List<Card> _unselectedСards;
     [Space]
     [SerializeField] private int _secondsToRestore;
-    [SerializeField] private float _baseMultiplyRecourceByRare;
+    [SerializeField] private float _baseMultiplyResourceByRare;
     [Space]
-    [SerializeField] private Player _player;
+    //[SerializeField] private Player _player;
     [SerializeField] private Wallet _wallet;
 
     private int _level;
     private bool _isDead;
+    private bool _isAvailableForPurchase;
 
+    public GameObject ObjectPrefab => _objectPrefab;
     public int Level => _level;
-    public float BaseMultiplyRecourceByRare => _baseMultiplyRecourceByRare;
+    public float BaseMultiplyRecourceByRare => _baseMultiplyResourceByRare;
 
     private void Start()
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CardWand : Card
 {
+    [Space]
+    [Header("Характеристики палочки")]
     [SerializeField] private float _damage;
     [SerializeField] private float _attackSpeed;
 
