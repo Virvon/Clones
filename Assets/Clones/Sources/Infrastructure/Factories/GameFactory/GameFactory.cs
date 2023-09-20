@@ -8,7 +8,8 @@ using Clones.GameLogic;
 using System;
 using Object = UnityEngine.Object;
 using Clones.Biomes;
-using Clones.BehaviorTree;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Clones.Infrastructure
 {
@@ -142,6 +143,13 @@ namespace Clones.Infrastructure
 
             enemyObject.GetComponent<Enemy>()
                 .Init(_playerObject);
+
+            enemyObject.GetComponent<NavMeshAgent>()
+                .stoppingDistance = (float)Math.Round(Random.Range(enemyData.MinStopDistance, enemyData.MaxStopDistance), 2);
+
+            enemyObject.GetComponent<MeleeAttack>()
+                .Init(enemyData.Damage, enemyData.AttackCooldown);
+
         }
 
         private float GetEnemyWeight(EnemyStaticData enemyData) => 

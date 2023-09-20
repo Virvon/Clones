@@ -17,3 +17,5 @@ MonoBehaviour:
   Damage: 3
   Health: 2
   AttackCooldown: 1
+  MinStopDistance: 2.5
+  MaxStopDistance: 4

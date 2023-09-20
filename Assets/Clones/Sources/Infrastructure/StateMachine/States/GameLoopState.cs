@@ -62,7 +62,6 @@ namespace Clones.Infrastructure
 
         private void CreateEnemiesSpawner()
         { 
-            return;
             IEnemiesSpawner spawner = new EnemiesSpawner(_coroutineRunner, _currentBiome, _staticDataService, _player.transform, _gameFactory);
 
             spawner.Start();

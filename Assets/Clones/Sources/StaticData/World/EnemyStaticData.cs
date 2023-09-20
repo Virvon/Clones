@@ -10,5 +10,7 @@ namespace Clones.StaticData
         public float Damage;
         public int Health;
         public float AttackCooldown;
+        public float MinStopDistance;
+        public float MaxStopDistance;
     }
 }

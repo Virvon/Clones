@@ -13,7 +13,8 @@ namespace Clones.BehaviorTree
         private float _distance => NavMeshAgent.Value.stoppingDistance;
         private float _stoppingDistance;
 
-        public override void OnAwake() => _stoppingDistance = NavMeshAgent.Value.stoppingDistance;
+        public override void OnStart() => 
+            _stoppingDistance = NavMeshAgent.Value.stoppingDistance;
 
         public override TaskStatus OnUpdate()
         {
