@@ -19,6 +19,7 @@ public class Wallet : MonoBehaviour
     private void Start()
     {
         ValuesChanged?.Invoke();
+        UpdateTexts(); // In canvas
     }
 
     public void ChangeDNACount(int value)
