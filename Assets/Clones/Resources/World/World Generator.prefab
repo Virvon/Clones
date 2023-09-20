@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4136646571826402769}
-  - component: {fileID: 4136646571826402782}
+  - component: {fileID: 4369433237527862174}
+  - component: {fileID: 6344931562142984764}
   m_Layer: 0
   m_Name: World Generator
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4136646571826402782
+--- !u!114 &4369433237527862174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +42,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 4136646571826402783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a0fde3bf9aab34191eb1ce8647779f, type: 3}
+  m_Script: {fileID: 11500000, guid: 558bec54dd7d18c4faacceaddf66d640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTag: Player
-  _tilePrefabs:
-  - {fileID: 2965586213671339217, guid: bf7dda25132f33f40aee103821ea6666, type: 3}
-  _generationRadius: 75
-  _deactivationRadius: 115
-  _tilePoolSize: 100
-  _tileSize: 100
-  _updateInterval: 1
+  _navMeshSurface: {fileID: 6344931562142984764}
+--- !u!114 &6344931562142984764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136646571826402783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}

@@ -18,9 +18,9 @@ namespace Clones.StateMachine
         {
             for (var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out IDamageable iDamageble))
+                if (_overlapColliders[i].TryGetComponent(out IDamageable iDamageable))
                 {
-                    if(IsRequiredTarget(iDamageble))
+                    if(IsRequiredTarget(iDamageable))
                         return true;
                 }
             }

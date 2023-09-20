@@ -16,9 +16,11 @@ GameObject:
   - component: {fileID: 417230066172185974}
   - component: {fileID: 417230066172185975}
   - component: {fileID: -6541454349828804813}
+  - component: {fileID: 989705790565749181}
   - component: {fileID: 417230066172185970}
   - component: {fileID: 417230066172185971}
   - component: {fileID: -2845303509548042524}
+  - component: {fileID: -5462031677439719056}
   - component: {fileID: 417230066172185870}
   - component: {fileID: 417230066172185865}
   - component: {fileID: 417230066172185976}
@@ -27,7 +29,7 @@ GameObject:
   - component: {fileID: 1913505686328578964}
   - component: {fileID: 3977820031181633102}
   m_Layer: 0
-  m_Name: Character 2
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,6 +124,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 417230066172185971}
   - {fileID: -2845303509548042524}
+  - {fileID: -5462031677439719056}
 --- !u!114 &417230066172185975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +157,27 @@ MonoBehaviour:
   _transitions:
   - {fileID: 417230066172185970}
   - {fileID: 417230066172185971}
+  - {fileID: -5462031677439719056}
   _attackRadius: 8
+  _lookRotationSpeed: 1080
+  _characterAttack: {fileID: 1913505686328578964}
+--- !u!114 &989705790565749181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417230066172185867}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3756291dde5d75840a758d8c28c7353b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions:
+  - {fileID: 417230066172185970}
+  - {fileID: 417230066172185971}
+  - {fileID: -2845303509548042524}
+  _attackRadius: 10
   _lookRotationSpeed: 1080
   _characterAttack: {fileID: 1913505686328578964}
 --- !u!114 &417230066172185970
@@ -197,6 +220,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetState: {fileID: -6541454349828804813}
   _attackRadius: 8
+--- !u!114 &-5462031677439719056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417230066172185867}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1887b730f12123c4ebef24c01bb61982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: 989705790565749181}
+  _attackRadius: 10
 --- !u!114 &417230066172185870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,13 +321,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e55178302668346aa04470d50118b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldown: 1
-  _damage: 10
   _bulletData: {fileID: 11400000, guid: c72afcac9e320a942975e59b9b5b6652, type: 2}
   _damageMultiply: 1
   _shootingPoint: {fileID: 7555326609371900884}
   _knockbackForce: 0
   _knockbackOffset: 0
+  _cooldown: 1
+  _damage: 1
 --- !u!114 &3977820031181633102
 MonoBehaviour:
   m_ObjectHideFlags: 0

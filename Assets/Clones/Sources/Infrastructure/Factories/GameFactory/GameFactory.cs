@@ -150,6 +150,12 @@ namespace Clones.Infrastructure
             enemyObject.GetComponent<MeleeAttack>()
                 .Init(enemyData.Damage, enemyData.AttackCooldown);
 
+            EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();
+
+            enemyHealth.Init(enemyData.Health);
+
+            enemyObject.GetComponentInChildren<EnemyHealthbar>()
+                .Init(enemyHealth);
         }
 
         private float GetEnemyWeight(EnemyStaticData enemyData) => 
