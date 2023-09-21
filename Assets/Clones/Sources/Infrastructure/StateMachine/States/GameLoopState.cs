@@ -10,23 +10,20 @@ namespace Clones.Infrastructure
     {
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _persistentProgress;
-        private readonly ICoroutineRunner _coroutineRunner;
         private readonly IStaticDataService _staticDataService;
 
         private IQuestsCreator _questsCreator;
         private IItemsCounter _itemsCounter;
         private ICurrentBiome _currentBiome;
-        private IEnemiesSpawner _enemiesSpawner;
         private GameObject _player;
         private WorldGenerator _worldGenerator;
         private GameObject _hud;
 
         private List<IDisable> _disables;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFactory gameFactory, ICoroutineRunner coroutineRunner, IPersistentProgressService persistentProgress, IStaticDataService staticDataService)
+        public GameLoopState(GameStateMachine stateMachine, IGameFactory gameFactory, IPersistentProgressService persistentProgress, IStaticDataService staticDataService)
         {
             _gameFactory = gameFactory;
-            _coroutineRunner = coroutineRunner;
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;
         }
@@ -41,7 +38,7 @@ namespace Clones.Infrastructure
             _questsCreator.Create();
             _currentBiome = new CurrentBiome(_worldGenerator);
 
-            CreateEnemiesSpawner();
+            _gameFactory.CreateEnemiesSpawner(_currentBiome);
 
             PlayerDeath playerDeath = new(_hud.GetComponentInChildren<GameOverView>(), _player.GetComponent<PlayerHealth>());
             PlayerRevival playerRevival = new (_player.GetComponent<PlayerHealth>());
@@ -59,8 +56,6 @@ namespace Clones.Infrastructure
 
             foreach (var disable in _disables)
                 disable.OnDisable();
-
-            _enemiesSpawner.Stop();
         }
 
         private void CreateGameInfrustructure()
@@ -83,13 +78,7 @@ namespace Clones.Infrastructure
             _worldGenerator = _gameFactory.CreateWorldGenerator();
             _hud = _gameFactory.CreateHud(_questsCreator);
             _gameFactory.CreateVirtualCamera();
-        }
-
-        private void CreateEnemiesSpawner()
-        { 
-            _enemiesSpawner = new EnemiesSpawner(_coroutineRunner, _currentBiome, _staticDataService, _player.transform, _gameFactory);
-
-            _enemiesSpawner.Start();
+            
         }
     }
 }

@@ -140,13 +140,13 @@ namespace Clones.Infrastructure
             return view;
         }
 
-        public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, out float weight)
+        public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight)
         {
             EnemyStaticData enemyData = _staticData.GetEnemyStaticData(type);
 
             weight = GetEnemyWeight(enemyData);
 
-            var enemyObject = Object.Instantiate(enemyData.Prefab, position, rotation);
+            var enemyObject = Object.Instantiate(enemyData.Prefab, position, rotation, parent);
 
             enemyObject.GetComponent<Enemy>()
                 .Init(_playerObject);
@@ -167,5 +167,15 @@ namespace Clones.Infrastructure
 
         private float GetEnemyWeight(EnemyStaticData enemyData) => 
             (1 / enemyData.AttackCooldown) * enemyData.Damage + (enemyData.Health / 3);
+
+        public void CreateEnemiesSpawner(ICurrentBiome currentBiome)
+        {
+            var enemiesSpawnerObject = _assets.Instantiate(AssetPath.EnemiesSpawner);
+
+            enemiesSpawnerObject.GetComponent<EnemiesSpawner>()
+                .Init(currentBiome, _staticData, _playerObject.transform, this);
+        }
     }
+
+
 }

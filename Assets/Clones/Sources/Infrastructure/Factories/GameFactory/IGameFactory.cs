@@ -1,5 +1,4 @@
-﻿using Clones.Biomes;
-using Clones.GameLogic;
+﻿using Clones.GameLogic;
 using Clones.Services;
 using Clones.StaticData;
 using System;
@@ -20,6 +19,12 @@ namespace Clones.Infrastructure
         GameObject CreateItem(CurrencyItemType type, Vector3 position);
         GameObject CreateItem(QuestItemType type, Vector3 position);
         GameObject CreateQuestView(Quest quest, Transform parent);
-        void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, out float weight);
+        void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight);
+        void CreateEnemiesSpawner(ICurrentBiome currentBiome);
+    }
+
+    public interface IUiFactory
+    {
+
     }
 }

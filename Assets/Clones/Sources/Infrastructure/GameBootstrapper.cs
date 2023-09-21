@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Clones.Infrastructure
 {
-    public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
+    public class GameBootstrapper : MonoBehaviour
     {
         [SerializeField] private LoadingPanel _loadingPanelPrefab;
 
@@ -11,7 +11,7 @@ namespace Clones.Infrastructure
 
         private void Awake()
         {
-            _game = new Game(Instantiate(_loadingPanelPrefab), this);
+            _game = new Game(Instantiate(_loadingPanelPrefab));
             _game._stateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this); 
