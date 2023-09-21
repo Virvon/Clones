@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private Transform _playerPrefabPlace;
+    [SerializeField] private Canvas _canvas;
 
     private int _countDNA;
     private int _countCoins;

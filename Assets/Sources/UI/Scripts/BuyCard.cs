@@ -11,12 +11,15 @@ public class BuyCard : MonoBehaviour
     [SerializeField] private GameObject _cantBuyVisuals;
     [SerializeField] private TMP_Text _textPrice;
     [SerializeField] private Wallet _wallet;
+    [Space]
+    [SerializeField] private GameObject _lockVisuals;
+    [SerializeField] private GameObject _unlockVisuals;
 
     public UnityEvent Purchased;
 
     private void Start()
     {
-        _textPrice.text = _buyPrice.ToString();
+        _textPrice.text = NumberFormatter.FormatNumberWithCommas(_buyPrice);
         CheckCanBuy();
     }
 
@@ -30,8 +33,10 @@ public class BuyCard : MonoBehaviour
         if (IsHaveCashForBuy())
         {
             _buyButton.SetActive(false);
+            _lockVisuals.SetActive(false);
+            _unlockVisuals.SetActive(true);
             Purchased?.Invoke();
-            //Destroy(this); //?
+            Destroy(this);
         }
     }
 
