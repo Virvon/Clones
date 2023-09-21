@@ -15,7 +15,7 @@ public class BuyCard : MonoBehaviour
     [SerializeField] private GameObject _lockVisuals;
     [SerializeField] private GameObject _unlockVisuals;
 
-    public UnityEvent Purchased;
+    public UnityEvent Purchased = new UnityEvent();
 
     private void Start()
     {
