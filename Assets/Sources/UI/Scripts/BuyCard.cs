@@ -19,6 +19,7 @@ public class BuyCard : MonoBehaviour
 
     private void Start()
     {
+        _wallet.ValuesChanged.AddListener(CheckCanBuy);
         _textPrice.text = NumberFormatter.FormatNumberWithCommas(_buyPrice);
         CheckCanBuy();
     }
@@ -35,6 +36,7 @@ public class BuyCard : MonoBehaviour
             _buyButton.SetActive(false);
             _lockVisuals.SetActive(false);
             _unlockVisuals.SetActive(true);
+            _wallet.ChangeCoinsCount(-_buyPrice);
             Purchased?.Invoke();
             Destroy(this);
         }

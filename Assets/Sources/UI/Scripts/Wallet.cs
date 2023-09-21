@@ -11,27 +11,28 @@ public class Wallet : MonoBehaviour
     [SerializeField] private TMP_Text _dnaText;
     [SerializeField] private TMP_Text _coinsText;
 
-    public UnityEvent ValuesChanged;
+    public UnityEvent ValuesChanged = new UnityEvent();
 
     public int DNA => _dna;
     public int Coins => _coins;
 
     private void Start()
     {
-        ValuesChanged?.Invoke();
+        ValuesChanged.Invoke();
         UpdateTexts(); // In canvas
+        ValuesChanged.AddListener(UpdateTexts);
     }
 
     public void ChangeDNACount(int value)
     {
         _dna += value;
-        ValuesChanged?.Invoke();
+        ValuesChanged.Invoke();
     }
 
     public void ChangeCoinsCount(int value)
     {
         _coins += value;
-        ValuesChanged?.Invoke();
+        ValuesChanged.Invoke();
     }
     
     public void UpdateTexts()
