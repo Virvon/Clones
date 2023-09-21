@@ -1,23 +1,22 @@
 ﻿using Clones.Infrastructure;
 using System;
-using UnityEngine;
 
 namespace Clones.GameLogic
 {
     public class DestroyDroppableReporter : IDestroyDroppableReporter
     {
-        private readonly IGameFactory _gameFactory;
+        private readonly IPartsFactory _partsFactory;
 
         public event Action<IDroppable> Destroyed;
 
-        public DestroyDroppableReporter(IGameFactory gameFactory)
+        public DestroyDroppableReporter(IPartsFactory partsFactory)
         {
-            _gameFactory = gameFactory;
+            _partsFactory = partsFactory;
 
-            _gameFactory.DroppableCreated += OnDroppableCreated;
+            _partsFactory.DroppableCreated += OnDroppableCreated;
         }
         public void OnDisable() => 
-            _gameFactory.DroppableCreated -= OnDroppableCreated;
+            _partsFactory.DroppableCreated -= OnDroppableCreated;
 
         private void OnDroppableCreated(IDroppable droppable) => 
             droppable.Died += OnDroppableDied;

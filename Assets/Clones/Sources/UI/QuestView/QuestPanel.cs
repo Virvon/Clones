@@ -12,7 +12,7 @@ namespace Clones.UI
         [SerializeField] private TMP_Text _rewardValue;
 
         private IQuestsCreator _questsCreator;
-        private IGameFactory _gameFactory;
+        private IUiFactory _uiFactory;
 
         private Dictionary<QuestItemType, QuestView> _questViews = new();
 
@@ -22,10 +22,10 @@ namespace Clones.UI
             _questsCreator.Updated -= OnQuestCellUpdated;
         }
 
-        public void Init(IQuestsCreator questsCreator, IGameFactory gameFactory)
+        public void Init(IQuestsCreator questsCreator, IUiFactory uiFactory)
         {
             _questsCreator = questsCreator;
-            _gameFactory = gameFactory;
+            _uiFactory = uiFactory;
 
             _questsCreator.Created += OnQuestCreated;
             _questsCreator.Updated += OnQuestCellUpdated;
@@ -37,7 +37,7 @@ namespace Clones.UI
 
             foreach (var quest in _questsCreator.Quests)
             {
-                GameObject view = _gameFactory.CreateQuestView(quest, transform);
+                GameObject view = _uiFactory.CreateQuestView(quest, transform);
 
                 _questViews.Add(quest.Type, view.GetComponent<QuestView>());
             }

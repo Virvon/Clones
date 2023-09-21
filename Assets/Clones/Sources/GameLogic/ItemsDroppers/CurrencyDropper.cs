@@ -10,9 +10,9 @@ namespace Clones.GameLogic
         private readonly IDestroyDroppableReporter _destroyDroppableReporter;
         private readonly IDroppableVisitor _visitor;
 
-        public CurrencyDropper(IGameFactory gameFactory, IDestroyDroppableReporter destroyDroppableReporter)
+        public CurrencyDropper(IPartsFactory partsFactory, IDestroyDroppableReporter destroyDroppableReporter)
         {
-            _visitor = new DroppableVisitor(gameFactory);
+            _visitor = new DroppableVisitor(partsFactory);
 
             _destroyDroppableReporter = destroyDroppableReporter;
 
@@ -31,17 +31,19 @@ namespace Clones.GameLogic
             private const float DropRadius = 2;
             private const int MinPreyResourceDnaCount = 0;
             private const int MaxPreyResourceDnaCount = 3;
+            private const int MinEnemyDnaCount = 1;
+            private const int MaxEnemyDnaCount = 6;
 
-            private readonly IGameFactory _gameFactory;
+            private readonly IPartsFactory _partsFactory;
 
-            public DroppableVisitor(IGameFactory gameFactory)
+            public DroppableVisitor(IPartsFactory partsFactory)
             {
-                _gameFactory = gameFactory;
+                _partsFactory = partsFactory;
             }
 
             public void Visit(Enemy enemy)
             {
-
+                Drop(CurrencyItemType.Dna, enemy.transform.position, MinEnemyDnaCount, MaxEnemyDnaCount);
             }
 
             public void Visit(PreyResource preyResource)
@@ -55,7 +57,7 @@ namespace Clones.GameLogic
 
                 for (var i = 0; i < count; i++)
                 {
-                    GameObject item = _gameFactory.CreateItem(type, position);
+                    GameObject item = _partsFactory.CreateItem(type, position);
 
                     item.GetComponent<ItemMovement>()
                         .TakeMove(GetPointInsideCircle(position), DropSpeed);

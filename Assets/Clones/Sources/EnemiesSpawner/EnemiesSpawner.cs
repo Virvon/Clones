@@ -17,21 +17,26 @@ public class EnemiesSpawner : MonoBehaviour
 
     private ICurrentBiome _currentBiome;
     private IStaticDataService _staticDataService;
-    private Transform _player;
-    private IGameFactory _gameFactory;
+    private GameObject _playerObject;
+    private IPartsFactory _partsFactory;
 
     private bool _isFinish;
 
     private void OnDisable() => 
         _isFinish = true;
 
-    public void Init(ICurrentBiome currentBiome, IStaticDataService staticDataService, Transform player, IGameFactory gameFactory)
+    public void Init(ICurrentBiome currentBiome, IStaticDataService staticDataService, GameObject playerObject)
     {
         _currentBiome = currentBiome;
         _staticDataService = staticDataService;
-        _player = player;
-        _gameFactory = gameFactory;
+        _playerObject = playerObject;
+    }
 
+    public void Init(IPartsFactory partsFactory) => 
+        _partsFactory = partsFactory;
+
+    public void StartSpawn()
+    {
         _isFinish = false;
 
         StartCoroutine(Spawner());
@@ -51,7 +56,7 @@ public class EnemiesSpawner : MonoBehaviour
             EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
             Vector3 spawnPosition = GetSpawnPosition();
 
-            _gameFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight);
+            _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject);
 
             currentWeight += weight;
         }
@@ -60,7 +65,7 @@ public class EnemiesSpawner : MonoBehaviour
     private Vector3 GetSpawnPosition()
     {
         float distance = Random.Range(MinRadius, MaxRadius + 1);
-        Vector2 point = Random.insideUnitCircle.normalized * distance + new Vector2(_player.transform.position.x, _player.transform.position.z);
+        Vector2 point = Random.insideUnitCircle.normalized * distance + new Vector2(_playerObject.transform.position.x, _playerObject.transform.position.z);
 
         return new Vector3(point.x, 0, point.y);
     }

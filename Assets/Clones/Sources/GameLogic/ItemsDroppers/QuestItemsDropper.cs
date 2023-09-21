@@ -1,5 +1,4 @@
 ﻿using Clones.Infrastructure;
-using Clones.Services;
 using Clones.StaticData;
 using UnityEngine;
 
@@ -12,13 +11,13 @@ namespace Clones.GameLogic
         private const int MinDropCount = 1;
         private const int MaxDropCount = 4;
 
-        private readonly IGameFactory _gameFactory;
+        private readonly IPartsFactory _partsFactory;
         private readonly IDestroyDroppableReporter _destroyDroppableReporter;
         private readonly IQuestsCreator _questsCreator;
 
-        public QuestItemsDropper(IGameFactory gameFactory, IDestroyDroppableReporter destroyDroppableReporter, IQuestsCreator questsCreator)
+        public QuestItemsDropper(IPartsFactory partsFactory, IDestroyDroppableReporter destroyDroppableReporter, IQuestsCreator questsCreator)
         {
-            _gameFactory = gameFactory;
+            _partsFactory = partsFactory;
             _destroyDroppableReporter = destroyDroppableReporter;
             _questsCreator = questsCreator;
 
@@ -43,7 +42,7 @@ namespace Clones.GameLogic
 
             for (var i = 0; i < count; i++)
             {
-                GameObject item = _gameFactory.CreateItem(type, position);
+                GameObject item = _partsFactory.CreateItem(type, position);
 
                 item.GetComponent<ItemMovement>()
                     .TakeMove(GetPointInsideCircle(position), DropSpeed);

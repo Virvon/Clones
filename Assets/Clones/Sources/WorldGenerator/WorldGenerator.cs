@@ -11,14 +11,12 @@ public class WorldGenerator : MonoBehaviour
 {
     [SerializeField] private NavMeshSurface _navMeshSurface;
 
-    private IGameFactory _gameFactory;
+    private IPartsFactory _partsFactory;
     private Transform _player;
     BiomeType[] _generationBiomes;
     private float _viewRadius;
     private float _cellSize;
     private HashSet<GameObject> _tilesMatrix = new();
-
-    private static int i;
 
     public event Action<GameObject> TileCreated;
     public event Action<GameObject> TileDestroyed;
@@ -32,14 +30,16 @@ public class WorldGenerator : MonoBehaviour
         EmptyAroundRadius(_player.position, _viewRadius);
     }
 
-    public void Init(IGameFactory gameFactory, Transform player, BiomeType[] templates, float viewRadius, float cellSize)
+    public void Init(Transform player, BiomeType[] templates, float viewRadius, float cellSize)
     {
-        _gameFactory = gameFactory;
         _generationBiomes = templates;
         _viewRadius = viewRadius;
         _cellSize = cellSize;
         _player = player;
     }
+
+    public void Init(IPartsFactory partsFacotry) => 
+        _partsFactory = partsFacotry;
 
     private void FillRadius(Vector3 center, float viewRadius)
     {
@@ -96,7 +96,7 @@ public class WorldGenerator : MonoBehaviour
 
         var position = GridToWorldPosition(gridPosition);
 
-        GameObject tileObject = _gameFactory.CreateTile(template, position, Quaternion.identity, transform);
+        GameObject tileObject = _partsFactory.CreateTile(template, position, Quaternion.identity, transform);
 
         _navMeshSurface.BuildNavMesh();
 

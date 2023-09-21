@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PreyResourcesSpawner : MonoBehaviour
 {
-    private IGameFactory _gameFactory;
+    private IPartsFactory _partsFactory;
     private Point[] _spawnPoints;
     private PreyResourceType[] _preyResourcesTemplates;
     private int _percentageFilled;
 
-    public void Init(IGameFactory gameFactory, PreyResourceType[] preyResourcesTemplates, int percentageFilled)
+    public void Init(IPartsFactory partsFactory, PreyResourceType[] preyResourcesTemplates, int percentageFilled)
     {
-        _gameFactory = gameFactory;
+        _partsFactory = partsFactory;
         _preyResourcesTemplates = preyResourcesTemplates;
         _percentageFilled = percentageFilled;
 
@@ -28,7 +28,7 @@ public class PreyResourcesSpawner : MonoBehaviour
             {
                 PreyResourceType type = _preyResourcesTemplates[Random.Range(0, _preyResourcesTemplates.Length)];
 
-                _gameFactory.CreatePreyResource(type, _spawnPoints[i].transform.position, Quaternion.identity, transform);
+                _partsFactory.CreatePreyResource(type, _spawnPoints[i].transform.position, Quaternion.identity, transform);
             }
         }
     }
