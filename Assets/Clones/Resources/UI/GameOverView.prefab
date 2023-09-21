@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2800742648354403757}
   - component: {fileID: 6603451467763587113}
-  - component: {fileID: 7288432916246177226}
+  - component: {fileID: 4313569469648035840}
+  - component: {fileID: 4949860983306557411}
   m_Layer: 5
   m_Name: GameOverView
   m_TagString: Untagged
@@ -51,26 +52,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0417764c14ffa7543a9a91f5303ad979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &7288432916246177226
-Animator:
-  serializedVersion: 4
+  _background: {fileID: 2800742649418512258}
+--- !u!114 &4313569469648035840
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2800742648354403754}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7135b3813182228478e8e9f2816ed4d7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d3f72aeb774904dbfac8ab76704545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scene: MainInfrasructureScene
+--- !u!114 &4949860983306557411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800742648354403754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa25a3913288664798f3f703fd7ac50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameoverView: {fileID: 6603451467763587113}
+  _button: {fileID: 2800742649325094123}
 --- !u!1 &2800742648398529154
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,10 +115,10 @@ RectTransform:
   m_Father: {fileID: 2800742650077861693}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 559.3436, y: -88.69145}
+  m_SizeDelta: {x: 352.89575, y: 177.3829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2800742648398529158
 CanvasRenderer:
@@ -192,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2800742648398529159}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4313569469648035840}
+        m_TargetAssemblyTypeName: Clones.UI.ChangeGameStateButton, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2800742648490569351
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +496,6 @@ GameObject:
   - component: {fileID: 2800742649325094127}
   - component: {fileID: 2800742649325094124}
   - component: {fileID: 2800742649325094125}
-  - component: {fileID: 3543535922482527550}
   m_Layer: 5
   m_Name: Reborn
   m_TagString: Untagged
@@ -499,10 +519,10 @@ RectTransform:
   m_Father: {fileID: 2800742650077861693}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 176.44788, y: -88.69145}
+  m_SizeDelta: {x: 352.89575, y: 177.3829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2800742649325094127
 CanvasRenderer:
@@ -585,21 +605,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2800742649325094124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3543535922482527550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800742649325094123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa25a3913288664798f3f703fd7ac50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerRevival: {fileID: 0}
-  _gameoverView: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 4949860983306557411}
+        m_TargetAssemblyTypeName: Clones.UI.RevivalButton, Assembly-CSharp
+        m_MethodName: Revival
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2800742649418512258
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2800742649418512261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -637,7 +655,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1820, y: 980}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2800742649418512263
 CanvasRenderer:

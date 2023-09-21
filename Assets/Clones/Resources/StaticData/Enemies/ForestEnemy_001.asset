@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5431a7ae00c2fb498e9466e8207ab3e, type: 3}
   m_Name: ForestEnemy_001
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8257744498499342390, guid: a2c99e3f405631549990d7ba63bfd18e, type: 3}
+  Prefab: {fileID: 3506423420909099506, guid: 7921df168447ebf4e85ffe754a5036a6, type: 3}
   Type: 0
   Damage: 3
-  Health: 2
-  AttackCooldown: 1
+  Health: 3
+  AttackCooldown: 2
   MinStopDistance: 2.5
   MaxStopDistance: 4

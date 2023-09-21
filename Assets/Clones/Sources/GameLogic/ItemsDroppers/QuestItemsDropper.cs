@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.GameLogic
 {
-    public class QuestItemsDropper
+    public class QuestItemsDropper : IDisable
     {
         private const float DropSpeed = 2;
         private const float DropRadius = 2;
@@ -24,6 +24,9 @@ namespace Clones.GameLogic
 
             _destroyDroppableReporter.Destroyed += OnDestroyed;
         }
+
+        public void OnDisable() => 
+            _destroyDroppableReporter.Destroyed += OnDestroyed;
 
         private void OnDestroyed(IDroppable droppable)
         {

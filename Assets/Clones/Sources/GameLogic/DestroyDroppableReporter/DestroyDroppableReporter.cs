@@ -16,9 +16,8 @@ namespace Clones.GameLogic
 
             _gameFactory.DroppableCreated += OnDroppableCreated;
         }
-
-        public void AddDroppable(IDroppable droppable) => 
-            droppable.Died += OnDroppableDied;
+        public void OnDisable() => 
+            _gameFactory.DroppableCreated -= OnDroppableCreated;
 
         private void OnDroppableCreated(IDroppable droppable) => 
             droppable.Died += OnDroppableDied;

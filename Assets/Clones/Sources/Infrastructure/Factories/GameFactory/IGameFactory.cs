@@ -12,7 +12,7 @@ namespace Clones.Infrastructure
         event Action<IDroppable> DroppableCreated;
 
         GameObject CreatePlayer(IItemsCounter itemsCounter);
-        void CreateHud(IQuestsCreator questsCreator);
+        GameObject CreateHud(IQuestsCreator questsCreator);
         WorldGenerator CreateWorldGenerator();
         GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent);
         void CreateVirtualCamera();

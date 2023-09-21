@@ -20,6 +20,12 @@ namespace Clones.GameLogic
             _worldGenerator.TileDestroyed += OnTileDestroyed;
         }
 
+        public void OnDisable()
+        {
+            _worldGenerator.TileCreated -= OnTileCreated;
+            _worldGenerator.TileDestroyed -= OnTileDestroyed;
+        }
+
         private void OnTileCreated(GameObject tile)
         {
             if (tile.TryGetComponent(out Biome biome))

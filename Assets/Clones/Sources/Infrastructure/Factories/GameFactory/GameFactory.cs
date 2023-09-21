@@ -21,18 +21,20 @@ namespace Clones.Infrastructure
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
         private readonly IPersistentProgressService _persistentProgressService;
+        private readonly IGameStateMachine _stateMachine;
 
         public event Action<IDroppable> DroppableCreated;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, IPersistentProgressService persistentProgressService)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine)
         {
             _assets = assets;
             _inputService = inputService;
             _staticData = staticData;
             _persistentProgressService = persistentProgressService;
+            _stateMachine = stateMachine;
         }
 
-        public void CreateHud(IQuestsCreator questsCreator)
+        public GameObject CreateHud(IQuestsCreator questsCreator)
         {
             var hud = _assets.Instantiate(AssetPath.Hud);
 
@@ -50,6 +52,11 @@ namespace Clones.Infrastructure
 
             hud.GetComponentInChildren<DnaView>()
                 .Init(_persistentProgressService.Progress.Wallet);
+
+            hud.GetComponentInChildren<ChangeGameStateButton>()
+                .Init(_stateMachine);
+
+            return hud;
         }
 
         public GameObject CreatePlayer(IItemsCounter itemsCounter)

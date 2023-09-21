@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.GameLogic
 {
-    public class CurrencyDropper
+    public class CurrencyDropper : IDisable
     {
         private readonly IDestroyDroppableReporter _destroyDroppableReporter;
         private readonly IDroppableVisitor _visitor;
@@ -18,6 +18,9 @@ namespace Clones.GameLogic
 
             _destroyDroppableReporter.Destroyed += OnDestroyed;
         }
+
+        public void OnDisable() => 
+            _destroyDroppableReporter.Destroyed -= OnDestroyed;
 
         private void OnDestroyed(IDroppable droppable) =>
             droppable.Accept(_visitor);

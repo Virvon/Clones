@@ -3,11 +3,11 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 {
-    [SerializeField] private int health;
+    [SerializeField] private int _health;
 
     public bool IsAlive => true;
 
-    public int Health => health;
+    public int Health => _health;
     public int MaxHealth { get; private set; }
 
     public event Action<IDamageable> Died;
@@ -15,19 +15,25 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 
     private void Start()
     {
-        MaxHealth = health;
+        MaxHealth = _health;
     }
 
     public void TakeDamage(float damage)
     {
-        health -= (int)damage;
+        _health -= (int)damage;
+
+        if(_health < 0)
+            _health = 0;
 
         HealthChanged?.Invoke();
 
-        if (health <= 0)
-        {
-            health = 0;
+        if (_health == 0)
             Died?.Invoke(this);
-        }           
+    }
+
+    public void Reborn(int health)
+    {
+        _health = health;
+        HealthChanged?.Invoke();
     }
 }
