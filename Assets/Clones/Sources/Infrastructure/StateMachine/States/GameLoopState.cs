@@ -40,6 +40,7 @@ namespace Clones.Infrastructure
             CreateGameWorld();
 
             CurrencyDropper currencyDropper = new(_partsFactory, _playerObject.GetComponent<CharacterAttack>());
+            QuestItemsDropper questItemsDropper = new(_partsFactory, _playerObject.GetComponent<CharacterAttack>(), _questsCreator);
 
             _questsCreator.Create();
             _currentBiome = new CurrentBiome(_worldGenerator);
@@ -58,6 +59,7 @@ namespace Clones.Infrastructure
             _disables.Add(_currentBiome);
             _disables.Add(playerDeath);
             _disables.Add(currencyDropper);
+            _disables.Add(questItemsDropper);
         }
 
         public void Exit()
@@ -72,10 +74,9 @@ namespace Clones.Infrastructure
             IDestroyDroppableReporter destroyDroppableReporter = new DestroyDroppableReporter(_partsFactory);
             _itemsCounter = new ItemsCounter(_questsCreator, _persistentProgress);
             
-            QuestItemsDropper questItemsDropper = new(_partsFactory, destroyDroppableReporter, _questsCreator);
+            
 
             _disables.Add(destroyDroppableReporter);
-            _disables.Add(questItemsDropper);
         }
 
         private void CreateGameWorld()

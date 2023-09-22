@@ -12,26 +12,26 @@ namespace Clones.GameLogic
         private const int MaxDropCount = 4;
 
         private readonly IPartsFactory _partsFactory;
-        private readonly IDestroyDroppableReporter _destroyDroppableReporter;
+        private readonly CharacterAttack _characterAttack;
         private readonly IQuestsCreator _questsCreator;
 
-        public QuestItemsDropper(IPartsFactory partsFactory, IDestroyDroppableReporter destroyDroppableReporter, IQuestsCreator questsCreator)
+        public QuestItemsDropper(IPartsFactory partsFactory, CharacterAttack characterAttack, IQuestsCreator questsCreator)
         {
             _partsFactory = partsFactory;
-            _destroyDroppableReporter = destroyDroppableReporter;
+            _characterAttack = characterAttack;
             _questsCreator = questsCreator;
 
-            _destroyDroppableReporter.Destroyed += OnDestroyed;
+            _characterAttack.Killed += OnKilled;
         }
 
-        public void OnDisable() => 
-            _destroyDroppableReporter.Destroyed += OnDestroyed;
-
-        private void OnDestroyed(IDroppable droppable)
+        private void OnKilled(IDamageable damageable)
         {
-            if (droppable is PreyResource preyResource)
+            if(damageable is PreyResource preyResource)
                 TryDrop(preyResource.DroppedItem, preyResource.transform.position);
         }
+
+        public void OnDisable() =>
+            _characterAttack.Killed -= OnKilled;
 
         private void TryDrop(QuestItemType type, Vector3 position)
         {
