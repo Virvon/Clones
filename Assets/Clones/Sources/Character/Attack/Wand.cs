@@ -13,19 +13,15 @@ public class Wand : CharacterAttack
     [SerializeField] private float _cooldown;
     [SerializeField] private float _damage;
 
+    public override event Action<IDamageable> Killed;
+
     protected override float CoolDown => _cooldown;
-
-    private event Action<List<DamageableCell>> Hitted;
-
-    private void OnEnable() => Hitted += OnHitted;
-
-    private void OnDisable() => Hitted -= OnHitted;
 
     protected override void Attack()
     {
         Bullet bullet = Instantiate(_bulletData.BulletPrefab);
         bullet.Init(_bulletData);
-        bullet.Shoot(Target, gameObject, _shootingPoint, Hitted);
+        bullet.Shoot(Target, gameObject, _shootingPoint, OnHitted);
     }
 
     private void OnHitted(List<DamageableCell> damageableCells)
@@ -37,7 +33,12 @@ public class Wand : CharacterAttack
     private void MakeDamage(List<DamageableCell> damageableCells)
     {
         foreach (var cell in damageableCells)
+        {
             cell.Damageable.TakeDamage(_damage * _damageMultiply);
+
+            if (cell.Damageable.IsAlive == false)
+                Killed?.Invoke(cell.Damageable);
+        }
     }
 
     private void Knockback(List<DamageableCell> damageableCells)

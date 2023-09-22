@@ -11,19 +11,21 @@ namespace Clones.Infrastructure
 {
     public class GameFactory : IGameFacotry
     {
-        private GameObject _playerObject;
-
         private readonly IStaticDataService _staticData;
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
+        private readonly ITimeScale _timeScale;
+
+        private GameObject _playerObject;
 
         public event Action<IDroppable> DroppableCreated;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, ITimeScale timeScale)
         {
             _assets = assets;
             _inputService = inputService;
             _staticData = staticData;
+            _timeScale = timeScale;
         }
 
         public GameObject CreatePlayer(IItemsCounter itemsCounter)
@@ -58,13 +60,28 @@ namespace Clones.Infrastructure
 
         public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome)
         {
-            GameObject enemiesSpawnerObject = _assets.Instantiate(AssetPath.EnemiesSpawner);
+            GameObject enemiesSpawnerObject = InstantiateRegistered(AssetPath.EnemiesSpawner);
 
             EnemiesSpawner enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
 
             enemiesSpawner.Init(currentBiome, _staticData, _playerObject);
 
             return enemiesSpawner;
+        }
+
+        private GameObject InstantiateRegistered(string prefabPath)
+        {
+            GameObject gameObject = _assets.Instantiate(prefabPath);
+
+            RegisterTimeScalables(gameObject);
+
+            return gameObject;
+        }
+
+        private void RegisterTimeScalables(GameObject gameObject)
+        {
+            foreach(ITimeScalable timeScalable in gameObject.GetComponentsInChildren<ITimeScalable>())
+                _timeScale.Add(timeScalable);
         }
     }
 }

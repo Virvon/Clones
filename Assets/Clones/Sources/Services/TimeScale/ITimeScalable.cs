@@ -1,4 +1,4 @@
-﻿namespace Clones.GameLogic
+﻿namespace Clones.Services
 {
     public interface ITimeScalable
     {

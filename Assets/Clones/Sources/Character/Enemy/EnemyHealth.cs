@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour, IDroppable, IHealthble
 
         if (Health <= 0)
         {
+            IsAlive = false;
             Health = 0;
             Died?.Invoke(this);
             Destroy(gameObject);

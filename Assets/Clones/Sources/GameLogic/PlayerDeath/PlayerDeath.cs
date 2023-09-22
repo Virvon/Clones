@@ -16,7 +16,7 @@ namespace Clones.GameLogic
         }
 
         public void OnDisable() => 
-            _player.Died += OnDied;
+            _player.Died -= OnDied;
 
         private void OnDied(IDamageable obj)
         {

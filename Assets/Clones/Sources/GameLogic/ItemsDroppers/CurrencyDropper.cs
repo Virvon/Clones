@@ -1,5 +1,4 @@
 ﻿using Clones.Infrastructure;
-using Clones.Services;
 using Clones.StaticData;
 using UnityEngine;
 
@@ -7,23 +6,27 @@ namespace Clones.GameLogic
 {
     public class CurrencyDropper : IDisable
     {
-        private readonly IDestroyDroppableReporter _destroyDroppableReporter;
+        private readonly CharacterAttack _characterAttack;
         private readonly IDroppableVisitor _visitor;
 
-        public CurrencyDropper(IPartsFactory partsFactory, IDestroyDroppableReporter destroyDroppableReporter)
+        public CurrencyDropper(IPartsFactory partsFactory, CharacterAttack characterAttack)
         {
             _visitor = new DroppableVisitor(partsFactory);
 
-            _destroyDroppableReporter = destroyDroppableReporter;
+            _characterAttack = characterAttack;
 
-            _destroyDroppableReporter.Destroyed += OnDestroyed;
+            _characterAttack.Killed += OnKilled;
         }
 
-        public void OnDisable() => 
-            _destroyDroppableReporter.Destroyed -= OnDestroyed;
+        private void OnKilled(IDamageable damageable)
+        {
+            if(damageable is IDroppable droppable)
+                droppable.Accept(_visitor);
+        }
 
-        private void OnDestroyed(IDroppable droppable) =>
-            droppable.Accept(_visitor);
+        public void OnDisable() =>
+            _characterAttack.Killed -= OnKilled;
+            
 
         private class DroppableVisitor : IDroppableVisitor
         {
