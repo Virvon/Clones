@@ -34,4 +34,10 @@ public class EnemyHealth : MonoBehaviour, IDroppable, IHealthble
             Destroy(gameObject);
         }
     }
+
+    public void Disappear()
+    {
+        IsAlive = false;
+        Destroy(gameObject);
+    }
 }

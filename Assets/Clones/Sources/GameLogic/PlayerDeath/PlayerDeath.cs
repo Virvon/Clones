@@ -1,4 +1,5 @@
-﻿using Clones.UI;
+﻿using Clones.Services;
+using Clones.UI;
 
 namespace Clones.GameLogic
 {
@@ -6,11 +7,15 @@ namespace Clones.GameLogic
     {
         private readonly GameOverView _gameOverView;
         private readonly PlayerHealth _player;
+        private readonly ITimeScale _timeScale;
+        private readonly EnemiesSpawner _enemySpawner;
 
-        public PlayerDeath(GameOverView gameOverView, PlayerHealth player)
+        public PlayerDeath(GameOverView gameOverView, PlayerHealth player, ITimeScale timeScale, EnemiesSpawner enemiesSpawner)
         {
             _gameOverView = gameOverView;
             _player = player;
+            _timeScale = timeScale;
+            _enemySpawner = enemiesSpawner;
 
             _player.Died += OnDied;
         }
@@ -20,6 +25,8 @@ namespace Clones.GameLogic
 
         private void OnDied(IDamageable obj)
         {
+            _timeScale.Scaled(0);
+            _enemySpawner.DestroyExistingEnemies();
             _gameOverView.Open();
         }
     }

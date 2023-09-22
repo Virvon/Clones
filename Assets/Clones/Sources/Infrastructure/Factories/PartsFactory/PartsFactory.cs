@@ -14,8 +14,6 @@ namespace Clones.Infrastructure
     {
         private readonly IStaticDataService _staticData;
 
-        public event Action<IDroppable> DroppableCreated;
-
         public PartsFactory(IStaticDataService staticData)
         {
             _staticData = staticData;
@@ -67,8 +65,6 @@ namespace Clones.Infrastructure
 
             preyResource.GetComponent<PreyResource>()
                 .Init(preyResourceData.HitsCountToDie, preyResourceData.DroppetItem);
-
-            DroppableCreated?.Invoke(preyResource);
         }
 
         public GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent)

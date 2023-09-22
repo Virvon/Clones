@@ -13,6 +13,7 @@ namespace Clones.Infrastructure
         private readonly IPartsFactory _partsFactory;
         private readonly IPersistentProgressService _persistentProgress;
         private readonly IStaticDataService _staticDataService;
+        private readonly ITimeScale _timeScale;
 
         private IQuestsCreator _questsCreator;
         private IItemsCounter _itemsCounter;
@@ -22,14 +23,15 @@ namespace Clones.Infrastructure
         private GameObject _hud;
 
         private List<IDisable> _disables;
-        
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, IStaticDataService staticDataService)
+
+        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, IStaticDataService staticDataService, ITimeScale timeScale)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
             _partsFactory = partsFactory;
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;
+            _timeScale = timeScale;
         }
 
         public void Enter()
@@ -50,7 +52,7 @@ namespace Clones.Infrastructure
             enemiesSpawner.Init(_partsFactory);
             enemiesSpawner.StartSpawn();
 
-            PlayerDeath playerDeath = new(_hud.GetComponentInChildren<GameOverView>(), _playerObject.GetComponent<PlayerHealth>());
+            PlayerDeath playerDeath = new(_hud.GetComponentInChildren<GameOverView>(), _playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner);
             PlayerRevival playerRevival = new (_playerObject.GetComponent<PlayerHealth>());
 
             _hud.GetComponentInChildren<RevivalButton>()

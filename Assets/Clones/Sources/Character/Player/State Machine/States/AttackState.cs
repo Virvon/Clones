@@ -32,15 +32,19 @@ namespace Clones.StateMachine
             if (_target == null)
             {
                 if (TryGetNearTarget(out _target))
+                {
                     _target.Died += OnTargetDied;
+                    TargetSelected?.Invoke(((MonoBehaviour)_target).transform);
+                }
                 else
                     return;
             }
 
-            TargetSelected?.Invoke(((MonoBehaviour)_target).transform);
-
-            _characterAttack.TryAttack(_target);
-            RotateTo(((MonoBehaviour)_target).transform.position);
+            if(_target.IsAlive)
+            {
+                _characterAttack.TryAttack(_target);
+                RotateTo(((MonoBehaviour)_target).transform.position);
+            }
         }
 
         private void RotateTo(Vector3 targetPosition)

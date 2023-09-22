@@ -47,6 +47,12 @@ namespace Clones.GameLogic
         public void ScaleTime(float scale) => 
             _timeScale = scale >= 0 ? scale : 0;
 
+        public void DestroyExistingEnemies()
+        {
+            foreach (EnemyHealth enemy in GetComponentsInChildren<EnemyHealth>())
+                enemy.Disappear();
+        }
+
         private void CreateWave()
         {
             EnemyType[] spawnedEnemies = GetSpawnedEnemies();
