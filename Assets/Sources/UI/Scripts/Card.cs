@@ -12,10 +12,10 @@ public class Card : MonoBehaviour
     [Space]
     [SerializeField] private bool _isPurchased;
     [SerializeField] private GameObject _selectedVisuals;
-    [SerializeField] private GameObject _dieVisuals;
     [SerializeField] private List<Card> _unselected—ards;
+    //[SerializeField] private GameObject _dieVisuals;
     [Space]
-    [SerializeField] private int _secondsToRestore;
+    //[SerializeField] private int _secondsToRestore;
     [SerializeField] private float _baseMultiplyResourceByRare;
 
     private int _level;

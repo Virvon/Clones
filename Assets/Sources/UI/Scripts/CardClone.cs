@@ -10,6 +10,13 @@ public class CardClone : Card
     [Header("Характеристики клона")]
     [SerializeField] private float _helath;
     [SerializeField] private float _damage;
+    [Space]
+    [SerializeField] private int _upgradePrice;
+    [SerializeField] private int _increasePrice;
+    [Space]
+    [SerializeField] private UpgradeButton _upgradeByDNAButton;
+    [SerializeField] private UpgradeButton _upgradeByCoinsButton;
+
     private GameObject _wandPrefab;
 
     public float Helath => _helath;
@@ -31,5 +38,11 @@ public class CardClone : Card
             return;
 
         PlayerStats.SelectCard(this);
+    }
+
+    private void UpdateUpgradeButtons()
+    {
+        _upgradeByDNAButton.UpdateButton(_upgradePrice);
+        _upgradeByCoinsButton.UpdateButton(_upgradePrice);
     }
 }
