@@ -20,7 +20,7 @@ public class BuyCard : MonoBehaviour
     private void Start()
     {
         _wallet.ValuesChanged.AddListener(CheckCanBuy);
-        _textPrice.text = NumberFormatter.FormatNumberWithCommas(_buyPrice);
+        _textPrice.text = NumberFormatter.DivideIntegerOnDigits(_buyPrice);
         CheckCanBuy();
     }
 

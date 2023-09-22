@@ -6,6 +6,9 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private Transform _playerPrefabPlace;
     [SerializeField] private Canvas _canvas;
+    [Space]
+    [SerializeField] private CardClone _cardClone;
+    [SerializeField] private CardWand _cardWand;
 
     private int _countDNA;
     private int _countCoins;
@@ -13,9 +16,6 @@ public class PlayerStats : MonoBehaviour
     private float _damage;
     private float _attackSpeed;
     private float _resourceMultiplier;
-
-    private CardClone _cardClone;
-    private CardWand _cardWand;
 
     private GameObject _clonePrefab;
 

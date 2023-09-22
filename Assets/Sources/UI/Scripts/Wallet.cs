@@ -37,7 +37,7 @@ public class Wallet : MonoBehaviour
     
     public void UpdateTexts()
     {
-        _dnaText.text = NumberFormatter.FormatNumberWithCommas(_dna);
-        _coinsText.text = NumberFormatter.FormatNumberWithCommas(_coins);
+        _dnaText.text = NumberFormatter.DivideIntegerOnDigits(_dna);
+        _coinsText.text = NumberFormatter.DivideIntegerOnDigits(_coins);
     }
 }

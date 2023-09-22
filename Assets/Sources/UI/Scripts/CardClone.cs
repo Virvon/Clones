@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CardClone : Card
 {
@@ -8,17 +10,26 @@ public class CardClone : Card
     [Header("Характеристики клона")]
     [SerializeField] private float _helath;
     [SerializeField] private float _damage;
-
     private GameObject _wandPrefab;
 
     public float Helath => _helath;
     public float Damage => _damage;
 
-    public CardClone ReturnCard() => this;
+    public UnityEvent Selected = new UnityEvent();
 
     public void SetWand(GameObject wandPrefab, GameObject clonePrefab)
     {
         Destroy(_wandPrefab?.gameObject);
         _wandPrefab = Instantiate(wandPrefab, clonePrefab.GetComponent<ClonePrafab>().WandPrefabPlace);
+    }
+
+    public override void Select()
+    {
+        base.Select();
+
+        if (CantSelect())
+            return;
+
+        PlayerStats.SelectCard(this);
     }
 }

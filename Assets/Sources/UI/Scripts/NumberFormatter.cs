@@ -7,13 +7,13 @@ using UnityEngine;
 
 public static class NumberFormatter
 {
-    public static string FormatNumberWithCommas(int number)
+    public static string DivideIntegerOnDigits(int value)
     {
         var culture = new CultureInfo("ru-RU");
-        return number.ToString("#,#", culture);
+        return value.ToString("#,#", culture);
     }
 
-    public static string FormatNumberWithCommas(float value)
+    public static string DivideFloatOnDigits(float value)
     {
         Console.WriteLine(value.ToString("0.00", CultureInfo.InvariantCulture));
         return String.Format(CultureInfo.InvariantCulture, "{0:0.00}", value);

@@ -1,16 +1,14 @@
 using Newtonsoft.Json.Bson;
 using System.Collections.Generic;
 using TMPro;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Card : MonoBehaviour
 {
+    [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private GameObject _objectPrefab;
-    [Space]
-    [SerializeField] private int _startUpgradePrice;
-    [SerializeField] private int _increasePrice;
-    [SerializeField] private bool _useDNA;
-    [SerializeField] private bool _useCoins;
     [Space]
     [SerializeField] private bool _isPurchased;
     [SerializeField] private GameObject _selectedVisuals;
@@ -23,24 +21,20 @@ public class Card : MonoBehaviour
     private int _level;
     private bool _isDead = false;
 
+    public PlayerStats PlayerStats => _playerStats;
     public GameObject ObjectPrefab => _objectPrefab;
     public int Level => _level;
     public float BaseMultiplyRecourceByRare => _baseMultiplyResourceByRare;
 
-    private void Start()
+    public virtual void Select()
     {
+        if(CantSelect()) 
+            return;
 
-    }
+        _selectedVisuals.SetActive(true);
 
-    public void Select()
-    {
-        if (_isDead == false && _isPurchased)
-        {
-            _selectedVisuals.SetActive(true);
-
-            foreach (var card in _unselected—ards)
-                card.Unselect();
-        }
+        foreach (var card in _unselected—ards)
+            card.Unselect();
     }
 
     public void Unselect()
@@ -51,5 +45,10 @@ public class Card : MonoBehaviour
     public void Buy()
     {
         _isPurchased = true;
+    }
+
+    public virtual bool CantSelect()
+    {
+        return _isDead || (_isPurchased == false);
     }
 }
