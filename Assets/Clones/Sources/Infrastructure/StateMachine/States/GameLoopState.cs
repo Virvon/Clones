@@ -71,12 +71,7 @@ namespace Clones.Infrastructure
         private void CreateGameInfrustructure()
         {
             _questsCreator = new QuestsCreator(_persistentProgress);
-            IDestroyDroppableReporter destroyDroppableReporter = new DestroyDroppableReporter(_partsFactory);
             _itemsCounter = new ItemsCounter(_questsCreator, _persistentProgress);
-            
-            
-
-            _disables.Add(destroyDroppableReporter);
         }
 
         private void CreateGameWorld()
