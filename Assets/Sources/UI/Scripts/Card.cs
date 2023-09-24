@@ -18,12 +18,10 @@ public class Card : MonoBehaviour
     //[SerializeField] private int _secondsToRestore;
     [SerializeField] private float _baseMultiplyResourceByRare;
 
-    private int _level;
     private bool _isDead = false;
 
     public PlayerStats PlayerStats => _playerStats;
     public GameObject ObjectPrefab => _objectPrefab;
-    public int Level => _level;
     public float BaseMultiplyRecourceByRare => _baseMultiplyResourceByRare;
 
     public virtual void Select()

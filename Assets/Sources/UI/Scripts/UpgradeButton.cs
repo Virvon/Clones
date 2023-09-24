@@ -12,17 +12,35 @@ public class UpgradeButton : MonoBehaviour
     [Space]
     [SerializeField] private GameObject _cantUpgradeVisuals;
     [Space]
+    [SerializeField] private CardClone _cardClone;
+    [Space]
     [SerializeField] private bool _isUseDNA;
     [SerializeField] private bool _isUseCoins;
 
-    public void UpdateButton(int price)
+    public void OnClick()
     {
-        _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
+        if (_isUseDNA)
+            _cardClone.UpgradeByDNA();
+
+        if (_isUseCoins)
+            _cardClone.UpgradeByCoins();
+    }
+
+    public void SetCardClone(CardClone cardClone)
+    {
+        _cardClone = cardClone;
+    }
+
+    public void UpdateButton()
+    {
+        int price = _cardClone.UpgradePrice;
 
         if (_isUseDNA)
             _cantUpgradeVisuals.SetActive(_wallet.DNA < price);
 
         if (_isUseCoins)
             _cantUpgradeVisuals.SetActive(_wallet.Coins < price);
+        
+        _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
     }
 }

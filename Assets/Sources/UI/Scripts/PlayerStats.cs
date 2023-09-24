@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -9,11 +10,16 @@ public class PlayerStats : MonoBehaviour
     [Space]
     [SerializeField] private CardClone _cardClone;
     [SerializeField] private CardWand _cardWand;
+    [Space]
+    [SerializeField] private TMP_Text _healthText;
+    [SerializeField] private TMP_Text _damageText;
+    [SerializeField] private TMP_Text _attackSpeedText;
+    [SerializeField] private TMP_Text _resourceMultiplierText;
 
     private int _countDNA;
     private int _countCoins;
-    private float _health;
-    private float _damage;
+    private int _health;
+    private int _damage;
     private float _attackSpeed;
     private float _resourceMultiplier;
 
@@ -21,6 +27,12 @@ public class PlayerStats : MonoBehaviour
 
     private const float _baseResourceMultiplier = 0.75f;
     private const float _upgradeResourceMultiplier = 0.25f;
+
+    private void Start()
+    {
+        _cardClone.Select();
+        _cardWand.Select();
+    }
 
     public void SelectCard(CardClone cardClone)
     {
@@ -51,5 +63,10 @@ public class PlayerStats : MonoBehaviour
         _damage = _cardClone.Damage + _cardWand.Damage;
         _attackSpeed = _cardWand.AttackSpeed;
         _resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);
+
+        _healthText.text = NumberFormatter.DivideIntegerOnDigits(_health);
+        _damageText.text = NumberFormatter.DivideIntegerOnDigits(_damage);
+        _attackSpeedText.text = NumberFormatter.DivideFloatOnDigits(_attackSpeed);
+        _resourceMultiplierText.text = NumberFormatter.DivideFloatOnDigits(_resourceMultiplier);
     }
 }

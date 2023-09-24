@@ -8,8 +8,10 @@ public class CardClone : Card
 {
     [Space]
     [Header("Характеристики клона")]
-    [SerializeField] private float _helath;
-    [SerializeField] private float _damage;
+    [SerializeField] private int _helath;
+    [SerializeField] private int _increaseHealth;
+    [SerializeField] private int _damage;
+    [SerializeField] private int _increaseDamage;
     [Space]
     [SerializeField] private int _upgradePrice;
     [SerializeField] private int _increasePrice;
@@ -18,9 +20,13 @@ public class CardClone : Card
     [SerializeField] private UpgradeButton _upgradeByCoinsButton;
 
     private GameObject _wandPrefab;
+    private int _level = 1;
 
-    public float Helath => _helath;
-    public float Damage => _damage;
+    public int Helath => _helath;
+    public int Damage => _damage;
+    public int Level => _level;
+    public int UpgradePrice => _upgradePrice;
+    public int IncreasePrice => _increasePrice;
 
     public UnityEvent Selected = new UnityEvent();
 
@@ -28,6 +34,18 @@ public class CardClone : Card
     {
         Destroy(_wandPrefab?.gameObject);
         _wandPrefab = Instantiate(wandPrefab, clonePrefab.GetComponent<ClonePrafab>().WandPrefabPlace);
+    }
+
+    public void UpgradeByDNA()
+    {
+        _helath += _increaseHealth;
+        Upgrade();
+    }
+
+    public void UpgradeByCoins()
+    {
+        _damage += _increaseDamage;
+        Upgrade();
     }
 
     public override void Select()
@@ -38,11 +56,22 @@ public class CardClone : Card
             return;
 
         PlayerStats.SelectCard(this);
+        UpdateUpgradeButtons();
     }
 
     private void UpdateUpgradeButtons()
     {
-        _upgradeByDNAButton.UpdateButton(_upgradePrice);
-        _upgradeByCoinsButton.UpdateButton(_upgradePrice);
+        _upgradeByDNAButton.UpdateButton();
+        _upgradeByCoinsButton.UpdateButton();
+
+        _upgradeByDNAButton.SetCardClone(this);
+        _upgradeByCoinsButton.SetCardClone(this);
+    }
+
+    private void Upgrade()
+    {
+        _level++;
+        _upgradePrice += _increasePrice;
+        UpdateUpgradeButtons();
     }
 }
