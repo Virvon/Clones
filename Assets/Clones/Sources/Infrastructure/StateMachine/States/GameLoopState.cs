@@ -15,13 +15,6 @@ namespace Clones.Infrastructure
         private readonly IStaticDataService _staticDataService;
         private readonly ITimeScale _timeScale;
 
-        private IQuestsCreator _questsCreator;
-        private IItemsCounter _itemsCounter;
-        private ICurrentBiome _currentBiome;
-        private GameObject _playerObject;
-        private WorldGenerator _worldGenerator;
-        private GameObject _hud;
-
         private List<IDisable> _disables;
 
         public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, IStaticDataService staticDataService, ITimeScale timeScale)
@@ -32,33 +25,40 @@ namespace Clones.Infrastructure
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;
             _timeScale = timeScale;
+
+            _disables = new();
         }
 
         public void Enter()
         {
-            _disables = new();
+            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress);
+            IItemsCounter itemsCounter = new ItemsCounter(questsCreator, _persistentProgress);
 
-            CreateGameInfrustructure();
-            CreateGameWorld();
+            GameObject playerObject = _gameFactory.CreatePlayer(itemsCounter);
+            WorldGenerator worldGenerator = _gameFactory.CreateWorldGenerator();
 
-            CurrencyDropper currencyDropper = new(_partsFactory, _playerObject.GetComponent<CharacterAttack>());
-            QuestItemsDropper questItemsDropper = new(_partsFactory, _playerObject.GetComponent<CharacterAttack>(), _questsCreator);
+            worldGenerator.Init(_partsFactory);
 
-            _questsCreator.Create();
-            _currentBiome = new CurrentBiome(_worldGenerator);
+            GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject);
+            _gameFactory.CreateVirtualCamera();
 
-            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(_currentBiome);
+            CurrencyDropper currencyDropper = new(_partsFactory, playerObject.GetComponent<CharacterAttack>());
+            QuestItemsDropper questItemsDropper = new(_partsFactory, playerObject.GetComponent<CharacterAttack>(), questsCreator);
 
+            questsCreator.Create();
+            ICurrentBiome currentBiome = new CurrentBiome(worldGenerator);
+
+            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome);
             enemiesSpawner.Init(_partsFactory);
             enemiesSpawner.StartSpawn();
 
-            PlayerDeath playerDeath = new(_hud.GetComponentInChildren<GameOverView>(), _playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner);
-            PlayerRevival playerRevival = new (_playerObject.GetComponent<PlayerHealth>());
+            PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameOverView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner);
+            PlayerRevival playerRevival = new (playerObject.GetComponent<PlayerHealth>(), _timeScale);
 
-            _hud.GetComponentInChildren<RevivalButton>()
+            hud.GetComponentInChildren<RevivalButton>()
                 .Init(playerRevival);
 
-            _disables.Add(_currentBiome);
+            _disables.Add(currentBiome);
             _disables.Add(playerDeath);
             _disables.Add(currencyDropper);
             _disables.Add(questItemsDropper);
@@ -68,23 +68,6 @@ namespace Clones.Infrastructure
         {
             foreach (var disable in _disables)
                 disable.OnDisable();
-        }
-
-        private void CreateGameInfrustructure()
-        {
-            _questsCreator = new QuestsCreator(_persistentProgress);
-            _itemsCounter = new ItemsCounter(_questsCreator, _persistentProgress);
-        }
-
-        private void CreateGameWorld()
-        {
-            _playerObject = _gameFactory.CreatePlayer(_itemsCounter);
-            _worldGenerator = _gameFactory.CreateWorldGenerator();
-
-            _worldGenerator.Init(_partsFactory);
-
-            _hud = _uiFactory.CreateHud(_questsCreator, _playerObject);
-            _gameFactory.CreateVirtualCamera();
         }
     }
 }

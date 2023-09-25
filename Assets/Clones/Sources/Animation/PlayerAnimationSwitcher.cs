@@ -12,6 +12,7 @@ namespace Clones.Animation
 
         private IInputService _inputService;
         private Animator _animator;
+        private bool _isMoved;
 
         private float _animationMovementSpeed => _movementState.MovementSpeed / _movementState.MaxMovementSpeed;
 
@@ -24,7 +25,7 @@ namespace Clones.Animation
             _movementState.MovementSpeedChanged += OnMovementSpeedChanged;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _characterAttack.AttackStarted -= OnAttackStarted;
 
@@ -46,11 +47,23 @@ namespace Clones.Animation
             _animator.SetTrigger(Animations.Player.Triggers.Attack);
 
 
-        private void OnMove() => 
-            _animator.SetBool(Animations.Player.Bools.IsMoved, true);
+        private void OnMove()
+        {
+            if (_isMoved == false)
+            {
+                _animator.SetBool(Animations.Player.Bools.IsMoved, true);
+                _isMoved = true;
+            }
+        }
 
-        private void OnStop() => 
-            _animator.SetBool(Animations.Player.Bools.IsMoved, false);
+        private void OnStop()
+        {
+            if(_isMoved)
+            {
+                _animator.SetBool(Animations.Player.Bools.IsMoved, false);
+                _isMoved = false; ;
+            }
+        }
 
         private void OnMovementSpeedChanged() => 
             _animator.SetFloat(Animations.Player.Floats.MovementAnimationSpeed, _animationMovementSpeed);

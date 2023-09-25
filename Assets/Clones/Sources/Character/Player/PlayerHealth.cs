@@ -28,11 +28,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
         HealthChanged?.Invoke();
 
         if (_health == 0)
+        {
             Died?.Invoke(this);
+            gameObject.SetActive(false);
+        }
     }
 
     public void Reborn(int health)
     {
+        gameObject.SetActive(true);
         _health = health;
         HealthChanged?.Invoke();
     }

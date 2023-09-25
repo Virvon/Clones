@@ -10,5 +10,6 @@ namespace Clones.Infrastructure
         WorldGenerator CreateWorldGenerator();
         void CreateVirtualCamera();
         EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome);
+        BoostsSpawner CreateBoostsSpawner();
     }
 }

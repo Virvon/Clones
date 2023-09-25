@@ -69,9 +69,30 @@ namespace Clones.Infrastructure
             return enemiesSpawner;
         }
 
+        public BoostsSpawner CreateBoostsSpawner()
+        {
+            BoostsSpawnerStaticData spawnerData = _staticData.GetBoostsSpawnerStaticData();
+
+            GameObject spawnerObject = InstantiateRegistered(spawnerData.Prefab);
+
+            BoostsSpawner boostsSpawner = spawnerObject.GetComponent<BoostsSpawner>();
+            boostsSpawner.Init(spawnerData.MinRadius, spawnerData.MaxRadius, spawnerData.Cooldown, _playerObject.transform, spawnerData.SpawnedBoosts);
+
+            return boostsSpawner;
+        }
+
         private GameObject InstantiateRegistered(string prefabPath)
         {
             GameObject gameObject = _assets.Instantiate(prefabPath);
+
+            RegisterTimeScalables(gameObject);
+
+            return gameObject;
+        }
+
+        private GameObject InstantiateRegistered(GameObject prefab)
+        {
+            GameObject gameObject = Object.Instantiate(prefab);
 
             RegisterTimeScalables(gameObject);
 

@@ -12,6 +12,7 @@ namespace Clones.Services
         private Dictionary<QuestItemType, QuestItemStaticData> _questItems;
         private Dictionary<CurrencyItemType, CurrencyItemStaticData> _currencyItems;
         private Dictionary<EnemyType, EnemyStaticData> _enemies;
+        private Dictionary<BoostType, BoostStaticData> _boosts;
 
         public void Load()
         {
@@ -20,13 +21,17 @@ namespace Clones.Services
             _questItems = Resources.LoadAll<QuestItemStaticData>(StaticDataPath.QuestItems).ToDictionary(value => value.Type, value => value);
             _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(StaticDataPath.CurrencyItems).ToDictionary(value => value.Type, value => value);
             _enemies = Resources.LoadAll<EnemyStaticData>(StaticDataPath.Enemies).ToDictionary(value => value.Type, value => value);
+            _boosts = Resources.LoadAll<BoostStaticData>(StaticDataPath.Boosts).ToDictionary(value => value.Type, value => value);
         }
-
-        public BiomeStaticData GetBiomeStaticData(BiomeType type) => 
-            _biomes.TryGetValue(type, out BiomeStaticData staticData) ? staticData : null;
 
         public WorldGeneratorStaticData GetWorldGeneratorData() =>
             Resources.Load<WorldGeneratorStaticData>(StaticDataPath.WorldGenerator);
+
+        public BoostsSpawnerStaticData GetBoostsSpawnerStaticData() => 
+            Resources.Load<BoostsSpawnerStaticData>(StaticDataPath.BoostsGenerator);
+
+        public BiomeStaticData GetBiomeStaticData(BiomeType type) => 
+            _biomes.TryGetValue(type, out BiomeStaticData staticData) ? staticData : null;
 
         public PreyResourceStaticData GetPreyResourceStaticData(PreyResourceType type) => 
             _preyResources.TryGetValue(type, out PreyResourceStaticData staticData) ? staticData : null;
@@ -39,5 +44,8 @@ namespace Clones.Services
 
         public EnemyStaticData GetEnemyStaticData(EnemyType type) => 
             _enemies.TryGetValue(type, out EnemyStaticData staticData) ? staticData : null;
+
+        public BoostStaticData GetBoostStaticData(BoostType type) => 
+            _boosts.TryGetValue(type, out BoostStaticData staticData) ? staticData : null;
     }
 }

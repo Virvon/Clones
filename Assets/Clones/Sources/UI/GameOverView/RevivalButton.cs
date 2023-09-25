@@ -5,7 +5,7 @@ namespace Clones.UI
 {
     public class RevivalButton : MonoBehaviour
     {
-        [SerializeField] private GameOverView _gameoverView;
+        [SerializeField] private GameOverView _gameOverView;
         [SerializeField] private GameObject _button;
 
         private PlayerRevival _playerRevival;
@@ -17,7 +17,7 @@ namespace Clones.UI
 
         public void Revival()
         {
-            _playerRevival.TryRevive(_gameoverView.Close);
+            _playerRevival.TryRevive(_gameOverView.Close);
 
             if (_playerRevival?.CanRivival == false)
                 Destroy(_button);
