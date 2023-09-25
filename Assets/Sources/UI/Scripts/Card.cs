@@ -23,6 +23,7 @@ public class Card : MonoBehaviour
     public PlayerStats PlayerStats => _playerStats;
     public GameObject ObjectPrefab => _objectPrefab;
     public float BaseMultiplyRecourceByRare => _baseMultiplyResourceByRare;
+    public bool IsPurchased => _isPurchased;
 
     public virtual void Select()
     {

@@ -14,5 +14,10 @@ public class CardWand : Card
 
     public CardWand ReturnCard() => this;
 
-    //Selected
+    public override void Select()
+    {
+        base.Select();
+
+        PlayerStats.SelectCard(this);
+    }
 }
