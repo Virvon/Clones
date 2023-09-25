@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private Transform _playerPrefabPlace;
-    [SerializeField] private Canvas _canvas;
+    [SerializeField] private Wallet _wallet;
     [Space]
     [SerializeField] private CardClone _cardClone;
     [SerializeField] private CardWand _cardWand;
@@ -15,6 +15,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private TMP_Text _damageText;
     [SerializeField] private TMP_Text _attackSpeedText;
     [SerializeField] private TMP_Text _resourceMultiplierText;
+    [Space]
+    [SerializeField] private float _baseResourceMultiplier = 0.9f;
+    [SerializeField] private float _upgradeResourceMultiplier = 0.1f;
 
     private int _countDNA;
     private int _countCoins;
@@ -24,9 +27,6 @@ public class PlayerStats : MonoBehaviour
     private float _resourceMultiplier;
 
     private GameObject _clonePrefab;
-
-    private const float _baseResourceMultiplier = 0.75f;
-    private const float _upgradeResourceMultiplier = 0.25f;
 
     private void Start()
     {
@@ -51,13 +51,7 @@ public class PlayerStats : MonoBehaviour
         _cardClone?.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
     }
 
-    public void UpdateWalletValues(Wallet wallet)
-    {
-        _countDNA = wallet.DNA;
-        _countCoins = wallet.Coins;
-    }
-
-    private void UpdateStats()
+    public void UpdateStats()
     {
         _health = _cardClone.Helath;
         _damage = _cardClone.Damage + _cardWand.Damage;
@@ -68,5 +62,13 @@ public class PlayerStats : MonoBehaviour
         _damageText.text = NumberFormatter.DivideIntegerOnDigits(_damage);
         _attackSpeedText.text = NumberFormatter.DivideFloatOnDigits(_attackSpeed);
         _resourceMultiplierText.text = NumberFormatter.DivideFloatOnDigits(_resourceMultiplier);
+
+        UpdateWalletValues();
+    }
+
+    public void UpdateWalletValues()
+    {
+        _countDNA = _wallet.DNA;
+        _countCoins = _wallet.Coins;
     }
 }

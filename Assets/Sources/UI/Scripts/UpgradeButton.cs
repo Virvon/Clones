@@ -20,10 +20,16 @@ public class UpgradeButton : MonoBehaviour
     public void OnClick()
     {
         if (_isUseDNA)
+        {
+            _wallet.ChangeDNACount(-_cardClone.UpgradePrice);
             _cardClone.UpgradeByDNA();
+        }
 
         if (_isUseCoins)
+        {
+            _wallet.ChangeCoinsCount(-_cardClone.UpgradePrice);
             _cardClone.UpgradeByCoins();
+        }
     }
 
     public void SetCardClone(CardClone cardClone)
@@ -37,6 +43,7 @@ public class UpgradeButton : MonoBehaviour
 
         if (_isUseDNA)
             _cantUpgradeVisuals.SetActive(_wallet.DNA < price);
+            //startButton.interactable(_wallet.DNA < price)
 
         if (_isUseCoins)
             _cantUpgradeVisuals.SetActive(_wallet.Coins < price);

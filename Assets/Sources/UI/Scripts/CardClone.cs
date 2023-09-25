@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,6 +19,7 @@ public class CardClone : Card
     [Space]
     [SerializeField] private UpgradeButton _upgradeByDNAButton;
     [SerializeField] private UpgradeButton _upgradeByCoinsButton;
+    [SerializeField] private TMP_Text _levelText;
 
     private GameObject _wandPrefab;
     private int _level = 1;
@@ -61,17 +63,19 @@ public class CardClone : Card
 
     private void UpdateUpgradeButtons()
     {
-        _upgradeByDNAButton.UpdateButton();
-        _upgradeByCoinsButton.UpdateButton();
-
         _upgradeByDNAButton.SetCardClone(this);
         _upgradeByCoinsButton.SetCardClone(this);
+
+        _upgradeByDNAButton.UpdateButton();
+        _upgradeByCoinsButton.UpdateButton();
     }
 
     private void Upgrade()
     {
         _level++;
         _upgradePrice += _increasePrice;
+        _levelText.text = _level.ToString();
         UpdateUpgradeButtons();
+        PlayerStats.UpdateStats();
     }
 }

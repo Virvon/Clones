@@ -13,4 +13,6 @@ public class CardWand : Card
     public float AttackSpeed => _attackSpeed;
 
     public CardWand ReturnCard() => this;
+
+    //Selected
 }
