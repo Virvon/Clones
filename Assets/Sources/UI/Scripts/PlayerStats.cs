@@ -41,6 +41,7 @@ public class PlayerStats : MonoBehaviour
 
         Destroy(_clonePrefab?.gameObject);
         _clonePrefab = Instantiate(_cardClone.ObjectPrefab, _playerPrefabPlace);
+        _cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
     }
 
     public void SelectCard(CardWand cardWand)
@@ -48,7 +49,7 @@ public class PlayerStats : MonoBehaviour
         _cardWand = cardWand;
         UpdateStats();
 
-        _cardClone?.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
+        _cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
     }
 
     public void UpdateStats()

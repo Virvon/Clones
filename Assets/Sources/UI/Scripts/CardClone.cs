@@ -54,6 +54,9 @@ public class CardClone : Card
     {
         base.Select();
 
+        if (CantSelect())
+            return;
+
         PlayerStats.SelectCard(this);
         UpdateUpgradeButtons();
     }
