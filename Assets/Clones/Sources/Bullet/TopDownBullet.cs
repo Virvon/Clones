@@ -28,9 +28,9 @@ public class TopDownBullet : Bullet
             if (_selfDamageable is Enemy && damageable is Enemy)
                 return;
 
-            //Vector3 forceDirection = other.transform.position - transform.position;
+            Vector3 knockbackDirection = other.transform.position - transform.position;
 
-            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable) });
+            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, knockbackDirection) });
         }
     }
 

@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextScene: TestMainScene
+  _loadingPanel: {fileID: 0}
+  _showAdd: 0
 --- !u!4 &728312766
 Transform:
   m_ObjectHideFlags: 0

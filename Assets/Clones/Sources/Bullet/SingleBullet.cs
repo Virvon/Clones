@@ -39,9 +39,9 @@ public class SingleBullet : Bullet
             _isCollisioned = true;
             HitTarget = damageable;
 
-            //Vector3 knockbakcDirection = other.transform.position - ((MonoBehaviour)_selfDamageable).transform.position;
+            Vector3 knockbakcDirection = other.transform.position - _selfObject.transform.position;
 
-            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable) });
+            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, knockbakcDirection) });
             Hitted?.Invoke();
             Destroy(gameObject);
         }

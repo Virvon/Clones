@@ -12,7 +12,7 @@ namespace Clones.Infrastructure
         private void Awake()
         {
             _game = new Game(Instantiate(_loadingPanelPrefab));
-            _game._stateMachine.Enter<BootstrapState>();
+            _game.StateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this); 
         }

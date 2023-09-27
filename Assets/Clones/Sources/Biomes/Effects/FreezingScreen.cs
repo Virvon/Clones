@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clones.GameLogic;
+using System;
 using UnityEngine;
 
 public class FreezingScreen : MonoBehaviour

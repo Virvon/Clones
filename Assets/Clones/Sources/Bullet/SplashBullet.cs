@@ -11,7 +11,7 @@ public class SplashBullet : Bullet
 
     private SplashBulletData _bulletData;
     private Vector3 _direction;
-    private IDamageable _selfDamageable;
+    private GameObject _selfObject;
     private readonly Collider[] _overlapColliders = new Collider[64];
     private bool _isCollisioned = false;
 
@@ -31,9 +31,9 @@ public class SplashBullet : Bullet
         if (_isCollisioned)
             return;
 
-        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfDamageable)
+        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfObject.GetComponent<IDamageable>())
         {
-            if (_selfDamageable is Enemy && damageable is Enemy)
+            if (_selfObject.TryGetComponent(out Enemy enemy) && damageable is Enemy)
                 return;
 
             _isCollisioned = true;
@@ -43,8 +43,8 @@ public class SplashBullet : Bullet
 
             for (var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1) && damageable1 != _selfDamageable)
-                    damageableCells.Add(new DamageableCell(damageable1));
+                if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1) && damageable1 != _selfObject.GetComponent<IDamageable>())
+                    damageableCells.Add(new DamageableCell(damageable1, other.transform.position - _selfObject.transform.position));
             }
 
             s_Hitted?.Invoke(damageableCells);
@@ -64,7 +64,7 @@ public class SplashBullet : Bullet
 
         transform.rotation = Quaternion.LookRotation(_direction);
     
-        //_selfDamageable = selfObject;
+        _selfObject = selfObject;
         s_Hitted = Hitted;
 
         Shooted?.Invoke();

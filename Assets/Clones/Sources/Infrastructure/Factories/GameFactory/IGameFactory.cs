@@ -1,4 +1,5 @@
-﻿using Clones.GameLogic;
+﻿using Cinemachine;
+using Clones.GameLogic;
 using Clones.Services;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace Clones.Infrastructure
     {
         GameObject CreatePlayer(IItemsCounter itemsCounter);
         WorldGenerator CreateWorldGenerator();
-        void CreateVirtualCamera();
+        CinemachineVirtualCamera CreateVirtualCamera();
         EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome);
         BoostsSpawner CreateBoostsSpawner();
     }

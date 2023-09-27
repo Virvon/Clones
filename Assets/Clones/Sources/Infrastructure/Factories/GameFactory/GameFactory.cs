@@ -51,11 +51,14 @@ namespace Clones.Infrastructure
             return worldGenerator;
         }
 
-        public void CreateVirtualCamera()
+        public CinemachineVirtualCamera CreateVirtualCamera()
         {
-            _assets.Instantiate(AssetPath.VirtualCamera)
-                .GetComponent<CinemachineVirtualCamera>()
-                .Follow = _playerObject.transform;
+            GameObject cameraObject = _assets.Instantiate(AssetPath.VirtualCamera);
+
+            var virtualCamera = cameraObject.GetComponent<CinemachineVirtualCamera>();
+            virtualCamera.Follow = _playerObject.transform;
+
+            return virtualCamera;
         }
 
         public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome)
