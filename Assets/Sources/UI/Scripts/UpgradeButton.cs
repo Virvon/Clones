@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UpgradeButton : MonoBehaviour
     [Space]
     [SerializeField] private TMP_Text _textPrice;
     [Space]
+    [SerializeField] private Button _button;
     [SerializeField] private GameObject _cantUpgradeVisuals;
     [Space]
     [SerializeField] private CardClone _cardClone;
@@ -42,11 +44,16 @@ public class UpgradeButton : MonoBehaviour
         int price = _cardClone.UpgradePrice;
 
         if (_isUseDNA)
+        {
             _cantUpgradeVisuals.SetActive(_wallet.DNA < price);
-            //startButton.interactable(_wallet.DNA < price)
+            _button.interactable = _wallet.DNA >= price;
+        }
 
         if (_isUseCoins)
+        {
             _cantUpgradeVisuals.SetActive(_wallet.Coins < price);
+            _button.interactable = _wallet.Coins >= price;
+        }
         
         _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
     }

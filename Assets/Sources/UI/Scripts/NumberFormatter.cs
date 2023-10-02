@@ -9,12 +9,18 @@ public static class NumberFormatter
 {
     public static string DivideIntegerOnDigits(int value)
     {
+        if(value == 0)
+            return "0";
+
         var culture = new CultureInfo("ru-RU");
         return value.ToString("#,#", culture);
     }
 
     public static string DivideFloatOnDigits(float value)
     {
+        if (value == 0)
+            return "0";
+
         Console.WriteLine(value.ToString("0.00", CultureInfo.InvariantCulture));
         return String.Format(CultureInfo.InvariantCulture, "{0:0.00}", value);
     }
