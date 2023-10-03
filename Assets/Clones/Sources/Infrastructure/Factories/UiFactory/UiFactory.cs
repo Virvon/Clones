@@ -18,7 +18,7 @@ namespace Clones.Infrastructure
             _stateMachine = stateMachine;
         }
 
-        public GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject)
+        public GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject, PlayerRevival playerRevival)
         {
             var hud = _assets.Instantiate(AssetPath.Hud);
 
@@ -39,6 +39,9 @@ namespace Clones.Infrastructure
 
             hud.GetComponentInChildren<ChangeGameStateButton>()
                 .Init(_stateMachine);
+
+            hud.GetComponentInChildren<RevivalView>()
+                .Init(playerRevival, hud.GetComponentInChildren<GameOverView>());
 
             return hud;
         }

@@ -16,3 +16,5 @@ MonoBehaviour:
   DroppetItem: 0
   Prefab: {fileID: 5875768067958739308, guid: e3decf356da9aa94b9995d63b95f490b, type: 3}
   HitsCountToDie: 3
+  DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}
+  EffectOffset: {x: 0, y: 3, z: 0}

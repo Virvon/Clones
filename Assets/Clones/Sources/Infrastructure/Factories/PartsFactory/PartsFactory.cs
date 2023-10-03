@@ -41,6 +41,9 @@ namespace Clones.Infrastructure
 
             enemyObject.GetComponentInChildren<EnemyHealthbar>()
                 .Init(enemyHealth);
+
+            enemyObject.GetComponent<DamageableDeath>()
+                .Init(enemyData.DeathEffect, enemyData.EffectOffset, enemyHealth);
         }
 
         public void CreateBoost(BoostType type, Vector3 position, Quaternion rotation, Transform parent)
@@ -68,10 +71,13 @@ namespace Clones.Infrastructure
         {
             PreyResourceStaticData preyResourceData = _staticData.GetPreyResourceStaticData(type);
 
-            var preyResource = Object.Instantiate(preyResourceData.Prefab, position, rotation, parent);
+            var preyResourceObject = Object.Instantiate(preyResourceData.Prefab, position, rotation, parent);
 
-            preyResource.GetComponent<PreyResource>()
-                .Init(preyResourceData.HitsCountToDie, preyResourceData.DroppetItem);
+            var preyResource = preyResourceObject.GetComponent<PreyResource>();
+            preyResource.Init(preyResourceData.HitsCountToDie, preyResourceData.DroppetItem);
+
+            preyResourceObject.GetComponent<DamageableDeath>()
+                .Init(preyResourceData.DiedEffect, preyResourceData.EffectOffset, preyResource);
         }
 
         public GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent)

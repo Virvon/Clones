@@ -9,5 +9,7 @@ namespace Clones.StaticData
         public QuestItemType DroppetItem;
         public PreyResource Prefab;
         public int HitsCountToDie;
+        public GameObject DiedEffect;
+        public Vector3 EffectOffset;
     }
 }

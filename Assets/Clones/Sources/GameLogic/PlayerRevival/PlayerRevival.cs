@@ -23,10 +23,10 @@ namespace Clones.GameLogic
             _timeScale = timeScale;
         }
 
-        public void TryRevive(Action callback = null)
+        public bool TryRevive(Action callback = null)
         {
             if (_revivivalsCount + 1 > MaxRevivivalsCount)
-                return;
+                return false;
 
             _revivivalsCount++;
 
@@ -45,6 +45,8 @@ namespace Clones.GameLogic
 
             callback?.Invoke();
 #endif
+
+            return true;
         }
     }
 }
