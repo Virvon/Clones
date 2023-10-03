@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Clones.StateMachine
@@ -57,22 +59,31 @@ namespace Clones.StateMachine
 
         private bool TryGetNearTarget(out IDamageable target)
         {
+            List<IDamageable> damageables = new();
+
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _attackRadius, _overlapColliders);
 
             for (var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out IDamageable iDamageble) && !(iDamageble is Player))
+                if (_overlapColliders[i].TryGetComponent(out IDamageable damageble) && damageble is not Player)
                 {
-                    if (IsRequiredTarget(iDamageble))
-                    {
-                        target = iDamageble;
-                        return true;
-                    }
+                    if (IsRequiredTarget(damageble))
+                        damageables.Add(damageble);
                 }
             }
 
-            target = null;
-            return false;
+            if(damageables.Count == 0)
+            {
+                target = null;
+                return false;
+            }
+            else
+            {
+                var orderDamageables = damageables.OrderBy(damageble => Vector3.Distance(transform.position, ((MonoBehaviour)damageble).transform.position));
+
+                target = orderDamageables.First();
+                return true;
+            }
         }
 
         private void OnTargetDied(IDamageable damageble)
