@@ -13,7 +13,7 @@ namespace Clones.StateMachine
 
         private IDamageable _target;
 
-        public event Action<Transform> TargetSelected;
+        public event Action<GameObject> TargetSelected;
         public event Action TargetRejected;
 
         private void Update() => 
@@ -34,7 +34,7 @@ namespace Clones.StateMachine
                 if (TryGetNearTarget(out _target))
                 {
                     _target.Died += OnTargetDied;
-                    TargetSelected?.Invoke(((MonoBehaviour)_target).transform);
+                    TargetSelected?.Invoke(((MonoBehaviour)_target).gameObject);
                 }
                 else
                     return;
