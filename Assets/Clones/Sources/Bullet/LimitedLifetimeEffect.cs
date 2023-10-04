@@ -5,7 +5,8 @@ public class LimitedLifetimeEffect : MonoBehaviour
 {
     [SerializeField] private float _lifeTime;
 
-    private void Start() => StartCoroutine(Timer());
+    private void Start() => 
+        StartCoroutine(Timer());
 
     private IEnumerator Timer()
     {

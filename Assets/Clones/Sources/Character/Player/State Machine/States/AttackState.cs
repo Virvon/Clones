@@ -11,7 +11,7 @@ namespace Clones.StateMachine
         [SerializeField] private float _lookRotationSpeed;
         [SerializeField] private CharacterAttack _characterAttack;
 
-        private readonly Collider[] _overlapColliders = new Collider[64];
+        private readonly Collider[] _overlapColliders = new Collider[128];
 
         private IDamageable _target;
 

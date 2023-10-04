@@ -314,6 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 50
+  _rebornEffect: {fileID: 100006, guid: 34fcf19f74fcb794baeefd01952bc508, type: 3}
+  _effectOffset: {x: 0, y: 0.01, z: 0}
 --- !u!114 &1913505686328578964
 MonoBehaviour:
   m_ObjectHideFlags: 0

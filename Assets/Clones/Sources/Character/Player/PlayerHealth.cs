@@ -4,6 +4,8 @@ using System;
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 {
     [SerializeField] private int _health;
+    [SerializeField] private GameObject _rebornEffect;
+    [SerializeField] private Vector3 _effectOffset;
 
     public bool IsAlive => true;
 
@@ -36,8 +38,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 
     public void Reborn(int health)
     {
+        Instantiate(_rebornEffect, transform.position + _effectOffset, Quaternion.identity);
         gameObject.SetActive(true);
         _health = health;
         HealthChanged?.Invoke();
+
     }
 }
