@@ -7,8 +7,6 @@ using UnityEngine.Events;
 
 public class CardClone : Card
 {
-    [Space]
-    [Header("Характеристики клона")]
     [SerializeField] private int _helath;
     [SerializeField] private int _increaseHealth;
     [SerializeField] private int _damage;
@@ -53,9 +51,6 @@ public class CardClone : Card
     public override void Select()
     {
         base.Select();
-
-        if (CantSelect())
-            return;
 
         PlayerStats.SelectCard(this);
         UpdateUpgradeButtons();

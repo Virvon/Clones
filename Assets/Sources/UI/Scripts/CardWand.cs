@@ -18,9 +18,6 @@ public class CardWand : Card
     {
         base.Select();
 
-        if (CantSelect())
-            return;
-
         PlayerStats.SelectCard(this);
     }
 }

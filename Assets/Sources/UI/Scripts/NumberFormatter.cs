@@ -24,4 +24,17 @@ public static class NumberFormatter
         Console.WriteLine(value.ToString("0.00", CultureInfo.InvariantCulture));
         return String.Format(CultureInfo.InvariantCulture, "{0:0.00}", value);
     }
+
+    public static string ConvertSecondsToTimeString(float totalSecondsFloat)
+    {
+        int totalSeconds = Mathf.RoundToInt(totalSecondsFloat);
+
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+
+        string minutesString = minutes.ToString().PadLeft(2, '0');
+        string secondsString = seconds.ToString().PadLeft(2, '0');
+
+        return minutesString + ":" + secondsString;
+    }
 }

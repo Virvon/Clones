@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BuyCard : MonoBehaviour
 {
+    [SerializeField] private Button _selectCardButton;
+    [Space]
     [SerializeField] private int _buyPrice;
     [SerializeField] private GameObject _buyButton;
     [SerializeField] private GameObject _cantBuyVisuals;
@@ -19,6 +22,7 @@ public class BuyCard : MonoBehaviour
 
     private void Start()
     {
+        _selectCardButton.interactable = false;
         _wallet.ValuesChanged.AddListener(CheckCanBuy);
         _textPrice.text = NumberFormatter.DivideIntegerOnDigits(_buyPrice);
         CheckCanBuy();
@@ -37,6 +41,7 @@ public class BuyCard : MonoBehaviour
             _lockVisuals.SetActive(false);
             _unlockVisuals.SetActive(true);
             _wallet.ChangeCoinsCount(-_buyPrice);
+            _selectCardButton.interactable = true;
             Purchased?.Invoke();
             Destroy(this);
         }
