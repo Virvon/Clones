@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1f536ab0486d64192a53dba20515b1, type: 3}
+  m_Name: TopDownBullet_001
+  m_EditorClassIdentifier: 
+  _bulletProjectile: {fileID: 1911396424614741943, guid: eaf3aad2cdcd6624d98dbaaeeccf9d38, type: 3}
+  _bulletHitEffect: {fileID: 8014254520184742362, guid: 710a4b4167a0b884bb6f6238346ebc1b, type: 3}
+  _bulletMuzzle: {fileID: 1340992293834908, guid: a489afa43ee836647b6b99a9c38b6f13, type: 3}
+  _bulletPrefab: {fileID: -5130222664579085091, guid: c3e25893fe1632344ac037177a8d8105, type: 3}
+  _upOffset: 15
+  _horizontalOffset: 0.5
+  _lifeTime: 1.2
+  _shootTime: 0.35

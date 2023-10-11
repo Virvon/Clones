@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe73eacd87d3f54aad9c779a26be10e, type: 3}
+  m_Name: BoostsSpawner
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7612411318603923754, guid: 6212ee39b4379b64eb01bce80fbd4f63, type: 3}
+  MinRadius: 10
+  MaxRadius: 20
+  Cooldown: 0.1
+  SpawnedBoosts: 00000000

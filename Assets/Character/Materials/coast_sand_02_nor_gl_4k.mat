@@ -7,7 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/Character/Materials/coast_sand_02_nor_gl_4k.mat
   m_Name: coast_sand_02_nor_gl_4k
+========
+  m_Name: Test_player
+>>>>>>>> infrastructure:Assets/Clones/Resources/TestMaterials/Test_player.mat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +45,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<<< HEAD:Assets/Character/Materials/coast_sand_02_nor_gl_4k.mat
         m_Texture: {fileID: 2800000, guid: e298d5d7fe0279a4485dbc88370d1aa5, type: 3}
+========
+        m_Texture: {fileID: 2800000, guid: d15264f30f7a16147b447aaa7b4dd749, type: 3}
+>>>>>>>> infrastructure:Assets/Clones/Resources/TestMaterials/Test_player.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
