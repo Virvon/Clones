@@ -1,6 +1,4 @@
 using Clones.Max;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,6 +17,8 @@ public class BuyCard : MonoBehaviour
     [SerializeField] private GameObject _lockVisuals;
     [SerializeField] private GameObject _unlockVisuals;
 
+    private bool _canBuy => _wallet.Coins >= _buyPrice;
+
     public UnityEvent Purchased = new UnityEvent();
 
     private void Start()
@@ -31,12 +31,12 @@ public class BuyCard : MonoBehaviour
 
     public void CheckCanBuy()
     {
-        _cantBuyVisuals.SetActive(IsHaveCashForBuy() == false);
+        _cantBuyVisuals.SetActive(_canBuy == false);
     }
 
     public void Invoke()
     {
-        if (IsHaveCashForBuy())
+        if (_canBuy)
         {
             _buyButton.SetActive(false);
             _lockVisuals.SetActive(false);
@@ -46,10 +46,5 @@ public class BuyCard : MonoBehaviour
             Purchased?.Invoke();
             Destroy(this);
         }
-    }
-
-    private bool IsHaveCashForBuy()
-    {
-        return _wallet.Coins >= _buyPrice;
     }
 }
