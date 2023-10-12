@@ -1,5 +1,4 @@
-﻿using System;
-using Clones.UI;
+﻿using Clones.UI;
 
 namespace Clones.Infrastructure
 {

@@ -8,9 +8,9 @@ using System.Reflection;
 namespace GAP_ParticleSystemController
 {
 
-	public static class SaveParticleSystemScript{		
-
-		public static void SaveVFX (GameObject prefabVFX, List<ParticleSystemOriginalSettings> psOriginalSettingsList) {
+	public static class SaveParticleSystemScript{
+        [System.Obsolete]
+        public static void SaveVFX (GameObject prefabVFX, List<ParticleSystemOriginalSettings> psOriginalSettingsList) {
 #if UNITY_2018_3_OR_NEWER
              var prefabFolderPath = GetPrefabFolder2018_3 (prefabVFX);
 #else
@@ -36,7 +36,8 @@ namespace GAP_ParticleSystemController
             Debug.Log ("Original Settings of '" + prefabVFX.name + "' saved to: " + prefabFolderPath + "/OriginalSettings");
 		}
 
-		public static List<ParticleSystemOriginalSettings> LoadVFX (GameObject prefabVFX) {
+        [System.Obsolete]
+        public static List<ParticleSystemOriginalSettings> LoadVFX (GameObject prefabVFX) {
 #if UNITY_2018_3_OR_NEWER
             var prefabFolderPath = GetPrefabFolder2018_3 (prefabVFX);
 #else
@@ -59,7 +60,8 @@ namespace GAP_ParticleSystemController
 			}
 		}
 
-		public static bool CheckExistingFile (GameObject prefabVFX){
+        [System.Obsolete]
+        public static bool CheckExistingFile (GameObject prefabVFX){
 #if UNITY_2018_3_OR_NEWER
             var prefabFolderPath = GetPrefabFolder2018_3 (prefabVFX);
 #else

@@ -1,7 +1,4 @@
-﻿using Clones.UI;
-using System;
-
-namespace Clones.Infrastructure
+﻿namespace Clones.Infrastructure
 {
     public class MainMenuLoopState : IState
     {

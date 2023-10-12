@@ -9,7 +9,8 @@
 	[CustomEditor(typeof(ParticleSystemController))]
 	public class ParticleSystemControllerEditor : Editor
 	{
-		public override void OnInspectorGUI()
+        [System.Obsolete]
+        public override void OnInspectorGUI()
 		{
 			DrawDefaultInspector();
 

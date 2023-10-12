@@ -352,7 +352,8 @@ namespace GAP_ParticleSystemController{
 				Debug.Log("No Particle Systems added to the Particle Systems list");
 		}
 
-		public void ChangeColorOnly () {
+        [System.Obsolete]
+        public void ChangeColorOnly () {
 			if (ParticleSystems.Count == 0) {
 				FillLists ();
 			}
