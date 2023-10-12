@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Clones/Scenes/InitInfrastructure.unity
+    path: Assets/Clones/Scenes/Init.unity
     guid: ac6c2c055e553824788b7d14a9365473
   - enabled: 1
-    path: Assets/Clones/Scenes/ExampleInfrastructureScene.unity
+    path: Assets/Clones/Scenes/Game.unity
     guid: ba4ae0448857f0746b93b704901efc1a
   - enabled: 1
     path: Assets/Clones/Scenes/MainInfrasructureScene.unity
