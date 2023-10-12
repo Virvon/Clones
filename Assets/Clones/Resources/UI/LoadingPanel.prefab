@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1643978129331604677}
   - component: {fileID: 8456197654536286680}
   - component: {fileID: 6289760386722758135}
-  - component: {fileID: 7099355669872900455}
+  - component: {fileID: 200956304688888925}
   m_Layer: 5
   m_Name: LoadingPanel
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &7099355669872900455
+--- !u!114 &200956304688888925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 49146362493720386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5174ca4aa48e92c48a40adf87c3f8da4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fe3d2bfe77748c499eb7bec71f432c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 3839465198426176121}

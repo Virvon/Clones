@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 3054847518076126445}
   - component: {fileID: 3054847518076126434}
   - component: {fileID: 3054847518076126435}
-  - component: {fileID: 2087395897080371944}
+  - component: {fileID: 8322490570889525169}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2087395897080371944}
+      - m_Target: {fileID: 8322490570889525169}
         m_TargetAssemblyTypeName: Clones.UI.PlayButton, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -450,7 +450,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2087395897080371944
+--- !u!114 &8322490570889525169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3054847518076126433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb9bca256c8538a4e8cca02c5a95e8ac, type: 3}
+  m_Script: {fileID: 11500000, guid: ec6a181def0a1aa4b9a496ade6c57573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _targetScene: ExampleInfrastructureScene

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2800742648354403754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0417764c14ffa7543a9a91f5303ad979, type: 3}
+  m_Script: {fileID: 11500000, guid: b2a138e152297df46aa59e586754ef54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 2800742649418512258}
@@ -61,10 +61,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2800742648354403754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d3f72aeb774904dbfac8ab76704545, type: 3}
+  m_Script: {fileID: 11500000, guid: ee06357b96b8a564297a0faad5494e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scene: MainInfrasructureScene
+  _scene: MainInfrastrutureScene
 --- !u!1 &2800742648398529154
 GameObject:
   m_ObjectHideFlags: 0

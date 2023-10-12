@@ -265,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 770455365320125014, guid: e18510ebef2738b44ac0603ca6c9679c, type: 3}
       propertyPath: _loadingPanelPrefab
       value: 
-      objectReference: {fileID: 7099355669872900455, guid: 4875b6cd0fe3de641994f8782e4ac13a, type: 3}
+      objectReference: {fileID: 200956304688888925, guid: 4875b6cd0fe3de641994f8782e4ac13a, type: 3}
     - target: {fileID: 6910058644877722393, guid: e18510ebef2738b44ac0603ca6c9679c, type: 3}
       propertyPath: m_Name
       value: GameBootstrapper

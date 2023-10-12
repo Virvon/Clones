@@ -261,7 +261,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7610301192729405249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd5278fdeb9711148ba925173be0b8e4, type: 3}
+  m_Script: {fileID: 11500000, guid: cb65312140bf6ea41a41cd323f51dc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _currencyValue: {fileID: 7610301192434270954}
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7610301193782192688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334a8bbcc4e24304891fa24627cce56f, type: 3}
+  m_Script: {fileID: 11500000, guid: 035a03a7b22e4e1499175e84a45b3432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _currencyValue: {fileID: 7610301193786763856}
@@ -534,7 +534,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7610301193786763862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
