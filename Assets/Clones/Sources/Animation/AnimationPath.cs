@@ -1,6 +1,6 @@
 ﻿namespace Clones.Animation
 {
-    public static class Animation
+    public static class AnimationPath
     {
         public static class UI
         {
