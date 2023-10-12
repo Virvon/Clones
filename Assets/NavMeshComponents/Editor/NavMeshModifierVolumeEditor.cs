@@ -18,6 +18,7 @@ namespace UnityEditor.AI
         static Color s_HandleColorDisabled = new Color(187f * 0.75f, 138f * 0.75f, 240f * 0.75f, 100f) / 255;
 
         static int s_HandleControlIDHint = typeof(NavMeshModifierVolumeEditor).Name.GetHashCode();
+        [System.Obsolete]
         BoxBoundsHandle m_BoundsHandle = new BoxBoundsHandle(s_HandleControlIDHint);
 
         bool editingCollider
@@ -40,7 +41,10 @@ namespace UnityEditor.AI
             NavMeshVisualizationSettings.showNavigation--;
         }
 
+        [System.Obsolete]
+#pragma warning disable CS0809 // Устаревший член переопределяет неустаревший член
         public override void OnInspectorGUI()
+#pragma warning restore CS0809 // Устаревший член переопределяет неустаревший член
         {
             serializedObject.Update();
 
@@ -100,6 +104,7 @@ namespace UnityEditor.AI
             Gizmos.DrawIcon(navModifier.transform.position, "NavMeshModifierVolume Icon", true);
         }
 
+        [System.Obsolete]
         void InspectorEditButtonGUI()
         {
             var navModifier = (NavMeshModifierVolume)target;
@@ -114,6 +119,7 @@ namespace UnityEditor.AI
                 );
         }
 
+        [System.Obsolete]
         void OnSceneGUI()
         {
             if (!editingCollider)

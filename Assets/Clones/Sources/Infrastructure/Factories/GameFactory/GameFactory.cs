@@ -18,8 +18,6 @@ namespace Clones.Infrastructure
 
         private GameObject _playerObject;
 
-        public event Action<IDroppable> DroppableCreated;
-
         public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, ITimeScale timeScale)
         {
             _assets = assets;

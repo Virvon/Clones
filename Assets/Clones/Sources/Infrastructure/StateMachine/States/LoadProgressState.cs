@@ -6,7 +6,7 @@ namespace Clones.Infrastructure
 {
     public class LoadProgressState : IState
     {
-        private const string MainMenuScene = "MainInfrasructureScene";
+        private const string MainMenuScene = "MainMenu";
 
         private readonly IGameStateMachine _stateMachine;
         private readonly IPersistentProgressService _persistentProgressService;

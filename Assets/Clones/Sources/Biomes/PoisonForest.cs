@@ -15,7 +15,7 @@ namespace Clones.Biomes
 
         private IEnumerator Poisoning()
         {
-            bool isFirstAttack = true;
+            //bool isFirstAttack = true;
 
             //while (Player != null)
             //{

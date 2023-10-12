@@ -99,6 +99,7 @@ namespace GAP_ParticleSystemController
 #endif
 
 #if UNITY_2018_3_OR_NEWER
+        [System.Obsolete]
         public static void SaveNestedPrefab(GameObject prefab)
         {
 #if UNITY_EDITOR

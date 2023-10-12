@@ -48,7 +48,8 @@ namespace GAP_ParticleSystemController{
 
 		private List<ParticleSystemOriginalSettings> psOriginalSettingsList = new List<ParticleSystemOriginalSettings> ();
 
-		public void UpdateParticleSystem(){
+        [System.Obsolete]
+        public void UpdateParticleSystem(){
 			//Enables or Disbales Particle Systems you choose in inspector
 			for(int i = 0; i< ParticleSystems.Count; i++){
 				if (ActiveParticleSystems.Count == ParticleSystems.Count) {
@@ -553,7 +554,8 @@ namespace GAP_ParticleSystemController{
 			}
 		}
 
-		public void ResetParticleSystem (){
+        [System.Obsolete]
+        public void ResetParticleSystem (){
 
 			List<ParticleSystemOriginalSettings> listOriginalSettings = new List<ParticleSystemOriginalSettings> ();
 			listOriginalSettings = SaveParticleSystemScript.LoadVFX (gameObject);

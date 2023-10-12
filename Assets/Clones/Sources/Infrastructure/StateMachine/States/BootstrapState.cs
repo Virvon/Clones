@@ -5,7 +5,7 @@ namespace Clones.Infrastructure
 {
     public class BootstrapState : IState
     {
-        private const string InitScene = "InitInfrastructure";
+        private const string InitScene = "Init";
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
