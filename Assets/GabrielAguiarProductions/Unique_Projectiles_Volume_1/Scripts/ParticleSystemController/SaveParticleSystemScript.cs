@@ -85,6 +85,7 @@ namespace GAP_ParticleSystemController
 		}
 
 #if UNITY_2018_3_OR_NEWER
+        [System.Obsolete]
         static string GetPrefabFolder2018_3 (GameObject prefabVFX)
         {
 #if UNITY_EDITOR

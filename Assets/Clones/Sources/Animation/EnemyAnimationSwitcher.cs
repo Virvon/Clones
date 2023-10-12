@@ -18,8 +18,8 @@ namespace Clones.Animation
 
         private void OnDisable() => _characterAttack.AttackStarted -= OnAttackStarted;
 
-        public void SetMovement(bool isMoved) => _animator.SetBool(Animations.Enemy.Bools.IsMoved, isMoved);
+        public void SetMovement(bool isMoved) => _animator.SetBool(Animation.Enemy.Bool.IsMoved, isMoved);
 
-        private void OnAttackStarted() => _animator.SetTrigger(Animations.Enemy.Triggers.Attack);
+        private void OnAttackStarted() => _animator.SetTrigger(Animation.Enemy.Trigger.Attack);
     }
 }

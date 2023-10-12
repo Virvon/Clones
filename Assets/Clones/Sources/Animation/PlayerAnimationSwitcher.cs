@@ -44,14 +44,14 @@ namespace Clones.Animation
         }
 
         private void OnAttackStarted() => 
-            _animator.SetTrigger(Animations.Player.Triggers.Attack);
+            _animator.SetTrigger(Animation.Player.Trigger.Attack);
 
 
         private void OnMove()
         {
             if (_isMoved == false)
             {
-                _animator.SetBool(Animations.Player.Bools.IsMoved, true);
+                _animator.SetBool(Animation.Player.Bool.IsMoved, true);
                 _isMoved = true;
             }
         }
@@ -60,12 +60,12 @@ namespace Clones.Animation
         {
             if(_isMoved)
             {
-                _animator.SetBool(Animations.Player.Bools.IsMoved, false);
+                _animator.SetBool(Animation.Player.Bool.IsMoved, false);
                 _isMoved = false; ;
             }
         }
 
         private void OnMovementSpeedChanged() => 
-            _animator.SetFloat(Animations.Player.Floats.MovementAnimationSpeed, _animationMovementSpeed);
+            _animator.SetFloat(Animation.Player.Float.MovementAnimationSpeed, _animationMovementSpeed);
     }
 }

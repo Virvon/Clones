@@ -1,10 +1,10 @@
 ﻿namespace Clones.Animation
 {
-    public static class Animations
+    public static class Animation
     {
         public static class UI
         {
-            public static class Bools
+            public static class Bool
             {
                 public const string IsOpened = nameof(IsOpened);
             }
@@ -12,12 +12,12 @@
 
         public static class Enemy
         {
-            public static class Triggers
+            public static class Trigger
             {
                 public const string Attack = nameof(Attack);
             }
 
-            public static class Bools
+            public static class Bool
             {
                 public const string IsMoved = nameof(IsMoved);
             }
@@ -25,17 +25,17 @@
 
         public static class Player
         {
-            public static class Triggers
+            public static class Trigger
             {
                 public const string Attack = nameof(Attack);
             }
 
-            public static class Bools
+            public static class Bool
             {
                 public const string IsMoved = nameof(IsMoved);
             }
 
-            public static class Floats
+            public static class Float
             {
                 public const string MovementAnimationSpeed = nameof(MovementAnimationSpeed);
             }
