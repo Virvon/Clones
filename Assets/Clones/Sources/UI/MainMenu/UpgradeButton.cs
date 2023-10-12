@@ -4,11 +4,10 @@ using TMPro.EditorUtilities;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Clones.Max;
 
 public class UpgradeButton : MonoBehaviour
 {
-    [SerializeField] private Wallet _wallet;
+    //[SerializeField] private Wallet _wallet;
     [Space]
     [SerializeField] private TMP_Text _textPrice;
     [Space]
@@ -22,15 +21,16 @@ public class UpgradeButton : MonoBehaviour
 
     public void OnClick()
     {
+        Debug.Log("upgrade button click");
         if (_isUseDNA)
         {
-            _wallet.ChangeDNACount(-_cardClone.UpgradePrice);
+            //_wallet.ChangeDNACount(-_cardClone.UpgradePrice);
             _cardClone.UpgradeByDNA();
         }
 
         if (_isUseCoins)
         {
-            _wallet.ChangeCoinsCount(-_cardClone.UpgradePrice);
+            //_wallet.ChangeCoinsCount(-_cardClone.UpgradePrice);
             _cardClone.UpgradeByCoins();
         }
     }
@@ -42,18 +42,19 @@ public class UpgradeButton : MonoBehaviour
 
     public void UpdateButton()
     {
+        Debug.Log("upgrade button");
         int price = _cardClone.UpgradePrice;
 
         if (_isUseDNA)
         {
-            _cantUpgradeVisuals.SetActive(_wallet.DNA < price);
-            _button.interactable = _wallet.DNA >= price;
+            //_cantUpgradeVisuals.SetActive(_wallet.DNA < price);
+            //_button.interactable = _wallet.DNA >= price;
         }
 
         if (_isUseCoins)
         {
-            _cantUpgradeVisuals.SetActive(_wallet.Coins < price);
-            _button.interactable = _wallet.Coins >= price;
+            //_cantUpgradeVisuals.SetActive(_wallet.Coins < price);
+            //_button.interactable = _wallet.Coins >= price;
         }
         
         _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);

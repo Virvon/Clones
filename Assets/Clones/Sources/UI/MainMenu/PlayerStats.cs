@@ -1,4 +1,3 @@
-using Clones.Max;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,7 +6,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private Transform _playerPrefabPlace;
-    [SerializeField] private Wallet _wallet;
+    //[SerializeField] private Wallet _wallet;
     [Space]
     [SerializeField] private CardClone _cardClone;
     [SerializeField] private CardWand _cardWand;
@@ -70,7 +69,8 @@ public class PlayerStats : MonoBehaviour
 
     public void UpdateWalletValues()
     {
-        _countDNA = _wallet.DNA;
-        _countCoins = _wallet.Coins;
+        Debug.Log("updateWalletValues");
+        //_countDNA = _wallet.DNA;
+        //_countCoins = _wallet.Coins;
     }
 }

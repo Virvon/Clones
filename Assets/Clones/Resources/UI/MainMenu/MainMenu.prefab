@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPrefabPlace: {fileID: 8982338675419689577}
-  _wallet: {fileID: 0}
   _cardClone: {fileID: 8982338675343270897}
   _cardWand: {fileID: 8982338674652223925}
   _healthText: {fileID: 8982338676127764722}
@@ -63,9 +62,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6396823819905499116}
-  - component: {fileID: 3297171341999529960}
+  - component: {fileID: 6822485915193586635}
+  - component: {fileID: 7625220433002158094}
   m_Layer: 0
-  m_Name: Wallet
+  m_Name: CurrencyViews
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ Transform:
   m_Father: {fileID: 8982338675225940532}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3297171341999529960
+--- !u!114 &6822485915193586635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,16 +95,74 @@ MonoBehaviour:
   m_GameObject: {fileID: 1755343535530969325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffadd492c7f86d741aed922b0c1c31c1, type: 3}
+  m_Script: {fileID: 11500000, guid: cb65312140bf6ea41a41cd323f51dc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dna: 12000
-  _coins: 12000
-  _dnaText: {fileID: 8982338674501460391}
-  _coinsText: {fileID: 8982338675370024825}
-  ValuesChanged:
-    m_PersistentCalls:
-      m_Calls: []
+  _currencyValue: {fileID: 8982338675370024825}
+--- !u!114 &7625220433002158094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755343535530969325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035a03a7b22e4e1499175e84a45b3432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currencyValue: {fileID: 8982338674501460391}
+--- !u!1 &3181083054160120818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1672430350841363549}
+  - component: {fileID: 3470838023032654678}
+  m_Layer: 5
+  m_Name: Buttons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1672430350841363549
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181083054160120818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8982338675225940532}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3470838023032654678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3181083054160120818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6a181def0a1aa4b9a496ade6c57573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetScene: Game
+  _button: {fileID: 2823225618095359571}
 --- !u!1 &8982338674069599032
 GameObject:
   m_ObjectHideFlags: 0
@@ -7938,7 +7996,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8982338674319803003}
   - component: {fileID: 8982338674319803004}
-  - component: {fileID: 5535992193078036732}
   m_Layer: 5
   m_Name: Panels
   m_TagString: Untagged
@@ -7991,19 +8048,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 15.6
   m_LayoutPriority: 1
---- !u!114 &5535992193078036732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8982338674319803002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6a181def0a1aa4b9a496ade6c57573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetScene: Game
 --- !u!1 &8982338674321351331
 GameObject:
   m_ObjectHideFlags: 0
@@ -8464,7 +8508,6 @@ MonoBehaviour:
   _buyButton: {fileID: 8982338675904859841}
   _cantBuyVisuals: {fileID: 8982338674940464389}
   _textPrice: {fileID: 8982338675884142580}
-  _wallet: {fileID: 0}
   _lockVisuals: {fileID: 8982338674680872037}
   _unlockVisuals: {fileID: 8982338675393635881}
   Purchased:
@@ -15257,7 +15300,6 @@ MonoBehaviour:
   _buyButton: {fileID: 8982338675827744895}
   _cantBuyVisuals: {fileID: 8982338675265879757}
   _textPrice: {fileID: 8982338675903351514}
-  _wallet: {fileID: 0}
   _lockVisuals: {fileID: 8982338676159395181}
   _unlockVisuals: {fileID: 8982338675847223981}
   Purchased:
@@ -18356,7 +18398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588521c9a15219847bf5c2726f295828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallet: {fileID: 0}
   _textPrice: {fileID: 8982338675085993354}
   _button: {fileID: 8982338674970192262}
   _cantUpgradeVisuals: {fileID: 8982338674954762704}
@@ -25142,7 +25183,6 @@ MonoBehaviour:
   _buyButton: {fileID: 8982338674732293337}
   _cantBuyVisuals: {fileID: 8982338675124336981}
   _textPrice: {fileID: 8982338676058381969}
-  _wallet: {fileID: 0}
   _lockVisuals: {fileID: 8982338675405287648}
   _unlockVisuals: {fileID: 8982338675254728204}
   Purchased:
@@ -26654,6 +26694,7 @@ RectTransform:
   - {fileID: 8982338674319803003}
   - {fileID: 6396823819905499116}
   - {fileID: 367634299325433775}
+  - {fileID: 1672430350841363549}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27681,7 +27722,6 @@ MonoBehaviour:
   _buyButton: {fileID: 8982338674550107316}
   _cantBuyVisuals: {fileID: 8982338675644009443}
   _textPrice: {fileID: 8982338674129810998}
-  _wallet: {fileID: 0}
   _lockVisuals: {fileID: 8982338676117395465}
   _unlockVisuals: {fileID: 8982338675812427767}
   Purchased:
@@ -29097,6 +29137,7 @@ GameObject:
   - component: {fileID: 8982338675342581093}
   - component: {fileID: 8982338675342581095}
   - component: {fileID: 8982338675342581094}
+  - component: {fileID: 2823225618095359571}
   m_Layer: 5
   m_Name: Button_Play
   m_TagString: Untagged
@@ -29163,6 +29204,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2823225618095359571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982338675342581092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 8982338675342581094}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8982338675343270907
 GameObject:
   m_ObjectHideFlags: 0
@@ -33969,7 +34054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588521c9a15219847bf5c2726f295828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallet: {fileID: 0}
   _textPrice: {fileID: 8982338674542177736}
   _button: {fileID: 8982338675669798358}
   _cantUpgradeVisuals: {fileID: 8982338675671165591}
@@ -39566,7 +39650,6 @@ MonoBehaviour:
   _buyButton: {fileID: 8982338675427851512}
   _cantBuyVisuals: {fileID: 8982338674804257240}
   _textPrice: {fileID: 8982338675082560234}
-  _wallet: {fileID: 0}
   _lockVisuals: {fileID: 8982338674755591447}
   _unlockVisuals: {fileID: 8982338674252323289}
   Purchased:
@@ -41665,7 +41748,6 @@ MonoBehaviour:
   _buyButton: {fileID: 8982338675671868114}
   _cantBuyVisuals: {fileID: 8982338675589506313}
   _textPrice: {fileID: 8982338675510468874}
-  _wallet: {fileID: 0}
   _lockVisuals: {fileID: 8982338674843607280}
   _unlockVisuals: {fileID: 8982338674325973912}
   Purchased:
