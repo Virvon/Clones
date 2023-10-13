@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerView : MonoBehaviour
 {
     [SerializeField] private Transform _playerPrefabPlace;
-    //[SerializeField] private Wallet _wallet;
     [Space]
     [SerializeField] private CardClone _cardClone;
     [SerializeField] private CardWand _cardWand;
@@ -18,13 +15,6 @@ public class PlayerStats : MonoBehaviour
     [Space]
     [SerializeField] private float _baseResourceMultiplier = 0.9f;
     [SerializeField] private float _upgradeResourceMultiplier = 0.1f;
-
-    private int _countDNA;
-    private int _countCoins;
-    private int _health;
-    private int _damage;
-    private float _attackSpeed;
-    private float _resourceMultiplier;
 
     private GameObject _clonePrefab;
 
@@ -54,23 +44,14 @@ public class PlayerStats : MonoBehaviour
 
     public void UpdateStats()
     {
-        _health = _cardClone.Helath;
-        _damage = _cardClone.Damage + _cardWand.Damage;
-        _attackSpeed = _cardWand.AttackSpeed;
-        _resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);
+        int health = _cardClone.Helath;
+        int damage = _cardClone.Damage + _cardWand.Damage;
+        float attackSpeed = _cardWand.AttackSpeed;
+        float resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);
 
-        _healthText.text = NumberFormatter.DivideIntegerOnDigits(_health);
-        _damageText.text = NumberFormatter.DivideIntegerOnDigits(_damage);
-        _attackSpeedText.text = NumberFormatter.DivideFloatOnDigits(_attackSpeed);
-        _resourceMultiplierText.text = NumberFormatter.DivideFloatOnDigits(_resourceMultiplier);
-
-        UpdateWalletValues();
-    }
-
-    public void UpdateWalletValues()
-    {
-        Debug.Log("updateWalletValues");
-        //_countDNA = _wallet.DNA;
-        //_countCoins = _wallet.Coins;
+        _healthText.text = NumberFormatter.DivideIntegerOnDigits(health);
+        _damageText.text = NumberFormatter.DivideIntegerOnDigits(damage);
+        _attackSpeedText.text = NumberFormatter.DivideFloatOnDigits(attackSpeed);
+        _resourceMultiplierText.text = NumberFormatter.DivideFloatOnDigits(resourceMultiplier);
     }
 }

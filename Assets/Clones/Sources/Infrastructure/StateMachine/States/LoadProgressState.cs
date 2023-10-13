@@ -39,6 +39,8 @@ namespace Clones.Infrastructure
         {
             Debug.Log("created new progress");
             PlayerProgress progress = new();
+            progress.Wallet.Dna = 10000;
+            progress.Wallet.Money = 10000;
 
             return progress;
         }

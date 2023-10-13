@@ -1,13 +1,9 @@
-using Newtonsoft.Json.Bson;
 using System.Collections.Generic;
-using TMPro;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private PlayerView _playerStats;
     [SerializeField] private GameObject _objectPrefab;
     [Space]
     [SerializeField] private GameObject _selectedVisuals;
@@ -15,7 +11,7 @@ public class Card : MonoBehaviour
     [Space]
     [SerializeField] private float _baseMultiplyResourceByRare;
 
-    public PlayerStats PlayerStats => _playerStats;
+    public PlayerView PlayerStats => _playerStats;
     public GameObject ObjectPrefab => _objectPrefab;
     public float BaseMultiplyRecourceByRare => _baseMultiplyResourceByRare;
 

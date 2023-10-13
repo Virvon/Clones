@@ -46,13 +46,6 @@ namespace Clones.Infrastructure
                 .Init(enemyData.DeathEffect, enemyData.EffectOffset, enemyHealth);
         }
 
-        public void CreateBoost(BoostType type, Vector3 position, Quaternion rotation, Transform parent)
-        {
-            BoostStaticData boostData = _staticData.GetBoostStaticData(type);
-
-            Object.Instantiate(boostData.Prefab, position, rotation, parent);
-        }
-
         public GameObject CreateItem(CurrencyItemType type, Vector3 position)
         {
             CurrencyItemStaticData itemData = _staticData.GetItemStaticData(type);
