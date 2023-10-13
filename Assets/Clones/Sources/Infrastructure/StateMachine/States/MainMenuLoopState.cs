@@ -1,4 +1,8 @@
-﻿namespace Clones.Infrastructure
+﻿using Clones.StaticData;
+using Clones.UI;
+using UnityEngine;
+
+namespace Clones.Infrastructure
 {
     public class MainMenuLoopState : IState
     {
@@ -13,7 +17,15 @@
 
         public void Enter()
         {
-            _mainMenuFactory.CreateMainMenu();
+            GameObject menu = _mainMenuFactory.CreateMainMenu();
+
+            CreateCloneCards(menu.GetComponent<MainMenu>().CardCloneTypes);
+        }
+
+        private void CreateCloneCards(CardCloneType[] types)
+        {
+            foreach(var type in types)
+                _mainMenuFactory.CreateCardClone(type);
         }
 
         public void Exit()

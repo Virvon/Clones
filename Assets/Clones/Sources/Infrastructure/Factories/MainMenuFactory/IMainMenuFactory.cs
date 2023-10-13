@@ -1,11 +1,12 @@
 ﻿using Clones.Services;
 using Clones.StaticData;
+using UnityEngine;
 
 namespace Clones.Infrastructure
 {
     public interface IMainMenuFactory : IService
     {
-        void CreateMainMenu();
+        GameObject CreateMainMenu();
         void CreateCardClone(CardCloneType type);
     }
 }

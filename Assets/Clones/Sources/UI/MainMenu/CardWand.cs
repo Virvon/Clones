@@ -16,6 +16,6 @@ public class CardWand : Card
     {
         base.Select();
 
-        PlayerStats.SelectCard(this);
+        PlayerView.SelectCard(this);
     }
 }

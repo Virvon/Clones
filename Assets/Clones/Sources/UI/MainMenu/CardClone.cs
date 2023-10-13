@@ -4,28 +4,33 @@ using UnityEngine.Events;
 
 public class CardClone : Card
 {
-    [SerializeField] private int _helath;
-    [SerializeField] private int _increaseHealth;
-    [SerializeField] private int _damage;
-    [SerializeField] private int _increaseDamage;
-    [Space]
-    [SerializeField] private int _upgradePrice;
-    [SerializeField] private int _increasePrice;
-    [Space]
     [SerializeField] private UpgradeButton _upgradeByDNAButton;
     [SerializeField] private UpgradeButton _upgradeByCoinsButton;
     [SerializeField] private TMP_Text _levelText;
 
+    private int _increaseHealth;
+    private int _increaseDamage;
+
     private GameObject _wandPrefab;
     private int _level = 1;
 
-    public int Helath => _helath;
-    public int Damage => _damage;
+    public int Health { get; private set; }
+    public int Damage { get; private set; }
     public int Level => _level;
-    public int UpgradePrice => _upgradePrice;
-    public int IncreasePrice => _increasePrice;
+    public int UpgradePrice { get; private set; }
+    public int IncreasePrice { get; private set; }
 
     public UnityEvent Selected = new UnityEvent();
+
+    public void Init(int health, int increaseHealth, int damage, int increaseDamage, int upgradePrice, int increasePrice)
+    {
+        Health = health;
+        _increaseHealth = increaseHealth;
+        Damage = damage;
+        _increaseDamage = increaseDamage;
+        UpgradePrice = upgradePrice;
+        IncreasePrice = increasePrice;
+    }
 
     public void SetWand(GameObject wandPrefab, GameObject clonePrefab)
     {
@@ -35,13 +40,13 @@ public class CardClone : Card
 
     public void UpgradeByDNA()
     {
-        _helath += _increaseHealth;
+        Damage += _increaseHealth;
         Upgrade();
     }
 
     public void UpgradeByCoins()
     {
-        _damage += _increaseDamage;
+        Damage += _increaseDamage;
         Upgrade();
     }
 
@@ -49,7 +54,7 @@ public class CardClone : Card
     {
         base.Select();
 
-        PlayerStats.SelectCard(this);
+        PlayerView.SelectCard(this);
         UpdateUpgradeButtons();
     }
 
@@ -65,9 +70,9 @@ public class CardClone : Card
     private void Upgrade()
     {
         _level++;
-        _upgradePrice += _increasePrice;
+        UpgradePrice += IncreasePrice;
         _levelText.text = _level.ToString();
         UpdateUpgradeButtons();
-        PlayerStats.UpdateStats();
+        PlayerView.UpdateStats();
     }
 }

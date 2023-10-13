@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: RareClone
   m_EditorClassIdentifier: 
   Prefab: {fileID: 0}
-  Type: 0
-  Helath: 0
-  IncreaseHealth: 0
-  Damage: 0
-  IncreaseDamage: 0
-  UpgradePrice: 0
-  IncreasePrice: 0
+  Type: 1
+  Helath: 100
+  IncreaseHealth: 5
+  Damage: 15
+  IncreaseDamage: 1
+  UpgradePrice: 100
+  IncreasePrice: 25

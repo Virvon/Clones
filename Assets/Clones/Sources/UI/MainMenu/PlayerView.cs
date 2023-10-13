@@ -44,7 +44,7 @@ public class PlayerView : MonoBehaviour
 
     public void UpdateStats()
     {
-        int health = _cardClone.Helath;
+        int health = _cardClone.Health;
         int damage = _cardClone.Damage + _cardWand.Damage;
         float attackSpeed = _cardWand.AttackSpeed;
         float resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);

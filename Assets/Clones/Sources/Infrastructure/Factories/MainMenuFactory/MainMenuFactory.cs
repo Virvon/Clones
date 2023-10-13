@@ -1,6 +1,7 @@
 ﻿using Clones.Services;
 using Clones.StaticData;
 using Clones.UI;
+using UnityEngine;
 
 namespace Clones.Infrastructure
 {
@@ -9,35 +10,49 @@ namespace Clones.Infrastructure
         private readonly IAssetProvider _assets;
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IPersistentProgressService _persistentProgress;
+        private readonly IMainMenuStaticDataService _staticDataService;
 
         private MainMenuContainers _containers;
 
-        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress)
+        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService)
         {
             _assets = assets;
             _gameStateMachine = gameStateMachine;
             _persistentProgress = persistentProgress;
+            _staticDataService = staticDataService;
         }
 
-        public void CreateMainMenu()
+        public GameObject CreateMainMenu()
         {
-            var mainMenu = _assets.Instantiate(AssetPath.MainMenu);
+            MainMenuStaticData menuData = _staticDataService.GetMainMenu();
 
-            mainMenu.GetComponentInChildren<PlayButton>()
+            var menu = Object.Instantiate(menuData.Prefab);
+
+            menu.GetComponent<MainMenu>()
+                .Init(menuData.CardCloneTypes);
+
+            menu.GetComponentInChildren<PlayButton>()
                 .Init(_gameStateMachine);
 
-            mainMenu.GetComponentInChildren<MoneyView>()
+            menu.GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgress.Progress.Wallet);
 
-            mainMenu.GetComponentInChildren<DnaView>()
+            menu.GetComponentInChildren<DnaView>()
                 .Init(_persistentProgress.Progress.Wallet);
 
-            _containers = mainMenu.GetComponentInChildren<MainMenuContainers>();
+            _containers = menu.GetComponentInChildren<MainMenuContainers>();
+
+            return menu;
         }
 
         public void CreateCardClone(CardCloneType type)
         {
-            
+            CardCloneStaticData cardCloneData = _staticDataService.GetCardClone(type);
+
+            var card = Object.Instantiate(cardCloneData.Prefab, _containers.CardClonesContainer.transform); ;
+
+            card.GetComponent<CardClone>()
+                .Init(cardCloneData.Helath, cardCloneData.IncreaseHealth, cardCloneData.Damage, cardCloneData.IncreaseDamage, cardCloneData.UpgradePrice, cardCloneData.IncreasePrice);
         }
     }
 }
