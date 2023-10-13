@@ -12,9 +12,9 @@ namespace Clones.Infrastructure
 {
     public class PartsFactory : IPartsFactory
     {
-        private readonly IStaticDataService _staticData;
+        private readonly IGameStaticDataService _staticData;
 
-        public PartsFactory(IStaticDataService staticData)
+        public PartsFactory(IGameStaticDataService staticData)
         {
             _staticData = staticData;
         }

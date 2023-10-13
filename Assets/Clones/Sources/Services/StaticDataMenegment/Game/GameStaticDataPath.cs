@@ -1,6 +1,6 @@
 ﻿namespace Clones.Services
 {
-    public static class StaticDataPath
+    public static class GameStaticDataPath
     {
         public const string WorldGenerator = "StaticData/World/WorldGenerator";
         public const string BoostsGenerator = "StaticData/BoostsSpawner/BoostsSpawner";
@@ -9,6 +9,5 @@
         public const string QuestItems = "StaticData/World/Items/Quest";
         public const string CurrencyItems = "StaticData/World/Items/Currency";
         public const string Enemies = "StaticData/Enemies";
-        public const string Boosts = "StaticData/BoostsSpawner/Boosts";
     }
 }

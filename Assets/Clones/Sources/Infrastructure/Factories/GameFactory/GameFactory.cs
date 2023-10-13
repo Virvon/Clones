@@ -11,14 +11,14 @@ namespace Clones.Infrastructure
 {
     public class GameFactory : IGameFacotry
     {
-        private readonly IStaticDataService _staticData;
+        private readonly IGameStaticDataService _staticData;
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
         private readonly ITimeScale _timeScale;
 
         private GameObject _playerObject;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IStaticDataService staticData, ITimeScale timeScale)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService staticData, ITimeScale timeScale)
         {
             _assets = assets;
             _inputService = inputService;

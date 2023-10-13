@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.Services
 {
-    public class StaticDataService : IStaticDataService
+    public class GameStaticDataService : IGameStaticDataService
     {
         private Dictionary<BiomeType, BiomeStaticData> _biomes;
         private Dictionary<PreyResourceType, PreyResourceStaticData> _preyResources;
@@ -15,15 +15,15 @@ namespace Clones.Services
 
         public void Load()
         {
-            _biomes = Resources.LoadAll<BiomeStaticData>(StaticDataPath.Biomes).ToDictionary(value => value.Type, value => value);
-            _preyResources = Resources.LoadAll<PreyResourceStaticData>(StaticDataPath.PreyResources).ToDictionary(value => value.Type, value => value);
-            _questItems = Resources.LoadAll<QuestItemStaticData>(StaticDataPath.QuestItems).ToDictionary(value => value.Type, value => value);
-            _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(StaticDataPath.CurrencyItems).ToDictionary(value => value.Type, value => value);
-            _enemies = Resources.LoadAll<EnemyStaticData>(StaticDataPath.Enemies).ToDictionary(value => value.Type, value => value);
+            _biomes = Resources.LoadAll<BiomeStaticData>(GameStaticDataPath.Biomes).ToDictionary(value => value.Type, value => value);
+            _preyResources = Resources.LoadAll<PreyResourceStaticData>(GameStaticDataPath.PreyResources).ToDictionary(value => value.Type, value => value);
+            _questItems = Resources.LoadAll<QuestItemStaticData>(GameStaticDataPath.QuestItems).ToDictionary(value => value.Type, value => value);
+            _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(GameStaticDataPath.CurrencyItems).ToDictionary(value => value.Type, value => value);
+            _enemies = Resources.LoadAll<EnemyStaticData>(GameStaticDataPath.Enemies).ToDictionary(value => value.Type, value => value);
         }
 
         public WorldGeneratorStaticData GetWorldGeneratorData() =>
-            Resources.Load<WorldGeneratorStaticData>(StaticDataPath.WorldGenerator);
+            Resources.Load<WorldGeneratorStaticData>(GameStaticDataPath.WorldGenerator);
 
 
         public BiomeStaticData GetBiomeStaticData(BiomeType type) => 

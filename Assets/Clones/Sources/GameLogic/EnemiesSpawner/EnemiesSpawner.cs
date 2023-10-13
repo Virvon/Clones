@@ -17,7 +17,7 @@ namespace Clones.GameLogic
         private const float MaxRadius = 20;
 
         private ICurrentBiome _currentBiome;
-        private IStaticDataService _staticDataService;
+        private IGameStaticDataService _staticDataService;
         private GameObject _playerObject;
         private IPartsFactory _partsFactory;
         private float _timeScale = 1;
@@ -27,7 +27,7 @@ namespace Clones.GameLogic
         private void OnDisable() =>
             _isFinish = true;
 
-        public void Init(ICurrentBiome currentBiome, IStaticDataService staticDataService, GameObject playerObject)
+        public void Init(ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject)
         {
             _currentBiome = currentBiome;
             _staticDataService = staticDataService;
