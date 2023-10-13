@@ -1,4 +1,5 @@
 ﻿using Clones.Services;
+using Clones.StaticData;
 using Clones.UI;
 
 namespace Clones.Infrastructure
@@ -8,6 +9,8 @@ namespace Clones.Infrastructure
         private readonly IAssetProvider _assets;
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IPersistentProgressService _persistentProgress;
+
+        private MainMenuContainers _containers;
 
         public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress)
         {
@@ -28,6 +31,13 @@ namespace Clones.Infrastructure
 
             mainMenu.GetComponentInChildren<DnaView>()
                 .Init(_persistentProgress.Progress.Wallet);
+
+            _containers = mainMenu.GetComponentInChildren<MainMenuContainers>();
+        }
+
+        public void CreateCardClone(CardCloneType type)
+        {
+            
         }
     }
 }
