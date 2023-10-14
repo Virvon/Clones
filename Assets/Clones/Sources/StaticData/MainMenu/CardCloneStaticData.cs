@@ -6,6 +6,7 @@ namespace Clones.StaticData
     public class CardCloneStaticData : ScriptableObject
     {
         public GameObject Prefab;
+        public CardClone Card;
         public CardCloneType Type;
         public int Helath;
         public int IncreaseHealth;
