@@ -46,14 +46,28 @@ namespace Clones.Infrastructure
         {
             CardCloneStaticData cardCloneData = _staticDataService.GetCardClone(type);
 
-            CardsView cardsView = _containers.CardClonesContainer;
+            CardsView cloneCardsView = _containers.ClonesCardsView;
 
-            var cardObject = Object.Instantiate(cardCloneData.Card, cardsView.transform);
+            var cardObject = Object.Instantiate(cardCloneData.Card, cloneCardsView.transform);
             CardClone card = cardObject.GetComponent<CardClone>();
 
-            cardsView.AddCard(card);
+            cloneCardsView.AddCard(card);
 
             card.Init(cardCloneData.Helath, cardCloneData.IncreaseHealth, cardCloneData.Damage, cardCloneData.IncreaseDamage, cardCloneData.UpgradePrice, cardCloneData.IncreasePrice);
+        }
+
+        public void CreateWandCard(WandType type)
+        {
+            WandStaticData wandData = _staticDataService.GetWand(type);
+
+            CardsView wandsCardsView = _containers.WandsCardsView;
+
+            var cardObject = Object.Instantiate(wandData.Card, wandsCardsView.transform);
+            CardWand card = cardObject.GetComponent<CardWand>();
+
+            wandsCardsView.AddCard(card);
+
+            card.Init(wandData.Damage, wandData.Cooldown);
         }
     }
 }

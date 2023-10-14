@@ -23,7 +23,10 @@ namespace Clones.Infrastructure
         {
             _mainMenuFactory.CreateMainMenu();
 
-            CreateCloneCards(_mainMenuStaticDataService.GetMainMenu().CardCloneTypes);
+            MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
+
+            CreateClonesCards(menuData.CardCloneTypes);
+            CreateWandsCards(menuData.WandTypes);
         } 
 
         public void Exit()
@@ -31,10 +34,16 @@ namespace Clones.Infrastructure
             
         }
 
-        private void CreateCloneCards(CardCloneType[] types)
+        private void CreateClonesCards(CardCloneType[] types)
         {
             foreach (var type in types)
                 _mainMenuFactory.CreateCardClone(type);
+        }
+
+        private void CreateWandsCards(WandType[] types)
+        {
+            foreach (var type in types)
+                _mainMenuFactory.CreateWandCard(type);
         }
     }
 }

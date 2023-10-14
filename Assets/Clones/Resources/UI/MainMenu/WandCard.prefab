@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 1695363184805326119}
   - component: {fileID: 1695363184805326118}
   - component: {fileID: 1695363184805326113}
+  - component: {fileID: 1717356788769376676}
   m_Layer: 5
   m_Name: WandCard
   m_TagString: Untagged
@@ -231,7 +232,19 @@ MonoBehaviour:
   _baseMultiplyResourceByRare: 0.25
   CanSelected: 1
   _damage: 10
-  _attackSpeed: 1
+  _cooldown: 0
+--- !u!114 &1717356788769376676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695363184805326122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c7a514f57d97249ab17c7abd3a83c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695363184863536345
 GameObject:
   m_ObjectHideFlags: 0

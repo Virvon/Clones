@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LegendaryClone
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4658819119955953382, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
+  Card: {fileID: 4658819119955953388, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
   Type: 3
   Helath: 100
   IncreaseHealth: 5

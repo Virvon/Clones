@@ -8,5 +8,6 @@ namespace Clones.Infrastructure
     {
         GameObject CreateMainMenu();
         void CreateCardClone(CardCloneType type);
+        void CreateWandCard(WandType type);
     }
 }
