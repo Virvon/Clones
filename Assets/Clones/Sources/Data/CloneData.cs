@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clones.StaticData;
+using System;
 using UnityEngine;
 
 namespace Clones.Data
@@ -7,7 +8,16 @@ namespace Clones.Data
     public class CloneData
     {
         public GameObject Prefab;
+        public CardCloneType Type;
         public int Health;
         public int Damage;
+
+        public CloneData(GameObject prefab, CardCloneType type, int health, int damage)
+        {
+            Prefab = prefab;
+            Type = type;
+            Health = health;
+            Damage = damage;
+        }
     }
 }
