@@ -44,12 +44,12 @@ namespace Clones.Infrastructure
 
         public void CreateCardClone(CloneType type)
         {
-            CloneStaticData cardCloneData = _staticDataService.GetCardClone(type);
+            CloneStaticData cardCloneData = _staticDataService.GetClone(type);
 
             CardsView cloneCardsView = _containers.ClonesCardsView;
 
             var cardObject = Object.Instantiate(cardCloneData.Card, cloneCardsView.transform);
-            CardClone card = cardObject.GetComponent<CardClone>();
+            CloneCard card = cardObject.GetComponent<CloneCard>();
 
             cloneCardsView.AddCard(card);
 

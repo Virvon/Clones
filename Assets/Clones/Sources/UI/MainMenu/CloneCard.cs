@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CardClone : Card
+public class CloneCard : Card
 {
     [SerializeField] private UpgradeButton _upgradeByDNAButton;
     [SerializeField] private UpgradeButton _upgradeByCoinsButton;
@@ -73,6 +73,5 @@ public class CardClone : Card
         UpgradePrice += IncreasePrice;
         _levelText.text = _level.ToString();
         UpdateUpgradeButtons();
-        PlayerView.UpdateStats();
     }
 }

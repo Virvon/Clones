@@ -16,7 +16,7 @@ public class PlayerView : MonoBehaviour
     private GameObject _clonePrefab;
     //private CardClone _currentC
 
-    public void SelectCard(CardClone cardClone)
+    public void SelectCard(CloneCard cardClone)
     {
         //_cardClone = cardClone;
         UpdateStats();

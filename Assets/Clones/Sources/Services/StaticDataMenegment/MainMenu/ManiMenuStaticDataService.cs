@@ -21,7 +21,7 @@ namespace Clones.Services
         public MainMenuStaticData GetMainMenu() =>
             _mainMenu;
 
-        public CloneStaticData GetCardClone(CloneType type) => 
+        public CloneStaticData GetClone(CloneType type) => 
             _cardClones.TryGetValue(type, out CloneStaticData staticData) ? staticData : null;
 
         public WandStaticData GetWand(WandType type) => 

@@ -1,6 +1,8 @@
 ﻿using Clones.Data;
 using Clones.Services;
 using Clones.StaticData;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Clones.Infrastructure
@@ -12,12 +14,14 @@ namespace Clones.Infrastructure
         private readonly IGameStateMachine _stateMachine;
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
 
-        public LoadProgressState(IGameStateMachine stateMachine, IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService)
+        public LoadProgressState(IGameStateMachine stateMachine, IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService, IMainMenuStaticDataService mainMenuStaticDataService)
         {
             _stateMachine = stateMachine;
             _persistentProgressService = persistentProgressService;
             _saveLoadService = saveLoadService;
+            _mainMenuStaticDataService = mainMenuStaticDataService;
         }
 
 
@@ -30,10 +34,10 @@ namespace Clones.Infrastructure
 
         public void Exit()
         {
-            
+
         }
 
-        private void LoadProgressOrInitNew() => 
+        private void LoadProgressOrInitNew() =>
             _persistentProgressService.Progress = _saveLoadService.LoadProgress() ?? CreateNewProgress();
 
         private PlayerProgress CreateNewProgress()
@@ -43,7 +47,35 @@ namespace Clones.Infrastructure
             progress.Wallet.Dna = 10000;
             progress.Wallet.Money = 10000;
 
+
+            MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
+
+            CreateNewAvailableClones(_persistentProgressService.Progress.AvailableClones.Clones, menuData.CloneTypes);
+            CreateNewAvailableWands(_persistentProgressService.Progress.AvailableWands.Wands, menuData.WandTypes);
+
             return progress;
+        }
+
+        private void CreateNewAvailableClones(Dictionary<CloneType, CloneData> availableClones, CloneType[] cloneTypes)
+        {
+            foreach(var type in cloneTypes)
+            {
+                CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(type);
+
+                if (cloneStaticData.IsBuyed)
+                    availableClones.Add(type, new CloneData(cloneStaticData.Helath, cloneStaticData.Damage));
+            }
+        }
+
+        private void CreateNewAvailableWands(Dictionary<WandType, WandData> availableWands, WandType[] wandTypes)
+        {
+            foreach (var type in wandTypes)
+            {
+                WandStaticData wamdStaticData = _mainMenuStaticDataService.GetWand(type);
+
+                if (wamdStaticData.IsBuyed)
+                    availableWands.Add(type, new WandData(wamdStaticData.Damage, wamdStaticData.Cooldown));
+            }
         }
     }
 }

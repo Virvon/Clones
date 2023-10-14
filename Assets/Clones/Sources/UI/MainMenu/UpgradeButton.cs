@@ -14,7 +14,7 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private GameObject _cantUpgradeVisuals;
     [Space]
-    [SerializeField] private CardClone _cardClone;
+    [SerializeField] private CloneCard _cardClone;
     [Space]
     [SerializeField] private bool _isUseDNA;
     [SerializeField] private bool _isUseCoins;
@@ -35,7 +35,7 @@ public class UpgradeButton : MonoBehaviour
         }
     }
 
-    public void SetCardClone(CardClone cardClone)
+    public void SetCardClone(CloneCard cardClone)
     {
         _cardClone = cardClone;
     }

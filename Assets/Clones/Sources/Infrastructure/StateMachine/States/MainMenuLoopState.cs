@@ -25,7 +25,7 @@ namespace Clones.Infrastructure
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 
-            CreateClonesCards(menuData.CardCloneTypes);
+            CreateClonesCards(menuData.CloneTypes);
             CreateWandsCards(menuData.WandTypes);
         } 
 
