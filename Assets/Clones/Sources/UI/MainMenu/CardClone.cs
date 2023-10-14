@@ -54,17 +54,17 @@ public class CardClone : Card
     {
         base.Select();
 
-        PlayerView.SelectCard(this);
+        //PlayerView.SelectCard(this);
         UpdateUpgradeButtons();
     }
 
     private void UpdateUpgradeButtons()
     {
-        _upgradeByDNAButton.SetCardClone(this);
-        _upgradeByCoinsButton.SetCardClone(this);
+        //_upgradeByDNAButton.SetCardClone(this);
+        //_upgradeByCoinsButton.SetCardClone(this);
 
-        _upgradeByDNAButton.UpdateButton();
-        _upgradeByCoinsButton.UpdateButton();
+        //_upgradeByDNAButton.UpdateButton();
+        //_upgradeByCoinsButton.UpdateButton();
     }
 
     private void Upgrade()

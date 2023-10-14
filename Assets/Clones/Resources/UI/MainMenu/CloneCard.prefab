@@ -1643,8 +1643,9 @@ GameObject:
   - component: {fileID: 4658819119955953376}
   - component: {fileID: 4658819119955953389}
   - component: {fileID: 4658819119955953388}
+  - component: {fileID: 5676115025672624783}
   m_Layer: 5
-  m_Name: CardClone
+  m_Name: CloneCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,20 +1781,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ae7bc691206b44d986d504cf76f1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 3702062660274393924, guid: d24bc8d958367c5428573a04fc1787d8, type: 3}
   _selectedVisuals: {fileID: 4658819119883602226}
-  "_unselected\u0421ards":
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _baseMultiplyResourceByRare: 0.75
+  CanSelected: 1
   _upgradeByDNAButton: {fileID: 0}
   _upgradeByCoinsButton: {fileID: 0}
   _levelText: {fileID: 4658819118766204461}
   Selected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5676115025672624783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658819119955953382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c7a514f57d97249ab17c7abd3a83c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4658819120018737052
 GameObject:
   m_ObjectHideFlags: 0

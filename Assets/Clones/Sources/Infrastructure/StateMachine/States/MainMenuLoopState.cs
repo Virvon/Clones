@@ -1,7 +1,6 @@
 ﻿using Clones.Data;
 using Clones.Services;
 using Clones.StaticData;
-using Clones.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,20 +10,20 @@ namespace Clones.Infrastructure
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IMainMenuFactory _mainMenuFactory;
-        private readonly IPersistentProgressService _persistentProgress;
+        private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
 
-        public MainMenuLoopState(GameStateMachine stateMachine, IMainMenuFactory mainMenuFactory, IPersistentProgressService persistentProgress)
+        public MainMenuLoopState(GameStateMachine stateMachine, IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService)
         {
             _stateMachine = stateMachine;
             _mainMenuFactory = mainMenuFactory;
-            _persistentProgress = persistentProgress;
+            _mainMenuStaticDataService = mainMenuStaticDataService;
         }
 
         public void Enter()
         {
-            GameObject menu = _mainMenuFactory.CreateMainMenu();
+            _mainMenuFactory.CreateMainMenu();
 
-            CreateCloneCards(_persistentProgress.Progress.CloneDatas);
+            CreateCloneCards(_mainMenuStaticDataService.GetMainMenu().CardCloneTypes);
         } 
 
         public void Exit()
@@ -32,10 +31,10 @@ namespace Clones.Infrastructure
             
         }
 
-        private void CreateCloneCards(List<CloneData> cloneDatas)
+        private void CreateCloneCards(CardCloneType[] types)
         {
-            foreach (var data in cloneDatas)
-                _mainMenuFactory.CreateCardClone(data.Type);
+            foreach (var type in types)
+                _mainMenuFactory.CreateCardClone(type);
         }
     }
 }
