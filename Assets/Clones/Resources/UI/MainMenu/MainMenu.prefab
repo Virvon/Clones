@@ -8386,13 +8386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ae7bc691206b44d986d504cf76f1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 8259447009909918585, guid: 2f9c203e01bdd7942b7097b27eb6dca0, type: 3}
   _selectedVisuals: {fileID: 8982338676035225681}
-  "_unselected\u0421ards":
-  - {fileID: 8982338675343270897}
-  - {fileID: 8982338676207065423}
-  - {fileID: 8982338675276900589}
   _baseMultiplyResourceByRare: 1.5
   _upgradeByDNAButton: {fileID: 8982338675669798359}
   _upgradeByCoinsButton: {fileID: 8982338674970192263}
@@ -12966,13 +12962,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 4381721461280834602, guid: 37fd4fab87305b24aa0fbcbb8d6e794a, type: 3}
   _selectedVisuals: {fileID: 8982338674994009285}
-  "_unselected\u0421ards":
-  - {fileID: 8982338676080166014}
-  - {fileID: 8982338675104065662}
-  - {fileID: 8982338674768247937}
   _baseMultiplyResourceByRare: 0.25
   _damage: 10
   _attackSpeed: 1
@@ -13400,6 +13392,7 @@ GameObject:
   - component: {fileID: 8982338674723646315}
   - component: {fileID: 8982338674723646317}
   - component: {fileID: 8982338674723646316}
+  - component: {fileID: 1415015450548274877}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -13471,6 +13464,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1415015450548274877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982338674723646314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae9f6a3262631a4fa57e0b0cb9aa6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8982338674724934837
 GameObject:
   m_ObjectHideFlags: 0
@@ -14792,13 +14797,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 8812556937506186840, guid: b3ec3b50feccec349b5fcf463454b2c8, type: 3}
   _selectedVisuals: {fileID: 8982338675395565123}
-  "_unselected\u0421ards":
-  - {fileID: 8982338674652223925}
-  - {fileID: 8982338676080166014}
-  - {fileID: 8982338675104065662}
   _baseMultiplyResourceByRare: 2
   _damage: 20
   _attackSpeed: 2.5
@@ -24222,13 +24223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 5775755874522734436, guid: b308c5f9df0616b4dbd0d61ff88f4e1e, type: 3}
   _selectedVisuals: {fileID: 8982338675615533191}
-  "_unselected\u0421ards":
-  - {fileID: 8982338674652223925}
-  - {fileID: 8982338676080166014}
-  - {fileID: 8982338674768247937}
   _baseMultiplyResourceByRare: 1.5
   _damage: 15
   _attackSpeed: 2
@@ -26629,13 +26626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ae7bc691206b44d986d504cf76f1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 5158217570073336109, guid: 27a2840b0dc1d1f46997d2b837c9167c, type: 3}
   _selectedVisuals: {fileID: 8982338675276800143}
-  "_unselected\u0421ards":
-  - {fileID: 8982338675343270897}
-  - {fileID: 8982338674327811256}
-  - {fileID: 8982338676207065423}
   _baseMultiplyResourceByRare: 4
   _upgradeByDNAButton: {fileID: 8982338675669798359}
   _upgradeByCoinsButton: {fileID: 8982338674970192263}
@@ -29067,6 +29060,7 @@ GameObject:
   - component: {fileID: 8982338675416803870}
   - component: {fileID: 8982338675416803856}
   - component: {fileID: 8982338675416803871}
+  - component: {fileID: 1452564216323265925}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -29138,6 +29132,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1452564216323265925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982338675416803869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae9f6a3262631a4fa57e0b0cb9aa6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8982338675419689576
 GameObject:
   m_ObjectHideFlags: 0
@@ -37647,13 +37653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 7556822563198225531, guid: 5598e3a0c2004a247a30c2e73348dd44, type: 3}
   _selectedVisuals: {fileID: 8982338674732898402}
-  "_unselected\u0421ards":
-  - {fileID: 8982338674652223925}
-  - {fileID: 8982338675104065662}
-  - {fileID: 8982338674768247937}
   _baseMultiplyResourceByRare: 0.5
   _damage: 10
   _attackSpeed: 1.5
@@ -39583,13 +39585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ae7bc691206b44d986d504cf76f1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 0}
+  _playerView: {fileID: 0}
   _objectPrefab: {fileID: 7056321775774114693, guid: 9447461d239432940a2f398eb7f72ed8, type: 3}
   _selectedVisuals: {fileID: 8982338674446642272}
-  "_unselected\u0421ards":
-  - {fileID: 8982338675343270897}
-  - {fileID: 8982338674327811256}
-  - {fileID: 8982338675276900589}
   _baseMultiplyResourceByRare: 2.5
   _upgradeByDNAButton: {fileID: 8982338675669798359}
   _upgradeByCoinsButton: {fileID: 8982338674970192263}

@@ -5,9 +5,6 @@ public class PlayerView : MonoBehaviour
 {
     [SerializeField] private Transform _playerPrefabPlace;
     [Space]
-    [SerializeField] private CardClone _cardClone;
-    [SerializeField] private CardWand _cardWand;
-    [Space]
     [SerializeField] private TMP_Text _healthText;
     [SerializeField] private TMP_Text _damageText;
     [SerializeField] private TMP_Text _attackSpeedText;
@@ -17,41 +14,36 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private float _upgradeResourceMultiplier = 0.1f;
 
     private GameObject _clonePrefab;
-
-    private void Start()
-    {
-        _cardClone.Select();
-        _cardWand.Select();
-    }
+    //private CardClone _currentC
 
     public void SelectCard(CardClone cardClone)
     {
-        _cardClone = cardClone;
+        //_cardClone = cardClone;
         UpdateStats();
 
         Destroy(_clonePrefab?.gameObject);
-        _clonePrefab = Instantiate(_cardClone.ObjectPrefab, _playerPrefabPlace);
-        _cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
+        //_clonePrefab = Instantiate(_cardClone.ObjectPrefab, _playerPrefabPlace);
+        //_cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
     }
 
     public void SelectCard(CardWand cardWand)
     {
-        _cardWand = cardWand;
+        //_cardWand = cardWand;
         UpdateStats();
 
-        _cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
+        //_cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
     }
 
     public void UpdateStats()
     {
-        int health = _cardClone.Health;
-        int damage = _cardClone.Damage + _cardWand.Damage;
-        float attackSpeed = _cardWand.AttackSpeed;
-        float resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);
+        //int health = _cardClone.Health;
+        //int damage = _cardClone.Damage + _cardWand.Damage;
+        //float attackSpeed = _cardWand.AttackSpeed;
+        //float resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);
 
-        _healthText.text = NumberFormatter.DivideIntegerOnDigits(health);
-        _damageText.text = NumberFormatter.DivideIntegerOnDigits(damage);
-        _attackSpeedText.text = NumberFormatter.DivideFloatOnDigits(attackSpeed);
-        _resourceMultiplierText.text = NumberFormatter.DivideFloatOnDigits(resourceMultiplier);
+        //_healthText.text = NumberFormatter.DivideIntegerOnDigits(health);
+        //_damageText.text = NumberFormatter.DivideIntegerOnDigits(damage);
+        //_attackSpeedText.text = NumberFormatter.DivideFloatOnDigits(attackSpeed);
+        //_resourceMultiplierText.text = NumberFormatter.DivideFloatOnDigits(resourceMultiplier);
     }
 }
