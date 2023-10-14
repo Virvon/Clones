@@ -1,6 +1,6 @@
 ﻿namespace Clones.StaticData
 {
-    public enum CardCloneType
+    public enum CloneType
     {
         Normal,
         Rare,

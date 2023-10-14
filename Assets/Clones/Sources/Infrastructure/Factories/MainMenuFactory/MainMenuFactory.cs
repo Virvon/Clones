@@ -42,9 +42,9 @@ namespace Clones.Infrastructure
             return menu;
         }
 
-        public void CreateCardClone(CardCloneType type)
+        public void CreateCardClone(CloneType type)
         {
-            CardCloneStaticData cardCloneData = _staticDataService.GetCardClone(type);
+            CloneStaticData cardCloneData = _staticDataService.GetCardClone(type);
 
             CardsView cloneCardsView = _containers.ClonesCardsView;
 

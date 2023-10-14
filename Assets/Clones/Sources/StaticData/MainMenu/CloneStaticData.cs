@@ -3,16 +3,17 @@
 namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New CardClone", menuName = "Data/Create new card clone", order = 51)]
-    public class CardCloneStaticData : ScriptableObject
+    public class CloneStaticData : ScriptableObject
     {
         public GameObject Prefab;
         public CardClone Card;
-        public CardCloneType Type;
+        public CloneType Type;
         public int Helath;
         public int IncreaseHealth;
         public int Damage;
         public int IncreaseDamage;
         public int UpgradePrice;
         public int IncreasePrice;
+        public bool IsBuyed;
     }
 }

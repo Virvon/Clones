@@ -6,7 +6,7 @@ namespace Clones.StaticData
     public class MainMenuStaticData : ScriptableObject
     {
         public GameObject Prefab;
-        public CardCloneType[] CardCloneTypes;
+        public CloneType[] CardCloneTypes;
         public WandType[] WandTypes;
     }
 }

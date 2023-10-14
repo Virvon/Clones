@@ -7,8 +7,8 @@ namespace Clones.Data
     [Serializable]
     public class AvailableClones
     {
-        public CardCloneType SelectedClone;
-        public Dictionary<CardCloneType, CloneData> Clones;
+        public CloneType SelectedClone;
+        public Dictionary<CloneType, CloneData> Clones;
 
         public AvailableClones()
         {
