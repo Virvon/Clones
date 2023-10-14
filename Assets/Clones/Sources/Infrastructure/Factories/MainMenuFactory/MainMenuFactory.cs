@@ -28,9 +28,6 @@ namespace Clones.Infrastructure
 
             var menu = Object.Instantiate(menuData.Prefab);
 
-            menu.GetComponent<MainMenu>()
-                .Init(menuData.CardCloneTypes);
-
             menu.GetComponentInChildren<PlayButton>()
                 .Init(_gameStateMachine);
 

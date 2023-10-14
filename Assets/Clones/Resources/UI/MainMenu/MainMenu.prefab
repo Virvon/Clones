@@ -95,8 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPrefabPlace: {fileID: 8982338675419689577}
-  _cardClone: {fileID: 8982338675343270897}
-  _cardWand: {fileID: 8982338674652223925}
   _healthText: {fileID: 8982338676127764722}
   _damageText: {fileID: 8982338674321351333}
   _attackSpeedText: {fileID: 8982338675155797962}
@@ -8390,6 +8388,7 @@ MonoBehaviour:
   _objectPrefab: {fileID: 8259447009909918585, guid: 2f9c203e01bdd7942b7097b27eb6dca0, type: 3}
   _selectedVisuals: {fileID: 8982338676035225681}
   _baseMultiplyResourceByRare: 1.5
+  CanSelected: 1
   _upgradeByDNAButton: {fileID: 8982338675669798359}
   _upgradeByCoinsButton: {fileID: 8982338674970192263}
   _levelText: {fileID: 8982338675296870007}
@@ -12966,6 +12965,7 @@ MonoBehaviour:
   _objectPrefab: {fileID: 4381721461280834602, guid: 37fd4fab87305b24aa0fbcbb8d6e794a, type: 3}
   _selectedVisuals: {fileID: 8982338674994009285}
   _baseMultiplyResourceByRare: 0.25
+  CanSelected: 1
   _damage: 10
   _attackSpeed: 1
 --- !u!1 &8982338674655229296
@@ -14801,6 +14801,7 @@ MonoBehaviour:
   _objectPrefab: {fileID: 8812556937506186840, guid: b3ec3b50feccec349b5fcf463454b2c8, type: 3}
   _selectedVisuals: {fileID: 8982338675395565123}
   _baseMultiplyResourceByRare: 2
+  CanSelected: 1
   _damage: 20
   _attackSpeed: 2.5
 --- !u!114 &8982338674768247938
@@ -24227,6 +24228,7 @@ MonoBehaviour:
   _objectPrefab: {fileID: 5775755874522734436, guid: b308c5f9df0616b4dbd0d61ff88f4e1e, type: 3}
   _selectedVisuals: {fileID: 8982338675615533191}
   _baseMultiplyResourceByRare: 1.5
+  CanSelected: 1
   _damage: 15
   _attackSpeed: 2
 --- !u!114 &8982338675104065663
@@ -25599,7 +25601,6 @@ GameObject:
   - component: {fileID: 8982338675225940529}
   - component: {fileID: 8982338675225940528}
   - component: {fileID: 8982338675225940535}
-  - component: {fileID: 397560909940405024}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -25734,18 +25735,6 @@ MonoBehaviour:
   _mixer: {fileID: 24300002, guid: 6729e14c575c3cf429e31d41b06d7709, type: 2}
   _soundSlider: {fileID: 8982338675329254737}
   _musicSlider: {fileID: 8982338675280403804}
---- !u!114 &397560909940405024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8982338675225940543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 467d24b1d10caca45a7de0403869fee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8982338675231647037
 GameObject:
   m_ObjectHideFlags: 0
@@ -26630,6 +26619,7 @@ MonoBehaviour:
   _objectPrefab: {fileID: 5158217570073336109, guid: 27a2840b0dc1d1f46997d2b837c9167c, type: 3}
   _selectedVisuals: {fileID: 8982338675276800143}
   _baseMultiplyResourceByRare: 4
+  CanSelected: 1
   _upgradeByDNAButton: {fileID: 8982338675669798359}
   _upgradeByCoinsButton: {fileID: 8982338674970192263}
   _levelText: {fileID: 8982338674797523558}
@@ -37657,6 +37647,7 @@ MonoBehaviour:
   _objectPrefab: {fileID: 7556822563198225531, guid: 5598e3a0c2004a247a30c2e73348dd44, type: 3}
   _selectedVisuals: {fileID: 8982338674732898402}
   _baseMultiplyResourceByRare: 0.5
+  CanSelected: 1
   _damage: 10
   _attackSpeed: 1.5
 --- !u!114 &8982338676080166015
@@ -39589,6 +39580,7 @@ MonoBehaviour:
   _objectPrefab: {fileID: 7056321775774114693, guid: 9447461d239432940a2f398eb7f72ed8, type: 3}
   _selectedVisuals: {fileID: 8982338674446642272}
   _baseMultiplyResourceByRare: 2.5
+  CanSelected: 1
   _upgradeByDNAButton: {fileID: 8982338675669798359}
   _upgradeByCoinsButton: {fileID: 8982338674970192263}
   _levelText: {fileID: 8982338674916936043}
