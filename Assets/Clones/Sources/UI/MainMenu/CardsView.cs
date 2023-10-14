@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CardsView : MonoBehaviour
@@ -18,9 +17,6 @@ public class CardsView : MonoBehaviour
         card.GetComponent<CardButton>().Clicked += Select;
         _cards.Add(card);
     }
-
-    public Card TryGetAccessibleCard() =>
-        _cards.Where(card => card.CanSelected).FirstOrDefault();
 
     private void Select(Card card)
     {

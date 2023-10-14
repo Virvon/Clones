@@ -285,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4658819118889962726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -755,6 +755,7 @@ GameObject:
   - component: {fileID: 4658819119302173954}
   - component: {fileID: 4658819119302173964}
   - component: {fileID: 4658819119302173965}
+  - component: {fileID: 5989265528750269116}
   m_Layer: 5
   m_Name: Buy_button
   m_TagString: Untagged
@@ -824,6 +825,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5989265528750269116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658819119302173955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 4658819119302173965}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4658819119381078681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,7 +1328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4658819119737345507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1642,8 +1687,9 @@ GameObject:
   - component: {fileID: 4658819119955953379}
   - component: {fileID: 4658819119955953376}
   - component: {fileID: 4658819119955953389}
-  - component: {fileID: 4658819119955953388}
   - component: {fileID: 5676115025672624783}
+  - component: {fileID: 4765206519460032524}
+  - component: {fileID: 3171580171538393250}
   m_Layer: 5
   m_Name: CloneCard
   m_TagString: Untagged
@@ -1756,41 +1802,6 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4658819119955953376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4658819119955953388}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &4658819119955953388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4658819119955953382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ae7bc691206b44d986d504cf76f1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerView: {fileID: 0}
-  _objectPrefab: {fileID: 3702062660274393924, guid: d24bc8d958367c5428573a04fc1787d8, type: 3}
-  _selectedVisuals: {fileID: 4658819119883602226}
-  _baseMultiplyResourceByRare: 0.75
-  CanSelected: 1
-  _upgradeByDNAButton: {fileID: 0}
-  _upgradeByCoinsButton: {fileID: 0}
-  _levelText: {fileID: 4658819118766204461}
-  Selected:
-    m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5676115025672624783
 MonoBehaviour:
@@ -1804,6 +1815,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c7a514f57d97249ab17c7abd3a83c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4765206519460032524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658819119955953382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5b413fa73aff84985d29f18aae4cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectButton: {fileID: 4658819119955953389}
+  _buyButton: {fileID: 5989265528750269116}
+  _cantBuyVisuals: {fileID: 4658819119401198717}
+  _textPrice: {fileID: 4658819119518576678}
+  _lockVisuals: {fileID: 4658819118889962727}
+  _unlockVisuals: {fileID: 4658819119737345504}
+--- !u!114 &3171580171538393250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658819119955953382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f4caa28da440640800723d8a8c9514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedVisuals: {fileID: 4658819119883602226}
+  _baseMultiplyResourceByRare: 1
+  _levelText: {fileID: 4658819118766204461}
+  Selected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4658819120018737052
 GameObject:
   m_ObjectHideFlags: 0

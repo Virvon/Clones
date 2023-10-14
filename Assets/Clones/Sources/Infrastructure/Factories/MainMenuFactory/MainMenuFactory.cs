@@ -1,4 +1,5 @@
-﻿using Clones.Services;
+﻿using Clones.Data;
+using Clones.Services;
 using Clones.StaticData;
 using Clones.UI;
 using UnityEngine;
@@ -42,18 +43,24 @@ namespace Clones.Infrastructure
             return menu;
         }
 
-        public void CreateCardClone(CloneType type)
+        public void CreateCloneCard(CloneType type)
         {
-            CloneStaticData cardCloneData = _staticDataService.GetClone(type);
+            CloneStaticData cloneStaticData = _staticDataService.GetClone(type);
 
             CardsView cloneCardsView = _containers.ClonesCardsView;
 
-            var cardObject = Object.Instantiate(cardCloneData.Card, cloneCardsView.transform);
+            var cardObject = Object.Instantiate(cloneStaticData.Card, cloneCardsView.transform);
             CloneCard card = cardObject.GetComponent<CloneCard>();
 
             cloneCardsView.AddCard(card);
 
-            card.Init(cardCloneData.Helath, cardCloneData.IncreaseHealth, cardCloneData.Damage, cardCloneData.IncreaseDamage, cardCloneData.UpgradePrice, cardCloneData.IncreasePrice);
+            cardObject.GetComponent<BuyCardView>()
+                .Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+
+            if (_persistentProgress.Progress.AvailableClones.Clones.TryGetValue(type, out CloneData data))
+                card.Init(data.Health, cloneStaticData.IncreaseHealth, data.Damage, cloneStaticData.IncreaseDamage, cloneStaticData.UpgradePrice, cloneStaticData.IncreasePrice);
+
+            card.Init(cloneStaticData.Helath, cloneStaticData.IncreaseHealth, cloneStaticData.Damage, cloneStaticData.IncreaseDamage, cloneStaticData.UpgradePrice, cloneStaticData.IncreasePrice);
         }
 
         public void CreateWandCard(WandType type)

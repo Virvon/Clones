@@ -37,7 +37,7 @@ namespace Clones.Infrastructure
         private void CreateClonesCards(CloneType[] types)
         {
             foreach (var type in types)
-                _mainMenuFactory.CreateCardClone(type);
+                _mainMenuFactory.CreateCloneCard(type);
         }
 
         private void CreateWandsCards(WandType[] types)

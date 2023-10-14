@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class CloneCard : Card
 {
-    [SerializeField] private UpgradeButton _upgradeByDNAButton;
-    [SerializeField] private UpgradeButton _upgradeByCoinsButton;
+    //[SerializeField] private UpgradeButton _upgradeByDNAButton;
+    //[SerializeField] private UpgradeButton _upgradeByCoinsButton;
     [SerializeField] private TMP_Text _levelText;
 
     private int _increaseHealth;

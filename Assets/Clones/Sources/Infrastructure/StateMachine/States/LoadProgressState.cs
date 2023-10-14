@@ -50,8 +50,8 @@ namespace Clones.Infrastructure
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 
-            CreateNewAvailableClones(_persistentProgressService.Progress.AvailableClones.Clones, menuData.CloneTypes);
-            CreateNewAvailableWands(_persistentProgressService.Progress.AvailableWands.Wands, menuData.WandTypes);
+            CreateNewAvailableClones(progress.AvailableClones.Clones, menuData.CloneTypes);
+            CreateNewAvailableWands(progress.AvailableWands.Wands, menuData.WandTypes);
 
             return progress;
         }

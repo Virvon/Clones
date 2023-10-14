@@ -7,7 +7,7 @@ namespace Clones.Infrastructure
     public interface IMainMenuFactory : IService
     {
         GameObject CreateMainMenu();
-        void CreateCardClone(CloneType type);
+        void CreateCloneCard(CloneType type);
         void CreateWandCard(WandType type);
     }
 }
