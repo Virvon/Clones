@@ -3,6 +3,7 @@
     public static class MainMenuStaticDataPath
     {
         public const string MainMenu = "StaticData/MainMenu/MainMenu";
-        public const string CardClones = "StaticData/MainMenu/CloneCards";
+        public const string Clones = "StaticData/MainMenu/Clones";
+        public const string Wands = "StaticData/MainMenu/Wands";
     }
 }

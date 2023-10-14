@@ -44,20 +44,29 @@ namespace Clones.Infrastructure
             PlayerProgress progress = new();
             progress.Wallet.Dna = 10000;
             progress.Wallet.Money = 10000;
-            
-            CreateNewCloneDatas(progress);
+
+            MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
+            CreateNewCloneDatas(progress, menuData);
+            CreateNewWandDatas(progress, menuData);
 
             return progress;
         }
 
-        private void CreateNewCloneDatas(PlayerProgress progress)
+        private void CreateNewCloneDatas(PlayerProgress progress, MainMenuStaticData menuData)
         {
-            MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
-
             foreach(var type in menuData.CardCloneTypes)
             {
                 CardCloneStaticData cloneData = _mainMenuStaticDataService.GetCardClone(type);
                 progress.CloneDatas.Add(new CloneData(cloneData.Prefab, cloneData.Type, cloneData.Helath, cloneData.Damage));
+            }
+        }
+
+        private void CreateNewWandDatas(PlayerProgress progress, MainMenuStaticData menuData)
+        {
+            foreach(var type in menuData.WandTypes)
+            {
+                WandStaticData wandData = _mainMenuStaticDataService.GetWand(type);
+                progress.WandDatas.Add(new WandData(wandData.Prefab, wandData.Type, wandData.Damage, wandData.Cooldown));
             }
         }
     }

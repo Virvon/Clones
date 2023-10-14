@@ -6,5 +6,6 @@ namespace Clones.Services
     {
         MainMenuStaticData GetMainMenu();
         CardCloneStaticData GetCardClone(CardCloneType type);
+        WandStaticData GetWand(WandType type);
     }
 }

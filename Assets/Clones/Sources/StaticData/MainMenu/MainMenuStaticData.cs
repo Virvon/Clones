@@ -7,5 +7,6 @@ namespace Clones.StaticData
     {
         public GameObject Prefab;
         public CardCloneType[] CardCloneTypes;
+        public WandType[] WandTypes;
     }
 }
