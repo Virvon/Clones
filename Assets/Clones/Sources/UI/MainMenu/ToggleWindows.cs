@@ -14,10 +14,13 @@ public class ToggleWindows : MonoBehaviour
 
     public void Invoke()
     {
-        foreach (GameObject gameObject in _activateGameobjects)
-            gameObject.SetActive(true);
+        SetActiveRange(_activateGameobjects, true);
+        SetActiveRange(_deactivateGameobjects, false); 
+    }
 
-        foreach (GameObject gameObject in _deactivateGameobjects)
-            gameObject.SetActive(false);
+    private void SetActiveRange(List<GameObject> range, bool value)
+    {
+        foreach(var gameObject in range)
+            gameObject.SetActive(value);
     }
 }

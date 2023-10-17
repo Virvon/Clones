@@ -28,6 +28,7 @@ public class CardWand : Card
 
     protected override void Unlock()
     {
+        SelectButton.interactable = true;
         _unlock.SetActive(true);
     }
 }

@@ -17,6 +17,7 @@ namespace Clones.Infrastructure
 
         private MainMenuContainers _containers;
         private ClonesCardsView _clonesCardsView;
+        private WandsCardsView _wandsCardsView;
 
         public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService)
         {
@@ -63,27 +64,39 @@ namespace Clones.Infrastructure
         {
             WandStaticData wandData = _staticDataService.GetWand(type);
 
-            //CardsView<WandType> wandsCardsView = _containers.WandsCardsView;
+            var cardObject = Object.Instantiate(wandData.Card, _wandsCardsView.transform);
+            CardWand card = cardObject.GetComponent<CardWand>();
 
-            //var cardObject = Object.Instantiate(wandData.Card, wandsCardsView.transform);
-            //CardWand card = cardObject.GetComponent<CardWand>();
+            _wandsCardsView.AddCard(card, type);
 
-            //wandsCardsView.AddCard(card, type);
+            card.Init(wandData.Damage, wandData.Cooldown);
 
-            //card.Init(wandData.Damage, wandData.Cooldown);
+            Debug.Log("Wand card created");
         }
 
-        public void CreateClonesCardsView()
+        public GameObject CreateClonesCardsView()
         {
             GameObject viewObject = _assets.Instantiate(AssetPath.ClonesCardsView, _containers.ClonesCards.transform);
 
             _clonesCardsView = viewObject.GetComponentInChildren<ClonesCardsView>();
             _clonesCardsView.Init(_persistentProgress, _staticDataService);
+
+            return _clonesCardsView.gameObject;
+        }
+
+        public GameObject CreateWandsCardsView()
+        {
+            GameObject viewObject = _assets.Instantiate(AssetPath.WandsCardsView, _containers.ClonesCards);
+
+            _wandsCardsView = viewObject.GetComponentInChildren<WandsCardsView>();
+            _wandsCardsView.Init(_persistentProgress, _staticDataService);
+
+            return _wandsCardsView.gameObject;
         }
 
         public void CreatePlayButton()
         {
-            GameObject button = _assets.Instantiate(AssetPath.PlayButton, _containers.Buttons.transform);
+            GameObject button = _assets.Instantiate(AssetPath.PlayButton, _containers.Buttons);
 
             button.GetComponent<PlayButton>()
                 .Init(_gameStateMachine);
@@ -91,14 +104,14 @@ namespace Clones.Infrastructure
 
         public void CreateShowCardButtonds()
         {
-            GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons.transform);
-            GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons.transform);
+            GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons);
+            GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons);
 
             clonesCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButton });
+                .Init(new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject });
 
             wandsCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { clonesCardsShowButton }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
+                .Init(new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
         }
     }
 }

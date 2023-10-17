@@ -10,6 +10,7 @@ namespace Clones.StaticData
         public WandType Type;
         public int Damage;
         public float Cooldown;
+        public int BuyPrice;
         public bool IsBuyed;
     }
 }

@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 1695363184805326118}
   - component: {fileID: 1695363184805326113}
   - component: {fileID: 1717356788769376676}
+  - component: {fileID: 203551981817128042}
   m_Layer: 5
   m_Name: WandCard
   m_TagString: Untagged
@@ -201,19 +202,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1695363184805326119}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1695363184805326113}
-        m_TargetAssemblyTypeName: CardWand, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1695363184805326113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedVisuals: {fileID: 1695363185118011473}
   _lock: {fileID: 1695363186394484573}
+  _select: {fileID: 1695363184805326118}
   _damage: 10
   _cooldown: 0
   _unlock: {fileID: 1695363185003639584}
@@ -243,6 +233,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c7a514f57d97249ab17c7abd3a83c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &203551981817128042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695363184805326122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5b413fa73aff84985d29f18aae4cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buyButton: {fileID: 1695363185140082468}
+  _cantBuyVisuals: {fileID: 1695363184629413927}
+  _textPrice: {fileID: 1695363185130384269}
 --- !u!1 &1695363184863536345
 GameObject:
   m_ObjectHideFlags: 0

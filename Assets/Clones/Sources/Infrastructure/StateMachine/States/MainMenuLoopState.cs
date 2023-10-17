@@ -24,12 +24,15 @@ namespace Clones.Infrastructure
             _mainMenuFactory.CreateMainMenu();
             _mainMenuFactory.CreatePlayButton();
             _mainMenuFactory.CreateClonesCardsView();
+            GameObject wandsCardsView = _mainMenuFactory.CreateWandsCardsView();
             _mainMenuFactory.CreateShowCardButtonds();
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 
             CreateClonesCards(menuData.CloneTypes);
-            //CreateWandsCards(menuData.WandTypes);
+            CreateWandsCards(menuData.WandTypes);
+
+            wandsCardsView.SetActive(false);
         } 
 
         public void Exit()
