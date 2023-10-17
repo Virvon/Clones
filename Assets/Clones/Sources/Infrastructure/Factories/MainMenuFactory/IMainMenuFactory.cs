@@ -10,5 +10,7 @@ namespace Clones.Infrastructure
         void CreateCloneCard(CloneType type);
         void CreateWandCard(WandType type);
         void CreateClonesCardsView();
+        void CreatePlayButton();
+        void CreateShowCardButtonds();
     }
 }

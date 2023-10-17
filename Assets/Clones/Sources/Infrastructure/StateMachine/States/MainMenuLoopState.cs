@@ -22,7 +22,9 @@ namespace Clones.Infrastructure
         public void Enter()
         {
             _mainMenuFactory.CreateMainMenu();
+            _mainMenuFactory.CreatePlayButton();
             _mainMenuFactory.CreateClonesCardsView();
+            _mainMenuFactory.CreateShowCardButtonds();
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 

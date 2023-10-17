@@ -2,6 +2,7 @@
 using Clones.Services;
 using Clones.StaticData;
 using Clones.UI;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -30,9 +31,6 @@ namespace Clones.Infrastructure
             MainMenuStaticData menuData = _staticDataService.GetMainMenu();
 
             var menu = Object.Instantiate(menuData.Prefab);
-
-            menu.GetComponentInChildren<PlayButton>()
-                .Init(_gameStateMachine);
 
             menu.GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgress.Progress.Wallet);
@@ -77,10 +75,30 @@ namespace Clones.Infrastructure
 
         public void CreateClonesCardsView()
         {
-            GameObject viewObject = _assets.Instantiate(AssetPath.ClonesCardsView, _containers.ClonesCards);
+            GameObject viewObject = _assets.Instantiate(AssetPath.ClonesCardsView, _containers.ClonesCards.transform);
 
             _clonesCardsView = viewObject.GetComponentInChildren<ClonesCardsView>();
             _clonesCardsView.Init(_persistentProgress, _staticDataService);
+        }
+
+        public void CreatePlayButton()
+        {
+            GameObject button = _assets.Instantiate(AssetPath.PlayButton, _containers.Buttons.transform);
+
+            button.GetComponent<PlayButton>()
+                .Init(_gameStateMachine);
+        }
+
+        public void CreateShowCardButtonds()
+        {
+            GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons.transform);
+            GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons.transform);
+
+            clonesCardsShowButton.GetComponent<ToggleWindows>()
+                .Init(new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButton });
+
+            wandsCardsShowButton.GetComponent<ToggleWindows>()
+                .Init(new List<GameObject> { clonesCardsShowButton }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
         }
     }
 }

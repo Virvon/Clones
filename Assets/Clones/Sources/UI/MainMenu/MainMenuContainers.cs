@@ -4,6 +4,7 @@ namespace Clones.UI
 {
     public class MainMenuContainers : MonoBehaviour
     {
-        public Transform ClonesCards;
+        public GameObject ClonesCards;
+        public GameObject Buttons;
     }
 }
