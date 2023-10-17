@@ -285,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4658819118889962726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1827,12 +1827,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5b413fa73aff84985d29f18aae4cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectButton: {fileID: 4658819119955953389}
   _buyButton: {fileID: 5989265528750269116}
   _cantBuyVisuals: {fileID: 4658819119401198717}
   _textPrice: {fileID: 4658819119518576678}
-  _lockVisuals: {fileID: 4658819118889962727}
-  _unlockVisuals: {fileID: 4658819119737345504}
 --- !u!114 &3171580171538393250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1846,8 +1843,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedVisuals: {fileID: 4658819119883602226}
-  _baseMultiplyResourceByRare: 1
+  _lock: {fileID: 4658819118889962727}
+  _select: {fileID: 4658819119955953389}
   _levelText: {fileID: 4658819118766204461}
+  _unlock: {fileID: 4658819119737345504}
   Selected:
     m_PersistentCalls:
       m_Calls: []

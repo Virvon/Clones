@@ -43,7 +43,7 @@ public class UpgradeButton : MonoBehaviour
     public void UpdateButton()
     {
         Debug.Log("upgrade button");
-        int price = _cardClone.UpgradePrice;
+        //int price = _cardClone.UpgradePrice;
 
         if (_isUseDNA)
         {
@@ -57,6 +57,6 @@ public class UpgradeButton : MonoBehaviour
             //_button.interactable = _wallet.Coins >= price;
         }
         
-        _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
+        //_textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalClone
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4658819119955953382, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
-  Card: {fileID: 4658819119955953388, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
+  Card: {fileID: 3171580171538393250, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
   Type: 0
   Helath: 100
   IncreaseHealth: 5
@@ -21,3 +21,5 @@ MonoBehaviour:
   IncreaseDamage: 1
   UpgradePrice: 100
   IncreasePrice: 25
+  BuyPrice: 100
+  IsBuyed: 1

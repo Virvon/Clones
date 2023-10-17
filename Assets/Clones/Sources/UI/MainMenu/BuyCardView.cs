@@ -1,20 +1,19 @@
 using Clones.Data;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BuyCardView : MonoBehaviour
 {
-    [SerializeField] private Button _selectButton;
     [SerializeField] private Button _buyButton;
     [SerializeField] private GameObject _cantBuyVisuals;
     [SerializeField] private TMP_Text _textPrice;
-    [Space]
-    [SerializeField] private GameObject _lockVisuals;
-    [SerializeField] private GameObject _unlockVisuals;
 
     private int _price;
     private Wallet _wallet;
+
+    public event Action<Card> BuyTried;
 
     private bool _canBuy => _wallet.Money >= _price;
 
@@ -24,9 +23,9 @@ public class BuyCardView : MonoBehaviour
         _wallet = wallet;
 
         _wallet.CurrencyCountChanged += CheckPrice;
+
         _buyButton.onClick.AddListener(TryBuy);
 
-        _selectButton.interactable = false;
         _textPrice.text = NumberFormatter.DivideIntegerOnDigits(_price);
 
         CheckPrice();
@@ -40,13 +39,6 @@ public class BuyCardView : MonoBehaviour
             _cantBuyVisuals.SetActive(true);
     }
 
-    private void TryBuy()
-    {
-        if (_canBuy)
-        {
-            _selectButton.interactable = true;
-            _lockVisuals.SetActive(false);
-            _unlockVisuals.SetActive(true);
-        }
-    }
+    private void TryBuy() =>
+        BuyTried?.Invoke(GetComponent<Card>());
 }

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Clones.Infrastructure
+﻿namespace Clones.Infrastructure
 {
     public static class AssetPath
     {
@@ -9,5 +7,6 @@ namespace Clones.Infrastructure
         public const string VirtualCamera = "Camera/VirtualCamera";
         public const string QuestView = "UI/Game/QuestView";
         public const string EnemiesSpawner = "EnemiesSpawner/EnemiesSpawner";
+        public const string ClonesCardsView = "UI/MainMenu/ScrollRect_Clones";
     }
 }

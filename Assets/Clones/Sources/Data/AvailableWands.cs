@@ -8,7 +8,7 @@ namespace Clones.Data
     public class AvailableWands
     {
         public WandType SelectedWand;
-        public Dictionary<WandType, WandData> Wands;
+        public List<WandData> Wands;
 
         public AvailableWands()
         {

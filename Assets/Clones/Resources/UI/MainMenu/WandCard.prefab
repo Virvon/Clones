@@ -226,13 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerView: {fileID: 0}
-  _objectPrefab: {fileID: 4381721461280834602, guid: 37fd4fab87305b24aa0fbcbb8d6e794a, type: 3}
   _selectedVisuals: {fileID: 1695363185118011473}
-  _baseMultiplyResourceByRare: 0.25
-  CanSelected: 1
+  _lock: {fileID: 1695363186394484573}
   _damage: 10
   _cooldown: 0
+  _unlock: {fileID: 1695363185003639584}
 --- !u!114 &1717356788769376676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1695363185003639585
 RectTransform:
   m_ObjectHideFlags: 0

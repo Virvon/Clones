@@ -2,6 +2,7 @@
 using Clones.Services;
 using Clones.StaticData;
 using Clones.UI;
+using System.Linq;
 using UnityEngine;
 
 namespace Clones.Infrastructure
@@ -14,6 +15,7 @@ namespace Clones.Infrastructure
         private readonly IMainMenuStaticDataService _staticDataService;
 
         private MainMenuContainers _containers;
+        private ClonesCardsView _clonesCardsView;
 
         public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService)
         {
@@ -47,34 +49,38 @@ namespace Clones.Infrastructure
         {
             CloneStaticData cloneStaticData = _staticDataService.GetClone(type);
 
-            CardsView cloneCardsView = _containers.ClonesCardsView;
-
-            var cardObject = Object.Instantiate(cloneStaticData.Card, cloneCardsView.transform);
+            var cardObject = Object.Instantiate(cloneStaticData.Card, _clonesCardsView.transform);
             CloneCard card = cardObject.GetComponent<CloneCard>();
 
-            cloneCardsView.AddCard(card);
+            _clonesCardsView.AddCard(card, type);
 
-            cardObject.GetComponent<BuyCardView>()
-                .Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+            bool isBuyed = _persistentProgress.Progress.AvailableClones.Clones.Any(clone => clone.Type == type);
+            card.Init(isBuyed);
 
-            if (_persistentProgress.Progress.AvailableClones.Clones.TryGetValue(type, out CloneData data))
-                card.Init(data.Health, cloneStaticData.IncreaseHealth, data.Damage, cloneStaticData.IncreaseDamage, cloneStaticData.UpgradePrice, cloneStaticData.IncreasePrice);
-
-            card.Init(cloneStaticData.Helath, cloneStaticData.IncreaseHealth, cloneStaticData.Damage, cloneStaticData.IncreaseDamage, cloneStaticData.UpgradePrice, cloneStaticData.IncreasePrice);
+            if(isBuyed == false)
+                cardObject.GetComponent<BuyCardView>().Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
         }
 
         public void CreateWandCard(WandType type)
         {
             WandStaticData wandData = _staticDataService.GetWand(type);
 
-            CardsView wandsCardsView = _containers.WandsCardsView;
+            //CardsView<WandType> wandsCardsView = _containers.WandsCardsView;
 
-            var cardObject = Object.Instantiate(wandData.Card, wandsCardsView.transform);
-            CardWand card = cardObject.GetComponent<CardWand>();
+            //var cardObject = Object.Instantiate(wandData.Card, wandsCardsView.transform);
+            //CardWand card = cardObject.GetComponent<CardWand>();
 
-            wandsCardsView.AddCard(card);
+            //wandsCardsView.AddCard(card, type);
 
-            card.Init(wandData.Damage, wandData.Cooldown);
+            //card.Init(wandData.Damage, wandData.Cooldown);
+        }
+
+        public void CreateClonesCardsView()
+        {
+            GameObject viewObject = _assets.Instantiate(AssetPath.ClonesCardsView, _containers.ClonesCards);
+
+            _clonesCardsView = viewObject.GetComponentInChildren<ClonesCardsView>();
+            _clonesCardsView.Init(_persistentProgress, _staticDataService);
         }
     }
 }

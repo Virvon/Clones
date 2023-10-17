@@ -47,7 +47,6 @@ namespace Clones.Infrastructure
             progress.Wallet.Dna = 10000;
             progress.Wallet.Money = 10000;
 
-
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 
             CreateNewAvailableClones(progress.AvailableClones.Clones, menuData.CloneTypes);
@@ -56,25 +55,25 @@ namespace Clones.Infrastructure
             return progress;
         }
 
-        private void CreateNewAvailableClones(Dictionary<CloneType, CloneData> availableClones, CloneType[] cloneTypes)
+        private void CreateNewAvailableClones(List<CloneData> availableClones, CloneType[] cloneTypes)
         {
             foreach(var type in cloneTypes)
             {
                 CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(type);
 
                 if (cloneStaticData.IsBuyed)
-                    availableClones.Add(type, new CloneData(cloneStaticData.Helath, cloneStaticData.Damage));
+                    availableClones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage));
             }
         }
 
-        private void CreateNewAvailableWands(Dictionary<WandType, WandData> availableWands, WandType[] wandTypes)
+        private void CreateNewAvailableWands(List<WandData> availableWands, WandType[] wandTypes)
         {
             foreach (var type in wandTypes)
             {
                 WandStaticData wamdStaticData = _mainMenuStaticDataService.GetWand(type);
 
                 if (wamdStaticData.IsBuyed)
-                    availableWands.Add(type, new WandData(wamdStaticData.Damage, wamdStaticData.Cooldown));
+                    availableWands.Add(new WandData(type, wamdStaticData.Damage, wamdStaticData.Cooldown));
             }
         }
     }

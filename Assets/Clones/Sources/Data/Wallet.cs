@@ -10,21 +10,36 @@ namespace Clones.Data
 
         public event Action CurrencyCountChanged;
 
-        public void CollectMoney(int money)
+        public void CollectMoney(int count)
         {
-            if (money > 0)
+            if (count > 0)
             {
-                Money += money;
+                Money += count;
 
                 CurrencyCountChanged?.Invoke();
             }    
         }
 
-        public void CollectDna(int dna)
+        public bool TryTakeMoney(int count)
         {
-            if (dna > 0)
+            if(Money >= count)
             {
-                Dna += dna;
+                Money -= count;
+                CurrencyCountChanged?.Invoke();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void CollectDna(int count)
+        {
+            if (count > 0)
+            {
+                Dna += count;
 
                 CurrencyCountChanged?.Invoke();
             }

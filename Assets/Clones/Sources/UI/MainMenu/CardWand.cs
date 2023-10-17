@@ -6,6 +6,7 @@ public class CardWand : Card
     [Header("Характеристики палочки")]
     [SerializeField] private int _damage;
     [SerializeField] private float _cooldown;
+    [SerializeField] private GameObject _unlock;
 
     public int Damage => _damage;
     public float Cooldown => _cooldown;
@@ -23,5 +24,10 @@ public class CardWand : Card
         base.Select();
 
         //PlayerView.SelectCard(this);
+    }
+
+    protected override void Unlock()
+    {
+        _unlock.SetActive(true);
     }
 }

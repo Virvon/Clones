@@ -22,11 +22,12 @@ namespace Clones.Infrastructure
         public void Enter()
         {
             _mainMenuFactory.CreateMainMenu();
+            _mainMenuFactory.CreateClonesCardsView();
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 
             CreateClonesCards(menuData.CloneTypes);
-            CreateWandsCards(menuData.WandTypes);
+            //CreateWandsCards(menuData.WandTypes);
         } 
 
         public void Exit()

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Wand1
   m_EditorClassIdentifier: 
   Prefab: {fileID: 0}
+  Card: {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
   Type: 0
-  Damage: 0
-  Cooldown: 0
+  Damage: 1
+  Cooldown: 1
+  IsBuyed: 1

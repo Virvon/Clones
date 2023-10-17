@@ -8,7 +8,7 @@ namespace Clones.Data
     public class AvailableClones
     {
         public CloneType SelectedClone;
-        public Dictionary<CloneType, CloneData> Clones;
+        public List<CloneData> Clones;
 
         public AvailableClones()
         {
