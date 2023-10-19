@@ -10,7 +10,6 @@ namespace Clones.Data
         public int Health;
         public int Damage;
 
-
         public CloneData(CloneType type, int health, int damage)
         {
             Type = type;
