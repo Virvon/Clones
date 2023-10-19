@@ -32,6 +32,7 @@ namespace Clones.Infrastructure
             CreateClonesCards(menuData.CloneTypes);
             CreateWandsCards(menuData.WandTypes);
 
+            clonesCardsView.SelectCurrentOrDefault();
             wandsCardsView.SelectCurrentOrDefault();
 
             wandsCardsView.gameObject.SetActive(false);

@@ -1,13 +1,16 @@
 ﻿using Clones.Data;
 using Clones.StaticData;
-using System.Collections.Generic;
-using System.Linq;
 
 public class ClonesCardsView : CardsView<CloneType>
 {
     public override void SelectCurrentOrDefault()
     {
-        throw new System.NotImplementedException();
+        CloneType type = PersistentProgress.Progress.AvailableClones.SelectedClone;
+
+        if (type != CloneType.Undefined)
+            Select(GetCard(type));
+        else
+            SelectDefault();
     }
 
     protected override void OnBuyTried(Card card)
