@@ -6,5 +6,6 @@ namespace Clones.UI
     {
         public Transform ClonesCards;
         public Transform Buttons;
+        public Transform StatsView;
     }
 }

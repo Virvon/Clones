@@ -115,5 +115,13 @@ namespace Clones.Infrastructure
             wandsCardsShowButton.GetComponent<ToggleWindows>()
                 .Init(new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
         }
+
+        public void CreateStatsView()
+        {
+            GameObject statsView = _assets.Instantiate(AssetPath.StatsView, _containers.StatsView);
+
+            statsView.GetComponent<StatsView>()
+                .Init(_persistentProgress);
+        }
     }
 }

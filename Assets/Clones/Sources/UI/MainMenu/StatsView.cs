@@ -10,12 +10,23 @@ public class StatsView : MonoBehaviour
     [SerializeField] private TMP_Text _cooldown;
     [SerializeField] private TMP_Text _resourceMultipier;
 
-    private IPersistentProgressService persistentProgress;
+    private IPersistentProgressService _persistentProgress;
+
+    public void Init(IPersistentProgressService persistentProgress)
+    {
+        _persistentProgress = persistentProgress;
+
+        _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateStats;
+        _persistentProgress.Progress.AvailableWands.SelectedWandChanged += UpdateStats;
+    }
 
     private void UpdateStats()
     { 
-        CloneData cloneData = persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
-        WandData wandData = persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+        CloneData cloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
+        WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+
+        if (cloneData == null || wandData == null)
+            return;
 
         int health = cloneData.Health;
         int damage = cloneData.Damage + wandData.Damage;

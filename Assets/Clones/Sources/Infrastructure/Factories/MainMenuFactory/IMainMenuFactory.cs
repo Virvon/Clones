@@ -13,5 +13,6 @@ namespace Clones.Infrastructure
         WandsCardsView CreateWandsCardsView();
         void CreatePlayButton();
         void CreateShowCardButtonds();
+        void CreateStatsView();
     }
 }

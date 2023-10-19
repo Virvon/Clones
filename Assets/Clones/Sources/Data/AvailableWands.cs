@@ -22,7 +22,7 @@ namespace Clones.Data
         public void SetSelectedWand(WandType type)
         {
             SelectedWand = type;
-            SelectedWandChanged();
+            SelectedWandChanged?.Invoke();
         }
 
         public WandData GetSelectedWandData() =>

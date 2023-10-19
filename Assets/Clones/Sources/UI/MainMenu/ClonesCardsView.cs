@@ -27,5 +27,5 @@ public class ClonesCardsView : CardsView<CloneType>
     }
 
     protected override void SaveCurrentCard(Card card) => 
-        PersistentProgress.Progress.AvailableClones.SelectedClone = GetType(card);
+        PersistentProgress.Progress.AvailableClones.SetSelectedClone(GetType(card));
 }

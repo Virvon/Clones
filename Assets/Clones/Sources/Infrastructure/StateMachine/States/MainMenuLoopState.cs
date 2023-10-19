@@ -20,8 +20,11 @@ namespace Clones.Infrastructure
         {
             _mainMenuFactory.CreateMainMenu();
             _mainMenuFactory.CreatePlayButton();
+            _mainMenuFactory.CreateStatsView();
+
             ClonesCardsView clonesCardsView = _mainMenuFactory.CreateClonesCardsView();
             WandsCardsView wandsCardsView = _mainMenuFactory.CreateWandsCardsView();
+
             _mainMenuFactory.CreateShowCardButtonds();
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();

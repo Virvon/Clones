@@ -12,5 +12,6 @@
         public const string PlayButton = "UI/MainMenu/Button_Play";
         public const string ClonesCardsShowButton = "UI/MainMenu/ClonesCardsShowButton";
         public const string WandsCardsShowButton = "UI/MainMenu/WandsCardsShowButton";
+        public const string StatsView = "UI/MainMenu/StatsView";
     }
 }

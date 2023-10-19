@@ -27,5 +27,5 @@ public class WandsCardsView : CardsView<WandType>
     }
 
     protected override void SaveCurrentCard(Card card) => 
-        PersistentProgress.Progress.AvailableWands.SelectedWand = GetType(card);
+        PersistentProgress.Progress.AvailableWands.SetSelectedWand(GetType(card));
 }
