@@ -12,11 +12,10 @@ public abstract class Card : MonoBehaviour
 
     //public float BaseMultiplyRecourceByRare => _baseMultiplyResourceByRare;
 
-    public void Start() => 
-        Unselect();
-
     public void Init(bool isBuyed)
     {
+        Unselect();
+
         if (isBuyed)
             Unlock();
         else
@@ -29,7 +28,7 @@ public abstract class Card : MonoBehaviour
         Unlock();
     }
 
-    public virtual void Select() =>
+    public virtual void Select() => 
         _selectedVisuals.SetActive(true);
 
     public void Unselect() => 

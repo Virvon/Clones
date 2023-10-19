@@ -23,8 +23,8 @@ namespace Clones.Infrastructure
         {
             _mainMenuFactory.CreateMainMenu();
             _mainMenuFactory.CreatePlayButton();
-            _mainMenuFactory.CreateClonesCardsView();
-            GameObject wandsCardsView = _mainMenuFactory.CreateWandsCardsView();
+            ClonesCardsView clonesCardsView = _mainMenuFactory.CreateClonesCardsView();
+            WandsCardsView wandsCardsView = _mainMenuFactory.CreateWandsCardsView();
             _mainMenuFactory.CreateShowCardButtonds();
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
@@ -32,7 +32,9 @@ namespace Clones.Infrastructure
             CreateClonesCards(menuData.CloneTypes);
             CreateWandsCards(menuData.WandTypes);
 
-            wandsCardsView.SetActive(false);
+            wandsCardsView.SelectCurrentOrDefault();
+
+            wandsCardsView.gameObject.SetActive(false);
         } 
 
         public void Exit()

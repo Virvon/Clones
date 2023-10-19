@@ -6,7 +6,7 @@ namespace Clones.StaticData
     public class WandStaticData : ScriptableObject
     {
         public GameObject Prefab;
-        public CardWand Card;
+        public WandCard Card;
         public WandType Type;
         public int Damage;
         public float Cooldown;

@@ -53,7 +53,7 @@ namespace Clones.Infrastructure
 
             _clonesCardsView.AddCard(card, type);
 
-            bool isBuyed = _persistentProgress.Progress.AvailableClones.Clones.Any(clone => clone.Type == type);
+            bool isBuyed = _persistentProgress.Progress.AvailableClones.Clones.Any(cloneData => cloneData.Type == type);
             card.Init(isBuyed);
 
             if(isBuyed == false)
@@ -62,36 +62,38 @@ namespace Clones.Infrastructure
 
         public void CreateWandCard(WandType type)
         {
-            WandStaticData wandData = _staticDataService.GetWand(type);
+            WandStaticData wandStaticData = _staticDataService.GetWand(type);
 
-            var cardObject = Object.Instantiate(wandData.Card, _wandsCardsView.transform);
-            CardWand card = cardObject.GetComponent<CardWand>();
+            var cardObject = Object.Instantiate(wandStaticData.Card, _wandsCardsView.transform);
+            WandCard card = cardObject.GetComponent<WandCard>();
 
             _wandsCardsView.AddCard(card, type);
 
-            card.Init(wandData.Damage, wandData.Cooldown);
+            bool isBuyed = _persistentProgress.Progress.AvailableWands.Wands.Any(wandData => wandData.Type == type);
+            card.Init(isBuyed);
 
-            Debug.Log("Wand card created");
+            if (isBuyed == false)
+                cardObject.GetComponent<BuyCardView>().Init(wandStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
         }
 
-        public GameObject CreateClonesCardsView()
+        public ClonesCardsView CreateClonesCardsView()
         {
             GameObject viewObject = _assets.Instantiate(AssetPath.ClonesCardsView, _containers.ClonesCards.transform);
 
             _clonesCardsView = viewObject.GetComponentInChildren<ClonesCardsView>();
             _clonesCardsView.Init(_persistentProgress, _staticDataService);
 
-            return _clonesCardsView.gameObject;
+            return _clonesCardsView;
         }
 
-        public GameObject CreateWandsCardsView()
+        public WandsCardsView CreateWandsCardsView()
         {
             GameObject viewObject = _assets.Instantiate(AssetPath.WandsCardsView, _containers.ClonesCards);
 
             _wandsCardsView = viewObject.GetComponentInChildren<WandsCardsView>();
             _wandsCardsView.Init(_persistentProgress, _staticDataService);
 
-            return _wandsCardsView.gameObject;
+            return _wandsCardsView;
         }
 
         public void CreatePlayButton()

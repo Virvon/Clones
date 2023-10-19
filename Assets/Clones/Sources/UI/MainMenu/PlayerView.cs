@@ -26,7 +26,7 @@ public class PlayerView : MonoBehaviour
         //_cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
     }
 
-    public void SelectCard(CardWand cardWand)
+    public void SelectCard(WandCard cardWand)
     {
         //_cardWand = cardWand;
         UpdateStats();

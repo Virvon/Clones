@@ -1,12 +1,21 @@
 ﻿using Clones.Data;
 using Clones.StaticData;
-using System.Collections.Generic;
 
 public class WandsCardsView : CardsView<WandType>
 {
+    public override void SelectCurrentOrDefault()
+    {
+        WandType type = PersistentProgress.Progress.AvailableWands.SelectedWand;
+
+        if (type != WandType.Undefined)
+            Select(GetCard(type));
+        else
+            SelectDefault();
+    }
+
     protected override void OnBuyTried(Card card)
     {
-        WandType type = Cards.GetValueOrDefault(card);
+        WandType type = GetType(card);
         WandStaticData wandStaticData = MainMenuStaticDataService.GetWand(type);
         int price = wandStaticData.BuyPrice;
 
@@ -16,4 +25,7 @@ public class WandsCardsView : CardsView<WandType>
             card.Buy();
         }
     }
+
+    protected override void SaveCurrentCard(Card card) => 
+        PersistentProgress.Progress.AvailableWands.SelectedWand = GetType(card);
 }

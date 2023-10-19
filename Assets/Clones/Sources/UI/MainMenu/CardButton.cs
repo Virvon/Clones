@@ -10,7 +10,7 @@ public class CardButton : MonoBehaviour
 
     public event Action<Card> Clicked;
 
-    private void Start()
+    private void OnEnable()
     {
         _card = GetComponent<Card>();
         _button = GetComponent<Button>();
@@ -18,7 +18,7 @@ public class CardButton : MonoBehaviour
         _button.onClick.AddListener(OnClicked);
     }
 
-    private void OnDestroy() => 
+    private void OnDisable() => 
         _button.onClick.RemoveListener(OnClicked);
 
     private void OnClicked() => 

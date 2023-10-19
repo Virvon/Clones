@@ -1529,8 +1529,6 @@ MonoBehaviour:
   _selectedVisuals: {fileID: 4942409479424376435}
   _lock: {fileID: 0}
   _select: {fileID: 0}
-  _damage: 20
-  _cooldown: 0
   _unlock: {fileID: 0}
 --- !u!114 &4942409478918640818
 MonoBehaviour:
@@ -2379,8 +2377,6 @@ MonoBehaviour:
   _selectedVisuals: {fileID: 4942409479648534711}
   _lock: {fileID: 0}
   _select: {fileID: 0}
-  _damage: 15
-  _cooldown: 0
   _unlock: {fileID: 0}
 --- !u!114 &4942409479120273487
 MonoBehaviour:
@@ -3238,8 +3234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349.34, y: -1138.4403}
-  m_SizeDelta: {x: 700.33, y: 3260}
+  m_AnchoredPosition: {x: -349.34, y: -0.0061457767}
+  m_SizeDelta: {x: 700.33, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &4942409479578763808
 MonoBehaviour:
@@ -4728,8 +4724,6 @@ MonoBehaviour:
   _selectedVisuals: {fileID: 4942409478744928338}
   _lock: {fileID: 0}
   _select: {fileID: 0}
-  _damage: 10
-  _cooldown: 0
   _unlock: {fileID: 0}
 --- !u!114 &4942409480247356495
 MonoBehaviour:

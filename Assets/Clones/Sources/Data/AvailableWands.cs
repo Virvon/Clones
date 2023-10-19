@@ -12,6 +12,7 @@ namespace Clones.Data
 
         public AvailableWands()
         {
+            SelectedWand = WandType.Undefined;
             Wands = new();
         }
     }

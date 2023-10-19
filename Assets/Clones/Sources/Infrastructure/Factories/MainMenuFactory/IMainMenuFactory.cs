@@ -9,8 +9,8 @@ namespace Clones.Infrastructure
         GameObject CreateMainMenu();
         void CreateCloneCard(CloneType type);
         void CreateWandCard(WandType type);
-        GameObject CreateClonesCardsView();
-        GameObject CreateWandsCardsView();
+        ClonesCardsView CreateClonesCardsView();
+        WandsCardsView CreateWandsCardsView();
         void CreatePlayButton();
         void CreateShowCardButtonds();
     }
