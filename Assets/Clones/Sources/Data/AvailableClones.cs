@@ -12,6 +12,7 @@ namespace Clones.Data
         public List<CloneData> Clones;
 
         public event Action SelectedCloneChanged;
+        public event Action SelectedCloneUpgraded;
 
         public AvailableClones()
         {
@@ -21,7 +22,15 @@ namespace Clones.Data
 
         public void SetSelectedClone(CloneType type)
         {
+            CloneData selectedCloneData = GetSelectedCloneData();
+
+            if(selectedCloneData != null)
+                selectedCloneData.Upgraded -= SelectedCloneUpgraded;
+
             SelectedClone = type;
+
+            GetSelectedCloneData().Upgraded += SelectedCloneUpgraded;
+
             SelectedCloneChanged?.Invoke();
         }
 

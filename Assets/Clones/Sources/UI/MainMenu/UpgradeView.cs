@@ -1,10 +1,15 @@
-﻿using Clones.Services;
+﻿using Clones.Data;
+using Clones.Services;
 using UnityEngine;
 
 public class UpgradeView : MonoBehaviour
 {
     [SerializeField] private UpgradeButton _cloneUpgradeButton;
     [SerializeField] private UpgradeButton _wandUpgradeButton;
+
+    private const int IncreaseHealth = 10;
+    private const int IncreaseDamage = 10;
+    private const int IncreaseUpgradePrice = 200;
 
     private IPersistentProgressService _persistentProgress;
 
@@ -14,6 +19,8 @@ public class UpgradeView : MonoBehaviour
 
         _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += OnSelectedCloneChanged;
         _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
+
+        _cloneUpgradeButton.UpgradeTried += UpgradeClone;
     }
 
     private void OnSelectedCloneChanged() => 
@@ -24,6 +31,12 @@ public class UpgradeView : MonoBehaviour
 
     private void UpgradeClone()
     {
-        Debug.Log("clone upgraded");
+        CloneData data = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
+
+        if (_persistentProgress.Progress.Wallet.TryTakeDna(data.UpgradePrice))
+        {
+            data.Upgrade(IncreaseHealth, IncreaseDamage, IncreaseUpgradePrice);
+            _cloneUpgradeButton.SetPrice(data.UpgradePrice);
+        }
     }
 }

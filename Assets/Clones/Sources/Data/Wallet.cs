@@ -29,10 +29,21 @@ namespace Clones.Data
 
                 return true;
             }
-            else
+
+            return false;
+        }
+
+        public bool TryTakeDna(int count)
+        {
+            if(Dna >= count)
             {
-                return false;
+                Dna -= count;
+                CurrencyCountChanged?.Invoke();
+
+                return true;
             }
+
+            return false;
         }
 
         public void CollectDna(int count)

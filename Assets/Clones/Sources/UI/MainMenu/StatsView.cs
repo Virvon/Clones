@@ -18,6 +18,8 @@ public class StatsView : MonoBehaviour
 
         _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateStats;
         _persistentProgress.Progress.AvailableWands.SelectedWandChanged += UpdateStats;
+
+        _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded += UpdateStats;
     }
 
     private void UpdateStats()
