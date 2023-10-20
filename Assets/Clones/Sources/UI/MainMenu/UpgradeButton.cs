@@ -7,14 +7,8 @@ using Clones.Data;
 [RequireComponent(typeof(Button))]
 public abstract class UpgradeButton : MonoBehaviour
 {
-    //[SerializeField] private Wallet _wallet;
-    [Space]
     [SerializeField] private TMP_Text _textPrice;
-    [Space]
     [SerializeField] private GameObject _cantUpgradeVisuals;
-    //[Space]
-    //[SerializeField] private bool _isUseDNA;
-    //[SerializeField] private bool _isUseCoins;
 
     private Button _button;
 
@@ -58,46 +52,5 @@ public abstract class UpgradeButton : MonoBehaviour
             _cantUpgradeVisuals.SetActive(false);
         else
             _cantUpgradeVisuals.SetActive(true);
-    }
-
-    public void OnClick()
-    {
-        //Debug.Log("upgrade button click");
-        //if (_isUseDNA)
-        //{
-        //    //_wallet.ChangeDNACount(-_cardClone.UpgradePrice);
-        //    //_cardClone.UpgradeByDNA();
-        //}
-
-        //if (_isUseCoins)
-        //{
-        //    //_wallet.ChangeCoinsCount(-_cardClone.UpgradePrice);
-        //    //_cardClone.UpgradeByCoins();
-        //}
-    }
-
-    public void SetCardClone(CloneCard cardClone)
-    {
-        //_cardClone = cardClone;
-    }
-
-    public void UpdateButton()
-    {
-        Debug.Log("upgrade button");
-        //int price = _cardClone.UpgradePrice;
-
-        //if (_isUseDNA)
-        //{
-        //    //_cantUpgradeVisuals.SetActive(_wallet.DNA < price);
-        //    //_button.interactable = _wallet.DNA >= price;
-        //}
-
-        //if (_isUseCoins)
-        //{
-        //    //_cantUpgradeVisuals.SetActive(_wallet.Coins < price);
-        //    //_button.interactable = _wallet.Coins >= price;
-        //}
-        
-        //_textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
     }
 }
