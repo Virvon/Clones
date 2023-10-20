@@ -13,5 +13,6 @@
         public const string ClonesCardsShowButton = "UI/MainMenu/ClonesCardsShowButton";
         public const string WandsCardsShowButton = "UI/MainMenu/WandsCardsShowButton";
         public const string StatsView = "UI/MainMenu/StatsView";
+        public const string UpgradeView = "UI/MainMenu/UpgradeView";
     }
 }

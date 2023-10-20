@@ -123,5 +123,16 @@ namespace Clones.Infrastructure
             statsView.GetComponent<StatsView>()
                 .Init(_persistentProgress);
         }
+
+        public void CreateUpgradeView()
+        {
+            GameObject upgradeView = _assets.Instantiate(AssetPath.UpgradeView, _containers.Buttons);
+
+            upgradeView.GetComponent<UpgradeView>()
+                .Init(_persistentProgress);
+
+            upgradeView.GetComponentInChildren<CloneUpgradeButton>()
+                .Init(_persistentProgress.Progress.Wallet);
+        }
     }
 }

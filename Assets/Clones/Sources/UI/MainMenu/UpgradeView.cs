@@ -17,10 +17,8 @@ public class UpgradeView : MonoBehaviour
         _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
     }
 
-    private void OnSelectedCloneChanged()
-    {
-        
-    }
+    private void OnSelectedCloneChanged() => 
+        _cloneUpgradeButton.SetPrice(_persistentProgress.Progress.AvailableClones.GetSelectedCloneData().UpgradePrice);
 
     private void OnSelectedWandChanged()
     {

@@ -14,5 +14,6 @@ namespace Clones.Infrastructure
         void CreatePlayButton();
         void CreateShowCardButtonds();
         void CreateStatsView();
+        void CreateUpgradeView();
     }
 }

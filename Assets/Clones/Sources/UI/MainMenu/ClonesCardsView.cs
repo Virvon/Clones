@@ -21,7 +21,7 @@ public class ClonesCardsView : CardsView<CloneType>
 
         if(PersistentProgress.Progress.Wallet.TryTakeMoney(price))
         {
-            PersistentProgress.Progress.AvailableClones.Clones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage));
+            PersistentProgress.Progress.AvailableClones.Clones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice));
             card.Buy();
         }
     }
