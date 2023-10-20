@@ -28,8 +28,11 @@ namespace Clones.Infrastructure
             _disables = new();
         }
 
-        public void Enter() => 
+        public void Enter()
+        {
             CreateGame();
+            UseSelectedClone();
+        }
 
         public void Exit()
         {
@@ -81,5 +84,8 @@ namespace Clones.Infrastructure
             _disables.Add(currencyDropper);
             _disables.Add(questItemsDropper);
         }
+
+        private void UseSelectedClone() =>
+            _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Use();
     }
 }

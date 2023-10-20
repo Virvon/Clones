@@ -10,6 +10,8 @@ namespace Clones.Data
         public int Health;
         public int Damage;
         public int UpgradePrice;
+        public bool IsUsed;
+        public DateTime UseDate;
 
         public event Action Upgraded;
 
@@ -28,6 +30,12 @@ namespace Clones.Data
             UpgradePrice += upgradePrice;
 
             Upgraded?.Invoke();
+        }
+
+        public void Use()
+        {
+            IsUsed = true;
+            UseDate = DateTime.Now;
         }
     }
 }

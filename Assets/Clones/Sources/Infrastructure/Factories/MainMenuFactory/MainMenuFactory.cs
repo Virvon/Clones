@@ -54,10 +54,14 @@ namespace Clones.Infrastructure
             _clonesCardsView.AddCard(card, type);
 
             bool isBuyed = _persistentProgress.Progress.AvailableClones.Clones.Any(cloneData => cloneData.Type == type);
+            bool isUsed = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().IsUsed;
+
             card.Init(isBuyed);
 
-            if(isBuyed == false)
+            if (isBuyed == false)
                 cardObject.GetComponent<BuyCardView>().Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+            else if (isUsed)
+                cardObject.GetComponent<DieClone>();
         }
 
         public void CreateWandCard(WandType type)
