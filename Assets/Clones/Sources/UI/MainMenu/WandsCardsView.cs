@@ -21,7 +21,7 @@ public class WandsCardsView : CardsView<WandType>
 
         if (PersistentProgress.Progress.Wallet.TryTakeMoney(price))
         {
-            PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.Damage, wandStaticData.Cooldown, wandStaticData.UpgradePrice));
+            PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.Damage, wandStaticData.UpgradePrice));
             card.Buy();
         }
     }

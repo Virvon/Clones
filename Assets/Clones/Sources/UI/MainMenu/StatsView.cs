@@ -11,15 +11,18 @@ public class StatsView : MonoBehaviour
     [SerializeField] private TMP_Text _resourceMultipier;
 
     private IPersistentProgressService _persistentProgress;
+    private IMainMenuStaticDataService _mainMenuStaticDataService;
 
-    public void Init(IPersistentProgressService persistentProgress)
+    public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
     {
         _persistentProgress = persistentProgress;
+        _mainMenuStaticDataService = mainMenuStaticDataService;
 
         _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateStats;
         _persistentProgress.Progress.AvailableWands.SelectedWandChanged += UpdateStats;
 
         _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded += UpdateStats;
+        _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded += UpdateStats;
     }
 
     private void UpdateStats()
@@ -32,7 +35,7 @@ public class StatsView : MonoBehaviour
 
         int health = cloneData.Health;
         int damage = cloneData.Damage + wandData.Damage;
-        float cooldown = wandData.Cooldown;
+        float cooldown = GetCooldown();
         //float resourceMultiplier = (_baseResourceMultiplier + _cardClone.Level * _upgradeResourceMultiplier) * (_cardClone.BaseMultiplyRecourceByRare + _cardWand.BaseMultiplyRecourceByRare);
         float resourceMultiplier = 1;
 
@@ -41,4 +44,7 @@ public class StatsView : MonoBehaviour
         _cooldown.text = NumberFormatter.DivideFloatOnDigits(cooldown);
         _resourceMultipier.text = NumberFormatter.DivideFloatOnDigits(resourceMultiplier);
     }
+
+    private float GetCooldown() =>
+        _mainMenuStaticDataService.GetWand(_persistentProgress.Progress.AvailableWands.SelectedWand).Cooldown;
 }

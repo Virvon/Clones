@@ -73,7 +73,7 @@ namespace Clones.Infrastructure
                 WandStaticData wamdStaticData = _mainMenuStaticDataService.GetWand(type);
 
                 if (wamdStaticData.IsBuyed)
-                    availableWands.Add(new WandData(type, wamdStaticData.Damage, wamdStaticData.Cooldown, wamdStaticData.UpgradePrice));
+                    availableWands.Add(new WandData(type, wamdStaticData.Damage, wamdStaticData.UpgradePrice));
             }
         }
     }

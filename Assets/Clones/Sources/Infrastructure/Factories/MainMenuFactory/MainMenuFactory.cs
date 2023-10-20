@@ -121,7 +121,7 @@ namespace Clones.Infrastructure
             GameObject statsView = _assets.Instantiate(AssetPath.StatsView, _containers.StatsView);
 
             statsView.GetComponent<StatsView>()
-                .Init(_persistentProgress);
+                .Init(_persistentProgress, _staticDataService);
         }
 
         public void CreateUpgradeView()

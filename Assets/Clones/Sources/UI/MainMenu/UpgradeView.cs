@@ -21,6 +21,7 @@ public class UpgradeView : MonoBehaviour
         _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
 
         _cloneUpgradeButton.UpgradeTried += UpgradeClone;
+        _wandUpgradeButton.UpgradeTried += UpgradeWand;
     }
 
     private void OnSelectedCloneChanged() => 
@@ -37,6 +38,17 @@ public class UpgradeView : MonoBehaviour
         {
             data.Upgrade(IncreaseHealth, IncreaseDamage, IncreaseUpgradePrice);
             _cloneUpgradeButton.SetPrice(data.UpgradePrice);
+        }
+    }
+
+    private void UpgradeWand()
+    {
+        WandData data = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+
+        if (_persistentProgress.Progress.Wallet.TryTakeMoney(data.UpgradePrice))
+        {
+            data.Upgrade(IncreaseDamage, IncreaseUpgradePrice);
+            _wandUpgradeButton.SetPrice(data.UpgradePrice);
         }
     }
 }

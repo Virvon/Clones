@@ -12,6 +12,7 @@ namespace Clones.Data
         public List<WandData> Wands;
 
         public event Action SelectedWandChanged;
+        public event Action SelectedWandUpgraded;
 
         public AvailableWands()
         {
@@ -21,7 +22,15 @@ namespace Clones.Data
 
         public void SetSelectedWand(WandType type)
         {
+            WandData selectedWandData = GetSelectedWandData();
+
+            if(selectedWandData != null)
+                selectedWandData.Upgraded -= SelectedWandUpgraded;
+
             SelectedWand = type;
+
+            GetSelectedWandData().Upgraded += SelectedWandUpgraded;
+
             SelectedWandChanged?.Invoke();
         }
 

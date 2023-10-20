@@ -8,15 +8,23 @@ namespace Clones.Data
     {
         public WandType Type;
         public int Damage;
-        public float Cooldown;
         public int UpgradePrice;
 
-        public WandData(WandType type, int damage, float cooldown, int upgradePrice)
+        public event Action Upgraded;
+
+        public WandData(WandType type, int damage, int upgradePrice)
         {
             Type = type;
             Damage = damage;
-            Cooldown = cooldown;
             UpgradePrice = upgradePrice;
+        }
+
+        public void Upgrade(int damage, int upgradePrice)
+        {
+            Damage += damage;
+            UpgradePrice += upgradePrice;
+
+            Upgraded?.Invoke();
         }
     }
 }
