@@ -9,12 +9,14 @@ namespace Clones.Data
         public WandType Type;
         public int Damage;
         public float Cooldown;
+        public int UpgradePrice;
 
-        public WandData(WandType type, int damage, float cooldown)
+        public WandData(WandType type, int damage, float cooldown, int upgradePrice)
         {
             Type = type;
             Damage = damage;
             Cooldown = cooldown;
+            UpgradePrice = upgradePrice;
         }
     }
 }

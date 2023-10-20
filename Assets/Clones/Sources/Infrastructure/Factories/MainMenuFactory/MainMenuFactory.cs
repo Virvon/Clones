@@ -133,6 +133,9 @@ namespace Clones.Infrastructure
 
             upgradeView.GetComponentInChildren<CloneUpgradeButton>()
                 .Init(_persistentProgress.Progress.Wallet);
+
+            upgradeView.GetComponentInChildren<WandUpgradeButton>()
+                .Init(_persistentProgress.Progress.Wallet);
         }
     }
 }

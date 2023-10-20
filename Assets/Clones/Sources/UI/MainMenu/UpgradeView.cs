@@ -1,5 +1,4 @@
 ﻿using Clones.Services;
-using System;
 using UnityEngine;
 
 public class UpgradeView : MonoBehaviour
@@ -20,10 +19,8 @@ public class UpgradeView : MonoBehaviour
     private void OnSelectedCloneChanged() => 
         _cloneUpgradeButton.SetPrice(_persistentProgress.Progress.AvailableClones.GetSelectedCloneData().UpgradePrice);
 
-    private void OnSelectedWandChanged()
-    {
-
-    }
+    private void OnSelectedWandChanged() => 
+        _wandUpgradeButton.SetPrice(_persistentProgress.Progress.AvailableWands.GetSelectedWandData().UpgradePrice);
 
     private void UpgradeClone()
     {
