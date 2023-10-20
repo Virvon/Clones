@@ -1,23 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
+using Clones.Data;
 
-public class UpgradeButton : MonoBehaviour
+[RequireComponent(typeof(Button))]
+public abstract class UpgradeButton : MonoBehaviour
 {
     //[SerializeField] private Wallet _wallet;
     [Space]
     [SerializeField] private TMP_Text _textPrice;
     [Space]
-    [SerializeField] private Button _button;
     [SerializeField] private GameObject _cantUpgradeVisuals;
-    [Space]
-    [SerializeField] private CloneCard _cardClone;
-    [Space]
-    [SerializeField] private bool _isUseDNA;
-    [SerializeField] private bool _isUseCoins;
+    //[Space]
+    //[SerializeField] private bool _isUseDNA;
+    //[SerializeField] private bool _isUseCoins;
+
+    private Button _button;
+
+    protected int Price { get; private set; }
+    protected Wallet Wallet { get; private set; }
+
+    protected abstract bool CanUpgrade { get; }
+
+    public event Action UpgradeTried;
+
+    private void OnDisable() => 
+        _button.onClick.RemoveListener(OnButtonClicked);
+
+    public void Init(Wallet wallet)
+    {
+        Wallet = wallet;
+
+        _button = GetComponent<Button>();
+
+        Wallet.CurrencyCountChanged += CheckPrice;
+        _button.onClick.AddListener(OnButtonClicked);
+
+        CheckPrice();
+    }
+
+    public void SetPrice(int price)
+    {
+        Price = price;
+
+        _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
+
+        CheckPrice();
+    }
+
+    private void OnButtonClicked() => 
+        UpgradeTried?.Invoke();
+
+    private void CheckPrice()
+    {
+        if (CanUpgrade)
+            _cantUpgradeVisuals.SetActive(false);
+        else
+            _cantUpgradeVisuals.SetActive(true);
+    }
 
     public void OnClick()
     {
@@ -25,19 +66,19 @@ public class UpgradeButton : MonoBehaviour
         if (_isUseDNA)
         {
             //_wallet.ChangeDNACount(-_cardClone.UpgradePrice);
-            _cardClone.UpgradeByDNA();
+            //_cardClone.UpgradeByDNA();
         }
 
         if (_isUseCoins)
         {
             //_wallet.ChangeCoinsCount(-_cardClone.UpgradePrice);
-            _cardClone.UpgradeByCoins();
+            //_cardClone.UpgradeByCoins();
         }
     }
 
     public void SetCardClone(CloneCard cardClone)
     {
-        _cardClone = cardClone;
+        //_cardClone = cardClone;
     }
 
     public void UpdateButton()

@@ -1,7 +1,5 @@
 using Clones.Data;
-using Clones.StaticData;
 using System;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
