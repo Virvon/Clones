@@ -8,9 +8,17 @@ public class ClonesCardsView : CardsView<CloneType>
         CloneType type = PersistentProgress.Progress.AvailableClones.SelectedClone;
 
         if (type != CloneType.Undefined)
-            Select(GetCard(type));
-        else
-            SelectDefault();
+        {
+            CloneData selectedCloneData = PersistentProgress.Progress.AvailableClones.GetSelectedCloneData();
+
+            if(selectedCloneData.IsUsed == false)
+            {
+                Select(GetCard(type));
+                return;
+            }
+        }
+
+        SelectDefault();
     }
 
     protected override void OnBuyTried(Card card)

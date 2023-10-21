@@ -10,8 +10,9 @@ namespace Clones.Data
         public int Health;
         public int Damage;
         public int UpgradePrice;
-        public bool IsUsed;
         public string DisuseEndDate;
+
+        public bool IsUsed => GetDisuseEndDate() - DateTime.Now > TimeSpan.Zero;
 
         public event Action Upgraded;
 
@@ -22,7 +23,7 @@ namespace Clones.Data
             Damage = damage;
             UpgradePrice = upgradePrice;
 
-            IsUsed = false;
+            DisuseEndDate = DateTime.MinValue.ToString();
         }
 
         public void Upgrade(int health, int damage, int upgradePrice)
@@ -36,8 +37,6 @@ namespace Clones.Data
 
         public void Use(int disuseTime)
         {
-            IsUsed = true;
-            
             DateTime disuseEndDate = DateTime.Now;
             disuseEndDate = disuseEndDate.AddSeconds(disuseTime);
             DisuseEndDate = disuseEndDate.ToString();
