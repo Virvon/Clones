@@ -1,5 +1,7 @@
 ﻿using Clones.Services;
 using Clones.StaticData;
+using System;
+using UnityEngine;
 
 namespace Clones.Infrastructure
 {
@@ -37,6 +39,8 @@ namespace Clones.Infrastructure
             wandsCardsView.SelectCurrentOrDefault();
 
             wandsCardsView.gameObject.SetActive(false);
+
+            TestDateTime();
         } 
 
         public void Exit()
@@ -54,6 +58,22 @@ namespace Clones.Infrastructure
         {
             foreach (var type in types)
                 _mainMenuFactory.CreateWandCard(type);
+        }
+
+        private void TestDateTime()
+        {
+            DateTime dateTime = DateTime.Now;
+            DateTime dateTime3;
+            TimeSpan timeSpan = new TimeSpan();
+
+            dateTime3 = new DateTime();
+            dateTime3 = dateTime.AddMinutes(2);
+            timeSpan = dateTime3 - dateTime;
+
+            string time = dateTime.ToString();
+            DateTime parce = DateTime.Parse(time);
+
+            //Debug.Log("string " + time + " parce " + parce);
         }
     }
 }

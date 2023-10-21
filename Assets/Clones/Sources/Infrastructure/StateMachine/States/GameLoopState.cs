@@ -14,16 +14,18 @@ namespace Clones.Infrastructure
         private readonly IPartsFactory _partsFactory;
         private readonly IPersistentProgressService _persistentProgress;
         private readonly ITimeScale _timeScale;
+        private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
 
         private List<IDisable> _disables;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale)
+        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
             _partsFactory = partsFactory;
             _persistentProgress = persistentProgress;
             _timeScale = timeScale;
+            _mainMenuStaticDataService = mainMenuStaticDataService;
 
             _disables = new();
         }
@@ -85,7 +87,7 @@ namespace Clones.Infrastructure
             _disables.Add(questItemsDropper);
         }
 
-        private void UseSelectedClone() =>
-            _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Use();
+        private void UseSelectedClone() => 
+            _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Use(_mainMenuStaticDataService.GetClone(_persistentProgress.Progress.AvailableClones.SelectedClone).DisuseTime);
     }
 }

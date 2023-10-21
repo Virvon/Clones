@@ -14,6 +14,7 @@ namespace Clones.StaticData
         public int IncreaseDamage;
         public int UpgradePrice;
         public int IncreasePrice;
+        public int DisuseTime;
         public int BuyPrice;
         public bool IsBuyed;
     }

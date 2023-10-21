@@ -1,23 +1,36 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class DieClone : MonoBehaviour
 {
-    [SerializeField] private Button _selectedCloneButton;
-    [SerializeField] private GameObject _unlockVisuals;
+    //[SerializeField] private Button _selectedCloneButton;
+    //[SerializeField] private GameObject _unlockVisuals;
     [SerializeField] private GameObject _dieVisuals;
-    [SerializeField] private int _secondsToRestore;
+    //[SerializeField] private int _secondsToRestore;
     [SerializeField] private TMP_Text _timeToRestoreText;
 
+    private const float Delay = 1;
+
+    private DateTime _disuseEndDate;
+
+    public bool IsUsed { get; private set; }
+
+    public event Action Disused;
     private UnityEvent CloneDied = new UnityEvent();
 
     private void Start()
     {
-        CloneDied.AddListener(Die);
+        //CloneDied.AddListener(Die);
+    }
+
+    public void Init(DateTime disuseEndDate)
+    {
+        _disuseEndDate = disuseEndDate;
+
+        Wait();
     }
 
     public void Invoke()
@@ -27,31 +40,63 @@ public class DieClone : MonoBehaviour
 
     private void Die()
     {
-        _selectedCloneButton.interactable = false;
-        _unlockVisuals.SetActive(false);
-        _dieVisuals.SetActive(true);
-        StartCoroutine(ActivateTimer());
+        //_selectedCloneButton.interactable = false;
+        //_unlockVisuals.SetActive(false);
+        //_dieVisuals.SetActive(true);
+        //StartCoroutine(ActivateTimer());
     }
 
     private void Restore()
     {
-        _selectedCloneButton.interactable = true;
-        _unlockVisuals.SetActive(true);
+        //_selectedCloneButton.interactable = true;
+        //_unlockVisuals.SetActive(true);
         _dieVisuals.SetActive(false);
     }
 
-    private IEnumerator ActivateTimer()
+    private void Wait()
     {
-        var waitForDelaySeconds = new WaitForSeconds(1f);
+        TimeSpan timeLeft = _disuseEndDate - DateTime.Now;
 
-        float currentSecondsToRestore = _secondsToRestore;
+        if (timeLeft > TimeSpan.Zero)
+            Use();
+        else
+            EndUse();
+    }
 
-        while (currentSecondsToRestore > 0)
+    private void EndUse()
+    {
+        IsUsed = false;
+        _dieVisuals.SetActive(false);
+
+        Disused?.Invoke();
+    }
+
+    private void Use()
+    {
+        IsUsed = true;
+        _dieVisuals.SetActive(true);
+
+        StartCoroutine(Timer());
+    }
+
+    private IEnumerator Timer()
+    {
+        var delay = new WaitForSeconds(Delay);
+        bool isTimeUp = false;
+        TimeSpan timeLeft;
+
+        while (isTimeUp == false)
         {
-            _timeToRestoreText.text = NumberFormatter.ConvertSecondsToTimeString(currentSecondsToRestore--);
-            yield return waitForDelaySeconds;
+            timeLeft = _disuseEndDate - DateTime.Now;
+
+            if (timeLeft > TimeSpan.Zero)
+                _timeToRestoreText.text = NumberFormatter.ConvertSecondsToTimeString((float)timeLeft.TotalSeconds);
+            else
+                isTimeUp = true;
+
+            yield return delay;
         }
 
-        Restore();
+        EndUse();
     }
 }

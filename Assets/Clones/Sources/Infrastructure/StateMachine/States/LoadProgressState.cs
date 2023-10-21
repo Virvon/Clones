@@ -2,7 +2,6 @@
 using Clones.Services;
 using Clones.StaticData;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Clones.Infrastructure
@@ -62,7 +61,7 @@ namespace Clones.Infrastructure
                 CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(type);
 
                 if (cloneStaticData.IsBuyed)
-                    availableClones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice));
+                    availableClones.Add(Test(cloneStaticData, type));
             }
         }
 
@@ -75,6 +74,14 @@ namespace Clones.Infrastructure
                 if (wamdStaticData.IsBuyed)
                     availableWands.Add(new WandData(type, wamdStaticData.Damage, wamdStaticData.UpgradePrice));
             }
+        }
+
+        private CloneData Test(CloneStaticData cloneStaticData, CloneType type)
+        {
+            CloneData data = new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice);
+            data.Use(cloneStaticData.DisuseTime);
+
+            return data;
         }
     }
 }

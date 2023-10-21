@@ -1,7 +1,9 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine;
 
+[RequireComponent(typeof(DieClone))]
 public class CloneCard : Card
 {
     //[SerializeField] private UpgradeButton _upgradeByDNAButton;
@@ -14,6 +16,7 @@ public class CloneCard : Card
 
     private GameObject _wandPrefab;
     private int _level = 1;
+    private DieClone _dieClone;
 
     //public int Health { get; private set; }
     //public int Damage { get; private set; }
@@ -76,9 +79,25 @@ public class CloneCard : Card
         UpdateUpgradeButtons();
     }
 
-    protected override void Unlock()
+    private void OnDisused()
+    {
+        _dieClone.Disused -= OnDisused;
+        ActiveVisuals();
+    }
+
+    private void ActiveVisuals()
     {
         SelectButton.interactable = true;
         _unlock.SetActive(true);
+    }
+
+    protected override void Unlock()
+    {
+        _dieClone = GetComponent<DieClone>();
+
+        if (_dieClone.IsUsed)
+            _dieClone.Disused += OnDisused;
+        else
+            ActiveVisuals();
     }
 }
