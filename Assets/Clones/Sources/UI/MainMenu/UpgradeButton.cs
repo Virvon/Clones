@@ -19,8 +19,11 @@ public abstract class UpgradeButton : MonoBehaviour
 
     public event Action UpgradeTried;
 
-    private void OnDisable() => 
+    private void OnDisable()
+    {
+        Wallet.CurrencyCountChanged -= CheckPrice;
         _button.onClick.RemoveListener(OnButtonClicked);
+    }
 
     public void Init(Wallet wallet)
     {
@@ -39,7 +42,6 @@ public abstract class UpgradeButton : MonoBehaviour
         Price = price;
 
         _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
-
         CheckPrice();
     }
 

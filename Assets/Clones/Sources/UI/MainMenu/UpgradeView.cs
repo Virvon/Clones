@@ -13,6 +13,15 @@ public class UpgradeView : MonoBehaviour
 
     private IPersistentProgressService _persistentProgress;
 
+    private void OnDisable()
+    {
+        _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= OnSelectedCloneChanged;
+        _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= OnSelectedWandChanged;
+
+        _cloneUpgradeButton.UpgradeTried -= UpgradeClone;
+        _wandUpgradeButton.UpgradeTried -= UpgradeWand;
+    }
+
     public void Init(IPersistentProgressService persistenProgress)
     {
         _persistentProgress = persistenProgress;

@@ -15,10 +15,11 @@ namespace Clones.Infrastructure
         private readonly IPersistentProgressService _persistentProgress;
         private readonly ITimeScale _timeScale;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
+        private readonly ISaveLoadService _saveLoadService;
 
         private List<IDisable> _disables;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService)
+        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -28,18 +29,21 @@ namespace Clones.Infrastructure
             _mainMenuStaticDataService = mainMenuStaticDataService;
 
             _disables = new();
+            _saveLoadService = saveLoadService;
         }
 
         public void Enter()
         {
             CreateGame();
-            UseSelectedClone();
         }
 
         public void Exit()
         {
             foreach (var disable in _disables)
                 disable.OnDisable();
+
+            UseSelectedClone();
+            _saveLoadService.SaveProgress();
         }
 
         private void CreateGame()

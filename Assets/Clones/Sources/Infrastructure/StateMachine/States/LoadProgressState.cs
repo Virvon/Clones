@@ -61,7 +61,7 @@ namespace Clones.Infrastructure
                 CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(type);
 
                 if (cloneStaticData.IsBuyed)
-                    availableClones.Add(Test(cloneStaticData, type));
+                    availableClones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice)); //Test(cloneStaticData, type)
             }
         }
 

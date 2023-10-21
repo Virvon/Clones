@@ -17,6 +17,12 @@ public class BuyCardView : MonoBehaviour
 
     private bool _canBuy => _wallet.Money >= _price;
 
+    private void OnDestroy()
+    {
+        if(_wallet != null)
+            _wallet.CurrencyCountChanged -= CheckPrice;
+    }
+
     public void Init(int price, Wallet wallet)
     {
         _price = price;
