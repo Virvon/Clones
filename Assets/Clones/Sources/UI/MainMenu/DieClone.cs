@@ -25,6 +25,10 @@ public class DieClone : MonoBehaviour
     {
         //CloneDied.AddListener(Die);
     }
+    private void OnEnable()
+    {
+        Wait();
+    }
 
     public void Init(DateTime disuseEndDate)
     {

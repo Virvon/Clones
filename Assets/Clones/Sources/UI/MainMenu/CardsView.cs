@@ -8,15 +8,15 @@ public abstract class CardsView<TType> : MonoBehaviour where TType : Enum
 {
     private Card _currentCard;
 
-    private Dictionary<Card, TType> _types = new();
-    private Dictionary<TType, Card> _cards = new();
+    protected Dictionary<Card, TType> Types = new();
+    protected Dictionary<TType, Card> Cards = new();
 
     protected IPersistentProgressService PersistentProgress { get; private set; }
     protected IMainMenuStaticDataService MainMenuStaticDataService { get; private set; }
 
     private void OnDestroy()
     {
-        foreach (var card in _types.Keys)
+        foreach (var card in Types.Keys)
         {
             card.GetComponent<CardButton>().Clicked -= Select;
             card.GetComponent<BuyCardView>().BuyTried -= OnBuyTried;
@@ -34,8 +34,8 @@ public abstract class CardsView<TType> : MonoBehaviour where TType : Enum
         card.GetComponent<CardButton>().Clicked += Select;
         card.GetComponent<BuyCardView>().BuyTried += OnBuyTried;
 
-        _types.Add(card, type);
-        _cards.Add(type, card);
+        Types.Add(card, type);
+        Cards.Add(type, card);
     }
 
     protected void Select(Card card)
@@ -47,16 +47,15 @@ public abstract class CardsView<TType> : MonoBehaviour where TType : Enum
         SaveCurrentCard(_currentCard);
     }
 
-    protected void SelectDefault() => 
-        Select(_cards.Values.First());
+    protected abstract void SelectDefault();
 
     public abstract void SelectCurrentOrDefault();
 
     protected TType GetType(Card card) => 
-        _types.GetValueOrDefault(card);
+        Types.GetValueOrDefault(card);
 
     protected Card GetCard(TType type) => 
-        _cards.GetValueOrDefault(type);
+        Cards.GetValueOrDefault(type);
 
     protected abstract void OnBuyTried(Card card);
 

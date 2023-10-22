@@ -96,8 +96,13 @@ public class CloneCard : Card
         _dieClone = GetComponent<DieClone>();
 
         if (_dieClone.IsUsed)
+        {
+            SelectButton.interactable = false;
             _dieClone.Disused += OnDisused;
+        }
         else
+        {
             ActiveVisuals();
+        }
     }
 }

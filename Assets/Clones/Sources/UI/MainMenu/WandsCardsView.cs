@@ -1,5 +1,6 @@
 ﻿using Clones.Data;
 using Clones.StaticData;
+using System.Linq;
 
 public class WandsCardsView : CardsView<WandType>
 {
@@ -28,4 +29,17 @@ public class WandsCardsView : CardsView<WandType>
 
     protected override void SaveCurrentCard(Card card) => 
         PersistentProgress.Progress.AvailableWands.SetSelectedWand(GetType(card));
+
+    protected override void SelectDefault()
+    {
+        foreach(var type in Types.Values)
+        {
+            if(PersistentProgress.Progress.AvailableWands.Wands.Any(data => data.Type == type))
+            {
+                Select(GetCard(type));
+
+                break;
+            }
+        }
+    }
 }

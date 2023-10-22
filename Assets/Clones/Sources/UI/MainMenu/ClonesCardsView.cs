@@ -1,5 +1,6 @@
 ﻿using Clones.Data;
 using Clones.StaticData;
+using System.Linq;
 
 public class ClonesCardsView : CardsView<CloneType>
 {
@@ -36,4 +37,24 @@ public class ClonesCardsView : CardsView<CloneType>
 
     protected override void SaveCurrentCard(Card card) => 
         PersistentProgress.Progress.AvailableClones.SetSelectedClone(GetType(card));
+
+    protected override void SelectDefault()
+    {
+        CloneType availableType = CloneType.Undefined;
+
+        foreach(var type in Types.Values)
+        {
+            if (PersistentProgress.Progress.AvailableClones.Clones.Any(data => data.Type == type && data.IsUsed == false))
+            {
+                availableType = type;
+
+                break;
+            }
+        }
+
+        if (availableType != CloneType.Undefined)
+            Select(GetCard(availableType));
+        else
+            PersistentProgress.Progress.AvailableClones.SetSelectedClone(availableType);
+    }
 }
