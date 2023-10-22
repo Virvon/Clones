@@ -2,7 +2,7 @@
 using Clones.Services;
 using UnityEngine;
 
-public class UpgradeView : MonoBehaviour
+public class UpgradeButtonsView : MonoBehaviour
 {
     [SerializeField] private UpgradeButton _cloneUpgradeButton;
     [SerializeField] private UpgradeButton _wandUpgradeButton;

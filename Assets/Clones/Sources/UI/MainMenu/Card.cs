@@ -8,9 +8,6 @@ public abstract class Card : MonoBehaviour
     [SerializeField] private Button _select;
 
     protected Button SelectButton => _select;
-    //[SerializeField] private float _baseMultiplyResourceByRare;
-
-    //public float BaseMultiplyRecourceByRare => _baseMultiplyResourceByRare;
 
     public void Init(bool isBuyed)
     {
@@ -28,7 +25,7 @@ public abstract class Card : MonoBehaviour
         Unlock();
     }
 
-    public virtual void Select() => 
+    public void Select() => 
         _selectedVisuals.SetActive(true);
 
     public void Unselect() => 

@@ -137,7 +137,7 @@ namespace Clones.Infrastructure
         {
             GameObject upgradeView = _assets.Instantiate(AssetPath.UpgradeView, _containers.Buttons);
 
-            upgradeView.GetComponent<UpgradeView>()
+            upgradeView.GetComponent<UpgradeButtonsView>()
                 .Init(_persistentProgress);
 
             upgradeView.GetComponentInChildren<CloneUpgradeButton>()
