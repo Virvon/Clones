@@ -1,41 +1,44 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Card : MonoBehaviour
+namespace Clones.UI
 {
-    [SerializeField] private GameObject _selectedVisuals;
-    [SerializeField] private GameObject _lock;
-    [SerializeField] private Button _select;
-
-    protected Button SelectButton => _select;
-
-    public void Init(bool isBuyed)
+    public abstract class Card : MonoBehaviour
     {
-        Unselect();
+        [SerializeField] private GameObject _selectedVisuals;
+        [SerializeField] private GameObject _lock;
+        [SerializeField] private Button _select;
 
-        if (isBuyed)
+        protected Button SelectButton => _select;
+
+        public void Init(bool isBuyed)
+        {
+            Unselect();
+
+            if (isBuyed)
+                Unlock();
+            else
+                Lock();
+        }
+
+        public void Buy()
+        {
+            _lock.SetActive(false);
             Unlock();
-        else
-            Lock();
-    }
+        }
 
-    public void Buy()
-    {
-        _lock.SetActive(false);
-        Unlock();
-    }
+        public void Select() =>
+            _selectedVisuals.SetActive(true);
 
-    public void Select() => 
-        _selectedVisuals.SetActive(true);
+        public void Unselect() =>
+            _selectedVisuals.SetActive(false);
 
-    public void Unselect() => 
-        _selectedVisuals.SetActive(false);
+        protected abstract void Unlock();
 
-    protected abstract void Unlock();
-
-    private void Lock()
-    {
-        _lock.SetActive(true);
-        _select.interactable = false;
+        private void Lock()
+        {
+            _lock.SetActive(true);
+            _select.interactable = false;
+        }
     }
 }

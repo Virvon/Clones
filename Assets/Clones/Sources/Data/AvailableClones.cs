@@ -30,11 +30,26 @@ namespace Clones.Data
             SelectedClone = type;
 
             GetSelectedCloneData().Upgraded += SelectedCloneUpgraded;
-
             SelectedCloneChanged?.Invoke();
         }
 
         public CloneData GetSelectedCloneData() =>
             Clones.Where(data => data.Type == SelectedClone).FirstOrDefault();
+
+        public bool TryGetFirstDisuse(out CloneType type)
+        {
+            CloneData disuseClone = Clones.Where(data => data.IsUsed == false).FirstOrDefault();
+
+            if(disuseClone != null)
+            {
+                type = disuseClone.Type;
+                return true;
+            }
+            else
+            {
+                type = CloneType.Undefined;
+                return false;
+            }
+        }
     }
 }

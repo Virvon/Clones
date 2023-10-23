@@ -3,75 +3,76 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class DieClone : MonoBehaviour
+namespace Clones.UI
 {
-    [SerializeField] private GameObject _dieVisuals;
-    [SerializeField] private TMP_Text _timeToRestoreText;
-
-    private const float Delay = 1;
-
-    private DateTime _disuseEndDate;
-
-    public bool IsUsed { get; private set; }
-
-    public event Action Disused;
-
-    private void OnEnable()
+    public class DieClone : MonoBehaviour
     {
-        Wait();
-    }
+        [SerializeField] private GameObject _dieVisuals;
+        [SerializeField] private TMP_Text _timeToRestoreText;
 
-    public void Init(DateTime disuseEndDate)
-    {
-        _disuseEndDate = disuseEndDate;
+        private const float Delay = 1;
 
-        Wait();
-    }
+        private DateTime _disuseEndDate;
 
-    private void Wait()
-    {
-        TimeSpan timeLeft = _disuseEndDate - DateTime.Now;
+        public bool IsUsed { get; private set; }
 
-        if (timeLeft > TimeSpan.Zero)
-            Use();
-        else
-            EndUse();
-    }
+        public event Action Disused;
 
-    private void EndUse()
-    {
-        IsUsed = false;
-        _dieVisuals.SetActive(false);
+        private void OnEnable() =>
+            Wait();
 
-        Disused?.Invoke();
-    }
-
-    private void Use()
-    {
-        IsUsed = true;
-        _dieVisuals.SetActive(true);
-
-        StartCoroutine(Timer());
-    }
-
-    private IEnumerator Timer()
-    {
-        var delay = new WaitForSeconds(Delay);
-        bool isTimeUp = false;
-        TimeSpan timeLeft;
-
-        while (isTimeUp == false)
+        public void Init(DateTime disuseEndDate)
         {
-            timeLeft = _disuseEndDate - DateTime.Now;
+            _disuseEndDate = disuseEndDate;
 
-            if (timeLeft > TimeSpan.Zero)
-                _timeToRestoreText.text = NumberFormatter.ConvertSecondsToTimeString((float)timeLeft.TotalSeconds);
-            else
-                isTimeUp = true;
-
-            yield return delay;
+            Wait();
         }
 
-        EndUse();
+        private void Wait()
+        {
+            TimeSpan timeLeft = _disuseEndDate - DateTime.Now;
+
+            if (timeLeft > TimeSpan.Zero)
+                Use();
+            else
+                EndUse();
+        }
+
+        private void EndUse()
+        {
+            IsUsed = false;
+            _dieVisuals.SetActive(false);
+
+            Disused?.Invoke();
+        }
+
+        private void Use()
+        {
+            IsUsed = true;
+            _dieVisuals.SetActive(true);
+
+            StartCoroutine(Timer());
+        }
+
+        private IEnumerator Timer()
+        {
+            var delay = new WaitForSeconds(Delay);
+            bool isTimeUp = false;
+            TimeSpan timeLeft;
+
+            while (isTimeUp == false)
+            {
+                timeLeft = _disuseEndDate - DateTime.Now;
+
+                if (timeLeft > TimeSpan.Zero)
+                    _timeToRestoreText.text = NumberFormatter.ConvertSecondsToTimeString((float)timeLeft.TotalSeconds);
+                else
+                    isTimeUp = true;
+
+                yield return delay;
+            }
+
+            EndUse();
+        }
     }
 }

@@ -16,23 +16,23 @@ public class PlayerView : MonoBehaviour
     private GameObject _clonePrefab;
     //private CardClone _currentC
 
-    public void SelectCard(CloneCard cardClone)
-    {
-        //_cardClone = cardClone;
-        UpdateStats();
+    //public void SelectCard(CloneCard cardClone)
+    //{
+    //    //_cardClone = cardClone;
+    //    UpdateStats();
 
-        Destroy(_clonePrefab?.gameObject);
-        //_clonePrefab = Instantiate(_cardClone.ObjectPrefab, _playerPrefabPlace);
-        //_cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
-    }
+    //    Destroy(_clonePrefab?.gameObject);
+    //    //_clonePrefab = Instantiate(_cardClone.ObjectPrefab, _playerPrefabPlace);
+    //    //_cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
+    //}
 
-    public void SelectCard(WandCard cardWand)
-    {
-        //_cardWand = cardWand;
-        UpdateStats();
+    //public void SelectCard(WandCard cardWand)
+    //{
+    //    //_cardWand = cardWand;
+    //    UpdateStats();
 
-        //_cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
-    }
+    //    //_cardClone.SetWand(_cardWand.ObjectPrefab, _clonePrefab);
+    //}
 
     public void UpdateStats()
     {

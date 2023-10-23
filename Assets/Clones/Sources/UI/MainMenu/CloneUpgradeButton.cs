@@ -1,4 +1,7 @@
-﻿public class CloneUpgradeButton : UpgradeButton
+﻿namespace Clones.UI
 {
-    protected override bool CanUpgrade => Wallet.Dna >= Price;
+    public class CloneUpgradeButton : UpgradeButton
+    {
+        protected override bool CanUpgrade => Wallet.Dna >= Price;
+    }
 }

@@ -2,25 +2,28 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Card), typeof(Button))]
-public class CardButton : MonoBehaviour
+namespace Clones.UI
 {
-    private Card _card;
-    private Button _button;
-
-    public event Action<Card> Clicked;
-
-    private void OnEnable()
+    [RequireComponent(typeof(Card), typeof(Button))]
+    public class CardButton : MonoBehaviour
     {
-        _card = GetComponent<Card>();
-        _button = GetComponent<Button>();
+        private Card _card;
+        private Button _button;
 
-        _button.onClick.AddListener(OnClicked);
+        public event Action<Card> Clicked;
+
+        private void OnEnable()
+        {
+            _card = GetComponent<Card>();
+            _button = GetComponent<Button>();
+
+            _button.onClick.AddListener(OnClicked);
+        }
+
+        private void OnDisable() =>
+            _button.onClick.RemoveListener(OnClicked);
+
+        private void OnClicked() =>
+            Clicked?.Invoke(_card);
     }
-
-    private void OnDisable() => 
-        _button.onClick.RemoveListener(OnClicked);
-
-    private void OnClicked() => 
-        Clicked?.Invoke(_card);
 }

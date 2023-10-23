@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class WandCard : Card
+namespace Clones.UI
 {
-    [SerializeField] private GameObject _unlock;
-
-    public WandCard ReturnCard() => this;
-
-    protected override void Unlock()
+    public class WandCard : Card
     {
-        SelectButton.interactable = true;
-        _unlock.SetActive(true);
+        [SerializeField] private GameObject _unlock;
+
+        protected override void Unlock()
+        {
+            SelectButton.interactable = true;
+            _unlock.SetActive(true);
+        }
     }
 }

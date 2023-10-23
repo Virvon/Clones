@@ -4,55 +4,58 @@ using UnityEngine.UI;
 using System;
 using Clones.Data;
 
-[RequireComponent(typeof(Button))]
-public abstract class UpgradeButton : MonoBehaviour
+namespace Clones.UI
 {
-    [SerializeField] private TMP_Text _textPrice;
-    [SerializeField] private GameObject _cantUpgradeVisuals;
-
-    private Button _button;
-
-    protected int Price { get; private set; }
-    protected Wallet Wallet { get; private set; }
-
-    protected abstract bool CanUpgrade { get; }
-
-    public event Action UpgradeTried;
-
-    private void OnDisable()
+    [RequireComponent(typeof(Button))]
+    public abstract class UpgradeButton : MonoBehaviour
     {
-        Wallet.CurrencyCountChanged -= CheckPrice;
-        _button.onClick.RemoveListener(OnButtonClicked);
-    }
+        [SerializeField] private TMP_Text _textPrice;
+        [SerializeField] private GameObject _cantUpgradeVisuals;
 
-    public void Init(Wallet wallet)
-    {
-        Wallet = wallet;
+        private Button _button;
 
-        _button = GetComponent<Button>();
+        protected int Price { get; private set; }
+        protected Wallet Wallet { get; private set; }
 
-        Wallet.CurrencyCountChanged += CheckPrice;
-        _button.onClick.AddListener(OnButtonClicked);
+        protected abstract bool CanUpgrade { get; }
 
-        CheckPrice();
-    }
+        public event Action UpgradeTried;
 
-    public void SetPrice(int price)
-    {
-        Price = price;
+        private void OnDisable()
+        {
+            Wallet.CurrencyCountChanged -= CheckPrice;
+            _button.onClick.RemoveListener(OnButtonClicked);
+        }
 
-        _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
-        CheckPrice();
-    }
+        public void Init(Wallet wallet)
+        {
+            Wallet = wallet;
 
-    private void OnButtonClicked() => 
-        UpgradeTried?.Invoke();
+            _button = GetComponent<Button>();
 
-    private void CheckPrice()
-    {
-        if (CanUpgrade)
-            _cantUpgradeVisuals.SetActive(false);
-        else
-            _cantUpgradeVisuals.SetActive(true);
+            Wallet.CurrencyCountChanged += CheckPrice;
+            _button.onClick.AddListener(OnButtonClicked);
+
+            CheckPrice();
+        }
+
+        public void SetPrice(int price)
+        {
+            Price = price;
+
+            _textPrice.text = NumberFormatter.DivideIntegerOnDigits(price);
+            CheckPrice();
+        }
+
+        private void OnButtonClicked() =>
+            UpgradeTried?.Invoke();
+
+        private void CheckPrice()
+        {
+            if (CanUpgrade)
+                _cantUpgradeVisuals.SetActive(false);
+            else
+                _cantUpgradeVisuals.SetActive(true);
+        }
     }
 }

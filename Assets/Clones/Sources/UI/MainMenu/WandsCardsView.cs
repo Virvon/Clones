@@ -2,44 +2,37 @@
 using Clones.StaticData;
 using System.Linq;
 
-public class WandsCardsView : CardsView<WandType>
+namespace Clones.UI
 {
-    public override void SelectCurrentOrDefault()
+    public class WandsCardsView : CardsView<WandType>
     {
-        WandType type = PersistentProgress.Progress.AvailableWands.SelectedWand;
-
-        if (type != WandType.Undefined)
-            Select(GetCard(type));
-        else
-            SelectDefault();
-    }
-
-    protected override void OnBuyTried(Card card)
-    {
-        WandType type = GetType(card);
-        WandStaticData wandStaticData = MainMenuStaticDataService.GetWand(type);
-        int price = wandStaticData.BuyPrice;
-
-        if (PersistentProgress.Progress.Wallet.TryTakeMoney(price))
+        public override void SelectCurrentOrDefault()
         {
-            PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.Damage, wandStaticData.UpgradePrice));
-            card.Buy();
-        }
-    }
+            WandType type = PersistentProgress.Progress.AvailableWands.SelectedWand;
 
-    protected override void SaveCurrentCard(Card card) => 
-        PersistentProgress.Progress.AvailableWands.SetSelectedWand(GetType(card));
-
-    protected override void SelectDefault()
-    {
-        foreach(var type in Types.Values)
-        {
-            if(PersistentProgress.Progress.AvailableWands.Wands.Any(data => data.Type == type))
-            {
+            if (type != WandType.Undefined)
                 Select(GetCard(type));
+            else
+                SelectDefault();
+        }
 
-                break;
+        protected override void OnBuyTried(Card card)
+        {
+            WandType type = GetType(card);
+            WandStaticData wandStaticData = MainMenuStaticDataService.GetWand(type);
+            int price = wandStaticData.BuyPrice;
+
+            if (PersistentProgress.Progress.Wallet.TryTakeMoney(price))
+            {
+                PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.Damage, wandStaticData.UpgradePrice));
+                card.Buy();
             }
         }
+
+        protected override void SaveCurrentCard(Card card) =>
+            PersistentProgress.Progress.AvailableWands.SetSelectedWand(GetType(card));
+
+        protected override void SelectDefault() =>
+            Select(GetCard(PersistentProgress.Progress.AvailableWands.Wands.First().Type));
     }
 }
