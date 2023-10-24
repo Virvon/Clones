@@ -7,9 +7,9 @@ namespace Clones.UI
     {
         [SerializeField] private GameObject _selectedVisuals;
         [SerializeField] private GameObject _lock;
-        [SerializeField] private Button _select;
+        [SerializeField] private Button _selectButton;
 
-        protected Button SelectButton => _select;
+        protected Button SelectButton => _selectButton;
 
         public void Init(bool isBuyed)
         {
@@ -38,7 +38,7 @@ namespace Clones.UI
         private void Lock()
         {
             _lock.SetActive(true);
-            _select.interactable = false;
+            _selectButton.interactable = false;
         }
     }
 }

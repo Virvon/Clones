@@ -1394,10 +1394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0737c465591dcca47b4b13460b4104ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedCloneButton: {fileID: 932141895798148173}
-  _unlockVisuals: {fileID: 932141896336294742}
   _dieVisuals: {fileID: 932141895828322634}
-  _secondsToRestore: 600
   _timeToRestoreText: {fileID: 932141897371854731}
 --- !u!1 &932141895798178862
 GameObject:
@@ -2529,10 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0737c465591dcca47b4b13460b4104ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedCloneButton: {fileID: 932141896094727663}
-  _unlockVisuals: {fileID: 932141896885391161}
   _dieVisuals: {fileID: 932141896326477231}
-  _secondsToRestore: 400
   _timeToRestoreText: {fileID: 932141895988462713}
 --- !u!1 &932141896249781488
 GameObject:
@@ -4207,10 +4201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0737c465591dcca47b4b13460b4104ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedCloneButton: {fileID: 932141896898236518}
-  _unlockVisuals: {fileID: 932141895817626248}
   _dieVisuals: {fileID: 932141897418961925}
-  _secondsToRestore: 200
   _timeToRestoreText: {fileID: 932141896991219361}
 --- !u!1 &932141896902253388
 GameObject:
@@ -6489,7 +6480,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 932141897559363531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63cdaa0599fe8747b98b740ee0428b1, type: 3}
+  m_Script: {fileID: 11500000, guid: d57ce1757ed440745bed2e943bec380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &932141897570139164

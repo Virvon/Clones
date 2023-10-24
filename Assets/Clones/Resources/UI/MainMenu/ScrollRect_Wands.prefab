@@ -1388,7 +1388,6 @@ GameObject:
   - component: {fileID: 4942409478918640816}
   - component: {fileID: 4942409478918640831}
   - component: {fileID: 4942409478918640830}
-  - component: {fileID: 4942409478918640817}
   - component: {fileID: 4942409478918640818}
   m_Layer: 5
   m_Name: Slot_Wand_Legendary
@@ -1502,7 +1501,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4942409478918640817}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CardWand, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 1
@@ -1514,22 +1513,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4942409478918640817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4942409478918640826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectedVisuals: {fileID: 4942409479424376435}
-  _lock: {fileID: 0}
-  _select: {fileID: 0}
-  _unlock: {fileID: 0}
 --- !u!114 &4942409478918640818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2236,7 +2219,6 @@ GameObject:
   - component: {fileID: 4942409479120273485}
   - component: {fileID: 4942409479120273484}
   - component: {fileID: 4942409479120273483}
-  - component: {fileID: 4942409479120273486}
   - component: {fileID: 4942409479120273487}
   m_Layer: 5
   m_Name: Slot_Wand_Epic
@@ -2350,7 +2332,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4942409479120273486}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 1
@@ -2362,22 +2344,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4942409479120273486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4942409479120273847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectedVisuals: {fileID: 4942409479648534711}
-  _lock: {fileID: 0}
-  _select: {fileID: 0}
-  _unlock: {fileID: 0}
 --- !u!114 &4942409479120273487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3234,7 +3200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349.34, y: -0.0061457767}
+  m_AnchoredPosition: {x: -349.34, y: -0.0006447867}
   m_SizeDelta: {x: 700.33, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &4942409479578763808
@@ -3286,7 +3252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4942409479578763821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3c6f61d409f8441b2b9def02a43b33, type: 3}
+  m_Script: {fileID: 11500000, guid: 1983e52005b19894b9f47f78b86612cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4942409479590859976
@@ -4583,7 +4549,6 @@ GameObject:
   - component: {fileID: 4942409480247356493}
   - component: {fileID: 4942409480247356492}
   - component: {fileID: 4942409480247356491}
-  - component: {fileID: 4942409480247356494}
   - component: {fileID: 4942409480247356495}
   m_Layer: 5
   m_Name: Slot_Wand_Rare
@@ -4697,7 +4662,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4942409480247356494}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CardWand, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 1
@@ -4709,22 +4674,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4942409480247356494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4942409480247356855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182a228c1829b7e42b5420ede0e70d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectedVisuals: {fileID: 4942409478744928338}
-  _lock: {fileID: 0}
-  _select: {fileID: 0}
-  _unlock: {fileID: 0}
 --- !u!114 &4942409480247356495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4915,7 +4864,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
 --- !u!224 &4942409478798471567 stripped
 RectTransform:

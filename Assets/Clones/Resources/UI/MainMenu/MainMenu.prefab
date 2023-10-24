@@ -30,7 +30,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8982338675225940532}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -52,57 +52,6 @@ MonoBehaviour:
   ClonesCards: {fileID: 8982338675511542941}
   Buttons: {fileID: 8982338674407982091}
   StatsView: {fileID: 8982338675116047288}
---- !u!1 &1305639887893413010
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 367634299325433775}
-  - component: {fileID: 7851643980283516601}
-  m_Layer: 0
-  m_Name: PlayerView
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &367634299325433775
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305639887893413010}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12960}
-  m_LocalScale: {x: 144, y: 144, z: 144}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8982338675225940532}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7851643980283516601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305639887893413010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bac5ad483d9ac345a13dd745638c324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerPrefabPlace: {fileID: 8982338675419689577}
-  _healthText: {fileID: 0}
-  _damageText: {fileID: 0}
-  _attackSpeedText: {fileID: 0}
-  _resourceMultiplierText: {fileID: 0}
-  _baseResourceMultiplier: 0.95
-  _upgradeResourceMultiplier: 0.05
 --- !u!1 &1755343535530969325
 GameObject:
   m_ObjectHideFlags: 0
@@ -15757,7 +15706,6 @@ RectTransform:
   m_Children:
   - {fileID: 8982338674319803003}
   - {fileID: 6396823819905499116}
-  - {fileID: 367634299325433775}
   - {fileID: 4349601394748143026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
