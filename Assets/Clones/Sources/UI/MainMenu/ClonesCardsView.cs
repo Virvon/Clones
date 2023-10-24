@@ -7,10 +7,8 @@ namespace Clones.UI
     {
         public override void SelectCurrentOrDefault()
         {
-            CloneData selectedCloneData = PersistentProgress.Progress.AvailableClones.GetSelectedCloneData();
-
-            if (selectedCloneData != null && selectedCloneData.IsUsed == false)
-                Select(GetCard(selectedCloneData.Type));
+            if (PersistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData) && cloneData.IsUsed == false)
+                Select(GetCard(cloneData.Type));
             else
                 SelectDefault();
         }
@@ -25,6 +23,7 @@ namespace Clones.UI
             {
                 PersistentProgress.Progress.AvailableClones.Clones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice));
                 card.Buy();
+                card.GetComponent<CloneLevelView>().Init(PersistentProgress, type);
             }
         }
 

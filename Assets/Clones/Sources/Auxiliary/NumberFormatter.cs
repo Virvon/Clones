@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public static class NumberFormatter

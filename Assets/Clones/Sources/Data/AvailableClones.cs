@@ -22,15 +22,24 @@ namespace Clones.Data
 
         public void SetSelectedClone(CloneType type)
         {
-            CloneData selectedCloneData = GetSelectedCloneData();
+            CloneData cloneData;
 
-            if(selectedCloneData != null)
-                selectedCloneData.Upgraded -= SelectedCloneUpgraded;
+            if(TryGetSelectedCloneData(out cloneData))
+                cloneData.Upgraded -= SelectedCloneUpgraded;
 
             SelectedClone = type;
+            
+            if(TryGetSelectedCloneData(out cloneData))
+                cloneData.Upgraded += SelectedCloneUpgraded;
 
-            GetSelectedCloneData().Upgraded += SelectedCloneUpgraded;
             SelectedCloneChanged?.Invoke();
+        }
+
+        public bool TryGetSelectedCloneData(out CloneData cloneData)
+        {
+            cloneData = Clones.Where(data => data.Type == SelectedClone).FirstOrDefault();
+
+            return cloneData != null;
         }
 
         public CloneData GetSelectedCloneData() =>

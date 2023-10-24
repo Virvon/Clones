@@ -91,7 +91,9 @@ namespace Clones.Infrastructure
             _disables.Add(questItemsDropper);
         }
 
-        private void UseSelectedClone() => 
+        private void UseSelectedClone()
+        {
             _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Use(_mainMenuStaticDataService.GetClone(_persistentProgress.Progress.AvailableClones.SelectedClone).DisuseTime);
+        }
     }
 }

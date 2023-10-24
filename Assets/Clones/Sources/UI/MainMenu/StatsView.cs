@@ -38,10 +38,9 @@ namespace Clones.UI
 
         private void UpdateStats()
         {
-            CloneData cloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
             WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
 
-            if (cloneData == null || wandData == null)
+            if (_persistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData) == false || wandData == null)
                 return;
 
             int health = cloneData.Health;

@@ -6,11 +6,14 @@ namespace Clones.Data
     [Serializable]
     public class CloneData
     {
+        private const int StartLevel = 1;
+
         public CloneType Type;
         public int Health;
         public int Damage;
         public int UpgradePrice;
         public string DisuseEndDate;
+        public int Level;
 
         public bool IsUsed => GetDisuseEndDate() - DateTime.Now > TimeSpan.Zero;
 
@@ -22,6 +25,7 @@ namespace Clones.Data
             Health = health;
             Damage = damage;
             UpgradePrice = upgradePrice;
+            Level = StartLevel;
 
             DisuseEndDate = DateTime.MinValue.ToString();
         }
@@ -31,6 +35,7 @@ namespace Clones.Data
             Health += health;
             Damage += damage;
             UpgradePrice += upgradePrice;
+            Level++;
 
             Upgraded?.Invoke();
         }

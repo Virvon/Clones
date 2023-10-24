@@ -31,7 +31,7 @@ namespace Clones.Infrastructure
         {
             MainMenuStaticData menuData = _staticDataService.GetMainMenu();
 
-            var menu = Object.Instantiate(menuData.Prefab);
+            GameObject menu = Object.Instantiate(menuData.Prefab);
 
             menu.GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgress.Progress.Wallet);
@@ -48,8 +48,7 @@ namespace Clones.Infrastructure
         {
             CloneStaticData cloneStaticData = _staticDataService.GetClone(type);
 
-            var cardObject = Object.Instantiate(cloneStaticData.Card, _clonesCardsView.transform);
-            CloneCard card = cardObject.GetComponent<CloneCard>();
+            CloneCard card = Object.Instantiate(cloneStaticData.Card, _clonesCardsView.transform);
 
             _clonesCardsView.AddCard(card, type);
 
@@ -57,13 +56,16 @@ namespace Clones.Infrastructure
 
 
             if (isBuyed == false)
-                cardObject.GetComponent<BuyCardView>().Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+                card.GetComponent<BuyCardView>().Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
             else
             {
                 CloneData data = _persistentProgress.Progress.AvailableClones.Clones.Where(data => data.Type == type).First();
 
+                card.GetComponent<CloneLevelView>()
+                    .Init(_persistentProgress, type);
+
                 if (data.IsUsed)
-                    cardObject.GetComponent<DieClone>().Init(data.GetDisuseEndDate());
+                    card.GetComponent<DieClone>().Init(data.GetDisuseEndDate());
             }
 
             card.Init(isBuyed);

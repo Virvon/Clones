@@ -47,6 +47,12 @@ namespace Clones.UI
             CheckPrice();
         }
 
+        public void Deactive()
+        {
+            _cantUpgradeVisuals.SetActive(true);
+            _textPrice.text = "";
+        }
+
         private void OnButtonClicked() =>
             UpgradeTried?.Invoke();
 

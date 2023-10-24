@@ -35,20 +35,23 @@ namespace Clones.UI
             _wandUpgradeButton.UpgradeTried += UpgradeWand;
         }
 
-        private void OnSelectedCloneChanged() =>
-            _cloneUpgradeButton.SetPrice(_persistentProgress.Progress.AvailableClones.GetSelectedCloneData().UpgradePrice);
+        private void OnSelectedCloneChanged()
+        {
+            if (_persistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData))
+                _cloneUpgradeButton.SetPrice(cloneData.UpgradePrice);
+            else
+                _cloneUpgradeButton.Deactive();
+        }
 
         private void OnSelectedWandChanged() =>
             _wandUpgradeButton.SetPrice(_persistentProgress.Progress.AvailableWands.GetSelectedWandData().UpgradePrice);
 
         private void UpgradeClone()
         {
-            CloneData data = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
-
-            if (_persistentProgress.Progress.Wallet.TryTakeDna(data.UpgradePrice))
+            if (_persistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData) && _persistentProgress.Progress.Wallet.TryTakeDna(cloneData.UpgradePrice))
             {
-                data.Upgrade(IncreaseHealth, IncreaseDamage, IncreaseUpgradePrice);
-                _cloneUpgradeButton.SetPrice(data.UpgradePrice);
+                cloneData.Upgrade(IncreaseHealth, IncreaseDamage, IncreaseUpgradePrice);
+                _cloneUpgradeButton.SetPrice(cloneData.UpgradePrice);
             }
         }
 
