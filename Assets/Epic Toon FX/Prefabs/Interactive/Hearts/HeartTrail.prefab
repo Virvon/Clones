@@ -26,7 +26,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106092}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: -0.327, y: 0.116, z: 0}
+>>>>>>> 703d88140928922378f2e57597b673a7d21d7d04
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4722,7 +4726,10 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: db608f6f11761e6409b8ea41aaa6adda, type: 2}
+<<<<<<< HEAD
   - {fileID: 0}
+=======
+>>>>>>> 703d88140928922378f2e57597b673a7d21d7d04
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9448,7 +9455,10 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 150aee38b5d848b42b75593618992bb7, type: 2}
+<<<<<<< HEAD
   - {fileID: 0}
+=======
+>>>>>>> 703d88140928922378f2e57597b673a7d21d7d04
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14201,7 +14211,10 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e653836c30661fe419b8992e230ca189, type: 2}
+<<<<<<< HEAD
   - {fileID: 0}
+=======
+>>>>>>> 703d88140928922378f2e57597b673a7d21d7d04
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
