@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Clones.Input
 {
     public class DesktopDirectionHandler : MonoBehaviour
     {
+        [SerializeField] private RectTransform _background;
+
         private PlayerInput _input;
         private Player _player;
 
@@ -42,11 +43,15 @@ namespace Clones.Input
 
         private void OnDownTouch()
         {
-            Vector3 PlayerScreenPosition = Camera.main.WorldToScreenPoint(_player.transform.position);
             Vector3 mousePosition = UnityEngine.Input.mousePosition;
-            Vector2 direction = new Vector2(mousePosition.x, mousePosition.y) - new Vector2(PlayerScreenPosition.x, PlayerScreenPosition.y);
 
-            Direction = direction.normalized;
+            if (RectTransformUtility.RectangleContainsScreenPoint(_background, new Vector2(mousePosition.x, mousePosition.y)))
+            {
+                Vector3 PlayerScreenPosition = Camera.main.WorldToScreenPoint(_player.transform.position);
+                Vector2 direction = new Vector2(mousePosition.x, mousePosition.y) - new Vector2(PlayerScreenPosition.x, PlayerScreenPosition.y);
+
+                Direction = direction.normalized;
+            }
 
             if (Direction != Vector2.zero)
                 Activated?.Invoke();
