@@ -3,33 +3,33 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 {
-    [SerializeField] private int _health;
     [SerializeField] private GameObject _rebornEffect;
     [SerializeField] private Vector3 _effectOffset;
 
     public bool IsAlive => true;
 
-    public int Health => _health;
+    public int Health { get; private set; }
     public int MaxHealth { get; private set; }
 
     public event Action<IDamageable> Died;
     public event Action HealthChanged;
 
-    private void Start()
+    public void Init(int health)
     {
-        MaxHealth = _health;
+        Health = health;
+        MaxHealth = Health;
     }
 
     public void TakeDamage(float damage)
     {
-        _health -= (int)damage;
+        Health -= (int)damage;
 
-        if(_health < 0)
-            _health = 0;
+        if(Health < 0)
+            Health = 0;
 
         HealthChanged?.Invoke();
 
-        if (_health == 0)
+        if (Health == 0)
         {
             Died?.Invoke(this);
             gameObject.SetActive(false);
@@ -40,8 +40,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
     {
         Instantiate(_rebornEffect, transform.position + _effectOffset, Quaternion.identity);
         gameObject.SetActive(true);
-        _health = health;
+        Health = health;
         HealthChanged?.Invoke();
-
     }
 }

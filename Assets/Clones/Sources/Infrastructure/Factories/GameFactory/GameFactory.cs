@@ -4,8 +4,8 @@ using Clones.StaticData;
 using UnityEngine;
 using Clones.Services;
 using Clones.GameLogic;
-using System;
 using Object = UnityEngine.Object;
+using Clones.Data;
 
 namespace Clones.Infrastructure
 {
@@ -15,26 +15,36 @@ namespace Clones.Infrastructure
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
         private readonly ITimeScale _timeScale;
+        private readonly IPersistentProgressService _persistentPorgress;
+        private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
 
         private GameObject _playerObject;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService staticData, ITimeScale timeScale)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService staticData, ITimeScale timeScale, IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
         {
             _assets = assets;
             _inputService = inputService;
             _staticData = staticData;
             _timeScale = timeScale;
+            _persistentPorgress = persistentProgress;
+            _mainMenuStaticDataService = mainMenuStaticDataService;
         }
 
         public GameObject CreatePlayer(IItemsCounter itemsCounter)
         {
-            _playerObject = _assets.Instantiate(AssetPath.Player);
+            CloneData cloneData = _persistentPorgress.Progress.AvailableClones.GetSelectedCloneData();
+            CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(_persistentPorgress.Progress.AvailableClones.SelectedClone);
+
+            _playerObject = Object.Instantiate(cloneStaticData.Prefab);
 
             _playerObject.GetComponent<PlayerAnimationSwitcher>()
                 .Init(_inputService);
 
             _playerObject.GetComponent<DropCollecting>()
                 .Init(itemsCounter);
+
+            _playerObject.GetComponent<PlayerHealth>()
+                .Init(cloneData.Health);
 
             return _playerObject;
         }
