@@ -11,14 +11,17 @@ namespace Clones.StateMachine
 
         public bool NeedTransit { get; protected set; }
 
-        protected IInputService DirectionHandler { get; private set; }
+        protected IInputService InputService { get; private set; }
 
         public void Init(IInputService inputService)
         {
-            DirectionHandler = inputService;
+            InputService = inputService;
+            Init();
         }
 
-        protected virtual void OnEnable()
+        protected virtual void Init() { }
+
+        private void OnEnable()
         {
             NeedTransit = false;        
         }

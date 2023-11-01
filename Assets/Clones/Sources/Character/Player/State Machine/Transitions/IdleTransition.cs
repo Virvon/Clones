@@ -6,17 +6,11 @@ namespace Clones.StateMachine
     {
         private readonly Collider[] _overlapColliders = new Collider[64];
 
-        protected override void OnEnable()
-        {
-            DirectionHandler.Deactivated += OnDeactivated;
-            base.OnEnable();
-        }
-
-        private void OnDisable() => DirectionHandler.Deactivated -= OnDeactivated;
+        private void OnDisable() => InputService.Deactivated -= OnDeactivated;
 
         private void Update()
         {
-            if (DirectionHandler.Direction != Vector2.zero)
+            if (InputService.Direction != Vector2.zero)
                 return;
 
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, 10, _overlapColliders);
@@ -30,6 +24,10 @@ namespace Clones.StateMachine
             NeedTransit = true;
         }
 
-        private void OnDeactivated() => NeedTransit = true;
+        protected override void Init() => 
+            InputService.Deactivated += OnDeactivated;
+
+        private void OnDeactivated() => 
+            NeedTransit = true;
     }
 }

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Clones.StateMachine
 {
     public class EnemiesAttackTransition : AttackTransition

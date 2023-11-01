@@ -35,6 +35,7 @@ namespace Clones.Input
             if (_input.Player.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Started)
                 OnDownTouch();
         }
+
         public void OnDrag(PointerEventData eventData)
         {
             Vector2 handlePosition;

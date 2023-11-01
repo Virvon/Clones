@@ -25,7 +25,8 @@ namespace Clones.StateMachine
         {
             _rigidbody = GetComponent<Rigidbody>();
             _surfaceSlider = GetComponent<SurfaceSlider>();
-            _input = AllServices.Instance.Single<IInputService>(); 
+            _input = AllServices.Instance.Single<IInputService>();
+            Debug.Log("static");
 
             _input.Activated += Move;
             _input.Deactivated += Stop;
