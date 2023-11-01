@@ -7,12 +7,12 @@ namespace Clones.StateMachine
 {
     public abstract class AttackState : State
     {
-        [SerializeField] private float _attackRadius;
-        [SerializeField] private float _lookRotationSpeed;
         [SerializeField] private CharacterAttack _characterAttack;
 
         private readonly Collider[] _overlapColliders = new Collider[128];
 
+        private float _attackRadius;
+        private float _lookRotationSpeed;
         private IDamageable _target;
 
         public event Action<GameObject> TargetSelected;
@@ -27,7 +27,14 @@ namespace Clones.StateMachine
                 OnTargetDied(null);
         }
 
-        private void OnDisable() => TargetRejected?.Invoke();
+        private void OnDisable() => 
+            TargetRejected?.Invoke();
+
+        public void Init(float attackRadius, float lookRotaionSpeed)
+        {
+            _attackRadius = attackRadius;
+            _lookRotationSpeed = lookRotaionSpeed;
+        }
 
         private void Attack()
         {

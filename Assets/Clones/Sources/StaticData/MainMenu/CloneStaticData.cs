@@ -18,6 +18,8 @@ namespace Clones.StaticData
         public int DisuseTime;
         public float MovementSpeed;
         public float RotationSpeed;
+        public float MiningRadius;
+        public float AttackRadius;
         public int BuyPrice;
         public bool IsBuyed;
     }

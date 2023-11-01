@@ -50,6 +50,12 @@ namespace Clones.Infrastructure
             _playerObject.GetComponent<MovementState>()
                 .Init(cloneStaticData.MovementSpeed, cloneStaticData.RotationSpeed);
 
+            _playerObject.GetComponent<MiningState>()
+                .Init(cloneStaticData.MiningRadius, cloneStaticData.RotationSpeed);
+
+            _playerObject.GetComponent<EnemiesAttackState>()
+                .Init(cloneStaticData.AttackRadius, cloneStaticData.RotationSpeed);
+
             return _playerObject;
         }
 
