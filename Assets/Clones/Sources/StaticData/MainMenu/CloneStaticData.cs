@@ -16,6 +16,8 @@ namespace Clones.StaticData
         public int UpgradePrice;
         public int IncreasePrice;
         public int DisuseTime;
+        public float MovementSpeed;
+        public float RotationSpeed;
         public int BuyPrice;
         public bool IsBuyed;
     }

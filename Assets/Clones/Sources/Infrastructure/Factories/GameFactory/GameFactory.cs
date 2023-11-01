@@ -6,6 +6,7 @@ using Clones.Services;
 using Clones.GameLogic;
 using Object = UnityEngine.Object;
 using Clones.Data;
+using Clones.StateMachine;
 
 namespace Clones.Infrastructure
 {
@@ -45,6 +46,9 @@ namespace Clones.Infrastructure
 
             _playerObject.GetComponent<PlayerHealth>()
                 .Init(cloneData.Health);
+
+            _playerObject.GetComponent<MovementState>()
+                .Init(cloneStaticData.MovementSpeed, cloneStaticData.RotationSpeed);
 
             return _playerObject;
         }

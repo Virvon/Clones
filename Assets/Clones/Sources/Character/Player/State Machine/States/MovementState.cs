@@ -7,35 +7,39 @@ namespace Clones.StateMachine
     [RequireComponent(typeof(Rigidbody), typeof(SurfaceSlider))]
     public class MovementState : State
     {
-        [SerializeField] private float _movementSpeed;
-        [SerializeField] private float _rotationSpeed = 1080;
         [SerializeField] private float _directionOffset;
 
+        private float _movementSpeed;
+        private float _rotationSpeed;
         private Rigidbody _rigidbody;
         private SurfaceSlider _surfaceSlider;
-        private IInputService _input;
         private IMovementSpeedChanger _movementSpeedChanger;
 
-        public float MaxMovementSpeed => _movementSpeed;
+        public float MaxMovementSpeed { get; private set; }
         public float MovementSpeed => _movementSpeedChanger != null ? _movementSpeedChanger.MovementSpeed : _movementSpeed;
 
         public event Action MovementSpeedChanged;
 
         private void OnEnable()
         {
-            _rigidbody = GetComponent<Rigidbody>();
-            _surfaceSlider = GetComponent<SurfaceSlider>();
-            _input = AllServices.Instance.Single<IInputService>();
-            Debug.Log("static");
-
-            _input.Activated += Move;
-            _input.Deactivated += Stop;
+            InputServiece.Activated += Move;
+            InputServiece.Deactivated += Stop;
         }
 
         private void OnDisable()
         {
-            _input.Activated -= Move;
-            _input.Deactivated -= Stop;
+            InputServiece.Activated -= Move;
+            InputServiece.Deactivated -= Stop;
+        }
+
+        public void Init(float movementSpeed, float rotationSpeed)
+        {
+            _movementSpeed = movementSpeed;
+            _rotationSpeed = rotationSpeed;
+            MaxMovementSpeed = _movementSpeed;
+
+            _rigidbody = GetComponent<Rigidbody>();
+            _surfaceSlider = GetComponent<SurfaceSlider>();
         }
 
         public void SetMovementSpeedChanger(IMovementSpeedChanger movementSpeedChanger)
