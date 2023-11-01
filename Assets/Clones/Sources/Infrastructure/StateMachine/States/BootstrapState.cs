@@ -61,7 +61,7 @@ namespace Clones.Infrastructure
 
         private void RegisterMainMenuStaticData()
         {
-            IMainMenuStaticDataService staticData = new ManiMenuStaticDataService();
+            IMainMenuStaticDataService staticData = new MainMenuStaticDataService();
             staticData.Load();
             _services.RegisterSingle(staticData);
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.Services
 {
-    public class ManiMenuStaticDataService : IMainMenuStaticDataService
+    public class MainMenuStaticDataService : IMainMenuStaticDataService
     {
         private MainMenuStaticData _mainMenu;
         private Dictionary<CloneType, CloneStaticData> _cardClones;
