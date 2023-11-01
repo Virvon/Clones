@@ -64,6 +64,7 @@ namespace Clones.Infrastructure
             PlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _timeScale);
 
             GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject, playerRevival);
+            _uiFactory.CreateControl(playerObject.GetComponent<Player>());
 
             CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera();
 

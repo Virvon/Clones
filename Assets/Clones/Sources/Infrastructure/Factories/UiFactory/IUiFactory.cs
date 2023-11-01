@@ -8,5 +8,6 @@ namespace Clones.Infrastructure
     {
         GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject, PlayerRevival playerRevival);
         GameObject CreateQuestView(Quest quest, Transform parent);
+        void CreateControl(Player player);
     }
 }

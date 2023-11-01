@@ -1,19 +1,22 @@
-﻿using System;
+﻿using Clones.Infrastructure;
+using Clones.Input;
+using System;
 using UnityEngine;
 
 namespace Clones.Services
 {
     public class MobileInputService : IInputService
     {
-        public Vector2 Direction => DirectionHandler.Direction;
+        public Vector2 Direction => JoysticDirectionHandler.Direction;
+        public string ControlPath => AssetPath.Joystick;
 
         public event Action Activated;
         public event Action Deactivated;
 
         public MobileInputService()
         {
-            DirectionHandler.Activated += () => Activated?.Invoke();
-            DirectionHandler.Deactivated += () => Deactivated?.Invoke();
+            JoysticDirectionHandler.Activated += () => Activated?.Invoke();
+            JoysticDirectionHandler.Deactivated += () => Deactivated?.Invoke();
         }
     }
 }

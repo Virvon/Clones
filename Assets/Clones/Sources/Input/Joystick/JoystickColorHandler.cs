@@ -1,3 +1,4 @@
+using Clones.Input;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -15,16 +16,16 @@ public class JoystickColorHandler : MonoBehaviour, IPointerDownHandler
 
     private void OnEnable()
     {
-        DirectionHandler.Deactivated += SetDeactivateColor;
-        DirectionHandler.Activated += SetActivateColor;
+        JoysticDirectionHandler.Deactivated += SetDeactivateColor;
+        JoysticDirectionHandler.Activated += SetActivateColor;
 
         SetDeactivateColor();
     }
 
     private void OnDisable()
     {
-        DirectionHandler.Activated -= SetActivateColor;
-        DirectionHandler.Deactivated -= SetDeactivateColor;
+        JoysticDirectionHandler.Activated -= SetActivateColor;
+        JoysticDirectionHandler.Deactivated -= SetDeactivateColor;
     }
     public void OnPointerDown(PointerEventData eventData)
     {

@@ -2,6 +2,7 @@
 using Clones.Services;
 using Clones.UI;
 using Clones.GameLogic;
+using Clones.Input;
 
 namespace Clones.Infrastructure
 {
@@ -10,40 +11,52 @@ namespace Clones.Infrastructure
         private readonly IAssetProvider _assets;
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly IGameStateMachine _stateMachine;
+        private readonly IInputService _inputService;
 
-        public UiFactory(IAssetProvider assets, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine)
+        private GameObject _hud;
+
+        public UiFactory(IAssetProvider assets, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine, IInputService inputService)
         {
             _assets = assets;
             _persistentProgressService = persistentProgressService;
             _stateMachine = stateMachine;
+            _inputService = inputService;
         }
 
         public GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject, PlayerRevival playerRevival)
         {
-            var hud = _assets.Instantiate(AssetPath.Hud);
+            _hud = _assets.Instantiate(AssetPath.Hud);
 
-            hud.GetComponentInChildren<Freezbar>()
+            _hud.GetComponentInChildren<Freezbar>()
                 .Init(playerObject.GetComponentInChildren<PlayerFreezing>());
 
-            hud.GetComponentInChildren<PlayerHealthbar>()
+            _hud.GetComponentInChildren<PlayerHealthbar>()
                 .Init(playerObject.GetComponent<PlayerHealth>());
 
-            hud.GetComponentInChildren<QuestPanel>()
+            _hud.GetComponentInChildren<QuestPanel>()
                 .Init(questsCreator, this);
 
-            hud.GetComponentInChildren<MoneyView>()
+            _hud.GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgressService.Progress.Wallet);
 
-            hud.GetComponentInChildren<DnaView>()
+            _hud.GetComponentInChildren<DnaView>()
                 .Init(_persistentProgressService.Progress.Wallet);
 
-            hud.GetComponentInChildren<ChangeGameStateButton>()
+            _hud.GetComponentInChildren<ChangeGameStateButton>()
                 .Init(_stateMachine);
 
-            hud.GetComponentInChildren<RevivalView>()
-                .Init(playerRevival, hud.GetComponentInChildren<GameOverView>());
+            _hud.GetComponentInChildren<RevivalView>()
+                .Init(playerRevival, _hud.GetComponentInChildren<GameOverView>());
 
-            return hud;
+            return _hud;
+        }
+
+        public void CreateControl(Player player)
+        {
+            GameObject control = _assets.Instantiate(_inputService.ControlPath, _hud.transform);
+
+            if (control.TryGetComponent(out DesktopDirectionHandler desktopDirectionHandler))
+                desktopDirectionHandler.Init(player);
         }
 
         public GameObject CreateQuestView(Quest quest, Transform parent)

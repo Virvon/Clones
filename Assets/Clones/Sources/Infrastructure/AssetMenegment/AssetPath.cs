@@ -14,5 +14,7 @@
         public const string WandsCardsShowButton = "UI/MainMenu/WandsCardsShowButton";
         public const string StatsView = "UI/MainMenu/StatsView";
         public const string UpgradeView = "UI/MainMenu/UpgradeView";
+        public const string Joystick = "UI/Game/Control/Joystick";
+        public const string DesktopInput = "UI/Game/Control/DesktopInput";
     }
 }
