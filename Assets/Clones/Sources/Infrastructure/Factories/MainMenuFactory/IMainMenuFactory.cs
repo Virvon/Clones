@@ -1,7 +1,7 @@
 ﻿using Clones.Services;
-using Clones.StaticData;
 using UnityEngine;
 using Clones.UI;
+using Clones.Types;
 
 namespace Clones.Infrastructure
 {

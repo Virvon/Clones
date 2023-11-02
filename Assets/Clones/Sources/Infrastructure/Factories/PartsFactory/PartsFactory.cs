@@ -7,6 +7,7 @@ using Object = UnityEngine.Object;
 using Clones.Biomes;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using Clones.Types;
 
 namespace Clones.Infrastructure
 {

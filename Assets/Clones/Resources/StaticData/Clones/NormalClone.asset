@@ -24,5 +24,7 @@ MonoBehaviour:
   DisuseTime: 0
   MovementSpeed: 10
   RotationSpeed: 1080
+  MiningRadius: 8
+  AttackRadius: 10
   BuyPrice: 100
   IsBuyed: 1

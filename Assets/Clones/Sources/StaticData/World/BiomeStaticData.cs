@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Clones.Types;
+using UnityEngine;
 
 namespace Clones.StaticData
 {

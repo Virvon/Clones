@@ -1,5 +1,5 @@
 ﻿using Clones.Infrastructure;
-using Clones.StaticData;
+using Clones.Types;
 using UnityEngine;
 
 namespace Clones.GameLogic

@@ -1,4 +1,4 @@
-﻿using Clones.StaticData;
+﻿using Clones.Types;
 
 namespace Clones.GameLogic
 {

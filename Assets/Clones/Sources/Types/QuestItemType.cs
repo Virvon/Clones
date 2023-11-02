@@ -1,4 +1,4 @@
-﻿namespace Clones.StaticData
+﻿namespace Clones.Types
 {
     public enum QuestItemType
     {

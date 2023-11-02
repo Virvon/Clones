@@ -1,6 +1,6 @@
 ﻿using Clones.Data;
 using Clones.Services;
-using Clones.StaticData;
+using Clones.Types;
 using System.Linq;
 using TMPro;
 using UnityEngine;

@@ -1,6 +1,6 @@
 ﻿using Clones.GameLogic;
 using Clones.Infrastructure;
-using Clones.StaticData;
+using Clones.Types;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

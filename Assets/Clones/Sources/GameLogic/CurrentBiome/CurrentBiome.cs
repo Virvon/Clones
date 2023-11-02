@@ -1,12 +1,12 @@
 ﻿using Clones.Biomes;
-using Clones.StaticData;
+using Clones.Types;
 using UnityEngine;
 
 namespace Clones.GameLogic
 {
     public class CurrentBiome : ICurrentBiome
     {
-        private const BiomeType DefaultType = BiomeType.Wasterlend;
+        private const Types.BiomeType DefaultType = BiomeType.Wasterlend;
 
         private readonly WorldGenerator _worldGenerator;
 

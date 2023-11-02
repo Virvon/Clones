@@ -1,5 +1,5 @@
 ﻿using Clones.GameLogic;
-using Clones.StaticData;
+using Clones.Types;
 using UnityEngine;
 
 public class QuestItem : MonoBehaviour, IItem
