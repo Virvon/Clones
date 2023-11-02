@@ -3,7 +3,7 @@
 namespace Clones.Data
 {
     [CreateAssetMenu(fileName = "New TopDownBullet", menuName = "Data/Bullet/Create new top down bullet", order = 51)]
-    public class TopDownBulletData : BulletData
+    public class TopDownBulletData : BulletStaticData
     {
         [SerializeField] private TopDownBullet _bulletPrefab;
         [SerializeField] private float _upOffset;

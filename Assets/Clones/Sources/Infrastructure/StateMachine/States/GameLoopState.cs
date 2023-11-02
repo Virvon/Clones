@@ -52,7 +52,7 @@ namespace Clones.Infrastructure
 
             IItemsCounter itemsCounter = new ItemsCounter(questsCreator, _persistentProgress);
 
-            GameObject playerObject = _gameFactory.CreatePlayer(itemsCounter);
+            GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itemsCounter);
 
             CharacterAttack playerAttack = playerObject.GetComponent<CharacterAttack>();
 

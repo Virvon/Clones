@@ -31,10 +31,12 @@ namespace Clones.Infrastructure
             _mainMenuStaticDataService = mainMenuStaticDataService;
         }
 
-        public GameObject CreatePlayer(IItemsCounter itemsCounter)
+        public GameObject CreatePlayer(IPartsFactory partsFactory, IItemsCounter itemsCounter)
         {
             CloneData cloneData = _persistentPorgress.Progress.AvailableClones.GetSelectedCloneData();
+            WandData wandData = _persistentPorgress.Progress.AvailableWands.GetSelectedWandData();
             CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(_persistentPorgress.Progress.AvailableClones.SelectedClone);
+            WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(_persistentPorgress.Progress.AvailableWands.SelectedWand);
 
             _playerObject = Object.Instantiate(cloneStaticData.Prefab);
 
@@ -55,6 +57,11 @@ namespace Clones.Infrastructure
 
             _playerObject.GetComponent<EnemiesAttackState>()
                 .Init(cloneStaticData.AttackRadius, cloneStaticData.RotationSpeed);
+
+            int damage = cloneData.Damage + wandData.Damage;
+
+            _playerObject.GetComponent<Wand>()
+                .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, wandStaticData.Cooldown);
 
             return _playerObject;
         }

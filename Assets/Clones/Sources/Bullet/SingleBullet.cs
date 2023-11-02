@@ -1,4 +1,6 @@
 ﻿using Clones.Data;
+using Clones.Services;
+using Clones.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using UnityEngine;
 public class SingleBullet : Bullet
 {
     public IDamageable HitTarget { get; private set; }
-    public override BulletData BulletData => _bulletData;
+    public override BulletStaticData BulletData => _bulletData;
 
     private SingleBulletData _bulletData;
     private Vector3 _direction;
@@ -47,7 +49,8 @@ public class SingleBullet : Bullet
         }
     }
 
-    public override void Init(BulletData bulletData) => _bulletData = (SingleBulletData)bulletData;
+    public override void Init(BulletStaticData bulletData) => 
+        _bulletData = (SingleBulletData)bulletData;
 
     public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
@@ -72,5 +75,4 @@ public class SingleBullet : Bullet
 
         Destroy(gameObject);
     }
-
 }

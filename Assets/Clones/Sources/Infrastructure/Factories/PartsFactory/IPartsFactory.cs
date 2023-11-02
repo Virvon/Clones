@@ -11,5 +11,6 @@ namespace Clones.Infrastructure
         GameObject CreateItem(QuestItemType type, Vector3 position);
         void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject);
         GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent);
+        Bullet CreateBullet(BulletType bulletType);
     }
 }

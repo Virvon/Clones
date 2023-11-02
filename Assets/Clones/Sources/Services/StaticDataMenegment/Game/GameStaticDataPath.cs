@@ -9,5 +9,6 @@
         public const string QuestItems = "StaticData/World/Items/Quest";
         public const string CurrencyItems = "StaticData/World/Items/Currency";
         public const string Enemies = "StaticData/Enemies";
+        public const string Bullets = "StaticData/Bullets";
     }
 }

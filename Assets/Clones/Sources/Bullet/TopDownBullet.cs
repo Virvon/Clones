@@ -11,7 +11,7 @@ public class TopDownBullet : Bullet
     public Transform Muzzle { get; private set; }
     public Vector3 TargetPosition { get; private set; }
     public float UpOffset => _bulletData.UpOffset;
-    public override BulletData BulletData => _bulletData;
+    public override BulletStaticData BulletData => _bulletData;
 
     private TopDownBulletData _bulletData;
     private IDamageable _selfDamageable;
@@ -56,7 +56,7 @@ public class TopDownBullet : Bullet
         StartCoroutine(LifiTimer());
     }
 
-    public override void Init(BulletData bulletData) => _bulletData = (TopDownBulletData)bulletData;
+    public override void Init(BulletStaticData bulletData) => _bulletData = (TopDownBulletData)bulletData;
 
     private IEnumerator LifiTimer()
     {

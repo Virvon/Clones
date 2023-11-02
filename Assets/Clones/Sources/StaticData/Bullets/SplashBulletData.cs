@@ -3,7 +3,7 @@
 namespace Clones.Data
 {
     [CreateAssetMenu(fileName = "New SplashBullet", menuName = "Data/Bullet/Create new splash bullet", order = 51)]
-    public class SplashBulletData : BulletData
+    public class SplashBulletData : BulletStaticData
     {
         [SerializeField] private SplashBullet _bulletPrefab;
         [SerializeField] private float _force;

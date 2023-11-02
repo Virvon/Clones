@@ -10,9 +10,12 @@ namespace Clones.StaticData
         public GameObject Prefab;
         public WandCard Card;
         public WandType Type;
+        public BulletType Bullet;
         public int Damage;
         public float Cooldown;
         public int UpgradePrice;
+        public float KnockbackForse;
+        public float KnockbackOffset;
         public int BuyPrice;
         public bool IsBuyed;
     }

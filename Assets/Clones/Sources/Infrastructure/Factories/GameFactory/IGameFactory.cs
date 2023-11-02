@@ -7,7 +7,7 @@ namespace Clones.Infrastructure
 {
     public interface IGameFacotry : IService
     {
-        GameObject CreatePlayer(IItemsCounter itemsCounter);
+        GameObject CreatePlayer(IPartsFactory partsFactory, IItemsCounter itemsCounter);
         WorldGenerator CreateWorldGenerator();
         CinemachineVirtualCamera CreateVirtualCamera();
         EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome);

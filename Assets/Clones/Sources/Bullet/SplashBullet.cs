@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SplashBullet : Bullet
 {
-    public override BulletData BulletData => _bulletData;
+    public override BulletStaticData BulletData => _bulletData;
 
     private SplashBulletData _bulletData;
     private Vector3 _direction;
@@ -70,7 +70,7 @@ public class SplashBullet : Bullet
         Shooted?.Invoke();
     }
 
-    public override void Init(BulletData bulletData) => _bulletData = (SplashBulletData)bulletData;
+    public override void Init(BulletStaticData bulletData) => _bulletData = (SplashBulletData)bulletData;
 
 
     private IEnumerator LifiTimer()

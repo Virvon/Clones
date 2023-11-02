@@ -1,4 +1,5 @@
-using Clones.Data;
+using Clones.Infrastructure;
+using Clones.Types;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,22 +7,32 @@ using Random = UnityEngine.Random;
 
 public class Wand : CharacterAttack
 {
-    [SerializeField] private BulletData _bulletData;
-    [SerializeField] private float _damageMultiply;
     [SerializeField] private Transform _shootingPoint;
-    [SerializeField] private float _knockbackForce;
-    [SerializeField] private float _knockbackOffset;
-    [SerializeField] private float _cooldown;
-    [SerializeField] private float _damage;
+    
+    private BulletType _bulletType;
+    private IPartsFactory _partsFactory;
+    private float _knockbackForce;
+    private float _knockbackOffset;
+    private float _cooldown;
+    private float _damage;
 
     public override event Action<IDamageable> Killed;
 
     protected override float CoolDown => _cooldown;
 
+    public void Init(IPartsFactory partsFactory, BulletType bulletType, int damage, float knockbackForce, float knockbackOffset, float cooldown)
+    {
+        _partsFactory = partsFactory;   
+        _bulletType = bulletType;
+        _damage = damage;
+        _knockbackForce = knockbackForce;
+        _knockbackOffset = knockbackOffset;
+        _cooldown = cooldown;
+    }
+
     protected override void Attack()
     {
-        Bullet bullet = Instantiate(_bulletData.BulletPrefab);
-        bullet.Init(_bulletData);
+        Bullet bullet = _partsFactory.CreateBullet(_bulletType);
         bullet.Shoot(Target, gameObject, _shootingPoint, OnHitted);
     }
 
@@ -35,7 +46,7 @@ public class Wand : CharacterAttack
     {
         foreach (var cell in damageableCells)
         {
-            cell.Damageable.TakeDamage(_damage * _damageMultiply);
+            cell.Damageable.TakeDamage(_damage);
 
             if (cell.Damageable.IsAlive == false)
                 Killed?.Invoke(cell.Damageable);

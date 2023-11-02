@@ -1,4 +1,5 @@
-﻿using Clones.StaticData;
+﻿using Clones.Data;
+using Clones.StaticData;
 using Clones.Types;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Clones.Services
         private Dictionary<QuestItemType, QuestItemStaticData> _questItems;
         private Dictionary<CurrencyItemType, CurrencyItemStaticData> _currencyItems;
         private Dictionary<EnemyType, EnemyStaticData> _enemies;
+        private Dictionary<BulletType, BulletStaticData> _bullets;
 
         public void Load()
         {
@@ -21,6 +23,7 @@ namespace Clones.Services
             _questItems = Resources.LoadAll<QuestItemStaticData>(GameStaticDataPath.QuestItems).ToDictionary(value => value.Type, value => value);
             _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(GameStaticDataPath.CurrencyItems).ToDictionary(value => value.Type, value => value);
             _enemies = Resources.LoadAll<EnemyStaticData>(GameStaticDataPath.Enemies).ToDictionary(value => value.Type, value => value);
+            _bullets = Resources.LoadAll<BulletStaticData>(GameStaticDataPath.Bullets).ToDictionary(value => value.Type, value => value);
         }
 
         public WorldGeneratorStaticData GetWorldGeneratorData() =>
@@ -41,5 +44,8 @@ namespace Clones.Services
 
         public EnemyStaticData GetEnemyStaticData(EnemyType type) => 
             _enemies.TryGetValue(type, out EnemyStaticData staticData) ? staticData : null;
+
+        public BulletStaticData GetBullet(BulletType type) => 
+            _bullets.TryGetValue(type, out BulletStaticData staticData) ? staticData : null;
     }
 }

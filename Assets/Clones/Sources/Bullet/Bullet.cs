@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour
 {
-    public abstract BulletData BulletData { get; }
+    public abstract BulletStaticData BulletData { get; }
 
     public abstract event Action Hitted;
     public abstract event Action Shooted;
@@ -15,5 +15,5 @@ public abstract class Bullet : MonoBehaviour
 
     public abstract void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted = null);
 
-    public abstract void Init(BulletData bulletData);
+    public abstract void Init(BulletStaticData bulletData);
 }

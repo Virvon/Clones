@@ -8,6 +8,7 @@ using Clones.Biomes;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 using Clones.Types;
+using Clones.Data;
 
 namespace Clones.Infrastructure
 {
@@ -87,6 +88,17 @@ namespace Clones.Infrastructure
                 .Init(type);
 
             return tile;
+        }
+
+        public Bullet CreateBullet(BulletType type)
+        {
+            BulletStaticData bulletData = _staticData.GetBullet(type);
+            GameObject bulletObject = Object.Instantiate(bulletData.BulletPrefab.gameObject);
+
+            Bullet bullet = bulletObject.GetComponent<Bullet>();
+            bullet.Init(bulletData);
+
+            return bullet;
         }
 
         private float GetEnemyWeight(EnemyStaticData enemyData) =>
