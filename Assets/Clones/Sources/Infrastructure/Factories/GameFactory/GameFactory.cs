@@ -63,6 +63,8 @@ namespace Clones.Infrastructure
             _playerObject.GetComponent<Wand>()
                 .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, wandStaticData.Cooldown);
 
+            CreateWand(_playerObject.GetComponent<WandBone>().Bone);
+
             return _playerObject;
         }
 
@@ -95,6 +97,12 @@ namespace Clones.Infrastructure
             enemiesSpawner.Init(currentBiome, _staticData, _playerObject);
 
             return enemiesSpawner;
+        }
+
+        private void CreateWand(Transform bone)
+        {
+            WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(_persistentPorgress.Progress.AvailableWands.SelectedWand);
+            Object.Instantiate(wandStaticData.Prefab, bone);
         }
 
         private GameObject InstantiateRegistered(string prefabPath)
