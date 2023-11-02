@@ -44,7 +44,7 @@ namespace Clones.Infrastructure
                 .Init(_inputService);
 
             _playerObject.GetComponent<DropCollecting>()
-                .Init(itemsCounter);
+                .Init(itemsCounter, cloneStaticData.DropCollectingRadius);
 
             _playerObject.GetComponent<PlayerHealth>()
                 .Init(cloneData.Health);

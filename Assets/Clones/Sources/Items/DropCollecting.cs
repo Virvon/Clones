@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DropCollecting : MonoBehaviour
 {
-    [SerializeField] private float _radius;
-    [SerializeField] private float _speed = 20;
+    private const float _speed = 25;
 
     private readonly Collider[] _overlapColliders = new Collider[64];
 
     private List<ItemMovement> _collectingItems = new();
+    private float _radius;
     private IItemsCounter _itemsCounter;
 
     private void Update()
@@ -35,8 +35,11 @@ public class DropCollecting : MonoBehaviour
         }
     }
 
-    public void Init(IItemsCounter itemsCounter) =>
+    public void Init(IItemsCounter itemsCounter, float radius)
+    {
         _itemsCounter = itemsCounter;
+        _radius = radius;
+    }
 
     private bool TryGetNearDrop(out List<ItemMovement> items)
     {
