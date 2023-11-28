@@ -90,11 +90,12 @@ namespace Clones.Infrastructure
 
         public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome)
         {
-            GameObject enemiesSpawnerObject = InstantiateRegistered(AssetPath.EnemiesSpawner);
+            EnemiesSpawnerStaticData data = _staticData.GetEnemiesSpawner(); 
+            GameObject enemiesSpawnerObject = InstantiateRegistered(data.Prefab);
 
             EnemiesSpawner enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
 
-            enemiesSpawner.Init(currentBiome, _staticData, _playerObject);
+            enemiesSpawner.Init(currentBiome, _staticData, _playerObject, data.StartDelay, data.SpawnCooldown, data.MaxWeight);
 
             return enemiesSpawner;
         }

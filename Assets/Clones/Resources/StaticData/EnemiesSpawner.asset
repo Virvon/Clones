@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fd274d5c04003c4280ec07884f6ce86, type: 3}
-  m_Name: Spawner
+  m_Name: EnemiesSpawner
   m_EditorClassIdentifier: 
-  _totalWeight: 8
-  _cooldown: 16
-  _minSpawnRadius: 20
-  _maxSpawnRadius: 30
+  Prefab: {fileID: 6585846767468256837, guid: 35c3fde147b57ae498c17a8e10defbae, type: 3}
+  StartDelay: 3
+  SpawnCooldown: 12
+  MaxWeight: 10

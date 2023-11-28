@@ -11,11 +11,11 @@ namespace Clones.GameLogic
 {
     public class EnemiesSpawner : MonoBehaviour, ITimeScalable
     {
-        private const float StartDelay = 3;
-        private const float SpawnCooldown = 12;
-        private const float MaxWeight = 10;
-        private const float MinRadius = 10;
-        private const float MaxRadius = 20;
+        private float _startDelay = 3;
+        private float _spawnCooldown = 12;
+        private float _maxWeight = 10;
+        private float _minRadius = 10;
+        private float _maxRadius = 20;
 
         private ICurrentBiome _currentBiome;
         private IGameStaticDataService _staticDataService;
@@ -28,11 +28,14 @@ namespace Clones.GameLogic
         private void OnDisable() =>
             _isFinish = true;
 
-        public void Init(ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject)
+        public void Init(ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject, float startDelay, float spawnCooldown, float maxWeight)
         {
             _currentBiome = currentBiome;
             _staticDataService = staticDataService;
             _playerObject = playerObject;
+            _startDelay = startDelay;
+            _spawnCooldown = spawnCooldown;
+            _maxWeight = maxWeight;
         }
 
         public void Init(IPartsFactory partsFactory) =>
@@ -63,7 +66,7 @@ namespace Clones.GameLogic
 
             float currentWeight = 0;
 
-            while (currentWeight < MaxWeight)
+            while (currentWeight < _maxWeight)
             {
                 EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
                 Vector3 spawnPosition = GetSpawnPosition();
@@ -76,16 +79,14 @@ namespace Clones.GameLogic
 
         private Vector3 GetSpawnPosition()
         {
-            float distance = Random.Range(MinRadius, MaxRadius + 1);
+            float distance = Random.Range(_minRadius, _maxRadius + 1);
             Vector2 point = Random.insideUnitCircle.normalized * distance + new Vector2(_playerObject.transform.position.x, _playerObject.transform.position.z);
 
             return new Vector3(point.x, 0, point.y);
         }
 
-        private EnemyType GetRandomEnemyType(EnemyType[] typeOptions)
-        {
-            return typeOptions[Random.Range(0, typeOptions.Length)];
-        }
+        private EnemyType GetRandomEnemyType(EnemyType[] typeOptions) => 
+            typeOptions[Random.Range(0, typeOptions.Length)];
 
         private EnemyType[] GetSpawnedEnemies()
         {
@@ -96,7 +97,7 @@ namespace Clones.GameLogic
 
         private IEnumerator Spawner()
         {
-            yield return new WaitForSeconds(StartDelay);
+            yield return new WaitForSeconds(_startDelay);
 
             while (_isFinish == false)
             {
@@ -105,7 +106,7 @@ namespace Clones.GameLogic
 
                 CreateWave();
 
-                yield return new WaitForSeconds(SpawnCooldown / _timeScale);
+                yield return new WaitForSeconds(_spawnCooldown / _timeScale);
             }
         }
     }

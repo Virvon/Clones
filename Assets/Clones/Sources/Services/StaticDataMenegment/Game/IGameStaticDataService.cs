@@ -13,5 +13,6 @@ namespace Clones.Services
         CurrencyItemStaticData GetItemStaticData(CurrencyItemType type);
         EnemyStaticData GetEnemyStaticData(EnemyType type);
         BulletStaticData GetBullet(BulletType type);
+        EnemiesSpawnerStaticData GetEnemiesSpawner();
     }
 }

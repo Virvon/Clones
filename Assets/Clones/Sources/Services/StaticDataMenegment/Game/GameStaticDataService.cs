@@ -15,6 +15,8 @@ namespace Clones.Services
         private Dictionary<CurrencyItemType, CurrencyItemStaticData> _currencyItems;
         private Dictionary<EnemyType, EnemyStaticData> _enemies;
         private Dictionary<BulletType, BulletStaticData> _bullets;
+        private EnemiesSpawnerStaticData _enemiesSpawner;
+        private WorldGeneratorStaticData _worldGenerator;
 
         public void Load()
         {
@@ -24,10 +26,12 @@ namespace Clones.Services
             _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(GameStaticDataPath.CurrencyItems).ToDictionary(value => value.Type, value => value);
             _enemies = Resources.LoadAll<EnemyStaticData>(GameStaticDataPath.Enemies).ToDictionary(value => value.Type, value => value);
             _bullets = Resources.LoadAll<BulletStaticData>(GameStaticDataPath.Bullets).ToDictionary(value => value.Type, value => value);
+            _enemiesSpawner = Resources.Load<EnemiesSpawnerStaticData>(GameStaticDataPath.EnemiesSpawner);
+            _worldGenerator = Resources.Load<WorldGeneratorStaticData>(GameStaticDataPath.WorldGenerator);
         }
 
         public WorldGeneratorStaticData GetWorldGeneratorData() =>
-            Resources.Load<WorldGeneratorStaticData>(GameStaticDataPath.WorldGenerator);
+            _worldGenerator;
 
 
         public BiomeStaticData GetBiomeStaticData(BiomeType type) => 
@@ -47,5 +51,8 @@ namespace Clones.Services
 
         public BulletStaticData GetBullet(BulletType type) => 
             _bullets.TryGetValue(type, out BulletStaticData staticData) ? staticData : null;
+
+        public EnemiesSpawnerStaticData GetEnemiesSpawner() => 
+            _enemiesSpawner;
     }
 }
