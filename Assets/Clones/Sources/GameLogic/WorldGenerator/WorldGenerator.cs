@@ -95,7 +95,6 @@ namespace Clones.GameLogic
                 return;
 
             var template = GetRandomBiomeType();
-
             var position = GridToWorldPosition(gridPosition);
 
             GameObject tileObject = _partsFactory.CreateTile(template, position, Quaternion.identity, transform);
@@ -106,7 +105,7 @@ namespace Clones.GameLogic
             _tilesMatrix.Add(tileObject);
         }
 
-        private BiomeType GetRandomBiomeType() =>
+        private BiomeType GetRandomBiomeType() => 
             _generationBiomes[Random.Range(0, _generationBiomes.Length)];
 
         private Vector3 GridToWorldPosition(Vector3Int gridPosition)

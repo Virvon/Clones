@@ -2,7 +2,17 @@
 {
     public enum PreyResourceType
     {
-        Green,
-        Blue
+        ViscousSalivaTree,
+        TreeWithEyes,
+        ForestTree1,
+        ForestTree2,
+        IceCrystalsTree1,
+        IceCrystalsTree2,
+        Crystal1,
+        Crystal2,
+        WastelandTree,
+        Cactus,
+        PoisonForestTree1,
+        PoisonForestTree2
     }
 }
