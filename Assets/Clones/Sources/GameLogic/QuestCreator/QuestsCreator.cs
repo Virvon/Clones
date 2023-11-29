@@ -3,6 +3,7 @@ using Clones.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Clones.GameLogic
@@ -13,7 +14,7 @@ namespace Clones.GameLogic
         private const int MinItemsCountInQuest = 4;
         private const int MaxReward = 10;
 
-        private readonly QuestItemType[] _questTypes = { QuestItemType.Green, QuestItemType.Blue};
+        private readonly QuestItemType[] _questTypes;
         private readonly IPersistentProgressService _persistentProgress;
 
         private List<Quest> _quests;
@@ -24,9 +25,10 @@ namespace Clones.GameLogic
         public event Action Created;
         public event Action<Quest> Updated;
 
-        public QuestsCreator(IPersistentProgressService persistentProgress)
+        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes)
         {
             _persistentProgress = persistentProgress;
+            _questTypes = questTypes;
         }
 
         public void Create()
@@ -42,6 +44,8 @@ namespace Clones.GameLogic
 
         public void TakeItem(QuestItemType type, int count)
         {
+            Debug.Log("name " + type + " taked");
+
             var updatedQuest = _quests.First(quest => quest.Type == type);
             updatedQuest.TryTakeItem(type, count);
 

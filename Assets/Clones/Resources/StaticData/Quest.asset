@@ -12,9 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ba4e96a38f34f409d9bffc1e086b14, type: 3}
   m_Name: Quest
   m_EditorClassIdentifier: 
-  _itemsCount: 2
-  _reward: 10
-  _minimumPercentageItemCountInQuest: 20
-  _questItemDatas:
-  - {fileID: 11400000, guid: d46938295fcd0e341b04520404561ec7, type: 2}
-  - {fileID: 11400000, guid: 6603e10c266fe394da062a2d0b7d97db, type: 2}
+  QuestItemTypes: 0000000001000000

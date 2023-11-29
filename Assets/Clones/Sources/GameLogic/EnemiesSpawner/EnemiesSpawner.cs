@@ -90,7 +90,7 @@ namespace Clones.GameLogic
 
         private EnemyType[] GetSpawnedEnemies()
         {
-            BiomeStaticData biomeData = _staticDataService.GetBiomeStaticData(_currentBiome.Type);
+            BiomeStaticData biomeData = _staticDataService.GetBiome(_currentBiome.Type);
 
             return biomeData.EnemiesTemplated;
         }

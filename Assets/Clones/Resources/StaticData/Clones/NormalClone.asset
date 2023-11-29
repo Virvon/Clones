@@ -26,5 +26,6 @@ MonoBehaviour:
   RotationSpeed: 1080
   MiningRadius: 8
   AttackRadius: 10
+  DropCollectingRadius: 5
   BuyPrice: 100
   IsBuyed: 1

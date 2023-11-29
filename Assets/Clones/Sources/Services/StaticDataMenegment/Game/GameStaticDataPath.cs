@@ -11,5 +11,6 @@
         public const string Enemies = "StaticData/Enemies";
         public const string Bullets = "StaticData/Bullets";
         public const string EnemiesSpawner = "StaticData/EnemiesSpawner";
+        public const string Quest = "StaticData/Quest";
     }
 }

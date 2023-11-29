@@ -17,6 +17,7 @@ namespace Clones.Services
         private Dictionary<BulletType, BulletStaticData> _bullets;
         private EnemiesSpawnerStaticData _enemiesSpawner;
         private WorldGeneratorStaticData _worldGenerator;
+        private QuestStaticData _quest;
 
         public void Load()
         {
@@ -28,25 +29,26 @@ namespace Clones.Services
             _bullets = Resources.LoadAll<BulletStaticData>(GameStaticDataPath.Bullets).ToDictionary(value => value.Type, value => value);
             _enemiesSpawner = Resources.Load<EnemiesSpawnerStaticData>(GameStaticDataPath.EnemiesSpawner);
             _worldGenerator = Resources.Load<WorldGeneratorStaticData>(GameStaticDataPath.WorldGenerator);
+            _quest = Resources.Load<QuestStaticData>(GameStaticDataPath.Quest);
         }
 
-        public WorldGeneratorStaticData GetWorldGeneratorData() =>
+        public WorldGeneratorStaticData GetWorldGenerator() =>
             _worldGenerator;
 
 
-        public BiomeStaticData GetBiomeStaticData(BiomeType type) => 
+        public BiomeStaticData GetBiome(BiomeType type) => 
             _biomes.TryGetValue(type, out BiomeStaticData staticData) ? staticData : null;
 
-        public PreyResourceStaticData GetPreyResourceStaticData(PreyResourceType type) => 
+        public PreyResourceStaticData GetPreyResource(PreyResourceType type) => 
             _preyResources.TryGetValue(type, out PreyResourceStaticData staticData) ? staticData : null;
 
-        public QuestItemStaticData GetItemStaticData(QuestItemType type) => 
+        public QuestItemStaticData GetItem(QuestItemType type) => 
             _questItems.TryGetValue(type, out QuestItemStaticData staticData) ? staticData : null;
 
-        public CurrencyItemStaticData GetItemStaticData(CurrencyItemType type) => 
+        public CurrencyItemStaticData GetItem(CurrencyItemType type) => 
             _currencyItems.TryGetValue(type, out CurrencyItemStaticData staticData) ? staticData : null;
 
-        public EnemyStaticData GetEnemyStaticData(EnemyType type) => 
+        public EnemyStaticData GetEnemy(EnemyType type) => 
             _enemies.TryGetValue(type, out EnemyStaticData staticData) ? staticData : null;
 
         public BulletStaticData GetBullet(BulletType type) => 
@@ -54,5 +56,8 @@ namespace Clones.Services
 
         public EnemiesSpawnerStaticData GetEnemiesSpawner() => 
             _enemiesSpawner;
+
+        public QuestStaticData GetQuest() => 
+            _quest;
     }
 }

@@ -31,7 +31,6 @@ public class PreyResource : MonoBehaviour, IDroppable
 
         if(_hitsCountToDie <= 0)
         {
-
             _isAlive = false;
             Died?.Invoke(this);
             Destroy(gameObject);

@@ -6,13 +6,14 @@ namespace Clones.Services
 {
     public interface IGameStaticDataService : IStaticDataService
     {
-        WorldGeneratorStaticData GetWorldGeneratorData();
-        BiomeStaticData GetBiomeStaticData(BiomeType type);
-        PreyResourceStaticData GetPreyResourceStaticData(PreyResourceType type);
-        QuestItemStaticData GetItemStaticData(QuestItemType type);
-        CurrencyItemStaticData GetItemStaticData(CurrencyItemType type);
-        EnemyStaticData GetEnemyStaticData(EnemyType type);
+        WorldGeneratorStaticData GetWorldGenerator();
+        BiomeStaticData GetBiome(BiomeType type);
+        PreyResourceStaticData GetPreyResource(PreyResourceType type);
+        QuestItemStaticData GetItem(QuestItemType type);
+        CurrencyItemStaticData GetItem(CurrencyItemType type);
+        EnemyStaticData GetEnemy(EnemyType type);
         BulletStaticData GetBullet(BulletType type);
         EnemiesSpawnerStaticData GetEnemiesSpawner();
+        QuestStaticData GetQuest();
     }
 }

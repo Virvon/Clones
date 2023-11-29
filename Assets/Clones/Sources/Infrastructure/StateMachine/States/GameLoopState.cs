@@ -16,10 +16,11 @@ namespace Clones.Infrastructure
         private readonly ITimeScale _timeScale;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly IGameStaticDataService _gameStaticDataService;
 
         private List<IDisable> _disables;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService)
+        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -27,6 +28,7 @@ namespace Clones.Infrastructure
             _persistentProgress = persistentProgress;
             _timeScale = timeScale;
             _mainMenuStaticDataService = mainMenuStaticDataService;
+            _gameStaticDataService = gameStaticDataService;
 
             _disables = new();
             _saveLoadService = saveLoadService;
@@ -48,7 +50,7 @@ namespace Clones.Infrastructure
 
         private void CreateGame()
         {
-            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress);
+            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, _gameStaticDataService.GetQuest().QuestItemTypes);
 
             IItemsCounter itemsCounter = new ItemsCounter(questsCreator, _persistentProgress);
 

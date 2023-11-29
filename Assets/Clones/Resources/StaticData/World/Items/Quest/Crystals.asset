@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cdf083785206a84f8cbc49707f33a35, type: 3}
-  m_Name: WorldGenerator
+  m_Script: {fileID: 11500000, guid: 44b50f0814fbcd848811f44b7ab1342e, type: 3}
+  m_Name: Crystals
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 4369433237527862174, guid: 5800ae72453bb0d4cb76438114ab591b, type: 3}
-  ViewRadius: 175
-  CellSize: 100
-  GenerationBiomes: 00000000010000000300000004000000
+  Prefab: {fileID: 4532498036244834587, guid: 1587da99a6fd64149b54bca299a57f74, type: 3}
+  Type: 1
