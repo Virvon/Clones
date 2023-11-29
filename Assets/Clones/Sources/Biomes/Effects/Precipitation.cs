@@ -48,7 +48,7 @@ public class Precipitation : MonoBehaviour
         }
         else
         {
-            //_currentPrecipitation = Instantiate(_precipitationPrefab, _biomeEffects.Biome.Player.transform.position, _biomeEffects.Biome.Player.transform.rotation, _biomeEffects.Biome.Player.transform);
+            _currentPrecipitation = Instantiate(_precipitationPrefab, _biomeEffects.Biome.Player.transform.position, _biomeEffects.Biome.Player.transform.rotation, _biomeEffects.Biome.Player.transform);
         }
     }
 

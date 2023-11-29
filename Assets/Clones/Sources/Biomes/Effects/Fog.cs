@@ -25,6 +25,7 @@ public class Fog : MonoBehaviour
     {
         if(_biomeEffects.EffectIsPlayed)
         {
+            RenderSettings.fog = true;
             RenderSettings.fogColor = _color;
 
             SetFogDensity(_density, _foggingSpeed);
@@ -56,5 +57,8 @@ public class Fog : MonoBehaviour
 
             yield return null;
         }
+
+        if(RenderSettings.fogDensity == 0)
+            RenderSettings.fog = false;
     }
 }

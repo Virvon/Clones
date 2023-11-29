@@ -10,12 +10,14 @@ namespace Clones.Infrastructure
         private readonly GameStateMachine _stateMachine;
         private readonly IMainMenuFactory _mainMenuFactory;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
+        private readonly ISaveLoadService _saveLoadProgress;
 
-        public MainMenuLoopState(GameStateMachine stateMachine, IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService)
+        public MainMenuLoopState(GameStateMachine stateMachine, IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadProgress)
         {
             _stateMachine = stateMachine;
             _mainMenuFactory = mainMenuFactory;
             _mainMenuStaticDataService = mainMenuStaticDataService;
+            _saveLoadProgress = saveLoadProgress;
         }
 
         public void Enter()
@@ -43,7 +45,7 @@ namespace Clones.Infrastructure
 
         public void Exit()
         {
-            
+            _saveLoadProgress.SaveProgress();
         }
 
         private void CreateClonesCards(CloneType[] types)

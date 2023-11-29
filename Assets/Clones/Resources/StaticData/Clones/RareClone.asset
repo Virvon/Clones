@@ -12,15 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcf306fd568238408369c36bb4993e1, type: 3}
   m_Name: RareClone
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 4658819119955953382, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
+  Prefab: {fileID: 8931962915480580132, guid: 6e158d679bef4fb42b6345de557da114, type: 3}
   Card: {fileID: 3171580171538393250, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
   Type: 2
   Helath: 2
   IncreaseHealth: 2
   Damage: 2
   IncreaseDamage: 2
-  UpgradePrice: 200
+  UpgradePrice: 400
   IncreasePrice: 2
-  DisuseTime: 100
+  DisuseTime: 30
+  MovementSpeed: 10
+  RotationSpeed: 1080
+  MiningRadius: 8
+  AttackRadius: 10
+  DropCollectingRadius: 5
   BuyPrice: 200
   IsBuyed: 0

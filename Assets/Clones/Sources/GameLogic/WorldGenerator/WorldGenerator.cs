@@ -11,8 +11,6 @@ namespace Clones.GameLogic
 {
     public class WorldGenerator : MonoBehaviour
     {
-        private static int Offset = 100;
-
         [SerializeField] private NavMeshSurface _navMeshSurface;
 
         private IPartsFactory _partsFactory;
@@ -23,7 +21,8 @@ namespace Clones.GameLogic
         private float _cellSize;
         private HashSet<GameObject> _tilesMatrix = new();
 
-        private Vector3 _playerPosition => new Vector3(_player.position.x + 50, _player.position.y, _player.position.z + 50);
+        private float _offset => _cellSize / 2;
+        private Vector3 _playerPosition => new Vector3(_player.position.x + _offset, _player.position.y, _player.position.z + _offset);
 
         public event Action<GameObject> TileCreated;
         public event Action<GameObject> TileDestroyed;

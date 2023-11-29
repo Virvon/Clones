@@ -7,9 +7,9 @@ namespace Clones.Infrastructure
     {
         public GameStateMachine StateMachine { get; private set; }
 
-        public Game(LoadingPanel loadingPanel)
+        public Game(LoadingPanel loadingPanel, ICoroutineRunner coroutineRunner)
         {
-            StateMachine = new GameStateMachine(new SceneLoader(), loadingPanel, AllServices.Instance);
+            StateMachine = new GameStateMachine(new SceneLoader(), loadingPanel, AllServices.Instance, coroutineRunner);
         }
     }
 }

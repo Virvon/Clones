@@ -44,8 +44,6 @@ namespace Clones.GameLogic
 
         public void TakeItem(QuestItemType type, int count)
         {
-            Debug.Log("name " + type + " taked");
-
             var updatedQuest = _quests.First(quest => quest.Type == type);
             updatedQuest.TryTakeItem(type, count);
 
