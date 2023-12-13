@@ -3,7 +3,6 @@ using Clones.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -21,7 +20,6 @@ namespace Clones.GameLogic
         private float _destroyRadius;
         private float _cellSize;
         private HashSet<GameObject> _tilesMatrix = new();
-        private bool _isNavMeschCreated = true;
 
         private float _offset => _cellSize / 2;
         private Vector3 _playerPosition => new Vector3(_player.position.x + _offset, _player.position.y, _player.position.z + _offset);
@@ -117,14 +115,6 @@ namespace Clones.GameLogic
             _tilesMatrix.Add(tileObject);
 
             return true;
-        }
-
-        private async Task BuildNavMeshAsycn(Action callback)
-        {
-            Debug.Log("Started build nav mesh");
-            await Task.Run(() => _navMeshSurface.BuildNavMesh());
-            Debug.Log("Ended build nav mesh");
-            callback.Invoke();
         }
 
         private BiomeType GetRandomBiomeType() => 
