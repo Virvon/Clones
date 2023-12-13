@@ -14,9 +14,7 @@ public class DropCollecting : MonoBehaviour
 
     private void Update()
     {
-        List<ItemMovement> items;
-
-        if(TryGetNearDrop(out items) == false)
+        if(TryGetNearDrop(out List<ItemMovement> items) == false)
             return;
 
         foreach (var item in items)

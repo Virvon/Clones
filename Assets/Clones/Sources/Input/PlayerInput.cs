@@ -46,7 +46,18 @@ namespace Clones.Input
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""880f2080-23c0-434c-9098-59a2e67fa0d2"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchsScreen"",
                     ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -61,6 +72,17 @@ namespace Clones.Input
             ""devices"": [
                 {
                     ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""TouchsScreen"",
+            ""bindingGroup"": ""TouchsScreen"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -166,6 +188,15 @@ namespace Clones.Input
             {
                 if (m_MouseSchemeIndex == -1) m_MouseSchemeIndex = asset.FindControlSchemeIndex("Mouse");
                 return asset.controlSchemes[m_MouseSchemeIndex];
+            }
+        }
+        private int m_TouchsScreenSchemeIndex = -1;
+        public InputControlScheme TouchsScreenScheme
+        {
+            get
+            {
+                if (m_TouchsScreenSchemeIndex == -1) m_TouchsScreenSchemeIndex = asset.FindControlSchemeIndex("TouchsScreen");
+                return asset.controlSchemes[m_TouchsScreenSchemeIndex];
             }
         }
         public interface IPlayerActions

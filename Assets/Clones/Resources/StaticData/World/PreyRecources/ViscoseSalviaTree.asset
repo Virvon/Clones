@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac488b5f37358964692ef32494d48e16, type: 3}
+  m_Name: ViscoseSalviaTree
+  m_EditorClassIdentifier: 
+  Type: 0
+  DroppetItem: 0
+  Prefab: {fileID: 4163826744113014988, guid: b0ca2ec7cd168e441bdedb07e4e26f7a, type: 3}
+  HitsCountToDie: 3
+  DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}
+  EffectOffset: {x: 0, y: 3, z: 0}

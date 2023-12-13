@@ -9,6 +9,7 @@ namespace Clones.StaticData
     {
         public WorldGenerator Prefab;
         public float ViewRadius;
+        public float DestroyRadius;
         public float CellSize;
         public BiomeType[] GenerationBiomes;
     }

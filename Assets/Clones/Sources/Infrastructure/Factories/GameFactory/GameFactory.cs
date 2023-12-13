@@ -70,10 +70,10 @@ namespace Clones.Infrastructure
 
         public WorldGenerator CreateWorldGenerator()
         {
-            WorldGeneratorStaticData worldGeneratorData = _staticData.GetWorldGeneratorData();
+            WorldGeneratorStaticData worldGeneratorData = _staticData.GetWorldGenerator();
 
             WorldGenerator worldGenerator = Object.Instantiate(worldGeneratorData.Prefab);
-            worldGenerator.Init(_playerObject.transform, worldGeneratorData.GenerationBiomes, worldGeneratorData.ViewRadius, worldGeneratorData.CellSize);
+            worldGenerator.Init(_playerObject.transform, worldGeneratorData.GenerationBiomes, worldGeneratorData.ViewRadius, worldGeneratorData.DestroyRadius, worldGeneratorData.CellSize);
 
             return worldGenerator;
         }

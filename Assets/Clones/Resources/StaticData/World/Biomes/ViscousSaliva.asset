@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ViscousSaliva
   m_EditorClassIdentifier: 
   Type: 3
-  Prefab: {fileID: 0}
-  PercentageFilled: 0
-  PreyResourcesTamplates: 
+  Prefab: {fileID: 2965586213671339217, guid: 8f597fa2879c35d4cae84ca4735c0766, type: 3}
+  PercentageFilled: 80
+  PreyResourcesTemplates: 0000000001000000
+  EnemiesTemplated: 00000000

@@ -1,5 +1,7 @@
-﻿using Clones.Services;
-using UnityEngine;
+﻿using Agava.YandexGames;
+using Clones.Services;
+using System;
+using System.Collections;
 
 namespace Clones.Infrastructure
 {
@@ -10,22 +12,40 @@ namespace Clones.Infrastructure
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
+        private readonly ICoroutineRunner _coroutineRunner;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services)
+        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services, ICoroutineRunner coroutineRunner)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _services = services;
+            _coroutineRunner = coroutineRunner;
 
             RegisterServices();
         }
 
-        public void Enter() => 
-            _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
+        public void Enter() =>
+            _coroutineRunner.StartCoroutine(InitializeYandexSdk());
 
         public void Exit()
         {
             
+        }
+
+        private IEnumerator InitializeYandexSdk()
+        {
+#if !UNITY_WEBGL || UNITY_EDITOR
+            _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
+            yield break;
+#endif
+
+            yield return YandexGamesSdk.Initialize();
+
+            if (YandexGamesSdk.IsInitialized == false)
+                throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
+
+            YandexGamesSdk.CallbackLogging = true;
+            _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
         }
 
         private void RegisterServices()
@@ -50,7 +70,7 @@ namespace Clones.Infrastructure
         private void RegisterInputService()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
-            if (Application.isMobilePlatform)
+            if (UnityEngine.Application.isMobilePlatform)
                 _services.RegisterSingle<IInputService>(new MobileInputService());
             else
                 _services.RegisterSingle<IInputService>(new DescktopInputService());

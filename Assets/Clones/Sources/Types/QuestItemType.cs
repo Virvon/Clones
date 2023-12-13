@@ -2,7 +2,7 @@
 {
     public enum QuestItemType
     {
-        Green,
-        Blue
+        Logs,
+        Crystals
     }
 }

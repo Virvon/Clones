@@ -23,7 +23,7 @@ namespace Clones.Infrastructure
 
         public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject)
         {
-            EnemyStaticData enemyData = _staticData.GetEnemyStaticData(type);
+            EnemyStaticData enemyData = _staticData.GetEnemy(type);
 
             weight = GetEnemyWeight(enemyData);
 
@@ -50,21 +50,24 @@ namespace Clones.Infrastructure
 
         public GameObject CreateItem(CurrencyItemType type, Vector3 position)
         {
-            CurrencyItemStaticData itemData = _staticData.GetItemStaticData(type);
+            CurrencyItemStaticData itemData = _staticData.GetItem(type);
 
             return Object.Instantiate(itemData.Prefab, position, Quaternion.identity);
         }
 
         public GameObject CreateItem(QuestItemType type, Vector3 position)
         {
-            QuestItemStaticData itemData = _staticData.GetItemStaticData(type);
+            QuestItemStaticData itemData = _staticData.GetItem(type);
 
-            return Object.Instantiate(itemData.Prefab, position, Quaternion.identity);
+            GameObject item = Object.Instantiate(itemData.Prefab, position, Quaternion.identity);
+            item.GetComponent<QuestItem>().Init(type);
+
+            return item;
         }
 
         public void CreatePreyResource(PreyResourceType type, Vector3 position, Quaternion rotation, Transform parent)
         {
-            PreyResourceStaticData preyResourceData = _staticData.GetPreyResourceStaticData(type);
+            PreyResourceStaticData preyResourceData = _staticData.GetPreyResource(type);
 
             var preyResourceObject = Object.Instantiate(preyResourceData.Prefab, position, rotation, parent);
 
@@ -77,7 +80,7 @@ namespace Clones.Infrastructure
 
         public GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent)
         {
-            BiomeStaticData biomeData = _staticData.GetBiomeStaticData(type);
+            BiomeStaticData biomeData = _staticData.GetBiome(type);
 
             GameObject tile = Object.Instantiate(biomeData.Prefab, position, rotation, parent);
 

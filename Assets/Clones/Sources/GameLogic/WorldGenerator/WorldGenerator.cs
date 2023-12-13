@@ -17,8 +17,12 @@ namespace Clones.GameLogic
         private Transform _player;
         BiomeType[] _generationBiomes;
         private float _viewRadius;
+        private float _destroyRadius;
         private float _cellSize;
         private HashSet<GameObject> _tilesMatrix = new();
+
+        private float _offset => _cellSize / 2;
+        private Vector3 _playerPosition => new Vector3(_player.position.x + _offset, _player.position.y, _player.position.z + _offset);
 
         public event Action<GameObject> TileCreated;
         public event Action<GameObject> TileDestroyed;
@@ -28,14 +32,15 @@ namespace Clones.GameLogic
             if (_player == null)
                 return;
 
-            FillRadius(_player.position, _viewRadius);
-            EmptyAroundRadius(_player.position, _viewRadius);
+            FillRadius(_playerPosition, _viewRadius);
+            EmptyAroundRadius(_playerPosition, _destroyRadius);
         }
 
-        public void Init(Transform player, BiomeType[] templates, float viewRadius, float cellSize)
+        public void Init(Transform player, BiomeType[] templates, float viewRadius, float destroyRadius, float cellSize)
         {
             _generationBiomes = templates;
             _viewRadius = viewRadius;
+            _destroyRadius = destroyRadius;
             _cellSize = cellSize;
             _player = player;
         }
@@ -95,7 +100,6 @@ namespace Clones.GameLogic
                 return;
 
             var template = GetRandomBiomeType();
-
             var position = GridToWorldPosition(gridPosition);
 
             GameObject tileObject = _partsFactory.CreateTile(template, position, Quaternion.identity, transform);
@@ -106,7 +110,7 @@ namespace Clones.GameLogic
             _tilesMatrix.Add(tileObject);
         }
 
-        private BiomeType GetRandomBiomeType() =>
+        private BiomeType GetRandomBiomeType() => 
             _generationBiomes[Random.Range(0, _generationBiomes.Length)];
 
         private Vector3 GridToWorldPosition(Vector3Int gridPosition)
@@ -120,9 +124,9 @@ namespace Clones.GameLogic
         private Vector3Int WorldToGridPosition(Vector3 worldPosition)
         {
             return new Vector3Int(
-                (int)(worldPosition.x / _cellSize),
-                (int)(worldPosition.y / _cellSize),
-                (int)(worldPosition.z / _cellSize));
+                (int)((worldPosition.x) / _cellSize),
+                (int)((worldPosition.y) / _cellSize),
+                (int)((worldPosition.z) / _cellSize));
         }
     }
 }

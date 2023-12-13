@@ -6,6 +6,8 @@ namespace Clones.GameLogic
 {
     public class PreyResourcesSpawner : MonoBehaviour
     {
+        [SerializeField] private GameObject _spawnPointsWrapper;
+
         private IPartsFactory _partsFactory;
         private Point[] _spawnPoints;
         private PreyResourceType[] _preyResourcesTemplates;
@@ -17,9 +19,10 @@ namespace Clones.GameLogic
             _preyResourcesTemplates = preyResourcesTemplates;
             _percentageFilled = percentageFilled;
 
-            _spawnPoints = GetComponentsInChildren<Point>();
+            _spawnPoints = _spawnPointsWrapper.GetComponentsInChildren<Point>();
 
-            Spawn();
+            if(_preyResourcesTemplates.Length > 0)
+                Spawn();
         }
 
         private void Spawn()
