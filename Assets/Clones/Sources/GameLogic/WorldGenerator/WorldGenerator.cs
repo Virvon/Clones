@@ -3,6 +3,7 @@ using Clones.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -20,6 +21,7 @@ namespace Clones.GameLogic
         private float _destroyRadius;
         private float _cellSize;
         private HashSet<GameObject> _tilesMatrix = new();
+        private bool _isNavMeschCreated = true;
 
         private float _offset => _cellSize / 2;
         private Vector3 _playerPosition => new Vector3(_player.position.x + _offset, _player.position.y, _player.position.z + _offset);
@@ -38,6 +40,8 @@ namespace Clones.GameLogic
 
         public void Init(Transform player, BiomeType[] templates, float viewRadius, float destroyRadius, float cellSize)
         {
+            _navMeshSurface.BuildNavMesh();
+
             _generationBiomes = templates;
             _viewRadius = viewRadius;
             _destroyRadius = destroyRadius;
@@ -52,14 +56,19 @@ namespace Clones.GameLogic
         {
             var cellsCountOnAxis = (int)(viewRadius / _cellSize);
             var fillAreaCenter = WorldToGridPosition(center);
+            bool isCreated = false;
 
             for (int x = -cellsCountOnAxis; x < cellsCountOnAxis; x++)
             {
                 for (int z = -cellsCountOnAxis; z < cellsCountOnAxis; z++)
                 {
-                    TryCreate(fillAreaCenter + new Vector3Int(x, (int)transform.position.y, z));
+                    if(TryCreate(fillAreaCenter + new Vector3Int(x, (int)transform.position.y, z)))
+                        isCreated = true;
                 }
             }
+
+            if (isCreated)
+                _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
         }
 
         private void EmptyAroundRadius(Vector3 center, float viewRadius)
@@ -92,22 +101,30 @@ namespace Clones.GameLogic
             }
         }
 
-        private void TryCreate(Vector3Int gridPosition)
+        private bool TryCreate(Vector3Int gridPosition)
         {
             gridPosition.y = (int)transform.position.y;
 
             if (_tilesMatrix.Any(tile => WorldToGridPosition(tile.transform.position) == gridPosition))
-                return;
+                return false;
 
             var template = GetRandomBiomeType();
             var position = GridToWorldPosition(gridPosition);
 
             GameObject tileObject = _partsFactory.CreateTile(template, position, Quaternion.identity, transform);
 
-            _navMeshSurface.BuildNavMesh();
-
             TileCreated?.Invoke(tileObject);
             _tilesMatrix.Add(tileObject);
+
+            return true;
+        }
+
+        private async Task BuildNavMeshAsycn(Action callback)
+        {
+            Debug.Log("Started build nav mesh");
+            await Task.Run(() => _navMeshSurface.BuildNavMesh());
+            Debug.Log("Ended build nav mesh");
+            callback.Invoke();
         }
 
         private BiomeType GetRandomBiomeType() => 
