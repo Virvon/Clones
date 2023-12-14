@@ -7,10 +7,14 @@ namespace Clones.UI
 {
     public abstract class CardsView<TType> : MonoBehaviour where TType : Enum
     {
+        [SerializeField] private CardsScrollRect _scrollRect;
+
         private Card _currentCard;
 
         private Dictionary<Card, TType> _types = new();
         private Dictionary<TType, Card> _cards = new();
+
+        public CardsScrollRect ScrollRect => _scrollRect;
 
         protected IPersistentProgressService PersistentProgress { get; private set; }
         protected IMainMenuStaticDataService MainMenuStaticDataService { get; private set; }
