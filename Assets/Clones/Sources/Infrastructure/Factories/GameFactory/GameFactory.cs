@@ -40,28 +40,41 @@ namespace Clones.Infrastructure
 
             _playerObject = Object.Instantiate(cloneStaticData.Prefab);
 
-            _playerObject.GetComponent<PlayerAnimationSwitcher>()
-                .Init(_inputService);
+            Player player = _playerObject.GetComponent<Player>();
 
-            _playerObject.GetComponent<DropCollecting>()
+            player
+                .GetComponent<Player>()
+                .Init(cloneStaticData.MovementSpeed, wandStaticData.Cooldown);
+
+            _playerObject
+                .GetComponent<PlayerAnimationSwitcher>()
+                .Init(_inputService, player);
+
+            _playerObject
+                .GetComponent<DropCollecting>()
                 .Init(itemsCounter, cloneStaticData.DropCollectingRadius);
 
-            _playerObject.GetComponent<PlayerHealth>()
+            _playerObject
+                .GetComponent<PlayerHealth>()
                 .Init(cloneData.Health);
 
-            _playerObject.GetComponent<MovementState>()
-                .Init(cloneStaticData.MovementSpeed, cloneStaticData.RotationSpeed);
+            _playerObject
+                .GetComponent<MovementState>()
+                .Init(player, cloneStaticData.RotationSpeed);
 
-            _playerObject.GetComponent<MiningState>()
+            _playerObject
+                .GetComponent<MiningState>()
                 .Init(cloneStaticData.MiningRadius, cloneStaticData.RotationSpeed);
 
-            _playerObject.GetComponent<EnemiesAttackState>()
+            _playerObject
+                .GetComponent<EnemiesAttackState>()
                 .Init(cloneStaticData.AttackRadius, cloneStaticData.RotationSpeed);
 
             int damage = cloneData.Damage + wandData.Damage;
 
-            _playerObject.GetComponent<Wand>()
-                .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, wandStaticData.Cooldown);
+            _playerObject
+                .GetComponent<Wand>()
+                .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player.StatsProvider);
 
             CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 

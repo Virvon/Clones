@@ -13,21 +13,21 @@ public class Wand : CharacterAttack
     private IPartsFactory _partsFactory;
     private float _knockbackForce;
     private float _knockbackOffset;
-    private float _cooldown;
     private float _damage;
+    private IStatsProvider _statsProvider;
 
     public override event Action<IDamageable> Killed;
 
-    protected override float CoolDown => _cooldown;
+    protected override float CoolDown => _statsProvider.GetStats().AttackCooldown;
 
-    public void Init(IPartsFactory partsFactory, BulletType bulletType, int damage, float knockbackForce, float knockbackOffset, float cooldown)
+    public void Init(IPartsFactory partsFactory, BulletType bulletType, int damage, float knockbackForce, float knockbackOffset, IStatsProvider statsProvider)
     {
         _partsFactory = partsFactory;   
         _bulletType = bulletType;
         _damage = damage;
         _knockbackForce = knockbackForce;
         _knockbackOffset = knockbackOffset;
-        _cooldown = cooldown;
+        _statsProvider = statsProvider;
     }
 
     protected override void Attack()

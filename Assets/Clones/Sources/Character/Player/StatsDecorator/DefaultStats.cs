@@ -14,7 +14,7 @@
         return new PlayerStats()
         {
             MovementSpeed = _movementSpeed,
-            AttackSpeed = _attackSpeed
+            AttackCooldown = _attackSpeed
         };
     }
 }

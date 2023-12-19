@@ -9,7 +9,7 @@
 
     public PlayerStats GetStats()
     {
-        return WrappedEntity.GetStats();
+        return GetStatsInternal();
     }
 
     protected abstract PlayerStats GetStatsInternal();

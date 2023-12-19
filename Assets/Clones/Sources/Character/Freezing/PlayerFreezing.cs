@@ -3,7 +3,7 @@ using Clones.StateMachine;
 using System;
 using System.Collections;
 
-public class PlayerFreezing : MonoBehaviour, IMovementSpeedChanger, IFreezingPercentChanger
+public class PlayerFreezing : MonoBehaviour, IFreezingPercentChanger
 {
     [SerializeField] private float _freezingSpeed;
     [SerializeField] private float _defrostSpeed;
@@ -39,7 +39,7 @@ public class PlayerFreezing : MonoBehaviour, IMovementSpeedChanger, IFreezingPer
         else
             speed -= speed * FreezingPercent;
 
-        _movementState.SetMovementSpeedChanger(this);
+        //_movementState.SetMovementSpeedChanger(this);
 
         _freezer = StartCoroutine(Freezer(targetFreezPrecent, speed));
     }
@@ -59,7 +59,7 @@ public class PlayerFreezing : MonoBehaviour, IMovementSpeedChanger, IFreezingPer
 
             FreezingPercent = (float)Math.Round(Mathf.Lerp(startFreezPrecent, targetFreezPrecent, time / freezingSpeed), MathRoundValue);
 
-            MovementSpeed = (float)Math.Round(Mathf.Lerp(_movementState.MaxMovementSpeed, _movementState.MaxMovementSpeed * (_movementSpeedFreezePercent / 100f), FreezingPercent), MathRoundValue);
+            //MovementSpeed = (float)Math.Round(Mathf.Lerp(_movementState.MaxMovementSpeed, _movementState.MaxMovementSpeed * (_movementSpeedFreezePercent / 100f), FreezingPercent), MathRoundValue);
 
             FreezingPercentChanged?.Invoke();
             MovementSpeedChanged?.Invoke();

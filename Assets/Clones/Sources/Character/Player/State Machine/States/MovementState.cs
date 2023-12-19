@@ -1,4 +1,3 @@
-using Clones.Services;
 using System;
 using UnityEngine;
 
@@ -9,16 +8,12 @@ namespace Clones.StateMachine
     {
         [SerializeField] private float _directionOffset;
 
-        private float _movementSpeed;
         private float _rotationSpeed;
         private Rigidbody _rigidbody;
         private SurfaceSlider _surfaceSlider;
-        private IMovementSpeedChanger _movementSpeedChanger;
+        private Player _player;
 
-        public float MaxMovementSpeed { get; private set; }
-        public float MovementSpeed => _movementSpeedChanger != null ? _movementSpeedChanger.MovementSpeed : _movementSpeed;
-
-        public event Action MovementSpeedChanged;
+        private float MovementSpeed => _player.StatsProvider.GetStats().MovementSpeed;
 
         private void OnEnable()
         {
@@ -32,20 +27,13 @@ namespace Clones.StateMachine
             InputServiece.Deactivated -= Stop;
         }
 
-        public void Init(float movementSpeed, float rotationSpeed)
+        public void Init(Player player, float rotationSpeed)
         {
-            _movementSpeed = movementSpeed;
             _rotationSpeed = rotationSpeed;
-            MaxMovementSpeed = _movementSpeed;
+            _player = player;
 
             _rigidbody = GetComponent<Rigidbody>();
             _surfaceSlider = GetComponent<SurfaceSlider>();
-        }
-
-        public void SetMovementSpeedChanger(IMovementSpeedChanger movementSpeedChanger)
-        {
-            _movementSpeedChanger = movementSpeedChanger;
-            _movementSpeedChanger.MovementSpeedChanged += MovementSpeedChanged;
         }
 
         private void Move()

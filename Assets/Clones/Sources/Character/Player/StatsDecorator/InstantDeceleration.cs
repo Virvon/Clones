@@ -1,8 +1,10 @@
-﻿public class InstantDeceleration : StatsDecorator
-{
-    private readonly float _movementSpeedPercent;
+﻿using UnityEngine;
 
-    public InstantDeceleration(IStatsProvider wrappedEntity, float movementSpeedPercent) : base(wrappedEntity)
+public class InstantDeceleration : StatsDecorator
+{
+    private readonly int _movementSpeedPercent;
+
+    public InstantDeceleration(IStatsProvider wrappedEntity, int movementSpeedPercent) : base(wrappedEntity)
     {
         _movementSpeedPercent = movementSpeedPercent;
     }
@@ -11,8 +13,9 @@
     {
         return new PlayerStats()
         {
-            MovementSpeed = WrappedEntity.GetStats().MovementSpeed * _movementSpeedPercent,
-            AttackSpeed = WrappedEntity.GetStats().AttackSpeed
+            
+            MovementSpeed = WrappedEntity.GetStats().MovementSpeed * (_movementSpeedPercent / 100f),
+            AttackCooldown = WrappedEntity.GetStats().AttackCooldown
         };
     }
 }

@@ -8,21 +8,20 @@ namespace Clones.Animation
     public class PlayerAnimationSwitcher : MonoBehaviour
     {
         [SerializeField] private CharacterAttack _characterAttack;
-        [SerializeField] private MovementState _movementState;
 
         private IInputService _inputService;
         private Animator _animator;
         private bool _isMoved;
+        private float _defaultMovementSpeed;
+        private Player _player;
 
-        private float _animationMovementSpeed => _movementState.MovementSpeed / _movementState.MaxMovementSpeed;
+        private float AnimationMovementSpeed => _player.StatsProvider.GetStats().MovementSpeed / _defaultMovementSpeed;
 
         private void OnEnable()
         {
             _animator = GetComponent<Animator>();
 
             _characterAttack.AttackStarted += OnAttackStarted;
-
-            _movementState.MovementSpeedChanged += OnMovementSpeedChanged;
         }
 
         private void OnDestroy()
@@ -32,15 +31,20 @@ namespace Clones.Animation
             _inputService.Activated -= OnMove;
             _inputService.Deactivated -= OnStop;
 
-            _movementState.MovementSpeedChanged += OnMovementSpeedChanged;
+            _player.StatsProviderChanged += OnMovementSpeedChanged;
         }
 
-        public void Init(IInputService inputService)
+        public void Init(IInputService inputService, Player player)
         {
             _inputService = inputService;
+            _player = player;
+
+            _defaultMovementSpeed = _player.StatsProvider.GetStats().MovementSpeed;
 
             _inputService.Activated += OnMove;
             _inputService.Deactivated += OnStop;
+
+            _player.StatsProviderChanged += OnMovementSpeedChanged;
         }
 
         private void OnAttackStarted() => 
@@ -66,6 +70,6 @@ namespace Clones.Animation
         }
 
         private void OnMovementSpeedChanged() => 
-            _animator.SetFloat(AnimationPath.Player.Float.MovementAnimationSpeed, _animationMovementSpeed);
+            _animator.SetFloat(AnimationPath.Player.Float.MovementAnimationSpeed, AnimationMovementSpeed);
     }
 }
