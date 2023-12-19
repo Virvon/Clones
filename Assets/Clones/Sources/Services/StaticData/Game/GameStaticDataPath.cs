@@ -5,7 +5,8 @@
         public const string WorldGenerator = "StaticData/World/WorldGenerator";
         public const string BoostsGenerator = "StaticData/BoostsSpawner/BoostsSpawner";
         public const string Biomes = "StaticData/World/Biomes";
-        public const string PreyResources = "StaticData/World/PreyRecources";
+        public const string PreyResources = "StaticData/World/PreyResources";
+        public const string UnminedResources = "StaticData/World/UnminedResources";
         public const string QuestItems = "StaticData/World/Items/Quest";
         public const string CurrencyItems = "StaticData/World/Items/Currency";
         public const string Enemies = "StaticData/Enemies";

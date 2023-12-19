@@ -78,14 +78,22 @@ namespace Clones.Infrastructure
                 .Init(preyResourceData.DiedEffect, preyResourceData.EffectOffset, preyResource);
         }
 
+        public void CreateUnminedResource(UnminedResourceType type, Vector3 position, Quaternion rotation, Transform parent)
+        {
+            UnminedPreyResourceStaticData unminedResourceData = _staticData.GetUnminedResource(type);
+
+            Object.Instantiate(unminedResourceData.Prefab, position, rotation, parent);
+        }
+
         public GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent)
         {
             BiomeStaticData biomeData = _staticData.GetBiome(type);
 
             GameObject tile = Object.Instantiate(biomeData.Prefab, position, rotation, parent);
 
-            tile.GetComponent<PreyResourcesSpawner>()?
-                .Init(this, biomeData.PreyResourcesTemplates, biomeData.PercentageFilled);
+            tile.GetComponent<PreyResourcesSpawner>()?.Init(this, biomeData.PreyResourcesTypes, biomeData.PreyResourcesPercentageFilled);
+
+            tile.GetComponent<UnminedResourcesSpawner>()?.Init(this, biomeData.UnminedResourcesTypes, biomeData.UnminedResourcesPercentageFilled);
 
             tile.GetComponent<Biome>()
                 .Init(type);

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 557896661753555454}
   - component: {fileID: -8338613940083834309}
   - component: {fileID: -5343893068518984585}
+  - component: {fileID: -4415841436861502654}
   - component: {fileID: -5270472210447390698}
   m_Layer: 0
   m_Name: PreyResource
@@ -141,6 +142,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26aa08335c4bff349baca4a9abb472c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4415841436861502654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726845397346985869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f9701ed5dd5de4e80df620509da7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &-5270472210447390698

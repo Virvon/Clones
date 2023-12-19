@@ -40,5 +40,13 @@
                 public const string MovementAnimationSpeed = nameof(MovementAnimationSpeed);
             }
         }
+
+        public static class Environment
+        {
+            public static class Bool
+            {
+                public const string IdleSpeed = nameof(IdleSpeed);
+            }
+        }
     }
 }

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 4
   Prefab: {fileID: 2965586213671339217, guid: 21b57e3ec12b1a34abdd684b627d5ec9, type: 3}
-  PercentageFilled: 100
-  PreyResourcesTemplates: 0800000009000000
+  PreyResourcesPercentageFilled: 60
+  PreyResourcesTypes: 0800000009000000
+  UnminedResourcesPercentageFilled: 0
+  UnminedResourcesTypes: 
   EnemiesTemplated: 00000000

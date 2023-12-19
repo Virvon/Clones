@@ -8,8 +8,10 @@ namespace Clones.StaticData
     {
         public BiomeType Type;
         public GameObject Prefab;
-        [Range(0, 100)] public int PercentageFilled;
-        public PreyResourceType[] PreyResourcesTemplates;
+        [Range(0, 100)] public int PreyResourcesPercentageFilled;
+        public PreyResourceType[] PreyResourcesTypes;
+        [Range(0, 100)] public int UnminedResourcesPercentageFilled;
+        public UnminedResourceType[] UnminedResourcesTypes;
         public EnemyType[] EnemiesTemplated;
     }
 }

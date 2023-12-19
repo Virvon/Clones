@@ -11,6 +11,7 @@ namespace Clones.Services
     {
         private Dictionary<BiomeType, BiomeStaticData> _biomes;
         private Dictionary<PreyResourceType, PreyResourceStaticData> _preyResources;
+        private Dictionary<UnminedResourceType, UnminedPreyResourceStaticData> _unminedResource;
         private Dictionary<QuestItemType, QuestItemStaticData> _questItems;
         private Dictionary<CurrencyItemType, CurrencyItemStaticData> _currencyItems;
         private Dictionary<EnemyType, EnemyStaticData> _enemies;
@@ -23,6 +24,7 @@ namespace Clones.Services
         {
             _biomes = Resources.LoadAll<BiomeStaticData>(GameStaticDataPath.Biomes).ToDictionary(value => value.Type, value => value);
             _preyResources = Resources.LoadAll<PreyResourceStaticData>(GameStaticDataPath.PreyResources).ToDictionary(value => value.Type, value => value);
+            _unminedResource = Resources.LoadAll<UnminedPreyResourceStaticData>(GameStaticDataPath.UnminedResources).ToDictionary(value => value.Type, value => value);
             _questItems = Resources.LoadAll<QuestItemStaticData>(GameStaticDataPath.QuestItems).ToDictionary(value => value.Type, value => value);
             _currencyItems = Resources.LoadAll<CurrencyItemStaticData>(GameStaticDataPath.CurrencyItems).ToDictionary(value => value.Type, value => value);
             _enemies = Resources.LoadAll<EnemyStaticData>(GameStaticDataPath.Enemies).ToDictionary(value => value.Type, value => value);
@@ -35,12 +37,14 @@ namespace Clones.Services
         public WorldGeneratorStaticData GetWorldGenerator() =>
             _worldGenerator;
 
-
         public BiomeStaticData GetBiome(BiomeType type) => 
             _biomes.TryGetValue(type, out BiomeStaticData staticData) ? staticData : null;
 
         public PreyResourceStaticData GetPreyResource(PreyResourceType type) => 
             _preyResources.TryGetValue(type, out PreyResourceStaticData staticData) ? staticData : null;
+
+        public UnminedPreyResourceStaticData GetUnminedResource(UnminedResourceType type) =>
+            _unminedResource.TryGetValue(type, out UnminedPreyResourceStaticData staticData) ? staticData : null;
 
         public QuestItemStaticData GetItem(QuestItemType type) => 
             _questItems.TryGetValue(type, out QuestItemStaticData staticData) ? staticData : null;

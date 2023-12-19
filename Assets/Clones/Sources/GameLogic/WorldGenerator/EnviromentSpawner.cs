@@ -9,6 +9,8 @@ namespace Clones.GameLogic
     {
         [SerializeField] private Transform[] _spawnPoints;
 
+        private readonly int[] _rotations = new int[] { 0, 90, 180, 270 };
+
         private IPartsFactory _partsFactory;
         private TEnviroment[] _enviromentsTypes;
         private int _percentageFilled;
@@ -22,14 +24,14 @@ namespace Clones.GameLogic
             if (_enviromentsTypes.Length > 0)
                 Spawn();
         }
-        protected abstract void CreateEnviromentPart(IPartsFactory partsFactory, TEnviroment enviromentType, Vector3 position);
+        protected abstract void CreateEnviromentPart(IPartsFactory partsFactory, TEnviroment enviromentType, Vector3 position, int rotation);
 
         private void Spawn()
         {
             foreach(Transform point in _spawnPoints)
             {
                 if (CanSpawned())
-                    CreateEnviromentPart(_partsFactory, _enviromentsTypes[Random.Range(0, _enviromentsTypes.Length)], point.transform.position);
+                    CreateEnviromentPart(_partsFactory, _enviromentsTypes[Random.Range(0, _enviromentsTypes.Length)], point.transform.position, _rotations[Random.Range(0, _rotations.Length)]);
             }
         }
 
