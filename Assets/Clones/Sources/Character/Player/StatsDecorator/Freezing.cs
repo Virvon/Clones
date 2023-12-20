@@ -15,8 +15,8 @@ public class Freezing : StatsDecorator
     private readonly float _defaultMovementSpeed;
     private readonly float _defaultAttackCooldown;
     private readonly PlayerHealth _playerHealth;
+    private readonly ICoroutineRunner _coroutineRunner;
 
-    private ICoroutineRunner _coroutineRunner;
     private Coroutine _freezer;
     private float CurrentMovementSpeed;
     private float CurrentAttackCooldown;
@@ -25,16 +25,14 @@ public class Freezing : StatsDecorator
 
     public float CurrentFreezingPercent { get; private set; }
 
-    public Freezing(IStatsProvider wrappedEntity, PlayerHealth playerHealth) : base(wrappedEntity)
+    public Freezing(IStatsProvider wrappedEntity, PlayerHealth playerHealth, ICoroutineRunner coroutineRunner) : base(wrappedEntity)
     {
         _playerHealth = playerHealth;
 
         _defaultMovementSpeed = wrappedEntity.GetStats().MovementSpeed;
         _defaultAttackCooldown = wrappedEntity.GetStats().AttackCooldown;
-    }
-
-    public void SetCoroutineRunner(ICoroutineRunner coroutineRunner) => 
         _coroutineRunner = coroutineRunner;
+    }
 
     public void Freez() =>
         ChangeFreezePercent(100, FreezingSpeed);

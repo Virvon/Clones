@@ -1,8 +1,6 @@
-﻿using Clones.Services;
-
-namespace Clones.Biomes
+﻿namespace Clones.Biomes
 {
-    public class IceCrystals : Biome, ICoroutineRunner
+    public class IceCrystals : Biome
     {
         private static Freezing _freezing;
 
@@ -10,7 +8,7 @@ namespace Clones.Biomes
         {
             if(_freezing == null)
             {
-                _freezing = new Freezing(Player.StatsProvider, Player.GetComponent<PlayerHealth>());
+                _freezing = new Freezing(Player.StatsProvider, Player.GetComponent<PlayerHealth>(), Player);
                 Player.Decorate(_freezing);
 
                 Player
@@ -18,7 +16,6 @@ namespace Clones.Biomes
                     .SetFreezing(_freezing);
             }
 
-            _freezing.SetCoroutineRunner(this);
             _freezing.Freez();
         }
 

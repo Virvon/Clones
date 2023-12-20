@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Clones.Services;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ICoroutineRunner
 {
     public IStatsProvider StatsProvider { get; private set; }
 
