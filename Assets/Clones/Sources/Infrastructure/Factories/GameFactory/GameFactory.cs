@@ -74,7 +74,7 @@ namespace Clones.Infrastructure
 
             _playerObject
                 .GetComponent<Wand>()
-                .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player.StatsProvider);
+                .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player);
 
             CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 

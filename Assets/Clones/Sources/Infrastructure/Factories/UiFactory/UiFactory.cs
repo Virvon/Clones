@@ -27,8 +27,9 @@ namespace Clones.Infrastructure
         {
             _hud = _assets.Instantiate(AssetPath.Hud);
 
-            _hud.GetComponentInChildren<Freezbar>()
-                .Init(playerObject.GetComponentInChildren<PlayerFreezing>());
+            playerObject
+                .GetComponentInChildren<FreezbarReporter>()
+                .Init(_hud.GetComponentInChildren<Freezbar>());
 
             _hud.GetComponentInChildren<PlayerHealthbar>()
                 .Init(playerObject.GetComponent<PlayerHealth>());

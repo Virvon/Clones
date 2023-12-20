@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class InstantDeceleration : StatsDecorator
+﻿public class InstantDeceleration : StatsDecorator
 {
     private readonly int _movementSpeedPercent;
 

@@ -292,7 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterAttack: {fileID: 1913505686328578964}
-  _movementState: {fileID: 417230066172185975}
 --- !u!114 &5848923258985518000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,8 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6eb9153f238fe4e8b8238ed0838a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 5
-  _speed: 20
 --- !u!114 &1041046569752053012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8097626478777526814}
-  - component: {fileID: 1742530441627781776}
+  - component: {fileID: 889566972827017467}
   m_Layer: 0
   m_Name: Freezing
   m_TagString: Untagged
@@ -403,7 +400,7 @@ Transform:
   m_Father: {fileID: 1045288268058204081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1742530441627781776
+--- !u!114 &889566972827017467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,16 +409,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 752919884671272480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08177831ed539024da22eb3fa52aa65d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cd66398733b9204f85b8ab757be7ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freezingSpeed: 15
-  _defrostSpeed: 5
-  _movementSpeedFreezePercent: 35
-  _damagePercent: 15
-  _damageCooldown: 1
-  _movementState: {fileID: 417230066172185975}
-  _playerHealth: {fileID: 5848923258985518000}
 --- !u!1 &2185640250974797522
 GameObject:
   m_ObjectHideFlags: 0
