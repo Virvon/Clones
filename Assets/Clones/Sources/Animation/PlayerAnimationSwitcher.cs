@@ -24,14 +24,15 @@ namespace Clones.Animation
             _characterAttack.AttackStarted += OnAttackStarted;
         }
 
+        private void Update() => 
+            _animator.SetFloat(AnimationPath.Player.Float.MovementAnimationSpeed, AnimationMovementSpeed);
+
         private void OnDestroy()
         {
             _characterAttack.AttackStarted -= OnAttackStarted;
 
             _inputService.Activated -= OnMove;
             _inputService.Deactivated -= OnStop;
-
-            _player.StatsProviderChanged += OnMovementSpeedChanged;
         }
 
         public void Init(IInputService inputService, Player player)
@@ -43,8 +44,6 @@ namespace Clones.Animation
 
             _inputService.Activated += OnMove;
             _inputService.Deactivated += OnStop;
-
-            _player.StatsProviderChanged += OnMovementSpeedChanged;
         }
 
         private void OnAttackStarted() => 
@@ -67,9 +66,6 @@ namespace Clones.Animation
                 _animator.SetBool(AnimationPath.Player.Bool.IsMoved, false);
                 _isMoved = false; ;
             }
-        }
-
-        private void OnMovementSpeedChanged() => 
-            _animator.SetFloat(AnimationPath.Player.Float.MovementAnimationSpeed, AnimationMovementSpeed);
+        }            
     }
 }

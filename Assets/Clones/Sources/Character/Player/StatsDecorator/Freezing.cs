@@ -69,9 +69,6 @@ public class Freezing : StatsDecorator
         float time = 0;
         float startFreezPrecent = CurrentFreezingPercent;
 
-        Debug.Log("freez started");
-        Debug.Log("move " + CurrentMovementSpeed + " attack " + CurrentAttackCooldown);
-
         while (CurrentFreezingPercent != targetFreezPrecent)
         {
             time += Time.deltaTime;
@@ -85,7 +82,7 @@ public class Freezing : StatsDecorator
             yield return null;
         }
 
-        if (CurrentFreezingPercent == 1)
+        if (CurrentFreezingPercent >= 100)
             _coroutineRunner.StartCoroutine(Damager(_playerHealth));
     }
 
@@ -94,7 +91,7 @@ public class Freezing : StatsDecorator
         WaitForSeconds delay = new(DamageCooldown);
         float damage = playerHealth.MaxHealth * (DamagePercent / 100f);
 
-        while (CurrentFreezingPercent == 1)
+        while (CurrentFreezingPercent >= 100)
         {
             playerHealth.TakeDamage(damage);
 

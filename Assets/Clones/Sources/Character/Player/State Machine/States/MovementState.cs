@@ -42,7 +42,6 @@ namespace Clones.StateMachine
 
             direction = _surfaceSlider.Project(direction.normalized);
 
-            Debug.Log("move " + MovementSpeed + " attack " + _player.StatsProvider.GetStats().AttackCooldown);
             Vector3 offset = direction * MovementSpeed * Time.deltaTime;
 
             _rigidbody.MovePosition(_rigidbody.position + offset);
