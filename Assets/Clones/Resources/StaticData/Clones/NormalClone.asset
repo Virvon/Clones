@@ -15,17 +15,21 @@ MonoBehaviour:
   Prefab: {fileID: 8931962915480580132, guid: 6e158d679bef4fb42b6345de557da114, type: 3}
   Card: {fileID: 3171580171538393250, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
   Type: 1
-  Helath: 20
-  IncreaseHealth: 5
-  Damage: 1
-  IncreaseDamage: 1
-  UpgradePrice: 100
-  IncreasePrice: 25
+  Helath: 100
+  Damage: 10
+  AttackCooldown: 1
+  ResourceMultiplier: 1
+  UpgradePrice: 500
+  IncreaseHealth: 10
+  IncreaseDamage: 2
+  IncreaseAttackCooldown: 0.03
+  IncreaseResourceMultiplier: 0.05
+  IncreasePrice: 50
   DisuseTime: 0
   MovementSpeed: 10
   RotationSpeed: 1080
   MiningRadius: 8
   AttackRadius: 10
   DropCollectingRadius: 5
-  BuyPrice: 100
+  BuyPrice: 0
   IsBuyed: 1

@@ -11,10 +11,14 @@ namespace Clones.StaticData
         public CloneCard Card;
         public CloneType Type;
         public int Helath;
-        public int IncreaseHealth;
         public int Damage;
-        public int IncreaseDamage;
+        public float AttackCooldown;
+        public float ResourceMultiplier;
         public int UpgradePrice;
+        public int IncreaseHealth;
+        public int IncreaseDamage;
+        public float IncreaseAttackCooldown;
+        public float IncreaseResourceMultiplier;
         public int IncreasePrice;
         public int DisuseTime;
         public float MovementSpeed;
