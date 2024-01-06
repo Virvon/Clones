@@ -22,7 +22,7 @@ namespace Clones.UI
 
             if (PersistentProgress.Progress.Wallet.TryTakeMoney(price))
             {
-                PersistentProgress.Progress.AvailableClones.Clones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice));
+                PersistentProgress.Progress.AvailableClones.Clones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.AttackCooldown, cloneStaticData.ResourceMultiplier, cloneStaticData.UpgradePrice));
                 card.Buy();
                 card.GetComponent<CloneLevelView>().Init(PersistentProgress, type);
             }

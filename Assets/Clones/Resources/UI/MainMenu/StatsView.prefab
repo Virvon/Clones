@@ -82,8 +82,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 7035112537794877942}
   _damage: {fileID: 7035112537085275041}
-  _cooldown: {fileID: 7035112537894555342}
-  _resourceMultipier: {fileID: 7035112537264846108}
+  _attackSpeed: {fileID: 7035112537894555342}
+  _resourceMultiplier: {fileID: 7035112537264846108}
 --- !u!1 &7035112536633115983
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: COOLDOWN
+  m_text: ATTACK SPEED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
   m_sharedMaterial: {fileID: 7374927986402738804, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}

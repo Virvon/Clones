@@ -13,7 +13,6 @@ namespace Clones.UI
         [SerializeField] private TMP_Text _resourceMultiplier;
 
         private IPersistentProgressService _persistentProgress;
-        private IMainMenuStaticDataService _mainMenuStaticDataService;
 
         private void OnDisable()
         {
@@ -24,10 +23,9 @@ namespace Clones.UI
             _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded -= UpdateStats;
         }
 
-        public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
+        public void Init(IPersistentProgressService persistentProgress)
         {
             _persistentProgress = persistentProgress;
-            _mainMenuStaticDataService = mainMenuStaticDataService;
 
             _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateStats;
             _persistentProgress.Progress.AvailableWands.SelectedWandChanged += UpdateStats;

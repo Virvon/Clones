@@ -62,7 +62,7 @@ namespace Clones.Infrastructure
                 CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(type);
 
                 if (cloneStaticData.IsBuyed)
-                    availableClones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice)); //Test(cloneStaticData, type)
+                    availableClones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.AttackCooldown, cloneStaticData.ResourceMultiplier, cloneStaticData.UpgradePrice));
             }
         }
 
@@ -75,14 +75,6 @@ namespace Clones.Infrastructure
                 if (wamdStaticData.IsBuyed)
                     availableWands.Add(new WandData(type, wamdStaticData.UpgradePrice));
             }
-        }
-
-        private CloneData Test(CloneStaticData cloneStaticData, CloneType type)
-        {
-            CloneData data = new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.UpgradePrice);
-            data.Use(cloneStaticData.DisuseTime);
-
-            return data;
         }
     }
 }

@@ -12,8 +12,8 @@ namespace Clones.Data
         public int Health;
         public int Damage;
         public float AttackCooldown;
-        public int UpgradePrice;
         public float ResourceMultiplier;
+        public int UpgradePrice;
         public string DisuseEndDate;
         public int Level;
 
@@ -21,11 +21,13 @@ namespace Clones.Data
 
         public event Action Upgraded;
 
-        public CloneData(CloneType type, int health, int damage, int upgradePrice)
+        public CloneData(CloneType type, int health, int damage, float attackCooldown, float resourceMultiplier, int upgradePrice)
         {
             Type = type;
             Health = health;
             Damage = damage;
+            AttackCooldown = attackCooldown;
+            ResourceMultiplier = resourceMultiplier;
             UpgradePrice = upgradePrice;
             Level = StartLevel;
 
