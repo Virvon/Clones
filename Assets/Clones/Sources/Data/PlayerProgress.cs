@@ -8,12 +8,14 @@ namespace Clones.Data
         public Wallet Wallet;
         public AvailableClones AvailableClones;
         public AvailableWands AvailableWands;
+        public AveragePlayTime AveragePlayTime;
 
         public PlayerProgress()
         {
             Wallet = new();
             AvailableClones = new();
             AvailableWands = new();
+            AveragePlayTime = new();
         }
     }
 }

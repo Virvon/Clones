@@ -19,6 +19,7 @@ namespace Clones.Infrastructure
         private readonly IGameStaticDataService _gameStaticDataService;
 
         private List<IDisable> _disables;
+        private GameTimer _gameTimer;
 
         public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService)
         {
@@ -41,6 +42,8 @@ namespace Clones.Infrastructure
 
         public void Exit()
         {
+            _persistentProgress.Progress.AveragePlayTime.Add(_gameTimer.LastMeasurement);
+
             foreach (var disable in _disables)
                 disable.OnDisable();
 
@@ -79,7 +82,10 @@ namespace Clones.Infrastructure
             EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome);
             enemiesSpawner.Init(_partsFactory);
 
-            PlayerDeath playerDeath = new(hud.GetComponentInChildren<RevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner);
+            _gameTimer = new GameTimer();
+            _gameTimer.Start();
+
+            PlayerDeath playerDeath = new(hud.GetComponentInChildren<RevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, _gameTimer   );
 
             hud.GetComponentInChildren<RevivalButton>()
                 .Init(playerRevival);

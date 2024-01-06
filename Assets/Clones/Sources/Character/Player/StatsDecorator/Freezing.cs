@@ -89,11 +89,13 @@ public class Freezing : StatsDecorator
         WaitForSeconds delay = new(DamageCooldown);
         float damage = playerHealth.MaxHealth * (DamagePercent / 100f);
 
-        while (CurrentFreezingPercent >= 100)
+        while (CurrentFreezingPercent >= 100 || playerHealth.Health > 0)
         {
             playerHealth.TakeDamage(damage);
 
             yield return delay;
         }
+
+        CurrentFreezingPercent = 0;
     }
 }
