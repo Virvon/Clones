@@ -1,5 +1,6 @@
 ﻿using Clones.Data;
 using Clones.Services;
+using Clones.StaticData;
 using UnityEngine;
 
 namespace Clones.UI
@@ -9,11 +10,8 @@ namespace Clones.UI
         [SerializeField] private UpgradeButton _cloneUpgradeButton;
         [SerializeField] private UpgradeButton _wandUpgradeButton;
 
-        private const int IncreaseHealth = 10;
-        private const int IncreaseDamage = 10;
-        private const int IncreaseUpgradePrice = 200;
-
         private IPersistentProgressService _persistentProgress;
+        private IMainMenuStaticDataService _mainMenuStaticDataService;
 
         private void OnDisable()
         {
@@ -24,9 +22,10 @@ namespace Clones.UI
             _wandUpgradeButton.UpgradeTried -= UpgradeWand;
         }
 
-        public void Init(IPersistentProgressService persistenProgress)
+        public void Init(IPersistentProgressService persistenProgress, IMainMenuStaticDataService mainMenuStaticDataService)
         {
             _persistentProgress = persistenProgress;
+            _mainMenuStaticDataService = mainMenuStaticDataService;
 
             _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += OnSelectedCloneChanged;
             _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
@@ -50,19 +49,21 @@ namespace Clones.UI
         {
             if (_persistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData) && _persistentProgress.Progress.Wallet.TryTakeDna(cloneData.UpgradePrice))
             {
-                cloneData.Upgrade(IncreaseHealth, IncreaseDamage, IncreaseUpgradePrice);
+                CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(cloneData.Type);
+                cloneData.Upgrade(cloneStaticData.IncreaseHealth, cloneStaticData.IncreaseDamage, cloneStaticData.IncreaseAttackCooldown, cloneStaticData.IncreaseResourceMultiplier, cloneStaticData.IncreasePrice);
                 _cloneUpgradeButton.SetPrice(cloneData.UpgradePrice);
             }
         }
 
         private void UpgradeWand()
         {
-            WandData data = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+            WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+            WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(wandData.Type);
 
-            if (_persistentProgress.Progress.Wallet.TryTakeMoney(data.UpgradePrice))
+            if (_persistentProgress.Progress.Wallet.TryTakeMoney(wandData.UpgradePrice))
             {
-                data.Upgrade(IncreaseDamage, IncreaseUpgradePrice);
-                _wandUpgradeButton.SetPrice(data.UpgradePrice);
+                wandData.Upgrade(0);
+                _wandUpgradeButton.SetPrice(wandData.UpgradePrice);
             }
         }
     }

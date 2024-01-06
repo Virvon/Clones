@@ -7,21 +7,18 @@ namespace Clones.Data
     public class WandData
     {
         public WandType Type;
-        public int Damage;
         public int UpgradePrice;
 
         public event Action Upgraded;
 
-        public WandData(WandType type, int damage, int upgradePrice)
+        public WandData(WandType type, int upgradePrice)
         {
             Type = type;
-            Damage = damage;
             UpgradePrice = upgradePrice;
         }
 
-        public void Upgrade(int damage, int upgradePrice)
+        public void Upgrade(int upgradePrice)
         {
-            Damage += damage;
             UpgradePrice += upgradePrice;
 
             Upgraded?.Invoke();

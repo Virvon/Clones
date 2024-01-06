@@ -44,7 +44,7 @@ namespace Clones.Infrastructure
 
             player
                 .GetComponent<Player>()
-                .Init(cloneStaticData.MovementSpeed, wandStaticData.Cooldown);
+                .Init(cloneStaticData.MovementSpeed, cloneStaticData.AttackCooldown);
 
             _playerObject
                 .GetComponent<PlayerAnimationSwitcher>()
@@ -70,11 +70,9 @@ namespace Clones.Infrastructure
                 .GetComponent<EnemiesAttackState>()
                 .Init(cloneStaticData.AttackRadius, cloneStaticData.RotationSpeed);
 
-            int damage = cloneData.Damage + wandData.Damage;
-
             _playerObject
                 .GetComponent<Wand>()
-                .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player);
+                .Init(partsFactory, wandStaticData.Bullet, cloneData.Damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player);
 
             CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 

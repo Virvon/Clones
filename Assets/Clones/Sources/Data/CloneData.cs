@@ -11,7 +11,9 @@ namespace Clones.Data
         public CloneType Type;
         public int Health;
         public int Damage;
+        public float AttackCooldown;
         public int UpgradePrice;
+        public float ResourceMultiplier;
         public string DisuseEndDate;
         public int Level;
 
@@ -30,11 +32,13 @@ namespace Clones.Data
             DisuseEndDate = DateTime.MinValue.ToString();
         }
 
-        public void Upgrade(int health, int damage, int upgradePrice)
+        public void Upgrade(int health, int damage, float attackCooldown, float resourceMultiplier, int price)
         {
             Health += health;
             Damage += damage;
-            UpgradePrice += upgradePrice;
+            AttackCooldown -= attackCooldown;
+            ResourceMultiplier += resourceMultiplier;
+            UpgradePrice += price;
             Level++;
 
             Upgraded?.Invoke();
