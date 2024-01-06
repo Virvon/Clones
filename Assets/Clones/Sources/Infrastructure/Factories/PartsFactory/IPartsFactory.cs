@@ -1,4 +1,5 @@
-﻿using Clones.Services;
+﻿using Clones.GameLogic;
+using Clones.Services;
 using Clones.Types;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace Clones.Infrastructure
         void CreateUnminedResource(UnminedResourceType type, Vector3 position, Quaternion rotation, Transform parent);
         GameObject CreateItem(CurrencyItemType type, Vector3 position);
         GameObject CreateItem(QuestItemType type, Vector3 position);
-        void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject);
+        void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject, float complexityCoefficient);
         GameObject CreateTile(BiomeType type, Vector3 position, Quaternion rotation, Transform parent);
         Bullet CreateBullet(BulletType bulletType);
     }

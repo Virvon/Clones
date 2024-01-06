@@ -10,6 +10,6 @@ namespace Clones.Infrastructure
         GameObject CreatePlayer(IPartsFactory partsFactory, IItemsCounter itemsCounter);
         WorldGenerator CreateWorldGenerator();
         CinemachineVirtualCamera CreateVirtualCamera();
-        EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome);
+        EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity);
     }
 }

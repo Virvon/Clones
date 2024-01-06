@@ -16,5 +16,6 @@ namespace Clones.Services
         EnemiesSpawnerStaticData GetEnemiesSpawner();
         QuestStaticData GetQuest();
         UnminedPreyResourceStaticData GetUnminedResource(UnminedResourceType type);
+        ComplexityStaticData GetComplextiy();
     }
 }

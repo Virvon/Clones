@@ -21,12 +21,18 @@ namespace Clones.Data
 
             if(PlayTimes.Count > MaxPlayTimesCount)
                 PlayTimes.RemoveAt(0);
-
-            Debug.Log(PlayTimes.Count());
-            Debug.Log(GetAveragePlayTime());
         }
 
-        public int GetAveragePlayTime() => 
-            PlayTimes.Sum() / PlayTimes.Count();
+        public bool TryGetAveragePlayTime(out int averagePlayTime)
+        {
+            averagePlayTime = 0;
+
+            if (PlayTimes.Count == 0)
+                return false;
+
+            averagePlayTime = PlayTimes.Sum() / PlayTimes.Count();
+
+            return true;
+        }
     }
 }

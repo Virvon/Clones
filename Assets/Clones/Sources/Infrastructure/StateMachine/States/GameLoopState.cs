@@ -79,7 +79,9 @@ namespace Clones.Infrastructure
 
             ICurrentBiome currentBiome = new CurrentBiome(worldGenerator);
 
-            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome);
+            Complexity complexity = new Complexity(_persistentProgress, _gameStaticDataService.GetComplextiy().TargetPlayTime, _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Level);
+
+            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity);
             enemiesSpawner.Init(_partsFactory);
 
             _gameTimer = new GameTimer();

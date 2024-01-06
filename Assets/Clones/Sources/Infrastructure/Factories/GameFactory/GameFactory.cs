@@ -99,14 +99,15 @@ namespace Clones.Infrastructure
             return virtualCamera;
         }
 
-        public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome)
+        public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity)
         {
             EnemiesSpawnerStaticData data = _staticData.GetEnemiesSpawner(); 
             GameObject enemiesSpawnerObject = InstantiateRegistered(data.Prefab);
 
             EnemiesSpawner enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
 
-            enemiesSpawner.Init(currentBiome, _staticData, _playerObject, data.StartDelay, data.SpawnCooldown, data.MaxWeight);
+            enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.MaxWeight, data.MinRadius, data.MaxRadius);
+            enemiesSpawner.Init(currentBiome, _staticData, _playerObject, complexity);
 
             return enemiesSpawner;
         }

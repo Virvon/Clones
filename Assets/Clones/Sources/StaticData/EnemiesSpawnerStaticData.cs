@@ -9,5 +9,7 @@ namespace Clones.StaticData
         public float StartDelay;
         public float SpawnCooldown;
         public float MaxWeight;
+        public float MinRadius;
+        public float MaxRadius;
     }
 }

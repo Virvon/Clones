@@ -24,7 +24,7 @@ namespace Clones.GameLogic
                 return 0;
 
             _isStarted = false;
-            LastMeasurement = (DateTime.Now - _startDate).Seconds;
+            LastMeasurement = (int)(DateTime.Now - _startDate).TotalSeconds;
 
             return LastMeasurement;
         }

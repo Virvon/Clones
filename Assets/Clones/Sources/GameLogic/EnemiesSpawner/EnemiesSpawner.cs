@@ -11,31 +11,41 @@ namespace Clones.GameLogic
 {
     public class EnemiesSpawner : MonoBehaviour, ITimeScalable
     {
-        private float _startDelay = 3;
-        private float _spawnCooldown = 12;
-        private float _maxWeight = 10;
-        private float _minRadius = 10;
-        private float _maxRadius = 20;
+        private float _startDelay;
+        private float _spawnCooldown;
+        private float _maxWeight;
+        private float _minRadius;
+        private float _maxRadius;
 
         private ICurrentBiome _currentBiome;
         private IGameStaticDataService _staticDataService;
         private GameObject _playerObject;
         private IPartsFactory _partsFactory;
         private float _timeScale = 1;
+        private Complexity _complexity;
 
         private bool _isFinish;
+
+        private int _currentWave = 0;
 
         private void OnDisable() =>
             _isFinish = true;
 
-        public void Init(ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject, float startDelay, float spawnCooldown, float maxWeight)
+        public void Init(float startDelay, float spawnCooldown, float maxWeight, float minRadius, float maxRadius)
+        {
+            _startDelay = startDelay;
+            _spawnCooldown = spawnCooldown;
+            _maxWeight = maxWeight;
+            _minRadius = minRadius;
+            _maxRadius = maxRadius;
+        }
+
+        public void Init(ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject, Complexity complexity)
         {
             _currentBiome = currentBiome;
             _staticDataService = staticDataService;
             _playerObject = playerObject;
-            _startDelay = startDelay;
-            _spawnCooldown = spawnCooldown;
-            _maxWeight = maxWeight;
+            _complexity = complexity;
         }
 
         public void Init(IPartsFactory partsFactory) =>
@@ -71,7 +81,7 @@ namespace Clones.GameLogic
                 EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
                 Vector3 spawnPosition = GetSpawnPosition();
 
-                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject);
+                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, _complexity.GetComplexity(_currentWave));
 
                 currentWeight += weight;
             }
@@ -104,6 +114,7 @@ namespace Clones.GameLogic
                 if(_timeScale == 0)
                     yield return new WaitWhile(() => _timeScale == 0);
 
+                _currentWave++;
                 CreateWave();
 
                 yield return new WaitForSeconds(_spawnCooldown / _timeScale);

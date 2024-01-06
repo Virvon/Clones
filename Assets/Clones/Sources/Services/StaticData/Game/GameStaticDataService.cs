@@ -19,6 +19,7 @@ namespace Clones.Services
         private EnemiesSpawnerStaticData _enemiesSpawner;
         private WorldGeneratorStaticData _worldGenerator;
         private QuestStaticData _quest;
+        private ComplexityStaticData _complexity;
 
         public void Load()
         {
@@ -32,6 +33,7 @@ namespace Clones.Services
             _enemiesSpawner = Resources.Load<EnemiesSpawnerStaticData>(GameStaticDataPath.EnemiesSpawner);
             _worldGenerator = Resources.Load<WorldGeneratorStaticData>(GameStaticDataPath.WorldGenerator);
             _quest = Resources.Load<QuestStaticData>(GameStaticDataPath.Quest);
+            _complexity = Resources.Load<ComplexityStaticData>(GameStaticDataPath.Complexity);
         }
 
         public WorldGeneratorStaticData GetWorldGenerator() =>
@@ -63,5 +65,8 @@ namespace Clones.Services
 
         public QuestStaticData GetQuest() => 
             _quest;
+
+        public ComplexityStaticData GetComplextiy() => 
+            _complexity;
     }
 }
