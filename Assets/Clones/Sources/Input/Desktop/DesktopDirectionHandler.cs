@@ -5,6 +5,8 @@ namespace Clones.Input
 {
     public class DesktopDirectionHandler : MonoBehaviour
     {
+        private const float Delta = 6000;
+
         [SerializeField] private RectTransform _background;
 
         private PlayerInput _input;
@@ -36,10 +38,8 @@ namespace Clones.Input
                 OnDownTouch();
         }
 
-        public void Init(Player player)
-        {
+        public void Init(Player player) =>
             _player = player;
-        }
 
         private void OnDownTouch()
         {
@@ -50,7 +50,8 @@ namespace Clones.Input
                 Vector3 PlayerScreenPosition = Camera.main.WorldToScreenPoint(_player.transform.position);
                 Vector2 direction = new Vector2(mousePosition.x, mousePosition.y) - new Vector2(PlayerScreenPosition.x, PlayerScreenPosition.y);
 
-                Direction = direction.normalized;
+                if(direction.sqrMagnitude > Delta)
+                    Direction = direction.normalized;
             }
 
             if (Direction != Vector2.zero)
