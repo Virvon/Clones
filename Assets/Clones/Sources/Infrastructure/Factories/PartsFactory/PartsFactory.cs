@@ -24,6 +24,7 @@ namespace Clones.Infrastructure
         public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject, float complexityCoefficient)
         {
             EnemyStaticData enemyData = _staticData.GetEnemy(type);
+            float rootComplexityCoefficient = (float)Math.Sqrt(complexityCoefficient);
 
             weight = GetEnemyWeight(enemyData, complexityCoefficient);
 
@@ -36,10 +37,10 @@ namespace Clones.Infrastructure
                 .stoppingDistance = (float)Math.Round(Random.Range(enemyData.MinStopDistance, enemyData.MaxStopDistance), 2);
 
             enemyObject.GetComponent<MeleeAttack>()
-                .Init(enemyData.Damage * complexityCoefficient, enemyData.AttackCooldown);
+                .Init(enemyData.Damage * rootComplexityCoefficient, enemyData.AttackCooldown);
 
             EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();
-            enemyHealth.Init((int)(enemyData.Health * complexityCoefficient));
+            enemyHealth.Init((int)(enemyData.Health * rootComplexityCoefficient));
 
             enemyObject.GetComponentInChildren<EnemyHealthbar>()
                 .Init(enemyHealth);
@@ -113,6 +114,6 @@ namespace Clones.Infrastructure
         }
 
         private float GetEnemyWeight(EnemyStaticData enemyData, float complexityCoefficient) =>
-            ((1 / enemyData.AttackCooldown) * enemyData.Damage * enemyData.Health) * complexityCoefficient;
+            ((enemyData.Damage * enemyData.Health) / enemyData.AttackCooldown) * complexityCoefficient;
     }
 }

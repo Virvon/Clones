@@ -8,7 +8,7 @@ namespace Clones.StaticData
         public GameObject Prefab;
         public float StartDelay;
         public float SpawnCooldown;
-        public float MaxWeight;
+        public float WaveWeight;
         public float MinRadius;
         public float MaxRadius;
     }

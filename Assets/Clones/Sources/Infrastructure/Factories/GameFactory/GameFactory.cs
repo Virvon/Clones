@@ -106,7 +106,7 @@ namespace Clones.Infrastructure
 
             EnemiesSpawner enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
 
-            enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.MaxWeight, data.MinRadius, data.MaxRadius);
+            enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.WaveWeight, data.MinRadius, data.MaxRadius);
             enemiesSpawner.Init(currentBiome, _staticData, _playerObject, complexity);
 
             return enemiesSpawner;

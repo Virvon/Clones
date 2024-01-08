@@ -13,7 +13,7 @@ namespace Clones.GameLogic
     {
         private float _startDelay;
         private float _spawnCooldown;
-        private float _maxWeight;
+        private float _waveWeight;
         private float _minRadius;
         private float _maxRadius;
 
@@ -31,11 +31,11 @@ namespace Clones.GameLogic
         private void OnDisable() =>
             _isFinish = true;
 
-        public void Init(float startDelay, float spawnCooldown, float maxWeight, float minRadius, float maxRadius)
+        public void Init(float startDelay, float spawnCooldown, float waveWeight, float minRadius, float maxRadius)
         {
             _startDelay = startDelay;
             _spawnCooldown = spawnCooldown;
-            _maxWeight = maxWeight;
+            _waveWeight = waveWeight;
             _minRadius = minRadius;
             _maxRadius = maxRadius;
         }
@@ -74,9 +74,12 @@ namespace Clones.GameLogic
             if (spawnedEnemies.Length == 0)
                 throw new Exception("enemies to create wave not found");
 
+            float maxWeight = _waveWeight * _complexity.GetComplexity(_currentWave);
             float currentWeight = 0;
 
-            while (currentWeight < _maxWeight)
+            Debug.Log("complexity: " + _complexity.GetComplexity(_currentWave));
+
+            while (currentWeight < maxWeight)
             {
                 EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
                 Vector3 spawnPosition = GetSpawnPosition();
