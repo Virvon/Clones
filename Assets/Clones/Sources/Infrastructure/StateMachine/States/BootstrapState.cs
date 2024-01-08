@@ -1,5 +1,6 @@
 ﻿using Agava.YandexGames;
 using Clones.Services;
+using Clones.UI;
 using System;
 using System.Collections;
 
@@ -13,24 +14,27 @@ namespace Clones.Infrastructure
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly LoadingPanel _loadingPanel;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services, ICoroutineRunner coroutineRunner)
+        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services, ICoroutineRunner coroutineRunner, LoadingPanel loadingPanel)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _services = services;
             _coroutineRunner = coroutineRunner;
+            _loadingPanel = loadingPanel;
 
             RegisterServices();
         }
 
-        public void Enter() =>
-            _coroutineRunner.StartCoroutine(InitializeYandexSdk());
-
-        public void Exit()
+        public void Enter()
         {
-            
+            _loadingPanel.Open();
+            _coroutineRunner.StartCoroutine(InitializeYandexSdk());
         }
+
+        public void Exit() =>
+            _loadingPanel.Close();
 
         private IEnumerator InitializeYandexSdk()
         {
