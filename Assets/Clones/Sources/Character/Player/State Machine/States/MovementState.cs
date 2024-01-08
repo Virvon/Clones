@@ -1,3 +1,4 @@
+using Clones.Services;
 using System;
 using UnityEngine;
 
@@ -8,46 +9,52 @@ namespace Clones.StateMachine
     {
         [SerializeField] private float _directionOffset;
 
+        private IInputService _input;
         private float _rotationSpeed;
         private Rigidbody _rigidbody;
         private SurfaceSlider _surfaceSlider;
         private Player _player;
+        private bool _isMoved;
 
         private float MovementSpeed => _player.StatsProvider.GetStats().MovementSpeed;
 
-        private void OnEnable()
+        public void Init(IInputService inputService, Player player, float rotationSpeed)
         {
-            InputServiece.Activated += Move;
-            InputServiece.Deactivated += Stop;
-        }
-
-        private void OnDisable()
-        {
-            InputServiece.Activated -= Move;
-            InputServiece.Deactivated -= Stop;
-        }
-
-        public void Init(Player player, float rotationSpeed)
-        {
+            _input = inputService;
             _rotationSpeed = rotationSpeed;
             _player = player;
 
             _rigidbody = GetComponent<Rigidbody>();
             _surfaceSlider = GetComponent<SurfaceSlider>();
+
+            _input.Activated += Move;
+            _input.Deactivated += Stop;
         }
 
-        private void Move()
+        private void FixedUpdate()
         {
-            Vector3 direction = Quaternion.Euler(0, _directionOffset, 0) * new Vector3(InputServiece.Direction.x, 0, InputServiece.Direction.y);
+            if (_isMoved)
+            {
+                Vector3 direction = Quaternion.Euler(0, _directionOffset, 0) * new Vector3(InputServiece.Direction.x, 0, InputServiece.Direction.y);
 
-            direction = _surfaceSlider.Project(direction.normalized);
+                direction = _surfaceSlider.Project(direction.normalized);
 
-            Vector3 offset = direction * MovementSpeed * Time.deltaTime;
+                Vector3 offset = direction * MovementSpeed * Time.deltaTime;
 
-            _rigidbody.MovePosition(_rigidbody.position + offset);
+                _rigidbody.MovePosition(_rigidbody.position + offset);
 
-            RotateTo(direction);
+                RotateTo(direction);
+            }
         }
+
+        private void OnDestroy()
+        {
+            _input.Activated -= Move;
+            _input.Deactivated -= Stop;
+        }
+
+        private void Move() => 
+            _isMoved = true;
 
         private void RotateTo(Vector3 direction)
         {
@@ -59,6 +66,10 @@ namespace Clones.StateMachine
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
         }
 
-        private void Stop() => _rigidbody.velocity = Vector3.zero;
+        private void Stop()
+        {
+            _isMoved = false;
+            _rigidbody.velocity = Vector3.zero;
+        }
     }
 }

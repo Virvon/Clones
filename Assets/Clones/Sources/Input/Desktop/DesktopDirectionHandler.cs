@@ -11,6 +11,7 @@ namespace Clones.Input
 
         private PlayerInput _input;
         private Player _player;
+        private bool _isActivated;
 
         public static Vector2 Direction { get; private set; }
 
@@ -19,6 +20,7 @@ namespace Clones.Input
 
         private void OnEnable()
         {
+            _isActivated = false;
             _input = new PlayerInput();
             _input.Enable();
 
@@ -54,12 +56,16 @@ namespace Clones.Input
                     Direction = direction.normalized;
             }
 
-            if (Direction != Vector2.zero)
+            if (_isActivated == false)
+            {
+                _isActivated = true;
                 Activated?.Invoke();
+            }
         }
 
         private void OnUpTouch()
         {
+            _isActivated = false;
             Direction = Vector2.zero;
             Deactivated?.Invoke();
         }

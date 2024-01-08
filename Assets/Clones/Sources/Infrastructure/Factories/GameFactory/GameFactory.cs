@@ -60,7 +60,7 @@ namespace Clones.Infrastructure
 
             _playerObject
                 .GetComponent<MovementState>()
-                .Init(player, cloneStaticData.RotationSpeed);
+                .Init(_inputService, player, cloneStaticData.RotationSpeed);
 
             _playerObject
                 .GetComponent<MiningState>()
