@@ -25,7 +25,7 @@ namespace Clones.UI
 
             if (PersistentProgress.Progress.Wallet.TryTakeMoney(price))
             {
-                PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.UpgradePrice));
+                PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.UpgradePrice, wandStaticData.WandStats));
                 card.Buy();
             }
         }

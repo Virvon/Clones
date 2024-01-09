@@ -70,10 +70,10 @@ namespace Clones.Infrastructure
         {
             foreach (var type in wandTypes)
             {
-                WandStaticData wamdStaticData = _mainMenuStaticDataService.GetWand(type);
+                WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(type);
 
-                if (wamdStaticData.IsBuyed)
-                    availableWands.Add(new WandData(type, wamdStaticData.UpgradePrice));
+                if (wandStaticData.IsBuyed)
+                    availableWands.Add(new WandData(type, wandStaticData.UpgradePrice, wandStaticData.WandStats));
             }
         }
     }

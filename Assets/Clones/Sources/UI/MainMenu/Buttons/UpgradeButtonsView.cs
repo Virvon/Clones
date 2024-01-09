@@ -62,7 +62,7 @@ namespace Clones.UI
 
             if (_persistentProgress.Progress.Wallet.TryTakeMoney(wandData.UpgradePrice))
             {
-                wandData.Upgrade(0);
+                wandData.Upgrade(wandStaticData.UpgradePriceIncrease, wandStaticData.WandStatsIncrease);
                 _wandUpgradeButton.SetPrice(wandData.UpgradePrice);
             }
         }

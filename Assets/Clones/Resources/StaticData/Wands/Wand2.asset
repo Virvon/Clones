@@ -16,10 +16,19 @@ MonoBehaviour:
   Card: {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
   Type: 2
   Bullet: 0
-  Damage: 2
-  Cooldown: 2
   UpgradePrice: 200
+  UpgradePriceIncrease: 0
   KnockbackForse: 1000
   KnockbackOffset: 0
   BuyPrice: 200
   IsBuyed: 0
+  WandStats:
+    HealthIncreasePercentage: 0
+    DamageIncreasePercentage: 20
+    AttackCooldwonDecreasePercentage: 0
+    PreyResourcesIncreasePercentage: 0
+  WandStatsIncrease:
+    HealthIncrease: 0
+    DamageIncrease: 2
+    AttackCooldownDecrease: 0
+    PreyResourcesIncrease: 0

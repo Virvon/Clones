@@ -38,6 +38,11 @@ namespace Clones.Infrastructure
             CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(_persistentPorgress.Progress.AvailableClones.SelectedClone);
             WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(_persistentPorgress.Progress.AvailableWands.SelectedWand);
 
+            int health = cloneData.Health + (int)(cloneData.Health * wandData.WandStats.HealthIncreasePercentage / 100f);
+            int damage = cloneData.Damage + (int)(cloneData.Damage * wandData.WandStats.DamageIncreasePercentage / 100f);
+            //int attackCooldown = cloneData.AttackCooldown - cloneData
+            float resourceMultiplier = cloneData.ResourceMultiplier + cloneData.ResourceMultiplier * wandData.WandStats.PreyResourcesIncreasePercentage / 100f;
+
             _playerObject = Object.Instantiate(cloneStaticData.Prefab);
 
             Player player = _playerObject.GetComponent<Player>();
@@ -56,7 +61,7 @@ namespace Clones.Infrastructure
 
             _playerObject
                 .GetComponent<PlayerHealth>()
-                .Init(cloneData.Health);
+                .Init(health);
 
             _playerObject
                 .GetComponent<MovementState>()
@@ -72,7 +77,7 @@ namespace Clones.Infrastructure
 
             _playerObject
                 .GetComponent<Wand>()
-                .Init(partsFactory, wandStaticData.Bullet, cloneData.Damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player);
+                .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player);
 
             CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 

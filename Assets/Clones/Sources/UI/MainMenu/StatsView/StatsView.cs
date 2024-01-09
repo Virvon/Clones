@@ -36,13 +36,15 @@ namespace Clones.UI
 
         private void UpdateStats()
         {
-            if (_persistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData) == false)
+            WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+
+            if (_persistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData) == false || wandData == null)
                 return;
 
-            int health = cloneData.Health;
-            int damage = cloneData.Damage;
-            float attackSpeed = 1 / cloneData.AttackCooldown;
-            float resourceMultiplier = cloneData.ResourceMultiplier;
+            int health = cloneData.Health + (int)(cloneData.Health * wandData.WandStats.HealthIncreasePercentage / 100f);
+            int damage = cloneData.Damage + (int)(cloneData.Damage * wandData.WandStats.DamageIncreasePercentage / 100f);
+            float attackSpeed = 1 / cloneData.AttackCooldown -  (1 / cloneData.AttackCooldown * (wandData.WandStats.AttackCooldwonDecreasePercentage / 100f));
+            float resourceMultiplier = cloneData.ResourceMultiplier + (cloneData.ResourceMultiplier * wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
 
             _health.text = NumberFormatter.DivideIntegerOnDigits(health);
             _damage.text = NumberFormatter.DivideIntegerOnDigits(damage);

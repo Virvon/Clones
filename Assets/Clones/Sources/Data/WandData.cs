@@ -1,4 +1,5 @@
 ﻿using Clones.Types;
+using Clones.WandsBuffs;
 using System;
 
 namespace Clones.Data
@@ -8,18 +9,21 @@ namespace Clones.Data
     {
         public WandType Type;
         public int UpgradePrice;
+        public WandStats WandStats;
 
         public event Action Upgraded;
 
-        public WandData(WandType type, int upgradePrice)
+        public WandData(WandType type, int upgradePrice, WandStats wandStats)
         {
             Type = type;
             UpgradePrice = upgradePrice;
+            WandStats = wandStats;
         }
 
-        public void Upgrade(int upgradePrice)
+        public void Upgrade(int upgradePrice, WandStatsIncrease wandStatsIncrease)
         {
             UpgradePrice += upgradePrice;
+            WandStats += wandStatsIncrease;
 
             Upgraded?.Invoke();
         }

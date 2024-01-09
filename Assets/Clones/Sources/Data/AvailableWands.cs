@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Clones.Data
 {
@@ -34,7 +35,7 @@ namespace Clones.Data
             SelectedWandChanged?.Invoke();
         }
 
-        public WandData GetSelectedWandData() =>
-            Wands.Where(data => data.Type == SelectedWand).FirstOrDefault();
+        public WandData GetSelectedWandData() => 
+            Wands.Find(data => data.Type == SelectedWand);
     }
 }

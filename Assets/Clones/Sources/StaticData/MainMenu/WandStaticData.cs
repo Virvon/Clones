@@ -1,5 +1,7 @@
 ﻿using Clones.Types;
 using Clones.UI;
+using Clones.WandsBuffs;
+using System;
 using UnityEngine;
 
 namespace Clones.StaticData
@@ -12,9 +14,12 @@ namespace Clones.StaticData
         public WandType Type;
         public BulletType Bullet;
         public int UpgradePrice;
+        public int UpgradePriceIncrease;
         public float KnockbackForse;
         public float KnockbackOffset;
         public int BuyPrice;
         public bool IsBuyed;
+        public WandStats WandStats;
+        public WandStatsIncrease WandStatsIncrease;
     }
 }
