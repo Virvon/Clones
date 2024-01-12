@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Freezing : StatsDecorator
 {
-    private const float FreezingSpeed = 15;
+    private const float FreezingSpeed = 2;
     private const float DefrostSpeed = 5;
     private const int MovementSpeedFreezePercent = 35;
     private const int AttackCooldownFreezePercent = 160;
@@ -62,6 +62,15 @@ public class Freezing : StatsDecorator
         _freezer = _coroutineRunner.StartCoroutine(Freezer(targetFreezPrecent, speed));
     }
 
+    private void Reset(IDamageable obj)
+    {
+        Debug.Log("Reset freez percent");
+
+        _playerHealth.Died -= Reset;
+
+        CurrentFreezingPercent = 0;
+    }
+
     private IEnumerator Freezer(int targetFreezPrecent, float freezingSpeed)
     {
         float time = 0;
@@ -86,16 +95,19 @@ public class Freezing : StatsDecorator
 
     private IEnumerator Damager(PlayerHealth playerHealth)
     {
+        Debug.Log("Damager start");
         WaitForSeconds delay = new(DamageCooldown);
         float damage = playerHealth.MaxHealth * (DamagePercent / 100f);
 
-        while (CurrentFreezingPercent >= 100 || playerHealth.Health > 0)
+        playerHealth.Died += Reset;
+
+        while (CurrentFreezingPercent >= 100 && playerHealth.Health > 0)
         {
             playerHealth.TakeDamage(damage);
 
+            Debug.Log((CurrentFreezingPercent >= 100) + " " + (playerHealth.Health > 0));
+
             yield return delay;
         }
-
-        CurrentFreezingPercent = 0;
     }
 }
