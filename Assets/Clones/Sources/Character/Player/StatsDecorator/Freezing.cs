@@ -66,7 +66,7 @@ public class Freezing : StatsDecorator
     {
         _playerHealth.Died -= Reset;
 
-        CurrentFreezingPercent = 0;
+        ChangeFreezePercent(0, 0);
     }
 
     private IEnumerator Freezer(int targetFreezPrecent, float freezingSpeed)
