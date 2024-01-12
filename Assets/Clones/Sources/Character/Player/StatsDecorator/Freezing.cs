@@ -28,10 +28,10 @@ public class Freezing : StatsDecorator
     public Freezing(IStatsProvider wrappedEntity, PlayerHealth playerHealth, ICoroutineRunner coroutineRunner) : base(wrappedEntity)
     {
         _playerHealth = playerHealth;
+        _coroutineRunner = coroutineRunner;
 
         _defaultMovementSpeed = wrappedEntity.GetStats().MovementSpeed;
         _defaultAttackCooldown = wrappedEntity.GetStats().AttackCooldown;
-        _coroutineRunner = coroutineRunner;
     }
 
     public void Freez() =>
@@ -64,8 +64,6 @@ public class Freezing : StatsDecorator
 
     private void Reset(IDamageable obj)
     {
-        Debug.Log("Reset freez percent");
-
         _playerHealth.Died -= Reset;
 
         CurrentFreezingPercent = 0;
@@ -95,7 +93,6 @@ public class Freezing : StatsDecorator
 
     private IEnumerator Damager(PlayerHealth playerHealth)
     {
-        Debug.Log("Damager start");
         WaitForSeconds delay = new(DamageCooldown);
         float damage = playerHealth.MaxHealth * (DamagePercent / 100f);
 
@@ -104,8 +101,6 @@ public class Freezing : StatsDecorator
         while (CurrentFreezingPercent >= 100 && playerHealth.Health > 0)
         {
             playerHealth.TakeDamage(damage);
-
-            Debug.Log((CurrentFreezingPercent >= 100) + " " + (playerHealth.Health > 0));
 
             yield return delay;
         }

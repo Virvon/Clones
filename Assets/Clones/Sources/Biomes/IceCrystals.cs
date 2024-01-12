@@ -4,6 +4,8 @@
     {
         private static Freezing _freezing;
 
+        private PlayerHealth _playerHealth;
+
         protected override void OnPlayerEntered()
         {
             if(_freezing == null)
@@ -17,9 +19,22 @@
             }
 
             _freezing.Freez();
+
+            _playerHealth = Player.GetComponent<PlayerHealth>();
+            _playerHealth.Died += OnDied;
         }
 
-        protected override void OnPlayerExited() =>
+
+        protected override void OnPlayerExited()
+        {
             _freezing.Defrost();
+            _playerHealth.Died -= OnDied;
+        }
+
+        private void OnDied(IDamageable obj)
+        {
+            _freezing = null;
+            _playerHealth.Died -= OnDied;
+        }
     }
 }
