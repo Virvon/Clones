@@ -11,12 +11,11 @@ namespace Clones.StateMachine
 
         public State CurrentState { get; private set; }
 
-        private void Awake()
+        public void Init(IInputService inputService)
         {
-            _inputService = AllServices.Instance.Single<IInputService>();
+            _inputService = inputService;
             Reset();
         }
-
 
         private void Update()
         {

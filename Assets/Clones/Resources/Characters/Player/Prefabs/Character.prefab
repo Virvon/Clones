@@ -175,7 +175,6 @@ MonoBehaviour:
   _transitions:
   - {fileID: 417230066172185970}
   - {fileID: 417230066172185971}
-  - {fileID: -2845303509548042524}
   _characterAttack: {fileID: 1913505686328578964}
 --- !u!114 &417230066172185970
 MonoBehaviour:
@@ -190,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 417230066172185974}
+  _miningState: {fileID: -6541454349828804813}
 --- !u!114 &417230066172185971
 MonoBehaviour:
   m_ObjectHideFlags: 0

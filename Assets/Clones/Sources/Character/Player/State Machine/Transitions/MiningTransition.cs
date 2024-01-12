@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Clones.StateMachine
 {
     public class MiningTransition : AttackTransition
@@ -8,7 +6,7 @@ namespace Clones.StateMachine
         {
             for(var i = 0; i < overlapCount; i++)
             {
-                if (_overlapColliders[i].TryGetComponent(out Enemy enemy))
+                if (_overlapColliders[i].TryGetComponent(out Enemy _))
                     return false;
             }
 

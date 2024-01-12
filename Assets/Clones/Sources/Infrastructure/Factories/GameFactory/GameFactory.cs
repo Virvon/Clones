@@ -64,6 +64,10 @@ namespace Clones.Infrastructure
                 .Init(health);
 
             _playerObject
+                .GetComponent<PlayerStateMashine>()
+                .Init(_inputService);
+
+            _playerObject
                 .GetComponent<MovementState>()
                 .Init(_inputService, player, cloneStaticData.RotationSpeed);
 
