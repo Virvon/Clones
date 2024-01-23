@@ -337,7 +337,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e9542cc3a5544cb42a468cbfb8637910, type: 2}
+  - {fileID: 2100000, guid: b105b7550ac5ffa4aa6bf132e35e629c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1761,7 +1761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783153804436478977, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
       propertyPath: m_Name
-      value: EnemyTest
+      value: WastelandEnemy_001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}

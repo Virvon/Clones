@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31c0d9aa97e44b43b9939f5a08b1cf4, type: 3}
+  m_Name: IceCrystalsEnemy_001
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 5717228191500794856, guid: c8fcb9b33716f344280c132227673179, type: 3}
+  Type: 0
+  Damage: 1
+  Health: 8
+  AttackCooldown: 1
+  MinStopDistance: 2
+  MaxStopDistance: 3
+  DeathEffect: {fileID: 1889919486439536, guid: 41f0b29a031db444594cb6bd50194d38, type: 3}
+  EffectOffset: {x: 0, y: 1, z: 0}
