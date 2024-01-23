@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f31c0d9aa97e44b43b9939f5a08b1cf4, type: 3}
-  m_Name: WastelandEnemy_001
+  m_Name: ViscoseSalviaEnemy_002
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5717228191500794856, guid: f7198beb7b0237b4c83582052ad10516, type: 3}
-  Type: 7
+  Prefab: {fileID: 8286768699524046424, guid: 5d4cf116dc265134ca1c1e620901affc, type: 3}
+  Type: 1
   Damage: 1
-  Health: 8
+  Health: 20
   AttackCooldown: 1
   MinStopDistance: 2
   MaxStopDistance: 3

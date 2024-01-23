@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31c0d9aa97e44b43b9939f5a08b1cf4, type: 3}
   m_Name: IceCrystalsEnemy_001
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5717228191500794856, guid: c8fcb9b33716f344280c132227673179, type: 3}
-  Type: 0
+  Prefab: {fileID: 5717228191500794856, guid: c58271d2ca4b02447a65c083a1f1b883, type: 3}
+  Type: 2
   Damage: 1
   Health: 8
   AttackCooldown: 1

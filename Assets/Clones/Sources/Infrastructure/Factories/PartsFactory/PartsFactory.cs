@@ -36,7 +36,7 @@ namespace Clones.Infrastructure
             enemyObject.GetComponent<NavMeshAgent>()
                 .stoppingDistance = (float)Math.Round(Random.Range(enemyData.MinStopDistance, enemyData.MaxStopDistance), 2);
 
-            enemyObject.GetComponent<MeleeAttack>()
+            enemyObject.GetComponentInChildren<MeleeAttack>()
                 .Init(enemyData.Damage * rootComplexityCoefficient, enemyData.AttackCooldown);
 
             EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();

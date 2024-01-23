@@ -1,6 +1,3 @@
-using UnityEngine;
-
-[RequireComponent(typeof(Enemy))]
 public class MeleeAttack : CharacterAttack
 {
     private float _cooldown;
