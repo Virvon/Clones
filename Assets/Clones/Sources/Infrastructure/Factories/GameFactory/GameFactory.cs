@@ -7,6 +7,7 @@ using Clones.GameLogic;
 using Object = UnityEngine.Object;
 using Clones.Data;
 using Clones.StateMachine;
+using Clones.Audio;
 
 namespace Clones.Infrastructure
 {
@@ -20,6 +21,7 @@ namespace Clones.Infrastructure
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
 
         private GameObject _playerObject;
+        private EnemiesSpawner _enemiesSpawner;
 
         public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService staticData, ITimeScale timeScale, IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
         {
@@ -113,12 +115,12 @@ namespace Clones.Infrastructure
             EnemiesSpawnerStaticData data = _staticData.GetEnemiesSpawner(); 
             GameObject enemiesSpawnerObject = InstantiateRegistered(data.Prefab);
 
-            EnemiesSpawner enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
+            _enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
 
-            enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.WaveWeight, data.MinRadius, data.MaxRadius);
-            enemiesSpawner.Init(currentBiome, _staticData, _playerObject, complexity);
+            _enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.WaveWeight, data.MinRadius, data.MaxRadius);
+            _enemiesSpawner.Init(currentBiome, _staticData, _playerObject, complexity);
 
-            return enemiesSpawner;
+            return _enemiesSpawner;
         }
 
         private void CreateWand(Transform bone)
@@ -149,6 +151,15 @@ namespace Clones.Infrastructure
         {
             foreach(ITimeScalable timeScalable in gameObject.GetComponentsInChildren<ITimeScalable>())
                 _timeScale.Add(timeScalable);
+        }
+
+        public void CreateMusic(ICurrentBiome currentBiome)
+        {
+            GameObject music = _assets.Instantiate(AssetPath.GameMusic);
+
+            music
+                .GetComponent<GameMusic>()
+                .Init(_enemiesSpawner, currentBiome);
         }
     }
 }
