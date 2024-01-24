@@ -5,7 +5,7 @@
         ForestLogs,
         LeafFlower,
         IceLogs,
-        Crystals,
+        Crystal,
         PoisonLogs,
         PoisonFlower,
         Slime,
