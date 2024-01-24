@@ -2,7 +2,14 @@
 {
     public enum QuestItemType
     {
-        Logs,
-        Crystals
+        ForestLogs,
+        LeafFlower,
+        IceLogs,
+        Crystals,
+        PoisonLogs,
+        PoisonFlower,
+        Slime,
+        Echeveria,
+        Sticks
     }
 }
