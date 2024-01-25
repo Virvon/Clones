@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ViscoseSalviaTree
   m_EditorClassIdentifier: 
   Type: 0
-  DroppetItem: 0
+  DroppetItem: 6
   Prefab: {fileID: 4163826744113014988, guid: b0ca2ec7cd168e441bdedb07e4e26f7a, type: 3}
   HitsCountToDie: 3
   DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}

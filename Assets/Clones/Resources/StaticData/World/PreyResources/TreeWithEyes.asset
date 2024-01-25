@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TreeWithEyes
   m_EditorClassIdentifier: 
   Type: 1
-  DroppetItem: 0
+  DroppetItem: 6
   Prefab: {fileID: 8703114383524656201, guid: 758554bc56928cc4cbb50cd37e5170a2, type: 3}
   HitsCountToDie: 3
   DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}

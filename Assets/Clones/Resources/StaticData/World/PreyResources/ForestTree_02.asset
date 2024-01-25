@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ForestTree_02
   m_EditorClassIdentifier: 
   Type: 3
-  DroppetItem: 0
+  DroppetItem: 1
   Prefab: {fileID: 6746600404911767622, guid: b6527b0eade841742bb25e2109df5a85, type: 3}
   HitsCountToDie: 3
   DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}

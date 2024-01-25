@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PoisonForestTree_02
   m_EditorClassIdentifier: 
   Type: 11
-  DroppetItem: 0
+  DroppetItem: 4
   Prefab: {fileID: 2875405953755148005, guid: d01de661e439dab4abcb18891d9e3c58, type: 3}
   HitsCountToDie: 3
   DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}

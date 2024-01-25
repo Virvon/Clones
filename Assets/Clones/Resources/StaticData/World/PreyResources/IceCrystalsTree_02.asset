@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceCrystalsTree_02
   m_EditorClassIdentifier: 
   Type: 5
-  DroppetItem: 0
+  DroppetItem: 2
   Prefab: {fileID: 2330804632807460713, guid: 0202952397e3d5b4eacaec86872a743a, type: 3}
   HitsCountToDie: 3
   DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}
