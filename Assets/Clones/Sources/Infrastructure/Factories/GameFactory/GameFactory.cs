@@ -8,12 +8,13 @@ using Object = UnityEngine.Object;
 using Clones.Data;
 using Clones.StateMachine;
 using Clones.Audio;
+using Clones.Types;
 
 namespace Clones.Infrastructure
 {
     public class GameFactory : IGameFacotry
     {
-        private readonly IGameStaticDataService _staticData;
+        private readonly IGameStaticDataService _gameStaticDataService;
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
         private readonly ITimeScale _timeScale;
@@ -23,11 +24,11 @@ namespace Clones.Infrastructure
         private GameObject _playerObject;
         private EnemiesSpawner _enemiesSpawner;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService staticData, ITimeScale timeScale, IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService gameStaticDataService, ITimeScale timeScale, IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
         {
             _assets = assets;
             _inputService = inputService;
-            _staticData = staticData;
+            _gameStaticDataService = gameStaticDataService;
             _timeScale = timeScale;
             _persistentPorgress = persistentProgress;
             _mainMenuStaticDataService = mainMenuStaticDataService;
@@ -92,7 +93,7 @@ namespace Clones.Infrastructure
 
         public WorldGenerator CreateWorldGenerator()
         {
-            WorldGeneratorStaticData worldGeneratorData = _staticData.GetWorldGenerator();
+            WorldGeneratorStaticData worldGeneratorData = _gameStaticDataService.GetWorldGenerator();
 
             WorldGenerator worldGenerator = Object.Instantiate(worldGeneratorData.Prefab);
             worldGenerator.Init(_playerObject.transform, worldGeneratorData.GenerationBiomes, worldGeneratorData.ViewRadius, worldGeneratorData.DestroyRadius, worldGeneratorData.CellSize);
@@ -112,15 +113,28 @@ namespace Clones.Infrastructure
 
         public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity)
         {
-            EnemiesSpawnerStaticData data = _staticData.GetEnemiesSpawner(); 
+            EnemiesSpawnerStaticData data = _gameStaticDataService.GetEnemiesSpawner(); 
             GameObject enemiesSpawnerObject = InstantiateRegistered(data.Prefab);
 
             _enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
 
             _enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.WaveWeight, data.MinRadius, data.MaxRadius);
-            _enemiesSpawner.Init(currentBiome, _staticData, _playerObject, complexity);
+            _enemiesSpawner.Init(currentBiome, _gameStaticDataService, _playerObject, complexity);
 
             return _enemiesSpawner;
+        }
+
+        public GameMusic CreateMusic(ICurrentBiome currentBiome)
+        {
+            GameObject gameMusicObject = _assets.Instantiate(AssetPath.GameMusic);
+            GameMusic gameMusic = gameMusicObject.GetComponent<GameMusic>();
+
+            gameMusic.Init(currentBiome, _enemiesSpawner);
+
+            foreach (BiomeType biomeType in _gameStaticDataService.GetWorldGenerator().GenerationBiomes)
+                gameMusic.Add(biomeType, _gameStaticDataService.GetBiome(biomeType).CombatAudioSourcePrefab);
+
+            return gameMusic;
         }
 
         private void CreateWand(Transform bone)

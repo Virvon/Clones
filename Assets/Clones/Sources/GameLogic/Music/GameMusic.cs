@@ -7,15 +7,15 @@ namespace Clones.GameLogic
 {
     public class GameMusic : MonoBehaviour
     {
+        [SerializeField] private AudioSource _idleMusic;
+
         private Dictionary<BiomeType, AudioSource> _combatMusic = new();
-        private AudioSource _idleMusic;
         private ICurrentBiome _currentBiome;
         private EnemiesSpawner _enemiesSpawner;
         private AudioSource _currentAudioSource;
 
-        public void Init(AudioSource idleMusicAudioSourcePrefab, ICurrentBiome currentBiome, EnemiesSpawner enemiesSpawner)
+        public void Init(ICurrentBiome currentBiome, EnemiesSpawner enemiesSpawner)
         {
-            _idleMusic = Instantiate(idleMusicAudioSourcePrefab, transform);
             _currentBiome = currentBiome;
             _enemiesSpawner = enemiesSpawner;
 
