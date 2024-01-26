@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2461182763353000905}
   - component: {fileID: 58640211964271697}
   m_Layer: 0
-  m_Name: EnemyBullet
+  m_Name: ForestEnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4761,7 +4761,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12c468e9414e6be40bff6560c9d1c766, type: 2}
+  - {fileID: 2100000, guid: 0d074566e1897db4084c1fe4389ce0cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4793,8 +4793,8 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
-  m_Pivot: {x: 0, y: -2.5, z: 0}
+  m_RenderAlignment: 1
+  m_Pivot: {x: 0, y: -2.5, z: 2.6}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1

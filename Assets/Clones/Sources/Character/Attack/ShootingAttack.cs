@@ -19,8 +19,6 @@ public class ShootingAttack : CharacterAttack
         _partsFactory = partsFactory;
         _bulletType = bulletType;
         _damage = damage;
-
-        Debug.Log("init");
     }
 
     protected override void Attack()
