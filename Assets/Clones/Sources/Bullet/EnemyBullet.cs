@@ -49,7 +49,7 @@ public class EnemyBullet : Bullet
     public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
         if (targetDamageable.IsAlive)
-            _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1, 0)) - shootPoint.transform.position;
+            _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1.8f, 0)) - shootPoint.transform.position;
         else
             _direction = shootPoint.transform.forward;
 
