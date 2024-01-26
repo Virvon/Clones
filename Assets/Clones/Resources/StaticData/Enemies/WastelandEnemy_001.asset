@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WastelandEnemy_001
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5717228191500794856, guid: f7198beb7b0237b4c83582052ad10516, type: 3}
-  Type: 8
+  Type: 10
   Damage: 1
   Health: 8
   AttackCooldown: 1
