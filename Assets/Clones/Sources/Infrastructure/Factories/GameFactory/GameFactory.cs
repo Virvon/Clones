@@ -152,14 +152,5 @@ namespace Clones.Infrastructure
             foreach(ITimeScalable timeScalable in gameObject.GetComponentsInChildren<ITimeScalable>())
                 _timeScale.Add(timeScalable);
         }
-
-        public void CreateMusic(ICurrentBiome currentBiome)
-        {
-            GameObject music = _assets.Instantiate(AssetPath.GameMusic);
-
-            music
-                .GetComponent<GameMusic>()
-                .Init(_enemiesSpawner, currentBiome);
-        }
     }
 }
