@@ -13,5 +13,6 @@ namespace Clones.StaticData
         [Range(0, 100)] public int UnminedResourcesPercentageFilled;
         public UnminedResourceType[] UnminedResourcesTypes;
         public EnemyType[] EnemiesTemplated;
+        public AudioSource CombatAudioSourcePrefab;
     }
 }

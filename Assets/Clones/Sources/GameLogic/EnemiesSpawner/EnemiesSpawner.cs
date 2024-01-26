@@ -28,6 +28,8 @@ namespace Clones.GameLogic
 
         private int _currentWave = 0;
 
+        public event Action CreatedWave;
+
         private void OnDisable() =>
             _isFinish = true;
 
@@ -66,6 +68,9 @@ namespace Clones.GameLogic
             foreach (EnemyHealth enemy in GetComponentsInChildren<EnemyHealth>())
                 enemy.Disappear();
         }
+
+        public int GetEnemiesCount() => 
+            GetComponentsInChildren<EnemyHealth>().Length;
 
         private void CreateWave()
         {
@@ -119,6 +124,7 @@ namespace Clones.GameLogic
 
                 _currentWave++;
                 CreateWave();
+                CreatedWave?.Invoke();
 
                 yield return new WaitForSeconds(_spawnCooldown / _timeScale);
             }

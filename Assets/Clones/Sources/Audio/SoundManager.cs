@@ -2,63 +2,66 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SoundManager : MonoBehaviour
+namespace Clones.Audio
 {
-    [SerializeField] private AudioMixerGroup _mixer;
-    [SerializeField] private Slider _soundSlider;
-    [SerializeField] private Slider _musicSlider;
-
-    private string _masterMixerName = "MasterVolume";
-    private string _SoundMixerName = "SoundVolume";
-    private string _MusicMixerName = "MusicVolume";
-
-    private float _currentValueMasterMixer;
-
-    private const float SoundOnValue = 0;
-    private const float SoundMinValue = -25;
-    private const float SoundOffValue = -80;
-
-    public void SetSoundValueMixer(float value)
+    public class SoundManager : MonoBehaviour
     {
-        _mixer.audioMixer.SetFloat(_masterMixerName, value);
-    }
+        [SerializeField] private AudioMixerGroup _mixer;
+        [SerializeField] private Slider _soundSlider;
+        [SerializeField] private Slider _musicSlider;
 
-    public void SwitchOffSound()
-    {
-        SwitchMasterMixer(SoundOffValue, false, true);
-    }
+        private string _masterMixerName = "MasterVolume";
+        private string _SoundMixerName = "SoundVolume";
+        private string _MusicMixerName = "MusicVolume";
 
-    public void SwitchOnSound()
-    {
-        SwitchMasterMixer(SoundOnValue, true, false);
-    }
+        private float _currentValueMasterMixer;
 
-    public void SetVolumeSound()
-    {
-        _mixer.audioMixer.SetFloat(_SoundMixerName, GetVolume(_soundSlider.value));
-    }
+        private const float SoundOnValue = 0;
+        private const float SoundMinValue = -25;
+        private const float SoundOffValue = -80;
 
-    public void SetVolumeMusic()
-    {
-        _mixer.audioMixer.SetFloat(_MusicMixerName, GetVolume(_musicSlider.value));
-    }
+        public void SetSoundValueMixer(float value)
+        {
+            _mixer.audioMixer.SetFloat(_masterMixerName, value);
+        }
 
-    public float GetMixerValue()
-    {
-        return _currentValueMasterMixer;
-    }
+        public void SwitchOffSound()
+        {
+            SwitchMasterMixer(SoundOffValue, false, true);
+        }
 
-    private void SwitchMasterMixer(float soundValue, bool isActiveOffIcon, bool isActiveOnIcon)
-    {
-        _mixer.audioMixer.SetFloat(_masterMixerName, soundValue);
-        _currentValueMasterMixer = soundValue;
-    }
+        public void SwitchOnSound()
+        {
+            SwitchMasterMixer(SoundOnValue, true, false);
+        }
 
-    private float GetVolume(float sliderValue)
-    {
-        if (sliderValue == 0)
-            return SoundOffValue;
+        public void SetVolumeSound()
+        {
+            _mixer.audioMixer.SetFloat(_SoundMixerName, GetVolume(_soundSlider.value));
+        }
 
-        return Mathf.Lerp(SoundMinValue, 0, sliderValue);
+        public void SetVolumeMusic()
+        {
+            _mixer.audioMixer.SetFloat(_MusicMixerName, GetVolume(_musicSlider.value));
+        }
+
+        public float GetMixerValue()
+        {
+            return _currentValueMasterMixer;
+        }
+
+        private void SwitchMasterMixer(float soundValue, bool isActiveOffIcon, bool isActiveOnIcon)
+        {
+            _mixer.audioMixer.SetFloat(_masterMixerName, soundValue);
+            _currentValueMasterMixer = soundValue;
+        }
+
+        private float GetVolume(float sliderValue)
+        {
+            if (sliderValue == 0)
+                return SoundOffValue;
+
+            return Mathf.Lerp(SoundMinValue, 0, sliderValue);
+        }
     }
 }
