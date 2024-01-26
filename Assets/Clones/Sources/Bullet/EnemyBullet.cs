@@ -5,19 +5,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class SingleBullet : Bullet
+public class EnemyBullet : Bullet
 {
     public IDamageable HitTarget { get; private set; }
     public override BulletStaticData BulletData => _bulletData;
 
-    private SingleBulletData _bulletData;
+    private EnemyBulletData _bulletData;
     private Vector3 _direction;
-    private GameObject _selfObject;
     private bool _isCollisioned = false;
 
     public override event Action Hitted;
-    protected override event Action<List<DamageableCell>> s_Hitted;
     public override event Action Shooted;
+    protected override event Action<List<DamageableCell>> s_Hitted;
+
+    public override void Init(BulletStaticData bulletData)
+    {
+        _bulletData = (EnemyBulletData)bulletData;
+    }
 
     private void Start()
     {
@@ -31,24 +35,16 @@ public class SingleBullet : Bullet
         if (_isCollisioned)
             return;
 
-        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfObject.GetComponent<IDamageable>())
+        if (other.TryGetComponent(out IDamageable damageable) && other.TryGetComponent(out Enemy _) == false)
         {
-            if (_selfObject.TryGetComponent(out Enemy enemy) && damageable is Enemy)
-                return;
-
             _isCollisioned = true;
             HitTarget = damageable;
 
-            Vector3 knockbakcDirection = other.transform.position - _selfObject.transform.position;
-
-            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, knockbakcDirection) });
+            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, Vector3.zero) });
             Hitted?.Invoke();
             Destroy(gameObject);
         }
     }
-
-    public override void Init(BulletStaticData bulletData) => 
-        _bulletData = (SingleBulletData)bulletData;
 
     public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {
@@ -61,7 +57,6 @@ public class SingleBullet : Bullet
 
         transform.rotation = Quaternion.LookRotation(_direction);
 
-        _selfObject = selfObject;
         s_Hitted = Hitted;
 
         Shooted?.Invoke();

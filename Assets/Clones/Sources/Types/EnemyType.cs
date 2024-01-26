@@ -4,6 +4,7 @@
     {
         Forest1,
         Forest2,
+        Forest3,
         IceCrystals1,
         IceCrystals2,
         PoisonForest1,

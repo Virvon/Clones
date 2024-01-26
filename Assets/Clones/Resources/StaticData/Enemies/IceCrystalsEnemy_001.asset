@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceCrystalsEnemy_001
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5717228191500794856, guid: c58271d2ca4b02447a65c083a1f1b883, type: 3}
-  Type: 2
+  Type: 3
   Damage: 1
   Health: 8
   AttackCooldown: 1

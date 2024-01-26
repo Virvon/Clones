@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PoisonForestEnemy_001
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5717228191500794856, guid: 4678cecc1370e354298ad2bd498406cb, type: 3}
-  Type: 4
+  Type: 5
   Damage: 1
   Health: 8
   AttackCooldown: 1
