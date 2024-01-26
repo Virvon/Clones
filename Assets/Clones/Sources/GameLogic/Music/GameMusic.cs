@@ -1,4 +1,6 @@
 ﻿using Clones.Types;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,22 +16,57 @@ namespace Clones.GameLogic
         private EnemiesSpawner _enemiesSpawner;
         private AudioSource _currentAudioSource;
 
+        private bool _isWaveEnded => _enemiesSpawner.GetEnemiesCount() == 0;
+
+        public Func<bool> Y { get; private set; }
+
         public void Init(ICurrentBiome currentBiome, EnemiesSpawner enemiesSpawner)
         {
             _currentBiome = currentBiome;
             _enemiesSpawner = enemiesSpawner;
 
-            _currentAudioSource = _idleMusic;
+            PlayIdleMusic();
+
+            _enemiesSpawner.CreatedWave += OnCreatedWave;
         }
 
         public void Add(BiomeType biomeType, AudioSource audioSourcePrefab)
         {
-            AudioSource existingAudioSource = _combatMusic.Values.Where(value => value == audioSourcePrefab).FirstOrDefault();
+            AudioSource existingAudioSource = _combatMusic.Values.Where(value => value.clip == audioSourcePrefab.clip).FirstOrDefault();
 
             if (existingAudioSource != null)
                 _combatMusic.Add(biomeType, existingAudioSource);
             else
                 _combatMusic.Add(biomeType, Instantiate(audioSourcePrefab, transform));
         }
+
+        private void PlayIdleMusic()
+        {
+            _currentAudioSource?.Stop();
+            _currentAudioSource = _idleMusic;
+            _currentAudioSource.Play();
+        }
+
+        private void OnCreatedWave()
+        {
+            if (_currentAudioSource != _idleMusic)
+                return;
+
+            _currentAudioSource?.Stop();
+            _currentAudioSource = _combatMusic[_currentBiome.Type];
+            _currentAudioSource.Play();
+
+            StartCoroutine(IdleWaiter());
+        }
+
+        private IEnumerator IdleWaiter()
+        {
+            yield return new WaitWhile(IsWaveNotEnded);
+
+            PlayIdleMusic();
+        }
+
+        private bool IsWaveNotEnded() => 
+            _enemiesSpawner.GetEnemiesCount() > 0;
     }
 }

@@ -69,6 +69,9 @@ namespace Clones.GameLogic
                 enemy.Disappear();
         }
 
+        public int GetEnemiesCount() => 
+            GetComponentsInChildren<EnemyHealth>().Length;
+
         private void CreateWave()
         {
             EnemyType[] spawnedEnemies = GetSpawnedEnemies();
