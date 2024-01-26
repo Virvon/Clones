@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 114217102068479522}
   - component: {fileID: 3506423420909099506}
   - component: {fileID: 6055403161954870798}
-  - component: {fileID: 465960203159943939}
   - component: {fileID: 377454000246156145}
   - component: {fileID: 355829746009413894}
   - component: {fileID: 5054299414688652090}
@@ -175,26 +174,6 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
---- !u!95 &465960203159943939
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783153804436478977}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d9d246c6570707a47adab804dc9b62ec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &377454000246156145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterAttack: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!114 &355829746009413894
 MonoBehaviour:
   m_ObjectHideFlags: 0
