@@ -16,8 +16,6 @@ namespace Clones.GameLogic
         private EnemiesSpawner _enemiesSpawner;
         private AudioSource _currentAudioSource;
 
-        private bool _isWaveEnded => _enemiesSpawner.GetEnemiesCount() == 0;
-
         public Func<bool> Y { get; private set; }
 
         public void Init(ICurrentBiome currentBiome, EnemiesSpawner enemiesSpawner)
@@ -52,7 +50,7 @@ namespace Clones.GameLogic
             if (_currentAudioSource != _idleMusic)
                 return;
 
-            _currentAudioSource?.Stop();
+            _currentAudioSource?.Pause();
             _currentAudioSource = _combatMusic[_currentBiome.Type];
             _currentAudioSource.Play();
 

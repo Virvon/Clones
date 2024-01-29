@@ -12,5 +12,6 @@ namespace Clones.Infrastructure
         CinemachineVirtualCamera CreateVirtualCamera();
         EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity);
         GameMusic CreateMusic(ICurrentBiome currentBiome);
+        void CreateFreezingScreen();
     }
 }

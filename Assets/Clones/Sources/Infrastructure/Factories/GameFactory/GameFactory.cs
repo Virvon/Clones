@@ -137,6 +137,19 @@ namespace Clones.Infrastructure
             return gameMusic;
         }
 
+        public void CreateFreezingScreen()
+        {
+            GameObject freezingScreenObject = _assets.Instantiate(AssetPath.FreezingScreen, Camera.main.transform);
+            FreezingScreen freezingScreen = freezingScreenObject.GetComponent<FreezingScreen>();
+            CameraShader cameraShader = Camera.main.GetComponent<CameraShader>();
+
+            freezingScreen.Init(cameraShader);
+
+            _playerObject
+                .GetComponentInChildren<FreezingScreenReporter>()
+                .Init(freezingScreen);
+        }
+
         private void CreateWand(Transform bone)
         {
             WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(_persistentPorgress.Progress.AvailableWands.SelectedWand);

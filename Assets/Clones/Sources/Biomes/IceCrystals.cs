@@ -16,6 +16,10 @@
                 Player
                     .GetComponentInChildren<FreezbarReporter>()
                     .SetFreezing(_freezing);
+
+                Player
+                    .GetComponentInChildren<FreezingScreenReporter>()
+                    .SetFreezing(_freezing);
             }
 
             _freezing.Freez();

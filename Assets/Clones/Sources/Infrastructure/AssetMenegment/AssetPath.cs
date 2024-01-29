@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Clones.Infrastructure
+﻿namespace Clones.Infrastructure
 {
     public static class AssetPath
     {
@@ -18,5 +16,6 @@ namespace Clones.Infrastructure
         public const string Joystick = "UI/Game/Control/Joystick";
         public const string DesktopInput = "UI/Game/Control/DesktopInput";
         public const string GameMusic = "Audio/Prefabs/GameMusic";
+        public const string FreezingScreen = "Camera/FreezingScreen";
     }
 }

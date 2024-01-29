@@ -84,7 +84,8 @@ namespace Clones.Infrastructure
             EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity);
             enemiesSpawner.Init(_partsFactory);
 
-            GameMusic gameMusic = _gameFactory.CreateMusic(currentBiome);
+            _gameFactory.CreateMusic(currentBiome);
+            _gameFactory.CreateFreezingScreen();
 
             _gameTimer = new GameTimer();
             _gameTimer.Start();

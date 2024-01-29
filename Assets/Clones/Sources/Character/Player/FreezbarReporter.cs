@@ -3,7 +3,7 @@
 public class FreezbarReporter : MonoBehaviour
 {
     private Freezbar _freezbar;
-    public Freezing _freezing;
+    private Freezing _freezing;
 
     private void OnDestroy()
     {

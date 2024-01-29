@@ -378,6 +378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8097626478777526814}
   - component: {fileID: 889566972827017467}
+  - component: {fileID: 5374798480038554864}
   m_Layer: 0
   m_Name: Freezing
   m_TagString: Untagged
@@ -410,6 +411,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cd66398733b9204f85b8ab757be7ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5374798480038554864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752919884671272480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6546ca9604b837d4ebc2f570528c72ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2185640250974797522
