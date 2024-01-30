@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SoapBubble
   m_EditorClassIdentifier: 
   Type: 3
-  BulletProjectile: {fileID: 1746672929845058, guid: 066d7c4cdca7a744fb9457e7b49580db, type: 3}
+  BulletProjectile: {fileID: 167276, guid: 13def734064915f4f81cbe089e9df046, type: 3}
   BulletHitEffect: {fileID: 1723818010802918, guid: 166411891e2093f4d925dda5b3574076, type: 3}
-  BulletMuzzle: {fileID: 167276, guid: 48b70001f3e22c7429ee06b99087e45e, type: 3}
+  BulletMuzzle: {fileID: 167276, guid: 203189f3be91eca498fbc26d3e5bc494, type: 3}
   _bulletPrefab: {fileID: 4166728002606952590, guid: a0f45d4e11ad44f418f4262715594fe2, type: 3}
-  _force: 10
-  _lifeTime: 3
-  _radius: 2
+  _force: 6
+  _lifeTime: 5
+  _radius: 4
