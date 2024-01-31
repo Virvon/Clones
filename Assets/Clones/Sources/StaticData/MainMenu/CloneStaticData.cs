@@ -20,6 +20,7 @@ namespace Clones.StaticData
         public float IncreaseAttackCooldown;
         public float IncreaseResourceMultiplier;
         public int IncreasePrice;
+        public float MinAttackCooldow;
         public int DisuseTime;
         public float MovementSpeed;
         public float RotationSpeed;

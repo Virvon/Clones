@@ -50,7 +50,9 @@ namespace Clones.UI
             if (_persistentProgress.Progress.AvailableClones.TryGetSelectedCloneData(out CloneData cloneData) && _persistentProgress.Progress.Wallet.TryTakeDna(cloneData.UpgradePrice))
             {
                 CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(cloneData.Type);
-                cloneData.Upgrade(cloneStaticData.IncreaseHealth, cloneStaticData.IncreaseDamage, cloneStaticData.IncreaseAttackCooldown, cloneStaticData.IncreaseResourceMultiplier, cloneStaticData.IncreasePrice);
+                float decreaseAttackCooldow = cloneData.AttackCooldown - cloneStaticData.IncreaseAttackCooldown >= cloneStaticData.MinAttackCooldow ? cloneStaticData.IncreaseAttackCooldown : cloneData.AttackCooldown - cloneStaticData.MinAttackCooldow;
+
+                cloneData.Upgrade(cloneStaticData.IncreaseHealth, cloneStaticData.IncreaseDamage, decreaseAttackCooldow, cloneStaticData.IncreaseResourceMultiplier, cloneStaticData.IncreasePrice);
                 _cloneUpgradeButton.SetPrice(cloneData.UpgradePrice);
             }
         }

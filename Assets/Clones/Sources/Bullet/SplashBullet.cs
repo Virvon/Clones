@@ -44,7 +44,7 @@ public class SplashBullet : Bullet
             for (var i = 0; i < overlapCount; i++)
             {
                 if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1) && damageable1 != _selfObject.GetComponent<IDamageable>())
-                    damageableCells.Add(new DamageableCell(damageable1, other.transform.position - _selfObject.transform.position));
+                    damageableCells.Add(new DamageableCell(damageable1, ((MonoBehaviour)damageable1).transform.position - _selfObject.transform.position));
             }
 
             s_Hitted?.Invoke(damageableCells);
