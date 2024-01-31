@@ -3,7 +3,10 @@
     public enum WandType
     {
         Undefined,
-        Test1,
-        Test2
+        BranchWand,
+        NaturalWand,
+        LightningWand,
+        SniperWand,
+        SoapBubbleWand
     }
 }

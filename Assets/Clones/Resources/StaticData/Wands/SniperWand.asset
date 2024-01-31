@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02c95891d4c8834eba19f3177bdd8d8, type: 3}
+  m_Name: SniperWand
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 5109261845676277305, guid: 835e282311271284ebab363bd83ddf8e, type: 3}
+  Card: {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
+  Type: 4
+  Bullet: 1
+  UpgradePrice: 200
+  UpgradePriceIncrease: 0
+  KnockbackForse: 1000
+  KnockbackOffset: 0
+  BuyPrice: 200
+  IsBuyed: 0
+  WandStats:
+    HealthIncreasePercentage: 0
+    DamageIncreasePercentage: 20
+    AttackCooldwonDecreasePercentage: 0
+    PreyResourcesIncreasePercentage: 0
+  WandStatsIncrease:
+    HealthIncrease: 0
+    DamageIncrease: 2
+    AttackCooldownDecrease: 0
+    PreyResourcesIncrease: 0

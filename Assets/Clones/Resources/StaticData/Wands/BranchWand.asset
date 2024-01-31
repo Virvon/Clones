@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02c95891d4c8834eba19f3177bdd8d8, type: 3}
+  m_Name: BranchWand
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 2491600616536091764, guid: e48c3b8b4ebaa2f42a603779342130b2, type: 3}
+  Card: {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
+  Type: 1
+  Bullet: 4
+  UpgradePrice: 100
+  UpgradePriceIncrease: 0
+  KnockbackForse: 1000
+  KnockbackOffset: 0
+  BuyPrice: 100
+  IsBuyed: 1
+  WandStats:
+    HealthIncreasePercentage: 20
+    DamageIncreasePercentage: 0
+    AttackCooldwonDecreasePercentage: 0
+    PreyResourcesIncreasePercentage: 0
+  WandStatsIncrease:
+    HealthIncrease: 2
+    DamageIncrease: 0
+    AttackCooldownDecrease: 0
+    PreyResourcesIncrease: 0

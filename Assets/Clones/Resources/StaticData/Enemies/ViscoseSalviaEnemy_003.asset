@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfb3d37560812d4a964ca7b0d97c722, type: 3}
   m_Name: ViscoseSalviaEnemy_003
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 2978154357368221556, guid: 5e4f2e83de94cf8409074a19b9a1ba63, type: 3}
+  Prefab: {fileID: 2978154357368221556, guid: 4159dbe16e0c68c40a678234b7813fbd, type: 3}
   Type: 9
   Damage: 1
   Health: 15
@@ -21,4 +21,4 @@ MonoBehaviour:
   MaxStopDistance: 12
   DeathEffect: {fileID: 1889919486439536, guid: 41f0b29a031db444594cb6bd50194d38, type: 3}
   EffectOffset: {x: 0, y: 1, z: 0}
-  BulletType: 4
+  BulletType: 7

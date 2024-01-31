@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84ab2917754a074f8d5920334b98e78, type: 3}
   m_Name: ForestEnemyBullet
   m_EditorClassIdentifier: 
-  Type: 4
+  Type: 5
   BulletProjectile: {fileID: 1121018340418894353, guid: 652b5216634e7334cb487c3b7e6275cb, type: 3}
-  BulletHitEffect: {fileID: 941551170271954988, guid: 938266578e548b749913a6500ed3cadf, type: 3}
+  BulletHitEffect: {fileID: 1061481793025988, guid: 0b1a49debc643744e844648f67481f03, type: 3}
   BulletMuzzle: {fileID: 941551170271954988, guid: 938266578e548b749913a6500ed3cadf, type: 3}
   _bulletPrefab: {fileID: 3732067718216518224, guid: 04db40fa6e7752c4aaa22481b20f2e95, type: 3}
   _force: 14
-  _lifeTime: 3
+  _lifeTime: 2
