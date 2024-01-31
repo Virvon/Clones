@@ -7,6 +7,8 @@
         LightningFromHeaven,
         SoapBubble,
         FireArrow,
-        ForestEnemyBullet
+        ForestEnemyBullet,
+        IceCrystalsEnemyBullet,
+        ViscoseSalviaEnemyBullet
     }
 }
