@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02c95891d4c8834eba19f3177bdd8d8, type: 3}
   m_Name: Wand1
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6025042012067766907, guid: 2c102f838c0a1084594fe4c007786a50, type: 3}
+  Prefab: {fileID: 6019285066411426706, guid: b166f58dcf3688f45b8c53a41888bb1c, type: 3}
   Card: {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
   Type: 1
-  Bullet: 3
+  Bullet: 0
   UpgradePrice: 100
   UpgradePriceIncrease: 0
   KnockbackForse: 1000

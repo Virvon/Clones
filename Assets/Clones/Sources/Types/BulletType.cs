@@ -6,7 +6,7 @@
         BubbleRose,
         LightningFromHeaven,
         SoapBubble,
-        Test5,
+        FireArrow,
         ForestEnemyBullet
     }
 }
