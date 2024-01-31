@@ -16,7 +16,7 @@ MonoBehaviour:
   Card: {fileID: 3171580171538393250, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
   Type: 1
   Helath: 100
-  Damage: 10
+  Damage: 1
   AttackCooldown: 1
   ResourceMultiplier: 1
   UpgradePrice: 500

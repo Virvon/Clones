@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f6675ad3e00c548a7fba2ef3380cdb, type: 3}
-  m_Name: SplashBullet_001
+  m_Script: {fileID: 11500000, guid: 05ac3f91b15242b41ac880d1eac021ea, type: 3}
+  m_Name: BubbleRose
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   BulletProjectile: {fileID: 0}
   BulletHitEffect: {fileID: 0}
   BulletMuzzle: {fileID: 0}
-  _bulletPrefab: {fileID: 4166728002606952590, guid: a0f45d4e11ad44f418f4262715594fe2, type: 3}
-  _force: 10
-  _lifeTime: 3
-  _radius: 2
+  _bulletPrefab: {fileID: 0}
+  _force: 0
+  _lifeTime: 0

@@ -3,7 +3,7 @@
     public enum BulletType
     {
         Test1,
-        Test2,
+        BubbleRose,
         LightningFromHeaven,
         SoapBubble,
         Test5,
