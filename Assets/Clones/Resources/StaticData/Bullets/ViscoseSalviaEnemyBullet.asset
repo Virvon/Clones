@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 7
   BulletProjectile: {fileID: 1121018340418894353, guid: e82fc4fc54fc89c4ebdcc9c28e41bf3a, type: 3}
-  BulletHitEffect: {fileID: 941551170271954988, guid: 938266578e548b749913a6500ed3cadf, type: 3}
+  BulletHitEffect: {fileID: 1061481793025988, guid: a65705d75fdedf64490f2fc2a25bde38, type: 3}
   BulletMuzzle: {fileID: 941551170271954988, guid: 938266578e548b749913a6500ed3cadf, type: 3}
   _bulletPrefab: {fileID: 3732067718216518224, guid: 04db40fa6e7752c4aaa22481b20f2e95, type: 3}
   _force: 14

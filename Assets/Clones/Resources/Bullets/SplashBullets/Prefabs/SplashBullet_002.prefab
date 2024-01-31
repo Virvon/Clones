@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3709345554291709546}
+  - component: {fileID: 3162805202428057032}
   - component: {fileID: 280869923026614653}
-  - component: {fileID: 5711516917261702988}
-  - component: {fileID: 3732067718216518224}
-  - component: {fileID: -214640687653117651}
+  - component: {fileID: 4166728002606952590}
+  - component: {fileID: 1382728982938350207}
   m_Layer: 2
-  m_Name: EnemyBullet
+  m_Name: SplashBullet_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3162805202428057032
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2325161460478379165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &280869923026614653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -51,20 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &5711516917261702988
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2325161460478379165}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3732067718216518224
+--- !u!114 &4166728002606952590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,10 +73,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2325161460478379165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd30234e38cbb047baed216b417ce9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 425bb26ff16d40942acfd6d3a6769990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-214640687653117651
+--- !u!114 &1382728982938350207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,6 +85,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2325161460478379165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664324c7d13287947ac2dd5fabe9300e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c9fe5e07bc675449a45e731c06c0d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

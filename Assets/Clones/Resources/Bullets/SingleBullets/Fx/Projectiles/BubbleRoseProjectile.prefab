@@ -5175,7 +5175,7 @@ MonoBehaviour:
   speed: 1
   duration: 1
   loop: 1
-  prewarm: 0
+  prewarm: 1
   lights: 1
   trails: 1
   changeColor: 1

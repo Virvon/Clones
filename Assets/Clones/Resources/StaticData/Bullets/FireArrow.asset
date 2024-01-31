@@ -17,5 +17,5 @@ MonoBehaviour:
   BulletHitEffect: {fileID: 1492905714608668122, guid: 9553a5ebdf54fbd47bfaaa77fad24400, type: 3}
   BulletMuzzle: {fileID: 7432887521812716825, guid: bbec6b2d0935d2348b89f9778f5fcef0, type: 3}
   _bulletPrefab: {fileID: 7803728612361435392, guid: 9d188da966cc9364aa3a2dc17a073534, type: 3}
-  _force: 10
+  _force: 15
   _lifeTime: 3

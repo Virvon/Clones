@@ -17,6 +17,6 @@ MonoBehaviour:
   BulletHitEffect: {fileID: 167276, guid: 13edfb69412ba3e419c04aa57d43651b, type: 3}
   BulletMuzzle: {fileID: 167276, guid: 203189f3be91eca498fbc26d3e5bc494, type: 3}
   _bulletPrefab: {fileID: 4166728002606952590, guid: a0f45d4e11ad44f418f4262715594fe2, type: 3}
-  _force: 6
+  _force: 11
   _lifeTime: 5
   _radius: 4

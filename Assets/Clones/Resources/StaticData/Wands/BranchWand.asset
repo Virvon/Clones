@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b02c95891d4c8834eba19f3177bdd8d8, type: 3}
-  m_Name: Wand2
+  m_Name: BranchWand
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8006573859159662536, guid: 5f3538edba936dd479638ed288e5a12d, type: 3}
+  Prefab: {fileID: 2491600616536091764, guid: e48c3b8b4ebaa2f42a603779342130b2, type: 3}
   Card: {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
-  Type: 2
-  Bullet: 2
-  UpgradePrice: 200
+  Type: 1
+  Bullet: 4
+  UpgradePrice: 100
   UpgradePriceIncrease: 0
   KnockbackForse: 1000
   KnockbackOffset: 0
-  BuyPrice: 200
-  IsBuyed: 0
+  BuyPrice: 100
+  IsBuyed: 1
   WandStats:
-    HealthIncreasePercentage: 0
-    DamageIncreasePercentage: 20
+    HealthIncreasePercentage: 20
+    DamageIncreasePercentage: 0
     AttackCooldwonDecreasePercentage: 0
     PreyResourcesIncreasePercentage: 0
   WandStatsIncrease:
-    HealthIncrease: 0
-    DamageIncrease: 2
+    HealthIncrease: 2
+    DamageIncrease: 0
     AttackCooldownDecrease: 0
     PreyResourcesIncrease: 0
