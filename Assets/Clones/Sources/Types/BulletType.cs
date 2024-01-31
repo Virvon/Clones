@@ -2,10 +2,11 @@
 {
     public enum BulletType
     {
-        Test1,
+        Leafball,
         BubbleRose,
         LightningFromHeaven,
         SoapBubble,
         Test5,
+        ForestEnemyBullet
     }
 }
