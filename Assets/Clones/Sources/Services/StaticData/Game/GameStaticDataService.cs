@@ -20,6 +20,7 @@ namespace Clones.Services
         private WorldGeneratorStaticData _worldGenerator;
         private QuestStaticData _quest;
         private ComplexityStaticData _complexity;
+        private ItemsCounterStaticData _itemsCounter;
 
         public void Load()
         {
@@ -34,6 +35,7 @@ namespace Clones.Services
             _worldGenerator = Resources.Load<WorldGeneratorStaticData>(GameStaticDataPath.WorldGenerator);
             _quest = Resources.Load<QuestStaticData>(GameStaticDataPath.Quest);
             _complexity = Resources.Load<ComplexityStaticData>(GameStaticDataPath.Complexity);
+            _itemsCounter = Resources.Load<ItemsCounterStaticData>(GameStaticDataPath.ItemsCounter);
         }
 
         public WorldGeneratorStaticData GetWorldGenerator() =>
@@ -68,5 +70,8 @@ namespace Clones.Services
 
         public ComplexityStaticData GetComplextiy() => 
             _complexity;
+
+        public ItemsCounterStaticData GetItemsCounter() => 
+            _itemsCounter;
     }
 }

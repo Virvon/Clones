@@ -14,5 +14,6 @@
         public const string EnemiesSpawner = "StaticData/EnemiesSpawner";
         public const string Quest = "StaticData/Quest";
         public const string Complexity = "StaticData/Complexity";
+        public const string ItemsCounter = "StaticData/CurrencyCounter";
     }
 }

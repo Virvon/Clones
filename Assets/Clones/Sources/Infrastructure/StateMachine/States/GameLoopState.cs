@@ -1,6 +1,8 @@
 ﻿using Cinemachine;
+using Clones.Data;
 using Clones.GameLogic;
 using Clones.Services;
+using Clones.StaticData;
 using Clones.UI;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,31 +56,24 @@ namespace Clones.Infrastructure
         private void CreateGame()
         {
             IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, _gameStaticDataService.GetQuest().QuestItemTypes);
-
-            IItemsCounter itemsCounter = new ItemsCounter(questsCreator, _persistentProgress);
+            IItemsCounter itemsCounter = CreateItemsCounter(questsCreator);
 
             GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itemsCounter);
-
             CharacterAttack playerAttack = playerObject.GetComponent<CharacterAttack>();
 
             WorldGenerator worldGenerator = _gameFactory.CreateWorldGenerator();
             worldGenerator.Init(_partsFactory);
 
             QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
-
             PlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _timeScale);
 
             GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject, playerRevival);
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
 
             CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera();
-
             AttackShake attackShake = new(playerAttack, virtualCamera.GetComponent<CameraShake>());
-
             CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
-
             ICurrentBiome currentBiome = new CurrentBiome(worldGenerator);
-
             Complexity complexity = new Complexity(_persistentProgress, _gameStaticDataService.GetComplextiy().TargetPlayTime, _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Level);
 
             EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity);
@@ -90,7 +85,7 @@ namespace Clones.Infrastructure
             _gameTimer = new GameTimer();
             _gameTimer.Start();
 
-            PlayerDeath playerDeath = new(hud.GetComponentInChildren<RevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, _gameTimer   );
+            PlayerDeath playerDeath = new(hud.GetComponentInChildren<RevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, _gameTimer);
 
             hud.GetComponentInChildren<RevivalButton>()
                 .Init(playerRevival);
@@ -103,6 +98,18 @@ namespace Clones.Infrastructure
             _disables.Add(playerDeath);
             _disables.Add(currencyDropper);
             _disables.Add(questItemsDropper);
+        }
+
+        private IItemsCounter CreateItemsCounter(IQuestsCreator questsCreator)
+        {
+            ItemsCounterStaticData itemsCounterStaticData = _gameStaticDataService.GetItemsCounter();
+            WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+            CloneData cloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
+            float resourcesMultiplier = cloneData.ResourceMultiplier * (1 + wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
+            int DNAReward = (int)(itemsCounterStaticData.DNAReward * resourcesMultiplier);
+            int questItemReward = (int)(itemsCounterStaticData.CollectingItemReward * resourcesMultiplier);
+
+            return new ItemsCounter(questsCreator, _persistentProgress, DNAReward, questItemReward);
         }
 
         private void UseSelectedClone()
