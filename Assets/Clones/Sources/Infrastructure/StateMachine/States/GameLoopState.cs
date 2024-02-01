@@ -55,8 +55,13 @@ namespace Clones.Infrastructure
 
         private void CreateGame()
         {
-            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, _gameStaticDataService.GetQuest().QuestItemTypes);
-            IItemsCounter itemsCounter = CreateItemsCounter(questsCreator);
+            WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+            CloneData cloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
+            float resourcesMultiplier = cloneData.ResourceMultiplier * (1 + wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
+            Complexity complexity = new Complexity(_persistentProgress, _gameStaticDataService.GetComplextiy().TargetPlayTime, _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Level);
+            QuestStaticData questStaticData = _gameStaticDataService.GetQuest();
+            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, resourcesMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward);
+            IItemsCounter itemsCounter = CreateItemsCounter(questsCreator, resourcesMultiplier);
 
             GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itemsCounter);
             CharacterAttack playerAttack = playerObject.GetComponent<CharacterAttack>();
@@ -74,7 +79,6 @@ namespace Clones.Infrastructure
             AttackShake attackShake = new(playerAttack, virtualCamera.GetComponent<CameraShake>());
             CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
             ICurrentBiome currentBiome = new CurrentBiome(worldGenerator);
-            Complexity complexity = new Complexity(_persistentProgress, _gameStaticDataService.GetComplextiy().TargetPlayTime, _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Level);
 
             EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity);
             enemiesSpawner.Init(_partsFactory);
@@ -100,21 +104,16 @@ namespace Clones.Infrastructure
             _disables.Add(questItemsDropper);
         }
 
-        private IItemsCounter CreateItemsCounter(IQuestsCreator questsCreator)
+        private IItemsCounter CreateItemsCounter(IQuestsCreator questsCreator, float resourcesMultiplier)
         {
             ItemsCounterStaticData itemsCounterStaticData = _gameStaticDataService.GetItemsCounter();
-            WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
-            CloneData cloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
-            float resourcesMultiplier = cloneData.ResourceMultiplier * (1 + wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
             int DNAReward = (int)(itemsCounterStaticData.DNAReward * resourcesMultiplier);
             int questItemReward = (int)(itemsCounterStaticData.CollectingItemReward * resourcesMultiplier);
 
             return new ItemsCounter(questsCreator, _persistentProgress, DNAReward, questItemReward);
         }
 
-        private void UseSelectedClone()
-        {
+        private void UseSelectedClone() => 
             _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Use(_mainMenuStaticDataService.GetClone(_persistentProgress.Progress.AvailableClones.SelectedClone).DisuseTime);
-        }
     }
 }

@@ -43,7 +43,6 @@ namespace Clones.Infrastructure
             int health = cloneData.Health + (int)(cloneData.Health * wandData.WandStats.HealthIncreasePercentage / 100f);
             int damage = cloneData.Damage + (int)(cloneData.Damage * wandData.WandStats.DamageIncreasePercentage / 100f);
             float attackCooldown = cloneData.AttackCooldown * (1 - wandData.WandStats.AttackCooldownDecreasePercentage / 100f);
-            float resourceMultiplier = cloneData.ResourceMultiplier + cloneData.ResourceMultiplier * wandData.WandStats.PreyResourcesIncreasePercentage / 100f;
 
             _playerObject = Object.Instantiate(cloneStaticData.Prefab);
 

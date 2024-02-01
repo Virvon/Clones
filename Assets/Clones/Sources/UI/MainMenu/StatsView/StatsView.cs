@@ -44,7 +44,7 @@ namespace Clones.UI
             int health = cloneData.Health + (int)(cloneData.Health * wandData.WandStats.HealthIncreasePercentage / 100f);
             int damage = cloneData.Damage + (int)(cloneData.Damage * wandData.WandStats.DamageIncreasePercentage / 100f);
             float attackSpeed = 1 / (cloneData.AttackCooldown * (1 - wandData.WandStats.AttackCooldownDecreasePercentage / 100f));
-            float resourceMultiplier = cloneData.ResourceMultiplier + (cloneData.ResourceMultiplier * wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
+            float resourceMultiplier = cloneData.ResourceMultiplier * (1 + wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
 
             _health.text = NumberFormatter.DivideIntegerOnDigits(health);
             _damage.text = NumberFormatter.DivideIntegerOnDigits(damage);

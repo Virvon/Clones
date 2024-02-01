@@ -7,7 +7,7 @@ namespace Clones.GameLogic
     {
         private readonly IItemVisitor _itemVisitor;
 
-        public ItemsCounter(IQuestsCreator questsCreator, IPersistentProgressService persistenntProgress, int DNAReward, int questItemReward) =>
+        public ItemsCounter(IQuestsCreator questsCreator, IPersistentProgressService persistenntProgress, int DNAReward, int questItemReward) => 
             _itemVisitor = new ItemVisitor(questsCreator, persistenntProgress, DNAReward, questItemReward);
 
         public void TakeItem(IItem item) =>

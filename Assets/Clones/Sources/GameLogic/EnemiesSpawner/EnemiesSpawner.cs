@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace Clones.GameLogic
 {
+
     public class EnemiesSpawner : MonoBehaviour, ITimeScalable
     {
         private float _startDelay;

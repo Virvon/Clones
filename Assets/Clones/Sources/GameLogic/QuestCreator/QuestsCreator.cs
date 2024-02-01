@@ -10,14 +10,16 @@ namespace Clones.GameLogic
 {
     public class QuestsCreator : IQuestsCreator
     {
-        private const int MaxItemsCoutn = 10;
-        private const int MinItemsCountInQuest = 4;
-        private const int MaxReward = 10;
-
         private readonly QuestItemType[] _questTypes;
         private readonly IPersistentProgressService _persistentProgress;
+        private readonly Complexity _complexity;
+        private readonly float _resourcesMultiplier;
+        private readonly int _itemsCount;
+        private readonly int _minItemsCountPercentInQuest;
+        private readonly int _reward;
 
         private List<Quest> _quests;
+        private int _currentQuest = 0;
 
         public IReadOnlyList<Quest> Quests => _quests;
         public int Reward { get; private set; }
@@ -25,10 +27,15 @@ namespace Clones.GameLogic
         public event Action Created;
         public event Action<Quest> Updated;
 
-        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes)
+        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward)
         {
             _persistentProgress = persistentProgress;
             _questTypes = questTypes;
+            _complexity = complexity;
+            _resourcesMultiplier = resourcesMultiplier;
+            _itemsCount = itemsCount;
+            _minItemsCountPercentInQuest = minItemsCountPercentInQuest;
+            _reward = reward;
         }
 
         public void Create()
@@ -67,9 +74,11 @@ namespace Clones.GameLogic
             HashSet<QuestItemType> usedTypes = new();
 
             int availableTypesCount = _questTypes.Length;
-            int maxItemsCount = MaxItemsCoutn;
-            int minItemsCountInQuest = MinItemsCountInQuest;
+            int maxItemsCount = (int)(_itemsCount * _complexity.GetComplexity(_currentQuest));
+            int minItemsCountInQuest = (int)(maxItemsCount * _minItemsCountPercentInQuest / 100f);
             int totalItemsCount = 0;
+
+            _currentQuest++;
 
             while (totalItemsCount < maxItemsCount)
             {
@@ -88,7 +97,7 @@ namespace Clones.GameLogic
                 totalItemsCount += itemsCount;
             }
 
-            reward = MaxReward;
+            reward = (int)(_reward * _resourcesMultiplier * _complexity.GetComplexity(_currentQuest));
 
             return quests;
         }

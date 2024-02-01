@@ -36,11 +36,6 @@ namespace Clones.Infrastructure
             enemyObject.GetComponent<NavMeshAgent>()
                 .stoppingDistance = (float)Math.Round(Random.Range(enemyData.MinStopDistance, enemyData.MaxStopDistance), 2);
 
-            //if (enemyObject.TryGetComponent(out MeleeAttack meleeAttack))
-            //    meleeAttack.Init(enemyData.Damage * rootComplexityCoefficient, enemyData.AttackCooldown);
-            //else if (enemyObject.TryGetComponent(out ShootingAttack shootingAttack))
-            //    shootingAttack.Init(this, ((ShootingEnemyStaticData)enemyData).BulletType, (int)enemyData.Damage);
-
             MeleeAttack meleeAttack = enemyObject.GetComponentInChildren<MeleeAttack>();
             ShootingAttack shootingAttack = enemyObject.GetComponentInChildren<ShootingAttack>();
 
