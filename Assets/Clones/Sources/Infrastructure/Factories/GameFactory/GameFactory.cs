@@ -55,7 +55,7 @@ namespace Clones.Infrastructure
 
             _playerObject
                 .GetComponent<PlayerAnimationSwitcher>()
-                .Init(_inputService, player);
+                .Init(_inputService, player, wandData.WandStats.AttackCooldownDecreasePercentage);
 
             _playerObject
                 .GetComponent<DropCollecting>()

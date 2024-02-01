@@ -50,8 +50,6 @@ namespace Clones.UI
             _damage.text = NumberFormatter.DivideIntegerOnDigits(damage);
             _attackSpeed.text = NumberFormatter.DivideFloatOnDigits(attackSpeed);
             _resourceMultiplier.text = NumberFormatter.DivideFloatOnDigits(resourceMultiplier);
-
-            Debug.Log("clone attack cooldown " + cloneData.AttackCooldown + " percent " + wandData.WandStats.AttackCooldownDecreasePercentage);
         }
     }
 }

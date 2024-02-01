@@ -38,6 +38,7 @@
             public static class Float
             {
                 public const string MovementAnimationSpeed = nameof(MovementAnimationSpeed);
+                public const string AttackAnimationSpeed = nameof(AttackAnimationSpeed);
             }
         }
 

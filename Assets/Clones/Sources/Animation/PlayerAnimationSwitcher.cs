@@ -7,6 +7,8 @@ namespace Clones.Animation
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimationSwitcher : MonoBehaviour
     {
+        private const float DefaultAttackAnimationSpeed = 2;
+
         [SerializeField] private CharacterAttack _characterAttack;
 
         private IInputService _inputService;
@@ -35,12 +37,13 @@ namespace Clones.Animation
             _inputService.Deactivated -= OnStop;
         }
 
-        public void Init(IInputService inputService, Player player)
+        public void Init(IInputService inputService, Player player, int attackAnimationSpeedMultiplierPercent)
         {
             _inputService = inputService;
             _player = player;
 
             _defaultMovementSpeed = _player.StatsProvider.GetStats().MovementSpeed;
+            _animator.SetFloat(AnimationPath.Player.Float.AttackAnimationSpeed, DefaultAttackAnimationSpeed * (1 + attackAnimationSpeedMultiplierPercent / 100f));
 
             _inputService.Activated += OnMove;
             _inputService.Deactivated += OnStop;
