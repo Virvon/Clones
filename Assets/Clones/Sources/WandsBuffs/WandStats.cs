@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Clones.WandsBuffs
 {
@@ -7,8 +8,9 @@ namespace Clones.WandsBuffs
     {
         public int HealthIncreasePercentage;
         public int DamageIncreasePercentage;
-        public int AttackCooldwonDecreasePercentage;
+        [Range(0, 99)] public int AttackCooldownDecreasePercentage;
         public int PreyResourcesIncreasePercentage;
+        [Range(0, 99)] public int MaxAttackCooldownDecreasePercentage; 
 
         public static WandStats operator +(WandStats a, WandStatsIncrease b)
         {
@@ -16,8 +18,9 @@ namespace Clones.WandsBuffs
             {
                 HealthIncreasePercentage = a.HealthIncreasePercentage + b.HealthIncrease,
                 DamageIncreasePercentage = a.DamageIncreasePercentage + b.DamageIncrease,
-                AttackCooldwonDecreasePercentage = a.AttackCooldwonDecreasePercentage + b.AttackCooldownDecrease,
-                PreyResourcesIncreasePercentage = a.PreyResourcesIncreasePercentage + b.PreyResourcesIncrease
+                AttackCooldownDecreasePercentage = a.AttackCooldownDecreasePercentage + b.AttackCooldownDecrease <= a.MaxAttackCooldownDecreasePercentage? a.AttackCooldownDecreasePercentage + b.AttackCooldownDecrease : a.MaxAttackCooldownDecreasePercentage,
+                PreyResourcesIncreasePercentage = a.PreyResourcesIncreasePercentage + b.PreyResourcesIncrease,
+                MaxAttackCooldownDecreasePercentage = a.MaxAttackCooldownDecreasePercentage
             };
         }
     }

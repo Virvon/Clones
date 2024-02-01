@@ -1,6 +1,7 @@
 ﻿using Clones.Types;
 using Clones.WandsBuffs;
 using System;
+using UnityEngine;
 
 namespace Clones.Data
 {
@@ -24,6 +25,7 @@ namespace Clones.Data
         {
             UpgradePrice += upgradePrice;
             WandStats += wandStatsIncrease;
+            Debug.Log(WandStats.AttackCooldownDecreasePercentage);
 
             Upgraded?.Invoke();
         }

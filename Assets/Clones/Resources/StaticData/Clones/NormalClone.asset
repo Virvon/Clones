@@ -19,12 +19,13 @@ MonoBehaviour:
   Damage: 1
   AttackCooldown: 1
   ResourceMultiplier: 1
-  UpgradePrice: 500
+  UpgradePrice: 10
   IncreaseHealth: 10
   IncreaseDamage: 2
-  IncreaseAttackCooldown: 0.03
+  IncreaseAttackCooldown: 0.1
   IncreaseResourceMultiplier: 0.05
-  IncreasePrice: 50
+  IncreasePrice: 0
+  MinAttackCooldow: 0.5
   DisuseTime: 0
   MovementSpeed: 10
   RotationSpeed: 1080

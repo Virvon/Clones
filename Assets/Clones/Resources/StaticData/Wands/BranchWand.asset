@@ -25,10 +25,11 @@ MonoBehaviour:
   WandStats:
     HealthIncreasePercentage: 20
     DamageIncreasePercentage: 0
-    AttackCooldwonDecreasePercentage: 0
+    AttackCooldownDecreasePercentage: 20
     PreyResourcesIncreasePercentage: 0
+    MaxAttackCooldownDecreasePercentage: 45
   WandStatsIncrease:
     HealthIncrease: 2
     DamageIncrease: 0
-    AttackCooldownDecrease: 0
+    AttackCooldownDecrease: 10
     PreyResourcesIncrease: 0

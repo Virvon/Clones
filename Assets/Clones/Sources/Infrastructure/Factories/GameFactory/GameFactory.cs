@@ -7,7 +7,6 @@ using Clones.GameLogic;
 using Object = UnityEngine.Object;
 using Clones.Data;
 using Clones.StateMachine;
-using Clones.Audio;
 using Clones.Types;
 
 namespace Clones.Infrastructure
@@ -43,7 +42,7 @@ namespace Clones.Infrastructure
 
             int health = cloneData.Health + (int)(cloneData.Health * wandData.WandStats.HealthIncreasePercentage / 100f);
             int damage = cloneData.Damage + (int)(cloneData.Damage * wandData.WandStats.DamageIncreasePercentage / 100f);
-            //int attackCooldown = cloneData.AttackCooldown - cloneData
+            float attackCooldown = cloneData.AttackCooldown * (1 - wandData.WandStats.AttackCooldownDecreasePercentage / 100f);
             float resourceMultiplier = cloneData.ResourceMultiplier + cloneData.ResourceMultiplier * wandData.WandStats.PreyResourcesIncreasePercentage / 100f;
 
             _playerObject = Object.Instantiate(cloneStaticData.Prefab);
@@ -52,7 +51,7 @@ namespace Clones.Infrastructure
 
             player
                 .GetComponent<Player>()
-                .Init(cloneStaticData.MovementSpeed, cloneStaticData.AttackCooldown);
+                .Init(cloneStaticData.MovementSpeed, attackCooldown);
 
             _playerObject
                 .GetComponent<PlayerAnimationSwitcher>()
