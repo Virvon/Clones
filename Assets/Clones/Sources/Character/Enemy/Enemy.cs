@@ -6,4 +6,10 @@ public class Enemy : MonoBehaviour
 
     public void Init(GameObject target) => 
         Target = target;
+
+    public void Destroy()
+    {
+        //Destroy(gameObject);
+        Debug.Log("Died");
+    }
 }
