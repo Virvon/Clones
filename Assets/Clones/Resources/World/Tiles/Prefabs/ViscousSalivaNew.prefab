@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 2120974435277314409}
   - component: {fileID: 7671111863622267766}
   m_Layer: 0
-  m_Name: ViscousSaliva
+  m_Name: ViscousSalivaNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,7 +419,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d7a4c335eaebc24b8d6a93888c72556, type: 2}
+  - {fileID: 2100000, guid: 0b1ac9f642b17474fbd44adba6b4b05c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
