@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace Clones.UI
 {
-    public class RevivalView : MonoBehaviour
+    public class GameRevivalView : MonoBehaviour
     {
         [SerializeField] private GameObject _background;
         [SerializeField] private TMP_Text _timeValue;
         [SerializeField] private float _cooldown;
 
-        private PlayerRevival _playerRevival;
+        private IPlayerRevival _playerRevival;
         private GameOverView _gameOverView;
         private Coroutine _timer;
 
-        public void Init(PlayerRevival playerRevival, GameOverView gameOverView)
+        public void Init(IPlayerRevival playerRevival, GameOverView gameOverView)
         {
             _playerRevival = playerRevival;
             _gameOverView = gameOverView;

@@ -6,13 +6,13 @@ namespace Clones.GameLogic
 {
     public class PlayerDeath : IDisable
     {
-        private readonly RevivalView _revivalView;
+        private readonly GameRevivalView _revivalView;
         private readonly PlayerHealth _player;
         private readonly ITimeScale _timeScale;
         private readonly EnemiesSpawner _enemySpawner;
         private readonly GameTimer _gameTimer;
 
-        public PlayerDeath(RevivalView revivalView, PlayerHealth player, ITimeScale timeScale, EnemiesSpawner enemiesSpawner, GameTimer gameTimer)
+        public PlayerDeath(GameRevivalView revivalView, PlayerHealth player, ITimeScale timeScale, EnemiesSpawner enemiesSpawner, GameTimer gameTimer)
         {
             _revivalView = revivalView;
             _player = player;

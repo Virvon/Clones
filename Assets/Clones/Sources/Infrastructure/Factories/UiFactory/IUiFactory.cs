@@ -6,8 +6,9 @@ namespace Clones.Infrastructure
 {
     public interface IUiFactory : IService
     {
-        GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject, PlayerRevival playerRevival);
+        GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject);
         GameObject CreateQuestView(Quest quest, Transform parent);
         void CreateControl(Player player);
+        void CreateGameRevivleView(IPlayerRevival playerRevival);
     }
 }

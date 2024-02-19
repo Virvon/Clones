@@ -23,7 +23,7 @@ namespace Clones.Infrastructure
             _inputService = inputService;
         }
 
-        public GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject, PlayerRevival playerRevival)
+        public GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject)
         {
             _hud = _assets.Instantiate(AssetPath.Hud);
 
@@ -46,9 +46,6 @@ namespace Clones.Infrastructure
             _hud.GetComponentInChildren<ChangeGameStateButton>()
                 .Init(_stateMachine);
 
-            _hud.GetComponentInChildren<RevivalView>()
-                .Init(playerRevival, _hud.GetComponentInChildren<GameOverView>());
-
             return _hud;
         }
 
@@ -68,6 +65,15 @@ namespace Clones.Infrastructure
                 .Init(quest);
 
             return view;
+        }
+
+        public void CreateGameRevivleView(IPlayerRevival playerRevival)
+        {
+            GameObject gameRevivleView = _assets.Instantiate(AssetPath.GameRevivleView, _hud.transform);
+            
+            gameRevivleView
+                .GetComponent<GameRevivalView>()
+                .Init(playerRevival, _hud.GetComponentInChildren<GameOverView>());
         }
     }
 }

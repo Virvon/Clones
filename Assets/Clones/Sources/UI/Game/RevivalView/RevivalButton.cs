@@ -5,11 +5,11 @@ namespace Clones.UI
 {
     public class RevivalButton : MonoBehaviour
     {
-        [SerializeField] private RevivalView _revivalView;
+        [SerializeField] private GameRevivalView _revivalView;
 
-        private PlayerRevival _playerRevival;
+        private GamePlayerRevival _playerRevival;
 
-        public void Init(PlayerRevival playerRevival)
+        public void Init(GamePlayerRevival playerRevival)
         {
             _playerRevival = playerRevival;
         }

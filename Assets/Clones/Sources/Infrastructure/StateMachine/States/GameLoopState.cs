@@ -71,10 +71,11 @@ namespace Clones.Infrastructure
             worldGenerator.Init(_partsFactory);
 
             QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
-            PlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _timeScale);
+            GamePlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _timeScale);
 
-            GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject, playerRevival);
+            GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject);
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
+            _uiFactory.CreateGameRevivleView(playerRevival);
 
             CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera();
             AttackShake attackShake = new(playerAttack, virtualCamera.GetComponent<CameraShake>());
@@ -90,7 +91,7 @@ namespace Clones.Infrastructure
             _gameTimer = new GameTimer();
             _gameTimer.Start();
 
-            PlayerDeath playerDeath = new(hud.GetComponentInChildren<RevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, _gameTimer);
+            PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, _gameTimer);
 
             hud.GetComponentInChildren<RevivalButton>()
                 .Init(playerRevival);

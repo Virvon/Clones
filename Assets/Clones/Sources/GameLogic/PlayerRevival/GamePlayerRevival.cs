@@ -5,7 +5,7 @@ using Clones.Services;
 
 namespace Clones.GameLogic
 {
-    public class PlayerRevival
+    public class GamePlayerRevival : IPlayerRevival
     {
         private const int RestoredHealthPercentage = 60;
         private const int MaxRevivivalsCount = 1;
@@ -17,7 +17,7 @@ namespace Clones.GameLogic
 
         private int _revivivalsCount = 0;
 
-        public PlayerRevival(PlayerHealth player, ITimeScale timeScale)
+        public GamePlayerRevival(PlayerHealth player, ITimeScale timeScale)
         {
             _player = player;
             _timeScale = timeScale;

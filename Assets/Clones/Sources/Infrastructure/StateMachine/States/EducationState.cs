@@ -13,13 +13,15 @@ namespace Clones.Infrastructure
         private readonly IPartsFactory _partsFactory;
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly IPersistentProgressService _persistentProgress;
+        private readonly IUiFactory _uiFactory;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
             _gameStaticDataService = gameStaticDataService;
             _persistentProgress = persistentProgress;
+            _uiFactory = uiFactory;
         }
 
         public void Enter()
@@ -36,7 +38,9 @@ namespace Clones.Infrastructure
         {
             IQuestsCreator questsCreator = CreateQuestCreator();
             IItemsCounter itmesCounter = CreateItemsCounter(questsCreator);
-            _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
+            GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
+            _gameFactory.CreateVirtualCamera();
+            _uiFactory.CreateHud(questsCreator, playerObject);
         }
 
         private IQuestsCreator CreateQuestCreator()
