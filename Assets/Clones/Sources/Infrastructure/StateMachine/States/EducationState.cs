@@ -39,8 +39,11 @@ namespace Clones.Infrastructure
             IQuestsCreator questsCreator = CreateQuestCreator();
             IItemsCounter itmesCounter = CreateItemsCounter(questsCreator);
             GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
+
             _gameFactory.CreateVirtualCamera();
+
             _uiFactory.CreateHud(questsCreator, playerObject);
+            _uiFactory.CreateControl(playerObject.GetComponent<Player>());
         }
 
         private IQuestsCreator CreateQuestCreator()
