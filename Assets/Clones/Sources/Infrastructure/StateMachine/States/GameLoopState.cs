@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Clones.Infrastructure
 {
+
     public class GameLoopState : IState
     {
         private readonly IGameFacotry _gameFactory;

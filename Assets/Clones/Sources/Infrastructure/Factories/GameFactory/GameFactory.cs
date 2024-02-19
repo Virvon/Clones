@@ -37,12 +37,25 @@ namespace Clones.Infrastructure
         {
             CloneData cloneData = _persistentPorgress.Progress.AvailableClones.GetSelectedCloneData();
             WandData wandData = _persistentPorgress.Progress.AvailableWands.GetSelectedWandData();
-            CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(_persistentPorgress.Progress.AvailableClones.SelectedClone);
-            WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(_persistentPorgress.Progress.AvailableWands.SelectedWand);
+            CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(_persistentPorgress.Progress.AvailableClones.SelectedClone) ?? _mainMenuStaticDataService.GetClone(CloneType.Normal);
+            WandStaticData wandStaticData = GetWandStaticData();
 
-            int health = cloneData.Health + (int)(cloneData.Health * wandData.WandStats.HealthIncreasePercentage / 100f);
-            int damage = cloneData.Damage + (int)(cloneData.Damage * wandData.WandStats.DamageIncreasePercentage / 100f);
-            float attackCooldown = cloneData.AttackCooldown * (1 - wandData.WandStats.AttackCooldownDecreasePercentage / 100f);
+            int health;
+            int damage;
+            float attackCooldown;
+
+            if (cloneData != null && wandData != null)
+            {
+                health = cloneData.Health + (int)(cloneData.Health * wandData.WandStats.HealthIncreasePercentage / 100f);
+                damage = cloneData.Damage + (int)(cloneData.Damage * wandData.WandStats.DamageIncreasePercentage / 100f);
+                attackCooldown = cloneData.AttackCooldown * (1 - wandData.WandStats.AttackCooldownDecreasePercentage / 100f);
+            }
+            else
+            {
+                health = cloneStaticData.Helath;
+                damage = cloneStaticData.Damage;
+                attackCooldown = cloneStaticData.AttackCooldown;
+            }
 
             _playerObject = Object.Instantiate(cloneStaticData.Prefab);
 
@@ -52,9 +65,13 @@ namespace Clones.Infrastructure
                 .GetComponent<Player>()
                 .Init(cloneStaticData.MovementSpeed, attackCooldown);
 
-            _playerObject
-                .GetComponent<PlayerAnimationSwitcher>()
-                .Init(_inputService, player, wandData.WandStats.AttackCooldownDecreasePercentage);
+
+            PlayerAnimationSwitcher playerAnimationSwitcher = _playerObject.GetComponent<PlayerAnimationSwitcher>();
+
+            if(wandData != null)
+                playerAnimationSwitcher.Init(_inputService, player, wandData.WandStats.AttackCooldownDecreasePercentage);
+            else
+                playerAnimationSwitcher.Init(_inputService, player);
 
             _playerObject
                 .GetComponent<DropCollecting>()
@@ -150,7 +167,7 @@ namespace Clones.Infrastructure
 
         private void CreateWand(Transform bone)
         {
-            WandStaticData wandStaticData = _mainMenuStaticDataService.GetWand(_persistentPorgress.Progress.AvailableWands.SelectedWand);
+            WandStaticData wandStaticData = GetWandStaticData();
             Object.Instantiate(wandStaticData.Prefab, bone);
         }
 
@@ -177,5 +194,8 @@ namespace Clones.Infrastructure
             foreach(ITimeScalable timeScalable in gameObject.GetComponentsInChildren<ITimeScalable>())
                 _timeScale.Add(timeScalable);
         }
+
+        private WandStaticData GetWandStaticData() => 
+            _mainMenuStaticDataService.GetWand(_persistentPorgress.Progress.AvailableWands.SelectedWand) ?? _mainMenuStaticDataService.GetWand(WandType.BranchWand);
     }
 }

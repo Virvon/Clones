@@ -10,11 +10,14 @@ namespace Clones.Infrastructure
     public class LoadProgressState : IState
     {
         private const string MainMenuScene = "MainMenu";
+        private const string EducationScene = "Education";
 
         private readonly IGameStateMachine _stateMachine;
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
+
+        private bool _isNewProgressCreated;
 
         public LoadProgressState(IGameStateMachine stateMachine, IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService, IMainMenuStaticDataService mainMenuStaticDataService)
         {
@@ -22,6 +25,8 @@ namespace Clones.Infrastructure
             _persistentProgressService = persistentProgressService;
             _saveLoadService = saveLoadService;
             _mainMenuStaticDataService = mainMenuStaticDataService;
+
+            _isNewProgressCreated = false;
         }
 
 
@@ -29,7 +34,10 @@ namespace Clones.Infrastructure
         {
             LoadProgressOrInitNew();
 
-            _stateMachine.Enter<LoadSceneState, string>(MainMenuScene, _stateMachine.Enter<MainMenuLoopState>);
+            if (_isNewProgressCreated)
+                _stateMachine.Enter<LoadSceneState, string>(EducationScene, _stateMachine.Enter<EducationState>);
+            else
+                _stateMachine.Enter<LoadSceneState, string>(MainMenuScene, _stateMachine.Enter<MainMenuLoopState>);
         }
 
         public void Exit()
@@ -51,6 +59,8 @@ namespace Clones.Infrastructure
 
             CreateNewAvailableClones(progress.AvailableClones.Clones, menuData.CloneTypes);
             CreateNewAvailableWands(progress.AvailableWands.Wands, menuData.WandTypes);
+
+            _isNewProgressCreated = true;
 
             return progress;
         }

@@ -16,8 +16,6 @@ namespace Clones.GameLogic
         private EnemiesSpawner _enemiesSpawner;
         private AudioSource _currentAudioSource;
 
-        public Func<bool> Y { get; private set; }
-
         public void Init(ICurrentBiome currentBiome, EnemiesSpawner enemiesSpawner)
         {
             _currentBiome = currentBiome;

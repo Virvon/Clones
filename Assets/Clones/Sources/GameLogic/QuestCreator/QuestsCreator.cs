@@ -24,6 +24,8 @@ namespace Clones.GameLogic
         public IReadOnlyList<Quest> Quests => _quests;
         public int Reward { get; private set; }
 
+        private float Complexiy => _complexity == null ? 1 : _complexity.GetComplexity(_currentQuest);
+
         public event Action Created;
         public event Action<Quest> Updated;
 
@@ -32,6 +34,16 @@ namespace Clones.GameLogic
             _persistentProgress = persistentProgress;
             _questTypes = questTypes;
             _complexity = complexity;
+            _resourcesMultiplier = resourcesMultiplier;
+            _itemsCount = itemsCount;
+            _minItemsCountPercentInQuest = minItemsCountPercentInQuest;
+            _reward = reward;
+        }
+
+        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward)
+        {
+            _persistentProgress = persistentProgress;
+            _questTypes = questTypes;
             _resourcesMultiplier = resourcesMultiplier;
             _itemsCount = itemsCount;
             _minItemsCountPercentInQuest = minItemsCountPercentInQuest;
@@ -74,7 +86,7 @@ namespace Clones.GameLogic
             HashSet<QuestItemType> usedTypes = new();
 
             int availableTypesCount = _questTypes.Length;
-            int maxItemsCount = (int)(_itemsCount * _complexity.GetComplexity(_currentQuest));
+            int maxItemsCount = (int)(_itemsCount * Complexiy);
             int minItemsCountInQuest = (int)(maxItemsCount * _minItemsCountPercentInQuest / 100f);
             int totalItemsCount = 0;
 
@@ -97,7 +109,7 @@ namespace Clones.GameLogic
                 totalItemsCount += itemsCount;
             }
 
-            reward = (int)(_reward * _resourcesMultiplier * _complexity.GetComplexity(_currentQuest));
+            reward = (int)(_reward * _resourcesMultiplier * Complexiy);
 
             return quests;
         }

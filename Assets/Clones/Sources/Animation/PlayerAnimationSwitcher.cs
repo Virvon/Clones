@@ -1,5 +1,4 @@
 using UnityEngine;
-using Clones.StateMachine;
 using Clones.Services;
 
 namespace Clones.Animation
@@ -37,7 +36,7 @@ namespace Clones.Animation
             _inputService.Deactivated -= OnStop;
         }
 
-        public void Init(IInputService inputService, Player player, int attackAnimationSpeedMultiplierPercent)
+        public void Init(IInputService inputService, Player player, int attackAnimationSpeedMultiplierPercent = 0)
         {
             _inputService = inputService;
             _player = player;
