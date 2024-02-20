@@ -1,4 +1,5 @@
-﻿using Clones.GameLogic;
+﻿using Clones.EducationLogic;
+using Clones.GameLogic;
 using Clones.Services;
 using Clones.StaticData;
 using UnityEngine;
@@ -14,14 +15,16 @@ namespace Clones.Infrastructure
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly IPersistentProgressService _persistentProgress;
         private readonly IUiFactory _uiFactory;
+        private readonly IInputService _inputService;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
             _gameStaticDataService = gameStaticDataService;
             _persistentProgress = persistentProgress;
             _uiFactory = uiFactory;
+            _inputService = inputService;
         }
 
         public void Enter()
@@ -44,6 +47,8 @@ namespace Clones.Infrastructure
 
             _uiFactory.CreateHud(questsCreator, playerObject);
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
+
+            CreateEducationHandler().Handle();
         }
 
         private IQuestsCreator CreateQuestCreator()
@@ -63,5 +68,16 @@ namespace Clones.Infrastructure
             return new ItemsCounter(questsCreator, _persistentProgress, DNAReward, questItemReward);
         }
 
+        private EducationHandler CreateEducationHandler()
+        {
+            ShowControlHandler showControlHandler = new(_inputService);
+            ShowQuestHandler showQuestHandler = new();
+            ShowPreyResourcesHandler showPreyResourcesHandler = new();
+
+            showControlHandler.Successor = showQuestHandler;
+            showQuestHandler.Successor = showPreyResourcesHandler;
+
+            return showControlHandler;
+        }
     }
 }
