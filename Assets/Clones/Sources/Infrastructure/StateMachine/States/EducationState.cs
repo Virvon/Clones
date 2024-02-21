@@ -1,6 +1,7 @@
 ﻿using Clones.EducationLogic;
 using Clones.GameLogic;
 using Clones.Services;
+using Clones.StateMachine;
 using Clones.StaticData;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace Clones.Infrastructure
         private readonly IEducationFactory _educationFactory;
 
         private List<IDisable> _disables;
+        private GameObject _playerObject;
+        private IQuestsCreator _questCreator;
 
         public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory)
         {
@@ -47,24 +50,24 @@ namespace Clones.Infrastructure
 
         private void CreateEducation()
         {
-            IQuestsCreator questsCreator = CreateEducationQuestCreator();
-            IItemsCounter itmesCounter = CreateItemsCounter(questsCreator);
-            GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
+            _questCreator = CreateEducationQuestCreator();
+            IItemsCounter itmesCounter = CreateItemsCounter(_questCreator);
+            _playerObject = _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
 
             _gameFactory.CreateVirtualCamera();
 
-            _uiFactory.CreateHud(questsCreator, playerObject);
-            _uiFactory.CreateControl(playerObject.GetComponent<Player>());
+            _uiFactory.CreateHud(_questCreator, _playerObject);
+            _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
 
             CreateEducationHandler().Handle();
 
             EducationPreyResourcesSpawner spawner = _educationFactory.CreateSpawner();
 
-            CharacterAttack playerAttack = playerObject.GetComponent<CharacterAttack>();
-            QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
+            CharacterAttack playerAttack = _playerObject.GetComponent<CharacterAttack>();
+            QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, _questCreator);
             CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
 
-            questsCreator.Create();
+            _questCreator.Create();
             spawner.Create();
 
             _disables.Add(currencyDropper);
@@ -91,11 +94,15 @@ namespace Clones.Infrastructure
         private EducationHandler CreateEducationHandler()
         {
             ShowControlHandler showControlHandler = new(_inputService);
-            ShowQuestHandler showQuestHandler = new();
-            ShowPreyResourcesHandler showPreyResourcesHandler = new();
+            ShowFirstQuestHandler showFirstQuestHandler = new();
+            ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator);
+            ShowSecondQuestHandler showSecondQuestHandler = new();
+            SpawnWaveHandler spawnWaveHandler = new();
 
-            showControlHandler.Successor = showQuestHandler;
-            showQuestHandler.Successor = showPreyResourcesHandler;
+            showControlHandler.Successor = showFirstQuestHandler;
+            showFirstQuestHandler.Successor = showPreyResourcesHandler;
+            showPreyResourcesHandler.Successor = showSecondQuestHandler;
+            showSecondQuestHandler.Successor = spawnWaveHandler;
 
             return showControlHandler;
         }

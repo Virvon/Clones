@@ -2,7 +2,7 @@
 
 namespace Clones.EducationLogic
 {
-    public class ShowQuestHandler : EducationHandler
+    public class ShowFirstQuestHandler : EducationHandler
     {
         public override void Handle()
         {
