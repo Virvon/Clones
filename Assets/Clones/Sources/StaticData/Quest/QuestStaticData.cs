@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Clones.StaticData
 {
-    [CreateAssetMenu(fileName = "New Quest", menuName = "Data/Create new quest", order = 51)]
+    [CreateAssetMenu(fileName = "New Quest", menuName = "Data/Quests/Create new quest", order = 51)]
     public class QuestStaticData : ScriptableObject
     {
         public QuestItemType[] QuestItemTypes;

@@ -12,8 +12,10 @@
         public const string Enemies = "StaticData/Enemies";
         public const string Bullets = "StaticData/Bullets";
         public const string EnemiesSpawner = "StaticData/EnemiesSpawner";
-        public const string Quest = "StaticData/Quest";
+        public const string Quest = "StaticData/Quests/Quest";
         public const string Complexity = "StaticData/Complexity";
         public const string ItemsCounter = "StaticData/CurrencyCounter";
+        public const string EducationQuest = "StaticData/Quests/EducationQuest";
+        public const string EducationPreyResourcesSpawner = "StaticData/Education/EducationPreyResourcesSpawner";
     }
 }

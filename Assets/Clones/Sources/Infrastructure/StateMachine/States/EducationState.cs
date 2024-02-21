@@ -16,8 +16,9 @@ namespace Clones.Infrastructure
         private readonly IPersistentProgressService _persistentProgress;
         private readonly IUiFactory _uiFactory;
         private readonly IInputService _inputService;
+        private readonly IEducationFactory _educationFactory;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
@@ -25,6 +26,7 @@ namespace Clones.Infrastructure
             _persistentProgress = persistentProgress;
             _uiFactory = uiFactory;
             _inputService = inputService;
+            _educationFactory = educationFactory;
         }
 
         public void Enter()
@@ -39,7 +41,7 @@ namespace Clones.Infrastructure
 
         private void CreateEducation()
         {
-            IQuestsCreator questsCreator = CreateQuestCreator();
+            IQuestsCreator questsCreator = CreateEducationQuestCreator();
             IItemsCounter itmesCounter = CreateItemsCounter(questsCreator);
             GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
 
@@ -49,12 +51,17 @@ namespace Clones.Infrastructure
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
 
             CreateEducationHandler().Handle();
+
+            EducationPreyResourcesSpawner spawner = _educationFactory.CreateSpawner();
+
+            questsCreator.Create();
+            spawner.Create();
         }
 
-        private IQuestsCreator CreateQuestCreator()
+        private IQuestsCreator CreateEducationQuestCreator()
         {
-            QuestStaticData questStaticData = _gameStaticDataService.GetQuest();
-            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, ResourceMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward);
+            EducationQuestStaticData educationQuestStaticData = _gameStaticDataService.GetEducationQuest();
+            IQuestsCreator questsCreator = new EducationQuestsCreator(educationQuestStaticData.GetAllQuests(), educationQuestStaticData.Reward, educationQuestStaticData.RewardIncrease, _persistentProgress);
 
             return questsCreator;
         }

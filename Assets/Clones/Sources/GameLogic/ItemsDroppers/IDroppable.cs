@@ -6,5 +6,4 @@ namespace Clones.GameLogic
     {
         void Accept(IDroppableVisitor visitor);
     }
-
 }

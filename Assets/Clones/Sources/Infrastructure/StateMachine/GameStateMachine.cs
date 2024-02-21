@@ -16,7 +16,7 @@ namespace Clones.Infrastructure
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner, loadingPanel),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>(), services.Single<IMainMenuStaticDataService>()),
-                [typeof(EducationState)] = new EducationState(services.Single<IGameFacotry>(), services.Single<IPartsFactory>(), services.Single<IGameStaticDataService>(), services.Single<IPersistentProgressService>(), services.Single<IUiFactory>(), services.Single<IInputService>()),
+                [typeof(EducationState)] = new EducationState(services.Single<IGameFacotry>(), services.Single<IPartsFactory>(), services.Single<IGameStaticDataService>(), services.Single<IPersistentProgressService>(), services.Single<IUiFactory>(), services.Single<IInputService>(), services.Single<IEducationFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IGameFacotry>(), services.Single<IUiFactory>(), services.Single<IPartsFactory>(), services.Single<IPersistentProgressService>(), services.Single<ITimeScale>(), services.Single<IMainMenuStaticDataService>(), services.Single<ISaveLoadService>(), services.Single<IGameStaticDataService>()),
                 [typeof(MainMenuLoopState)] = new MainMenuLoopState(this, services.Single<IMainMenuFactory>(), services.Single<IMainMenuStaticDataService>(), services.Single<ISaveLoadService>()),
                 [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel)
