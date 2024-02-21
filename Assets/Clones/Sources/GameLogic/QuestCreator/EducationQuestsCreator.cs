@@ -3,6 +3,7 @@ using Clones.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -39,6 +40,7 @@ namespace Clones.GameLogic
             _reward += _rewardIncrease;
 
             _currentQuests = _allQuests[_questNumber].ToList();
+            _questNumber++;
             Created?.Invoke();
         }
 
@@ -48,7 +50,7 @@ namespace Clones.GameLogic
         public void TakeItem(QuestItemType type, int count)
         {
             Quest updatedQuest = _currentQuests.FirstOrDefault(quest => quest.Type == type);
-
+            Debug.Log(updatedQuest != null);
             if (updatedQuest == null)
                 return;
 
@@ -59,8 +61,12 @@ namespace Clones.GameLogic
             if (_currentQuests.All(quest => quest.IsDone))
             {
                 _persistentProgress.Progress.Wallet.CollectMoney(Reward);
-
+                Debug.Log("Квест выполнен");
                 Create();
+            }
+            else
+            {
+                Debug.Log("Квест не выполнен");
             }
         }
     }
