@@ -1,10 +1,12 @@
 ﻿using Clones.EducationLogic;
 using Clones.Services;
+using UnityEngine;
 
 namespace Clones.Infrastructure
 {
     public interface IEducationFactory : IService
     {
-        EducationPreyResourcesSpawner CreateSpawner();
+        EducationPreyResourcesSpawner CreatePreyResourcesSpawner();
+        EducationEnemiesSpawner CreateEnemiesSpawner(GameObject playerObject);
     }
 }

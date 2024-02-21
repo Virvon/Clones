@@ -17,5 +17,6 @@
         public const string ItemsCounter = "StaticData/CurrencyCounter";
         public const string EducationQuest = "StaticData/Quests/EducationQuest";
         public const string EducationPreyResourcesSpawner = "StaticData/Education/EducationPreyResourcesSpawner";
+        public const string EducationEnemiesSpawner = "StaticData/Education/EducationEnemiesSpawner";
     }
 }

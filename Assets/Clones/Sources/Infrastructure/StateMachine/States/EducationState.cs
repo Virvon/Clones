@@ -23,6 +23,7 @@ namespace Clones.Infrastructure
         private List<IDisable> _disables;
         private GameObject _playerObject;
         private IQuestsCreator _questCreator;
+        private EducationEnemiesSpawner _enemiesSpawner;
 
         public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory)
         {
@@ -59,13 +60,15 @@ namespace Clones.Infrastructure
             _uiFactory.CreateHud(_questCreator, _playerObject);
             _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
 
-            CreateEducationHandler().Handle();
-
-            EducationPreyResourcesSpawner spawner = _educationFactory.CreateSpawner();
+            EducationPreyResourcesSpawner spawner = _educationFactory.CreatePreyResourcesSpawner();
 
             CharacterAttack playerAttack = _playerObject.GetComponent<CharacterAttack>();
             QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, _questCreator);
             CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
+
+            _enemiesSpawner = _educationFactory.CreateEnemiesSpawner(_playerObject);
+
+            CreateEducationHandler().Handle();
 
             _questCreator.Create();
             spawner.Create();
@@ -97,7 +100,7 @@ namespace Clones.Infrastructure
             ShowFirstQuestHandler showFirstQuestHandler = new();
             ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator);
             ShowSecondQuestHandler showSecondQuestHandler = new();
-            SpawnWaveHandler spawnWaveHandler = new();
+            SpawnWaveHandler spawnWaveHandler = new(_enemiesSpawner);
 
             showControlHandler.Successor = showFirstQuestHandler;
             showFirstQuestHandler.Successor = showPreyResourcesHandler;

@@ -1,4 +1,5 @@
 ﻿using Clones.Data;
+using Clones.EducationLogic;
 using Clones.StaticData;
 using Clones.Types;
 
@@ -16,6 +17,7 @@ namespace Clones.Services
         EnemiesSpawnerStaticData GetEnemiesSpawner();
         QuestStaticData GetQuest();
         UnminedPreyResourceStaticData GetUnminedResource(UnminedResourceType type);
+        EducationEnemiesSpawnerStaticData GetEducationEnemiesSpawner();
         ComplexityStaticData GetComplextiy();
         EducationPreyResourcesSpawnerStaticData GetEducationPreyResourcesSpawner();
         ItemsCounterStaticData GetItemsCounter();

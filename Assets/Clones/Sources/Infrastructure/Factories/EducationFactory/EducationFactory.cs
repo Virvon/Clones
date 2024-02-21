@@ -16,7 +16,17 @@ namespace Clones.Infrastructure
             _gameStaticDataService = gameStaticDataService;
         }
 
-        public EducationPreyResourcesSpawner CreateSpawner()
+        public EducationEnemiesSpawner CreateEnemiesSpawner(GameObject playerObject)
+        {
+            EducationEnemiesSpawnerStaticData spawnerStaticData = _gameStaticDataService.GetEducationEnemiesSpawner();
+            EducationEnemiesSpawner spawner = Object.Instantiate(spawnerStaticData.Prefab);
+
+            spawner.Init(spawnerStaticData.WaveInfos, spawnerStaticData.MinRadius, spawnerStaticData.MaxRadius, _partsFacotry, playerObject);
+
+            return spawner;
+        }
+
+        public EducationPreyResourcesSpawner CreatePreyResourcesSpawner()
         {
             EducationPreyResourcesSpawnerStaticData spawnerStaticData = _gameStaticDataService.GetEducationPreyResourcesSpawner();
             EducationPreyResourcesSpawner spawner = Object.Instantiate(spawnerStaticData.Prefab);
