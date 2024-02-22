@@ -19,6 +19,11 @@
         public const string FreezingScreen = "Camera/FreezingScreen";
         public const string GameRevivleView = "UI/Game/RevivalView";
         public const string GameOverView = "UI/Game/GameOverView";
-        public const string EducationOverView = "UI/Game/EducationOverView";
+        public const string EducationOverView = "UI/Education/EducationOverView";
+        public const string ShowControlDialogPanel = "UI/Education/ShowControlDialogPanel";
+        public const string ShowFirstQuestDialogPanel = "UI/Education/ShowFirstQuestDialogPanel";
+        public const string ShowPreyResourcesDialogPanel = "UI/Education/ShowPreyResourcesDialogPanel";
+        public const string ShowSecondQuestDialogPanel = "UI/Education/ShowSecondQuestDialogPanel";
+        public const string SpawnFirstWaveDialogPanel = "UI/Education/SpawnFirstWaveDialogPanel";
     }
 }

@@ -13,5 +13,6 @@ namespace Clones.Infrastructure
         void CreateGameRevivleView(IPlayerRevival playerRevival);
         void CreateGameOverView();
         IOpenableView CreateEducationOverView();
+        DialogPanel CreateDialogPanel(string path);
     }
 }

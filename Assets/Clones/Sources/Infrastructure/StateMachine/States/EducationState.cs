@@ -21,13 +21,14 @@ namespace Clones.Infrastructure
         private readonly IInputService _inputService;
         private readonly IEducationFactory _educationFactory;
         private readonly ITimeScale _timeScale;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         private List<IDisable> _disables;
         private GameObject _playerObject;
         private IQuestsCreator _questCreator;
         private EducationEnemiesSpawner _enemiesSpawner;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
@@ -39,6 +40,7 @@ namespace Clones.Infrastructure
 
             _disables = new List<IDisable>();
             _timeScale = timeScale;
+            _coroutineRunner = coroutineRunner;
         }
 
         public void Enter()
@@ -103,11 +105,12 @@ namespace Clones.Infrastructure
 
         private EducationHandler CreateEducationHandler()
         {
-            ShowControlHandler showControlHandler = new(_inputService);
-            ShowFirstQuestHandler showFirstQuestHandler = new();
-            ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator);
-            ShowSecondQuestHandler showSecondQuestHandler = new();
-            SpawnFirstWaveHandler spawnFirstWaveHandler = new(_enemiesSpawner);
+            Waiter waiter = new Waiter(_coroutineRunner);
+            ShowControlHandler showControlHandler = new(_inputService, _uiFactory.CreateDialogPanel(AssetPath.ShowControlDialogPanel));
+            ShowFirstQuestHandler showFirstQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowFirstQuestDialogPanel), waiter);
+            ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator, _uiFactory.CreateDialogPanel(AssetPath.ShowPreyResourcesDialogPanel));
+            ShowSecondQuestHandler showSecondQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowSecondQuestDialogPanel), waiter);
+            SpawnFirstWaveHandler spawnFirstWaveHandler = new(_enemiesSpawner, _uiFactory.CreateDialogPanel(AssetPath.SpawnFirstWaveDialogPanel), waiter);
             SpawnSecondWaveHandler spawnSecondWaveHandler = new(_enemiesSpawner, _questCreator);
 
             showControlHandler.Successor = showFirstQuestHandler;
