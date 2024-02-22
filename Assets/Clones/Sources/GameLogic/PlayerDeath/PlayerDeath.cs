@@ -1,24 +1,24 @@
 ﻿using Clones.Services;
 using Clones.UI;
-using UnityEngine;
+using System;
 
 namespace Clones.GameLogic
 {
     public class PlayerDeath : IDisable
     {
-        private readonly GameRevivalView _revivalView;
+        private readonly IOpenableView _openableView;
         private readonly PlayerHealth _player;
         private readonly ITimeScale _timeScale;
-        private readonly EnemiesSpawner _enemySpawner;
-        private readonly GameTimer _gameTimer;
+        private readonly IDestoryableEnemies _destroyableEnemies;
+        private readonly Action _callbakc;
 
-        public PlayerDeath(GameRevivalView revivalView, PlayerHealth player, ITimeScale timeScale, EnemiesSpawner enemiesSpawner, GameTimer gameTimer)
+        public PlayerDeath(IOpenableView openableView, PlayerHealth player, ITimeScale timeScale, IDestoryableEnemies destroyableEnemies, Action callback = null)
         {
-            _revivalView = revivalView;
+            _openableView = openableView;
             _player = player;
             _timeScale = timeScale;
-            _enemySpawner = enemiesSpawner;
-            _gameTimer = gameTimer;
+            _destroyableEnemies = destroyableEnemies;
+            _callbakc = callback;
 
             _player.Died += OnDied;
         }
@@ -28,10 +28,10 @@ namespace Clones.GameLogic
 
         private void OnDied(IDamageable obj)
         {
-            Debug.Log(_gameTimer.Stop());
+            _callbakc?.Invoke();
             _timeScale.Scaled(0);
-            _enemySpawner.DestroyExistingEnemies();
-            _revivalView.Open();
+            _destroyableEnemies.DestroyExistingEnemies();
+            _openableView.Open();
         }
     }
 }

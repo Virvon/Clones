@@ -3,6 +3,7 @@ using Clones.GameLogic;
 using Clones.Services;
 using Clones.StateMachine;
 using Clones.StaticData;
+using Clones.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,13 +20,14 @@ namespace Clones.Infrastructure
         private readonly IUiFactory _uiFactory;
         private readonly IInputService _inputService;
         private readonly IEducationFactory _educationFactory;
+        private readonly ITimeScale _timeScale;
 
         private List<IDisable> _disables;
         private GameObject _playerObject;
         private IQuestsCreator _questCreator;
         private EducationEnemiesSpawner _enemiesSpawner;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
@@ -36,6 +38,7 @@ namespace Clones.Infrastructure
             _educationFactory = educationFactory;
 
             _disables = new List<IDisable>();
+            _timeScale = timeScale;
         }
 
         public void Enter()
@@ -59,6 +62,7 @@ namespace Clones.Infrastructure
 
             _uiFactory.CreateHud(_questCreator, _playerObject);
             _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
+            IOpenableView openableView = _uiFactory.CreateEducationOverView();
 
             EducationPreyResourcesSpawner spawner = _educationFactory.CreatePreyResourcesSpawner();
 
@@ -68,6 +72,8 @@ namespace Clones.Infrastructure
 
             _enemiesSpawner = _educationFactory.CreateEnemiesSpawner(_playerObject);
 
+            PlayerDeath playerDeath = new(openableView, _playerObject.GetComponent<PlayerHealth>(), _timeScale, _enemiesSpawner);
+
             CreateEducationHandler().Handle();
 
             _questCreator.Create();
@@ -75,6 +81,7 @@ namespace Clones.Infrastructure
 
             _disables.Add(currencyDropper);
             _disables.Add(questItemsDropper);
+            _disables.Add(playerDeath);
         }
 
         private IQuestsCreator CreateEducationQuestCreator()
@@ -100,12 +107,14 @@ namespace Clones.Infrastructure
             ShowFirstQuestHandler showFirstQuestHandler = new();
             ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator);
             ShowSecondQuestHandler showSecondQuestHandler = new();
-            SpawnWaveHandler spawnWaveHandler = new(_enemiesSpawner);
+            SpawnFirstWaveHandler spawnFirstWaveHandler = new(_enemiesSpawner);
+            SpawnSecondWaveHandler spawnSecondWaveHandler = new(_enemiesSpawner, _questCreator);
 
             showControlHandler.Successor = showFirstQuestHandler;
             showFirstQuestHandler.Successor = showPreyResourcesHandler;
             showPreyResourcesHandler.Successor = showSecondQuestHandler;
-            showSecondQuestHandler.Successor = spawnWaveHandler;
+            showSecondQuestHandler.Successor = spawnFirstWaveHandler;
+            spawnFirstWaveHandler.Successor = spawnSecondWaveHandler;
 
             return showControlHandler;
         }

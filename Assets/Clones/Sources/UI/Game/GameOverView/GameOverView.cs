@@ -2,7 +2,7 @@
 
 namespace Clones.UI
 {
-    public class GameOverView : MonoBehaviour
+    public class GameOverView : MonoBehaviour, IOpenableView
     {
         [SerializeField] private GameObject _background;
 

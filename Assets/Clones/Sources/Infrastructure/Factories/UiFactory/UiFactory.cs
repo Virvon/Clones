@@ -14,6 +14,7 @@ namespace Clones.Infrastructure
         private readonly IInputService _inputService;
 
         private GameObject _hud;
+        private GameOverView _gameOverView;
 
         public UiFactory(IAssetProvider assets, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine, IInputService inputService)
         {
@@ -43,9 +44,6 @@ namespace Clones.Infrastructure
             _hud.GetComponentInChildren<DnaView>()
                 .Init(_persistentProgressService.Progress.Wallet);
 
-            _hud.GetComponentInChildren<ChangeGameStateButton>()
-                .Init(_stateMachine);
-
             return _hud;
         }
 
@@ -73,7 +71,29 @@ namespace Clones.Infrastructure
             
             gameRevivleView
                 .GetComponent<GameRevivalView>()
-                .Init(playerRevival, _hud.GetComponentInChildren<GameOverView>());
+                .Init(playerRevival, _gameOverView);
+        }
+
+        public void CreateGameOverView()
+        {
+            GameObject gameOverView = _assets.Instantiate(AssetPath.GameOverView, _hud.transform);
+
+            _gameOverView = gameOverView.GetComponent<GameOverView>();
+
+            _hud.GetComponentInChildren<ChangeGameStateButton>()
+                .Init(_stateMachine);
+        }
+
+        public IOpenableView CreateEducationOverView()
+        {
+            GameObject educationOverViewObject = _assets.Instantiate(AssetPath.EducationOverView, _hud.transform);
+
+            GameOverView educationOverView = educationOverViewObject.GetComponent<GameOverView>();
+
+            _hud.GetComponentInChildren<ChangeGameStateButton>()
+                .Init(_stateMachine);
+
+            return educationOverView;
         }
     }
 }

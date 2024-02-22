@@ -2,11 +2,11 @@
 
 namespace Clones.EducationLogic
 {
-    public class SpawnWaveHandler : EducationHandler
+    public class SpawnFirstWaveHandler : EducationHandler
     {
         private readonly EducationEnemiesSpawner _spawner;
 
-        public SpawnWaveHandler(EducationEnemiesSpawner educationEnemiesSpawner)
+        public SpawnFirstWaveHandler(EducationEnemiesSpawner educationEnemiesSpawner)
         {
             _spawner = educationEnemiesSpawner;
         }
@@ -15,6 +15,7 @@ namespace Clones.EducationLogic
         {
             Debug.Log("О нет, ктото приближается к нам, дай им отпор!");
             _spawner.Spawn();
+            Successor.Handle();
         }
     }
 }

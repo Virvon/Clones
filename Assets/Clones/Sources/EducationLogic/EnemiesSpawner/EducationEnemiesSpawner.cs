@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace Clones.EducationLogic
 {
-    public class EducationEnemiesSpawner : MonoBehaviour
+    public class EducationEnemiesSpawner : MonoBehaviour, IDestoryableEnemies
     {
         private WaveInfo[] _waveInfos;
         private int _waveNumber;
@@ -31,6 +31,12 @@ namespace Clones.EducationLogic
         {
             CreateWave();
             _waveNumber++;
+        }
+
+        public void DestroyExistingEnemies()
+        {
+            foreach (EnemyHealth enemy in GetComponentsInChildren<EnemyHealth>())
+                enemy.Disappear();
         }
 
         private void CreateWave()

@@ -1,5 +1,6 @@
 ﻿using Clones.GameLogic;
 using Clones.Services;
+using Clones.UI;
 using UnityEngine;
 
 namespace Clones.Infrastructure
@@ -10,5 +11,7 @@ namespace Clones.Infrastructure
         GameObject CreateQuestView(Quest quest, Transform parent);
         void CreateControl(Player player);
         void CreateGameRevivleView(IPlayerRevival playerRevival);
+        void CreateGameOverView();
+        IOpenableView CreateEducationOverView();
     }
 }

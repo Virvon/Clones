@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.UI
 {
-    public class GameRevivalView : MonoBehaviour
+    public class GameRevivalView : MonoBehaviour, IOpenableView
     {
         [SerializeField] private GameObject _background;
         [SerializeField] private TMP_Text _timeValue;

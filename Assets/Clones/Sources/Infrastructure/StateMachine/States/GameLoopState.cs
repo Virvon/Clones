@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace Clones.Infrastructure
 {
-
     public class GameLoopState : IState
     {
         private readonly IGameFacotry _gameFactory;
@@ -75,6 +74,7 @@ namespace Clones.Infrastructure
 
             GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject);
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
+            _uiFactory.CreateGameOverView();
             _uiFactory.CreateGameRevivleView(playerRevival);
 
             CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera();
@@ -91,7 +91,7 @@ namespace Clones.Infrastructure
             _gameTimer = new GameTimer();
             _gameTimer.Start();
 
-            PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, _gameTimer);
+            PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, callback: ()=> _gameTimer.Stop());
 
             hud.GetComponentInChildren<RevivalButton>()
                 .Init(playerRevival);

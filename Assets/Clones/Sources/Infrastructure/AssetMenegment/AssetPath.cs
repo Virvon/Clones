@@ -18,5 +18,7 @@
         public const string GameMusic = "Audio/Prefabs/GameMusic";
         public const string FreezingScreen = "Camera/FreezingScreen";
         public const string GameRevivleView = "UI/Game/RevivalView";
+        public const string GameOverView = "UI/Game/GameOverView";
+        public const string EducationOverView = "UI/Game/EducationOverView";
     }
 }
