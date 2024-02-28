@@ -1,4 +1,5 @@
 ﻿using Clones.GameLogic;
+using Clones.Infrastructure;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace Clones.UI
 {
     public class GameRevivalView : MonoBehaviour, IOpenableView
     {
+        private const string MainMenu = "MainMenu";
+
         [SerializeField] private GameObject _background;
         [SerializeField] private TMP_Text _timeValue;
         [SerializeField] private float _cooldown;
@@ -34,6 +37,7 @@ namespace Clones.UI
             }
             else
             {
+                Close();
                 _gameOverView.Open();
             }
         }

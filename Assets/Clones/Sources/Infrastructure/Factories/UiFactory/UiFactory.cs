@@ -79,6 +79,7 @@ namespace Clones.Infrastructure
             GameObject gameOverView = _assets.Instantiate(AssetPath.GameOverView, _hud.transform);
 
             _gameOverView = gameOverView.GetComponent<GameOverView>();
+            _gameOverView.Close();
 
             _hud.GetComponentInChildren<ChangeGameStateButton>()
                 .Init(_stateMachine);
