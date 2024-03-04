@@ -54,6 +54,7 @@ MonoBehaviour:
   _background: {fileID: 2800742649418512258}
   _timeValue: {fileID: 8166042339312678239}
   _cooldown: 5
+  _revivalViewAnimator: {fileID: 5918165848215550372}
 --- !u!114 &4999594605413630227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0434\u043B\u044F \u0432\u043E\u0437\u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F"
+  m_text: "\u0412\u043E\u0437\u0440\u0430\u0434\u0438\u0442\u044C\u0441\u044F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -160,12 +161,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 52
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 52
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: cb37917483ee24fea8fab306393441e5, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -347,13 +348,15 @@ GameObject:
   - component: {fileID: 2800742649418512261}
   - component: {fileID: 2800742649418512263}
   - component: {fileID: 2800742649418512260}
+  - component: {fileID: 7479525684542137755}
+  - component: {fileID: 5918165848215550372}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2800742649418512261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -413,6 +416,39 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7479525684542137755
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800742649418512258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd63ad746d2817f46b163e9e7012956e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5918165848215550372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800742649418512258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c7119beb50be340a7bb382320f6754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7479525684542137755}
 --- !u!1 &2800742649972515854
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0b4d7597878eacb41b5a25b5586c8f83, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

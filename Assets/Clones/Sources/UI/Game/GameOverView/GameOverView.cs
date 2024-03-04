@@ -6,14 +6,10 @@ namespace Clones.UI
     {
         [SerializeField] private GameObject _background;
 
-        public void Open()
-        {
+        public void Open() => 
             _background.SetActive(true);
-        }
 
-        public void Close()
-        {
+        public void Close() => 
             _background.SetActive(false);
-        }
     }
 }

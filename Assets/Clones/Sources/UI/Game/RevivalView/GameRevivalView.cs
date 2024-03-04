@@ -1,5 +1,6 @@
 ﻿using Clones.GameLogic;
 using Clones.Infrastructure;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,13 +9,14 @@ namespace Clones.UI
 {
     public class GameRevivalView : MonoBehaviour, IOpenableView
     {
-        private const string MainMenu = "MainMenu";
-
         [SerializeField] private GameObject _background;
         [SerializeField] private TMP_Text _timeValue;
         [SerializeField] private float _cooldown;
+        [SerializeField] private RevivalViewAnimator _revivalViewAnimator;
 
         private IPlayerRevival _playerRevival;
+
+
         private GameOverView _gameOverView;
         private Coroutine _timer;
 
@@ -33,24 +35,19 @@ namespace Clones.UI
                 if (_timer != null)
                     StopCoroutine(_timer);
 
-                _timer = StartCoroutine(Timer());
+                _revivalViewAnimator.Open(() => _timer = StartCoroutine(Timer()));
             }
             else
             {
-                Close();
                 _gameOverView.Open();
             }
         }
 
-        public void Close()
-        {
-            _background.SetActive(false);
-        }
+        public void Close() => 
+            _revivalViewAnimator.Close();
 
-        public void StopTimer()
-        {
+        public void StopTimer() => 
             StopCoroutine(_timer);
-        }
 
         private IEnumerator Timer()
         {
@@ -67,8 +64,7 @@ namespace Clones.UI
                 yield return new WaitForFixedUpdate();
             }
 
-            Close();
-            _gameOverView.Open();
+            _revivalViewAnimator.Close(()=> _gameOverView.Open());
         }
     }
 }

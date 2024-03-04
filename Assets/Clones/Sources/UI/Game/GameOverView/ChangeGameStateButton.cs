@@ -1,21 +1,26 @@
 ﻿using Clones.Infrastructure;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Clones.UI
 {
     public class ChangeGameStateButton : MonoBehaviour
     {
         [SerializeField] private string _scene;
+        [SerializeField] private Button _button;
 
         private IGameStateMachine _gameStateMachine;
 
         public void Init(IGameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
+            _button.onClick.AddListener(Open);
         }
 
-        public void Open()
+        private void Open()
         {
+            Debug.Log("Open");
+            _button.onClick.RemoveListener(Open);
             _gameStateMachine.Enter<LoadSceneState, string>(_scene, _gameStateMachine.Enter<MainMenuLoopState>);
         }
     }
