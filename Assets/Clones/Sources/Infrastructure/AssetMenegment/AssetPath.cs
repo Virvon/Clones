@@ -25,5 +25,6 @@
         public const string ShowPreyResourcesDialogPanel = "UI/Education/ShowPreyResourcesDialogPanel";
         public const string ShowSecondQuestDialogPanel = "UI/Education/ShowSecondQuestDialogPanel";
         public const string SpawnFirstWaveDialogPanel = "UI/Education/SpawnFirstWaveDialogPanel";
+        public const string FrameFocus = "UI/Game/Focus";
     }
 }

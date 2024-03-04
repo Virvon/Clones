@@ -27,6 +27,7 @@ namespace Clones.Infrastructure
         private GameObject _playerObject;
         private IQuestsCreator _questCreator;
         private EducationEnemiesSpawner _enemiesSpawner;
+        private FrameFocus _frameFocus;
 
         public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner)
         {
@@ -63,6 +64,7 @@ namespace Clones.Infrastructure
             _gameFactory.CreateVirtualCamera();
 
             _uiFactory.CreateHud(_questCreator, _playerObject);
+            _frameFocus = _uiFactory.CreateFrameFocus();
             _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
             IOpenableView openableView = _uiFactory.CreateEducationOverView();
 
@@ -107,7 +109,7 @@ namespace Clones.Infrastructure
         {
             Waiter waiter = new Waiter(_coroutineRunner);
             ShowControlHandler showControlHandler = new(_inputService, _uiFactory.CreateDialogPanel(AssetPath.ShowControlDialogPanel));
-            ShowFirstQuestHandler showFirstQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowFirstQuestDialogPanel), waiter);
+            ShowFirstQuestHandler showFirstQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowFirstQuestDialogPanel), waiter, _frameFocus);
             ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator, _uiFactory.CreateDialogPanel(AssetPath.ShowPreyResourcesDialogPanel));
             ShowSecondQuestHandler showSecondQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowSecondQuestDialogPanel), waiter);
             SpawnFirstWaveHandler spawnFirstWaveHandler = new(_enemiesSpawner, _uiFactory.CreateDialogPanel(AssetPath.SpawnFirstWaveDialogPanel), waiter);

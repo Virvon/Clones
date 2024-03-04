@@ -14,5 +14,6 @@ namespace Clones.Infrastructure
         void CreateGameOverView();
         IOpenableView CreateEducationOverView();
         DialogPanel CreateDialogPanel(string path);
+        FrameFocus CreateFrameFocus();
     }
 }

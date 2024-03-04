@@ -15,6 +15,7 @@ namespace Clones.Infrastructure
 
         private GameObject _hud;
         private GameOverView _gameOverView;
+        private QuestPanel _questPanel;
 
         public UiFactory(IAssetProvider assets, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine, IInputService inputService)
         {
@@ -35,8 +36,8 @@ namespace Clones.Infrastructure
             _hud.GetComponentInChildren<PlayerHealthbar>()
                 .Init(playerObject.GetComponent<PlayerHealth>());
 
-            _hud.GetComponentInChildren<QuestPanel>()
-                .Init(questsCreator, this);
+            _questPanel = _hud.GetComponentInChildren<QuestPanel>();
+            _questPanel.Init(questsCreator, this);
 
             _hud.GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgressService.Progress.Wallet);
@@ -104,6 +105,16 @@ namespace Clones.Infrastructure
             dialogPanelObject.SetActive(false);
             
             return dialogPanel;
+        }
+
+        public FrameFocus CreateFrameFocus()
+        {
+            GameObject frameFocusObject = _assets.Instantiate(AssetPath.FrameFocus, _questPanel.transform);
+            FrameFocus frameFocus = frameFocusObject.GetComponent<FrameFocus>();
+
+            frameFocus.Init();
+
+            return frameFocus;
         }
     }
 }
