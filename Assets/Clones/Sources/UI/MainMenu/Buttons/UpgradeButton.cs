@@ -14,10 +14,11 @@ namespace Clones.UI
 
         private Button _button;
 
+        public abstract bool CanUpgrade { get; }
+
         protected int Price { get; private set; }
         protected Wallet Wallet { get; private set; }
 
-        protected abstract bool CanUpgrade { get; }
 
         public event Action UpgradeTried;
 

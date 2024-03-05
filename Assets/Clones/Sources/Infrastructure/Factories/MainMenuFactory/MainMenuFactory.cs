@@ -121,10 +121,6 @@ namespace Clones.Infrastructure
         {
             GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons);
             GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons);
-
-            Debug.Log(clonesCardsShowButton != null);
-            Debug.Log(wandsCardsShowButton != null);
-
             GameObject clonesCardsShowButtonObject = clonesCardsShowButton.GetComponentInChildren<Button>().gameObject;
             GameObject wandsCardsShowButtonObject = wandsCardsShowButton.GetComponentInChildren<Button>().gameObject;
 

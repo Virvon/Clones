@@ -2,6 +2,6 @@
 {
     public class CloneUpgradeButton : UpgradeButton
     {
-        protected override bool CanUpgrade => Wallet.Dna >= Price;
+        public override bool CanUpgrade => Wallet.Dna >= Price;
     }
 }
