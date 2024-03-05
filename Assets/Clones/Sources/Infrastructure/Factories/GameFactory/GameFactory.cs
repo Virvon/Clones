@@ -8,6 +8,7 @@ using Object = UnityEngine.Object;
 using Clones.Data;
 using Clones.StateMachine;
 using Clones.Types;
+using Clones.SFX;
 
 namespace Clones.Infrastructure
 {
@@ -100,6 +101,10 @@ namespace Clones.Infrastructure
             _playerObject
                 .GetComponent<Wand>()
                 .Init(partsFactory, wandStaticData.Bullet, damage, wandStaticData.KnockbackForse, wandStaticData.KnockbackOffset, player);
+
+            _playerObject
+                .GetComponentInChildren<MovementSound>()
+                .Init(player);
 
             CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 

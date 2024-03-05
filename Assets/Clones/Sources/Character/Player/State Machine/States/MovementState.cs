@@ -16,6 +16,9 @@ namespace Clones.StateMachine
         private Player _player;
         private bool _isMoved;
 
+        public event Action Started;
+        public event Action Stopped;
+
         private float MovementSpeed => _player.StatsProvider.GetStats().MovementSpeed;
 
         public void Init(IInputService inputService, Player player, float rotationSpeed)
@@ -53,8 +56,11 @@ namespace Clones.StateMachine
             _input.Deactivated -= Stop;
         }
 
-        private void Move() => 
+        private void Move()
+        {
             _isMoved = true;
+            Started?.Invoke();
+        }
 
         private void RotateTo(Vector3 direction)
         {
@@ -69,6 +75,7 @@ namespace Clones.StateMachine
         private void Stop()
         {
             _isMoved = false;
+            Stopped?.Invoke();
             _rigidbody.velocity = Vector3.zero;
         }
     }
