@@ -6,6 +6,7 @@ using Clones.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Clones.Infrastructure
 {
@@ -121,11 +122,19 @@ namespace Clones.Infrastructure
             GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons);
             GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons);
 
+            Debug.Log(clonesCardsShowButton != null);
+            Debug.Log(wandsCardsShowButton != null);
+
+            GameObject clonesCardsShowButtonObject = clonesCardsShowButton.GetComponentInChildren<Button>().gameObject;
+            GameObject wandsCardsShowButtonObject = wandsCardsShowButton.GetComponentInChildren<Button>().gameObject;
+
             clonesCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject });
+                .Init(new List<GameObject> { wandsCardsShowButtonObject, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButtonObject, _wandsCardsView.gameObject });
 
             wandsCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
+                .Init(new List<GameObject> { clonesCardsShowButtonObject, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButtonObject, _clonesCardsView.gameObject });
+
+            clonesCardsShowButtonObject.SetActive(false);
         }
 
         public void CreateStatsView()
