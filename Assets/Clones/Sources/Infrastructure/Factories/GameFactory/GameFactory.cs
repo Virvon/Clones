@@ -106,6 +106,10 @@ namespace Clones.Infrastructure
                 .GetComponentInChildren<MovementSound>()
                 .Init(player);
 
+            _playerObject
+                .GetComponentInChildren<ShootSound>()
+                .Init(wandStaticData.ShootAudio, wandStaticData.ShootAudioVolume);
+
             CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 
             return _playerObject;

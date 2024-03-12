@@ -20,5 +20,7 @@ namespace Clones.StaticData
         public bool IsBuyed;
         public WandStats WandStats;
         public WandStatsIncrease WandStatsIncrease;
+        public AudioClip ShootAudio;
+        [Range(0, 1)] public float ShootAudioVolume;
     }
 }
