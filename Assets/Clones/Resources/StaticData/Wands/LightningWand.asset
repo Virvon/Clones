@@ -25,10 +25,13 @@ MonoBehaviour:
   WandStats:
     HealthIncreasePercentage: 0
     DamageIncreasePercentage: 20
-    AttackCooldwonDecreasePercentage: 0
+    AttackCooldownDecreasePercentage: 0
     PreyResourcesIncreasePercentage: 0
+    MaxAttackCooldownDecreasePercentage: 0
   WandStatsIncrease:
     HealthIncrease: 0
     DamageIncrease: 2
     AttackCooldownDecrease: 0
     PreyResourcesIncrease: 0
+  ShootAudio: {fileID: 8300000, guid: 77ce7cc501206684f88465260cfbcfb1, type: 3}
+  ShootAudioVolume: 1

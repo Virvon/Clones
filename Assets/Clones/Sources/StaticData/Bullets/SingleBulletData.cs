@@ -6,11 +6,10 @@ namespace Clones.Data
     public class SingleBulletData : BulletStaticData
     {
         [SerializeField] private SingleBullet _bulletPrefab;
-        [SerializeField] private float _force;
-        [SerializeField] private float _lifeTime;
 
-        public float Force => _force;
-        public float LifeTime => _lifeTime;
+        public float Force;
+        public float LifeTime;
+
         public override Bullet BulletPrefab => _bulletPrefab;
     }
 }

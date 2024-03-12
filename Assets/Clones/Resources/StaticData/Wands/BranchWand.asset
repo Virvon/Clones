@@ -33,3 +33,5 @@ MonoBehaviour:
     DamageIncrease: 0
     AttackCooldownDecrease: 10
     PreyResourcesIncrease: 0
+  ShootAudio: {fileID: 8300000, guid: fb742f5a26e45e84187ee331de9c776e, type: 3}
+  ShootAudioVolume: 1

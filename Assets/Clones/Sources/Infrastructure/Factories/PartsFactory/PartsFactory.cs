@@ -9,6 +9,7 @@ using UnityEngine.AI;
 using Random = UnityEngine.Random;
 using Clones.Types;
 using Clones.Data;
+using Clones.SFX;
 
 namespace Clones.Infrastructure
 {

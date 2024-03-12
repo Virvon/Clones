@@ -7,13 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SingleBullet : Bullet
 {
-    public IDamageable HitTarget { get; private set; }
-    public override BulletStaticData BulletData => _bulletData;
+    [SerializeField] private DestroyTimer _destoryTimer;
 
     private SingleBulletData _bulletData;
     private Vector3 _direction;
     private GameObject _selfObject;
     private bool _isCollisioned = false;
+
+    public IDamageable HitTarget { get; private set; }
+    public override BulletStaticData BulletData => _bulletData;
 
     public override event Action Hitted;
     protected override event Action<List<DamageableCell>> s_Hitted;
@@ -43,7 +45,8 @@ public class SingleBullet : Bullet
 
             s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, knockbakcDirection) });
             Hitted?.Invoke();
-            Destroy(gameObject);
+
+            _destoryTimer.Destroy();
         }
     }
 

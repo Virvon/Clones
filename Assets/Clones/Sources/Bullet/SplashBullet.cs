@@ -7,13 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SplashBullet : Bullet
 {
-    public override BulletStaticData BulletData => _bulletData;
+    [SerializeField] private DestroyTimer _destroyTimer;
 
     private SplashBulletData _bulletData;
     private Vector3 _direction;
     private GameObject _selfObject;
     private readonly Collider[] _overlapColliders = new Collider[64];
     private bool _isCollisioned = false;
+    
+    public override BulletStaticData BulletData => _bulletData;
 
     public override event Action Hitted;
     protected override event Action<List<DamageableCell>> s_Hitted;
@@ -49,7 +51,8 @@ public class SplashBullet : Bullet
 
             s_Hitted?.Invoke(damageableCells);
             Hitted?.Invoke();
-            Destroy(gameObject);
+
+            _destroyTimer.Destroy();
         }
     }
 
