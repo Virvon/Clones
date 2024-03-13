@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 
     public event Action<IDamageable> Died;
     public event Action HealthChanged;
+    public event Action DamageTaked;
 
     public void Init(int health)
     {
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
             Health = 0;
 
         HealthChanged?.Invoke();
+        DamageTaked?.Invoke();
 
         if (Health == 0)
         {

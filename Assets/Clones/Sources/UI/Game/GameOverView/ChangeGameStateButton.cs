@@ -19,7 +19,6 @@ namespace Clones.UI
 
         private void Open()
         {
-            Debug.Log("Open");
             _button.onClick.RemoveListener(Open);
             _gameStateMachine.Enter<LoadSceneState, string>(_scene, _gameStateMachine.Enter<MainMenuLoopState>);
         }
