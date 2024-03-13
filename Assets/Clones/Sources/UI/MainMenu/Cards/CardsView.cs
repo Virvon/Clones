@@ -20,7 +20,7 @@ namespace Clones.UI
             foreach (var card in _cards.Values)
             {
                 card.GetComponent<CardButton>().Clicked -= Select;
-                card.GetComponent<BuyCardView>().BuyTried -= OnBuyTried;
+                card.GetComponent<BuyCardView>().BuyCardTried -= OnBuyTried;
             }
         }
 
@@ -33,7 +33,7 @@ namespace Clones.UI
         public void AddCard(Card card, TType type)
         {
             card.GetComponent<CardButton>().Clicked += Select;
-            card.GetComponent<BuyCardView>().BuyTried += OnBuyTried;
+            card.GetComponent<BuyCardView>().BuyCardTried += OnBuyTried;
 
             _types.Add(card, type);
             _cards.Add(type, card);

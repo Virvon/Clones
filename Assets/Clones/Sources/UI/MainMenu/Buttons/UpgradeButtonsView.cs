@@ -18,8 +18,8 @@ namespace Clones.UI
             _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= OnSelectedCloneChanged;
             _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= OnSelectedWandChanged;
 
-            _cloneUpgradeButton.UpgradeTried -= UpgradeClone;
-            _wandUpgradeButton.UpgradeTried -= UpgradeWand;
+            _cloneUpgradeButton.BuyTried -= UpgradeClone;
+            _wandUpgradeButton.BuyTried -= UpgradeWand;
         }
 
         public void Init(IPersistentProgressService persistenProgress, IMainMenuStaticDataService mainMenuStaticDataService)
@@ -30,8 +30,8 @@ namespace Clones.UI
             _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += OnSelectedCloneChanged;
             _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
 
-            _cloneUpgradeButton.UpgradeTried += UpgradeClone;
-            _wandUpgradeButton.UpgradeTried += UpgradeWand;
+            _cloneUpgradeButton.BuyTried += UpgradeClone;
+            _wandUpgradeButton.BuyTried += UpgradeWand;
         }
 
         private void OnSelectedCloneChanged()

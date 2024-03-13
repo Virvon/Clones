@@ -7,20 +7,19 @@ using Clones.Data;
 namespace Clones.UI
 {
     [RequireComponent(typeof(Button))]
-    public abstract class UpgradeButton : MonoBehaviour
+    public abstract class UpgradeButton : MonoBehaviour, IBuyable
     {
         [SerializeField] private TMP_Text _textPrice;
         [SerializeField] private GameObject _cantUpgradeVisuals;
 
         private Button _button;
 
-        public abstract bool CanUpgrade { get; }
+        public abstract bool CanBuy { get; }
 
         protected int Price { get; private set; }
         protected Wallet Wallet { get; private set; }
 
-
-        public event Action UpgradeTried;
+        public event Action BuyTried;
 
         private void OnDisable()
         {
@@ -55,11 +54,11 @@ namespace Clones.UI
         }
 
         private void OnButtonClicked() =>
-            UpgradeTried?.Invoke();
+            BuyTried?.Invoke();
 
         private void CheckPrice()
         {
-            if (CanUpgrade)
+            if (CanBuy)
                 _cantUpgradeVisuals.SetActive(false);
             else
                 _cantUpgradeVisuals.SetActive(true);

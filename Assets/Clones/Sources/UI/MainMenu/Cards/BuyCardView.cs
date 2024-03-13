@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Clones.UI
 {
-    public class BuyCardView : MonoBehaviour
+    public class BuyCardView : MonoBehaviour, IBuyable
     {
         [SerializeField] private Button _buyButton;
         [SerializeField] private GameObject _cantBuyVisuals;
@@ -15,9 +15,10 @@ namespace Clones.UI
         private int _price;
         private Wallet _wallet;
 
-        public event Action<Card> BuyTried;
+        public bool CanBuy => _wallet.Money >= _price;
 
-        private bool _canBuy => _wallet.Money >= _price;
+        public event Action<Card> BuyCardTried;
+        public event Action BuyTried;
 
         private void OnDestroy()
         {
@@ -41,13 +42,16 @@ namespace Clones.UI
 
         private void CheckPrice()
         {
-            if (_canBuy)
+            if (CanBuy)
                 _cantBuyVisuals.SetActive(false);
             else
                 _cantBuyVisuals.SetActive(true);
         }
 
-        private void TryBuy() =>
-            BuyTried?.Invoke(GetComponent<Card>());
+        private void TryBuy()
+        {
+            BuyCardTried?.Invoke(GetComponent<Card>());
+            BuyTried?.Invoke();
+        }
     }
 }

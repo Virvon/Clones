@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canUpgradeAudioSource: {fileID: 7374705989558980365}
   _cantUpgradeAudioSource: {fileID: 667480856380394168}
-  _upgradeButton: {fileID: 4531953975298892701}
+  _buyableBehaviour: {fileID: 4531953975298892701}
 --- !u!114 &331037488205913530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canUpgradeAudioSource: {fileID: 7374705989558980365}
   _cantUpgradeAudioSource: {fileID: 667480856380394168}
-  _upgradeButton: {fileID: 5364319633345369075}
+  _buyableBehaviour: {fileID: 5364319633345369075}
 --- !u!82 &7374705989558980365
 AudioSource:
   m_ObjectHideFlags: 0
