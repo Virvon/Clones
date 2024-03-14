@@ -82,8 +82,17 @@ namespace Clones.Infrastructure
             var preyResource = preyResourceObject.GetComponent<PreyResource>();
             preyResource.Init(preyResourceData.HitsCountToDie, preyResourceData.DroppetItem);
 
-            preyResourceObject.GetComponent<DamageableDeath>()
+            preyResourceObject
+                .GetComponent<DamageableDeath>()
                 .Init(preyResourceData.DiedEffect, preyResourceData.EffectOffset, preyResource);
+
+            preyResourceObject
+                .GetComponentInChildren<PreyResourceDamageSound>()
+                .Init(preyResourceData.DamageAudio, preyResourceData.DamageAudioVolume);
+
+            preyResourceObject
+                .GetComponentInChildren<PreyResourceDieSound>()
+                .Init(preyResourceData.DieAudio, preyResourceData.DieAudioVolume);
         }
 
         public void CreateUnminedResource(UnminedResourceType type, Vector3 position, Quaternion rotation, Transform parent)

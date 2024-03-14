@@ -12,5 +12,9 @@ namespace Clones.StaticData
         public int HitsCountToDie;
         public GameObject DiedEffect;
         public Vector3 EffectOffset;
+        public AudioClip DamageAudio;
+        [Range(0, 1)] public float DamageAudioVolume;
+        public AudioClip DieAudio;
+        [Range(0, 1)] public float DieAudioVolume;
     }
 }

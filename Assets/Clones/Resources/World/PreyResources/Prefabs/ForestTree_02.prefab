@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1988943753708716813, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1988943753708716813, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
       propertyPath: m_LocalScale.x
@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3751486588105244889, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: _time
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751486588105244889, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: _model
+      value: 
+      objectReference: {fileID: 3867894448106098720}
     - target: {fileID: 7726845397346985869, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
       propertyPath: m_Name
       value: ForestTree_02

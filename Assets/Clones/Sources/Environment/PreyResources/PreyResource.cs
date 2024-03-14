@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PreyResource : MonoBehaviour, IDroppable
 {
+    [SerializeField] private PreyResourceDestroyTimer _destroyTimer;
+
     private bool _isAlive;
     private int _hitsCountToDie;
 
@@ -13,6 +15,7 @@ public class PreyResource : MonoBehaviour, IDroppable
     public QuestItemType DroppedItem { get; private set; }
 
     public event Action<IDamageable> Died;
+    public event Action Damaged;
 
     public void Init(int hitsCountToDie, QuestItemType droppedItem)
     {
@@ -33,7 +36,11 @@ public class PreyResource : MonoBehaviour, IDroppable
         {
             _isAlive = false;
             Died?.Invoke(this);
-            Destroy(gameObject);
+            _destroyTimer.Destroy();
+        }
+        else
+        {
+            Damaged?.Invoke();
         }
     }
 }

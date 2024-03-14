@@ -202,6 +202,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.572
       objectReference: {fileID: 0}
+    - target: {fileID: 3751486588105244889, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: _time
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751486588105244889, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: _model
+      value: 
+      objectReference: {fileID: 8469273470113554835}
+    - target: {fileID: 5049076449117377665, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7726845397346985869, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
       propertyPath: m_Name
       value: PoisonForestTree_01
