@@ -23,6 +23,7 @@ namespace Clones.GameLogic
 
         public event Action Created;
         public event Action<Quest> Updated;
+        public event Action Completed;
 
         public EducationQuestsCreator(Quest[][] allQuests, int reward, int rewardIncrease, IPersistentProgressService persistentProgress)
         {
@@ -61,6 +62,7 @@ namespace Clones.GameLogic
             if (_currentQuests.All(quest => quest.IsDone))
             {
                 _persistentProgress.Progress.Wallet.CollectMoney(Reward);
+                Completed?.Invoke();
 
                 Create();
             }

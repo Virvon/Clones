@@ -27,6 +27,7 @@ namespace Clones.GameLogic
 
         public event Action Created;
         public event Action<Quest> Updated;
+        public event Action Completed;
 
         public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward)
         {
@@ -74,6 +75,7 @@ namespace Clones.GameLogic
             if (_quests.All(quest => quest.IsDone))
             {
                 _persistentProgress.Progress.Wallet.CollectMoney(Reward);
+                Completed?.Invoke();
 
                 Create();
             }

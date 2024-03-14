@@ -11,6 +11,7 @@ namespace Clones.GameLogic
 
         event Action Created;
         event Action<Quest> Updated;
+        event Action Completed;
 
         void Create();
         bool IsQuestItem(QuestItemType type);

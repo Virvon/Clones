@@ -3,6 +3,7 @@ using Clones.Services;
 using Clones.UI;
 using Clones.GameLogic;
 using Clones.Input;
+using Clones.SFX;
 
 namespace Clones.Infrastructure
 {
@@ -33,17 +34,24 @@ namespace Clones.Infrastructure
                 .GetComponentInChildren<FreezbarReporter>()
                 .Init(_hud.GetComponentInChildren<Freezbar>());
 
-            _hud.GetComponentInChildren<PlayerHealthbar>()
+            _hud
+                .GetComponentInChildren<PlayerHealthbar>()
                 .Init(playerObject.GetComponent<PlayerHealth>());
 
             _questPanel = _hud.GetComponentInChildren<QuestPanel>();
             _questPanel.Init(questsCreator, this);
 
-            _hud.GetComponentInChildren<MoneyView>()
+            _hud
+                .GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgressService.Progress.Wallet);
 
-            _hud.GetComponentInChildren<DnaView>()
+            _hud
+                .GetComponentInChildren<DnaView>()
                 .Init(_persistentProgressService.Progress.Wallet);
+
+            _hud
+                .GetComponentInChildren<QuestSound>()
+                .Init(questsCreator);
 
             return _hud;
         }
