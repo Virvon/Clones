@@ -808,7 +808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188427616250840505}
   - component: {fileID: 7406622955195207037}
-  - component: {fileID: 8989374217605353438}
+  - component: {fileID: 1145771039477406584}
   m_Layer: 0
   m_Name: ShootSound
   m_TagString: Untagged
@@ -927,7 +927,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8989374217605353438
+--- !u!114 &1145771039477406584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8457468038431937332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a9f6d3c34e25b4b836d8b25a4261dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 008fd2576c1396748815da0ec8f52462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 7406622955195207037}

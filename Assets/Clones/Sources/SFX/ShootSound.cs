@@ -7,14 +7,13 @@ namespace Clones.SFX
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private CharacterAttack _characterAttack;
 
-        public void Init(AudioClip audioClip, float volume)
-        {
-            _audioSource.clip = audioClip;
-            _audioSource.volume = volume;
-            _characterAttack.Attacked += OnAttacked;
-        }
+        protected AudioSource AudioSource => _audioSource;
 
-        private void OnDestroy() => 
+        private void OnEnable() => 
+            _characterAttack.Attacked += OnAttacked;
+
+
+        private void OnDisable() => 
             _characterAttack.Attacked -= OnAttacked;
 
         private void OnAttacked() => 
