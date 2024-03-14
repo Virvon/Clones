@@ -1,4 +1,5 @@
 using Clones.GameLogic;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,14 @@ public class DropCollecting : MonoBehaviour
     private List<ItemMovement> _collectingItems = new();
     private float _radius;
     private IItemsCounter _itemsCounter;
+
+    public event Action Collected;
+
+    public void Init(IItemsCounter itemsCounter, float radius)
+    {
+        _itemsCounter = itemsCounter;
+        _radius = radius;
+    }
 
     private void Update()
     {
@@ -30,13 +39,8 @@ public class DropCollecting : MonoBehaviour
             _itemsCounter.TakeItem(item.GetComponent<IItem>());
             _collectingItems.Remove(item);
             Destroy(item.gameObject);
+            Collected?.Invoke();
         }
-    }
-
-    public void Init(IItemsCounter itemsCounter, float radius)
-    {
-        _itemsCounter = itemsCounter;
-        _radius = radius;
     }
 
     private bool TryGetNearDrop(out List<ItemMovement> items)
