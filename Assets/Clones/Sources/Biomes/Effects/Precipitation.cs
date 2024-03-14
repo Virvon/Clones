@@ -27,7 +27,8 @@ public class Precipitation : MonoBehaviour
         _biomeEffects.EffectStateChanged += OnEffectStateChanged;
     }
 
-    private void OnDisable() => _biomeEffects.EffectStateChanged -= OnEffectStateChanged;
+    private void OnDisable() => 
+        _biomeEffects.EffectStateChanged -= OnEffectStateChanged;
 
     private void OnEffectStateChanged()
     {
