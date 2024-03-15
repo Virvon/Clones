@@ -21,7 +21,10 @@ namespace Clones.SFX
             _player = player;
 
             _defaultSpeed = _player.StatsProvider.GetStats().MovementSpeed;
+        }
 
+        private void OnEnable()
+        {
             _movementState.Started += OnMovementStarted;
             _movementState.Stopped += OnStopped;
         }
@@ -29,7 +32,7 @@ namespace Clones.SFX
         private void Update() => 
             _audioSource.pitch = Pitch;
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _movementState.Started -= OnMovementStarted;
             _movementState.Stopped -= OnStopped;

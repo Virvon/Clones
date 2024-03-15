@@ -29,5 +29,7 @@ namespace Clones.StaticData
         public float DropCollectingRadius;
         public int BuyPrice;
         public bool IsBuyed;
+        public GameObject RebornEffect;
+        public Vector3 RebornEffectOffset;
     }
 }

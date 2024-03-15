@@ -110,6 +110,10 @@ namespace Clones.Infrastructure
                 .GetComponentInChildren<CharacterShootSound>()
                 .Init(wandStaticData.ShootAudio, wandStaticData.ShootAudioVolume);
 
+            _playerObject
+                .GetComponent<PlayerRebornEffect>()
+                .Init(cloneStaticData.RebornEffect, cloneStaticData.RebornEffectOffset);
+
             CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 
             return _playerObject;

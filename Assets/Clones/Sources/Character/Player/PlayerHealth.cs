@@ -3,9 +3,6 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 {
-    [SerializeField] private GameObject _rebornEffect;
-    [SerializeField] private Vector3 _effectOffset;
-
     public bool IsAlive => true;
 
     public int Health { get; private set; }
@@ -14,6 +11,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
     public event Action<IDamageable> Died;
     public event Action HealthChanged;
     public event Action DamageTaked;
+    public event Action Reborned;
 
     public void Init(int health)
     {
@@ -40,9 +38,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 
     public void Reborn(int health)
     {
-        Instantiate(_rebornEffect, transform.position + _effectOffset, Quaternion.identity);
         gameObject.SetActive(true);
         Health = health;
         HealthChanged?.Invoke();
+        Reborned?.Invoke();
     }
 }

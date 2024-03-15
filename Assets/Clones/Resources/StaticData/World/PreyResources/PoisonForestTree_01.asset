@@ -18,3 +18,7 @@ MonoBehaviour:
   HitsCountToDie: 3
   DiedEffect: {fileID: 6323484873510996351, guid: 8010308d1d14024468729b24c7bded2f, type: 3}
   EffectOffset: {x: 0, y: 3, z: 0}
+  DamageAudio: {fileID: 8300000, guid: 65ab85f8dae4bd8439627ed43f47d9a8, type: 3}
+  DamageAudioVolume: 1
+  DieAudio: {fileID: 8300000, guid: d088a94ccdf9d6e4a93276a0cb5a8cd9, type: 3}
+  DieAudioVolume: 1
