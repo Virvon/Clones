@@ -46,11 +46,6 @@ namespace Clones.GameLogic
         public void ScaleTime(float scale) => 
             _timeScale = scale;
 
-        public void ShowInfo()
-        {
-            Debug.Log("последнее значение времени игры " + LastMeasurement);
-        }
-
         private IEnumerator Timer()
         {
             while (_isStarted)

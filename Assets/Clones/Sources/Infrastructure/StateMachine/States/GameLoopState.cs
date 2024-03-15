@@ -114,16 +114,6 @@ namespace Clones.Infrastructure
             _timeScale.Add(_gameTimer);
         }
 
-        private void ShowInfo()
-        {
-            _gameTimer.ShowInfo();
-
-            Debug.Log("Все значения:");
-
-            foreach (var value in _persistentProgress.Progress.AveragePlayTime.PlayTimes)
-                Debug.Log(value);
-        }
-
         private IItemsCounter CreateItemsCounter(IQuestsCreator questsCreator, float resourcesMultiplier)
         {
             ItemsCounterStaticData itemsCounterStaticData = _gameStaticDataService.GetItemsCounter();
