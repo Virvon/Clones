@@ -34,3 +34,5 @@ MonoBehaviour:
   DropCollectingRadius: 5
   BuyPrice: 0
   IsBuyed: 1
+  RebornEffect: {fileID: 100006, guid: 34fcf19f74fcb794baeefd01952bc508, type: 3}
+  RebornEffectOffset: {x: 0, y: 0.05, z: 0}
