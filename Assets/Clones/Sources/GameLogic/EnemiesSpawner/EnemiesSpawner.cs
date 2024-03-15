@@ -21,7 +21,7 @@ namespace Clones.GameLogic
         private IGameStaticDataService _staticDataService;
         private GameObject _playerObject;
         private IPartsFactory _partsFactory;
-        private float _timeScale = 1;
+        private float _timeScale;
         private Complexity _complexity;
 
         private bool _isFinish;
@@ -40,6 +40,8 @@ namespace Clones.GameLogic
             _waveWeight = waveWeight;
             _minRadius = minRadius;
             _maxRadius = maxRadius;
+
+            _timeScale = 1;
         }
 
         public void Init(ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject, Complexity complexity)
@@ -81,8 +83,6 @@ namespace Clones.GameLogic
 
             float maxWeight = _waveWeight * _complexity.GetComplexity(_currentWave);
             float currentWeight = 0;
-
-            Debug.Log("complexity: " + _complexity.GetComplexity(_currentWave));
 
             while (currentWeight < maxWeight)
             {

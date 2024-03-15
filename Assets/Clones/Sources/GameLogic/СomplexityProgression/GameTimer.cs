@@ -1,13 +1,27 @@
-﻿using System;
+﻿using Clones.Services;
+using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Clones.GameLogic
 {
-    public class GameTimer
+    public class GameTimer : ITimeScalable
     {
-        private bool _isStarted = false;
-        private DateTime _startDate;
+        private bool _isStarted;
+        private ICoroutineRunner _coroutineRunner;
+        private float _currentMeasurement;
+        private float _timeScale;
 
-        public int LastMeasurement { get; private set; }
+        public float LastMeasurement { get; private set; }
+
+        public void Init(ICoroutineRunner coroutineRunner)
+        {
+            _coroutineRunner = coroutineRunner;
+
+            _isStarted = false;
+            _currentMeasurement = 0;
+            _timeScale = 1;
+        }
 
         public void Start()
         {
@@ -15,18 +29,35 @@ namespace Clones.GameLogic
                 return;
 
             _isStarted = true;
-            _startDate = DateTime.Now;
+            _coroutineRunner.StartCoroutine(Timer());
         }
 
-        public int Stop()
+        public float Stop()
         {
             if (_isStarted == false)
                 return 0;
 
             _isStarted = false;
-            LastMeasurement = (int)(DateTime.Now - _startDate).TotalSeconds;
+            LastMeasurement = _currentMeasurement;
 
             return LastMeasurement;
+        }
+
+        public void ScaleTime(float scale) => 
+            _timeScale = scale;
+
+        public void ShowInfo()
+        {
+            Debug.Log("последнее значение времени игры " + LastMeasurement);
+        }
+
+        private IEnumerator Timer()
+        {
+            while (_isStarted)
+            {
+                _currentMeasurement += Time.deltaTime * _timeScale;
+                yield return null;
+            }
         }
     }
 }

@@ -19,11 +19,12 @@ namespace Clones.Infrastructure
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IGameStaticDataService _gameStaticDataService;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService)
+        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -32,9 +33,10 @@ namespace Clones.Infrastructure
             _timeScale = timeScale;
             _mainMenuStaticDataService = mainMenuStaticDataService;
             _gameStaticDataService = gameStaticDataService;
+            _saveLoadService = saveLoadService;
+            _coroutineRunner = coroutineRunner;
 
             _disables = new();
-            _saveLoadService = saveLoadService;
         }
 
         public void Enter()
@@ -44,13 +46,15 @@ namespace Clones.Infrastructure
 
         public void Exit()
         {
-            _persistentProgress.Progress.AveragePlayTime.Add(_gameTimer.LastMeasurement);
+            _persistentProgress.Progress.AveragePlayTime.Add((int)_gameTimer.LastMeasurement);
 
             foreach (var disable in _disables)
                 disable.OnDisable();
 
             UseSelectedClone();
             _saveLoadService.SaveProgress();
+            Debug.Log("Игра завершена");
+            ShowInfo();
         }
 
         private void CreateGame()
@@ -89,7 +93,8 @@ namespace Clones.Infrastructure
             _gameFactory.CreateFreezingScreen();
 
             _gameTimer = new GameTimer();
-            _gameTimer.Start();
+            _gameTimer.Init(_coroutineRunner);
+            
 
             PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, callback: ()=> _gameTimer.Stop());
 
@@ -98,12 +103,25 @@ namespace Clones.Infrastructure
 
             questsCreator.Create();
             enemiesSpawner.StartSpawn();
+            _gameTimer.Start();
 
             _disables.Add(attackShake);
             _disables.Add(currentBiome);
             _disables.Add(playerDeath);
             _disables.Add(currencyDropper);
             _disables.Add(questItemsDropper);
+
+            _timeScale.Add(_gameTimer);
+        }
+
+        private void ShowInfo()
+        {
+            _gameTimer.ShowInfo();
+
+            Debug.Log("Все значения:");
+
+            foreach (var value in _persistentProgress.Progress.AveragePlayTime.PlayTimes)
+                Debug.Log(value);
         }
 
         private IItemsCounter CreateItemsCounter(IQuestsCreator questsCreator, float resourcesMultiplier)

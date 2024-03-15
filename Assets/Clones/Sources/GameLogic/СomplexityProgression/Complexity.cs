@@ -32,7 +32,6 @@ namespace Clones.GameLogic
         {
             if (_persistentProgress.Progress.AveragePlayTime.TryGetAveragePlayTime(out int averagePlayTime) && averagePlayTime >= 1)
             {
-                Debug.Log("average play time " + averagePlayTime);
                 return averagePlayTime / (float)targetPlayTime;
             }
             else
