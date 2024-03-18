@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1554738512567781905}
   - component: {fileID: 225129561776973190}
   m_Layer: 0
-  m_Name: EnemyHealthBar
+  m_Name: EnemyHealthBar_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1554738512567781905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23426f4944396304a9ec9ae945bc2c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 7657323019211970201}
+  _fill: {fileID: 0}
   _animationSpeed: 0.2
   _healthValue: {fileID: 1012279994803622590}
 --- !u!1 &2475263914068516255

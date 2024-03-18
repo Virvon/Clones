@@ -79,7 +79,7 @@ namespace Clones.Infrastructure
             else
                 _services.RegisterSingle<IInputService>(new DescktopInputService());
 #else
-            _services.RegisterSingle<IInputService>(new DescktopInputService());
+            _services.RegisterSingle<IInputService>(new MobileInputService());
 #endif
         }
 

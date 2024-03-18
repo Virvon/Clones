@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(JoysticDirectionHandler))]
-public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler
+public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     [SerializeField] private RectTransform _slidingArea;
     [SerializeField] private RectTransform _handle;
@@ -15,15 +15,11 @@ public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler
     {
         _handleBackgroundStartPosition = _handleBackground.anchoredPosition;
 
-        JoysticDirectionHandler.Activated += OnActivated;
         JoysticDirectionHandler.Deactivated += OnDeactivated;
     }
 
-    private void OnDisable()
-    {
-        JoysticDirectionHandler.Activated -= OnActivated;
+    private void OnDisable() =>
         JoysticDirectionHandler.Deactivated -= OnDeactivated;
-    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -33,10 +29,8 @@ public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler
             _handleBackground.anchoredPosition = handleBackgroundPosition;
     }
 
-    private void OnActivated()
-    {
+    public void OnDrag(PointerEventData eventData) => 
         _handle.anchoredPosition = JoysticDirectionHandler.Direction * (_handleBackground.sizeDelta / 2);
-    }
 
     private void OnDeactivated()
     {
