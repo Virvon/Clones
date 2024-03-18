@@ -53,8 +53,6 @@ namespace Clones.Infrastructure
 
             UseSelectedClone();
             _saveLoadService.SaveProgress();
-            Debug.Log("Игра завершена");
-            ShowInfo();
         }
 
         private void CreateGame()
