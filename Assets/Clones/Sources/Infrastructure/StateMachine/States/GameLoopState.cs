@@ -20,11 +20,12 @@ namespace Clones.Infrastructure
         private readonly ISaveLoadService _saveLoadService;
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly IAdvertisingDisplay _advertisingDisplay;
 
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner)
+        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -37,6 +38,7 @@ namespace Clones.Infrastructure
             _coroutineRunner = coroutineRunner;
 
             _disables = new();
+            _advertisingDisplay = advertisingDisplay;
         }
 
         public void Enter()
@@ -72,7 +74,7 @@ namespace Clones.Infrastructure
             worldGenerator.Init(_partsFactory);
 
             QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
-            GamePlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _timeScale);
+            GamePlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _timeScale, _advertisingDisplay);
 
             GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject);
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());

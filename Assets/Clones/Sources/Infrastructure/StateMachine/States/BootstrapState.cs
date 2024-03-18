@@ -3,6 +3,8 @@ using Clones.Services;
 using Clones.UI;
 using System;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Clones.Infrastructure
 {
@@ -63,6 +65,7 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>()));
             _services.RegisterSingle<ITimeScale>(new TimeScale());
+            _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(GetAudioMixerGroup(), _services.Single<ITimeScale>()));
 
             _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IInputService>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScale>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>()));
             _services.RegisterSingle<IUiFactory>(new UiFactory(_services.Single<IAssetProvider>(), _services.Single<IPersistentProgressService>(), _stateMachine, _services.Single<IInputService>()));
@@ -99,5 +102,8 @@ namespace Clones.Infrastructure
 
         private void EnterLoadProgress() => 
             _stateMachine.Enter<LoadProgressState>();
+
+        private AudioMixerGroup GetAudioMixerGroup() => 
+            Resources.Load<AudioMixerGroup>(AssetPath.AudioMixerGroup);
     }
 }

@@ -1,5 +1,3 @@
-using UnityEngine;
-using Agava.YandexGames;
 using System;
 using Clones.Services;
 
@@ -12,15 +10,17 @@ namespace Clones.GameLogic
 
         private readonly PlayerHealth _player;
         private readonly ITimeScale _timeScale;
+        private readonly IAdvertisingDisplay _advertising;
 
         public bool CanRivival => _revivivalsCount < MaxRevivivalsCount;
 
         private int _revivivalsCount = 0;
 
-        public GamePlayerRevival(PlayerHealth player, ITimeScale timeScale)
+        public GamePlayerRevival(PlayerHealth player, ITimeScale timeScale, IAdvertisingDisplay advertising)
         {
             _player = player;
             _timeScale = timeScale;
+            _advertising = advertising;
         }
 
         public bool TryRevive(Action callback = null)
@@ -28,23 +28,13 @@ namespace Clones.GameLogic
             if (_revivivalsCount + 1 > MaxRevivivalsCount)
                 return false;
 
-            _revivivalsCount++;
+            _advertising.ShowVideoAd(callback: () =>
+            {
+                _revivivalsCount++;
+                _player.Reborn((int)((RestoredHealthPercentage / 100f) * _player.MaxHealth));
 
-#if !UNITY_EDITOR && UNITY_WEBGL
-        VideoAd.Show(onRewardedCallback: () =>
-        {
-            _revivivalsCount++;
-
-            _player.Reborn((int)((RestoredHealthPercentage / 100f) * _player.MaxHealth));
-
-            callback?.Invoke();
-        });
-#else
-            _player.Reborn((int)((RestoredHealthPercentage / 100f) * _player.MaxHealth));
-            _timeScale.Scaled(1);
-
-            callback?.Invoke();
-#endif
+                callback?.Invoke();
+            });
 
             return true;
         }

@@ -20,7 +20,7 @@ namespace Clones.UI
         private void Open()
         {
             _button.onClick.RemoveListener(Open);
-            _gameStateMachine.Enter<LoadSceneState, string>(_scene, _gameStateMachine.Enter<MainMenuLoopState>);
+            _gameStateMachine.Enter<LoadSceneState, (string, bool)>((_scene, true), _gameStateMachine.Enter<MainMenuLoopState>);
         }
     }
 }

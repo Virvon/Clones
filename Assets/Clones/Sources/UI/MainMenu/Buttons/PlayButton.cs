@@ -21,6 +21,6 @@ namespace Clones.UI
         }
 
         private void Play() =>
-            _gameStateMachine.Enter<LoadSceneState, string>(_targetScene, _gameStateMachine.Enter<GameLoopState>);
+            _gameStateMachine.Enter<LoadSceneState, (string, bool)>((_targetScene, true), _gameStateMachine.Enter<GameLoopState>);
     }
 }

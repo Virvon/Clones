@@ -26,5 +26,6 @@
         public const string ShowSecondQuestDialogPanel = "UI/Education/ShowSecondQuestDialogPanel";
         public const string SpawnFirstWaveDialogPanel = "UI/Education/SpawnFirstWaveDialogPanel";
         public const string FrameFocus = "UI/Game/Focus";
+        public const string AudioMixerGroup = "Audio/Mixers/Mixer";
     }
 }
