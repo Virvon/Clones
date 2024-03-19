@@ -11,8 +11,6 @@ namespace Clones.Infrastructure
 {
     public class EducationState : IState
     {
-        private const int ResourceMultiplier = 1;
-
         private readonly IGameFacotry _gameFactory;
         private readonly IPartsFactory _partsFactory;
         private readonly IGameStaticDataService _gameStaticDataService;
@@ -38,10 +36,10 @@ namespace Clones.Infrastructure
             _uiFactory = uiFactory;
             _inputService = inputService;
             _educationFactory = educationFactory;
+            _coroutineRunner = coroutineRunner;
+            _timeScale = timeScale;
 
             _disables = new List<IDisable>();
-            _timeScale = timeScale;
-            _coroutineRunner = coroutineRunner;
         }
 
         public void Enter()

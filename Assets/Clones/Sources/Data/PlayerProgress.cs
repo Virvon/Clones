@@ -9,6 +9,7 @@ namespace Clones.Data
         public AvailableClones AvailableClones;
         public AvailableWands AvailableWands;
         public AveragePlayTime AveragePlayTime;
+        public Settings Settings;
 
         public PlayerProgress()
         {
@@ -16,6 +17,7 @@ namespace Clones.Data
             AvailableClones = new();
             AvailableWands = new();
             AveragePlayTime = new();
+            Settings = new Settings();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Clones.Data;
+﻿using Clones.Audio;
+using Clones.Data;
 using Clones.Services;
 using Clones.StaticData;
 using Clones.Types;
@@ -16,17 +17,19 @@ namespace Clones.Infrastructure
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IPersistentProgressService _persistentProgress;
         private readonly IMainMenuStaticDataService _staticDataService;
+        private readonly ISaveLoadService _saveLoadService;
 
         private MainMenuContainers _containers;
         private ClonesCardsView _clonesCardsView;
         private WandsCardsView _wandsCardsView;
 
-        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService)
+        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService, ISaveLoadService saveLoadService)
         {
             _assets = assets;
             _gameStateMachine = gameStateMachine;
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;
+            _saveLoadService = saveLoadService;
         }
 
         public GameObject CreateMainMenu()
@@ -35,13 +38,23 @@ namespace Clones.Infrastructure
 
             GameObject menu = Object.Instantiate(menuData.Prefab);
 
-            menu.GetComponentInChildren<MoneyView>()
+            menu
+                .GetComponentInChildren<MoneyView>()
                 .Init(_persistentProgress.Progress.Wallet);
 
-            menu.GetComponentInChildren<DnaView>()
+            menu
+                .GetComponentInChildren<DnaView>()
                 .Init(_persistentProgress.Progress.Wallet);
+
+            foreach (var switcher in menu.GetComponents<AudioSwitcher>())
+                switcher.Init(_persistentProgress);
 
             _containers = menu.GetComponentInChildren<MainMenuContainers>();
+
+            _containers
+                .Settings
+                .GetComponent<AudioSettingsSaver>()
+                .Init(_saveLoadService);
 
             return menu;
         }
