@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
+  m_Name: Ground
+  m_EditorClassIdentifier: 
+  Type: 0
+  Prefab: {fileID: 2965586213671339217, guid: 1a254845bce20be45a17f0c739bb3d6c, type: 3}
+  PreyResourcesPercentageFilled: 80
+  PreyResourcesTypes: 0200000003000000
+  UnminedResourcesPercentageFilled: 80
+  UnminedResourcesTypes: 0200000003000000
+  EnemiesTemplated: 00000000
+  CombatAudioSourcePrefab: {fileID: 2981360996308399280, guid: b3a38ad8a2a4e3147a9c316d43b68128, type: 3}

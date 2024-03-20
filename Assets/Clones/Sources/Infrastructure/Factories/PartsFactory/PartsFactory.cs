@@ -102,7 +102,7 @@ namespace Clones.Infrastructure
 
             tile.GetComponent<UnminedResourcesSpawner>()?.Init(this, biomeData.UnminedResourcesTypes, biomeData.UnminedResourcesPercentageFilled);
 
-            tile.GetComponent<Biome>()
+            tile.GetComponentInChildren<Biome>()
                 .Init(type);
 
             return tile;

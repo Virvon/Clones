@@ -2,6 +2,7 @@
 {
     public enum BiomeType
     {
+        Ground,
         Forest,
         IceCrystals,
         PoisonForest,
