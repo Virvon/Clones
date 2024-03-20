@@ -19,7 +19,7 @@ namespace Clones.Infrastructure
                 [typeof(EducationState)] = new EducationState(services.Single<IGameFacotry>(), services.Single<IPartsFactory>(), services.Single<IGameStaticDataService>(), services.Single<IPersistentProgressService>(), services.Single<IUiFactory>(), services.Single<IInputService>(), services.Single<IEducationFactory>(), services.Single<ITimeScale>(), coroutineRunner),
                 [typeof(GameLoopState)] = new GameLoopState(this, services.Single<IGameFacotry>(), services.Single<IUiFactory>(), services.Single<IPartsFactory>(), services.Single<IPersistentProgressService>(), services.Single<ITimeScale>(), services.Single<IMainMenuStaticDataService>(), services.Single<ISaveLoadService>(), services.Single<IGameStaticDataService>(), coroutineRunner, services.Single<IAdvertisingDisplay>()),
                 [typeof(MainMenuLoopState)] = new MainMenuLoopState(this, services.Single<IMainMenuFactory>(), services.Single<IMainMenuStaticDataService>(), services.Single<ISaveLoadService>()),
-                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader, loadingPanel, services.Single<IAdvertisingDisplay>())
+                [typeof(LoadSceneState)] = new LoadSceneState(sceneLoader, loadingPanel, services.Single<IAdvertisingDisplay>())
             };
         }
 

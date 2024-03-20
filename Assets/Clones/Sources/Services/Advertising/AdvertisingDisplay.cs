@@ -14,13 +14,15 @@ namespace Clones.Services
 
         private readonly AudioMixerGroup _audioMixerGroup;
         private readonly ITimeScale _timeScale;
+        private readonly ICoroutineRunner _runner;
 
         private float _volume;
 
-        public AdvertisingDisplay(AudioMixerGroup audioMixerGroup, ITimeScale timeScale)
+        public AdvertisingDisplay(AudioMixerGroup audioMixerGroup, ITimeScale timeScale, ICoroutineRunner runner)
         {
             _audioMixerGroup = audioMixerGroup;
             _timeScale = timeScale;
+            _runner = runner;
         }
 
         public void ShowVideoAd(Action callback)

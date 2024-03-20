@@ -43,7 +43,7 @@ namespace Clones.Infrastructure
 #if !UNITY_WEBGL || UNITY_EDITOR
             _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
             yield break;
-#endif
+#else
 
             yield return YandexGamesSdk.Initialize();
 
@@ -52,6 +52,7 @@ namespace Clones.Infrastructure
 
             YandexGamesSdk.CallbackLogging = true;
             _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
+#endif
         }
 
         private void RegisterServices()
@@ -65,7 +66,7 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>()));
             _services.RegisterSingle<ITimeScale>(new TimeScale());
-            _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(GetAudioMixerGroup(), _services.Single<ITimeScale>()));
+            _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(GetAudioMixerGroup(), _services.Single<ITimeScale>(), _coroutineRunner));
 
             _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IInputService>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScale>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>()));
             _services.RegisterSingle<IUiFactory>(new UiFactory(_services.Single<IAssetProvider>(), _services.Single<IPersistentProgressService>(), _stateMachine, _services.Single<IInputService>()));
