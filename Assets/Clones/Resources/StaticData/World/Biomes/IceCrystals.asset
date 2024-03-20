@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: IceCrystals
   m_EditorClassIdentifier: 
-  Type: 1
-  Prefab: {fileID: 2965586213671339217, guid: c99aafe976b008c4da6c62a7188e701c, type: 3}
+  Type: 2
+  Prefab: {fileID: 2965586213671339217, guid: 585ab8eba2ff10a4693490fb7fddafe5, type: 3}
   PreyResourcesPercentageFilled: 80
   PreyResourcesTypes: 04000000050000000600000007000000
   UnminedResourcesPercentageFilled: 89

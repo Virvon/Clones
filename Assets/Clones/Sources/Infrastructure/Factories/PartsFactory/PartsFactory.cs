@@ -96,7 +96,7 @@ namespace Clones.Infrastructure
         {
             BiomeStaticData biomeData = _staticData.GetBiome(type);
 
-            GameObject tile = Object.Instantiate(biomeData.Prefab, position, rotation, parent);
+            GameObject tile = Object.Instantiate(biomeData.GetPrefab(), position, rotation, parent);
 
             tile.GetComponent<PreyResourcesSpawner>()?.Init(this, biomeData.PreyResourcesTypes, biomeData.PreyResourcesPercentageFilled);
 

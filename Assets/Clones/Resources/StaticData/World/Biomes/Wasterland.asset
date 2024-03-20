@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: Wasterland
   m_EditorClassIdentifier: 
-  Type: 4
-  Prefab: {fileID: 2965586213671339217, guid: 21b57e3ec12b1a34abdd684b627d5ec9, type: 3}
+  Type: 5
+  Prefab: {fileID: 2965586213671339217, guid: dd3ad740dbe0b3d48af511027a10c590, type: 3}
   PreyResourcesPercentageFilled: 60
   PreyResourcesTypes: 0800000009000000
   UnminedResourcesPercentageFilled: 85

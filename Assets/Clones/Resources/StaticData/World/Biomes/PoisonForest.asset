@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: PoisonForest
   m_EditorClassIdentifier: 
-  Type: 2
-  Prefab: {fileID: 2965586213671339217, guid: f8340c31474cee7438dc067cb5daf00e, type: 3}
+  Type: 3
+  Prefab: {fileID: 2965586213671339217, guid: e0cb429821215334da0e34c9e76edcc9, type: 3}
   PreyResourcesPercentageFilled: 80
   PreyResourcesTypes: 0a0000000b000000
   UnminedResourcesPercentageFilled: 81

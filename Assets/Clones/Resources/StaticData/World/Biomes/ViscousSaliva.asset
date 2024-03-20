@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: ViscousSaliva
   m_EditorClassIdentifier: 
-  Type: 3
-  Prefab: {fileID: 2965586213671339217, guid: 9c643c0483f04d44babdead681366550, type: 3}
+  Type: 4
+  Prefab: {fileID: 2965586213671339217, guid: 618f0ed4d768db945bcc9e9c42089991, type: 3}
   PreyResourcesPercentageFilled: 80
   PreyResourcesTypes: 0000000001000000
   UnminedResourcesPercentageFilled: 80

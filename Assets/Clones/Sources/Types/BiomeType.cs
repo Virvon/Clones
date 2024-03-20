@@ -7,6 +7,6 @@
         IceCrystals,
         PoisonForest,
         ViscousSalvia,
-        Wasterlend
+        Wasterlend,
     }
 }

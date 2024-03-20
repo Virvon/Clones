@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  Type: 0
-  Prefab: {fileID: 2965586213671339217, guid: 1a254845bce20be45a17f0c739bb3d6c, type: 3}
+  Type: 1
+  Prefab: {fileID: 2965586213671339217, guid: 92185a70334e8f34f98b726350c194ff, type: 3}
   PreyResourcesPercentageFilled: 80
   PreyResourcesTypes: 0200000003000000
   UnminedResourcesPercentageFilled: 80

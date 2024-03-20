@@ -6,7 +6,7 @@ namespace Clones.GameLogic
 {
     public class CurrentBiome : ICurrentBiome
     {
-        private const Types.BiomeType DefaultType = BiomeType.Wasterlend;
+        private const BiomeType DefaultType = BiomeType.Ground;
 
         private readonly WorldGenerator _worldGenerator;
 
