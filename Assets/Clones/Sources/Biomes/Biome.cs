@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Clones.Biomes
 {
-    [RequireComponent(typeof(Collider))]
     public class Biome : MonoBehaviour
     {
         public Player Player { get; private set; }

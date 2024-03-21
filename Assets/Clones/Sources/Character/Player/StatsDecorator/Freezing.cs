@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Freezing : StatsDecorator
 {
-    private const float FreezingSpeed = 15;
+    private const float FreezingSpeed = 30;
     private const float DefrostSpeed = 5;
     private const int MovementSpeedFreezePercent = 35;
     private const int AttackCooldownFreezePercent = 160;

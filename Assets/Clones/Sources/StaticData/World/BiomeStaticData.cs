@@ -7,12 +7,15 @@ namespace Clones.StaticData
     public class BiomeStaticData : ScriptableObject
     {
         public BiomeType Type;
-        public GameObject Prefab;
+        public GameObject[] Prefabs;
         [Range(0, 100)] public int PreyResourcesPercentageFilled;
         public PreyResourceType[] PreyResourcesTypes;
         [Range(0, 100)] public int UnminedResourcesPercentageFilled;
         public UnminedResourceType[] UnminedResourcesTypes;
         public EnemyType[] EnemiesTemplated;
         public AudioSource CombatAudioSourcePrefab;
+
+        public GameObject GetPrefab() => 
+            Prefabs[Random.Range(0, Prefabs.Length)];
     }
 }

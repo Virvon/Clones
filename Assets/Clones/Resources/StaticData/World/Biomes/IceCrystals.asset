@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b18e598d16398b4485515388691e3ad, type: 3}
   m_Name: IceCrystals
   m_EditorClassIdentifier: 
-  Type: 1
-  Prefab: {fileID: 2965586213671339217, guid: 4657b8542e82b0a44bde28377efe1fa1, type: 3}
+  Type: 2
+  Prefabs:
+  - {fileID: 2965586213671339217, guid: 585ab8eba2ff10a4693490fb7fddafe5, type: 3}
+  - {fileID: 2965586213671339217, guid: 319450666968360498454c3392fef923, type: 3}
+  - {fileID: 2965586213671339217, guid: 1f96008bb863f7745bf2c0e154eac9fc, type: 3}
+  - {fileID: 2965586213671339217, guid: c433e54794c006841a0364d9701d9d5f, type: 3}
   PreyResourcesPercentageFilled: 80
   PreyResourcesTypes: 04000000050000000600000007000000
-  UnminedResourcesPercentageFilled: 89
+  UnminedResourcesPercentageFilled: 50
   UnminedResourcesTypes: 04000000
   EnemiesTemplated: 030000000400000005000000
   CombatAudioSourcePrefab: {fileID: 5295894827060800176, guid: cc740e075bdcbaf4d97ac928706b607b, type: 3}

@@ -7,25 +7,28 @@ namespace Clones.Biomes
     {
         [SerializeField, Range(0, 100)] private float _damagePercentage;
         [SerializeField] private float _coolDown;
-        private void OnEnable() => PlayerEntered += OnPlayerEntered;
+        private void OnEnable() => 
+            PlayerEntered += OnPlayerEntered;
 
-        private void OnDisable() => PlayerEntered -= OnPlayerEntered;
+        private void OnDisable() => 
+            PlayerEntered -= OnPlayerEntered;
 
-        private void OnPlayerEntered(Biome biome) => StartCoroutine(Poisoning());
+        private void OnPlayerEntered(Biome biome) => 
+            StartCoroutine(Poisoning(Player.GetComponent<PlayerHealth>()));
 
-        private IEnumerator Poisoning()
+        private IEnumerator Poisoning(PlayerHealth health)
         {
-            //bool isFirstAttack = true;
+            bool isFirstAttack = true;
 
-            //while (Player != null)
-            //{
-            //    if (isFirstAttack)
-            //        isFirstAttack = false;
-            //    else
-            //        Player.TakeDamage(Player.MaxHealth * (_damagePercentage / 100));
+            while (Player != null)
+            {
+                if (isFirstAttack)
+                    isFirstAttack = false;
+                else
+                    health.TakeDamage(health.MaxHealth * (_damagePercentage / 100));
 
-            //    yield return new WaitForSeconds(_coolDown);
-            //}
+                yield return new WaitForSeconds(_coolDown);
+            }
 
             yield return null;
         }

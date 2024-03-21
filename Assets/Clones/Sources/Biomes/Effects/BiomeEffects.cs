@@ -3,15 +3,16 @@ using System;
 using Random = UnityEngine.Random;
 using UnityEngine;
 
-[RequireComponent(typeof(Biome))]
 public class BiomeEffects : MonoBehaviour 
 {
+    [SerializeField] private Biome _biome;
     [SerializeField, Range(0, 100)] private float _spawnChancePercent;
 
-    public bool EffectIsPlayed { get; private set; }
-    public Biome Biome { get; private set; }
-
     private bool _isSuccessToSpawn;
+
+    public bool EffectIsPlayed { get; private set; }
+    public Biome Biome => _biome;
+
 
     public event Action EffectStateChanged;
 
@@ -21,10 +22,8 @@ public class BiomeEffects : MonoBehaviour
 
         if(_isSuccessToSpawn)
         {
-            Biome = GetComponent<Biome>();
-
-            Biome.PlayerEntered += OnPlayerEntered;
-            Biome.PlayerExited += OnPlayerExited;
+            _biome.PlayerEntered += OnPlayerEntered;
+            _biome.PlayerExited += OnPlayerExited;
         }
     }
 
@@ -32,8 +31,8 @@ public class BiomeEffects : MonoBehaviour
     {
         if (_isSuccessToSpawn)
         {
-            Biome.PlayerEntered -= OnPlayerEntered;
-            Biome.PlayerExited -= OnPlayerExited;
+            _biome.PlayerEntered -= OnPlayerEntered;
+            _biome.PlayerExited -= OnPlayerExited;
         }
     }
 
