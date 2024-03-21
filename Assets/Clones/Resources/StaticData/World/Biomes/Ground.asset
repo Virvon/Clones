@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Ground
   m_EditorClassIdentifier: 
   Type: 0
-  Prefab: {fileID: 2965586213671339217, guid: 7858d6183f69ff7449da0b6f8bc8bd22, type: 3}
-  PreyResourcesPercentageFilled: 80
+  Prefabs:
+  - {fileID: 2965586213671339217, guid: 7858d6183f69ff7449da0b6f8bc8bd22, type: 3}
+  PreyResourcesPercentageFilled: 20
   PreyResourcesTypes: 0200000003000000
-  UnminedResourcesPercentageFilled: 80
+  UnminedResourcesPercentageFilled: 65
   UnminedResourcesTypes: 0200000003000000
   EnemiesTemplated: 00000000
   CombatAudioSourcePrefab: {fileID: 2981360996308399280, guid: b3a38ad8a2a4e3147a9c316d43b68128, type: 3}

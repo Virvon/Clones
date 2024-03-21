@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: 
   Type: 1
-  Prefab: {fileID: 2965586213671339217, guid: 92185a70334e8f34f98b726350c194ff, type: 3}
-  PreyResourcesPercentageFilled: 80
+  Prefabs:
+  - {fileID: 2965586213671339217, guid: 92185a70334e8f34f98b726350c194ff, type: 3}
+  - {fileID: 2965586213671339217, guid: 14bebf01150b6a14c9e91fba513e69bd, type: 3}
+  - {fileID: 2965586213671339217, guid: f0703ed596145704da49ffaaa56b9020, type: 3}
+  - {fileID: 2965586213671339217, guid: 10b668eb28d7b2b4f842953fc7387cd8, type: 3}
+  PreyResourcesPercentageFilled: 70
   PreyResourcesTypes: 0200000003000000
-  UnminedResourcesPercentageFilled: 80
+  UnminedResourcesPercentageFilled: 40
   UnminedResourcesTypes: 0200000003000000
   EnemiesTemplated: 00000000
   CombatAudioSourcePrefab: {fileID: 2981360996308399280, guid: b3a38ad8a2a4e3147a9c316d43b68128, type: 3}

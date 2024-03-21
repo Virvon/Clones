@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Wasterland
   m_EditorClassIdentifier: 
   Type: 5
-  Prefab: {fileID: 2965586213671339217, guid: dd3ad740dbe0b3d48af511027a10c590, type: 3}
-  PreyResourcesPercentageFilled: 60
+  Prefabs:
+  - {fileID: 2965586213671339217, guid: dd3ad740dbe0b3d48af511027a10c590, type: 3}
+  - {fileID: 2965586213671339217, guid: ae082744bec0b4a4eaddcc486141141b, type: 3}
+  - {fileID: 2965586213671339217, guid: 95d8bc5a1f7e56941b0eae6545e28128, type: 3}
+  - {fileID: 2965586213671339217, guid: 3a5505052dfb8264b8b2926430eb3790, type: 3}
+  PreyResourcesPercentageFilled: 100
   PreyResourcesTypes: 0800000009000000
-  UnminedResourcesPercentageFilled: 85
+  UnminedResourcesPercentageFilled: 100
   UnminedResourcesTypes: 0600000005000000
   EnemiesTemplated: 0a000000
   CombatAudioSourcePrefab: {fileID: 2981360996308399280, guid: b3a38ad8a2a4e3147a9c316d43b68128, type: 3}

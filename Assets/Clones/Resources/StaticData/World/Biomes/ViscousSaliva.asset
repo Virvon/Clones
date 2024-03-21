@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: ViscousSaliva
   m_EditorClassIdentifier: 
   Type: 4
-  Prefab: {fileID: 2965586213671339217, guid: 618f0ed4d768db945bcc9e9c42089991, type: 3}
-  PreyResourcesPercentageFilled: 80
+  Prefabs:
+  - {fileID: 2965586213671339217, guid: 618f0ed4d768db945bcc9e9c42089991, type: 3}
+  - {fileID: 2965586213671339217, guid: d480b7631f3f1244db175c6ebb65160e, type: 3}
+  - {fileID: 2965586213671339217, guid: f605f0725585ee946a947fa3eaaa5c9d, type: 3}
+  - {fileID: 2965586213671339217, guid: 6d76ba1c8e4e093488b705222f534a62, type: 3}
+  PreyResourcesPercentageFilled: 100
   PreyResourcesTypes: 0000000001000000
-  UnminedResourcesPercentageFilled: 80
+  UnminedResourcesPercentageFilled: 100
   UnminedResourcesTypes: 0000000001000000
   EnemiesTemplated: 070000000800000009000000
   CombatAudioSourcePrefab: {fileID: 2128248141815977318, guid: b1626b2d37e0d7f4fbdcf79530a62d01, type: 3}
