@@ -10,6 +10,7 @@
         PoisonFlower,
         Slime,
         Echeveria,
-        Sticks
+        Sticks,
+        ViscoseSalviaLogs
     }
 }
