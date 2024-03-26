@@ -19,7 +19,6 @@ namespace Clones.EducationLogic
         public override void Handle()
         {
             _dialogPanel.Open();
-            Debug.Log("Выполни следующее задание и покончим с этим");
 
             _waiter.Wait(WaitingTime, callback: OnCallback);
         }

@@ -36,8 +36,6 @@ namespace Clones.EducationLogic
             _controlObject.GetComponent<IStopable>().Stop();
             _controlObject.SetActive(false);
 
-            Debug.Log("Сломай эти штуки. Для этого остановись возле них");
-
             _waiter.Wait(WaitingTime, callback: OnCallback);
 
             _miningState.TargetSelected += OnTargetSelected;

@@ -15,11 +15,16 @@ MonoBehaviour:
   _allQuestsInfos:
   - Quests:
     - Type: 0
-      ItemsCount: 2
+      ItemsCount: 5
   - Quests:
     - Type: 6
-      ItemsCount: 4
+      ItemsCount: 6
     - Type: 9
-      ItemsCount: 4
+      ItemsCount: 6
+  - Quests:
+    - Type: 3
+      ItemsCount: 8
+    - Type: 6
+      ItemsCount: 8
   Reward: 10
   RewardIncrease: 10

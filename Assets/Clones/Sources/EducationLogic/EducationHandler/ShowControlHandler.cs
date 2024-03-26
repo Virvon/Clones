@@ -18,7 +18,6 @@ namespace Clones.EducationLogic
         public override void Handle()
         {
             _dialogPanel.Open();
-            Debug.Log("Проведите мышью или пальцем по экрану для движения");
             _inputService.Activated += OnInputActivated;
         }
 

@@ -21,7 +21,6 @@ namespace Clones.EducationLogic
         public override void Handle()
         {
             _dialogPanel.Open();
-            Debug.Log("О нет, ктото приближается к нам, дай им отпор!");
             _spawner.Spawn();
 
             _waiter.Wait(WaitingTime, callback: OnCallback);

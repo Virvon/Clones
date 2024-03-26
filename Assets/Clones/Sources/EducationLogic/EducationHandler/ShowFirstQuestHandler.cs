@@ -22,7 +22,6 @@ namespace Clones.EducationLogic
         {
             _dialogPanel.Open();
             _frameFocus.Open();
-            Debug.Log("Справа есть окно с заданиями, за выполнение которых ты получишь награду");
 
             _waiter.Wait(WaitingTime, callback: OnCallback);
         }
