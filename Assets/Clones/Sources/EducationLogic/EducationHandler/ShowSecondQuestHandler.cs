@@ -5,7 +5,7 @@ namespace Clones.EducationLogic
 {
     public class ShowSecondQuestHandler : EducationHandler
     {
-        private const float WaitingTime = 3;
+        private const float WaitingTime = 2;
 
         private readonly DialogPanel _dialogPanel;
         private readonly Waiter _waiter;

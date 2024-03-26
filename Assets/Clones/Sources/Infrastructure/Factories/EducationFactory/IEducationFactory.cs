@@ -1,4 +1,5 @@
-﻿using Clones.EducationLogic;
+﻿using Cinemachine;
+using Clones.EducationLogic;
 using Clones.Services;
 using UnityEngine;
 
@@ -8,5 +9,6 @@ namespace Clones.Infrastructure
     {
         EducationPreyResourcesSpawner CreatePreyResourcesSpawner();
         EducationEnemiesSpawner CreateEnemiesSpawner(GameObject playerObject);
+        CinemachineVirtualCamera CreateVirtualCamera();
     }
 }

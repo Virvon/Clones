@@ -1,12 +1,11 @@
 ﻿using Clones.UI;
-using System;
 using UnityEngine;
 
 namespace Clones.EducationLogic
 {
     public class ShowFirstQuestHandler : EducationHandler
     {
-        private const float WaitingTime = 5;
+        private const int WaitingTime = 5;
 
         private readonly DialogPanel _dialogPanel;
         private readonly Waiter _waiter;

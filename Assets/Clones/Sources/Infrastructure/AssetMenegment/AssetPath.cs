@@ -1,4 +1,6 @@
-﻿namespace Clones.Infrastructure
+﻿using UnityEngine;
+
+namespace Clones.Infrastructure
 {
     public static class AssetPath
     {
@@ -27,5 +29,6 @@
         public const string SpawnFirstWaveDialogPanel = "UI/Education/SpawnFirstWaveDialogPanel";
         public const string FrameFocus = "UI/Game/Focus";
         public const string AudioMixerGroup = "Audio/Mixers/Mixer";
+        public const string EducationVirtualCamera = "Camera/EducationVirtualCamera";
     }
 }

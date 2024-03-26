@@ -11,16 +11,12 @@ namespace Clones.EducationLogic
     {
         private WaveInfo[] _waveInfos;
         private int _waveNumber;
-        private float _minRadius;
-        private float _maxRadius;
         private IPartsFactory _partsFactory;
         private GameObject _playerObject;
 
-        public void Init(WaveInfo[] waveInfos, float minRadius, float maxRadius, IPartsFactory partsFactory, GameObject playerObject)
+        public void Init(WaveInfo[] waveInfos, IPartsFactory partsFactory, GameObject playerObject)
         {
             _waveInfos = waveInfos;
-            _minRadius = minRadius;
-            _maxRadius = maxRadius;
             _partsFactory = partsFactory;
             _playerObject = playerObject;
 
@@ -53,7 +49,7 @@ namespace Clones.EducationLogic
             while (currentWeight < maxWeight)
             {
                 EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
-                Vector3 spawnPosition = GetSpawnPosition();
+                Vector3 spawnPosition = GetSpawnPosition(waveInfo);
 
                 _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, waveInfo.Complexity);
 
@@ -64,10 +60,10 @@ namespace Clones.EducationLogic
         private EnemyType GetRandomEnemyType(EnemyType[] typeOptions) =>
             typeOptions[Random.Range(0, typeOptions.Length)];
 
-        private Vector3 GetSpawnPosition()
+        private Vector3 GetSpawnPosition(WaveInfo waveInfo)
         {
-            float distance = Random.Range(_minRadius, _maxRadius + 1);
-            Vector2 point = Random.insideUnitCircle.normalized * distance + new Vector2(_playerObject.transform.position.x, _playerObject.transform.position.z);
+            float distance = Random.Range(waveInfo.MinSpawnRadius, waveInfo.MaxSpawnRadius + 1);
+            Vector2 point = Random.insideUnitCircle.normalized * distance + waveInfo.Position;
 
             return new Vector3(point.x, 0, point.y);
         }

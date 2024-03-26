@@ -1,4 +1,5 @@
-﻿using Clones.EducationLogic;
+﻿using Cinemachine;
+using Clones.EducationLogic;
 using Clones.GameLogic;
 using Clones.Services;
 using Clones.StateMachine;
@@ -26,6 +27,8 @@ namespace Clones.Infrastructure
         private IQuestsCreator _questCreator;
         private EducationEnemiesSpawner _enemiesSpawner;
         private FrameFocus _frameFocus;
+        private GameObject _controlObject;
+        private CinemachineVirtualCamera _educationVirtualCamera;
 
         public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner)
         {
@@ -60,10 +63,11 @@ namespace Clones.Infrastructure
             _playerObject = _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
 
             _gameFactory.CreateVirtualCamera();
+            _educationVirtualCamera = _educationFactory.CreateVirtualCamera();
 
             _uiFactory.CreateHud(_questCreator, _playerObject);
             _frameFocus = _uiFactory.CreateFrameFocus();
-            _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
+            _controlObject = _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
             IOpenableView openableView = _uiFactory.CreateEducationOverView();
 
             EducationPreyResourcesSpawner spawner = _educationFactory.CreatePreyResourcesSpawner();
@@ -105,10 +109,10 @@ namespace Clones.Infrastructure
 
         private EducationHandler CreateEducationHandler()
         {
-            Waiter waiter = new Waiter(_coroutineRunner);
+            Waiter waiter = new(_coroutineRunner);
             ShowControlHandler showControlHandler = new(_inputService, _uiFactory.CreateDialogPanel(AssetPath.ShowControlDialogPanel));
             ShowFirstQuestHandler showFirstQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowFirstQuestDialogPanel), waiter, _frameFocus);
-            ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator, _uiFactory.CreateDialogPanel(AssetPath.ShowPreyResourcesDialogPanel));
+            ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator, _uiFactory.CreateDialogPanel(AssetPath.ShowPreyResourcesDialogPanel), _educationVirtualCamera, _controlObject, waiter);
             ShowSecondQuestHandler showSecondQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowSecondQuestDialogPanel), waiter);
             SpawnFirstWaveHandler spawnFirstWaveHandler = new(_enemiesSpawner, _uiFactory.CreateDialogPanel(AssetPath.SpawnFirstWaveDialogPanel), waiter);
             SpawnSecondWaveHandler spawnSecondWaveHandler = new(_enemiesSpawner, _questCreator);

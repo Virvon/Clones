@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Clones.Input
 {
-    public class DesktopDirectionHandler : MonoBehaviour
+    public class DesktopDirectionHandler : MonoBehaviour, IStopable
     {
         private const float Delta = 6000;
 
@@ -17,6 +17,9 @@ namespace Clones.Input
 
         public static event Action Activated;
         public static event Action Deactivated;
+
+        public void Init(Player player) =>
+            _player = player;
 
         private void OnEnable()
         {
@@ -40,8 +43,8 @@ namespace Clones.Input
                 OnDownTouch();
         }
 
-        public void Init(Player player) =>
-            _player = player;
+        public void Stop() => 
+            OnUpTouch();
 
         private void OnDownTouch()
         {

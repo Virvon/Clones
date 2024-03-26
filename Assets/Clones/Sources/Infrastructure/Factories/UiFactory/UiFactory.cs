@@ -56,12 +56,14 @@ namespace Clones.Infrastructure
             return _hud;
         }
 
-        public void CreateControl(Player player)
+        public GameObject CreateControl(Player player)
         {
             GameObject control = _assets.Instantiate(_inputService.ControlPath, _hud.transform);
 
             if (control.TryGetComponent(out DesktopDirectionHandler desktopDirectionHandler))
                 desktopDirectionHandler.Init(player);
+
+            return control;
         }
 
         public GameObject CreateQuestView(Quest quest, Transform parent)

@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: EducationEnemiesSpawner
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7099635389937913228, guid: 87a272e6c55bf1349a7053085f52a384, type: 3}
-  MinRadius: 15
-  MaxRadius: 20
   WaveInfos:
   - SpawnedEnemies: 000000000100000002000000
     Complexity: 1
     WaveWeight: 10
+    Position: {x: 150, y: 0}
+    MinSpawnRadius: 0
+    MaxSpawnRadius: 8
   - SpawnedEnemies: 070000000800000009000000
     Complexity: 5
     WaveWeight: 70
+    Position: {x: 180, y: 0}
+    MinSpawnRadius: 15
+    MaxSpawnRadius: 20

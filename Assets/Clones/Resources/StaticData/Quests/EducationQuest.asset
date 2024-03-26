@@ -18,6 +18,8 @@ MonoBehaviour:
       ItemsCount: 2
   - Quests:
     - Type: 6
-      ItemsCount: 8
+      ItemsCount: 4
+    - Type: 9
+      ItemsCount: 4
   Reward: 10
   RewardIncrease: 10

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Clones.Input
 {
-    public class JoysticDirectionHandler : MonoBehaviour, IDragHandler
+    public class JoysticDirectionHandler : MonoBehaviour, IDragHandler, IStopable
     {
         [SerializeField] private RectTransform _handleBackground;
 
@@ -36,6 +36,9 @@ namespace Clones.Input
             if (_input.Player.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Started)
                 OnDownTouch();
         }
+
+        public void Stop() =>
+            OnDownTouch();
 
         public void OnDrag(PointerEventData eventData)
         {

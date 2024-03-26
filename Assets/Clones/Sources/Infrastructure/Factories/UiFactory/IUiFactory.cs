@@ -9,7 +9,7 @@ namespace Clones.Infrastructure
     {
         GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject);
         GameObject CreateQuestView(Quest quest, Transform parent);
-        void CreateControl(Player player);
+        GameObject CreateControl(Player player);
         void CreateGameRevivleView(IPlayerRevival playerRevival);
         void CreateGameOverView();
         IOpenableView CreateEducationOverView();
