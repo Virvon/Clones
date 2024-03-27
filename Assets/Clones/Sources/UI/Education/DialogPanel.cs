@@ -10,7 +10,6 @@ namespace Clones.UI
 
         public void Open()
         {
-            Debug.Log("open dialog panel");
             _dialogPanel.SetActive(true);
             _animator.SetBool(AnimationPath.UI.Bool.IsOpened, true);
         }
