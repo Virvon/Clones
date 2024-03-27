@@ -112,7 +112,8 @@ namespace Clones.Infrastructure
         {
             GameObject dialogPanelObject = _assets.Instantiate(path, _hud.transform);
             DialogPanel dialogPanel = dialogPanelObject.GetComponent<DialogPanel>();
-            dialogPanelObject.SetActive(false);
+
+            dialogPanel.Disable();
             
             return dialogPanel;
         }
