@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Lean.Localization;
+using UnityEngine;
 
 namespace Clones.UI
 {

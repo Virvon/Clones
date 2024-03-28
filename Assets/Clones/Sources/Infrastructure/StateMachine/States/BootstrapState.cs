@@ -1,6 +1,7 @@
 ﻿using Agava.YandexGames;
 using Clones.Services;
 using Clones.UI;
+using Lean.Localization;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -32,16 +33,47 @@ namespace Clones.Infrastructure
         public void Enter()
         {
             _loadingPanel.Open();
-            _coroutineRunner.StartCoroutine(InitializeYandexSdk());
+            _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () =>
+            {
+                _coroutineRunner.StartCoroutine(SetLanguage(_services.Single<IPersistentProgressService>()));
+                _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
+            }));
         }
+
+
+        private enum Language
+        {
+            Russian,
+            English
+        }
+
+        private IEnumerator SetLanguage(IPersistentProgressService persistentProgress)
+        {
+            while (LeanLocalization.CurrentLanguages.Count == 0)
+                yield return null;
+
+            string isoLanguage;
+            string leanLanguage;
+
+#if !UNITY_WEBGL || UNITY_EDITOR
+            isoLanguage = "ru";
+#else
+            isoLanguage = YandexGamesSdk.Environment.i18n.lang;
+#endif
+
+            leanLanguage = persistentProgress.Progress.Language.TryGetCurrentLeanLanguage(out string language) ? language : persistentProgress.Progress.Language.TranslateToLeanLanguage(isoLanguage);
+            persistentProgress.Progress.Language.CurrentIsoLanguage = isoLanguage;
+            LeanLocalization.SetCurrentLanguageAll(leanLanguage);
+        }
+        
 
         public void Exit() =>
             _loadingPanel.Close();
 
-        private IEnumerator InitializeYandexSdk()
+        private IEnumerator InitializeYandexSdk(Action callback = null)
         {
 #if !UNITY_WEBGL || UNITY_EDITOR
-            _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
+            callback?.Invoke();
             yield break;
 #else
 
@@ -51,7 +83,7 @@ namespace Clones.Infrastructure
                 throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
 
             YandexGamesSdk.CallbackLogging = true;
-            _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
+            callback?.Invoke();
 #endif
         }
 
