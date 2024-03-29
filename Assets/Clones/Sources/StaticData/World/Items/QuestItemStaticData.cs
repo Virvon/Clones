@@ -1,4 +1,6 @@
 ﻿using Clones.Types;
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Clones.StaticData
@@ -7,5 +9,24 @@ namespace Clones.StaticData
     public class QuestItemStaticData : ItemStaticData
     {
         public QuestItemType Type;
+
+        [SerializeField] private PreyResourceLocalizedName[] _localizedNames;
+        [SerializeField] private string _defaultName;
+
+        public string GetLocalizedName(string isoLanguage)
+        {
+            Debug.Log("iso language " + isoLanguage + " for type " + Type);
+
+            PreyResourceLocalizedName preyResourceLocalizedName = _localizedNames.Where(localizedName => localizedName.IsoLanguage == isoLanguage).FirstOrDefault();
+
+            return preyResourceLocalizedName != null ? preyResourceLocalizedName.Name : _defaultName;
+        }
+
+        [Serializable]
+        private class PreyResourceLocalizedName
+        {
+            public string IsoLanguage;
+            public string Name;
+        }
     }
 }

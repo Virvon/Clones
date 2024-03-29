@@ -35,8 +35,8 @@ namespace Clones.Infrastructure
             _loadingPanel.Open();
             _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () =>
             {
-                _coroutineRunner.StartCoroutine(SetLanguage(_services.Single<IPersistentProgressService>()));
-                _sceneLoader.Load(InitScene, callback: EnterLoadProgress);
+                _sceneLoader.Load(InitScene, false, callback: EnterLoadProgress);
+                _coroutineRunner.StartCoroutine(SetLanguage(_services.Single<IPersistentProgressService>(), callback: _sceneLoader.AllowSceneActivation));
             }));
         }
 
@@ -47,7 +47,7 @@ namespace Clones.Infrastructure
             English
         }
 
-        private IEnumerator SetLanguage(IPersistentProgressService persistentProgress)
+        private IEnumerator SetLanguage(IPersistentProgressService persistentProgress, Action callback = null)
         {
             while (LeanLocalization.CurrentLanguages.Count == 0)
                 yield return null;
@@ -64,6 +64,11 @@ namespace Clones.Infrastructure
             leanLanguage = persistentProgress.Progress.Language.TryGetCurrentLeanLanguage(out string language) ? language : persistentProgress.Progress.Language.TranslateToLeanLanguage(isoLanguage);
             persistentProgress.Progress.Language.CurrentIsoLanguage = isoLanguage;
             LeanLocalization.SetCurrentLanguageAll(leanLanguage);
+
+            Debug.Log("boot iso language local " + persistentProgress.Progress.Language.CurrentIsoLanguage);
+            Debug.Log("boot iso language service " + _services.Single<IPersistentProgressService>().Progress.Language.CurrentIsoLanguage);
+
+            callback?.Invoke();
         }
         
 

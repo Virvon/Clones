@@ -8,13 +8,15 @@ namespace Clones.GameLogic
         public int CurrentItemsCount { get; private set; }
         public int TargetItemsCount { get; private set; }
         public QuestItemType Type { get; private set; }
+        public string ItemName { get; private set; }
 
-        public Quest(QuestItemType type, int targetItemsCount)
+        public Quest(QuestItemType type, int targetItemsCount, string itemName)
         {
-            CurrentItemsCount = 0;
-
             TargetItemsCount = targetItemsCount;
             Type = type;
+            ItemName = itemName;
+
+            CurrentItemsCount = 0;
         }
 
         public void TryTakeItem(QuestItemType type, int count)

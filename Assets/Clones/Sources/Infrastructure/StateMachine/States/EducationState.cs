@@ -92,8 +92,10 @@ namespace Clones.Infrastructure
 
         private IQuestsCreator CreateEducationQuestCreator()
         {
+            Debug.Log("iso language " + _persistentProgress.Progress.Language.CurrentIsoLanguage);
+            Debug.Log("persistent progress " + (_persistentProgress != null));
             EducationQuestStaticData educationQuestStaticData = _gameStaticDataService.GetEducationQuest();
-            IQuestsCreator questsCreator = new EducationQuestsCreator(educationQuestStaticData.GetAllQuests(), educationQuestStaticData.Reward, educationQuestStaticData.RewardIncrease, _persistentProgress);
+            IQuestsCreator questsCreator = new EducationQuestsCreator(educationQuestStaticData.GetAllQuests(_gameStaticDataService, _persistentProgress.Progress.Language.CurrentIsoLanguage), educationQuestStaticData.Reward, educationQuestStaticData.RewardIncrease, _persistentProgress);
 
             return questsCreator;
         }

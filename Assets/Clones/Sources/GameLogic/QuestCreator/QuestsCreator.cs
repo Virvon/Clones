@@ -16,6 +16,7 @@ namespace Clones.GameLogic
         private readonly int _itemsCount;
         private readonly int _minItemsCountPercentInQuest;
         private readonly int _reward;
+        private readonly IGameStaticDataService _staticDataService;
 
         private List<Quest> _quests;
         private int _currentQuest = 0;
@@ -29,7 +30,7 @@ namespace Clones.GameLogic
         public event Action<Quest> Updated;
         public event Action Completed;
 
-        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward)
+        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward, IGameStaticDataService staticDataService)
         {
             _persistentProgress = persistentProgress;
             _questTypes = questTypes;
@@ -38,17 +39,9 @@ namespace Clones.GameLogic
             _itemsCount = itemsCount;
             _minItemsCountPercentInQuest = minItemsCountPercentInQuest;
             _reward = reward;
+            _staticDataService = staticDataService;
         }
 
-        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward)
-        {
-            _persistentProgress = persistentProgress;
-            _questTypes = questTypes;
-            _resourcesMultiplier = resourcesMultiplier;
-            _itemsCount = itemsCount;
-            _minItemsCountPercentInQuest = minItemsCountPercentInQuest;
-            _reward = reward;
-        }
 
         public void Create()
         {
@@ -103,9 +96,10 @@ namespace Clones.GameLogic
                     itemsCount = GetItemsCount(minItemsCountInQuest, maxItemsCount, totalItemsCount);
 
                 QuestItemType type = GetUniqueType(usedTypes);
+                string itemName = _staticDataService.GetItem(type).GetLocalizedName(_persistentProgress.Progress.Language.CurrentIsoLanguage);
 
                 usedTypes.Add(type);
-                quests.Add(new Quest(type, itemsCount));
+                quests.Add(new Quest(type, itemsCount, itemName));
 
                 totalItemsCount += itemsCount;
             }

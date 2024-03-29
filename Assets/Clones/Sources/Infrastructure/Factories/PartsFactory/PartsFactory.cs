@@ -68,7 +68,9 @@ namespace Clones.Infrastructure
             QuestItemStaticData itemData = _staticData.GetItem(type);
 
             GameObject item = Object.Instantiate(itemData.Prefab, position, Quaternion.identity);
-            item.GetComponent<QuestItem>().Init(type);
+            item
+                .GetComponent<QuestItem>()
+                .Init(type);
 
             return item;
         }

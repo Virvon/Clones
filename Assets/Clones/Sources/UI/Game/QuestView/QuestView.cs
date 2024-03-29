@@ -15,7 +15,7 @@ namespace Clones.UI
         public void Init(Quest quest)
         {
             _quest = quest;
-            _description.text = quest.Type.ToString();
+            _description.text = quest.ItemName;
 
             UpdateInfo();
         }

@@ -1,4 +1,5 @@
 ﻿using Clones.GameLogic;
+using Clones.Services;
 using Clones.Types;
 using System;
 using UnityEngine;
@@ -8,12 +9,15 @@ namespace Clones.StaticData
     [CreateAssetMenu(fileName = "New Education Quest", menuName = "Data/Quests/Create new education quest", order = 51)]
     public class EducationQuestStaticData : ScriptableObject
     {
-        [SerializeField] private QuestsList[] _allQuestsInfos;
         public int Reward;
         public int RewardIncrease;
 
-        public Quest[][] GetAllQuests()
+        [SerializeField] private QuestsList[] _allQuestsInfos;
+
+        public Quest[][] GetAllQuests(IGameStaticDataService staticDataService, string isoLanguage)
         {
+            Debug.Log("iso language " + isoLanguage);
+            Debug.Log("static data service " + (staticDataService != null));
             Quest[][] allQuests = new Quest[_allQuestsInfos.Length][];
 
             for(var i = 0; i < allQuests.Length; i++)
@@ -23,7 +27,10 @@ namespace Clones.StaticData
                 for(var j = 0; j < allQuests[i].Length; j++)
                 {
                     QuestInfo questInfo = _allQuestsInfos[i].Quests[j];
-                    allQuests[i][j] = new Quest(questInfo.Type, questInfo.ItemsCount);
+
+                    string itemName = staticDataService.GetItem(questInfo.Type).GetLocalizedName(isoLanguage);
+
+                    allQuests[i][j] = new Quest(questInfo.Type, questInfo.ItemsCount, itemName);
                 }
             }
 
