@@ -15,8 +15,6 @@ namespace Clones.StaticData
 
         public string GetLocalizedName(string isoLanguage)
         {
-            Debug.Log("iso language " + isoLanguage + " for type " + Type);
-
             PreyResourceLocalizedName preyResourceLocalizedName = _localizedNames.Where(localizedName => localizedName.IsoLanguage == isoLanguage).FirstOrDefault();
 
             return preyResourceLocalizedName != null ? preyResourceLocalizedName.Name : _defaultName;

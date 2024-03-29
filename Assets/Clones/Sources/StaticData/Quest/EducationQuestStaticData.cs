@@ -16,8 +16,6 @@ namespace Clones.StaticData
 
         public Quest[][] GetAllQuests(IGameStaticDataService staticDataService, string isoLanguage)
         {
-            Debug.Log("iso language " + isoLanguage);
-            Debug.Log("static data service " + (staticDataService != null));
             Quest[][] allQuests = new Quest[_allQuestsInfos.Length][];
 
             for(var i = 0; i < allQuests.Length; i++)

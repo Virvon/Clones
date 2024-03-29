@@ -17,6 +17,7 @@ namespace Clones.GameLogic
         private readonly int _minItemsCountPercentInQuest;
         private readonly int _reward;
         private readonly IGameStaticDataService _staticDataService;
+        private readonly ILocalization _localization;
 
         private List<Quest> _quests;
         private int _currentQuest = 0;
@@ -30,7 +31,7 @@ namespace Clones.GameLogic
         public event Action<Quest> Updated;
         public event Action Completed;
 
-        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward, IGameStaticDataService staticDataService)
+        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward, IGameStaticDataService staticDataService, ILocalization localization)
         {
             _persistentProgress = persistentProgress;
             _questTypes = questTypes;
@@ -40,6 +41,7 @@ namespace Clones.GameLogic
             _minItemsCountPercentInQuest = minItemsCountPercentInQuest;
             _reward = reward;
             _staticDataService = staticDataService;
+            _localization = localization;
         }
 
 
@@ -96,7 +98,7 @@ namespace Clones.GameLogic
                     itemsCount = GetItemsCount(minItemsCountInQuest, maxItemsCount, totalItemsCount);
 
                 QuestItemType type = GetUniqueType(usedTypes);
-                string itemName = _staticDataService.GetItem(type).GetLocalizedName(_persistentProgress.Progress.Language.CurrentIsoLanguage);
+                string itemName = _staticDataService.GetItem(type).GetLocalizedName(_localization.GetIsoLanguage());
 
                 usedTypes.Add(type);
                 quests.Add(new Quest(type, itemsCount, itemName));

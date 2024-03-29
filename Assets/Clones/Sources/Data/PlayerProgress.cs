@@ -10,7 +10,6 @@ namespace Clones.Data
         public AvailableWands AvailableWands;
         public AveragePlayTime AveragePlayTime;
         public Settings Settings;
-        public Language Language;
 
         public PlayerProgress()
         {
@@ -19,7 +18,6 @@ namespace Clones.Data
             AvailableWands = new();
             AveragePlayTime = new();
             Settings = new();
-            Language = new();
         }
     }
 }

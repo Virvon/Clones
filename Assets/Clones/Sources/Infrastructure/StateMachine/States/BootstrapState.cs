@@ -36,7 +36,7 @@ namespace Clones.Infrastructure
             _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () =>
             {
                 _sceneLoader.Load(InitScene, false, callback: EnterLoadProgress);
-                _coroutineRunner.StartCoroutine(SetLanguage(_services.Single<IPersistentProgressService>(), callback: _sceneLoader.AllowSceneActivation));
+                _coroutineRunner.StartCoroutine(SetLanguage(callback: _sceneLoader.AllowSceneActivation));
             }));
         }
 
@@ -47,26 +47,12 @@ namespace Clones.Infrastructure
             English
         }
 
-        private IEnumerator SetLanguage(IPersistentProgressService persistentProgress, Action callback = null)
+        private IEnumerator SetLanguage(Action callback = null)
         {
             while (LeanLocalization.CurrentLanguages.Count == 0)
                 yield return null;
 
-            string isoLanguage;
-            string leanLanguage;
-
-#if !UNITY_WEBGL || UNITY_EDITOR
-            isoLanguage = "ru";
-#else
-            isoLanguage = YandexGamesSdk.Environment.i18n.lang;
-#endif
-
-            leanLanguage = persistentProgress.Progress.Language.TryGetCurrentLeanLanguage(out string language) ? language : persistentProgress.Progress.Language.TranslateToLeanLanguage(isoLanguage);
-            persistentProgress.Progress.Language.CurrentIsoLanguage = isoLanguage;
-            LeanLocalization.SetCurrentLanguageAll(leanLanguage);
-
-            Debug.Log("boot iso language local " + persistentProgress.Progress.Language.CurrentIsoLanguage);
-            Debug.Log("boot iso language service " + _services.Single<IPersistentProgressService>().Progress.Language.CurrentIsoLanguage);
+            LeanLocalization.SetCurrentLanguageAll(_services.Single<ILocalization>().GetLeanLanguage());
 
             callback?.Invoke();
         }
@@ -104,6 +90,7 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>()));
             _services.RegisterSingle<ITimeScale>(new TimeScale());
             _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(GetAudioMixerGroup(), _services.Single<ITimeScale>(), _coroutineRunner));
+            _services.RegisterSingle<ILocalization>(new Localization(_coroutineRunner));
 
             _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IInputService>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScale>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>()));
             _services.RegisterSingle<IUiFactory>(new UiFactory(_services.Single<IAssetProvider>(), _services.Single<IPersistentProgressService>(), _stateMachine, _services.Single<IInputService>()));

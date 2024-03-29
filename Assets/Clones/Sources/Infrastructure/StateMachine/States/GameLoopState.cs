@@ -21,11 +21,12 @@ namespace Clones.Infrastructure
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IAdvertisingDisplay _advertisingDisplay;
+        private readonly ILocalization _localization;
 
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay)
+        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -39,6 +40,7 @@ namespace Clones.Infrastructure
 
             _disables = new();
             _advertisingDisplay = advertisingDisplay;
+            _localization = localization;
         }
 
         public void Enter()
@@ -64,7 +66,7 @@ namespace Clones.Infrastructure
             float resourcesMultiplier = cloneData.ResourceMultiplier * (1 + wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
             Complexity complexity = new Complexity(_persistentProgress, _gameStaticDataService.GetComplextiy().TargetPlayTime, _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Level);
             QuestStaticData questStaticData = _gameStaticDataService.GetQuest();
-            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, resourcesMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward, _gameStaticDataService);
+            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, resourcesMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward, _gameStaticDataService, _localization);
             IItemsCounter itemsCounter = CreateItemsCounter(questsCreator, resourcesMultiplier);
 
             GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itemsCounter);

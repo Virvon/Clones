@@ -21,6 +21,7 @@ namespace Clones.Infrastructure
         private readonly IEducationFactory _educationFactory;
         private readonly ITimeScale _timeScale;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly ILocalization _localization;
 
         private List<IDisable> _disables;
         private GameObject _playerObject;
@@ -30,7 +31,7 @@ namespace Clones.Infrastructure
         private GameObject _controlObject;
         private CinemachineVirtualCamera _educationVirtualCamera;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner, ILocalization localization)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
@@ -41,6 +42,7 @@ namespace Clones.Infrastructure
             _educationFactory = educationFactory;
             _coroutineRunner = coroutineRunner;
             _timeScale = timeScale;
+            _localization = localization;
 
             _disables = new List<IDisable>();
         }
@@ -92,10 +94,8 @@ namespace Clones.Infrastructure
 
         private IQuestsCreator CreateEducationQuestCreator()
         {
-            Debug.Log("iso language " + _persistentProgress.Progress.Language.CurrentIsoLanguage);
-            Debug.Log("persistent progress " + (_persistentProgress != null));
             EducationQuestStaticData educationQuestStaticData = _gameStaticDataService.GetEducationQuest();
-            IQuestsCreator questsCreator = new EducationQuestsCreator(educationQuestStaticData.GetAllQuests(_gameStaticDataService, _persistentProgress.Progress.Language.CurrentIsoLanguage), educationQuestStaticData.Reward, educationQuestStaticData.RewardIncrease, _persistentProgress);
+            IQuestsCreator questsCreator = new EducationQuestsCreator(educationQuestStaticData.GetAllQuests(_gameStaticDataService, _localization.GetIsoLanguage()), educationQuestStaticData.Reward, educationQuestStaticData.RewardIncrease, _persistentProgress);
 
             return questsCreator;
         }
