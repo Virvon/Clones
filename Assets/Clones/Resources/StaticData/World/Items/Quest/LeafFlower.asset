@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 8078027364123964895, guid: 96f52cb44258c2e4bb27203f2ec72e0b, type: 3}
   Type: 1
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Leafs
+  - IsoLanguage: ru
+    Name: "\u041B\u0438\u0441\u0442\u044C\u044F"
+  - IsoLanguage: tr
+    Name: Yapraklar
+  _defaultName: Leafs

@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4532498036244834587, guid: 1587da99a6fd64149b54bca299a57f74, type: 3}
   Type: 3
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Crystals
+  - IsoLanguage: ru
+    Name: "\u041A\u0440\u0438\u0441\u0442\u0430\u043B\u043B\u044B"
+  - IsoLanguage: tr
+    Name: Kristaller
+  _defaultName: Crystals

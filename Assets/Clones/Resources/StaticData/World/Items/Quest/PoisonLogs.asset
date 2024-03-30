@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 9060850911501408829, guid: 565c8013b314a6c4888fb4fe978bc140, type: 3}
   Type: 4
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Poisonous logs
+  - IsoLanguage: ru
+    Name: "\u042F\u0434\u043E\u0432\u0438\u0442\u044B\u0435 \u0431\u0440\u0435\u0432\u043D\u0430"
+  - IsoLanguage: tr
+    Name: "Zehirli g\xFCnl\xFCkler"
+  _defaultName: Poisonous logs

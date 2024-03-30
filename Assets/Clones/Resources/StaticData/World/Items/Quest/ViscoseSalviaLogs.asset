@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 9060850911501408829, guid: 8fa5ef84d2ebd4a448e7d4d5a5f25d77, type: 3}
   Type: 9
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Sticky logs
+  - IsoLanguage: ru
+    Name: "\u041B\u0438\u043F\u043A\u0438\u0435 \u0431\u0440\u0435\u0432\u043D\u0430"
+  - IsoLanguage: tr
+    Name: "Yap\u0131\u015Fkan g\xFCnl\xFCkler"
+  _defaultName: Sticky logs

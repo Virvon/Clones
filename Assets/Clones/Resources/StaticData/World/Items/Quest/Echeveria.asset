@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 6932906505578958940, guid: 4f269adf8a1f0f042a49e0a1d397d9a5, type: 3}
   Type: 7
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Echeveria
+  - IsoLanguage: ru
+    Name: "\u042D\u0445\u0435\u0432\u0435\u0440\u0438\u044F"
+  - IsoLanguage: tr
+    Name: Echeveria
+  _defaultName: Echeveria

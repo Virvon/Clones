@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 2805587374926673531, guid: 4b620f1386d54c540aa420ec60ace9f5, type: 3}
   Type: 6
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Slime
+  - IsoLanguage: ru
+    Name: "\u0421\u043B\u0438\u0437\u044C"
+  - IsoLanguage: tr
+    Name: "Bal\xE7\u0131k"
+  _defaultName: Slime

@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 2652492253162964351, guid: 15b974a39ef207649b4ac16c17b57950, type: 3}
   Type: 8
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Dry branches
+  - IsoLanguage: ru
+    Name: "\u0421\u0443\u0445\u0438\u0435 \u0432\u0435\u0442\u043A\u0438"
+  - IsoLanguage: tr
+    Name: Kuru dallar
+  _defaultName: Dry branches

@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 9060850911501408829, guid: a90389675c20a934e93f7f9e33b26f8c, type: 3}
   Type: 2
-  _localizedNames: []
-  _defaultName: <Default Name>
+  _localizedNames:
+  - IsoLanguage: en
+    Name: Snowy logs
+  - IsoLanguage: ru
+    Name: "\u0417\u0430\u0441\u043D\u0435\u0436\u0435\u043D\u043D\u044B\u0435 \u0431\u0440\u0435\u0432\u043D\u0430"
+  - IsoLanguage: tr
+    Name: "Karl\u0131 g\xFCnl\xFCkler"
+  _defaultName: Snowy logs
