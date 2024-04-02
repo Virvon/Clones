@@ -60,6 +60,9 @@ namespace Clones.StateMachine
         {
             targetPosition.y = transform.position.y;
 
+            if (targetPosition == transform.position)
+                return;
+
             var direction = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, direction, _lookRotationSpeed * Time.deltaTime);
         }

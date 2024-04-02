@@ -34,6 +34,9 @@ namespace Clones.Infrastructure
         {
             LoadProgressOrInitNew();
 
+            _stateMachine.Enter<LoadSceneState, (string, bool)>((MainMenuScene, false), _stateMachine.Enter<MainMenuLoopState>);
+            return;
+
             if (_isNewProgressCreated)
                 _stateMachine.Enter<LoadSceneState, (string, bool)>((EducationScene, false), _stateMachine.Enter<EducationState>);
             else
@@ -52,8 +55,8 @@ namespace Clones.Infrastructure
         {
             Debug.Log("created new progress");
             PlayerProgress progress = new();
-            progress.Wallet.Dna = 10000;
-            progress.Wallet.Money = 10000;
+            progress.Wallet.Dna = 0;
+            progress.Wallet.Money = 100000;
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 

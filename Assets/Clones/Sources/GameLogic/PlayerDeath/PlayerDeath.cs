@@ -21,10 +21,14 @@ namespace Clones.GameLogic
             _callbakc = callback;
 
             _player.Died += OnDied;
+            _player.Reborned += OnReborned;
         }
 
-        public void OnDisable() => 
+        public void OnDisable()
+        {
             _player.Died -= OnDied;
+            _player.Reborned -= OnReborned;
+        }
 
         private void OnDied(IDamageable obj)
         {
@@ -33,5 +37,8 @@ namespace Clones.GameLogic
             _destroyableEnemies.DestroyExistingEnemies();
             _openableView.Open();
         }
+
+        private void OnReborned() =>
+            _timeScale.Scaled(1);
     }
 }

@@ -59,6 +59,9 @@ namespace Clones.Infrastructure
 
             UseSelectedClone();
             _saveLoadService.SaveProgress();
+
+            Debug.Log("end game---------------");
+            Debug.Log("plaing time " + _gameTimer.LastMeasurement);
         }
 
         private void CreateGame()
