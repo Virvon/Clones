@@ -18,20 +18,20 @@ MonoBehaviour:
   Bullet: 1
   UpgradePrice: 1000
   UpgradePriceIncrease: 150
-  KnockbackForse: 0
+  KnockbackForse: 600
   KnockbackOffset: 0
   BuyPrice: 5000
   IsBuyed: 0
   WandStats:
     HealthIncreasePercentage: 0
     DamageIncreasePercentage: 0
-    AttackCooldownDecreasePercentage: 0
+    AttackCooldownDecreasePercentage: 10
     PreyResourcesIncreasePercentage: 10
-    MaxAttackCooldownDecreasePercentage: 0
+    MaxAttackCooldownDecreasePercentage: 60
   WandStatsIncrease:
     HealthIncrease: 0
     DamageIncrease: 0
-    AttackCooldownDecrease: 0
-    PreyResourcesIncrease: 1
+    AttackCooldownDecrease: 2
+    PreyResourcesIncrease: 4
   ShootAudio: {fileID: 8300000, guid: c5a163e2abe8a524e8b529546dadcd23, type: 3}
   ShootAudioVolume: 1
