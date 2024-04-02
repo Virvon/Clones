@@ -167,5 +167,12 @@ namespace Clones.Infrastructure
             upgradeView.GetComponentInChildren<WandUpgradeButton>()
                 .Init(_persistentProgress.Progress.Wallet);
         }
+
+        public void CreateCloneModel(ICharacterFactory characterFactory)
+        {
+            GameObject model = _assets.Instantiate(AssetPath.UiCloneModel, _containers.CloneModel);
+
+            _containers.CloneModel.GetComponent<WandCreator>().Init(_wandsCardsView, characterFactory, model.GetComponent<WandBone>().Bone);
+        }
     }
 }

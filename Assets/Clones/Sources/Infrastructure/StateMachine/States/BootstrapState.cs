@@ -97,6 +97,7 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IPartsFactory>(new PartsFactory(_services.Single<IGameStaticDataService>()));
             _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<ISaveLoadService>()));
             _services.RegisterSingle<IEducationFactory>(new EducationFactory(_services.Single<IPartsFactory>(), _services.Single<IGameStaticDataService>(), _services.Single<IAssetProvider>()));
+            _services.RegisterSingle<ICharacterFactory>(new CharacterFactory(_services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<IInputService>()));
         }
 
         private void RegisterInputService()

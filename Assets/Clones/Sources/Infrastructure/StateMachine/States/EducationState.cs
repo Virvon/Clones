@@ -22,6 +22,7 @@ namespace Clones.Infrastructure
         private readonly ITimeScale _timeScale;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ILocalization _localization;
+        private readonly ICharacterFactory _characterFactory;
 
         private List<IDisable> _disables;
         private GameObject _playerObject;
@@ -31,7 +32,7 @@ namespace Clones.Infrastructure
         private GameObject _controlObject;
         private CinemachineVirtualCamera _educationVirtualCamera;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner, ILocalization localization)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
@@ -45,6 +46,7 @@ namespace Clones.Infrastructure
             _localization = localization;
 
             _disables = new List<IDisable>();
+            _characterFactory = characterFactory;
         }
 
         public void Enter()
@@ -62,9 +64,9 @@ namespace Clones.Infrastructure
         {
             _questCreator = CreateEducationQuestCreator();
             IItemsCounter itmesCounter = CreateItemsCounter(_questCreator);
-            _playerObject = _gameFactory.CreatePlayer(_partsFactory, itmesCounter);
+            _playerObject = _characterFactory.CreateCharacter(_partsFactory, itmesCounter);
 
-            _gameFactory.CreateVirtualCamera();
+            _gameFactory.CreateVirtualCamera(_playerObject);
             _educationVirtualCamera = _educationFactory.CreateVirtualCamera();
 
             _uiFactory.CreateHud(_questCreator, _playerObject);

@@ -22,11 +22,12 @@ namespace Clones.Infrastructure
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IAdvertisingDisplay _advertisingDisplay;
         private readonly ILocalization _localization;
+        private readonly ICharacterFactory _characterFactory;
 
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
 
-        public GameLoopState(GameStateMachine stateMachine, IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization)
+        public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -41,6 +42,7 @@ namespace Clones.Infrastructure
             _disables = new();
             _advertisingDisplay = advertisingDisplay;
             _localization = localization;
+            _characterFactory = characterFactory;
         }
 
         public void Enter()
@@ -69,10 +71,12 @@ namespace Clones.Infrastructure
             IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, resourcesMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward, _gameStaticDataService, _localization);
             IItemsCounter itemsCounter = CreateItemsCounter(questsCreator, resourcesMultiplier);
 
-            GameObject playerObject = _gameFactory.CreatePlayer(_partsFactory, itemsCounter);
+            GameObject playerObject = _characterFactory.CreateCharacter(_partsFactory, itemsCounter);
             CharacterAttack playerAttack = playerObject.GetComponent<CharacterAttack>();
 
-            WorldGenerator worldGenerator = _gameFactory.CreateWorldGenerator();
+            _characterFactory.CreateWand(playerObject.GetComponent<WandBone>().Bone);
+
+            WorldGenerator worldGenerator = _gameFactory.CreateWorldGenerator(playerObject);
             worldGenerator.Init(_partsFactory);
 
             QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
@@ -83,16 +87,16 @@ namespace Clones.Infrastructure
             _uiFactory.CreateGameOverView();
             _uiFactory.CreateGameRevivleView(playerRevival);
 
-            CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera();
+            CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera(playerObject);
             AttackShake attackShake = new(playerAttack, virtualCamera.GetComponent<CameraShake>());
             CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
             ICurrentBiome currentBiome = new CurrentBiome(worldGenerator);
 
-            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity);
+            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity, playerObject);
             enemiesSpawner.Init(_partsFactory);
 
             _gameFactory.CreateMusic(currentBiome);
-            _gameFactory.CreateFreezingScreen();
+            _gameFactory.CreateFreezingScreen(playerObject);
 
             _gameTimer = new GameTimer();
             _gameTimer.Init(_coroutineRunner);

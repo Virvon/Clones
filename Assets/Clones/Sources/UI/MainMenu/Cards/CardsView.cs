@@ -12,8 +12,16 @@ namespace Clones.UI
         private Dictionary<Card, TType> _types = new();
         private Dictionary<TType, Card> _cards = new();
 
+        public event Action CardSelected;
+
         protected IPersistentProgressService PersistentProgress { get; private set; }
         protected IMainMenuStaticDataService MainMenuStaticDataService { get; private set; }
+
+        public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
+        {
+            PersistentProgress = persistentProgress;
+            MainMenuStaticDataService = mainMenuStaticDataService;
+        }
 
         private void OnDestroy()
         {
@@ -22,12 +30,6 @@ namespace Clones.UI
                 card.GetComponent<CardButton>().Clicked -= Select;
                 card.GetComponent<BuyCardView>().BuyCardTried -= OnBuyTried;
             }
-        }
-
-        public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
-        {
-            PersistentProgress = persistentProgress;
-            MainMenuStaticDataService = mainMenuStaticDataService;
         }
 
         public void AddCard(Card card, TType type)
@@ -48,6 +50,8 @@ namespace Clones.UI
             _currentCard.Select();
 
             SaveCurrentCard(_currentCard);
+
+            CardSelected?.Invoke();
         }
 
         protected TType GetType(Card card) =>

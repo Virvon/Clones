@@ -8,17 +8,17 @@ namespace Clones.Infrastructure
 {
     public class MainMenuLoopState : IState
     {
-        private readonly GameStateMachine _stateMachine;
         private readonly IMainMenuFactory _mainMenuFactory;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
         private readonly ISaveLoadService _saveLoadProgress;
+        private readonly ICharacterFactory _characterFactory;
 
-        public MainMenuLoopState(GameStateMachine stateMachine, IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadProgress)
+        public MainMenuLoopState(IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadProgress, ICharacterFactory characterFactory)
         {
-            _stateMachine = stateMachine;
             _mainMenuFactory = mainMenuFactory;
             _mainMenuStaticDataService = mainMenuStaticDataService;
             _saveLoadProgress = saveLoadProgress;
+            _characterFactory = characterFactory;
         }
 
         public void Enter()
@@ -37,6 +37,8 @@ namespace Clones.Infrastructure
 
             CreateClonesCards(menuData.CloneTypes);
             CreateWandsCards(menuData.WandTypes);
+
+            _mainMenuFactory.CreateCloneModel(_characterFactory);
 
             clonesCardsView.SelectCurrentOrDefault();
             wandsCardsView.SelectCurrentOrDefault();
