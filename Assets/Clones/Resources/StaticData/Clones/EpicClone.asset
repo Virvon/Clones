@@ -12,28 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcf306fd568238408369c36bb4993e1, type: 3}
   m_Name: EpicClone
   m_EditorClassIdentifier: 
+  Prefab: {fileID: 4658819119955953382, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
+  Card: {fileID: 3171580171538393250, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
   Type: 3
-  Prefab: {fileID: 8931962915480580132, guid: 6e158d679bef4fb42b6345de557da114, type: 3}
-  Model: {fileID: 2662455025583865989, guid: af310a0ffdfd6eb4e934387b7d11fbab, type: 3}
-  Card: {fileID: 3729764337796188301, guid: cf2c37de0d7401147b50098e3bcd6846, type: 3}
-  Helath: 100
-  Damage: 15
-  AttackCooldown: 0
-  ResourceMultiplier: 0
-  UpgradePrice: 100
-  IncreaseHealth: 5
-  IncreaseDamage: 1
-  IncreaseAttackCooldown: 0
-  IncreaseResourceMultiplier: 0
-  IncreasePrice: 25
-  MinAttackCooldow: 0
-  DisuseTime: 0
-  MovementSpeed: 0
-  RotationSpeed: 0
-  MiningRadius: 0
-  AttackRadius: 0
-  DropCollectingRadius: 0
-  BuyPrice: 0
+  Helath: 750
+  Damage: 150
+  AttackCooldown: 1
+  ResourceMultiplier: 2.5
+  UpgradePrice: 1000
+  IncreaseHealth: 35
+  IncreaseDamage: 10
+  IncreaseAttackCooldown: 0.1
+  IncreaseResourceMultiplier: 0.2
+  IncreasePrice: 150
+  MinAttackCooldow: 0.5
+  DisuseTime: 60
+  MovementSpeed: 10
+  RotationSpeed: 1080
+  MiningRadius: 8
+  AttackRadius: 10
+  DropCollectingRadius: 5
+  BuyPrice: 5000
   IsBuyed: 0
-  RebornEffect: {fileID: 0}
-  RebornEffectOffset: {x: 0, y: 0, z: 0}
+  RebornEffect: {fileID: 100006, guid: 34fcf19f74fcb794baeefd01952bc508, type: 3}
+  RebornEffectOffset: {x: 0, y: 0.05, z: 0}

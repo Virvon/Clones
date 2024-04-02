@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 8286768699524046424, guid: 4fdfdc09782739044a8ebb4d711e136e, type: 3}
   Type: 1
-  Damage: 1
-  Health: 20
+  Damage: 15
+  Health: 50
   AttackCooldown: 1
-  MinStopDistance: 2
-  MaxStopDistance: 3
+  MinStopDistance: 3
+  MaxStopDistance: 4
   DeathEffect: {fileID: 1889919486439536, guid: 41f0b29a031db444594cb6bd50194d38, type: 3}
   EffectOffset: {x: 0, y: 1, z: 0}
