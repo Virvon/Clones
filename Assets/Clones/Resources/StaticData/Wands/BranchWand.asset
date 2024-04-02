@@ -18,7 +18,7 @@ MonoBehaviour:
   Bullet: 4
   UpgradePrice: 500
   UpgradePriceIncrease: 50
-  KnockbackForse: 0
+  KnockbackForse: 1000
   KnockbackOffset: 0
   BuyPrice: 0
   IsBuyed: 1

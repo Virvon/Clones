@@ -18,8 +18,8 @@ MonoBehaviour:
   Bullet: 0
   UpgradePrice: 500
   UpgradePriceIncrease: 100
-  KnockbackForse: 0
-  KnockbackOffset: 0
+  KnockbackForse: 1200
+  KnockbackOffset: 200
   BuyPrice: 2000
   IsBuyed: 0
   WandStats:
@@ -27,7 +27,7 @@ MonoBehaviour:
     DamageIncreasePercentage: 10
     AttackCooldownDecreasePercentage: 1
     PreyResourcesIncreasePercentage: 0
-    MaxAttackCooldownDecreasePercentage: 40
+    MaxAttackCooldownDecreasePercentage: 20
   WandStatsIncrease:
     HealthIncrease: 0
     DamageIncrease: 2

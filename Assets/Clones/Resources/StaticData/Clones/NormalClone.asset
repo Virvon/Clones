@@ -22,8 +22,8 @@ MonoBehaviour:
   UpgradePrice: 100
   IncreaseHealth: 50
   IncreaseDamage: 5
-  IncreaseAttackCooldown: 0.1
-  IncreaseResourceMultiplier: 0.1
+  IncreaseAttackCooldown: 0.05
+  IncreaseResourceMultiplier: 0.5
   IncreasePrice: 100
   MinAttackCooldow: 0.5
   DisuseTime: 0

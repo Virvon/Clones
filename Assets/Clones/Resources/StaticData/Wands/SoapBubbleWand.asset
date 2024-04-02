@@ -18,8 +18,8 @@ MonoBehaviour:
   Bullet: 3
   UpgradePrice: 2500
   UpgradePriceIncrease: 100
-  KnockbackForse: 0
-  KnockbackOffset: 0
+  KnockbackForse: 1600
+  KnockbackOffset: 400
   BuyPrice: 10000
   IsBuyed: 0
   WandStats:

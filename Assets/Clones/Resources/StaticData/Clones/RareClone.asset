@@ -18,12 +18,12 @@ MonoBehaviour:
   Helath: 2000
   Damage: 70
   AttackCooldown: 1
-  ResourceMultiplier: 1.5
+  ResourceMultiplier: 2
   UpgradePrice: 500
   IncreaseHealth: 100
   IncreaseDamage: 4
-  IncreaseAttackCooldown: 0.1
-  IncreaseResourceMultiplier: 0.15
+  IncreaseAttackCooldown: 0.08
+  IncreaseResourceMultiplier: 0.7
   IncreasePrice: 120
   MinAttackCooldow: 0.5
   DisuseTime: 30
