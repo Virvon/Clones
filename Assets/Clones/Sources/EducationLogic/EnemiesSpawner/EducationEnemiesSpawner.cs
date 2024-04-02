@@ -43,7 +43,7 @@ namespace Clones.EducationLogic
             if (spawnedEnemies.Length == 0)
                 throw new Exception("enemies to create wave not found");
 
-            float maxWeight = waveInfo.WaveWeight * waveInfo.Complexity;
+            float maxWeight = waveInfo.WaveWeight;
             float currentWeight = 0;
 
             while (currentWeight < maxWeight)

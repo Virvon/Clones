@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Quest
   m_EditorClassIdentifier: 
   QuestItemTypes: 000000000100000002000000030000000400000005000000060000000700000008000000
-  MinItemsCountPercentInQuest: 40
+  MinItemsCountPercentInQuest: 25
   ItemsCount: 10
-  Reward: 10
+  Reward: 500

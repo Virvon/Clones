@@ -25,7 +25,7 @@ namespace Clones.GameLogic
         public IReadOnlyList<Quest> Quests => _quests;
         public int Reward { get; private set; }
 
-        private float Complexiy => _complexity == null ? 1 : _complexity.GetComplexity(_currentQuest);
+        private float Complexity => _complexity == null ? 1 : _complexity.GetComplexity(_currentQuest);
 
         public event Action Created;
         public event Action<Quest> Updated;
@@ -82,7 +82,7 @@ namespace Clones.GameLogic
             HashSet<QuestItemType> usedTypes = new();
 
             int availableTypesCount = _questTypes.Length;
-            int maxItemsCount = (int)(_itemsCount * Complexiy);
+            int maxItemsCount = (int)(_itemsCount * Complexity);
             int minItemsCountInQuest = (int)(maxItemsCount * _minItemsCountPercentInQuest / 100f);
             int totalItemsCount = 0;
 
@@ -106,7 +106,7 @@ namespace Clones.GameLogic
                 totalItemsCount += itemsCount;
             }
 
-            reward = (int)(_reward * _resourcesMultiplier * Complexiy);
+            reward = (int)(_reward * Complexity);
 
             return quests;
         }

@@ -28,7 +28,9 @@ namespace Clones.GameLogic
 
         private void OnTileCreated(GameObject tile)
         {
-            if (tile.TryGetComponent(out Biome biome))
+            Biome biome = tile.GetComponentInChildren<Biome>();
+
+            if (biome != null)
             {
                 biome.PlayerEntered += OnPlayerEntered;
                 biome.PlayerExited += OnPlayerExited;
@@ -37,7 +39,9 @@ namespace Clones.GameLogic
 
         private void OnTileDestroyed(GameObject tile)
         {
-            if (tile.TryGetComponent(out Biome biome))
+            Biome biome = tile.GetComponentInChildren<Biome>();
+
+            if (biome != null)
             {
                 biome.PlayerEntered -= OnPlayerEntered;
                 biome.PlayerExited -= OnPlayerExited;
