@@ -34,6 +34,10 @@ namespace Clones.Infrastructure
         {
             LoadProgressOrInitNew();
 
+            _stateMachine.Enter<LoadSceneState, (string, bool)>((MainMenuScene, false), _stateMachine.Enter<MainMenuLoopState>);
+
+            return;
+
             if (_isNewProgressCreated)
                 _stateMachine.Enter<LoadSceneState, (string, bool)>((EducationScene, false), _stateMachine.Enter<EducationState>);
             else
