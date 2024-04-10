@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class AutoDestrouEffect : MonoBehaviour
+public class AutoDestroyEffect : MonoBehaviour
 {
     private void Start() => 
         StartCoroutine(Timer());
