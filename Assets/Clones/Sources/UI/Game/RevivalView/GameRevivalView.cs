@@ -24,6 +24,7 @@ namespace Clones.UI
         {
             _playerRevival = playerRevival;
             _gameOverView = gameOverView;
+            _timeValue.text = _cooldown.ToString();
         }
 
         public void Open()
@@ -61,7 +62,7 @@ namespace Clones.UI
 
                 _timeValue.text = Mathf.Round(currentCooldown).ToString();
 
-                yield return new WaitForFixedUpdate();
+                yield return null;
             }
 
             _revivalViewAnimator.Close(()=> _gameOverView.Open());

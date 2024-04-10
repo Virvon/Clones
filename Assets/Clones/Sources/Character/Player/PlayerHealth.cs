@@ -3,7 +3,7 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 {
-    public bool IsAlive => true;
+    public bool IsAlive => Health > 0;
 
     public int Health { get; private set; }
     public int MaxHealth { get; private set; }

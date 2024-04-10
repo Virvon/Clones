@@ -20,7 +20,7 @@ namespace Clones.Biomes
         {
             bool isFirstAttack = true;
 
-            while (Player != null)
+            while (health.IsAlive && Player != null)
             {
                 if (isFirstAttack)
                     isFirstAttack = false;
@@ -29,8 +29,6 @@ namespace Clones.Biomes
 
                 yield return new WaitForSeconds(_coolDown);
             }
-
-            yield return null;
         }
     }
 }
