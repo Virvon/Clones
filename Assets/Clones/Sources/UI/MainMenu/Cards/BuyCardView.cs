@@ -50,8 +50,8 @@ namespace Clones.UI
 
         private void TryBuy()
         {
-            BuyCardTried?.Invoke(GetComponent<Card>());
             BuyTried?.Invoke();
+            BuyCardTried?.Invoke(GetComponent<Card>());
         }
     }
 }

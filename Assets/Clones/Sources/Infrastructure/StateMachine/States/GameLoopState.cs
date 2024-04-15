@@ -80,7 +80,7 @@ namespace Clones.Infrastructure
             worldGenerator.Init(_partsFactory);
 
             QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
-            GamePlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _timeScale, _advertisingDisplay);
+            GamePlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _advertisingDisplay);
 
             GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject);
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
