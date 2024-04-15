@@ -137,13 +137,22 @@ namespace Clones.Infrastructure
             GameObject clonesCardsShowButtonObject = clonesCardsShowButton.GetComponentInChildren<Button>().gameObject;
             GameObject wandsCardsShowButtonObject = wandsCardsShowButton.GetComponentInChildren<Button>().gameObject;
 
-            clonesCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { wandsCardsShowButtonObject, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButtonObject, _wandsCardsView.gameObject });
+            cloToggleWindows cloneCardsToggleWindows = clonesCardsShowButton.GetComponent<ToggleWindows>();
+            ToggleWindows wandCardsToggleWindows = wandsCardsShowButton.GetComponent<ToggleWindows>();
 
-            wandsCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { clonesCardsShowButtonObject, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButtonObject, _clonesCardsView.gameObject });
+            cloneCardsToggleWindows
+                .Init(new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject });
 
-            clonesCardsShowButtonObject.SetActive(false);
+            wandCardsToggleWindows
+                .Init(new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
+
+            _clonesCardsView
+                .GetComponent<CardsScrollRect>()
+                .Init(cloneCardsToggleWindows);
+
+            _wandsCardsView
+                .GetComponent<CardsScrollRect>()
+                .Init(wandCardsToggleWindows);
         }
 
         public void CreateStatsView()

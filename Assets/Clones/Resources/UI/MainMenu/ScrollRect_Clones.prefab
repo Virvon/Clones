@@ -6400,6 +6400,7 @@ GameObject:
   - component: {fileID: 932141897559363532}
   - component: {fileID: 932141897559363533}
   - component: {fileID: 2410514649009606419}
+  - component: {fileID: 2496614791143902144}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -6483,6 +6484,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57ce1757ed440745bed2e943bec380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2496614791143902144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932141897559363531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acd6fa0a1cfe294d8f958cef0b8dc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardViewBehaviour: {fileID: 2410514649009606419}
+  _content: {fileID: 932141897559363530}
 --- !u!1 &932141897570139164
 GameObject:
   m_ObjectHideFlags: 0
