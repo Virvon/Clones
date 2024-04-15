@@ -38,6 +38,8 @@ namespace Clones.UI
         private void OnDestroy()
         {
             _toggleWindows.WindowToggled -= ScrollToCard;
+
+            if(_cardView != null)
             _cardView.CardSelected -= ScrollToCard;
         }
 
