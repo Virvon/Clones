@@ -121,11 +121,22 @@ namespace Clones.Infrastructure
             GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons);
             GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons);
 
-            clonesCardsShowButton.GetComponent<ToggleWindows>()
+            ToggleWindows cloneCardsToggleWindows = clonesCardsShowButton.GetComponent<ToggleWindows>();
+            ToggleWindows wandCardsToggleWindows = wandsCardsShowButton.GetComponent<ToggleWindows>();
+
+            cloneCardsToggleWindows
                 .Init(new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject });
 
-            wandsCardsShowButton.GetComponent<ToggleWindows>()
+            wandCardsToggleWindows
                 .Init(new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
+
+            _clonesCardsView
+                .GetComponent<CardsScrollRect>()
+                .Init(cloneCardsToggleWindows);
+
+            _wandsCardsView
+                .GetComponent<CardsScrollRect>()
+                .Init(wandCardsToggleWindows);
         }
 
         public void CreateStatsView()

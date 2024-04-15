@@ -3256,7 +3256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1983e52005b19894b9f47f78b86612cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollRect: {fileID: 224902689961861452}
 --- !u!114 &224902689961861452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3269,6 +3268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acd6fa0a1cfe294d8f958cef0b8dc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardViewBehaviour: {fileID: 1879655353067843609}
   _content: {fileID: 4942409479578763822}
 --- !u!1 &4942409479590859976
 GameObject:

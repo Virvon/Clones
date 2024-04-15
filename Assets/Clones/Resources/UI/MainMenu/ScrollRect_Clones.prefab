@@ -6484,7 +6484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57ce1757ed440745bed2e943bec380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollRect: {fileID: 2496614791143902144}
 --- !u!114 &2496614791143902144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6497,9 +6496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acd6fa0a1cfe294d8f958cef0b8dc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollRect: {fileID: 8229095523734977773}
+  _cardViewBehaviour: {fileID: 2410514649009606419}
   _content: {fileID: 932141897559363530}
-  buttons: []
 --- !u!1 &932141897570139164
 GameObject:
   m_ObjectHideFlags: 0

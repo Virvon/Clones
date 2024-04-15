@@ -16,7 +16,7 @@ namespace Clones.UI
             else
                 SelectDefault();
 
-            ScrollRect.ScrollToCard(GetCard(PersistentProgress.Progress.AvailableWands.SelectedWand));
+            //ScrollRect.ScrollToCard(GetCard(PersistentProgress.Progress.AvailableWands.SelectedWand));
         }
 
         protected override void OnBuyTried(Card card)

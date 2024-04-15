@@ -13,7 +13,7 @@ namespace Clones.UI
             else
                 SelectDefault();
 
-            ScrollRect.ScrollToCard(GetCard(PersistentProgress.Progress.AvailableClones.GetSelectedCloneData().Type));
+            //ScrollRect.ScrollToCard(GetCard(PersistentProgress.Progress.AvailableClones.GetSelectedCloneData().Type));
         }
 
         protected override void OnBuyTried(Card card)

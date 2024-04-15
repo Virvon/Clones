@@ -124,8 +124,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9131600173905188965}
-        m_TargetAssemblyTypeName: ToggleWindows, Assembly-CSharp
-        m_MethodName: Invoke
+        m_TargetAssemblyTypeName: Clones.UI.ToggleWindows, Assembly-CSharp
+        m_MethodName: Toogle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -147,12 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3705241c9670bc240b5a4598862f9ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activateGameobjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  _deactivateGameobjects:
-  - {fileID: 0}
-  - {fileID: 9131600173905188971}
 --- !u!1 &9131600174501704971
 GameObject:
   m_ObjectHideFlags: 0
