@@ -134,10 +134,8 @@ namespace Clones.Infrastructure
         {
             GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons);
             GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons);
-            GameObject clonesCardsShowButtonObject = clonesCardsShowButton.GetComponentInChildren<Button>().gameObject;
-            GameObject wandsCardsShowButtonObject = wandsCardsShowButton.GetComponentInChildren<Button>().gameObject;
-
-            cloToggleWindows cloneCardsToggleWindows = clonesCardsShowButton.GetComponent<ToggleWindows>();
+            
+            ToggleWindows cloneCardsToggleWindows = clonesCardsShowButton.GetComponent<ToggleWindows>();
             ToggleWindows wandCardsToggleWindows = wandsCardsShowButton.GetComponent<ToggleWindows>();
 
             cloneCardsToggleWindows

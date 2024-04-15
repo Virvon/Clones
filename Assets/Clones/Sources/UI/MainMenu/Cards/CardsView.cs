@@ -17,6 +17,12 @@ namespace Clones.UI
 
         public event Action CardSelected;
 
+        public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
+        {
+            PersistentProgress = persistentProgress;
+            MainMenuStaticDataService = mainMenuStaticDataService;
+        }
+
         private void OnDestroy()
         {
             foreach (var card in _cards.Values)
