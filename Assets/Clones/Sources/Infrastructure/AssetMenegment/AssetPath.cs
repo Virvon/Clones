@@ -30,6 +30,6 @@ namespace Clones.Infrastructure
         public const string FrameFocus = "UI/Game/Focus";
         public const string AudioMixerGroup = "Audio/Mixers/Mixer";
         public const string EducationVirtualCamera = "Camera/EducationVirtualCamera";
-        public const string UiCloneModel = "Characters/Player/Prefabs/CloneModel";
+        public const string UiCloneModel = "Characters/Player/Prefabs/CloneModel_01";
     }
 }
