@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Clones.Infrastructure
+﻿namespace Clones.Infrastructure
 {
     public static class AssetPath
     {
@@ -30,6 +28,6 @@ namespace Clones.Infrastructure
         public const string FrameFocus = "UI/Game/Focus";
         public const string AudioMixerGroup = "Audio/Mixers/Mixer";
         public const string EducationVirtualCamera = "Camera/EducationVirtualCamera";
-        public const string UiCloneModel = "Characters/Player/Prefabs/CloneModel_01";
+        public const string CloneModelPoint = "UI/MainMenu/CloneModelPoint";
     }
 }

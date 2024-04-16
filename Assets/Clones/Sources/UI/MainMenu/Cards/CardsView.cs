@@ -49,9 +49,9 @@ namespace Clones.UI
             CurrentCard = card;
             CurrentCard.Select();
 
-            CardSelected?.Invoke();
-
             SaveCurrentCard(CurrentCard);
+
+            CardSelected?.Invoke();
         }
 
         protected TType GetType(Card card) =>

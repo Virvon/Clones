@@ -20,7 +20,7 @@ namespace Clones.Infrastructure
         private readonly IInputService _inputService;
 
         private GameObject _playerObject;
-        private Transform _wandBone;
+        private Transform _modelWandBone;
 
         public CharacterFactory(IPersistentProgressService persistentPorgress, IMainMenuStaticDataService mainMenuStaticDataService, IInputService inputService)
         {
@@ -109,8 +109,6 @@ namespace Clones.Infrastructure
                 .GetComponent<PlayerRebornEffect>()
                 .Init(cloneStaticData.RebornEffect, cloneStaticData.RebornEffectOffset);
 
-            _wandBone = _playerObject.GetComponent<WandBone>().Bone;
-
             return _playerObject;
         }
 
@@ -121,9 +119,9 @@ namespace Clones.Infrastructure
             return Object.Instantiate(wandStaticData.Prefab, bone);
         }
 
-        public GameObject CreateWandModel(Transform bone)
+        public GameObject CreateWandModel()
         {
-            GameObject wand = CreateWand(bone);
+            GameObject wand = CreateWand(_modelWandBone);
 
             wand.layer = LayerMask.NameToLayer(UiLayer);
 
@@ -131,6 +129,17 @@ namespace Clones.Infrastructure
                 element.gameObject.layer = LayerMask.NameToLayer(UiLayer);
 
             return wand;
+        }
+
+        public GameObject CreateCloneModel(Transform parent)
+        {
+            CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(_persistentPorgress.Progress.AvailableClones.SelectedClone);
+
+            GameObject clone = Object.Instantiate(cloneStaticData.Model, parent);
+
+            _modelWandBone = clone.GetComponent<WandBone>().Bone;
+
+            return clone;
         }
 
         private WandStaticData GetWandStaticData() =>

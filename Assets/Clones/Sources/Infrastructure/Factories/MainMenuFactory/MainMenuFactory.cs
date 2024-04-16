@@ -7,7 +7,6 @@ using Clones.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Clones.Infrastructure
 {
@@ -175,11 +174,18 @@ namespace Clones.Infrastructure
                 .Init(_persistentProgress.Progress.Wallet);
         }
 
-        public void CreateCloneModel(ICharacterFactory characterFactory)
+        public void CreateCloneModelPoint(ICharacterFactory characterFactory)
         {
-            GameObject model = _assets.Instantiate(AssetPath.UiCloneModel, _containers.CloneModel);
+            GameObject point = _assets.Instantiate(AssetPath.CloneModelPoint, _containers.Characters);
 
-            _containers.CloneModel.GetComponent<WandCreator>().Init(_wandsCardsView, characterFactory, model.GetComponent<WandBone>().Bone);
+            point
+                .GetComponent<WandModelCreator>()
+                .Init(_wandsCardsView, characterFactory);
+
+
+            point
+                .GetComponent<CloneModelCreator>()
+                .Init(_clonesCardsView, characterFactory);
         }
     }
 }

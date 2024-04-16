@@ -45,9 +45,6 @@ namespace Clones.UI
 
         public void ScrollToCard()
         {
-            Debug.Log(_cardView != null);
-            Debug.Log(_toggleWindows != null);
-            Debug.Log(_content != null);
             StartCoroutine(SizeDeltaWaiter(callback: () =>
             {
                 if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_content, _cardView.CurrentCard.transform.position, null, out Vector2 localPoint))

@@ -8,6 +8,7 @@ namespace Clones.StaticData
     public class CloneStaticData : ScriptableObject
     {
         public GameObject Prefab;
+        public GameObject Model;
         public CloneCard Card;
         public CloneType Type;
         public int Helath;

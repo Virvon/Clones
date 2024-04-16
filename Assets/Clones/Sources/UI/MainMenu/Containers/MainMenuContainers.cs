@@ -8,6 +8,6 @@ namespace Clones.UI
         public Transform Buttons;
         public Transform StatsView;
         public GameObject Settings;
-        public Transform CloneModel;
+        public Transform Characters;
     }
 }

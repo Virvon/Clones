@@ -38,7 +38,7 @@ namespace Clones.Infrastructure
             CreateClonesCards(menuData.CloneTypes);
             CreateWandsCards(menuData.WandTypes);
 
-            _mainMenuFactory.CreateCloneModel(_characterFactory);
+            _mainMenuFactory.CreateCloneModelPoint(_characterFactory);
 
             clonesCardsView.SelectCurrentOrDefault();
             wandsCardsView.SelectCurrentOrDefault();

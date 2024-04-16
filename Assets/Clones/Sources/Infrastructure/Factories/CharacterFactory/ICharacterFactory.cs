@@ -8,6 +8,7 @@ namespace Clones.Infrastructure
     {
         GameObject CreateCharacter(IPartsFactory partsFactory, IItemsCounter itemsCounter);
         GameObject CreateWand(Transform bone);
-        GameObject CreateWandModel(Transform bone);
+        GameObject CreateWandModel();
+        GameObject CreateCloneModel(Transform parent);
     }
 }
