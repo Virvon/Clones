@@ -45,6 +45,9 @@ namespace Clones.UI
 
         protected void Select(Card card)
         {
+            if (CurrentCard == card)
+                return;
+
             CurrentCard?.Unselect();
             CurrentCard = card;
             CurrentCard.Select();
