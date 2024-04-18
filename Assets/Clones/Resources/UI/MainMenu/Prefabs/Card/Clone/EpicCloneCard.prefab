@@ -53,7 +53,7 @@ MonoBehaviour:
     Text: Epik
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F"
+    Text: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
     Object: {fileID: 0}
 --- !u!1001 &2288250530297077807
 PrefabInstance:
@@ -64,11 +64,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_text
-      value: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F"
+      value: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_fontSize
-      value: 29.25
+      value: 29.05
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119593212152, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_Sprite

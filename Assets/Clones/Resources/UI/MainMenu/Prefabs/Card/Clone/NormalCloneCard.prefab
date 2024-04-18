@@ -53,7 +53,7 @@ MonoBehaviour:
     Text: Normal
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F"
+    Text: "\u041E\u0431\u044B\u0447\u043D\u044B\u0439"
     Object: {fileID: 0}
 --- !u!1001 &3354919127039461593
 PrefabInstance:
@@ -64,11 +64,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_text
-      value: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F"
+      value: "\u041E\u0431\u044B\u0447\u043D\u044B\u0439"
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_fontSize
-      value: 33
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119955953377, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_Pivot.x
@@ -161,6 +161,10 @@ PrefabInstance:
     - target: {fileID: 5881269236432380160, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: FallbackText
       value: Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605032155685567359, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}

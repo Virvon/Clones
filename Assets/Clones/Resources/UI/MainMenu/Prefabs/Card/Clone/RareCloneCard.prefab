@@ -53,7 +53,7 @@ MonoBehaviour:
     Text: Nadir
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u0420\u0435\u0434\u043A\u0430\u044F"
+    Text: "\u0420\u0435\u0434\u043A\u0438\u0439"
     Object: {fileID: 0}
 --- !u!1001 &2288250530297077807
 PrefabInstance:
@@ -72,7 +72,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 0337a38bec52c184d8ccd31eee57e2fa, type: 3}
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_text
-      value: "\u0420\u0435\u0434\u043A\u0430\u044F"
+      value: "\u0420\u0435\u0434\u043A\u0438\u0439"
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_fontSize
