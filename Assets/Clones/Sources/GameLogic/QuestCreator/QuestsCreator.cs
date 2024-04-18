@@ -1,4 +1,5 @@
 ﻿using Clones.Services;
+using Clones.StaticData;
 using Clones.Types;
 using System;
 using System.Collections.Generic;
@@ -98,10 +99,11 @@ namespace Clones.GameLogic
                     itemsCount = GetItemsCount(minItemsCountInQuest, maxItemsCount, totalItemsCount);
 
                 QuestItemType type = GetUniqueType(usedTypes);
-                string itemName = _staticDataService.GetItem(type).GetLocalizedName(_localization.GetIsoLanguage());
+                QuestItemStaticData itemStaticData = _staticDataService.GetItem(type);
+                string itemName = itemStaticData.GetLocalizedName(_localization.GetIsoLanguage());
 
                 usedTypes.Add(type);
-                quests.Add(new Quest(type, itemsCount, itemName));
+                quests.Add(new Quest(itemStaticData, itemsCount, itemName));
 
                 totalItemsCount += itemsCount;
             }
