@@ -7,10 +7,10 @@ namespace Clones.StaticData
     [CreateAssetMenu(fileName = "New CardClone", menuName = "Data/Create new card clone", order = 51)]
     public class CloneStaticData : ScriptableObject
     {
+        public CloneType Type;
         public GameObject Prefab;
         public GameObject Model;
         public CloneCard Card;
-        public CloneType Type;
         public int Helath;
         public int Damage;
         public float AttackCooldown;

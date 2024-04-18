@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcf306fd568238408369c36bb4993e1, type: 3}
   m_Name: NormalClone
   m_EditorClassIdentifier: 
+  Type: 1
   Prefab: {fileID: 8931962915480580132, guid: 6e158d679bef4fb42b6345de557da114, type: 3}
   Model: {fileID: 2662455025583865989, guid: af310a0ffdfd6eb4e934387b7d11fbab, type: 3}
-  Card: {fileID: 3171580171538393250, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
-  Type: 1
+  Card: {fileID: 183704716934258811, guid: 8f339796a8592914389e2da4bb7ef093, type: 3}
   Helath: 100
   Damage: 1
   AttackCooldown: 1
