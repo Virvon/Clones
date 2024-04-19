@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _biome: {fileID: 426282997792678135}
-  _spawnChancePercent: 50
+  _spawnChancePercent: 70
 --- !u!114 &4048927775034618640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _biomeEffects: {fileID: 8574584052775482951}
-  _audioSource: {fileID: 9187194838730445622}
+  _audioSource: {fileID: 0}
 --- !u!82 &9187194838730445622
 AudioSource:
   m_ObjectHideFlags: 0
