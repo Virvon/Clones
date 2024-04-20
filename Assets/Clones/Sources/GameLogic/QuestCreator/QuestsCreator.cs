@@ -3,6 +3,7 @@ using Clones.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Clones.GameLogic
@@ -88,7 +89,7 @@ namespace Clones.GameLogic
 
             _currentQuest++;
 
-            while (totalItemsCount < maxItemsCount)
+            while (totalItemsCount < maxItemsCount && quests.Count < 2)
             {
                 int itemsCount;
 
@@ -106,7 +107,7 @@ namespace Clones.GameLogic
                 totalItemsCount += itemsCount;
             }
 
-            reward = (int)(_reward * Complexity);
+            reward = (int)(_reward * Mathf.Pow(Complexity, 0.75f));
 
             return quests;
         }

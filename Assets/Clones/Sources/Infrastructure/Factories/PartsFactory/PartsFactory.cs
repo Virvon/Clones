@@ -22,9 +22,10 @@ namespace Clones.Infrastructure
             _staticData = staticData;
         }
 
-        public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject, float complexityCoefficient)
+        public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject, float complexityCoefficient, int currentWave)
         {
             EnemyStaticData enemyData = _staticData.GetEnemy(type);
+
             float rootComplexityCoefficient = (float)Math.Sqrt(complexityCoefficient);
 
             weight = GetEnemyWeight(enemyData, complexityCoefficient);
@@ -36,6 +37,9 @@ namespace Clones.Infrastructure
 
             enemyObject.GetComponent<NavMeshAgent>()
                 .stoppingDistance = (float)Math.Round(Random.Range(enemyData.MinStopDistance, enemyData.MaxStopDistance), 2);
+
+            float speedIncrease = Mathf.Min(currentWave, _staticData.GetEnemiesSpawner().MaxWavesWithSpeedIncrease) * _staticData.GetEnemiesSpawner().SpeedIncreasePerWave;
+            enemyObject.GetComponent<NavMeshAgent>().speed *= (1 + speedIncrease);
 
             MeleeAttack meleeAttack = enemyObject.GetComponentInChildren<MeleeAttack>();
             ShootingAttack shootingAttack = enemyObject.GetComponentInChildren<ShootingAttack>();
