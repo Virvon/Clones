@@ -18,14 +18,16 @@ namespace Clones.Infrastructure
         private readonly AllServices _services;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly LoadingPanel _loadingPanel;
+        private readonly AudioMixerGroup _audioMixer;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services, ICoroutineRunner coroutineRunner, LoadingPanel loadingPanel)
+        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services, ICoroutineRunner coroutineRunner, LoadingPanel loadingPanel, AudioMixerGroup audioMixer)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _services = services;
             _coroutineRunner = coroutineRunner;
             _loadingPanel = loadingPanel;
+            _audioMixer = audioMixer;
 
             RegisterServices();
         }
@@ -89,8 +91,9 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>()));
             _services.RegisterSingle<ITimeScale>(new TimeScale());
-            _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(GetAudioMixerGroup(), _services.Single<ITimeScale>(), _coroutineRunner));
+            _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(_audioMixer, _services.Single<ITimeScale>(), _coroutineRunner));
             _services.RegisterSingle<ILocalization>(new Localization(_coroutineRunner));
+            _services.RegisterSingle(new ActivityTracking(_services.Single<ITimeScale>(), _audioMixer));
 
             _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IInputService>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScale>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>()));
             _services.RegisterSingle<IUiFactory>(new UiFactory(_services.Single<IAssetProvider>(), _services.Single<IPersistentProgressService>(), _stateMachine, _services.Single<IInputService>()));
@@ -128,8 +131,5 @@ namespace Clones.Infrastructure
 
         private void EnterLoadProgress() => 
             _stateMachine.Enter<LoadProgressState>();
-
-        private AudioMixerGroup GetAudioMixerGroup() => 
-            Resources.Load<AudioMixerGroup>(AssetPath.AudioMixerGroup);
     }
 }

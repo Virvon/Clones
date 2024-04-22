@@ -2,6 +2,7 @@
 using Clones.UI;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 namespace Clones.Infrastructure
 {
@@ -10,11 +11,11 @@ namespace Clones.Infrastructure
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _currentState;
 
-        public GameStateMachine(SceneLoader sceneLoader, LoadingPanel loadingPanel, AllServices services, ICoroutineRunner coroutineRunner)
+        public GameStateMachine(SceneLoader sceneLoader, LoadingPanel loadingPanel, AudioMixerGroup audioMixer, AllServices services, ICoroutineRunner coroutineRunner)
         {
             _states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner, loadingPanel),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner, loadingPanel, audioMixer),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>(), services.Single<IMainMenuStaticDataService>()),
                 [typeof(EducationState)] = new EducationState(services.Single<IGameFacotry>(), services.Single<IPartsFactory>(), services.Single<IGameStaticDataService>(), services.Single<IPersistentProgressService>(), services.Single<IUiFactory>(), services.Single<IInputService>(), services.Single<IEducationFactory>(), services.Single<ITimeScale>(), coroutineRunner, services.Single<ILocalization>(), services.Single<ICharacterFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState(services.Single<IGameFacotry>(), services.Single<IUiFactory>(), services.Single<IPartsFactory>(), services.Single<IPersistentProgressService>(), services.Single<ITimeScale>(), services.Single<IMainMenuStaticDataService>(), services.Single<ISaveLoadService>(), services.Single<IGameStaticDataService>(), coroutineRunner, services.Single<IAdvertisingDisplay>(), services.Single<ILocalization>(), services.Single<ICharacterFactory>()),
