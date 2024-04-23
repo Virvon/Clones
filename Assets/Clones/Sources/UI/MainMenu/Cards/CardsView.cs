@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace Clones.UI
 {
-    public abstract class CardsView<TType> : MonoBehaviour where TType : Enum
+    public abstract class CardsView<TType> : MonoBehaviour, ICardsView where TType : Enum
     {
-        private Card _currentCard;
-
         private Dictionary<Card, TType> _types = new();
         private Dictionary<TType, Card> _cards = new();
 
-        public event Action CardSelected;
+        public Card CurrentCard { get; private set; }
 
         protected IPersistentProgressService PersistentProgress { get; private set; }
         protected IMainMenuStaticDataService MainMenuStaticDataService { get; private set; }
+
+        public event Action CardSelected;
 
         public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
         {
@@ -45,11 +45,14 @@ namespace Clones.UI
 
         protected void Select(Card card)
         {
-            _currentCard?.Unselect();
-            _currentCard = card;
-            _currentCard.Select();
+            if (CurrentCard == card)
+                return;
 
-            SaveCurrentCard(_currentCard);
+            CurrentCard?.Unselect();
+            CurrentCard = card;
+            CurrentCard.Select();
+
+            SaveCurrentCard(CurrentCard);
 
             CardSelected?.Invoke();
         }

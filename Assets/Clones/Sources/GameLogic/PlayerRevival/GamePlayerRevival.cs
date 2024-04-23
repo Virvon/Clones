@@ -9,17 +9,15 @@ namespace Clones.GameLogic
         private const int MaxRevivivalsCount = 1;
 
         private readonly PlayerHealth _player;
-        private readonly ITimeScale _timeScale;
         private readonly IAdvertisingDisplay _advertising;
 
         public bool CanRivival => _revivivalsCount < MaxRevivivalsCount;
 
         private int _revivivalsCount = 0;
 
-        public GamePlayerRevival(PlayerHealth player, ITimeScale timeScale, IAdvertisingDisplay advertising)
+        public GamePlayerRevival(PlayerHealth player, IAdvertisingDisplay advertising)
         {
             _player = player;
-            _timeScale = timeScale;
             _advertising = advertising;
         }
 

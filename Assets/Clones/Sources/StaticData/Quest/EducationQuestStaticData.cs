@@ -25,10 +25,11 @@ namespace Clones.StaticData
                 for(var j = 0; j < allQuests[i].Length; j++)
                 {
                     QuestInfo questInfo = _allQuestsInfos[i].Quests[j];
+                    QuestItemStaticData itemStaticData = staticDataService.GetItem(questInfo.Type);
 
-                    string itemName = staticDataService.GetItem(questInfo.Type).GetLocalizedName(isoLanguage);
+                    string itemName = itemStaticData.GetLocalizedName(isoLanguage);
 
-                    allQuests[i][j] = new Quest(questInfo.Type, questInfo.ItemsCount, itemName);
+                    allQuests[i][j] = new Quest(itemStaticData, questInfo.ItemsCount, itemName);
                 }
             }
 

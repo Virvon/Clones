@@ -64,6 +64,7 @@ namespace Clones.Infrastructure
         {
             _questCreator = CreateEducationQuestCreator();
             IItemsCounter itmesCounter = CreateItemsCounter(_questCreator);
+
             _playerObject = _characterFactory.CreateCharacter(_partsFactory, itmesCounter);
             _characterFactory.CreateWand(_playerObject.GetComponent<WandBone>().Bone);
 

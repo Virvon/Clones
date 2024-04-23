@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SniperWand
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5109261845676277305, guid: 835e282311271284ebab363bd83ddf8e, type: 3}
-  Card: {fileID: 1695363184805326113, guid: 075f50d425ed2ce4eabc094630ce1675, type: 3}
-  Type: 4
+  Card: {fileID: 2162005049245178766, guid: 2ccd7c325a6e902439b03ad13319c442, type: 3}
+  Type: 5
   Bullet: 1
   UpgradePrice: 1000
   UpgradePriceIncrease: 150

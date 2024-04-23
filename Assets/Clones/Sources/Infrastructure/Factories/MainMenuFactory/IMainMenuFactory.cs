@@ -16,6 +16,6 @@ namespace Clones.Infrastructure
         void CreateShowCardButtonds();
         void CreateStatsView();
         void CreateUpgradeView();
-        void CreateCloneModel(ICharacterFactory characterFactory);
+        void CreateCloneModelPoint(ICharacterFactory characterFactory);
     }
 }

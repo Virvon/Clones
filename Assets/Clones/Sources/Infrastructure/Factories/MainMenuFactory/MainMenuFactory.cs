@@ -7,7 +7,6 @@ using Clones.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Clones.Infrastructure
 {
@@ -134,16 +133,23 @@ namespace Clones.Infrastructure
         {
             GameObject clonesCardsShowButton = _assets.Instantiate(AssetPath.ClonesCardsShowButton, _containers.Buttons);
             GameObject wandsCardsShowButton = _assets.Instantiate(AssetPath.WandsCardsShowButton, _containers.Buttons);
-            GameObject clonesCardsShowButtonObject = clonesCardsShowButton.GetComponentInChildren<Button>().gameObject;
-            GameObject wandsCardsShowButtonObject = wandsCardsShowButton.GetComponentInChildren<Button>().gameObject;
+            
+            ToggleWindows cloneCardsToggleWindows = clonesCardsShowButton.GetComponent<ToggleWindows>();
+            ToggleWindows wandCardsToggleWindows = wandsCardsShowButton.GetComponent<ToggleWindows>();
 
-            clonesCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { wandsCardsShowButtonObject, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButtonObject, _wandsCardsView.gameObject });
+            cloneCardsToggleWindows
+                .Init(new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject }, new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject });
 
-            wandsCardsShowButton.GetComponent<ToggleWindows>()
-                .Init(new List<GameObject> { clonesCardsShowButtonObject, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButtonObject, _clonesCardsView.gameObject });
+            wandCardsToggleWindows
+                .Init(new List<GameObject> { clonesCardsShowButton, _wandsCardsView.gameObject }, new List<GameObject> { wandsCardsShowButton, _clonesCardsView.gameObject });
 
-            clonesCardsShowButtonObject.SetActive(false);
+            _clonesCardsView
+                .GetComponent<CardsScrollRect>()
+                .Init(cloneCardsToggleWindows);
+
+            _wandsCardsView
+                .GetComponent<CardsScrollRect>()
+                .Init(wandCardsToggleWindows);
         }
 
         public void CreateStatsView()
@@ -168,11 +174,18 @@ namespace Clones.Infrastructure
                 .Init(_persistentProgress.Progress.Wallet);
         }
 
-        public void CreateCloneModel(ICharacterFactory characterFactory)
+        public void CreateCloneModelPoint(ICharacterFactory characterFactory)
         {
-            GameObject model = _assets.Instantiate(AssetPath.UiCloneModel, _containers.CloneModel);
+            GameObject point = _assets.Instantiate(AssetPath.CloneModelPoint, _containers.Characters);
 
-            _containers.CloneModel.GetComponent<WandCreator>().Init(_wandsCardsView, characterFactory, model.GetComponent<WandBone>().Bone);
+            point
+                .GetComponent<WandModelCreator>()
+                .Init(_wandsCardsView, characterFactory);
+
+
+            point
+                .GetComponent<CloneModelCreator>()
+                .Init(_clonesCardsView, characterFactory);
         }
     }
 }

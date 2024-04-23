@@ -14,7 +14,7 @@ public class TopDownBullet : Bullet
     public override BulletStaticData BulletData => _bulletData;
 
     private TopDownBulletData _bulletData;
-    private IDamageable _selfDamageable;
+    private GameObject _selfObject;
     private SphereCollider _collider;
 
     public override event Action Hitted;
@@ -23,9 +23,9 @@ public class TopDownBullet : Bullet
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfDamageable)
+        if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfObject.GetComponent<IDamageable>())
         {
-            if (_selfDamageable is Enemy && damageable is Enemy)
+            if (_selfObject is Enemy && damageable is Enemy)
                 return;
 
             Vector3 knockbackDirection = other.transform.position - transform.position;
@@ -34,7 +34,7 @@ public class TopDownBullet : Bullet
         }
     }
 
-    public override void Shoot(IDamageable targetDamageable, GameObject _selfObject, Transform shootPoint = null, Action<List<DamageableCell>> Hitted = null)
+    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint = null, Action<List<DamageableCell>> Hitted = null)
     {
         _collider = GetComponent<SphereCollider>();
         _collider.center = new Vector3(0, UpOffset, 0);
@@ -44,11 +44,9 @@ public class TopDownBullet : Bullet
 
         if (targetDamageable.IsAlive)
             TargetPosition = new Vector3(Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.x, ((MonoBehaviour)targetDamageable).transform.position.y, Random.Range(-_bulletData.HorizontalOffset, _bulletData.HorizontalOffset) + ((MonoBehaviour)targetDamageable).transform.position.z);
-        //else
-            //TargetPosition = ((MonoBehaviour)_selfObject).transform.position + ((MonoBehaviour)_selfObject).transform.forward * 3;
 
         transform.position = TargetPosition;
-        //_selfDamageable = _selfObject;
+        _selfObject = selfObject;
 
         Shooted?.Invoke();
 

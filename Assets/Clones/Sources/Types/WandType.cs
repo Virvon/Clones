@@ -4,6 +4,7 @@
     {
         Undefined,
         BranchWand,
+        ShineWand,
         NaturalWand,
         LightningWand,
         SniperWand,

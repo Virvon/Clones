@@ -9,6 +9,7 @@ namespace Clones.StaticData
     public class QuestItemStaticData : ItemStaticData
     {
         public QuestItemType Type;
+        public Sprite Icon;
 
         [SerializeField] private PreyResourceLocalizedName[] _localizedNames;
         [SerializeField] private string _defaultName;
