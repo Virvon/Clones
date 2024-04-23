@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WorldGenerator
   m_EditorClassIdentifier: 
   Prefab: {fileID: 4369433237527862174, guid: 5800ae72453bb0d4cb76438114ab591b, type: 3}
-  ViewRadius: 100
-  DestroyRadius: 250
+  ViewRadius: 200
+  DestroyRadius: 200
   CellSize: 100
   GenerationBiomes: 000000000100000002000000030000000400000005000000

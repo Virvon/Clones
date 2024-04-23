@@ -8,8 +8,8 @@ namespace Clones.GameLogic
     {
         private const float DropSpeed = 2;
         private const float DropRadius = 2;
-        private const int MinDropCount = 1;
-        private const int MaxDropCount = 4;
+        private const int MinDropCount = 2;
+        private const int MaxDropCount = 5;
 
         private readonly IPartsFactory _partsFactory;
         private readonly CharacterAttack _characterAttack;

@@ -16,6 +16,7 @@ namespace Clones.GameLogic
         private float _waveWeight;
         private float _minRadius;
         private float _maxRadius;
+        private float _baseMovementSpeed;
 
         private ICurrentBiome _currentBiome;
         private IGameStaticDataService _staticDataService;
@@ -89,13 +90,10 @@ namespace Clones.GameLogic
                 EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
                 Vector3 spawnPosition = GetSpawnPosition();
 
-                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, _complexity.GetComplexity(_currentWave));
+                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, _complexity.GetComplexity(_currentWave), _currentWave);
 
                 currentWeight += weight;
             }
-
-            Debug.Log("wave " + _currentWave);
-            Debug.Log("wave weight: " + maxWeight + ", complexity: " + _complexity.GetComplexity(_currentWave));
         }
 
         private Vector3 GetSpawnPosition()

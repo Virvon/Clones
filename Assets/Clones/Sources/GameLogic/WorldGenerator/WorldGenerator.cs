@@ -21,8 +21,7 @@ namespace Clones.GameLogic
         private float _cellSize;
         private HashSet<GameObject> _tilesMatrix = new();
 
-        private float _offset => _cellSize / 2;
-        private Vector3 _playerPosition => new Vector3(_player.position.x + _offset, _player.position.y, _player.position.z + _offset);
+        private Vector3 _playerPosition => new Vector3(_player.position.x, _player.position.y, _player.position.z);
 
         public event Action<GameObject> TileCreated;
         public event Action<GameObject> TileDestroyed;
@@ -56,9 +55,9 @@ namespace Clones.GameLogic
             var fillAreaCenter = WorldToGridPosition(center);
             bool isCreated = false;
 
-            for (int x = -cellsCountOnAxis; x < cellsCountOnAxis; x++)
+            for (int x = -cellsCountOnAxis; x < cellsCountOnAxis + 1; x++)
             {
-                for (int z = -cellsCountOnAxis; z < cellsCountOnAxis; z++)
+                for (int z = -cellsCountOnAxis; z < cellsCountOnAxis + 1; z++)
                 {
                     if(TryCreate(fillAreaCenter + new Vector3Int(x, (int)transform.position.y, z)))
                         isCreated = true;
