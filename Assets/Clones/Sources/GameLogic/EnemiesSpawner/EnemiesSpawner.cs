@@ -94,9 +94,6 @@ namespace Clones.GameLogic
 
                 currentWeight += weight;
             }
-
-            Debug.Log("wave " + _currentWave);
-            Debug.Log("wave weight: " + maxWeight + ", complexity: " + _complexity.GetComplexity(_currentWave));
         }
 
         private Vector3 GetSpawnPosition()

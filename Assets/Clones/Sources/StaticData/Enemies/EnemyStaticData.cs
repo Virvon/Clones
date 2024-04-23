@@ -14,6 +14,8 @@ namespace Clones.StaticData
         public float MinStopDistance;
         public float MaxStopDistance;
         public GameObject DeathEffect;
+        public float SpeedIncreasePerWave;
+        public int MaxWavesWithSpeedIncrease;
         public Vector3 EffectOffset;
     }
 }

@@ -55,8 +55,6 @@ namespace Clones.GameLogic
             var fillAreaCenter = WorldToGridPosition(center);
             bool isCreated = false;
 
-            Debug.Log(fillAreaCenter);
-
             for (int x = -cellsCountOnAxis; x < cellsCountOnAxis + 1; x++)
             {
                 for (int z = -cellsCountOnAxis; z < cellsCountOnAxis + 1; z++)

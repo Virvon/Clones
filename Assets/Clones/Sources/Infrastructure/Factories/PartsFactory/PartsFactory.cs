@@ -38,7 +38,7 @@ namespace Clones.Infrastructure
             enemyObject.GetComponent<NavMeshAgent>()
                 .stoppingDistance = (float)Math.Round(Random.Range(enemyData.MinStopDistance, enemyData.MaxStopDistance), 2);
 
-            float speedIncrease = Mathf.Min(currentWave, _staticData.GetEnemiesSpawner().MaxWavesWithSpeedIncrease) * _staticData.GetEnemiesSpawner().SpeedIncreasePerWave;
+            float speedIncrease = Mathf.Min(currentWave, enemyData.MaxWavesWithSpeedIncrease) * enemyData.SpeedIncreasePerWave;
             enemyObject.GetComponent<NavMeshAgent>().speed *= (1 + speedIncrease);
 
             MeleeAttack meleeAttack = enemyObject.GetComponentInChildren<MeleeAttack>();
