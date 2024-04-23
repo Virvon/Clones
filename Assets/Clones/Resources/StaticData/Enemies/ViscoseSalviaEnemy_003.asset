@@ -20,5 +20,7 @@ MonoBehaviour:
   MinStopDistance: 8
   MaxStopDistance: 12
   DeathEffect: {fileID: 1889919486439536, guid: 41f0b29a031db444594cb6bd50194d38, type: 3}
+  SpeedIncreasePerWave: 0.066
+  MaxWavesWithSpeedIncrease: 12
   EffectOffset: {x: 0, y: 1, z: 0}
   BulletType: 8

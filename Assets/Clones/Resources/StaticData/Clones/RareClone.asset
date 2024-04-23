@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcf306fd568238408369c36bb4993e1, type: 3}
   m_Name: RareClone
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8931962915480580132, guid: 6e158d679bef4fb42b6345de557da114, type: 3}
-  Card: {fileID: 3171580171538393250, guid: e99e22d5a9c9e2c45ad7709f352cba70, type: 3}
   Type: 2
+  Prefab: {fileID: 5740848935595838258, guid: d75fc95bb18c6d54483bd9b6926b9cb6, type: 3}
+  Model: {fileID: 2662455025583865989, guid: fa08d24cdf9668c4eb08ea917557b2b9, type: 3}
+  Card: {fileID: 3729764337796188301, guid: d27a55daec88a2142b204036d38da5c8, type: 3}
   Helath: 2000
   Damage: 70
   AttackCooldown: 1
