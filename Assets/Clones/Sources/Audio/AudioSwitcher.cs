@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 namespace Clones.Audio
 {
-
     public abstract class AudioSwitcher : MonoBehaviour
     {
         private const int MinSoundVolume = -25;

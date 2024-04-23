@@ -1,4 +1,6 @@
 ﻿using Agava.WebUtility;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Clones.Services
@@ -25,10 +27,19 @@ namespace Clones.Services
         ~ActivityTracking() =>
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
 
+
         private void OnInBackgroundChange(bool inBackground)
         {
-            _timeScale.Scaled(inBackground ? NormalTimeScale : StoppedTimeScale);
-            _audioMixer.audioMixer.SetFloat(MasterMixer, inBackground ? NormalSoundVolume : MutedSoundVolume);
+            if (inBackground)
+            {
+                _timeScale.Scaled(StoppedTimeScale);
+                _audioMixer.audioMixer.SetFloat(MasterMixer, MutedSoundVolume);
+            }
+            else
+            {
+                _timeScale.Scaled(NormalTimeScale);
+                _audioMixer.audioMixer.SetFloat(MasterMixer, NormalSoundVolume);
+            }
         }
     }
 }
