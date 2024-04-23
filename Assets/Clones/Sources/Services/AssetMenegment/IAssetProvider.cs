@@ -1,7 +1,6 @@
-﻿using Clones.Services;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Clones.Infrastructure
+namespace Clones.Services
 {
     public interface IAssetProvider : IService
     {

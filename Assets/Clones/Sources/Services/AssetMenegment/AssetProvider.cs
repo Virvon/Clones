@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Clones.Infrastructure
+namespace Clones.Services
 {
     public class AssetProvider : IAssetProvider
     {

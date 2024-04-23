@@ -1,4 +1,4 @@
-﻿namespace Clones.Infrastructure
+﻿namespace Clones.Services
 {
     public static class AssetPath
     {
