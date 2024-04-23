@@ -51,7 +51,7 @@ namespace Clones.EducationLogic
                 EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
                 Vector3 spawnPosition = GetSpawnPosition(waveInfo);
 
-                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, waveInfo.Complexity);
+                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, waveInfo.Complexity, _waveNumber);
 
                 currentWeight += weight;
             }

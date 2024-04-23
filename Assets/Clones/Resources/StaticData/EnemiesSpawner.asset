@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: EnemiesSpawner
   m_EditorClassIdentifier: 
   Prefab: {fileID: 6585846767468256837, guid: 35c3fde147b57ae498c17a8e10defbae, type: 3}
-  StartDelay: 15
-  SpawnCooldown: 30
+  StartDelay: 10
+  SpawnCooldown: 40
   WaveWeight: 22000
   MinRadius: 18
-  MaxRadius: 22
+  MaxRadius: 24
+  SpeedIncreasePerWave: 0.066
+  MaxWavesWithSpeedIncrease: 12

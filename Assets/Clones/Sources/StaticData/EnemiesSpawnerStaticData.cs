@@ -11,5 +11,7 @@ namespace Clones.StaticData
         public float WaveWeight;
         public float MinRadius;
         public float MaxRadius;
+        public float SpeedIncreasePerWave;
+        public int MaxWavesWithSpeedIncrease;
     }
 }
