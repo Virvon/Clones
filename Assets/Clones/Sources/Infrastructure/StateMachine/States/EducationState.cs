@@ -115,11 +115,13 @@ namespace Clones.Infrastructure
 
         private EducationHandler CreateEducationHandler()
         {
+            DirectionMarker directionMarker = _educationFactory.CreateDirectionMarker(_playerObject.transform);
+
             Waiter waiter = new(_coroutineRunner);
             ShowControlHandler showControlHandler = new(_inputService, _uiFactory.CreateDialogPanel(AssetPath.ShowControlDialogPanel));
             ShowFirstQuestHandler showFirstQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowFirstQuestDialogPanel), waiter, _frameFocus);
-            ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator, _uiFactory.CreateDialogPanel(AssetPath.ShowPreyResourcesDialogPanel), _educationVirtualCamera, _controlObject, waiter);
-            ShowSecondQuestHandler showSecondQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowSecondQuestDialogPanel), waiter);
+            ShowPreyResourcesHandler showPreyResourcesHandler = new(_playerObject.GetComponent<MiningState>(), _questCreator, _uiFactory.CreateDialogPanel(AssetPath.ShowPreyResourcesDialogPanel), _educationVirtualCamera, _controlObject, waiter, directionMarker, _educationFactory.CreateFirstDirectionMarkerTarget());
+            ShowSecondQuestHandler showSecondQuestHandler = new(_uiFactory.CreateDialogPanel(AssetPath.ShowSecondQuestDialogPanel), waiter, directionMarker, _educationFactory.CreateSecondDirectionMarkerTarget());
             SpawnFirstWaveHandler spawnFirstWaveHandler = new(_enemiesSpawner, _uiFactory.CreateDialogPanel(AssetPath.SpawnFirstWaveDialogPanel), waiter);
             SpawnSecondWaveHandler spawnSecondWaveHandler = new(_enemiesSpawner, _questCreator);
 

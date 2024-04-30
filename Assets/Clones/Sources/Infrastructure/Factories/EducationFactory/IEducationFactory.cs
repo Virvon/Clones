@@ -10,5 +10,8 @@ namespace Clones.Infrastructure
         EducationPreyResourcesSpawner CreatePreyResourcesSpawner();
         EducationEnemiesSpawner CreateEnemiesSpawner(GameObject playerObject);
         CinemachineVirtualCamera CreateVirtualCamera();
+        DirectionMarker CreateDirectionMarker(Transform player);
+        Transform CreateFirstDirectionMarkerTarget();
+        Transform CreateSecondDirectionMarkerTarget();
     }
 }

@@ -29,5 +29,8 @@
         public const string AudioMixerGroup = "Audio/Mixers/Mixer";
         public const string EducationVirtualCamera = "Camera/EducationVirtualCamera";
         public const string CloneModelPoint = "UI/MainMenu/Prefabs/CloneModelPoint";
+        public const string DirectionMarker = "Education/DirectionMarker";
+        public const string FirstDirectionMarkerTarget = "Education/FirstDirectionMarkerTarget";
+        public const string SecondDirectionMarketTarget = "Education/SecondDirectionMarkerTarget";
     }
 }

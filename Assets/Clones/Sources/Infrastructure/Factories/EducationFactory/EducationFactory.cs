@@ -19,6 +19,14 @@ namespace Clones.Infrastructure
             _assets = assetProvider;
         }
 
+        public DirectionMarker CreateDirectionMarker(Transform player)
+        {
+            DirectionMarker directionMarker = _assets.Instantiate(AssetPath.DirectionMarker, player).GetComponent<DirectionMarker>();
+            directionMarker.Init(player);
+
+            return directionMarker;
+        }
+
         public EducationEnemiesSpawner CreateEnemiesSpawner(GameObject playerObject)
         {
             EducationEnemiesSpawnerStaticData spawnerStaticData = _gameStaticDataService.GetEducationEnemiesSpawner();
@@ -41,5 +49,12 @@ namespace Clones.Infrastructure
 
         public CinemachineVirtualCamera CreateVirtualCamera() =>
             _assets.Instantiate(AssetPath.EducationVirtualCamera).GetComponent<CinemachineVirtualCamera>();
+
+        public Transform CreateFirstDirectionMarkerTarget() => 
+            _assets.Instantiate(AssetPath.FirstDirectionMarkerTarget).transform;
+
+        public Transform CreateSecondDirectionMarkerTarget() =>
+            _assets.Instantiate(AssetPath.SecondDirectionMarketTarget).transform;
+
     }
 }

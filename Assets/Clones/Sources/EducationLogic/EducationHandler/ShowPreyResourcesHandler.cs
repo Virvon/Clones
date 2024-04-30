@@ -18,8 +18,10 @@ namespace Clones.EducationLogic
         private readonly CinemachineVirtualCamera _virtualCamera;
         private readonly GameObject _controlObject;
         private readonly Waiter _waiter;
+        private readonly DirectionMarker _directionMarker;
+        private readonly Transform _directionMarkerTarget;
 
-        public ShowPreyResourcesHandler(MiningState miningState, IQuestsCreator questsCreator, DialogPanel dialogPanel, CinemachineVirtualCamera virtualCamera, GameObject controlObject, Waiter waiter)
+        public ShowPreyResourcesHandler(MiningState miningState, IQuestsCreator questsCreator, DialogPanel dialogPanel, CinemachineVirtualCamera virtualCamera, GameObject controlObject, Waiter waiter, DirectionMarker directionMarker, Transform directionMarkerTarget)
         {
             _miningState = miningState;
             _questsCreator = questsCreator;
@@ -27,6 +29,8 @@ namespace Clones.EducationLogic
             _virtualCamera = virtualCamera;
             _controlObject = controlObject;
             _waiter = waiter;
+            _directionMarker = directionMarker;
+            _directionMarkerTarget = directionMarkerTarget;
         }
 
         public override void Handle()
@@ -35,7 +39,7 @@ namespace Clones.EducationLogic
             _virtualCamera.Priority = VirtualCameraPriority;
             _controlObject.GetComponent<IStopable>().Stop();
             _controlObject.SetActive(false);
-
+            
             _waiter.Wait(WaitingTime, callback: OnCallback);
 
             _miningState.TargetSelected += OnTargetSelected;
@@ -45,6 +49,7 @@ namespace Clones.EducationLogic
         {
             _virtualCamera.Priority = 0;
             _controlObject.SetActive(true);
+            _directionMarker.SetTarget(_directionMarkerTarget);
         }
 
         private void OnTargetSelected(GameObject obj)
