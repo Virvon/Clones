@@ -343,6 +343,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.z
+      value: 1.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
 --- !u!4 &7413347492301252465 stripped

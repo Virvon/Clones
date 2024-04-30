@@ -139,6 +139,9 @@ namespace UnityEngine.AI
                 buildSettings.overrideVoxelSize = true;
                 buildSettings.voxelSize = voxelSize;
             }
+
+            buildSettings.maxJobWorkers = 1;
+
             return buildSettings;
         }
 

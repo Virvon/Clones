@@ -17,3 +17,4 @@ MonoBehaviour:
   DestroyRadius: 200
   CellSize: 100
   GenerationBiomes: 000000000100000002000000030000000400000005000000
+  NavMeshZonePrefab: {fileID: -7662388771334864524, guid: c2dbbdc4ba49cfe4ab4bc32dcc2310ab, type: 3}

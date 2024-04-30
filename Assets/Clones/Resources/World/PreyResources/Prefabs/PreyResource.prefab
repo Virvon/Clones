@@ -353,12 +353,13 @@ GameObject:
   - component: {fileID: -4415841436861502654}
   - component: {fileID: -5270472210447390698}
   - component: {fileID: 3751486588105244889}
+  - component: {fileID: 864124917734946306}
   m_Layer: 0
   m_Name: PreyResource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &557896661753555454
 Transform:
@@ -442,6 +443,22 @@ MonoBehaviour:
   _time: 0
   _collider: {fileID: -5270472210447390698}
   _model: {fileID: 0}
+--- !u!208 &864124917734946306
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726845397346985869}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8906458546225326182
 GameObject:
   m_ObjectHideFlags: 0

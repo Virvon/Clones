@@ -4,15 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Clones.GameLogic
 {
     public class WorldGenerator : MonoBehaviour
     {
-        [SerializeField] private NavMeshSurface _navMeshSurface;
-
         private IPartsFactory _partsFactory;
         private Transform _player;
         BiomeType[] _generationBiomes;
@@ -37,8 +34,6 @@ namespace Clones.GameLogic
 
         public void Init(Transform player, BiomeType[] templates, float viewRadius, float destroyRadius, float cellSize)
         {
-            _navMeshSurface.BuildNavMesh();
-
             _generationBiomes = templates;
             _viewRadius = viewRadius;
             _destroyRadius = destroyRadius;
@@ -53,19 +48,12 @@ namespace Clones.GameLogic
         {
             var cellsCountOnAxis = (int)(viewRadius / _cellSize);
             var fillAreaCenter = WorldToGridPosition(center);
-            bool isCreated = false;
 
             for (int x = -cellsCountOnAxis; x < cellsCountOnAxis + 1; x++)
             {
                 for (int z = -cellsCountOnAxis; z < cellsCountOnAxis + 1; z++)
-                {
-                    if(TryCreate(fillAreaCenter + new Vector3Int(x, (int)transform.position.y, z)))
-                        isCreated = true;
-                }
+                    TryCreate(fillAreaCenter + new Vector3Int(x, (int)transform.position.y, z));
             }
-
-            if (isCreated)
-                _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
         }
 
         private void EmptyAroundRadius(Vector3 center, float viewRadius)

@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1928124281620299293
 Transform:
@@ -162,6 +162,26 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 65ab85f8dae4bd8439627ed43f47d9a8, type: 3}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Center.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Center.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Extents.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Extents.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Extents.z
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 1988943753708716813, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
       propertyPath: m_RootOrder
       value: 2

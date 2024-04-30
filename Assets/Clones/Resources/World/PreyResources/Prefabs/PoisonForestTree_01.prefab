@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3593279603569401651
 Transform:
@@ -189,6 +189,30 @@ PrefabInstance:
     - target: {fileID: 557896661753555454, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Center.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Center.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Center.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Extents.x
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Extents.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 864124917734946306, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
+      propertyPath: m_Extents.z
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 1988943753708716813, guid: 8677fef81f20f4646b5c07cee353f8e8, type: 3}
       propertyPath: m_RootOrder

@@ -12,5 +12,6 @@ namespace Clones.StaticData
         public float DestroyRadius;
         public float CellSize;
         public BiomeType[] GenerationBiomes;
+        public NavMeshZone NavMeshZonePrefab;
     }
 }

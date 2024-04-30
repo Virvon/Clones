@@ -140,6 +140,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceCrystalsStone
       objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Center.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Center.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Center.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.x
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.z
+      value: 1.65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
 --- !u!4 &5446877087659337118 stripped

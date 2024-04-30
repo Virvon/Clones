@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6554578107564040932
 Transform:
@@ -97,7 +97,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1223601942643657747
 Transform:
@@ -132,7 +132,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5011884850870989599
 Transform:
@@ -279,6 +279,22 @@ PrefabInstance:
     - target: {fileID: 4314993933285503463, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
       propertyPath: m_Name
       value: WastelandStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Center.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924659021574771807, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}
+      propertyPath: m_Extents.z
+      value: 1.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcd1405e4a350c54e9e53d0ba2acd0f9, type: 3}

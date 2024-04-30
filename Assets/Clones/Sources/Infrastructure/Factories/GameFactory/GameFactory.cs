@@ -5,6 +5,7 @@ using Clones.Services;
 using Clones.GameLogic;
 using Object = UnityEngine.Object;
 using Clones.Types;
+using UnityEngine.AI;
 
 namespace Clones.Infrastructure
 {
@@ -35,6 +36,9 @@ namespace Clones.Infrastructure
 
             WorldGenerator worldGenerator = Object.Instantiate(worldGeneratorData.Prefab);
             worldGenerator.Init(player.transform, worldGeneratorData.GenerationBiomes, worldGeneratorData.ViewRadius, worldGeneratorData.DestroyRadius, worldGeneratorData.CellSize);
+
+            NavMeshZone navMeshZone = Object.Instantiate(worldGeneratorData.NavMeshZonePrefab, worldGenerator.transform);
+            navMeshZone.Init(worldGenerator.GetComponent<NavMeshSurface>(), player.transform);
 
             return worldGenerator;
         }

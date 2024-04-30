@@ -17,6 +17,4 @@ MonoBehaviour:
   SpawnCooldown: 40
   WaveWeight: 22000
   MinRadius: 18
-  MaxRadius: 24
-  SpeedIncreasePerWave: 0.066
-  MaxWavesWithSpeedIncrease: 12
+  MaxRadius: 20
