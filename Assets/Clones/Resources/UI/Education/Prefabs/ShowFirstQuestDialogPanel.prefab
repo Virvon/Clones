@@ -225,7 +225,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667086256670416799}
-  - component: {fileID: 517209359237377471}
   - component: {fileID: 5330718358571393708}
   m_Layer: 5
   m_Name: ShowFirstQuestDialogPanel
@@ -256,14 +255,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0}
---- !u!222 &517209359237377471
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3778945631222024944}
-  m_CullTransparentMesh: 1
 --- !u!114 &5330718358571393708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +316,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4185748200755492327}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &7542259323836786098
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,8 +9,6 @@ namespace Clones.GameLogic
         private Transform _player;
         private float _delta;
 
-        int _count;
-
         public void Init(NavMeshSurface navMehsSurface, Transform player)
         {
             _navMeshSurface = navMehsSurface;
@@ -26,8 +24,6 @@ namespace Clones.GameLogic
             if (_player == null)
                 return;
 
-            _count++;
-
             if (Vector3.Distance(transform.position, _player.transform.position) > _delta)
                 MoveZone();
         }
@@ -39,7 +35,7 @@ namespace Clones.GameLogic
 
             transform.position = positon;
 
-            _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData).completed += _=> UnityEngine.Debug.Log("callback count " + _count) ;
+            _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
         }
     }
 }

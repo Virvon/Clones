@@ -6,6 +6,6 @@ namespace Clones.GameLogic
     {
         bool CanRivival { get; }
 
-        bool TryRevive(Action callback = null);
+        bool TryRevive(Action successCallback = null, Action failureCallback = null);
     }
 }

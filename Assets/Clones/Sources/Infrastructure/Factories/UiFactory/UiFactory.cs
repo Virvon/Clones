@@ -53,6 +53,8 @@ namespace Clones.Infrastructure
                 .GetComponentInChildren<QuestSound>()
                 .Init(questsCreator);
 
+            
+
             return _hud;
         }
 
@@ -82,6 +84,10 @@ namespace Clones.Infrastructure
             
             gameRevivleView
                 .GetComponent<GameRevivalView>()
+                .Init(playerRevival, _gameOverView);
+
+            gameRevivleView
+                .GetComponent<RevivalButton>()
                 .Init(playerRevival, _gameOverView);
         }
 

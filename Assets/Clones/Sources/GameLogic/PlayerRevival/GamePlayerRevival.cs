@@ -21,18 +21,19 @@ namespace Clones.GameLogic
             _advertising = advertising;
         }
 
-        public bool TryRevive(Action callback = null)
+        public bool TryRevive(Action successCallback = null, Action failureCallback = null)
         {
             if (_revivivalsCount + 1 > MaxRevivivalsCount)
                 return false;
 
-            _advertising.ShowVideoAd(callback: () =>
+            _advertising.ShowVideoAd(rewardedCallback: () =>
             {
                 _revivivalsCount++;
                 _player.Reborn((int)((RestoredHealthPercentage / 100f) * _player.MaxHealth));
 
-                callback?.Invoke();
-            });
+                successCallback?.Invoke();
+            },
+            errorCallback: ()=> failureCallback?.Invoke());
 
             return true;
         }

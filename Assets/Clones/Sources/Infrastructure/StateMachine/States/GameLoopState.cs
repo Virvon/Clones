@@ -83,7 +83,7 @@ namespace Clones.Infrastructure
             worldGenerator.Init(_partsFactory);
 
             QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
-            GamePlayerRevival playerRevival = new(playerObject.GetComponent<PlayerHealth>(), _advertisingDisplay);
+            IPlayerRevival playerRevival = new GamePlayerRevival(playerObject.GetComponent<PlayerHealth>(), _advertisingDisplay);
 
             GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject);
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
@@ -106,9 +106,6 @@ namespace Clones.Infrastructure
             
 
             PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, callback: ()=> _gameTimer.Stop());
-
-            hud.GetComponentInChildren<RevivalButton>()
-                .Init(playerRevival);
 
             questsCreator.Create();
             enemiesSpawner.StartSpawn();

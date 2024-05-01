@@ -7,16 +7,18 @@ namespace Clones.UI
     {
         [SerializeField] private GameRevivalView _revivalView;
 
-        private GamePlayerRevival _playerRevival;
+        private IPlayerRevival _playerRevival;
+        private GameOverView _gameOverView;
 
-        public void Init(GamePlayerRevival playerRevival)
+        public void Init(IPlayerRevival playerRevival, GameOverView gameOverView)
         {
             _playerRevival = playerRevival;
+            _gameOverView = gameOverView;
         }
 
         public void Revival()
         {
-            _playerRevival.TryRevive(_revivalView.Close);
+            _playerRevival.TryRevive(successCallback: ()=> _revivalView.Close(), failureCallback: ()=> _revivalView.Close(_gameOverView.Open));
             _revivalView.StopTimer();
         }
     }

@@ -38,7 +38,7 @@ namespace Clones.Input
         }
 
         public void Stop() =>
-            OnDownTouch();
+            OnUpTouch();
 
         public void OnDrag(PointerEventData eventData)
         {

@@ -16,7 +16,6 @@ namespace Clones.UI
 
         private IPlayerRevival _playerRevival;
 
-
         private GameOverView _gameOverView;
         private Coroutine _timer;
 
@@ -44,8 +43,8 @@ namespace Clones.UI
             }
         }
 
-        public void Close() => 
-            _revivalViewAnimator.Close();
+        public void Close(Action callback = null) => 
+            _revivalViewAnimator.Close(callback);
 
         public void StopTimer() => 
             StopCoroutine(_timer);

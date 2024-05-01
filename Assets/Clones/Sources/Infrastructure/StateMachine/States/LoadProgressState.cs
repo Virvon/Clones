@@ -52,8 +52,8 @@ namespace Clones.Infrastructure
         {
             Debug.Log("created new progress");
             PlayerProgress progress = new();
-            progress.Wallet.Dna = 0;
-            progress.Wallet.Money = 0;
+            progress.Wallet.Dna = 50000;
+            progress.Wallet.Money = 50000;
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 

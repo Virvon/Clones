@@ -25,20 +25,28 @@ namespace Clones.Services
             _runner = runner;
         }
 
-        public void ShowVideoAd(Action callback)
+        public void ShowVideoAd(Action rewardedCallback, Action errorCallback)
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
+            bool isRewarded = false;
+
             _timeScale.Scaled(StoppedTimeScaleValue);
             OffSound();
 
-            VideoAd.Show(onRewardedCallback: ()=>
-            {
-                callback?.Invoke();
-                _timeScale.Scaled(NormalTimeScaleValue);
-                OnSound();
-            });
+            VideoAd.Show(onRewardedCallback: () => isRewarded = true,
+                onCloseCallback: () =>
+                {
+                    _timeScale.Scaled(NormalTimeScaleValue);
+                    OnSound();
+
+                    if (isRewarded)
+                        rewardedCallback.Invoke();
+                    else
+                        errorCallback.Invoke();
+                },
+                onErrorCallback: _ => errorCallback.Invoke());
 #else
-            callback?.Invoke();
+            rewardedCallback.Invoke();
 #endif
         }
 
