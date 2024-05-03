@@ -23,12 +23,13 @@ namespace Clones.UI
             if (PersistentProgress.Progress.Wallet.TryTakeMoney(price))
             {
                 PersistentProgress.Progress.AvailableClones.Clones.Add(new CloneData(type, cloneStaticData.Helath, cloneStaticData.Damage, cloneStaticData.AttackCooldown, cloneStaticData.ResourceMultiplier, cloneStaticData.UpgradePrice));
+                SaveLoadService.SaveProgress();
                 card.Buy();
                 card.GetComponent<CloneLevelView>().Init(PersistentProgress, type);
             }
         }
 
-        protected override void SaveCurrentCard(Card card) =>
+        protected override void UpdateCurrentProgress(Card card) => 
             PersistentProgress.Progress.AvailableClones.SetSelectedClone(GetType(card));
 
         protected override void SelectDefault()

@@ -17,6 +17,9 @@ namespace Clones.Data
 
         public void Add(int playTime)
         {
+            if (playTime == 0)
+                return;
+
             PlayTimes.Add(playTime);
 
             if(PlayTimes.Count > MaxPlayTimesCount)

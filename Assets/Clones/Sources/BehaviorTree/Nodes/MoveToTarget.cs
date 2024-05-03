@@ -46,9 +46,11 @@ namespace Clones.BehaviorTree
 
         public override void OnEnd()
         {
-            _agent.isStopped = true;
-
-            _animationSwithcer.Value.SetMovement(false);
+            if (_agent.isOnNavMesh)
+            {
+                _agent.isStopped = true;
+                _animationSwithcer.Value.SetMovement(false);
+            }
         }
 
         private Vector3 GetPointInTargetRadius()

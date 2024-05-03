@@ -108,7 +108,7 @@ namespace Clones.Infrastructure
             GameObject viewObject = _assets.Instantiate(AssetPath.ClonesCardsView, _containers.ClonesCards.transform);
 
             _clonesCardsView = viewObject.GetComponentInChildren<ClonesCardsView>();
-            _clonesCardsView.Init(_persistentProgress, _staticDataService);
+            _clonesCardsView.Init(_persistentProgress, _staticDataService, _saveLoadService);
 
             return _clonesCardsView;
         }
@@ -118,7 +118,7 @@ namespace Clones.Infrastructure
             GameObject viewObject = _assets.Instantiate(AssetPath.WandsCardsView, _containers.ClonesCards);
 
             _wandsCardsView = viewObject.GetComponentInChildren<WandsCardsView>();
-            _wandsCardsView.Init(_persistentProgress, _staticDataService);
+            _wandsCardsView.Init(_persistentProgress, _staticDataService, _saveLoadService);
 
             return _wandsCardsView;
         }
@@ -175,7 +175,7 @@ namespace Clones.Infrastructure
             GameObject upgradeView = _assets.Instantiate(AssetPath.UpgradeView, _containers.Buttons);
 
             upgradeView.GetComponent<UpgradeButtonsView>()
-                .Init(_persistentProgress, _staticDataService);
+                .Init(_persistentProgress, _staticDataService, _saveLoadService);
 
             upgradeView.GetComponentInChildren<CloneUpgradeButton>()
                 .Init(_persistentProgress.Progress.Wallet);

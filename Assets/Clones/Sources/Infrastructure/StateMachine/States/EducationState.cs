@@ -23,6 +23,7 @@ namespace Clones.Infrastructure
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ILocalization _localization;
         private readonly ICharacterFactory _characterFactory;
+        private readonly ISaveLoadService _saveLoadService;
 
         private List<IDisable> _disables;
         private GameObject _playerObject;
@@ -32,7 +33,7 @@ namespace Clones.Infrastructure
         private GameObject _controlObject;
         private CinemachineVirtualCamera _educationVirtualCamera;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScaler timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScaler timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory, ISaveLoadService saveLoadService)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
@@ -44,6 +45,7 @@ namespace Clones.Infrastructure
             _coroutineRunner = coroutineRunner;
             _timeScale = timeScale;
             _localization = localization;
+            _saveLoadService = saveLoadService;
 
             _disables = new List<IDisable>();
             _characterFactory = characterFactory;
@@ -56,6 +58,8 @@ namespace Clones.Infrastructure
 
         public void Exit()
         {
+            _saveLoadService.SaveProgress();
+
             foreach (var disable in _disables)
                 disable.OnDisable();
         }

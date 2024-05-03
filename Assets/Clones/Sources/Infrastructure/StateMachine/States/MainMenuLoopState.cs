@@ -2,7 +2,6 @@
 using Clones.StaticData;
 using Clones.Types;
 using Clones.UI;
-using UnityEngine;
 
 namespace Clones.Infrastructure
 {
@@ -10,14 +9,12 @@ namespace Clones.Infrastructure
     {
         private readonly IMainMenuFactory _mainMenuFactory;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
-        private readonly ISaveLoadService _saveLoadProgress;
         private readonly ICharacterFactory _characterFactory;
 
-        public MainMenuLoopState(IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadProgress, ICharacterFactory characterFactory)
+        public MainMenuLoopState(IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService, ICharacterFactory characterFactory)
         {
             _mainMenuFactory = mainMenuFactory;
             _mainMenuStaticDataService = mainMenuStaticDataService;
-            _saveLoadProgress = saveLoadProgress;
             _characterFactory = characterFactory;
         }
 
@@ -48,7 +45,7 @@ namespace Clones.Infrastructure
 
         public void Exit()
         {
-            _saveLoadProgress.SaveProgress();
+            
         }
 
         private void CreateClonesCards(CloneType[] types)

@@ -27,11 +27,12 @@ namespace Clones.UI
             if (PersistentProgress.Progress.Wallet.TryTakeMoney(price))
             {
                 PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.UpgradePrice, wandStaticData.WandStats));
+                SaveLoadService.SaveProgress();
                 card.Buy();
             }
         }
 
-        protected override void SaveCurrentCard(Card card) =>
+        protected override void UpdateCurrentProgress(Card card) =>
             PersistentProgress.Progress.AvailableWands.SetSelectedWand(GetType(card));
 
         protected override void SelectDefault() =>

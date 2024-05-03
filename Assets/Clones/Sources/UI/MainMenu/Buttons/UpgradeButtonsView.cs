@@ -12,6 +12,20 @@ namespace Clones.UI
 
         private IPersistentProgressService _persistentProgress;
         private IMainMenuStaticDataService _mainMenuStaticDataService;
+        private ISaveLoadService _saveLoadService;
+
+        public void Init(IPersistentProgressService persistenProgress, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService)
+        {
+            _persistentProgress = persistenProgress;
+            _mainMenuStaticDataService = mainMenuStaticDataService;
+            _saveLoadService = saveLoadService;
+
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += OnSelectedCloneChanged;
+            _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
+
+            _cloneUpgradeButton.BuyTried += UpgradeClone;
+            _wandUpgradeButton.BuyTried += UpgradeWand;
+        }
 
         private void OnDisable()
         {
@@ -20,18 +34,6 @@ namespace Clones.UI
 
             _cloneUpgradeButton.BuyTried -= UpgradeClone;
             _wandUpgradeButton.BuyTried -= UpgradeWand;
-        }
-
-        public void Init(IPersistentProgressService persistenProgress, IMainMenuStaticDataService mainMenuStaticDataService)
-        {
-            _persistentProgress = persistenProgress;
-            _mainMenuStaticDataService = mainMenuStaticDataService;
-
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += OnSelectedCloneChanged;
-            _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
-
-            _cloneUpgradeButton.BuyTried += UpgradeClone;
-            _wandUpgradeButton.BuyTried += UpgradeWand;
         }
 
         private void OnSelectedCloneChanged()
@@ -53,6 +55,7 @@ namespace Clones.UI
                 float decreaseAttackCooldow = cloneData.AttackCooldown - cloneStaticData.IncreaseAttackCooldown >= cloneStaticData.MinAttackCooldow ? cloneStaticData.IncreaseAttackCooldown : cloneData.AttackCooldown - cloneStaticData.MinAttackCooldow;
 
                 cloneData.Upgrade(cloneStaticData.IncreaseHealth, cloneStaticData.IncreaseDamage, decreaseAttackCooldow, cloneStaticData.IncreaseResourceMultiplier, cloneStaticData.IncreasePrice);
+                _saveLoadService.SaveProgress();
                 _cloneUpgradeButton.SetPrice(cloneData.UpgradePrice);
             }
         }
@@ -65,6 +68,7 @@ namespace Clones.UI
             if (_persistentProgress.Progress.Wallet.TryTakeMoney(wandData.UpgradePrice))
             {
                 wandData.Upgrade(wandStaticData.UpgradePriceIncrease, wandStaticData.WandStatsIncrease);
+                _saveLoadService.SaveProgress();
                 _wandUpgradeButton.SetPrice(wandData.UpgradePrice);
             }
         }

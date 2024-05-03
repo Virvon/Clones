@@ -14,13 +14,15 @@ namespace Clones.UI
 
         protected IPersistentProgressService PersistentProgress { get; private set; }
         protected IMainMenuStaticDataService MainMenuStaticDataService { get; private set; }
+        protected ISaveLoadService SaveLoadService { get; private set; }
 
         public event Action CardSelected;
 
-        public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
+        public void Init(IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService)
         {
             PersistentProgress = persistentProgress;
             MainMenuStaticDataService = mainMenuStaticDataService;
+            SaveLoadService = saveLoadService;
         }
 
         private void OnDestroy()
@@ -52,7 +54,8 @@ namespace Clones.UI
             CurrentCard = card;
             CurrentCard.Select();
 
-            SaveCurrentCard(CurrentCard);
+            UpdateCurrentProgress(CurrentCard);
+            SaveLoadService.SaveProgress();
 
             CardSelected?.Invoke();
         }
@@ -67,6 +70,6 @@ namespace Clones.UI
 
         protected abstract void OnBuyTried(Card card);
 
-        protected abstract void SaveCurrentCard(Card card);
+        protected abstract void UpdateCurrentProgress(Card card);
     }
 }

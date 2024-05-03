@@ -59,9 +59,6 @@ namespace Clones.Infrastructure
 
             UseSelectedClone();
             _saveLoadService.SaveProgress();
-
-            Debug.Log("end game---------------");
-            Debug.Log("plaing time " + _gameTimer.LastMeasurement);
         }
 
         private void CreateGame()
@@ -105,7 +102,6 @@ namespace Clones.Infrastructure
             _gameTimer = new GameTimer();
             _gameTimer.Init(_coroutineRunner);
             
-
             PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, callback: ()=> _gameTimer.Stop());
 
             questsCreator.Create();
