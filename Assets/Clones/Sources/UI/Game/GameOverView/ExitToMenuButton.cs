@@ -28,12 +28,14 @@ namespace Clones.UI
 
             _button.onClick.AddListener(OnButtonClick);
             _gameRevivalView.Opened += DisableInteractable;
+            _playerHealth.Reborned += EnableInteractable;
         }
 
         public void OnDestroy()
         {
             _button.onClick.RemoveListener(OnButtonClick);
             _gameRevivalView.Opened -= DisableInteractable;
+            _playerHealth.Reborned -= EnableInteractable;
         }
 
         private void OnButtonClick()
@@ -49,5 +51,8 @@ namespace Clones.UI
 
         private void DisableInteractable() => 
             _button.interactable = false;
+
+        private void EnableInteractable() => 
+            _button.interactable = true;
     }
 }
