@@ -17,6 +17,5 @@ namespace Clones.BehaviorTree
 
             return TaskStatus.Failure;
         }
-
     }
 }

@@ -1695,6 +1695,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(302,40)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(4.69973755,120.876038)"},"ID":1,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(0,120)"},"ID":2,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-4.531067,120.875946)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-352.355164,132.330688)"},"ID":4,"Name":"Inverter","Instant":true,"Children":[{"Type":"Clones.BehaviorTree.IsDiedDistance","NodeData":{"Offset":"(-3.13576126,106.400696)"},"ID":5,"Name":"Is
+        Died Distance","Instant":true,"SharedEnemyEnemy":{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":0},"SharedDiedDistanceDiedDistance":{"Type":"Clones.BehaviorTree.SharedDiedDistance","Name":null,"Int32mValue":58}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,130)"},"ID":6,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-73.8734741,110.513062)"},"ID":7,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Clones.BehaviorTree.IsGreatDistanse","NodeData":{"Offset":"(-86.87091,131.93512)"},"ID":8,"Name":"Is
+        Great Distanse","Instant":true,"SharedEnemyEnemy":{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":1},"SharedNavMeshAgentNavMeshAgent":{"Type":"Clones.BehaviorTree.SharedNavMeshAgent","Name":"_navMeshAgent","IsShared":true,"NavMeshAgentmValue":2}},{"Type":"Clones.BehaviorTree.MoveToTarget","NodeData":{"Offset":"(73.5899658,128.718048)"},"ID":9,"Name":"Move
+        To Target","Instant":true,"SharedEnemyEnemy":{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":3},"SharedFloatTargetRadius":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":10},"SharedEnemyAnimationSwithcer_animationSwithcer":{"Type":"Clones.BehaviorTree.SharedEnemyAnimationSwithcer","Name":"_enemyAnimationSwitcher","IsShared":true,"EnemyAnimationSwitchermValue":4}}]},{"Type":"Clones.BehaviorTree.Attack","NodeData":{"Offset":"(165.252991,114.6154)"},"ID":10,"Name":"Attack","Instant":true,"SharedCharacterAttackSharedCharacterAttack":{"Type":"Clones.BehaviorTree.SharedCharacterAttack","Name":"_characterAttack","IsShared":true,"CharacterAttackmValue":5},"SharedEnemyEnemy":{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":6}}]}]}]},{"Type":"Clones.BehaviorTree.DestroyEnemy","NodeData":{"Offset":"(159.827881,122.670837)"},"ID":11,"Name":"Destroy
+        Enemy","Instant":true,"SharedEnemyHealthEnemyHealth":{"Type":"Clones.BehaviorTree.SharedEnemyHealth","Name":"_health","IsShared":true,"EnemyHealthmValue":7}}]},"Variables":[null,{"Type":"Clones.BehaviorTree.SharedCharacterAttack","Name":"_characterAttack","IsShared":true,"CharacterAttackmValue":8},{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":9},{"Type":"Clones.BehaviorTree.SharedNavMeshAgent","Name":"_navMeshAgent","IsShared":true,"NavMeshAgentmValue":10},{"Type":"Clones.BehaviorTree.SharedEnemyAnimationSwithcer","Name":"_enemyAnimationSwitcher","IsShared":true,"EnemyAnimationSwitchermValue":11},{"Type":"Clones.BehaviorTree.SharedEnemyHealth","Name":"_health","IsShared":true,"EnemyHealthmValue":12}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 4075670997723610082}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 5717228191500794856}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 8867258351659907868}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 4075670997723610082}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[9]
+      value: 
+      objectReference: {fileID: 5717228191500794856}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[10]
+      value: 
+      objectReference: {fileID: 9109439408678212664}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[11]
+      value: 
+      objectReference: {fileID: 8845634063073905003}
+    - target: {fileID: -3522955264736048635, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[12]
+      value: 
+      objectReference: {fileID: 8867258351659907868}
     - target: {fileID: 114217102068479522, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -1768,6 +1812,50 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8845634063073905003}
     - target: {fileID: 1201553925367980751, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[12]
+      value: 
+      objectReference: {fileID: 8867258351659907868}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(302,40)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(4.69973755,120.876038)"},"ID":1,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(0,120)"},"ID":2,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-4.531067,120.875946)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Clones.BehaviorTree.IsOnNavMesh","NodeData":{"Offset":"(-188.30069,140.152344)"},"ID":4,"Name":"Is
+        On Nav Mesh","Instant":true,"SharedNavMeshAgent_agent":{"Type":"Clones.BehaviorTree.SharedNavMeshAgent","Name":"_navMeshAgent","IsShared":true,"NavMeshAgentmValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,130)"},"ID":5,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-73.8734741,110.513062)"},"ID":6,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Clones.BehaviorTree.IsGreatDistanse","NodeData":{"Offset":"(-86.87091,131.93512)"},"ID":7,"Name":"Is
+        Great Distanse","Instant":true,"SharedEnemyEnemy":{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":1},"SharedNavMeshAgentNavMeshAgent":{"Type":"Clones.BehaviorTree.SharedNavMeshAgent","Name":"_navMeshAgent","IsShared":true,"NavMeshAgentmValue":2}},{"Type":"Clones.BehaviorTree.MoveToTarget","NodeData":{"Offset":"(73.5899658,128.718048)"},"ID":8,"Name":"Move
+        To Target","Instant":true,"SharedEnemyEnemy":{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":3},"SharedFloatTargetRadius":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":10},"SharedEnemyAnimationSwithcer_animationSwithcer":{"Type":"Clones.BehaviorTree.SharedEnemyAnimationSwithcer","Name":"_enemyAnimationSwitcher","IsShared":true,"EnemyAnimationSwitchermValue":4}}]},{"Type":"Clones.BehaviorTree.Attack","NodeData":{"Offset":"(165.252991,114.6154)"},"ID":9,"Name":"Attack","Instant":true,"SharedCharacterAttackSharedCharacterAttack":{"Type":"Clones.BehaviorTree.SharedCharacterAttack","Name":"_characterAttack","IsShared":true,"CharacterAttackmValue":5},"SharedEnemyEnemy":{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":6}}]}]}]},{"Type":"Clones.BehaviorTree.DestroyEnemy","NodeData":{"Offset":"(159.827881,122.670837)"},"ID":10,"Name":"Destroy
+        Enemy","Instant":true,"SharedEnemyHealthEnemyHealth":{"Type":"Clones.BehaviorTree.SharedEnemyHealth","Name":"_health","IsShared":true,"EnemyHealthmValue":7}}]},"Variables":[null,{"Type":"Clones.BehaviorTree.SharedCharacterAttack","Name":"_characterAttack","IsShared":true,"CharacterAttackmValue":8},{"Type":"Clones.BehaviorTree.SharedEnemy","Name":"_enemy","IsShared":true,"EnemymValue":9},{"Type":"Clones.BehaviorTree.SharedNavMeshAgent","Name":"_navMeshAgent","IsShared":true,"NavMeshAgentmValue":10},{"Type":"Clones.BehaviorTree.SharedEnemyAnimationSwithcer","Name":"_enemyAnimationSwitcher","IsShared":true,"EnemyAnimationSwitchermValue":11},{"Type":"Clones.BehaviorTree.SharedEnemyHealth","Name":"_health","IsShared":true,"EnemyHealthmValue":12}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 4075670997723610082}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 5717228191500794856}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 8867258351659907868}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 4075670997723610082}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[9]
+      value: 
+      objectReference: {fileID: 5717228191500794856}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[10]
+      value: 
+      objectReference: {fileID: 9109439408678212664}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[11]
+      value: 
+      objectReference: {fileID: 8845634063073905003}
+    - target: {fileID: 3248911630774885601, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[12]
       value: 
       objectReference: {fileID: 8867258351659907868}
