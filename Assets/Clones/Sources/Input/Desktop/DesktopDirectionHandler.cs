@@ -5,7 +5,7 @@ namespace Clones.Input
 {
     public class DesktopDirectionHandler : MonoBehaviour, IStopable
     {
-        private const float Delta = 6000;
+        private const float Delta = 0;
 
         [SerializeField] private RectTransform _background;
 
