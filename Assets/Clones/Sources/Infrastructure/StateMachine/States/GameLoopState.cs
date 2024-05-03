@@ -15,7 +15,7 @@ namespace Clones.Infrastructure
         private readonly IUiFactory _uiFactory;
         private readonly IPartsFactory _partsFactory;
         private readonly IPersistentProgressService _persistentProgress;
-        private readonly ITimeScale _timeScale;
+        private readonly ITimeScaler _timeScale;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IGameStaticDataService _gameStaticDataService;
@@ -27,7 +27,7 @@ namespace Clones.Infrastructure
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
 
-        public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScale timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory)
+        public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScaler timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -89,14 +89,15 @@ namespace Clones.Infrastructure
             _uiFactory.CreateControl(playerObject.GetComponent<Player>());
             _uiFactory.CreateGameOverView();
             _uiFactory.CreateGameRevivleView(playerRevival);
-
+            
             CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera(playerObject);
             AttackShake attackShake = new(playerAttack, virtualCamera.GetComponent<CameraShake>());
             CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
             ICurrentBiome currentBiome = new CurrentBiome(worldGenerator);
 
-            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity, playerObject);
-            enemiesSpawner.Init(_partsFactory);
+            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity, playerObject, _partsFactory);
+            
+            _uiFactory.CreateGameSettings(enemiesSpawner, playerObject.GetComponent<PlayerHealth>());
 
             _gameFactory.CreateMusic(currentBiome);
             _gameFactory.CreateFreezingScreen(playerObject);

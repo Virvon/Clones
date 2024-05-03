@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Clones.UI
 {
+
     public class ChangeGameStateButton : MonoBehaviour
     {
         [SerializeField] private string _scene;

@@ -9,7 +9,7 @@ namespace Clones.Infrastructure
     {
         WorldGenerator CreateWorldGenerator(GameObject player);
         CinemachineVirtualCamera CreateVirtualCamera(GameObject player);
-        EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity, GameObject player);
+        EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity, GameObject player, IPartsFactory partsFactory);
         GameMusic CreateMusic(ICurrentBiome currentBiome);
         void CreateFreezingScreen(GameObject player);
     }

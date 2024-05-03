@@ -19,7 +19,7 @@ namespace Clones.Infrastructure
         private readonly IUiFactory _uiFactory;
         private readonly IInputService _inputService;
         private readonly IEducationFactory _educationFactory;
-        private readonly ITimeScale _timeScale;
+        private readonly ITimeScaler _timeScale;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ILocalization _localization;
         private readonly ICharacterFactory _characterFactory;
@@ -32,7 +32,7 @@ namespace Clones.Infrastructure
         private GameObject _controlObject;
         private CinemachineVirtualCamera _educationVirtualCamera;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScale timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory)
+        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScaler timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;
@@ -75,6 +75,7 @@ namespace Clones.Infrastructure
             _frameFocus = _uiFactory.CreateFrameFocus();
             _controlObject = _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
             IOpenableView openableView = _uiFactory.CreateEducationOverView();
+            _uiFactory.CreateAudioButton();
 
             EducationPreyResourcesSpawner spawner = _educationFactory.CreatePreyResourcesSpawner();
 

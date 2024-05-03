@@ -7,8 +7,8 @@ namespace Clones.Data
     {
         private const int DefaultVolume = 0;
 
-        public float SoundVolume;
-        public float MusicVolume;
+        public int SoundVolume;
+        public int MusicVolume;
 
         public Settings()
         {

@@ -8,7 +8,7 @@ namespace Clones.UI
     {
         [SerializeField] private Image _activeImage;
         [SerializeField] private Image _deactiveImage;
-        [SerializeField] private AudioSwitcher _audioSwitcher;
+        [SerializeField] private AudioSwitcherSlider _audioSwitcher;
 
         private Image _currentImage;
 

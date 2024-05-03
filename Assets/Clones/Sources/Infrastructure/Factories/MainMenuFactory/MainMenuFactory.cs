@@ -1,12 +1,14 @@
 ﻿using Clones.Audio;
 using Clones.Data;
 using Clones.Services;
+using Clones.SFX;
 using Clones.StaticData;
 using Clones.Types;
 using Clones.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Clones.Infrastructure
 {
@@ -45,7 +47,7 @@ namespace Clones.Infrastructure
                 .GetComponentInChildren<DnaView>()
                 .Init(_persistentProgress.Progress.Wallet);
 
-            foreach (var switcher in menu.GetComponents<AudioSwitcher>())
+            foreach (var switcher in menu.GetComponents<AudioSwitcherSlider>())
                 switcher.Init(_persistentProgress);
 
             _containers = menu.GetComponentInChildren<MainMenuContainers>();
@@ -147,9 +149,17 @@ namespace Clones.Infrastructure
                 .GetComponent<CardsScrollRect>()
                 .Init(cloneCardsToggleWindows);
 
+            _clonesCardsView
+                .GetComponent<ButtonClickSound>()
+                .Init(clonesCardsShowButton.GetComponentInChildren<Button>());
+            
             _wandsCardsView
                 .GetComponent<CardsScrollRect>()
                 .Init(wandCardsToggleWindows);
+
+            _wandsCardsView
+                .GetComponent<ButtonClickSound>()
+                .Init(wandsCardsShowButton.GetComponentInChildren<Button>());
         }
 
         public void CreateStatsView()

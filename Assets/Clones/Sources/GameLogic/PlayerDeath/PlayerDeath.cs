@@ -8,11 +8,11 @@ namespace Clones.GameLogic
     {
         private readonly IOpenableView _openableView;
         private readonly PlayerHealth _player;
-        private readonly ITimeScale _timeScale;
+        private readonly ITimeScaler _timeScale;
         private readonly IDestoryableEnemies _destroyableEnemies;
         private readonly Action _callbakc;
 
-        public PlayerDeath(IOpenableView openableView, PlayerHealth player, ITimeScale timeScale, IDestoryableEnemies destroyableEnemies, Action callback = null)
+        public PlayerDeath(IOpenableView openableView, PlayerHealth player, ITimeScaler timeScale, IDestoryableEnemies destroyableEnemies, Action callback = null)
         {
             _openableView = openableView;
             _player = player;

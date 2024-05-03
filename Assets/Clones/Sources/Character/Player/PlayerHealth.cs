@@ -3,6 +3,8 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
 {
+    private bool _invulnerabled;
+
     public bool IsAlive => Health > 0;
 
     public int Health { get; private set; }
@@ -17,10 +19,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
     {
         Health = health;
         MaxHealth = Health;
+        _invulnerabled = false;
     }
 
     public void TakeDamage(float damage)
     {
+        if (_invulnerabled)
+            return;
+
         Health -= (int)damage;
 
         if(Health < 0)
@@ -43,4 +49,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
         HealthChanged?.Invoke();
         Reborned?.Invoke();
     }
+
+    public void SetInvulnerability() => 
+        _invulnerabled = true;
 }

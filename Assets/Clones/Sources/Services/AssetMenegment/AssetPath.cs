@@ -32,5 +32,7 @@
         public const string DirectionMarker = "Education/DirectionMarker";
         public const string FirstDirectionMarkerTarget = "Education/FirstDirectionMarkerTarget";
         public const string SecondDirectionMarketTarget = "Education/SecondDirectionMarkerTarget";
+        public const string GameSettings = "UI/Game/Prefabs/Settings";
+        public const string AudioButton = "UI/Game/Prefabs/AudioButton";
     }
 }

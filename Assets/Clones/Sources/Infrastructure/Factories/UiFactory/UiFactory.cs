@@ -4,6 +4,7 @@ using Clones.UI;
 using Clones.GameLogic;
 using Clones.Input;
 using Clones.SFX;
+using Clones.Audio;
 
 namespace Clones.Infrastructure
 {
@@ -13,17 +14,21 @@ namespace Clones.Infrastructure
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly IGameStateMachine _stateMachine;
         private readonly IInputService _inputService;
+        private readonly ITimeScaler _timeScaler;
 
         private GameObject _hud;
         private GameOverView _gameOverView;
         private QuestPanel _questPanel;
+        private GameObject _control;
+        private GameRevivalView _gameRevivalView;
 
-        public UiFactory(IAssetProvider assets, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine, IInputService inputService)
+        public UiFactory(IAssetProvider assets, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine, IInputService inputService, ITimeScaler timeScaler)
         {
             _assets = assets;
             _persistentProgressService = persistentProgressService;
             _stateMachine = stateMachine;
             _inputService = inputService;
+            _timeScaler = timeScaler;
         }
 
         public GameObject CreateHud(IQuestsCreator questsCreator, GameObject playerObject)
@@ -53,19 +58,17 @@ namespace Clones.Infrastructure
                 .GetComponentInChildren<QuestSound>()
                 .Init(questsCreator);
 
-            
-
             return _hud;
         }
 
         public GameObject CreateControl(Player player)
         {
-            GameObject control = _assets.Instantiate(_inputService.ControlPath, _hud.transform);
+            _control = _assets.Instantiate(_inputService.ControlPath, _hud.transform);
 
-            if (control.TryGetComponent(out DesktopDirectionHandler desktopDirectionHandler))
+            if (_control.TryGetComponent(out DesktopDirectionHandler desktopDirectionHandler))
                 desktopDirectionHandler.Init(player);
 
-            return control;
+            return _control;
         }
 
         public GameObject CreateQuestView(Quest quest, Transform parent)
@@ -81,12 +84,12 @@ namespace Clones.Infrastructure
         public void CreateGameRevivleView(IPlayerRevival playerRevival)
         {
             GameObject gameRevivleView = _assets.Instantiate(AssetPath.GameRevivleView, _hud.transform);
-            
-            gameRevivleView
-                .GetComponent<GameRevivalView>()
-                .Init(playerRevival, _gameOverView);
 
-            gameRevivleView
+            _gameRevivalView = gameRevivleView.GetComponent<GameRevivalView>();
+
+            _gameRevivalView.Init(playerRevival, _gameOverView);
+
+            _gameRevivalView
                 .GetComponent<RevivalButton>()
                 .Init(playerRevival, _gameOverView);
         }
@@ -132,6 +135,27 @@ namespace Clones.Infrastructure
             frameFocus.Init();
 
             return frameFocus;
+        }
+
+        public void CreateGameSettings(IDestoryableEnemies destoryableEnemies, PlayerHealth playerHealth)
+        {
+            GameObject settings = _assets.Instantiate(AssetPath.GameSettings, _hud.transform);
+
+            settings
+                .GetComponent<AudioSwitcherButton>()
+                .Init(_persistentProgressService);
+
+            settings
+                .GetComponent<ExitToMenuButton>()
+                .Init(_control, destoryableEnemies, playerHealth, _gameOverView, _timeScaler, _gameRevivalView);
+        }
+
+        public void CreateAudioButton()
+        {
+            _assets
+                .Instantiate(AssetPath.AudioButton, _hud.transform)
+                .GetComponent<AudioSwitcherButton>()
+                .Init(_persistentProgressService);
         }
     }
 }

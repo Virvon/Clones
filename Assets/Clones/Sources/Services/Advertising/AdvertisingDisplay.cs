@@ -13,12 +13,12 @@ namespace Clones.Services
         private const int NormalTimeScaleValue = 1;
 
         private readonly AudioMixerGroup _audioMixerGroup;
-        private readonly ITimeScale _timeScale;
+        private readonly ITimeScaler _timeScale;
         private readonly ICoroutineRunner _runner;
 
         private float _volume;
 
-        public AdvertisingDisplay(AudioMixerGroup audioMixerGroup, ITimeScale timeScale, ICoroutineRunner runner)
+        public AdvertisingDisplay(AudioMixerGroup audioMixerGroup, ITimeScaler timeScale, ICoroutineRunner runner)
         {
             _audioMixerGroup = audioMixerGroup;
             _timeScale = timeScale;

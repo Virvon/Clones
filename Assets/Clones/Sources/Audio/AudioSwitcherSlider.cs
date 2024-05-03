@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Clones.Audio
 {
-    public abstract class AudioSwitcher : MonoBehaviour
+    public abstract class AudioSwitcherSlider : MonoBehaviour
     {
         private const int MinSoundVolume = -25;
         private const int SoundOffVolume = -80;
@@ -27,7 +27,7 @@ namespace Clones.Audio
 
         public void SetAudioVolume()
         {
-            float volume = _audioSlider.value > MinSoundVolume ? _audioSlider.value : SoundOffVolume;
+            int volume = _audioSlider.value > MinSoundVolume ? (int)_audioSlider.value : SoundOffVolume;
 
             _mixer.audioMixer.SetFloat(_mixerName, volume);
             SetProgress(volume);
@@ -35,7 +35,7 @@ namespace Clones.Audio
             AudioVolumeChanged?.Invoke();
         }
 
-        public void SetAudioVolume(float volume)
+        public void SetAudioVolume(int volume)
         {
             volume = volume > MinSoundVolume ? volume : SoundOffVolume;
 
@@ -51,7 +51,7 @@ namespace Clones.Audio
             if (isActive == IsAudioActive)
                 return;
 
-            float volume = isActive ? SoundOnVolume : SoundOffVolume;
+            int volume = isActive ? SoundOnVolume : SoundOffVolume;
 
             _mixer.audioMixer.SetFloat(_mixerName, volume);
             _audioSlider.value = volume;
@@ -60,7 +60,7 @@ namespace Clones.Audio
             AudioVolumeChanged?.Invoke();
         }
 
-        protected abstract void SetProgress(float volume);
+        protected abstract void SetProgress(int volume);
 
         private bool CheckAudioActive()
         {

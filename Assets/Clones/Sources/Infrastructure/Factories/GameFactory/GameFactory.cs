@@ -14,13 +14,13 @@ namespace Clones.Infrastructure
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly IAssetProvider _assets;
         private readonly IInputService _inputService;
-        private readonly ITimeScale _timeScale;
+        private readonly ITimeScaler _timeScale;
         private readonly IPersistentProgressService _persistentPorgress;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
 
         private EnemiesSpawner _enemiesSpawner;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService gameStaticDataService, ITimeScale timeScale, IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
+        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService gameStaticDataService, ITimeScaler timeScale, IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
         {
             _assets = assets;
             _inputService = inputService;
@@ -53,15 +53,14 @@ namespace Clones.Infrastructure
             return virtualCamera;
         }
 
-        public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity, GameObject player)
+        public EnemiesSpawner CreateEnemiesSpawner(ICurrentBiome currentBiome, Complexity complexity, GameObject player, IPartsFactory partsFactory)
         {
             EnemiesSpawnerStaticData data = _gameStaticDataService.GetEnemiesSpawner(); 
             GameObject enemiesSpawnerObject = InstantiateRegistered(data.Prefab);
 
             _enemiesSpawner = enemiesSpawnerObject.GetComponent<EnemiesSpawner>();
 
-            _enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.WaveWeight, data.MinRadius, data.MaxRadius);
-            _enemiesSpawner.Init(currentBiome, _gameStaticDataService, player, complexity);
+            _enemiesSpawner.Init(data.StartDelay, data.SpawnCooldown, data.WaveWeight, data.MinRadius, data.MaxRadius, currentBiome, _gameStaticDataService, player, complexity, partsFactory);
 
             return _enemiesSpawner;
         }

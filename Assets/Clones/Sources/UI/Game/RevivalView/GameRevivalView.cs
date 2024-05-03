@@ -19,6 +19,8 @@ namespace Clones.UI
         private GameOverView _gameOverView;
         private Coroutine _timer;
 
+        public Action Opened;
+
         public void Init(IPlayerRevival playerRevival, GameOverView gameOverView)
         {
             _playerRevival = playerRevival;
@@ -28,6 +30,8 @@ namespace Clones.UI
 
         public void Open()
         {
+            Opened?.Invoke();
+
             if (_playerRevival.CanRivival)
             {
                 _background.SetActive(true);

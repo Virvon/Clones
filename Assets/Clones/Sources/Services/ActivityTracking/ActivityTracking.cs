@@ -13,10 +13,10 @@ namespace Clones.Services
         private const int NormalTimeScale = 1;
         private const int StoppedTimeScale = 0;
 
-        private readonly ITimeScale _timeScale;
+        private readonly ITimeScaler _timeScale;
         private readonly AudioMixerGroup _audioMixer;
 
-        public ActivityTracking(ITimeScale timeScale, AudioMixerGroup audioMixer)
+        public ActivityTracking(ITimeScaler timeScale, AudioMixerGroup audioMixer)
         {
             _timeScale = timeScale;
             _audioMixer = audioMixer;

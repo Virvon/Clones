@@ -2,7 +2,7 @@
 
 namespace Clones.Services
 {
-    public class TimeScale : ITimeScale
+    public class TimeScale : ITimeScaler
     {
         private List<ITimeScalable> _scalables;
 

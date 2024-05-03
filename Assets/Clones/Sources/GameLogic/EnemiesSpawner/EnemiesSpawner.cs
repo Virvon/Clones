@@ -16,7 +16,6 @@ namespace Clones.GameLogic
         private float _waveWeight;
         private float _minRadius;
         private float _maxRadius;
-        private float _baseMovementSpeed;
 
         private ICurrentBiome _currentBiome;
         private IGameStaticDataService _staticDataService;
@@ -34,27 +33,21 @@ namespace Clones.GameLogic
         private void OnDisable() =>
             _isFinish = true;
 
-        public void Init(float startDelay, float spawnCooldown, float waveWeight, float minRadius, float maxRadius)
+        public void Init(float startDelay, float spawnCooldown, float waveWeight, float minRadius, float maxRadius, ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject, Complexity complexity, IPartsFactory partsFactory)
         {
             _startDelay = startDelay;
             _spawnCooldown = spawnCooldown;
             _waveWeight = waveWeight;
             _minRadius = minRadius;
             _maxRadius = maxRadius;
-
-            _timeScale = 1;
-        }
-
-        public void Init(ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject, Complexity complexity)
-        {
             _currentBiome = currentBiome;
             _staticDataService = staticDataService;
             _playerObject = playerObject;
             _complexity = complexity;
-        }
-
-        public void Init(IPartsFactory partsFactory) =>
             _partsFactory = partsFactory;
+
+            _timeScale = 1;
+        }
 
         public void StartSpawn()
         {
