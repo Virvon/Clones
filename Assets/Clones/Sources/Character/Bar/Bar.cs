@@ -8,9 +8,9 @@ public abstract class Bar : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private float _animationSpeed;
 
-    protected Slider Slider => _slider;
-
     private Coroutine _animation;
+
+    protected Slider Slider => _slider;
 
     protected void StartAnimation(float targetValue)
     {

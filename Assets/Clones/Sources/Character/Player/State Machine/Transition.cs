@@ -8,7 +8,6 @@ namespace Clones.StateMachine
         [SerializeField] private State _targetState;
 
         public State TargetState => _targetState;
-
         public bool NeedTransit { get; protected set; }
 
         protected IInputService InputService { get; private set; }
@@ -21,9 +20,7 @@ namespace Clones.StateMachine
 
         protected virtual void Init() { }
 
-        private void OnEnable()
-        {
-            NeedTransit = false;        
-        }
+        private void OnEnable() => 
+            NeedTransit = false;
     }
 }

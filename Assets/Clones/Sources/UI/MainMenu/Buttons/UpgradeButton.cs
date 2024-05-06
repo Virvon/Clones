@@ -21,12 +21,6 @@ namespace Clones.UI
 
         public event Action BuyTried;
 
-        private void OnDisable()
-        {
-            Wallet.CurrencyCountChanged -= CheckPrice;
-            _button.onClick.RemoveListener(OnButtonClicked);
-        }
-
         public void Init(Wallet wallet)
         {
             Wallet = wallet;
@@ -37,6 +31,12 @@ namespace Clones.UI
             _button.onClick.AddListener(OnButtonClicked);
 
             CheckPrice();
+        }
+
+        private void OnDisable()
+        {
+            Wallet.CurrencyCountChanged -= CheckPrice;
+            _button.onClick.RemoveListener(OnButtonClicked);
         }
 
         public void SetPrice(int price)

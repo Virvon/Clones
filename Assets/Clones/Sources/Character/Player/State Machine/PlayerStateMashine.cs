@@ -28,20 +28,20 @@ namespace Clones.StateMachine
                 Transit(nextState);
         }
 
+        private void Reset()
+        {
+            CurrentState = _firstState;
+
+            if (CurrentState != null)
+                CurrentState.Enter(_inputService);
+        }
+
         private void Transit(State state)
         {
             if (CurrentState != null)
                 CurrentState.Exit();
 
             CurrentState = state;
-
-            if (CurrentState != null)
-                CurrentState.Enter(_inputService);
-        }
-
-        private void Reset()
-        {
-            CurrentState = _firstState;
 
             if (CurrentState != null)
                 CurrentState.Enter(_inputService);

@@ -10,15 +10,15 @@ public class EnemyHealth : MonoBehaviour, IDroppable, IHealthble
     public event Action HealthChanged;
     public event Action<IDamageable> Died;
 
-    public void Accept(IDroppableVisitor visitor) => 
-        visitor.Visit(GetComponent<Enemy>());
-
     public void Init(int health)
     {
         Health = health;
 
         IsAlive = true;
     }
+
+    public void Accept(IDroppableVisitor visitor) => 
+        visitor.Visit(GetComponent<Enemy>());    
 
     public void TakeDamage(float damage)
     {

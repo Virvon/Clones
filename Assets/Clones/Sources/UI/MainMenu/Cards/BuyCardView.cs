@@ -20,12 +20,6 @@ namespace Clones.UI
         public event Action<Card> BuyCardTried;
         public event Action BuyTried;
 
-        private void OnDestroy()
-        {
-            if (_wallet != null)
-                _wallet.CurrencyCountChanged -= CheckPrice;
-        }
-
         public void Init(int price, Wallet wallet)
         {
             _price = price;
@@ -38,6 +32,12 @@ namespace Clones.UI
             _textPrice.text = NumberFormatter.DivideIntegerOnDigits(_price);
 
             CheckPrice();
+        }
+
+        private void OnDestroy()
+        {
+            if (_wallet != null)
+                _wallet.CurrencyCountChanged -= CheckPrice;
         }
 
         private void CheckPrice()

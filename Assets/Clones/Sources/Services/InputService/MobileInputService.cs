@@ -1,5 +1,4 @@
-﻿using Clones.Infrastructure;
-using Clones.Input;
+﻿using Clones.Input;
 using System;
 using UnityEngine;
 

@@ -14,21 +14,23 @@ namespace Clones.UI
         private IQuestsCreator _questsCreator;
         private IUiFactory _uiFactory;
 
-        private Dictionary<QuestItemType, QuestView> _questViews = new();
-
-        private void OnDisable()
-        {
-            _questsCreator.Created -= OnQuestCreated;
-            _questsCreator.Updated -= OnQuestCellUpdated;
-        }
+        private Dictionary<QuestItemType, QuestView> _questViews;
 
         public void Init(IQuestsCreator questsCreator, IUiFactory uiFactory)
         {
             _questsCreator = questsCreator;
             _uiFactory = uiFactory;
 
+            _questViews = new();
+
             _questsCreator.Created += OnQuestCreated;
             _questsCreator.Updated += OnQuestCellUpdated;
+        }
+
+        private void OnDisable()
+        {
+            _questsCreator.Created -= OnQuestCreated;
+            _questsCreator.Updated -= OnQuestCellUpdated;
         }
 
         private void OnQuestCreated()

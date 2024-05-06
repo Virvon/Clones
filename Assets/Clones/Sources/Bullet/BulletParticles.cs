@@ -12,13 +12,11 @@ public abstract class BulletParticles : MonoBehaviour
         Bullet.Shooted += OnShooted;
     }
 
-    private void OnDisable() => Bullet.Shooted -= OnShooted;
+    private void OnDisable() =>
+        Bullet.Shooted -= OnShooted;
 
     protected abstract void OnShooted();
-
     protected abstract void CreateProjectile();
-
     protected abstract void CreateMuzzle();
-
     protected abstract void OnHitted();
 }

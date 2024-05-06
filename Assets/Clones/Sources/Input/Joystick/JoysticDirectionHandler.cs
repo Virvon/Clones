@@ -8,10 +8,10 @@ namespace Clones.Input
     {
         [SerializeField] private RectTransform _handleBackground;
 
-        public static Vector2 Direction { get; private set; }
-
         private PlayerInput _input;
         private bool _isActivated;
+
+        public static Vector2 Direction { get; private set; }
 
         public static event Action Activated;
         public static event Action Deactivated;
@@ -24,17 +24,17 @@ namespace Clones.Input
             _input.Player.Touch.performed += ctx => OnUpTouch();
         }
 
+        private void Update()
+        {
+            if (_input.Player.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+                OnDownTouch();
+        }
+
         private void OnDisable()
         {
             _input.Player.Touch.performed -= ctx => OnUpTouch();
 
             _input.Disable();
-        }
-
-        private void Update()
-        {
-            if (_input.Player.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Started)
-                OnDownTouch();
         }
 
         public void Stop() =>

@@ -8,7 +8,8 @@ namespace Clones.StateMachine
 
         private readonly Collider[] _overlapColliders = new Collider[64];
 
-        private void OnDisable() => InputService.Deactivated -= OnDeactivated;
+        protected override void Init() =>
+            InputService.Deactivated += OnDeactivated;
 
         private void Update()
         {
@@ -26,8 +27,8 @@ namespace Clones.StateMachine
             NeedTransit = true;
         }
 
-        protected override void Init() => 
-            InputService.Deactivated += OnDeactivated;
+        private void OnDisable() =>
+            InputService.Deactivated -= OnDeactivated;
 
         private void OnDeactivated() => 
             NeedTransit = true;

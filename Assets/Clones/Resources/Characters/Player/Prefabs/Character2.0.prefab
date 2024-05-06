@@ -1524,6 +1524,10 @@ PrefabInstance:
       propertyPath: _shootingPoint
       value: 
       objectReference: {fileID: 8892056319176010572}
+    - target: {fileID: 3077993248423159612, guid: eaead22b08c06344d99f0eadb7f007f9, type: 3}
+      propertyPath: _skinnedMeshRenderer
+      value: 
+      objectReference: {fileID: 2403712490653212278}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaead22b08c06344d99f0eadb7f007f9, type: 3}
 --- !u!4 &4963044976321548680 stripped

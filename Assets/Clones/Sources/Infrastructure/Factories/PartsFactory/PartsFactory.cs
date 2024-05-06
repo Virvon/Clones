@@ -17,10 +17,8 @@ namespace Clones.Infrastructure
     {
         private readonly IGameStaticDataService _staticData;
 
-        public PartsFactory(IGameStaticDataService staticData)
-        {
+        public PartsFactory(IGameStaticDataService staticData) => 
             _staticData = staticData;
-        }
 
         public void CreateEnemy(EnemyType type, Vector3 position, Quaternion rotation, Transform parent, out float weight, GameObject playerObject, float complexityCoefficient, int currentWave)
         {

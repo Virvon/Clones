@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Wand : CharacterAttack
+public class Wand : CharacterAttack, IKiller
 {
     [SerializeField] private Transform _shootingPoint;
     
@@ -16,9 +16,9 @@ public class Wand : CharacterAttack
     private float _damage;
     private Player _player;
 
-    public override event Action<IDamageable> Killed;
-
     protected override float CoolDown => _player.StatsProvider.GetStats().AttackCooldown;
+
+    public event Action<IDamageable> Killed;
 
     public void Init(IPartsFactory partsFactory, BulletType bulletType, int damage, float knockbackForce, float knockbackOffset, Player player)
     {

@@ -18,7 +18,6 @@ namespace Clones.GameLogic
         private int _questNumber;
 
         public int Reward { get; private set; }
-
         public IReadOnlyList<Quest> Quests => _currentQuests;
 
         public event Action Created;

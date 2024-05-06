@@ -13,7 +13,6 @@ public class BiomeEffects : MonoBehaviour
     public bool EffectIsPlayed { get; private set; }
     public Biome Biome => _biome;
 
-
     public event Action EffectStateChanged;
 
     private void OnEnable()

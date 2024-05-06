@@ -18,7 +18,12 @@ namespace Clones.Infrastructure
             _characterFactory = characterFactory;
         }
 
-        public void Enter()
+        public void Enter() => 
+            CreateMainMenu();
+
+        public void Exit() { }
+
+        private void CreateMainMenu()
         {
             _mainMenuFactory.CreateMainMenu();
             _mainMenuFactory.CreatePlayButton();
@@ -29,23 +34,26 @@ namespace Clones.Infrastructure
             WandsCardsView wandsCardsView = _mainMenuFactory.CreateWandsCardsView();
 
             _mainMenuFactory.CreateShowCardButtonds();
+            CreateCards();
 
+            _mainMenuFactory.CreateCloneModelPoint(_characterFactory);
+            SelectCurrentOrDefaultCards(clonesCardsView, wandsCardsView);
+
+            wandsCardsView.gameObject.SetActive(false);
+        }
+
+        private static void SelectCurrentOrDefaultCards(ClonesCardsView clonesCardsView, WandsCardsView wandsCardsView)
+        {
+            clonesCardsView.SelectCurrentOrDefault();
+            wandsCardsView.SelectCurrentOrDefault();
+        }
+
+        private void CreateCards()
+        {
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 
             CreateClonesCards(menuData.CloneTypes);
             CreateWandsCards(menuData.WandTypes);
-
-            _mainMenuFactory.CreateCloneModelPoint(_characterFactory);
-
-            clonesCardsView.SelectCurrentOrDefault();
-            wandsCardsView.SelectCurrentOrDefault();
-
-            wandsCardsView.gameObject.SetActive(false);
-        } 
-
-        public void Exit()
-        {
-            
         }
 
         private void CreateClonesCards(CloneType[] types)

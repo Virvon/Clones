@@ -12,6 +12,9 @@ namespace Clones.Biomes
         public event Action<Biome> PlayerEntered;
         public event Action PlayerExited;
 
+        public void Init(BiomeType type) =>
+            Type = type;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Player player))
@@ -33,9 +36,6 @@ namespace Clones.Biomes
                 OnPlayerExited();
             }
         }
-
-        public void Init(BiomeType type) =>
-            Type = type;
 
         protected virtual void OnPlayerEntered() { }
 

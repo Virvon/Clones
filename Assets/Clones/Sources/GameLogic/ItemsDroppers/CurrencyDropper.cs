@@ -6,10 +6,10 @@ namespace Clones.GameLogic
 {
     public class CurrencyDropper : IDisable
     {
-        private readonly CharacterAttack _characterAttack;
+        private readonly IKiller _characterAttack;
         private readonly IDroppableVisitor _visitor;
 
-        public CurrencyDropper(IPartsFactory partsFactory, CharacterAttack characterAttack)
+        public CurrencyDropper(IPartsFactory partsFactory, IKiller characterAttack)
         {
             _visitor = new DroppableVisitor(partsFactory);
 
@@ -26,7 +26,6 @@ namespace Clones.GameLogic
 
         public void OnDisable() =>
             _characterAttack.Killed -= OnKilled;
-            
 
         private class DroppableVisitor : IDroppableVisitor
         {
@@ -44,15 +43,11 @@ namespace Clones.GameLogic
                 _partsFactory = partsFactory;
             }
 
-            public void Visit(Enemy enemy)
-            {
+            public void Visit(Enemy enemy) =>
                 Drop(CurrencyItemType.Dna, enemy.transform.position, MinEnemyDnaCount, MaxEnemyDnaCount);
-            }
 
-            public void Visit(PreyResource preyResource)
-            {
+            public void Visit(PreyResource preyResource) => 
                 Drop(CurrencyItemType.Dna, preyResource.transform.position, MinPreyResourceDnaCount, MaxPreyResourceDnaCount);
-            }
 
             private void Drop(CurrencyItemType type, Vector3 position, int minCount, int maxCount)
             {

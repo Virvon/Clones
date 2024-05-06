@@ -11,7 +11,6 @@ public class PreyResource : MonoBehaviour, IDroppable
     private int _hitsCountToDie;
 
     public bool IsAlive => _isAlive;
-
     public QuestItemType DroppedItem { get; private set; }
 
     public event Action<IDamageable> Died;

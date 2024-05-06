@@ -12,10 +12,10 @@ namespace Clones.GameLogic
         private const int MaxDropCount = 5;
 
         private readonly IPartsFactory _partsFactory;
-        private readonly CharacterAttack _characterAttack;
+        private readonly IKiller _characterAttack;
         private readonly IQuestsCreator _questsCreator;
 
-        public QuestItemsDropper(IPartsFactory partsFactory, CharacterAttack characterAttack, IQuestsCreator questsCreator)
+        public QuestItemsDropper(IPartsFactory partsFactory, IKiller characterAttack, IQuestsCreator questsCreator)
         {
             _partsFactory = partsFactory;
             _characterAttack = characterAttack;

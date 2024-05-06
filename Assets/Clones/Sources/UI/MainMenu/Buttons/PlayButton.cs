@@ -11,14 +11,14 @@ namespace Clones.UI
 
         private IGameStateMachine _gameStateMachine;
 
-        private void OnDisable() => 
-            _button.onClick.RemoveListener(Play);
-
         public void Init(IGameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
             _button.onClick.AddListener(Play);
         }
+
+        private void OnDisable() => 
+            _button.onClick.RemoveListener(Play);
 
         private void Play() =>
             _gameStateMachine.Enter<LoadSceneState, (string, bool)>((_targetScene, true), _gameStateMachine.Enter<GameLoopState>);

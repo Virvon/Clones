@@ -46,7 +46,6 @@ namespace Clones.GameLogic
             _localization = localization;
         }
 
-
         public void Create()
         {
             _quests = GetQuests(out int reward);

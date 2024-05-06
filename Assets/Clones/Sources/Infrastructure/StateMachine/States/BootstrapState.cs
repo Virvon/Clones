@@ -4,8 +4,6 @@ using Clones.UI;
 using Lean.Localization;
 using System;
 using System.Collections;
-using TMPro;
-using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Clones.Infrastructure
@@ -36,50 +34,11 @@ namespace Clones.Infrastructure
         public void Enter()
         {
             _loadingPanel.Open();
-            _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () =>
-            {
-                _sceneLoader.Load(InitScene, false, callback: EnterLoadProgress);
-                _coroutineRunner.StartCoroutine(SetLanguage(callback: _sceneLoader.AllowSceneActivation));
-            }));
+            InitializeYandexSdk();
         }
-
-
-        private enum Language
-        {
-            Russian,
-            English
-        }
-
-        private IEnumerator SetLanguage(Action callback = null)
-        {
-            while (LeanLocalization.CurrentLanguages.Count == 0)
-                yield return null;
-
-            LeanLocalization.SetCurrentLanguageAll(_services.Single<ILocalization>().GetLeanLanguage());
-
-            callback?.Invoke();
-        }
-        
 
         public void Exit() =>
             _loadingPanel.Close();
-
-        private IEnumerator InitializeYandexSdk(Action callback = null)
-        {
-#if !UNITY_WEBGL || UNITY_EDITOR
-            callback?.Invoke();
-            yield break;
-#else
-
-            yield return YandexGamesSdk.Initialize();
-
-            if (YandexGamesSdk.IsInitialized == false)
-                throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
-
-            YandexGamesSdk.CallbackLogging = true;
-            callback?.Invoke();
-#endif
-        }
 
         private void RegisterServices()
         {
@@ -96,12 +55,48 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<ILocalization>(new Localization(_coroutineRunner));
             _services.RegisterSingle(new ActivityTracking(_services.Single<ITimeScaler>(), _audioMixer));
 
-            _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IInputService>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScaler>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>()));
+            _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScaler>()));
             _services.RegisterSingle<IUiFactory>(new UiFactory(_services.Single<IAssetProvider>(), _services.Single<IPersistentProgressService>(), _stateMachine, _services.Single<IInputService>(), _services.Single<ITimeScaler>()));
             _services.RegisterSingle<IPartsFactory>(new PartsFactory(_services.Single<IGameStaticDataService>()));
             _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<ISaveLoadService>()));
             _services.RegisterSingle<IEducationFactory>(new EducationFactory(_services.Single<IPartsFactory>(), _services.Single<IGameStaticDataService>(), _services.Single<IAssetProvider>()));
             _services.RegisterSingle<ICharacterFactory>(new CharacterFactory(_services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<IInputService>()));
+        }
+
+        private void InitializeYandexSdk()
+        {
+            _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () =>
+            {
+                _sceneLoader.Load(InitScene, false, callback: EnterLoadProgress);
+                _coroutineRunner.StartCoroutine(SetLanguage(callback: _sceneLoader.AllowSceneActivation));
+            }));
+        }
+
+        private IEnumerator SetLanguage(Action callback = null)
+        {
+            while (LeanLocalization.CurrentLanguages.Count == 0)
+                yield return null;
+
+            LeanLocalization.SetCurrentLanguageAll(_services.Single<ILocalization>().GetLeanLanguage());
+
+            callback?.Invoke();
+        }
+
+        private IEnumerator InitializeYandexSdk(Action callback = null)
+        {
+#if !UNITY_WEBGL || UNITY_EDITOR
+            callback?.Invoke();
+            yield break;
+#else
+
+            yield return YandexGamesSdk.Initialize();
+
+            if (YandexGamesSdk.IsInitialized == false)
+                throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
+
+            YandexGamesSdk.CallbackLogging = true;
+            callback?.Invoke();
+#endif
         }
 
         private void RegisterInputService()

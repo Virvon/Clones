@@ -9,7 +9,6 @@ namespace Clones.UI
 
         private ClonesCardsView _cloneCardsView;
         private ICharacterFactory _characterFactory;
-
         private GameObject _currentClone;
 
         public void Init(ClonesCardsView clonesCardsView, ICharacterFactory characterFactory)

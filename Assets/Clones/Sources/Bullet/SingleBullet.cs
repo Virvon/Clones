@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class SingleBullet : Bullet
+public class SingleBullet : HittableBullet
 {
     [SerializeField] private DestroyTimer _destoryTimer;
 
@@ -15,11 +15,15 @@ public class SingleBullet : Bullet
     private bool _isCollisioned = false;
 
     public IDamageable HitTarget { get; private set; }
+
     public override BulletStaticData BulletData => _bulletData;
 
     public override event Action Hitted;
-    protected override event Action<List<DamageableCell>> s_Hitted;
     public override event Action Shooted;
+    protected override event Action<List<DamageableCell>> s_Hitted;
+
+    public override void Init(BulletStaticData bulletData) =>
+        _bulletData = (SingleBulletData)bulletData;
 
     private void Start()
     {
@@ -49,9 +53,6 @@ public class SingleBullet : Bullet
             _destoryTimer.Destroy();
         }
     }
-
-    public override void Init(BulletStaticData bulletData) => 
-        _bulletData = (SingleBulletData)bulletData;
 
     public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
     {

@@ -18,8 +18,11 @@ namespace Clones.StateMachine
         public event Action<GameObject> TargetSelected;
         public event Action TargetRejected;
 
-        private void Update() => 
-            Attack();
+        public void Init(float attackRadius, float lookRotaionSpeed)
+        {
+            _attackRadius = attackRadius;
+            _lookRotationSpeed = lookRotaionSpeed;
+        }
 
         private void OnEnable()
         {
@@ -27,14 +30,13 @@ namespace Clones.StateMachine
                 OnTargetDied(null);
         }
 
+        private void Update() => 
+            Attack();
+
         private void OnDisable() => 
             TargetRejected?.Invoke();
 
-        public void Init(float attackRadius, float lookRotaionSpeed)
-        {
-            _attackRadius = attackRadius;
-            _lookRotationSpeed = lookRotaionSpeed;
-        }
+        protected abstract bool IsRequiredTarget(IDamageable iDamageble);
 
         private void Attack()
         {
@@ -102,7 +104,5 @@ namespace Clones.StateMachine
             TargetRejected?.Invoke();
             _target = null;
         }
-
-        protected abstract bool IsRequiredTarget(IDamageable iDamageble);
     }
 }

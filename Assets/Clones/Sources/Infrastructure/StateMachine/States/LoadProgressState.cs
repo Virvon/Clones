@@ -29,7 +29,6 @@ namespace Clones.Infrastructure
             _isNewProgressCreated = false;
         }
 
-
         public void Enter()
         {
             LoadProgressOrInitNew();
@@ -40,17 +39,13 @@ namespace Clones.Infrastructure
                 _stateMachine.Enter<LoadSceneState, (string, bool)>((MainMenuScene, false), _stateMachine.Enter<MainMenuLoopState>);
         }
 
-        public void Exit()
-        {
-
-        }
+        public void Exit(){}
 
         private void LoadProgressOrInitNew() =>
             _persistentProgressService.Progress = _saveLoadService.LoadProgress() ?? CreateNewProgress();
 
         private PlayerProgress CreateNewProgress()
         {
-            Debug.Log("created new progress");
             PlayerProgress progress = new();
             progress.Wallet.Dna = 50000;
             progress.Wallet.Money = 50000;

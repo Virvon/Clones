@@ -13,10 +13,8 @@ namespace Clones.EducationLogic
             _questsCreator = questsCreator;
         }
 
-        public override void Handle()
-        {
+        public override void Handle() =>
             _questsCreator.Updated += OnQuestUpdated;
-        }
 
         private void OnQuestUpdated(Quest obj)
         {

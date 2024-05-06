@@ -12,10 +12,8 @@ namespace Clones.UI
         private ToggleWindows _toggleWindows;
         private ICardsView _cardView;
 
-        public void Init(ToggleWindows toggleWindows)
-        {
+        public void Init(ToggleWindows toggleWindows) => 
             _toggleWindows = toggleWindows;
-        }
 
         private void OnValidate()
         {

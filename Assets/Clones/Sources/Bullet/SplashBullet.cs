@@ -5,21 +5,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class SplashBullet : Bullet
+public class SplashBullet : HittableBullet
 {
     [SerializeField] private DestroyTimer _destroyTimer;
+
+    private readonly Collider[] _overlapColliders = new Collider[64];
 
     private SplashBulletData _bulletData;
     private Vector3 _direction;
     private GameObject _selfObject;
-    private readonly Collider[] _overlapColliders = new Collider[64];
     private bool _isCollisioned = false;
     
     public override BulletStaticData BulletData => _bulletData;
 
     public override event Action Hitted;
-    protected override event Action<List<DamageableCell>> s_Hitted;
     public override event Action Shooted;
+    protected override event Action<List<DamageableCell>> s_Hitted;
+
+    public override void Init(BulletStaticData bulletData) =>
+        _bulletData = (SplashBulletData)bulletData;
 
     private void Start()
     {
@@ -72,9 +76,6 @@ public class SplashBullet : Bullet
 
         Shooted?.Invoke();
     }
-
-    public override void Init(BulletStaticData bulletData) => _bulletData = (SplashBulletData)bulletData;
-
 
     private IEnumerator LifiTimer()
     {

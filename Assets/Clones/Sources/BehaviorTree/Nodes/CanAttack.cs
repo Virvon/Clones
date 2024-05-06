@@ -11,7 +11,7 @@ namespace Clones.BehaviorTree
 
         private Vector3 _targetPoint;
 
-        private float _distance => (TargetCharacter.Value.transform.position - _targetPoint).magnitude;
+        private float Distance => (TargetCharacter.Value.transform.position - _targetPoint).magnitude;
 
         public override void OnStart()
         {
@@ -20,7 +20,7 @@ namespace Clones.BehaviorTree
 
         public override TaskStatus OnUpdate()
         {
-            if(_distance > TargetRadius.Value)
+            if(Distance > TargetRadius.Value)
                 return TaskStatus.Failure;
             else
                 return TaskStatus.Success;

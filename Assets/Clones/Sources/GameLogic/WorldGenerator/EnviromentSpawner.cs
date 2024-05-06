@@ -24,6 +24,7 @@ namespace Clones.GameLogic
             if (_enviromentsTypes.Length > 0)
                 Spawn();
         }
+
         protected abstract void CreateEnviromentPart(IPartsFactory partsFactory, TEnviroment enviromentType, Vector3 position, int rotation);
 
         private void Spawn()

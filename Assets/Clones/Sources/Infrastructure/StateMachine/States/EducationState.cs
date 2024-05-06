@@ -32,6 +32,9 @@ namespace Clones.Infrastructure
         private FrameFocus _frameFocus;
         private GameObject _controlObject;
         private CinemachineVirtualCamera _educationVirtualCamera;
+        private IOpenableView _educationOverView;
+        private QuestItemsDropper _questItemsDropper;
+        private CurrencyDropper _currencyDropper;
 
         public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScaler timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory, ISaveLoadService saveLoadService)
         {
@@ -51,10 +54,8 @@ namespace Clones.Infrastructure
             _characterFactory = characterFactory;
         }
 
-        public void Enter()
-        {
+        public void Enter() =>
             CreateEducation();
-        }
 
         public void Exit()
         {
@@ -69,36 +70,59 @@ namespace Clones.Infrastructure
             _questCreator = CreateEducationQuestCreator();
             IItemsCounter itmesCounter = CreateItemsCounter(_questCreator);
 
-            _playerObject = _characterFactory.CreateCharacter(_partsFactory, itmesCounter);
-            _characterFactory.CreateWand(_playerObject.GetComponent<WandBone>().Bone);
-
-            _gameFactory.CreateVirtualCamera(_playerObject);
-            _educationVirtualCamera = _educationFactory.CreateVirtualCamera();
-
-            _uiFactory.CreateHud(_questCreator, _playerObject);
-            _frameFocus = _uiFactory.CreateFrameFocus();
-            _controlObject = _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
-            IOpenableView openableView = _uiFactory.CreateEducationOverView();
-            _uiFactory.CreateAudioButton();
+            CreateCharacter(itmesCounter);
+            CreateCameras();
+            CreateHud();
 
             EducationPreyResourcesSpawner spawner = _educationFactory.CreatePreyResourcesSpawner();
 
-            CharacterAttack playerAttack = _playerObject.GetComponent<CharacterAttack>();
-            QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, _questCreator);
-            CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
+            CreateDroppers();
 
             _enemiesSpawner = _educationFactory.CreateEnemiesSpawner(_playerObject);
 
-            PlayerDeath playerDeath = new(openableView, _playerObject.GetComponent<PlayerHealth>(), _timeScale, _enemiesSpawner);
+            PlayerDeath playerDeath = new(_educationOverView, _playerObject.GetComponent<PlayerHealth>(), _timeScale, _enemiesSpawner);
+
+            AddDisables(playerDeath);
 
             CreateEducationHandler().Handle();
 
             _questCreator.Create();
             spawner.Create();
+        }
 
-            _disables.Add(currencyDropper);
-            _disables.Add(questItemsDropper);
+        private void AddDisables(PlayerDeath playerDeath)
+        {
+            _disables.Add(_currencyDropper);
+            _disables.Add(_questItemsDropper);
             _disables.Add(playerDeath);
+        }
+
+        private void CreateDroppers()
+        {
+            IKiller playerAttack = _playerObject.GetComponent<IKiller>();
+            _questItemsDropper = new(_partsFactory, playerAttack, _questCreator);
+            _currencyDropper = new(_partsFactory, playerAttack);
+        }
+
+        private void CreateHud()
+        {
+            _uiFactory.CreateHud(_questCreator, _playerObject);
+            _frameFocus = _uiFactory.CreateFrameFocus();
+            _controlObject = _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
+            _educationOverView = _uiFactory.CreateEducationOverView();
+            _uiFactory.CreateAudioButton();
+        }
+
+        private void CreateCameras()
+        {
+            _gameFactory.CreateVirtualCamera(_playerObject);
+            _educationVirtualCamera = _educationFactory.CreateVirtualCamera();
+        }
+
+        private void CreateCharacter(IItemsCounter itmesCounter)
+        {
+            _playerObject = _characterFactory.CreateCharacter(_partsFactory, itmesCounter);
+            _characterFactory.CreateWand(_playerObject.GetComponent<WandBone>().Bone);
         }
 
         private IQuestsCreator CreateEducationQuestCreator()

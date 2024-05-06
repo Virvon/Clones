@@ -1,4 +1,4 @@
- using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
 namespace Clones.BehaviorTree
@@ -6,25 +6,25 @@ namespace Clones.BehaviorTree
     public class IsGreatDistanse : Conditional
     {
         public SharedEnemy Enemy;
-
         public SharedNavMeshAgent NavMeshAgent;
 
-        private GameObject _target => Enemy.Value.Target;
-        private float _distance => NavMeshAgent.Value.stoppingDistance;
         private float _stoppingDistance;
+
+        private GameObject Target => Enemy.Value.Target;
+        private float Distance => NavMeshAgent.Value.stoppingDistance;
 
         public override void OnStart() => 
             _stoppingDistance = NavMeshAgent.Value.stoppingDistance;
 
         public override TaskStatus OnUpdate()
         {
-            float distanceToPlayer = (Enemy.Value.transform.position - _target.transform.position).magnitude;
+            float distanceToPlayer = (Enemy.Value.transform.position - Target.transform.position).magnitude;
 
-            if (distanceToPlayer <= _distance)
+            if (distanceToPlayer <= Distance)
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(transform.position, _target.transform.position - transform.position, out hit, _distance))
+                if (Physics.Raycast(transform.position, Target.transform.position - transform.position, out hit, Distance))
                 {
                     if (hit.collider.TryGetComponent(out Player player))
                     {

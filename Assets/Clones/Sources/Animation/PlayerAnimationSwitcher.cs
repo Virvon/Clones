@@ -18,6 +18,18 @@ namespace Clones.Animation
 
         private float AnimationMovementSpeed => _player.StatsProvider.GetStats().MovementSpeed / _defaultMovementSpeed;
 
+        public void Init(IInputService inputService, Player player, int attackAnimationSpeedMultiplierPercent = 0)
+        {
+            _inputService = inputService;
+            _player = player;
+
+            _defaultMovementSpeed = _player.StatsProvider.GetStats().MovementSpeed;
+            _animator.SetFloat(AnimationPath.Player.Float.AttackAnimationSpeed, DefaultAttackAnimationSpeed * (1 + attackAnimationSpeedMultiplierPercent / 100f));
+
+            _inputService.Activated += OnMove;
+            _inputService.Deactivated += OnStop;
+        }
+
         private void OnEnable()
         {
             _animator = GetComponent<Animator>();
@@ -36,21 +48,8 @@ namespace Clones.Animation
             _inputService.Deactivated -= OnStop;
         }
 
-        public void Init(IInputService inputService, Player player, int attackAnimationSpeedMultiplierPercent = 0)
-        {
-            _inputService = inputService;
-            _player = player;
-
-            _defaultMovementSpeed = _player.StatsProvider.GetStats().MovementSpeed;
-            _animator.SetFloat(AnimationPath.Player.Float.AttackAnimationSpeed, DefaultAttackAnimationSpeed * (1 + attackAnimationSpeedMultiplierPercent / 100f));
-
-            _inputService.Activated += OnMove;
-            _inputService.Deactivated += OnStop;
-        }
-
         private void OnAttackStarted() => 
             _animator.SetTrigger(AnimationPath.Player.Trigger.Attack);
-
 
         private void OnMove()
         {

@@ -18,15 +18,15 @@ namespace Clones.UI
 
         public event Action Disused;
 
-        private void OnEnable() =>
-            Wait();
-
         public void Init(DateTime disuseEndDate)
         {
             _disuseEndDate = disuseEndDate;
 
             Wait();
         }
+
+        private void OnEnable() =>
+            Wait();
 
         private void Wait()
         {

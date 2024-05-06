@@ -5,10 +5,8 @@ public class TreeWithEyes : MonoBehaviour
 {
     private TreeEye[] _eyes;
 
-    private void Start()
-    {
+    private void Start() =>
         _eyes = GetComponentsInChildren<TreeEye>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {

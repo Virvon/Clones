@@ -7,6 +7,7 @@ namespace Clones.Biomes
     {
         [SerializeField, Range(0, 100)] private float _damagePercentage;
         [SerializeField] private float _coolDown;
+
         private void OnEnable() => 
             PlayerEntered += OnPlayerEntered;
 

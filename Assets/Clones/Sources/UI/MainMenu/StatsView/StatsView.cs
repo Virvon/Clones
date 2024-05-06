@@ -14,15 +14,6 @@ namespace Clones.UI
 
         private IPersistentProgressService _persistentProgress;
 
-        private void OnDisable()
-        {
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= UpdateStats;
-            _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= UpdateStats;
-
-            _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded -= UpdateStats;
-            _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded -= UpdateStats;
-        }
-
         public void Init(IPersistentProgressService persistentProgress)
         {
             _persistentProgress = persistentProgress;
@@ -32,6 +23,15 @@ namespace Clones.UI
 
             _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded += UpdateStats;
             _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded += UpdateStats;
+        }
+
+        private void OnDisable()
+        {
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= UpdateStats;
+            _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= UpdateStats;
+
+            _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded -= UpdateStats;
+            _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded -= UpdateStats;
         }
 
         private void UpdateStats()

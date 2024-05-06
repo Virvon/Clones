@@ -7,11 +7,10 @@ namespace Clones.UI
 {
     public abstract class CardsView<TType> : MonoBehaviour, ICardsView where TType : Enum
     {
-        private Dictionary<Card, TType> _types = new();
-        private Dictionary<TType, Card> _cards = new();
+        private Dictionary<Card, TType> _types;
+        private Dictionary<TType, Card> _cards;
 
         public Card CurrentCard { get; private set; }
-
         protected IPersistentProgressService PersistentProgress { get; private set; }
         protected IMainMenuStaticDataService MainMenuStaticDataService { get; private set; }
         protected ISaveLoadService SaveLoadService { get; private set; }
@@ -23,6 +22,9 @@ namespace Clones.UI
             PersistentProgress = persistentProgress;
             MainMenuStaticDataService = mainMenuStaticDataService;
             SaveLoadService = saveLoadService;
+
+            _types = new();
+            _cards = new();
         }
 
         private void OnDestroy()

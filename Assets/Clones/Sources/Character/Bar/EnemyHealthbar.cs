@@ -4,11 +4,11 @@ public class EnemyHealthbar : Healthbar
 {
     private Camera _camera;
 
+    public void Init(IHealthble healthble) =>
+        TakeHealthble(healthble);
+
     private void Awake() => 
         _camera = Camera.main;
-
-    public void Init(IHealthble healthble) => 
-        TakeHealthble(healthble);
 
     private void LateUpdate()
     {

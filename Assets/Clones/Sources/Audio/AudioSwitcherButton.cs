@@ -1,4 +1,5 @@
-﻿using Clones.Services;
+﻿using Clones.Data;
+using Clones.Services;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -24,7 +25,7 @@ namespace Clones.Audio
         private int _lastMusicVolume;
         private int _lastSoundVolume;
 
-        private bool _isSoundOn => _progress.Progress.Settings.MusicVolume > MinSoundVolume || _progress.Progress.Settings.SoundVolume > MinSoundVolume;
+        private bool IsSoundOn => _progress.Progress.Settings.MusicVolume > MinSoundVolume || _progress.Progress.Settings.SoundVolume > MinSoundVolume;
 
         public void Init(IPersistentProgressService progress)
         {
@@ -36,15 +37,13 @@ namespace Clones.Audio
             _button.onClick.AddListener(OnButtonClick);
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() => 
             _button.onClick.RemoveListener(OnButtonClick);
-        }
 
         private void OnButtonClick()
         {
-            int musicVolume = _isSoundOn ? SoundOffVolume : _lastMusicVolume;
-            int soundVolume = _isSoundOn ? SoundOffVolume : _lastSoundVolume;
+            int musicVolume = IsSoundOn ? SoundOffVolume : _lastMusicVolume;
+            int soundVolume = IsSoundOn ? SoundOffVolume : _lastSoundVolume;
 
             _audioMixer.audioMixer.SetFloat(_musicMixerName, musicVolume);
             _audioMixer.audioMixer.SetFloat(_soundMixerName, soundVolume);
@@ -56,12 +55,12 @@ namespace Clones.Audio
         }
 
         private void ToggleIcon() =>
-            _image.sprite = _isSoundOn ? _soundOnIcon : _soundOffIcon;
+            _image.sprite = IsSoundOn ? _soundOnIcon : _soundOffIcon;
 
         private void SetLastVolume()
         {
-            _lastSoundVolume = _isSoundOn ? _progress.Progress.Settings.SoundVolume : SoundOnVolume;
-            _lastMusicVolume = _isSoundOn ? _progress.Progress.Settings.MusicVolume : SoundOnVolume;
+            _lastSoundVolume = IsSoundOn ? _progress.Progress.Settings.SoundVolume : SoundOnVolume;
+            _lastMusicVolume = IsSoundOn ? _progress.Progress.Settings.MusicVolume : SoundOnVolume;
         }
     }
 }

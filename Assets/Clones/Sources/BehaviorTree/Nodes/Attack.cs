@@ -8,13 +8,13 @@ namespace Clones.BehaviorTree
         public SharedCharacterAttack SharedCharacterAttack;
         public SharedEnemy Enemy;
 
-        private GameObject _target => Enemy.Value.Target;
+        private GameObject Target => Enemy.Value.Target;
 
         public override TaskStatus OnUpdate()
         {
-            SharedCharacterAttack.Value.TryAttack(_target.GetComponent<IDamageable>());
+            SharedCharacterAttack.Value.TryAttack(Target.GetComponent<IDamageable>());
 
-            RotateTo(_target.transform.position);
+            RotateTo(Target.transform.position);
 
             return TaskStatus.Running;
         }

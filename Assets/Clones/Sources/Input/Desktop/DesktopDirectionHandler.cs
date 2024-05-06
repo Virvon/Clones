@@ -30,17 +30,17 @@ namespace Clones.Input
             _input.Player.Touch.performed += ctx => OnUpTouch();
         }
 
+        private void Update()
+        {
+            if (_input.Player.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+                OnDownTouch();
+        }
+
         private void OnDisable()
         {
             _input.Player.Touch.performed -= ctx => OnUpTouch();
 
             _input.Disable();
-        }
-
-        private void Update()
-        {
-            if (_input.Player.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Started)
-                OnDownTouch();
         }
 
         public void Stop() => 

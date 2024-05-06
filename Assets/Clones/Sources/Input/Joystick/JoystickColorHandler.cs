@@ -27,6 +27,7 @@ public class JoystickColorHandler : MonoBehaviour, IPointerDownHandler
         JoysticDirectionHandler.Activated -= SetActivateColor;
         JoysticDirectionHandler.Deactivated -= SetDeactivateColor;
     }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         SetActivateColor();

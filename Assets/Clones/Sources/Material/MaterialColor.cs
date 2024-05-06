@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(SkinnedMeshRenderer))]
 public class MaterialColor : MonoBehaviour
 {
+    [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
+
     public Color StartColor { get; private set; }
     public Color StartEmission { get; private set; }
     public Color CurrentColor { get; private set; }
@@ -15,7 +16,7 @@ public class MaterialColor : MonoBehaviour
 
     private void Awake()
     {
-        _material = GetComponent<SkinnedMeshRenderer>().material;
+        _material = _skinnedMeshRenderer.material;
 
         StartColor = _material.color;
         StartEmission = _material.GetColor("_EmissionColor");

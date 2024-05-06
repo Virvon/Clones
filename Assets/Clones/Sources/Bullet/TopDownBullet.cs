@@ -17,15 +17,17 @@ public class TopDownBullet : Bullet
     private GameObject _selfObject;
     private SphereCollider _collider;
 
-    public override event Action Hitted;
-    protected override event Action<List<DamageableCell>> s_Hitted;
     public override event Action Shooted;
+    protected override event Action<List<DamageableCell>> s_Hitted;
+
+    public override void Init(BulletStaticData bulletData) =>
+        _bulletData = (TopDownBulletData)bulletData;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IDamageable damageable) && damageable != _selfObject.GetComponent<IDamageable>())
         {
-            if (_selfObject is Enemy && damageable is Enemy)
+            if (damageable is Enemy)
                 return;
 
             Vector3 knockbackDirection = other.transform.position - transform.position;
@@ -53,8 +55,6 @@ public class TopDownBullet : Bullet
         StartCoroutine(Shooter());
         StartCoroutine(LifiTimer());
     }
-
-    public override void Init(BulletStaticData bulletData) => _bulletData = (TopDownBulletData)bulletData;
 
     private IEnumerator LifiTimer()
     {

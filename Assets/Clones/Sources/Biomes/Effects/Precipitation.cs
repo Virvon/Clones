@@ -3,12 +3,10 @@ using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 
-
 [RequireComponent(typeof(BiomeEffects))]
 public class Precipitation : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] _precipitationsPrefabs;
-
     [SerializeField] private float _destroyTime;
 
     private BiomeEffects _biomeEffects;

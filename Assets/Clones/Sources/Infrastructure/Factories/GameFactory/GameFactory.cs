@@ -13,29 +13,23 @@ namespace Clones.Infrastructure
     {
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly IAssetProvider _assets;
-        private readonly IInputService _inputService;
         private readonly ITimeScaler _timeScale;
-        private readonly IPersistentProgressService _persistentPorgress;
-        private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
 
         private EnemiesSpawner _enemiesSpawner;
 
-        public GameFactory(IAssetProvider assets, IInputService inputService, IGameStaticDataService gameStaticDataService, ITimeScaler timeScale, IPersistentProgressService persistentProgress, IMainMenuStaticDataService mainMenuStaticDataService)
+        public GameFactory(IAssetProvider assets, IGameStaticDataService gameStaticDataService, ITimeScaler timeScale)
         {
             _assets = assets;
-            _inputService = inputService;
             _gameStaticDataService = gameStaticDataService;
             _timeScale = timeScale;
-            _persistentPorgress = persistentProgress;
-            _mainMenuStaticDataService = mainMenuStaticDataService;
         }
 
-        public WorldGenerator CreateWorldGenerator(GameObject player)
+        public WorldGenerator CreateWorldGenerator(GameObject player, IPartsFactory partsFactory)
         {
             WorldGeneratorStaticData worldGeneratorData = _gameStaticDataService.GetWorldGenerator();
 
             WorldGenerator worldGenerator = Object.Instantiate(worldGeneratorData.Prefab);
-            worldGenerator.Init(player.transform, worldGeneratorData.GenerationBiomes, worldGeneratorData.ViewRadius, worldGeneratorData.DestroyRadius, worldGeneratorData.CellSize);
+            worldGenerator.Init(partsFactory, player.transform, worldGeneratorData.GenerationBiomes, worldGeneratorData.ViewRadius, worldGeneratorData.DestroyRadius, worldGeneratorData.CellSize);
 
             NavMeshZone navMeshZone = Object.Instantiate(worldGeneratorData.NavMeshZonePrefab, worldGenerator.transform);
             navMeshZone.Init(worldGenerator.GetComponent<NavMeshSurface>(), player.transform);
@@ -91,17 +85,6 @@ namespace Clones.Infrastructure
                 .Init(freezingScreen);
         }
 
-        
-
-        private GameObject InstantiateRegistered(string prefabPath)
-        {
-            GameObject gameObject = _assets.Instantiate(prefabPath);
-
-            RegisterTimeScalables(gameObject);
-
-            return gameObject;
-        }
-
         private GameObject InstantiateRegistered(GameObject prefab)
         {
             GameObject gameObject = Object.Instantiate(prefab);
@@ -116,7 +99,5 @@ namespace Clones.Infrastructure
             foreach(ITimeScalable timeScalable in gameObject.GetComponentsInChildren<ITimeScalable>())
                 _timeScale.Add(timeScalable);
         }
-
-       
     }
 }

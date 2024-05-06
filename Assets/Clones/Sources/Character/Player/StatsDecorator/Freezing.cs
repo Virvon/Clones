@@ -21,9 +21,9 @@ public class Freezing : StatsDecorator
     private float CurrentMovementSpeed;
     private float CurrentAttackCooldown;
 
-    public event Action<float> FreezPercentChanged;
-
     public float CurrentFreezingPercent { get; private set; }
+
+    public event Action<float> FreezPercentChanged;
 
     public Freezing(IStatsProvider wrappedEntity, PlayerHealth playerHealth, ICoroutineRunner coroutineRunner) : base(wrappedEntity)
     {

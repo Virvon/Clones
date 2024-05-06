@@ -26,6 +26,12 @@ namespace Clones.Infrastructure
 
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
+        private GameObject _playerObject;
+        private CharacterAttack _playerAttack;
+        private IKiller _killer;
+
+        private IPlayerRevival _playerRevival;
+        private CurrentBiome _currentBiome;
 
         public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScaler timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory)
         {
@@ -45,10 +51,8 @@ namespace Clones.Infrastructure
             _characterFactory = characterFactory;
         }
 
-        public void Enter()
-        {
+        public void Enter() =>
             CreateGame();
-        }
 
         public void Exit()
         {
@@ -63,58 +67,100 @@ namespace Clones.Infrastructure
 
         private void CreateGame()
         {
-            WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
-            CloneData cloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
-            float resourcesMultiplier = cloneData.ResourceMultiplier * (1 + wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
+            float resourcesMultiplier = GetResourcesMultiplier();
+
             Complexity complexity = new Complexity(_persistentProgress, _gameStaticDataService.GetComplextiy().TargetPlayTime, _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Level);
-            QuestStaticData questStaticData = _gameStaticDataService.GetQuest();
-            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, resourcesMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward, _gameStaticDataService, _localization);
-            IItemsCounter itemsCounter = CreateItemsCounter(questsCreator, resourcesMultiplier);
 
-            GameObject playerObject = _characterFactory.CreateCharacter(_partsFactory, itemsCounter);
-            CharacterAttack playerAttack = playerObject.GetComponent<CharacterAttack>();
+            IQuestsCreator questsCreator = CreateQuestsCreator(resourcesMultiplier, complexity);
 
-            _characterFactory.CreateWand(playerObject.GetComponent<WandBone>().Bone);
+            CreatePlayer(questsCreator, resourcesMultiplier);
+            CreateWorld();
+            CreateDroppers(questsCreator);
+            GameObject hud = CreateHud(questsCreator);
+            CreateCamera();
 
-            WorldGenerator worldGenerator = _gameFactory.CreateWorldGenerator(playerObject);
-            worldGenerator.Init(_partsFactory);
+            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(_currentBiome, complexity, _playerObject, _partsFactory);
 
-            QuestItemsDropper questItemsDropper = new(_partsFactory, playerAttack, questsCreator);
-            IPlayerRevival playerRevival = new GamePlayerRevival(playerObject.GetComponent<PlayerHealth>(), _advertisingDisplay);
+            _uiFactory.CreateGameSettings(enemiesSpawner, _playerObject.GetComponent<PlayerHealth>());
 
-            GameObject hud = _uiFactory.CreateHud(questsCreator, playerObject);
-            _uiFactory.CreateControl(playerObject.GetComponent<Player>());
-            _uiFactory.CreateGameOverView();
-            _uiFactory.CreateGameRevivleView(playerRevival);
-            
-            CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera(playerObject);
-            AttackShake attackShake = new(playerAttack, virtualCamera.GetComponent<CameraShake>());
-            CurrencyDropper currencyDropper = new(_partsFactory, playerAttack);
-            ICurrentBiome currentBiome = new CurrentBiome(worldGenerator);
+            _gameFactory.CreateMusic(_currentBiome);
+            _gameFactory.CreateFreezingScreen(_playerObject);
 
-            EnemiesSpawner enemiesSpawner = _gameFactory.CreateEnemiesSpawner(currentBiome, complexity, playerObject, _partsFactory);
-            
-            _uiFactory.CreateGameSettings(enemiesSpawner, playerObject.GetComponent<PlayerHealth>());
-
-            _gameFactory.CreateMusic(currentBiome);
-            _gameFactory.CreateFreezingScreen(playerObject);
-
-            _gameTimer = new GameTimer();
-            _gameTimer.Init(_coroutineRunner);
-            
-            PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, callback: ()=> _gameTimer.Stop());
+            CreateGameTimer();
+            CreatePlayerDeath(hud, enemiesSpawner);
 
             questsCreator.Create();
             enemiesSpawner.StartSpawn();
             _gameTimer.Start();
+        }
 
-            _disables.Add(attackShake);
-            _disables.Add(currentBiome);
+        private void CreatePlayerDeath(GameObject hud, EnemiesSpawner enemiesSpawner)
+        {
+            PlayerDeath playerDeath = new(hud.GetComponentInChildren<GameRevivalView>(), _playerObject.GetComponent<PlayerHealth>(), _timeScale, enemiesSpawner, callback: () => _gameTimer.Stop());
             _disables.Add(playerDeath);
-            _disables.Add(currencyDropper);
-            _disables.Add(questItemsDropper);
+        }
 
+        private void CreateWorld()
+        {
+            WorldGenerator worldGenerator = _gameFactory.CreateWorldGenerator(_playerObject, _partsFactory);
+            _currentBiome = new(worldGenerator);
+            _disables.Add(_currentBiome);
+        }
+
+        private void CreateGameTimer()
+        {
+            _gameTimer = new GameTimer();
+            _gameTimer.Init(_coroutineRunner);
             _timeScale.Add(_gameTimer);
+        }
+
+        private void CreateCamera()
+        {
+            CinemachineVirtualCamera virtualCamera = _gameFactory.CreateVirtualCamera(_playerObject);
+            AttackShake attackShake = new(_playerAttack, virtualCamera.GetComponent<CameraShake>());
+            _disables.Add(attackShake);
+        }
+
+        private GameObject CreateHud(IQuestsCreator questsCreator)
+        {
+            GameObject hud = _uiFactory.CreateHud(questsCreator, _playerObject);
+            _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
+            _uiFactory.CreateGameOverView();
+            _uiFactory.CreateGameRevivleView(_playerRevival);
+            return hud;
+        }
+
+        private void CreateDroppers(IQuestsCreator questsCreator)
+        {
+            QuestItemsDropper questItemsDropper = new(_partsFactory, _killer, questsCreator);
+            CurrencyDropper currencyDropper = new(_partsFactory, _killer);
+            _disables.Add(questItemsDropper);
+            _disables.Add(currencyDropper);
+        }
+
+        private void CreatePlayer(IQuestsCreator questsCreator, float resourcesMultiplier)
+        {
+            IItemsCounter itemsCounter = CreateItemsCounter(questsCreator, resourcesMultiplier);
+            _playerObject = _characterFactory.CreateCharacter(_partsFactory, itemsCounter);
+            _playerAttack = _playerObject.GetComponent<CharacterAttack>();
+            _killer = _playerObject.GetComponent<IKiller>();
+            _characterFactory.CreateWand(_playerObject.GetComponent<WandBone>().Bone);
+            _playerRevival = new GamePlayerRevival(_playerObject.GetComponent<PlayerHealth>(), _advertisingDisplay);
+        }
+
+        private IQuestsCreator CreateQuestsCreator(float resourcesMultiplier, Complexity complexity)
+        {
+            QuestStaticData questStaticData = _gameStaticDataService.GetQuest();
+            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, resourcesMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward, _gameStaticDataService, _localization);
+            return questsCreator;
+        }
+
+        private float GetResourcesMultiplier()
+        {
+            WandData wandData = _persistentProgress.Progress.AvailableWands.GetSelectedWandData();
+            CloneData cloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
+            float resourcesMultiplier = cloneData.ResourceMultiplier * (1 + wandData.WandStats.PreyResourcesIncreasePercentage / 100f);
+            return resourcesMultiplier;
         }
 
         private IItemsCounter CreateItemsCounter(IQuestsCreator questsCreator, float resourcesMultiplier)

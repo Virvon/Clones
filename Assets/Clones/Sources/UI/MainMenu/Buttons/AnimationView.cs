@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Clones.UI
 {
-
     public class AnimationView : MonoBehaviour
     {
         [SerializeField] private Animator _animator;

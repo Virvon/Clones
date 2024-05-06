@@ -7,7 +7,6 @@ namespace Clones.UI
     {
         private WandsCardsView _wandsCardsView;
         private ICharacterFactory _characterFactory;
-
         private GameObject _currentWand;
 
         public void Init(WandsCardsView wandsCardsView, ICharacterFactory characterFactory)

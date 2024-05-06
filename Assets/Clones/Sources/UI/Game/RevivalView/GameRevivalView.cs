@@ -15,7 +15,6 @@ namespace Clones.UI
         [SerializeField] private RevivalViewAnimator _revivalViewAnimator;
 
         private IPlayerRevival _playerRevival;
-
         private GameOverView _gameOverView;
         private Coroutine _timer;
 

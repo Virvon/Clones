@@ -23,9 +23,7 @@ namespace Clones.UI
             UpdateLevelValue();
         }
 
-        private void UpdateLevelValue()
-        {
+        private void UpdateLevelValue() => 
             _levelValue.text = _targetCloneData.Level.ToString();
-        }
     }
 }

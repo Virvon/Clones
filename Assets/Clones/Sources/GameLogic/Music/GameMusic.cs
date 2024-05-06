@@ -1,5 +1,4 @@
 ﻿using Clones.Types;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace Clones.GameLogic
     {
         [SerializeField] private AudioSource _idleMusic;
 
-        private Dictionary<BiomeType, AudioSource> _combatMusic = new();
+        private Dictionary<BiomeType, AudioSource> _combatMusic;
         private ICurrentBiome _currentBiome;
         private EnemiesSpawner _enemiesSpawner;
         private AudioSource _currentAudioSource;
@@ -20,6 +19,8 @@ namespace Clones.GameLogic
         {
             _currentBiome = currentBiome;
             _enemiesSpawner = enemiesSpawner;
+
+            _combatMusic = new();
 
             PlayIdleMusic();
 
@@ -55,14 +56,14 @@ namespace Clones.GameLogic
             StartCoroutine(IdleWaiter());
         }
 
+        private bool IsWaveNotEnded() =>
+            _enemiesSpawner.GetEnemiesCount() > 0;
+
         private IEnumerator IdleWaiter()
         {
             yield return new WaitWhile(IsWaveNotEnded);
 
             PlayIdleMusic();
         }
-
-        private bool IsWaveNotEnded() => 
-            _enemiesSpawner.GetEnemiesCount() > 0;
     }
 }

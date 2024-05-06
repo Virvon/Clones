@@ -4,11 +4,12 @@ using UnityEngine;
 public abstract class Healthbar : Bar
 {
     [SerializeField] private TMP_Text _healthValue;
-    private IHealthble _healthble;
 
+    private IHealthble _healthble;
     private int _health;
 
-    private void OnDisable() => _healthble.HealthChanged -= OnDamageTaked;
+    private void OnDisable() => 
+        _healthble.HealthChanged -= OnDamageTaked;
 
     protected void TakeHealthble(IHealthble healthble)
     {

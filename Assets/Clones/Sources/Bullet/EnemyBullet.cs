@@ -5,9 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class EnemyBullet : Bullet
+public class EnemyBullet : HittableBullet
 {
     public IDamageable HitTarget { get; private set; }
+
     public override BulletStaticData BulletData => _bulletData;
 
     private EnemyBulletData _bulletData;
@@ -18,10 +19,8 @@ public class EnemyBullet : Bullet
     public override event Action Shooted;
     protected override event Action<List<DamageableCell>> s_Hitted;
 
-    public override void Init(BulletStaticData bulletData)
-    {
+    public override void Init(BulletStaticData bulletData) =>
         _bulletData = (EnemyBulletData)bulletData;
-    }
 
     private void Start()
     {

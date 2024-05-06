@@ -9,9 +9,7 @@ namespace Clones.GameLogic
 
         public Material ShaderTexture => _shaderTexture;
 
-        private void OnRenderImage(RenderTexture cameraView, RenderTexture shaderView)
-        {
+        private void OnRenderImage(RenderTexture cameraView, RenderTexture shaderView) => 
             Graphics.Blit(cameraView, shaderView, _shaderTexture);
-        }
     }
 }

@@ -11,8 +11,6 @@ public abstract class CharacterAttack : MonoBehaviour
     public event Action Attacked;
     public event Action AttackStarted;
 
-    public virtual event Action<IDamageable> Killed;
-
     private void OnAttack()
     {
         Attack();
