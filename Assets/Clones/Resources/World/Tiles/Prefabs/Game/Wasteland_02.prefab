@@ -313,6 +313,7 @@ Transform:
   - {fileID: 8891870029811462201}
   - {fileID: 3437030078923154964}
   - {fileID: 7998078545274358108}
+  - {fileID: 2563514198589504808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -785,6 +786,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8891870029811462201}
   m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4552750038701520384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2563514198589504808}
+  m_Layer: 0
+  m_Name: Grass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2563514198589504808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552750038701520384}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6941341032248654322}
+  - {fileID: 1737412779162625033}
+  - {fileID: 6181896240582445134}
+  - {fileID: 8452020043479714994}
+  - {fileID: 6699262648930558023}
+  - {fileID: 2026110882053980157}
+  - {fileID: 7734269902313606470}
+  - {fileID: 6500173056365556116}
+  - {fileID: 7937624177271785232}
+  - {fileID: 990587603392074259}
+  - {fileID: 6837373168087903212}
+  - {fileID: 7816212696593819475}
+  - {fileID: 7603741665212660377}
+  - {fileID: 508756354108182068}
+  - {fileID: 2191476781949497391}
+  - {fileID: 8537721005921071452}
+  - {fileID: 5567956675556943131}
+  - {fileID: 3906606301229904764}
+  - {fileID: 4813712277289735484}
+  - {fileID: 6320201711992201389}
+  - {fileID: 3763682551755832021}
+  - {fileID: 5366366409760951443}
+  - {fileID: 2802411613540195433}
+  - {fileID: 2573535631257657417}
+  - {fileID: 3925230928090831466}
+  - {fileID: 464656378533419961}
+  - {fileID: 3692627417404086958}
+  - {fileID: 2898001527596677341}
+  m_Father: {fileID: 2965586213671339218}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4607672135502731026
 GameObject:
@@ -1687,3 +1747,1739 @@ Transform:
   m_Father: {fileID: 8891870029811462201}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &22626504090904265
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &8452020043479714994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 22626504090904265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &245426217784646439
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.539999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &8537721005921071452 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 245426217784646439}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1535552896350409609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &6941341032248654322 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 1535552896350409609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1829373856290213160
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &7816212696593819475 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 1829373856290213160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1960159848252943723
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.860001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &7937624177271785232 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 1960159848252943723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2062106705161457890
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &7603741665212660377 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 2062106705161457890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2183784724079191869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &7734269902313606470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 2183784724079191869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2364803486340784693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &6181896240582445134 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 2364803486340784693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2498974587871791830
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &6320201711992201389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 2498974587871791830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3018386192153676348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &6699262648930558023 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 3018386192153676348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3168497252723671447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.419998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &6837373168087903212 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 3168497252723671447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3399858358616071151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &6500173056365556116 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 3399858358616071151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4023478163450724167
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &4813712277289735484 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 4023478163450724167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4061862885215293280
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &5567956675556943131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 4061862885215293280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4567441722613442280
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &5366366409760951443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 4567441722613442280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4692944920291446958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &3763682551755832021 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 4692944920291446958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4840512422648453383
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &3906606301229904764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 4840512422648453383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4855655992609009681
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &3925230928090831466 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 4855655992609009681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5054482231212568789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 28.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &3692627417404086958 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 5054482231212568789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6052788827703080466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &2802411613540195433 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 6052788827703080466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6245631594181397042
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &2573535631257657417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 6245631594181397042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6713808032683233958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 31.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &2898001527596677341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 6713808032683233958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7567675483017352582
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &2026110882053980157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 7567675483017352582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7742331355288197716
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &2191476781949497391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 7742331355288197716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7856387072175214194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.829998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20.300001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &1737412779162625033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 7856387072175214194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8220352347060610127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &508756354108182068 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 8220352347060610127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8316234669323809218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &464656378533419961 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 8316234669323809218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8693284219047704680
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2563514198589504808}
+    m_Modifications:
+    - target: {fileID: 7442744049332912392, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_Name
+      value: BunchOfWastelandGrass (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+--- !u!4 &990587603392074259 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8438613056083192443, guid: 5134215e512feae4fb836704d2f041d0, type: 3}
+  m_PrefabInstance: {fileID: 8693284219047704680}
+  m_PrefabAsset: {fileID: 0}
