@@ -24,6 +24,9 @@ public class MaterialColor : MonoBehaviour
         CurrentEmission = StartEmission;
     }
 
+    private void OnDisable() => 
+        _material.color = StartColor;
+
     public void LerpColor(Color start, Color end, float interpolation)
     {
         CurrentColor = Color.Lerp(start, end, interpolation);

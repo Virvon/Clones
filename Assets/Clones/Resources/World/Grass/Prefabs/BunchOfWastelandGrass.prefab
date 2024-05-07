@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8438613056083192443
 Transform:
@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WastelandGrass (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
 --- !u!4 &1011627728761166064 stripped
@@ -157,6 +161,10 @@ PrefabInstance:
     - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
       propertyPath: m_Name
       value: WastelandGrass (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
@@ -220,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WastelandGrass (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
 --- !u!4 &1852838553805030864 stripped
@@ -281,6 +293,10 @@ PrefabInstance:
     - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
       propertyPath: m_Name
       value: WastelandGrass (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
@@ -344,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WastelandGrass (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
 --- !u!4 &2893201977790899269 stripped
@@ -405,6 +425,10 @@ PrefabInstance:
     - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
       propertyPath: m_Name
       value: WastelandGrass (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
@@ -468,6 +492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WastelandGrass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
 --- !u!4 &5309801389733774914 stripped
@@ -529,6 +557,10 @@ PrefabInstance:
     - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
       propertyPath: m_Name
       value: WastelandGrass (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
@@ -592,6 +624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WastelandGrass
       objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
 --- !u!4 &8993986583293903424 stripped
@@ -653,6 +689,10 @@ PrefabInstance:
     - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
       propertyPath: m_Name
       value: WastelandGrass (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103254795935463118, guid: 29334c88b8b142c458c4249d0760facc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29334c88b8b142c458c4249d0760facc, type: 3}

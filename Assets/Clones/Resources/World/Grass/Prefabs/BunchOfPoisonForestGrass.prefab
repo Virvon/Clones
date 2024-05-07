@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8438613056083192443
 Transform:
@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonForestGrass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
 --- !u!4 &7702713603120020753 stripped
@@ -157,6 +161,10 @@ PrefabInstance:
     - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
       propertyPath: m_Name
       value: PoisonForestGrass (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
@@ -220,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonForestGrass
       objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
 --- !u!4 &7744803631514888728 stripped
@@ -281,6 +293,10 @@ PrefabInstance:
     - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
       propertyPath: m_Name
       value: PoisonForestGrass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
@@ -344,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonForestGrass (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
 --- !u!4 &5531923043954668984 stripped
@@ -405,6 +425,10 @@ PrefabInstance:
     - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
       propertyPath: m_Name
       value: PoisonForestGrass (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
@@ -468,6 +492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonForestGrass (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
 --- !u!4 &4517124848112047980 stripped
@@ -529,6 +557,10 @@ PrefabInstance:
     - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
       propertyPath: m_Name
       value: PoisonForestGrass (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
@@ -592,6 +624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonForestGrass (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
 --- !u!4 &928123012241999972 stripped
@@ -653,6 +689,10 @@ PrefabInstance:
     - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
       propertyPath: m_Name
       value: PoisonForestGrass (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726843063109243208, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e49705880f2d42804a72d78a9bbdf, type: 3}

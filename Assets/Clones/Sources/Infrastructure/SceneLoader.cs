@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +10,8 @@ namespace Clones.Infrastructure
         private AsyncOperation _waitNextScene;
 
         public void Load(string scene, bool allowSceneActivation = true, Action callback = null)
-        { 
-            if(SceneManager.GetActiveScene().name == scene)
+        {
+            if (SceneManager.GetActiveScene().name == scene)
             {
                 callback?.Invoke();
 

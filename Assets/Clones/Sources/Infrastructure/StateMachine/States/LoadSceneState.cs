@@ -29,7 +29,6 @@ namespace Clones.Infrastructure
                 _sceneLoader.Load(payload.sceneName, callback: callback);
             }
 
-
             _loadingPanel.Open();
         }
 

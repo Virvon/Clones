@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8438613056083192443
 Transform:
@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ViscoseSalviaGrass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
 --- !u!4 &2100894967568313414 stripped
@@ -157,6 +161,10 @@ PrefabInstance:
     - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
       propertyPath: m_Name
       value: ViscoseSalviaGrass (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
@@ -220,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ViscoseSalviaGrass (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
 --- !u!4 &4016258245537955680 stripped
@@ -281,6 +293,10 @@ PrefabInstance:
     - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
       propertyPath: m_Name
       value: ViscoseSalviaGrass (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
@@ -344,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ViscoseSalviaGrass (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
 --- !u!4 &4088893461000220886 stripped
@@ -405,6 +425,10 @@ PrefabInstance:
     - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
       propertyPath: m_Name
       value: ViscoseSalviaGrass (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
@@ -468,6 +492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ViscoseSalviaGrass (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
 --- !u!4 &6594994750802598475 stripped
@@ -529,6 +557,10 @@ PrefabInstance:
     - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
       propertyPath: m_Name
       value: ViscoseSalviaGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
@@ -592,6 +624,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ViscoseSalviaGrass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
 --- !u!4 &6879699702659342055 stripped
@@ -653,6 +689,10 @@ PrefabInstance:
     - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
       propertyPath: m_Name
       value: ViscoseSalviaGrass (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 610725942033442283, guid: 72040d9e8e0612041990430a4843a609, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72040d9e8e0612041990430a4843a609, type: 3}
