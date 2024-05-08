@@ -56,6 +56,7 @@ namespace Clones.Infrastructure
 
         public void Exit()
         {
+            Debug.Log("plaing time " + _gameTimer.LastMeasurement);
             _persistentProgress.Progress.AveragePlayTime.Add((int)_gameTimer.LastMeasurement);
 
             foreach (var disable in _disables)

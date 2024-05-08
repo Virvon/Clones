@@ -16,24 +16,24 @@ MonoBehaviour:
   Prefab: {fileID: 5740848935595838258, guid: d75fc95bb18c6d54483bd9b6926b9cb6, type: 3}
   Model: {fileID: 2662455025583865989, guid: 9a7905c0af393384ba9a08a67aeb5093, type: 3}
   Card: {fileID: 3729764337796188301, guid: 894f019b6bda01a4d940ce618f39392b, type: 3}
-  Helath: 1600
+  Helath: 1800
   Damage: 125
-  AttackCooldown: 1
+  AttackCooldown: 0.9
   ResourceMultiplier: 6
-  UpgradePrice: 5000
-  IncreaseHealth: 40
-  IncreaseDamage: 7
-  IncreaseAttackCooldown: 0.1
-  IncreaseResourceMultiplier: 1
-  IncreasePrice: 250
+  UpgradePrice: 1800
+  IncreaseHealth: 45
+  IncreaseDamage: 8
+  IncreaseAttackCooldown: 0.03
+  IncreaseResourceMultiplier: 0.8
+  IncreasePrice: 350
   MinAttackCooldow: 0.5
-  DisuseTime: 90
+  DisuseTime: 180
   MovementSpeed: 10
   RotationSpeed: 1080
   MiningRadius: 8
   AttackRadius: 10
-  DropCollectingRadius: 5
-  BuyPrice: 10000
+  DropCollectingRadius: 2
+  BuyPrice: 15000
   IsBuyed: 0
   RebornEffect: {fileID: 100006, guid: 34fcf19f74fcb794baeefd01952bc508, type: 3}
   RebornEffectOffset: {x: 0, y: 0.05, z: 0}

@@ -72,12 +72,15 @@ namespace Clones.Infrastructure
 
 
             if (isBuyed == false)
+            {
                 card.GetComponent<BuyCardView>().Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+            }
             else
             {
                 CloneData data = _persistentProgress.Progress.AvailableClones.Clones.Where(data => data.Type == type).First();
 
-                card.GetComponent<CloneLevelView>()
+                card
+                    .GetComponent<CloneLevelView>()
                     .Init(_persistentProgress, type);
 
                 if (data.IsUsed)
@@ -100,7 +103,17 @@ namespace Clones.Infrastructure
             card.Init(isBuyed);
 
             if (isBuyed == false)
+            {
                 cardObject.GetComponent<BuyCardView>().Init(wandStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+            }
+            else
+            {
+                WandData data = _persistentProgress.Progress.AvailableWands.Wands.Where(data => data.Type == type).First();
+
+                card
+                    .GetComponent<WandLevelView>()
+                    .Init(_persistentProgress, type);
+            }
         }
 
         public ClonesCardsView CreateClonesCardsView()

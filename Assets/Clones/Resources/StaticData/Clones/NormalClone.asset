@@ -18,21 +18,21 @@ MonoBehaviour:
   Card: {fileID: 183704716934258811, guid: 8f339796a8592914389e2da4bb7ef093, type: 3}
   Helath: 1000
   Damage: 100
-  AttackCooldown: 1
+  AttackCooldown: 1.1
   ResourceMultiplier: 1
-  UpgradePrice: 100
+  UpgradePrice: 300
   IncreaseHealth: 50
   IncreaseDamage: 5
-  IncreaseAttackCooldown: 0.05
-  IncreaseResourceMultiplier: 0.5
-  IncreasePrice: 100
-  MinAttackCooldow: 0.5
+  IncreaseAttackCooldown: 0.025
+  IncreaseResourceMultiplier: 0.4
+  IncreasePrice: 200
+  MinAttackCooldow: 0.8
   DisuseTime: 0
   MovementSpeed: 10
   RotationSpeed: 1080
   MiningRadius: 8
   AttackRadius: 10
-  DropCollectingRadius: 5
+  DropCollectingRadius: 2
   BuyPrice: 0
   IsBuyed: 1
   RebornEffect: {fileID: 100006, guid: 34fcf19f74fcb794baeefd01952bc508, type: 3}

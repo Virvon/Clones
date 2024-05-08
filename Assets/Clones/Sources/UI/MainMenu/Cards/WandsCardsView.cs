@@ -28,6 +28,10 @@ namespace Clones.UI
                 PersistentProgress.Progress.AvailableWands.Wands.Add(new WandData(type, wandStaticData.UpgradePrice, wandStaticData.WandStats));
                 SaveLoadService.SaveProgress();
                 card.Buy();
+                
+                card
+                    .GetComponent<WandLevelView>()
+                    .Init(PersistentProgress, type);
             }
         }
 

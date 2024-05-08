@@ -23,16 +23,16 @@ MonoBehaviour:
   UpgradePrice: 500
   IncreaseHealth: 100
   IncreaseDamage: 4
-  IncreaseAttackCooldown: 0.08
-  IncreaseResourceMultiplier: 0.7
-  IncreasePrice: 120
-  MinAttackCooldow: 0.5
-  DisuseTime: 30
+  IncreaseAttackCooldown: 0.032
+  IncreaseResourceMultiplier: 0.5
+  IncreasePrice: 220
+  MinAttackCooldow: 0.6
+  DisuseTime: 60
   MovementSpeed: 10
   RotationSpeed: 1080
   MiningRadius: 8
   AttackRadius: 10
-  DropCollectingRadius: 5
+  DropCollectingRadius: 2
   BuyPrice: 2500
   IsBuyed: 0
   RebornEffect: {fileID: 100006, guid: 34fcf19f74fcb794baeefd01952bc508, type: 3}

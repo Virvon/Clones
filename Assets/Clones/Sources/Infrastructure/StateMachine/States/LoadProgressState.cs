@@ -47,8 +47,8 @@ namespace Clones.Infrastructure
         private PlayerProgress CreateNewProgress()
         {
             PlayerProgress progress = new();
-            progress.Wallet.Dna = 50000;
-            progress.Wallet.Money = 50000;
+            progress.Wallet.Dna = 0;
+            progress.Wallet.Money = 0;
 
             MainMenuStaticData menuData = _mainMenuStaticDataService.GetMainMenu();
 

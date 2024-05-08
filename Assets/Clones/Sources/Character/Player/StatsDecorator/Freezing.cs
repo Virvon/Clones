@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Freezing : StatsDecorator
 {
-    private const float FreezingSpeed = 30;
+    private const float FreezingSpeed = 40;
     private const float DefrostSpeed = 5;
-    private const int MovementSpeedFreezePercent = 35;
-    private const int AttackCooldownFreezePercent = 160;
-    private const float DamagePercent = 15;
+    private const int MovementSpeedFreezePercent = 25;
+    private const int AttackCooldownFreezePercent = 150;
+    private const float DamagePercent = 10;
     private const float DamageCooldown = 1;
 
     private readonly float _defaultMovementSpeed;
@@ -66,7 +66,8 @@ public class Freezing : StatsDecorator
     {
         _playerHealth.Died -= Reset;
 
-        ChangeFreezePercent(0, 0);
+        CurrentFreezingPercent = 0;
+        FreezPercentChanged?.Invoke(CurrentFreezingPercent);
     }
 
     private IEnumerator Freezer(int targetFreezPrecent, float freezingSpeed)

@@ -967,7 +967,11 @@ PrefabInstance:
       objectReference: {fileID: 2093610160139005824}
     - target: {fileID: 114217102068479522, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
       propertyPath: m_Speed
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217102068479522, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 377454000246156145, guid: 6306fd1825113a449b5829c1d4f21833, type: 3}
       propertyPath: _animator

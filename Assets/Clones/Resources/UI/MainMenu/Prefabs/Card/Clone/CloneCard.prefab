@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 8598993761450078449}
   _button: {fileID: 4658819119955953389}
+  _hasButton: 1
 --- !u!1 &876505152890039487
 GameObject:
   m_ObjectHideFlags: 0
