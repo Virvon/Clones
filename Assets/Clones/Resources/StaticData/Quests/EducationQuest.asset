@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cd7620ae5e05b4a9359bc07141cb01, type: 3}
   m_Name: EducationQuest
   m_EditorClassIdentifier: 
+  Reward: 100
+  RewardIncrease: 300
   _allQuestsInfos:
   - Quests:
     - Type: 0
@@ -26,5 +28,3 @@ MonoBehaviour:
       ItemsCount: 8
     - Type: 6
       ItemsCount: 8
-  Reward: 10
-  RewardIncrease: 10

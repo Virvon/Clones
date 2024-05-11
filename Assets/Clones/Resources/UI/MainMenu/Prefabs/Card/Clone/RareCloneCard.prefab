@@ -76,7 +76,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_fontSize
-      value: 39.1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119593212152, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_Sprite
@@ -193,6 +193,14 @@ PrefabInstance:
     - target: {fileID: 8464198025825475795, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965333219020990012, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
+      propertyPath: saveLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965333219020990012, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
+      propertyPath: currentLanguage
+      value: Russian
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}

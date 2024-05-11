@@ -95,6 +95,7 @@ namespace Clones.Infrastructure
                 throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
 
             YandexGamesSdk.CallbackLogging = true;
+            StickyAd.Show();
             callback?.Invoke();
 #endif
         }

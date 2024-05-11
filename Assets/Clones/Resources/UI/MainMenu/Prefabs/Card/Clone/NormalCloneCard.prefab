@@ -68,7 +68,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119239803210, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_fontSize
-      value: 31
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4658819119955953377, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_Pivot.x
@@ -165,6 +165,14 @@ PrefabInstance:
     - target: {fileID: 7605032155685567359, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965333219020990012, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
+      propertyPath: saveLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965333219020990012, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
+      propertyPath: currentLanguage
+      value: Russian
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bbd3f545ccc02409fcc565a6637875, type: 3}
