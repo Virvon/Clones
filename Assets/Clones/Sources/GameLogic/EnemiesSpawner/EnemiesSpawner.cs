@@ -25,7 +25,8 @@ namespace Clones.GameLogic
         private Complexity _complexity;
 
         private bool _isFinish;
-        private int _currentWave = 0;
+
+        public int CurrentWave { get; private set; }
 
         public event Action CreatedWave;
 
@@ -42,6 +43,7 @@ namespace Clones.GameLogic
             _complexity = complexity;
             _partsFactory = partsFactory;
 
+            CurrentWave = 0;
             _timeScale = 1;
         }
 
@@ -74,7 +76,7 @@ namespace Clones.GameLogic
             if (spawnedEnemies.Length == 0)
                 throw new Exception("enemies to create wave not found");
 
-            float maxWeight = _waveWeight * _complexity.GetComplexity(_currentWave);
+            float maxWeight = _waveWeight * _complexity.GetComplexity(CurrentWave);
             float currentWeight = 0;
 
             while (currentWeight < maxWeight)
@@ -82,7 +84,7 @@ namespace Clones.GameLogic
                 EnemyType spawnedEnemy = GetRandomEnemyType(spawnedEnemies);
                 Vector3 spawnPosition = GetSpawnPosition();
 
-                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, _complexity.GetComplexity(_currentWave), _currentWave);
+                _partsFactory.CreateEnemy(spawnedEnemy, spawnPosition, Quaternion.identity, transform, out float weight, _playerObject, _complexity.GetComplexity(CurrentWave), CurrentWave);
 
                 currentWeight += weight;
             }
@@ -115,7 +117,7 @@ namespace Clones.GameLogic
                 if(_timeScale == 0)
                     yield return new WaitWhile(() => _timeScale == 0);
 
-                _currentWave++;
+                CurrentWave++;
                 CreateWave();
                 CreatedWave?.Invoke();
 

@@ -22,5 +22,6 @@ namespace Clones.Services
         EducationPreyResourcesSpawnerStaticData GetEducationPreyResourcesSpawner();
         ItemsCounterStaticData GetItemsCounter();
         EducationQuestStaticData GetEducationQuest();
+        ScoreCounterStaticData GetScoreCounter();
     }
 }

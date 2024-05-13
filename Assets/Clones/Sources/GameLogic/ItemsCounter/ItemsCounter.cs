@@ -1,4 +1,5 @@
 ﻿using Clones.Services;
+using System;
 
 namespace Clones.GameLogic
 {
@@ -9,8 +10,13 @@ namespace Clones.GameLogic
         public ItemsCounter(IQuestsCreator questsCreator, IPersistentProgressService persistenntProgress, int DNAReward, int questItemReward) => 
             _itemVisitor = new ItemVisitor(questsCreator, persistenntProgress, DNAReward, questItemReward);
 
-        public void TakeItem(IItem item) =>
+        public event Action ItemTaked;
+
+        public void TakeItem(IItem item)
+        {
             item.Accept(_itemVisitor);
+            ItemTaked?.Invoke();
+        }
 
         private class ItemVisitor : IItemVisitor
         {

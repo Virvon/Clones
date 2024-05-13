@@ -24,6 +24,7 @@ namespace Clones.Services
         private EducationQuestStaticData _educationQuest;
         private EducationPreyResourcesSpawnerStaticData _educationPreyResourcesSpawner;
         private EducationEnemiesSpawnerStaticData _educationEnemiesSpawner;
+        private ScoreCounterStaticData _scoreCounter;
 
         public void Load()
         {
@@ -42,6 +43,7 @@ namespace Clones.Services
             _educationQuest = Resources.Load<EducationQuestStaticData>(GameStaticDataPath.EducationQuest);
             _educationPreyResourcesSpawner = Resources.Load<EducationPreyResourcesSpawnerStaticData>(GameStaticDataPath.EducationPreyResourcesSpawner);
             _educationEnemiesSpawner = Resources.Load<EducationEnemiesSpawnerStaticData>(GameStaticDataPath.EducationEnemiesSpawner);
+            _scoreCounter = Resources.Load<ScoreCounterStaticData>(GameStaticDataPath.ScoreCounter);
         }
 
         public WorldGeneratorStaticData GetWorldGenerator() =>
@@ -88,5 +90,8 @@ namespace Clones.Services
 
         public EducationEnemiesSpawnerStaticData GetEducationEnemiesSpawner() => 
             _educationEnemiesSpawner;
+
+        public ScoreCounterStaticData GetScoreCounter() => 
+            _scoreCounter;
     }
 }

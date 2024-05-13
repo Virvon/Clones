@@ -9,5 +9,6 @@ namespace Clones.UI
         public Transform StatsView;
         public GameObject Settings;
         public Transform Characters;
+        public GameObject Leaderboard;
     }
 }

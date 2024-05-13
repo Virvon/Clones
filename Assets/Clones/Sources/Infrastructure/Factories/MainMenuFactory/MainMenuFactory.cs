@@ -19,18 +19,20 @@ namespace Clones.Infrastructure
         private readonly IPersistentProgressService _persistentProgress;
         private readonly IMainMenuStaticDataService _staticDataService;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly ILeaderboard _leaderboard;
 
         private MainMenuContainers _containers;
         private ClonesCardsView _clonesCardsView;
         private WandsCardsView _wandsCardsView;
 
-        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService, ISaveLoadService saveLoadService)
+        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService, ISaveLoadService saveLoadService, ILeaderboard leaderboard)
         {
             _assets = assets;
             _gameStateMachine = gameStateMachine;
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;
             _saveLoadService = saveLoadService;
+            _leaderboard = leaderboard;
         }
 
         public GameObject CreateMainMenu()
@@ -56,6 +58,11 @@ namespace Clones.Infrastructure
                 .Settings
                 .GetComponent<AudioSettingsSaver>()
                 .Init(_saveLoadService);
+
+            _containers
+                .Leaderboard
+                .GetComponent<LeaderboardView>()
+                .Init(_leaderboard, this);
 
             return menu;
         }
@@ -209,6 +216,16 @@ namespace Clones.Infrastructure
             point
                 .GetComponent<CloneModelCreator>()
                 .Init(_clonesCardsView, characterFactory);
+        }
+
+        public LeaderboardElement CreateLeaderboardElement(LeaderboardPlayer player, Transform parent)
+        {
+            LeaderboardElement leaderboardElement = _assets.Instantiate(AssetPath.LeaderboardElement, parent).GetComponent<LeaderboardElement>();
+
+            leaderboardElement.Init(player.Rank, player.Name, player.Score);
+
+            return leaderboardElement;
+
         }
     }
 }

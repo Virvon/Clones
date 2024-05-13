@@ -16,6 +16,8 @@ namespace Clones.Data
         public int UpgradePrice;
         public string DisuseEndDate;
         public int Level;
+        public int BestScore;
+        public int LastScore;
 
         public bool IsUsed => GetDisuseEndDate() - DateTime.Now > TimeSpan.Zero;
 
@@ -44,6 +46,12 @@ namespace Clones.Data
             Level++;
 
             Upgraded?.Invoke();
+        }
+
+        public void AddScore(int score)
+        {
+            LastScore = score;
+            BestScore = LastScore > BestScore ? LastScore : BestScore;
         }
 
         public void Use(int disuseTime)

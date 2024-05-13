@@ -54,11 +54,12 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(_audioMixer, _services.Single<ITimeScaler>(), _coroutineRunner));
             _services.RegisterSingle<ILocalization>(new Localization(_coroutineRunner));
             _services.RegisterSingle(new ActivityTracking(_services.Single<ITimeScaler>(), _audioMixer));
+            _services.RegisterSingle<ILeaderboard>(new YandexLeaderboard());
 
             _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScaler>()));
             _services.RegisterSingle<IUiFactory>(new UiFactory(_services.Single<IAssetProvider>(), _services.Single<IPersistentProgressService>(), _stateMachine, _services.Single<IInputService>(), _services.Single<ITimeScaler>()));
             _services.RegisterSingle<IPartsFactory>(new PartsFactory(_services.Single<IGameStaticDataService>()));
-            _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<ISaveLoadService>()));
+            _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<ISaveLoadService>(), _services.Single<ILeaderboard>()));
             _services.RegisterSingle<IEducationFactory>(new EducationFactory(_services.Single<IPartsFactory>(), _services.Single<IGameStaticDataService>(), _services.Single<IAssetProvider>()));
             _services.RegisterSingle<ICharacterFactory>(new CharacterFactory(_services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<IInputService>()));
         }
@@ -96,7 +97,19 @@ namespace Clones.Infrastructure
 
             YandexGamesSdk.CallbackLogging = true;
             StickyAd.Show();
+            _services.Single<ILeaderboard>().Fill();
+            AuthorizeAccount();
             callback?.Invoke();
+#endif
+        }
+
+        private void AuthorizeAccount()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            PlayerAccount.Authorize();
+
+            if (PlayerAccount.IsAuthorized)
+                PlayerAccount.RequestPersonalProfileDataPermission();       
 #endif
         }
 

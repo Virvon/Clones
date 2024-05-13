@@ -34,5 +34,6 @@
         public const string SecondDirectionMarketTarget = "Education/SecondDirectionMarkerTarget";
         public const string GameSettings = "UI/Game/Prefabs/Settings";
         public const string AudioButton = "UI/Game/Prefabs/AudioButton";
+        public const string LeaderboardElement = "UI/MainMenu/Prefabs/LeaderbordElement";
     }
 }

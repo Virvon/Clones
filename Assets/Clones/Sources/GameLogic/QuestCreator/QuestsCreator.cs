@@ -14,7 +14,6 @@ namespace Clones.GameLogic
         private readonly QuestItemType[] _questTypes;
         private readonly IPersistentProgressService _persistentProgress;
         private readonly Complexity _complexity;
-        private readonly float _resourcesMultiplier;
         private readonly int _itemsCount;
         private readonly int _minItemsCountPercentInQuest;
         private readonly int _reward;
@@ -27,18 +26,17 @@ namespace Clones.GameLogic
         public IReadOnlyList<Quest> Quests => _quests;
         public int Reward { get; private set; }
 
-        private float Complexity => _complexity == null ? 1 : _complexity.GetComplexity(_currentQuest);
+        public float Complexity => _complexity == null ? 1 : _complexity.GetComplexity(_currentQuest);
 
         public event Action Created;
         public event Action<Quest> Updated;
         public event Action Completed;
 
-        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, float resourcesMultiplier, int itemsCount, int minItemsCountPercentInQuest, int reward, IGameStaticDataService staticDataService, ILocalization localization)
+        public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, int itemsCount, int minItemsCountPercentInQuest, int reward, IGameStaticDataService staticDataService, ILocalization localization)
         {
             _persistentProgress = persistentProgress;
             _questTypes = questTypes;
             _complexity = complexity;
-            _resourcesMultiplier = resourcesMultiplier;
             _itemsCount = itemsCount;
             _minItemsCountPercentInQuest = minItemsCountPercentInQuest;
             _reward = reward;

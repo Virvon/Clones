@@ -5,6 +5,7 @@ using Clones.Services;
 using Clones.StaticData;
 using Clones.UI;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Clones.Infrastructure
@@ -26,12 +27,13 @@ namespace Clones.Infrastructure
 
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
+        private IItemsCounter _itemsCounter;
         private GameObject _playerObject;
         private CharacterAttack _playerAttack;
         private IKiller _killer;
-
         private IPlayerRevival _playerRevival;
         private CurrentBiome _currentBiome;
+        private IMainScoreCounter _mainScoreCounter;
 
         public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScaler timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory)
         {
@@ -51,30 +53,35 @@ namespace Clones.Infrastructure
             _characterFactory = characterFactory;
         }
 
-        public void Enter() =>
+        public void Enter() => 
             CreateGame();
 
         public void Exit()
         {
-            Debug.Log("plaing time " + _gameTimer.LastMeasurement);
             _persistentProgress.Progress.AveragePlayTime.Add((int)_gameTimer.LastMeasurement);
 
             foreach (var disable in _disables)
                 disable.OnDisable();
 
+            AddScoreSelectedClone(_mainScoreCounter.Score);
             UseSelectedClone();
+
             _saveLoadService.SaveProgress();
+
+            Debug.Log("plaing time " + _gameTimer.LastMeasurement);
+            Debug.Log("score " + _mainScoreCounter.Score);
+
+            _mainScoreCounter.ShowInfo();
+            _mainScoreCounter.Clear();
         }
 
         private void CreateGame()
         {
-            float resourcesMultiplier = GetResourcesMultiplier();
-
             Complexity complexity = new Complexity(_persistentProgress, _gameStaticDataService.GetComplextiy().TargetPlayTime, _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Level);
 
-            IQuestsCreator questsCreator = CreateQuestsCreator(resourcesMultiplier, complexity);
+            IQuestsCreator questsCreator = CreateQuestsCreator(complexity);
 
-            CreatePlayer(questsCreator, resourcesMultiplier);
+            CreatePlayer(questsCreator, GetResourcesMultiplier());
             CreateWorld();
             CreateDroppers(questsCreator);
             GameObject hud = CreateHud(questsCreator);
@@ -87,12 +94,27 @@ namespace Clones.Infrastructure
             _gameFactory.CreateMusic(_currentBiome);
             _gameFactory.CreateFreezingScreen(_playerObject);
 
+            CreateScoreCounters(questsCreator, enemiesSpawner);
             CreateGameTimer();
             CreatePlayerDeath(hud, enemiesSpawner);
 
             questsCreator.Create();
             enemiesSpawner.StartSpawn();
             _gameTimer.Start();
+        }
+
+        private void CreateScoreCounters(IQuestsCreator questsCreator, EnemiesSpawner enemiesSpawner)
+        {
+            ScoreCounterStaticData scoreCounterData = _gameStaticDataService.GetScoreCounter();
+
+            _mainScoreCounter = new GameScoreCounter();
+            IScoreCounter scorePerItemsCounter = new ScorePerItemsCounter(_itemsCounter, scoreCounterData.ScorePerItem);
+            IScoreCounter scorePerQuestsCounter = new ScorePerQuestsCounter(questsCreator, scoreCounterData.ScorePerQuest);
+            IScoreCounter scorePerEnemiesCounter = new ScorePerEnemiesCounter(_killer, enemiesSpawner, scoreCounterData.ScorePerKill);
+
+            _mainScoreCounter.Add(scorePerItemsCounter);
+            _mainScoreCounter.Add(scorePerQuestsCounter);
+            _mainScoreCounter.Add(scorePerEnemiesCounter);
         }
 
         private void CreatePlayerDeath(GameObject hud, EnemiesSpawner enemiesSpawner)
@@ -141,18 +163,18 @@ namespace Clones.Infrastructure
 
         private void CreatePlayer(IQuestsCreator questsCreator, float resourcesMultiplier)
         {
-            IItemsCounter itemsCounter = CreateItemsCounter(questsCreator, resourcesMultiplier);
-            _playerObject = _characterFactory.CreateCharacter(_partsFactory, itemsCounter);
+            _itemsCounter = CreateItemsCounter(questsCreator, resourcesMultiplier);
+            _playerObject = _characterFactory.CreateCharacter(_partsFactory, _itemsCounter);
             _playerAttack = _playerObject.GetComponent<CharacterAttack>();
             _killer = _playerObject.GetComponent<IKiller>();
             _characterFactory.CreateWand(_playerObject.GetComponent<WandBone>().Bone);
             _playerRevival = new GamePlayerRevival(_playerObject.GetComponent<PlayerHealth>(), _advertisingDisplay);
         }
 
-        private IQuestsCreator CreateQuestsCreator(float resourcesMultiplier, Complexity complexity)
+        private IQuestsCreator CreateQuestsCreator(Complexity complexity)
         {
             QuestStaticData questStaticData = _gameStaticDataService.GetQuest();
-            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, resourcesMultiplier, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward, _gameStaticDataService, _localization);
+            IQuestsCreator questsCreator = new QuestsCreator(_persistentProgress, questStaticData.QuestItemTypes, complexity, questStaticData.ItemsCount, questStaticData.MinItemsCountPercentInQuest, questStaticData.Reward, _gameStaticDataService, _localization);
             return questsCreator;
         }
 
@@ -175,5 +197,8 @@ namespace Clones.Infrastructure
 
         private void UseSelectedClone() => 
             _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().Use(_mainMenuStaticDataService.GetClone(_persistentProgress.Progress.AvailableClones.SelectedClone).DisuseTime);
+
+        private void AddScoreSelectedClone(int score) => 
+            _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().AddScore(score);
     }
 }
