@@ -68,7 +68,7 @@ namespace Clones.Infrastructure
 
             AddScoreSelectedClone(_mainScoreCounter.Score);
             UseSelectedClone();
-            FillLeaderboard();
+            SetPlayerScore();
 
             _saveLoadService.SaveProgress();
 
@@ -207,10 +207,7 @@ namespace Clones.Infrastructure
         private void AddScoreSelectedClone(int score) => 
             _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().AddScore(score);
 
-        private void FillLeaderboard()
-        {
+        private void SetPlayerScore() => 
             _leaderBoard.SetPlayerScore(_persistentProgress.Progress.AvailableClones.ScoreSum);
-            _leaderBoard.Fill();
-        }
     }
 }

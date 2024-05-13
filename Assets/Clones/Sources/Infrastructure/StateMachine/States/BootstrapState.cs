@@ -97,19 +97,7 @@ namespace Clones.Infrastructure
 
             YandexGamesSdk.CallbackLogging = true;
             StickyAd.Show();
-            _services.Single<ILeaderboard>().Fill();
-            AuthorizeAccount();
             callback?.Invoke();
-#endif
-        }
-
-        private void AuthorizeAccount()
-        {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            PlayerAccount.Authorize();
-
-            if (PlayerAccount.IsAuthorized)
-                PlayerAccount.RequestPersonalProfileDataPermission();       
 #endif
         }
 

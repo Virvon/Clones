@@ -7,7 +7,7 @@ namespace Clones.Services
     {
         IReadOnlyList<LeaderboardPlayer> LeaderboardPlayers { get; }
 
-        void Fill();
+        void Fill(Action callback = null);
         void SetPlayerScore(int score);
     }
 }
