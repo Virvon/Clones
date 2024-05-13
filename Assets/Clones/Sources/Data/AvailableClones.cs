@@ -11,6 +11,8 @@ namespace Clones.Data
         public CloneType SelectedClone;
         public List<CloneData> Clones;
 
+        public int ScoreSum => Clones.Sum(cloneData => cloneData.BestScore);
+
         public event Action SelectedCloneChanged;
         public event Action SelectedCloneUpgraded;
 

@@ -62,7 +62,7 @@ namespace Clones.Infrastructure
             _containers
                 .Leaderboard
                 .GetComponent<LeaderboardView>()
-                .Init(_leaderboard, this);
+                .Init(_leaderboard, this, _persistentProgress);
 
             return menu;
         }
@@ -226,6 +226,15 @@ namespace Clones.Infrastructure
 
             return leaderboardElement;
 
+        }
+
+        public void CreateScoreView()
+        {
+            GameObject scoreViewObject = _assets.Instantiate(AssetPath.ScoreView, _containers.Header);
+
+            scoreViewObject
+                .GetComponent<ScoreView>()
+                .Init(_persistentProgress);
         }
     }
 }

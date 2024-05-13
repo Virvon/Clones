@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -8,6 +9,8 @@ namespace Clones.GameLogic
         private readonly int _scorePerItem;
 
         public int Score { get; private set; }
+
+        public event Action ScoreUpdated;
 
         public ScorePerItemsCounter(IItemsCounter itemsCounter, int scorePerItem)
         {
@@ -20,8 +23,13 @@ namespace Clones.GameLogic
         ~ScorePerItemsCounter() =>
             _itemsCounter.ItemTaked -= OnItemTaked;
 
-        private void OnItemTaked() =>
+        private void OnItemTaked()
+        {
             Score += _scorePerItem;
+
+            ScoreUpdated?.Invoke();
+        }
+            
 
         public void ShowInfo()
         {

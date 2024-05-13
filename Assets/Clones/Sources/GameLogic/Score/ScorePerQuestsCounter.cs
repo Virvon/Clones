@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -8,6 +9,8 @@ namespace Clones.GameLogic
         private readonly int _scorePerQuest;
 
         public int Score { get; private set; }
+
+        public event Action ScoreUpdated;
 
         public ScorePerQuestsCounter(IQuestsCreator questsCreator, int scorePerQuest)
         {
@@ -20,8 +23,12 @@ namespace Clones.GameLogic
         ~ScorePerQuestsCounter() =>
             _questsCreator.Completed -= OnQuestCompleted;
 
-        private void OnQuestCompleted() => 
+        private void OnQuestCompleted()
+        {
             Score += (int)(_questsCreator.Complexity * _scorePerQuest);
+
+            ScoreUpdated?.Invoke();
+        }
 
         public void ShowInfo()
         {

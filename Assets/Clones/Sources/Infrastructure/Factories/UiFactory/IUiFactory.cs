@@ -17,5 +17,6 @@ namespace Clones.Infrastructure
         FrameFocus CreateFrameFocus();
         void CreateGameSettings(IDestoryableEnemies destoryableEnemies, PlayerHealth playerHealth);
         void CreateAudioButton();
+        void CreateScoreCounterPerGame(IMainScoreCounter mainScoreCounter);
     }
 }

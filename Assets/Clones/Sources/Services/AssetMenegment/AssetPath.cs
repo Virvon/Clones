@@ -35,5 +35,7 @@
         public const string GameSettings = "UI/Game/Prefabs/Settings";
         public const string AudioButton = "UI/Game/Prefabs/AudioButton";
         public const string LeaderboardElement = "UI/MainMenu/Prefabs/LeaderbordElement";
+        public const string ScoreView = "UI/MainMenu/Prefabs/ScoreVIew";
+        public const string ScoreCounterPerGame = "UI/Game/Prefabs/ScoreCounterPerGame";
     }
 }

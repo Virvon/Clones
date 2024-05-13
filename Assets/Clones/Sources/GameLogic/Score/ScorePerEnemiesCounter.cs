@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -9,6 +10,8 @@ namespace Clones.GameLogic
         private readonly int _scorePerKill;
 
         public int Score { get; private set; }
+
+        public event Action ScoreUpdated;
 
         public ScorePerEnemiesCounter(IKiller killer, EnemiesSpawner enemiesSpawner, int scorePerKill)
         {
@@ -22,8 +25,12 @@ namespace Clones.GameLogic
         ~ScorePerEnemiesCounter() =>
             _killer.Killed -= OnKilled;
 
-        private void OnKilled(IDamageable obj) => 
+        private void OnKilled(IDamageable obj)
+        {
             Score += _enemiesSpawner.CurrentWave * _scorePerKill;
+
+            ScoreUpdated?.Invoke();
+        }
 
         public void ShowInfo()
         {

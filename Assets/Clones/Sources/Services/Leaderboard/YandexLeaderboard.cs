@@ -21,6 +21,7 @@ namespace Clones.Services
 
         public void SetPlayerScore(int score)
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
             if (PlayerAccount.IsAuthorized == false)
                 return;
 
@@ -28,6 +29,7 @@ namespace Clones.Services
             {
                 Leaderboard.SetScore(LeaderboardName, score);
             });
+#endif
         }
 
         public void Fill()

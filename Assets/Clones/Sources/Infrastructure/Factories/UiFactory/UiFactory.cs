@@ -157,5 +157,13 @@ namespace Clones.Infrastructure
                 .GetComponent<AudioSwitcherButton>()
                 .Init(_persistentProgressService);
         }
+
+        public void CreateScoreCounterPerGame(IMainScoreCounter mainScoreCounter)
+        {
+            _assets
+                .Instantiate(AssetPath.ScoreCounterPerGame, _hud.transform)
+                .GetComponent<ScoreCountPerGame>()
+                .Init(mainScoreCounter);
+        }
     }
 }

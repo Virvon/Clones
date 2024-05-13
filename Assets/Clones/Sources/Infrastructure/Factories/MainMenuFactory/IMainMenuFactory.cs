@@ -18,5 +18,6 @@ namespace Clones.Infrastructure
         void CreateUpgradeView();
         LeaderboardElement CreateLeaderboardElement(LeaderboardPlayer player, Transform parent);
         void CreateCloneModelPoint(ICharacterFactory characterFactory);
+        void CreateScoreView();
     }
 }

@@ -32,6 +32,7 @@ namespace Clones.Infrastructure
             _mainMenuFactory.CreatePlayButton();
             _mainMenuFactory.CreateStatsView();
             _mainMenuFactory.CreateUpgradeView();
+            _mainMenuFactory.CreateScoreView();
 
             ClonesCardsView clonesCardsView = _mainMenuFactory.CreateClonesCardsView();
             WandsCardsView wandsCardsView = _mainMenuFactory.CreateWandsCardsView();

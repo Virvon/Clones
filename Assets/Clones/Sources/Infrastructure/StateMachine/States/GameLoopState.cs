@@ -4,6 +4,7 @@ using Clones.GameLogic;
 using Clones.Services;
 using Clones.StaticData;
 using Clones.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace Clones.Infrastructure
         private readonly IAdvertisingDisplay _advertisingDisplay;
         private readonly ILocalization _localization;
         private readonly ICharacterFactory _characterFactory;
+        private readonly ILeaderboard _leaderBoard;
 
         private List<IDisable> _disables;
         private GameTimer _gameTimer;
@@ -35,7 +37,7 @@ namespace Clones.Infrastructure
         private CurrentBiome _currentBiome;
         private IMainScoreCounter _mainScoreCounter;
 
-        public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScaler timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory)
+        public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScaler timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory, ILeaderboard leaderBoard)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;
@@ -46,6 +48,7 @@ namespace Clones.Infrastructure
             _gameStaticDataService = gameStaticDataService;
             _saveLoadService = saveLoadService;
             _coroutineRunner = coroutineRunner;
+            _leaderBoard = leaderBoard;
 
             _disables = new();
             _advertisingDisplay = advertisingDisplay;
@@ -65,6 +68,7 @@ namespace Clones.Infrastructure
 
             AddScoreSelectedClone(_mainScoreCounter.Score);
             UseSelectedClone();
+            FillLeaderboard();
 
             _saveLoadService.SaveProgress();
 
@@ -97,6 +101,8 @@ namespace Clones.Infrastructure
             CreateScoreCounters(questsCreator, enemiesSpawner);
             CreateGameTimer();
             CreatePlayerDeath(hud, enemiesSpawner);
+
+            _uiFactory.CreateScoreCounterPerGame(_mainScoreCounter);
 
             questsCreator.Create();
             enemiesSpawner.StartSpawn();
@@ -200,5 +206,11 @@ namespace Clones.Infrastructure
 
         private void AddScoreSelectedClone(int score) => 
             _persistentProgress.Progress.AvailableClones.GetSelectedCloneData().AddScore(score);
+
+        private void FillLeaderboard()
+        {
+            _leaderBoard.SetPlayerScore(_persistentProgress.Progress.AvailableClones.ScoreSum);
+            _leaderBoard.Fill();
+        }
     }
 }
