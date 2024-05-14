@@ -12,7 +12,8 @@ namespace Clones.UI
     {
         [SerializeField] private GameObject _background;
 
-        [SerializeField] private GameObject _authorizeView;
+        [SerializeField] private AnimationViewToggle _authorizeAnimationViewToggle;
+        [SerializeField] private AnimationViewToggle _leaderboardAnimationViewToggle;
         [SerializeField] private Transform _container;
         [SerializeField] private TMP_Text _userScore;
         [SerializeField] private TMP_Text _userRank;
@@ -45,19 +46,19 @@ namespace Clones.UI
 
         public void Close()
         {
-            _background.SetActive(false);
+            _leaderboardAnimationViewToggle.Close();
             Clear();
         }
 
-        private void OpenAuthorizeView() => 
-            _authorizeView.SetActive(true);
+        private void OpenAuthorizeView() =>
+            _authorizeAnimationViewToggle.Open();
 
         private void OpenLeaderboardView()
         {
             _leaderboard.Fill(callback: () =>
             {
                 Construct();
-                _background.SetActive(true);
+                _leaderboardAnimationViewToggle.Open();
             });
         }
 
