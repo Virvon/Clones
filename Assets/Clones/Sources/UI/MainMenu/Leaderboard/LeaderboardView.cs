@@ -40,7 +40,7 @@ namespace Clones.UI
             else
                 OpenAuthorizeView();
 #else
-            OpenAuthorizeView();
+            OpenLeaderboardView();
 #endif
         }
 
