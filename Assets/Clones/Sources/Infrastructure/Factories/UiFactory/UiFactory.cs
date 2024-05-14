@@ -21,6 +21,7 @@ namespace Clones.Infrastructure
         private QuestPanel _questPanel;
         private GameObject _control;
         private GameRevivalView _gameRevivalView;
+        private GameObject _wallet;
 
         public UiFactory(IAssetProvider assets, IPersistentProgressService persistentProgressService, IGameStateMachine stateMachine, IInputService inputService, ITimeScaler timeScaler)
         {
@@ -47,18 +48,23 @@ namespace Clones.Infrastructure
             _questPanel.Init(questsCreator, this);
 
             _hud
-                .GetComponentInChildren<MoneyView>()
-                .Init(_persistentProgressService.Progress.Wallet);
-
-            _hud
-                .GetComponentInChildren<DnaView>()
-                .Init(_persistentProgressService.Progress.Wallet);
-
-            _hud
                 .GetComponentInChildren<QuestSound>()
                 .Init(questsCreator);
 
             return _hud;
+        }
+
+        public void CreateWallet()
+        {
+            _wallet = _assets.Instantiate(AssetPath.Wallet, _hud.transform);
+            
+            _wallet
+                .GetComponentInChildren<DnaView>()
+                .Init(_persistentProgressService.Progress.Wallet);
+
+            _wallet
+                .GetComponentInChildren<MoneyView>()
+                .Init(_persistentProgressService.Progress.Wallet);
         }
 
         public GameObject CreateControl(Player player)
@@ -161,7 +167,7 @@ namespace Clones.Infrastructure
         public void CreateScoreCounterPerGame(IMainScoreCounter mainScoreCounter)
         {
             _assets
-                .Instantiate(AssetPath.ScoreCounterPerGame, _hud.transform)
+                .Instantiate(AssetPath.ScoreCounterPerGame, _wallet.transform)
                 .GetComponent<ScoreCountPerGame>()
                 .Init(mainScoreCounter);
         }

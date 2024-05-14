@@ -153,6 +153,7 @@ namespace Clones.Infrastructure
         private GameObject CreateHud(IQuestsCreator questsCreator)
         {
             GameObject hud = _uiFactory.CreateHud(questsCreator, _playerObject);
+            _uiFactory.CreateWallet();
             _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
             _uiFactory.CreateGameOverView();
             _uiFactory.CreateGameRevivleView(_playerRevival);

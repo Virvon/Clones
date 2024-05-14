@@ -18,5 +18,6 @@ namespace Clones.Infrastructure
         void CreateGameSettings(IDestoryableEnemies destoryableEnemies, PlayerHealth playerHealth);
         void CreateAudioButton();
         void CreateScoreCounterPerGame(IMainScoreCounter mainScoreCounter);
+        void CreateWallet();
     }
 }

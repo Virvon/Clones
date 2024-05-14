@@ -13,6 +13,7 @@ namespace Clones.Services
         private readonly List<LeaderboardPlayer> _leaderboardPlayers;
 
         public IReadOnlyList<LeaderboardPlayer> LeaderboardPlayers => _leaderboardPlayers;
+        public int UserRank { get; private set; }
 
         public YandexLeaderboard()
         {
@@ -42,7 +43,7 @@ namespace Clones.Services
             _leaderboardPlayers.Clear();
             Debug.Log("Fill clear " + _leaderboardPlayers.Count);
 
-            Leaderboard.GetEntries(LeaderboardName, (result) =>
+            Leaderboard.GetEntries(LeaderboardName, onSuccessCallback: (result) =>
             {
                 Debug.Log("success fill");
 
@@ -57,6 +58,8 @@ namespace Clones.Services
 
                     _leaderboardPlayers.Add(new LeaderboardPlayer(rank, name, score));
                 }
+
+                UserRank = result.userRank;
 
                 callback?.Invoke();
             }, onErrorCallback: (value) => Debug.Log("error fill " + value));

@@ -37,5 +37,6 @@
         public const string LeaderboardElement = "UI/MainMenu/Prefabs/LeaderbordElement";
         public const string ScoreView = "UI/MainMenu/Prefabs/ScoreVIew";
         public const string ScoreCounterPerGame = "UI/Game/Prefabs/ScoreCounterPerGame";
+        public const string Wallet = "UI/Game/Prefabs/Wallet";
     }
 }

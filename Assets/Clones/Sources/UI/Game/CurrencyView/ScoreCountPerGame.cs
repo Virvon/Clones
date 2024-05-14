@@ -19,17 +19,12 @@ namespace Clones.UI
             _scoreValue.text = StartScore.ToString();
 
             _scoreCounter.ScoreUpdated += OnScoreUpdated;
-
-            Debug.Log(scoreCounter != null);
         }
 
         private void OnDestroy() => 
             _scoreCounter.ScoreUpdated -= OnScoreUpdated;
 
-        private void OnScoreUpdated()
-        {
-            Debug.Log("score update");
+        private void OnScoreUpdated() => 
             _scoreValue.text = _scoreCounter.Score.ToString();
-        }
     }
 }

@@ -107,6 +107,7 @@ namespace Clones.Infrastructure
         private void CreateHud()
         {
             _uiFactory.CreateHud(_questCreator, _playerObject);
+            _uiFactory.CreateWallet();
             _frameFocus = _uiFactory.CreateFrameFocus();
             _controlObject = _uiFactory.CreateControl(_playerObject.GetComponent<Player>());
             _educationOverView = _uiFactory.CreateEducationOverView();

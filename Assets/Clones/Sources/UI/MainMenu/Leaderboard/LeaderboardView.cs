@@ -14,7 +14,8 @@ namespace Clones.UI
 
         [SerializeField] private GameObject _authorizeView;
         [SerializeField] private Transform _container;
-        [SerializeField] private TMP_Text _scoreValue;
+        [SerializeField] private TMP_Text _userScore;
+        [SerializeField] private TMP_Text _userRank;
 
         private ILeaderboard _leaderboard;
         private IMainMenuFactory _mainMenuFactory;
@@ -38,7 +39,7 @@ namespace Clones.UI
             else
                 OpenAuthorizeView();
 #else
-            OpenLeaderboardView();
+            OpenAuthorizeView();
 #endif
         }
 
@@ -64,8 +65,6 @@ namespace Clones.UI
         {
             Debug.Log("construct " + _leaderboard.LeaderboardPlayers.Count);
 
-            _scoreValue.text = _persistentProgres.Progress.AvailableClones.ScoreSum.ToString();
-
 #if UNITY_WEBGL && !UNITY_EDITOR
             foreach (LeaderboardPlayer player in _leaderboard.LeaderboardPlayers)
             {
@@ -73,7 +72,11 @@ namespace Clones.UI
                 _spawnedElements.Add(leaderboardElement);
                 Debug.Log(leaderboardElement.name);
             }
+
+            _userRank.text = _leaderboard.UserRank.ToString();
 #endif
+
+            _userScore.text = _persistentProgres.Progress.AvailableClones.ScoreSum.ToString();
         }
 
         private void Clear()
