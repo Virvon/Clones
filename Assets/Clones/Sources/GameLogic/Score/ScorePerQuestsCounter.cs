@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -28,11 +27,6 @@ namespace Clones.GameLogic
             Score += (int)(_questsCreator.Complexity * _scorePerQuest);
 
             ScoreUpdated?.Invoke();
-        }
-
-        public void ShowInfo()
-        {
-            Debug.Log("счет за квесты " + Score);
         }
     }
 }

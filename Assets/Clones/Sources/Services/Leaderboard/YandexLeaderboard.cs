@@ -15,10 +15,8 @@ namespace Clones.Services
         public IReadOnlyList<LeaderboardPlayer> LeaderboardPlayers => _leaderboardPlayers;
         public int UserRank { get; private set; }
 
-        public YandexLeaderboard()
-        {
+        public YandexLeaderboard() =>
             _leaderboardPlayers = new();
-        }
 
         public void SetPlayerScore(int score)
         {
@@ -26,11 +24,11 @@ namespace Clones.Services
             if (PlayerAccount.IsAuthorized == false)
                 return;
 
-            Leaderboard.GetEntries(LeaderboardName, onSuccessCallback: (result) =>
+            Leaderboard.GetPlayerEntry(LeaderboardName, onSuccessCallback: (result) =>
             {
-                Debug.Log("sucsess set player score " + score);
-                Leaderboard.SetScore(LeaderboardName, score);
-            }, onErrorCallback: (value) => Debug.Log("error set player score " + value));
+                if (result == null || result.score < score)
+                    Leaderboard.SetScore(LeaderboardName, score);
+            });
 #endif
         }
 
@@ -39,14 +37,11 @@ namespace Clones.Services
 #if UNITY_WEBGL && !UNITY_EDITOR
             if (PlayerAccount.IsAuthorized == false)
                 return;
-
+  
             _leaderboardPlayers.Clear();
-            Debug.Log("Fill clear " + _leaderboardPlayers.Count);
 
             Leaderboard.GetEntries(LeaderboardName, onSuccessCallback: (result) =>
             {
-                Debug.Log("success fill");
-
                 foreach (LeaderboardEntryResponse entry in result.entries)
                 {
                     int rank = entry.rank;
@@ -60,9 +55,9 @@ namespace Clones.Services
                 }
 
                 UserRank = result.userRank;
-
+              
                 callback?.Invoke();
-            }, onErrorCallback: (value) => Debug.Log("error fill " + value));
+            });
 #else
             callback?.Invoke();
 #endif

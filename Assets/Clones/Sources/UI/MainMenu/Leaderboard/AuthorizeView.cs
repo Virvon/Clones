@@ -14,14 +14,13 @@ namespace Clones.UI
 #if UNITY_WEBGL && !UNITY_EDITOR
             PlayerAccount.Authorize(onSuccessCallback: () =>
             {
-                Debug.Log("success autorize");
-                Close(callback: OpenLeaderboard);
+                Close(callback: () =>
+                {
+                    gameObject.SetActive(false);
+                    OpenLeaderboard();
+                });
 
-            }, onErrorCallback: (value) =>
-            {
-                Debug.Log("error authorize " + value);
-                Close();
-            });
+            }, onErrorCallback: (value) => Close(callback: () => gameObject.SetActive(false)));
 
             if (PlayerAccount.IsAuthorized)
                 PlayerAccount.RequestPersonalProfileDataPermission();

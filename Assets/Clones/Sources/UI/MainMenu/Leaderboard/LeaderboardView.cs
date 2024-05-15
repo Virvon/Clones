@@ -12,8 +12,8 @@ namespace Clones.UI
     {
         [SerializeField] private GameObject _background;
 
+        [SerializeField] private AnimationView _animationView;
         [SerializeField] private AnimationViewToggle _authorizeAnimationViewToggle;
-        [SerializeField] private AnimationViewToggle _leaderboardAnimationViewToggle;
         [SerializeField] private Transform _container;
         [SerializeField] private TMP_Text _userScore;
         [SerializeField] private TMP_Text _userRank;
@@ -46,8 +46,11 @@ namespace Clones.UI
 
         public void Close()
         {
-            _leaderboardAnimationViewToggle.Close();
-            Clear();
+            _animationView.Close(() =>
+            {
+                Clear();
+                _animationView.gameObject.SetActive(false);
+            });
         }
 
         private void OpenAuthorizeView() =>
@@ -58,20 +61,18 @@ namespace Clones.UI
             _leaderboard.Fill(callback: () =>
             {
                 Construct();
-                _leaderboardAnimationViewToggle.Open();
+                _animationView.gameObject.SetActive(true);
+                _animationView.Open();
             });
         }
 
         private void Construct()
         {
-            Debug.Log("construct " + _leaderboard.LeaderboardPlayers.Count);
-
 #if UNITY_WEBGL && !UNITY_EDITOR
             foreach (LeaderboardPlayer player in _leaderboard.LeaderboardPlayers)
             {
                 LeaderboardElement leaderboardElement = _mainMenuFactory.CreateLeaderboardElement(player, _container);
                 _spawnedElements.Add(leaderboardElement);
-                Debug.Log(leaderboardElement.name);
             }
 
             _userRank.text = _leaderboard.UserRank.ToString();
@@ -83,9 +84,9 @@ namespace Clones.UI
         private void Clear()
         {
             foreach (LeaderboardElement element in _spawnedElements)
-                Destroy(element);
+                Destroy(element.gameObject);
 
-            _spawnedElements = new();
+            _spawnedElements.Clear();
         }
     }
 }

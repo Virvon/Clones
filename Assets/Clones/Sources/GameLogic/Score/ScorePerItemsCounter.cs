@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -28,12 +27,6 @@ namespace Clones.GameLogic
             Score += _scorePerItem;
 
             ScoreUpdated?.Invoke();
-        }
-            
-
-        public void ShowInfo()
-        {
-            Debug.Log("счет за итемы " + Score);
         }
     }
 }

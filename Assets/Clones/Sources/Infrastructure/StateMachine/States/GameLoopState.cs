@@ -72,10 +72,6 @@ namespace Clones.Infrastructure
 
             _saveLoadService.SaveProgress();
 
-            Debug.Log("plaing time " + _gameTimer.LastMeasurement);
-            Debug.Log("score " + _mainScoreCounter.Score);
-
-            _mainScoreCounter.ShowInfo();
             _mainScoreCounter.Clear();
         }
 

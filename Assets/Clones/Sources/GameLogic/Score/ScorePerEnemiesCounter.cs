@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -30,11 +29,6 @@ namespace Clones.GameLogic
             Score += _enemiesSpawner.CurrentWave * _scorePerKill;
 
             ScoreUpdated?.Invoke();
-        }
-
-        public void ShowInfo()
-        {
-            Debug.Log("счет за убийства " + Score);
         }
     }
 }

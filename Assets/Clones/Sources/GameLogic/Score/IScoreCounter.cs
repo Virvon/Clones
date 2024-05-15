@@ -7,7 +7,5 @@ namespace Clones.GameLogic
         int Score { get; }
 
         event Action ScoreUpdated;
-
-        void ShowInfo();
     }
 }

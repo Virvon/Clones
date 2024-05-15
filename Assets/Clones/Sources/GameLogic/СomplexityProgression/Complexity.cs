@@ -30,9 +30,7 @@ namespace Clones.GameLogic
         private float GetPlayerSkillCoefficient(int targetPlayTime)
         {
             if (_persistentProgress.Progress.AveragePlayTime.TryGetAveragePlayTime(out int averagePlayTime) && averagePlayTime >= 1)
-            {
                 return averagePlayTime / (float)targetPlayTime;
-            }
             else
                 return 1;
         }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Clones.GameLogic
 {
@@ -28,14 +27,6 @@ namespace Clones.GameLogic
                 scoreCounter.ScoreUpdated -= () => ScoreUpdated?.Invoke();
 
             _scoreCounters.Clear();
-        }
-
-        public void ShowInfo()
-        {
-            Debug.Log("main counter " + _scoreCounters.Count);
-
-            foreach (var scorecounter in _scoreCounters)
-                scorecounter.ShowInfo();
         }
     }
 }
