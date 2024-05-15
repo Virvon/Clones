@@ -11,6 +11,12 @@ public abstract class CharacterAttack : MonoBehaviour
     public event Action Attacked;
     public event Action AttackStarted;
 
+    private void Update()
+    {
+        if (_currentCooldown > 0)
+            _currentCooldown -= Time.deltaTime;
+    }
+
     private void OnAttack()
     {
         Attack();
@@ -19,9 +25,6 @@ public abstract class CharacterAttack : MonoBehaviour
 
     public void TryAttack(IDamageable target)
     {
-        if(_currentCooldown > 0)
-            _currentCooldown -= Time.deltaTime;
-
         if (_currentCooldown > 0 || target.IsAlive == false)
             return;
 
