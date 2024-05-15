@@ -69,6 +69,8 @@ namespace Clones.UI
         private void Construct()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
+            Leaderboard.GetPlayerEntry("Leaderboard1", (result) => Debug.Log("Player Score " + result.score));
+
             foreach (LeaderboardPlayer player in _leaderboard.LeaderboardPlayers)
             {
                 LeaderboardElement leaderboardElement = _mainMenuFactory.CreateLeaderboardElement(player, _container);

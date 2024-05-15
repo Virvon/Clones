@@ -7,7 +7,7 @@ namespace Clones.Services
 {
     public class YandexLeaderboard : ILeaderboard
     {
-        private const string LeaderboardName = "Leaderboard";
+        private const string LeaderboardName = "Leaderboard1";
         private const string AnonymousName = "Anonymous";
 
         private readonly List<LeaderboardPlayer> _leaderboardPlayers;

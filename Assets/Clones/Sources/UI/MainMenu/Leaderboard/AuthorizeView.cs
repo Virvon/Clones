@@ -14,12 +14,18 @@ namespace Clones.UI
 #if UNITY_WEBGL && !UNITY_EDITOR
             PlayerAccount.Authorize(onSuccessCallback: () =>
             {
-                Close(callback: () =>
+                Debug.Log("authorization player prefs loading");
+                Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback: () =>
                 {
-                    gameObject.SetActive(false);
-                    OpenLeaderboard();
-                });
+                    Debug.Log("success load prefs");
+                    Clones.Services.AllServices.Instance.Single<Clones.Services.IPersistentProgressService>().Progress = Clones.Services.AllServices.Instance.Single<Clones.Services.ISaveLoadService>().LoadProgress();
 
+                    Close(callback: () =>
+                    {
+                        gameObject.SetActive(false);
+                        OpenLeaderboard();
+                    });
+                }, onErrorCallback: (value) => Debug.Log("error load prefs " + value));
             }, onErrorCallback: (value) => Close(callback: () => gameObject.SetActive(false)));
 
             if (PlayerAccount.IsAuthorized)
