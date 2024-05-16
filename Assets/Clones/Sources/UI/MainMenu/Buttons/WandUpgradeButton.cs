@@ -2,6 +2,6 @@
 {
     public class WandUpgradeButton : UpgradeButton
     {
-        public override bool CanBuy => Wallet.Money >= Price;
+        public override bool CanBuy => PersistentProgress.Progress.Wallet.Money >= Price;
     }
 }

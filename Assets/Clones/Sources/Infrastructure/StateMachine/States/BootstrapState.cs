@@ -4,6 +4,7 @@ using Clones.UI;
 using Lean.Localization;
 using System;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Clones.Infrastructure
@@ -49,7 +50,10 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-            _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>()));
+            _services.RegisterSingle<IProgressReadersReporter>(new ProgressReadersReporter());
+
+            RegisterSaveLoadService();
+
             _services.RegisterSingle<ITimeScaler>(new TimeScale());
             _services.RegisterSingle<IAdvertisingDisplay>(new AdvertisingDisplay(_audioMixer, _services.Single<ITimeScaler>(), _coroutineRunner));
             _services.RegisterSingle<ILocalization>(new Localization(_coroutineRunner));
@@ -59,9 +63,18 @@ namespace Clones.Infrastructure
             _services.RegisterSingle<IGameFacotry>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStaticDataService>(), _services.Single<ITimeScaler>()));
             _services.RegisterSingle<IUiFactory>(new UiFactory(_services.Single<IAssetProvider>(), _services.Single<IPersistentProgressService>(), _stateMachine, _services.Single<IInputService>(), _services.Single<ITimeScaler>()));
             _services.RegisterSingle<IPartsFactory>(new PartsFactory(_services.Single<IGameStaticDataService>()));
-            _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<ISaveLoadService>(), _services.Single<ILeaderboard>()));
+            _services.RegisterSingle<IMainMenuFactory>(new MainMenuFactory(_services.Single<IAssetProvider>(), _services.Single<IGameStateMachine>(), _services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<ISaveLoadService>(), _services.Single<ILeaderboard>(), _services.Single<IProgressReadersReporter>()));
             _services.RegisterSingle<IEducationFactory>(new EducationFactory(_services.Single<IPartsFactory>(), _services.Single<IGameStaticDataService>(), _services.Single<IAssetProvider>()));
             _services.RegisterSingle<ICharacterFactory>(new CharacterFactory(_services.Single<IPersistentProgressService>(), _services.Single<IMainMenuStaticDataService>(), _services.Single<IInputService>()));
+        }
+
+        private void RegisterSaveLoadService()
+        {
+#if !UNITY_WEBGL || UNITY_EDITOR
+            _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>()));
+#else
+            _services.RegisterSingle<ISaveLoadService>(new YandexSaveLoadService(_services.Single<IPersistentProgressService>()));
+#endif
         }
 
         private void InitializeYandexSdk()
@@ -89,11 +102,20 @@ namespace Clones.Infrastructure
             callback?.Invoke();
             yield break;
 #else
-
             yield return YandexGamesSdk.Initialize();
 
             if (YandexGamesSdk.IsInitialized == false)
                 throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
+
+            bool isLoadedPlayerPrefs = true;
+            Agava.YandexGames.Utility.PlayerPrefs.Load(() =>
+            {
+                Debug.Log("succes loading player prefs");
+                isLoadedPlayerPrefs = false;
+            });
+
+            while(isLoadedPlayerPrefs)
+                yield return null;
 
             YandexGamesSdk.CallbackLogging = true;
             StickyAd.Show();

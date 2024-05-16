@@ -3,6 +3,6 @@
     public class DnaView : CurrencyView
     {
         protected override void UpdateCurrencyValue() =>
-            CurrencyValue.text = NumberFormatter.DivideIntegerOnDigits(Wallet.Dna);
+            CurrencyValue.text = NumberFormatter.DivideIntegerOnDigits(PersistentProgress.Progress.Wallet.Dna);
     }
 }

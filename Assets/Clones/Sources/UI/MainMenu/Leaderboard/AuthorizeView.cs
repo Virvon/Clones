@@ -1,5 +1,7 @@
 ﻿using Agava.YandexGames;
+using Clones.Services;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Clones.UI
@@ -9,17 +11,33 @@ namespace Clones.UI
         [SerializeField] private LeaderboardView _leaderboard;
         [SerializeField] private AnimationView _animationView;
 
+        private IPersistentProgressService _persistentProgress;
+        private ISaveLoadService _saveLoadService;
+        private IProgressReadersReporter _progressReadersReporter;
+
+        public void Init(IPersistentProgressService persistentProgress, ISaveLoadService saveLoadService, IProgressReadersReporter progressReadersReporter)
+        {
+            _persistentProgress = persistentProgress;
+            _saveLoadService = saveLoadService;
+            _progressReadersReporter = progressReadersReporter;
+        }
+
         public void AuthorizeAccount()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
             PlayerAccount.Authorize(onSuccessCallback: () =>
             {
-                Close(callback: () =>
+                Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback: () =>
                 {
-                    gameObject.SetActive(false);
-                    OpenLeaderboard();
-                });
+                    _persistentProgress.Progress = _saveLoadService.LoadProgress();
+                    _progressReadersReporter.Report();
 
+                    Close(callback: () =>
+                    {
+                        gameObject.SetActive(false);
+                        OpenLeaderboard();
+                    });
+                });
             }, onErrorCallback: (value) => Close(callback: () => gameObject.SetActive(false)));
 
             if (PlayerAccount.IsAuthorized)

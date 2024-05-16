@@ -3,6 +3,6 @@
     public class MoneyView : CurrencyView
     {
         protected override void UpdateCurrencyValue() =>
-            CurrencyValue.text = NumberFormatter.DivideIntegerOnDigits(Wallet.Money);
+            CurrencyValue.text = NumberFormatter.DivideIntegerOnDigits(PersistentProgress.Progress.Wallet.Money);
     }
 }

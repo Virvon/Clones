@@ -27,14 +27,8 @@ namespace Clones.UI
             _cards = new();
         }
 
-        private void OnDestroy()
-        {
-            foreach (var card in _cards.Values)
-            {
-                card.GetComponent<CardButton>().Clicked -= Select;
-                card.GetComponent<BuyCardView>().BuyCardTried -= OnBuyTried;
-            }
-        }
+        private void OnDestroy() => 
+            Unsubscribe();
 
         public void AddCard(Card card, TType type)
         {
@@ -73,5 +67,25 @@ namespace Clones.UI
         protected abstract void OnBuyTried(Card card);
 
         protected abstract void UpdateCurrentProgress(Card card);
+
+        public void Unsubscribe()
+        {
+            foreach (Card card in _cards.Values)
+            {
+                card.GetComponent<CardButton>().Clicked -= Select;
+                card.GetComponent<BuyCardView>().BuyCardTried -= OnBuyTried;
+            }
+        }
+
+        public void Clear()
+        {
+            foreach (Card card in _cards.Values)
+                Destroy(card.gameObject);
+
+            _types.Clear();
+            _cards.Clear();
+
+            CurrentCard = null;
+        }
     }
 }

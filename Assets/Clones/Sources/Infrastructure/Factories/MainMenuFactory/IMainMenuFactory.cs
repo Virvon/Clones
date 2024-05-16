@@ -2,10 +2,11 @@
 using UnityEngine;
 using Clones.UI;
 using Clones.Types;
+using System.Collections.Generic;
 
 namespace Clones.Infrastructure
 {
-    public interface IMainMenuFactory : IService
+    public interface IMainMenuFactory : IService, IProgressReader
     {
         GameObject CreateMainMenu();
         void CreateCloneCard(CloneType type);

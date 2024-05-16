@@ -1,3 +1,4 @@
+using Clones.Data;
 using Clones.Services;
 using System;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Clones.Audio
 {
-    public abstract class AudioSwitcherSlider : MonoBehaviour
+    public abstract class AudioSwitcherSlider : MonoBehaviour, IProgressReader
     {
         private const int MinSoundVolume = -25;
         private const int SoundOffVolume = -80;
@@ -59,6 +60,9 @@ namespace Clones.Audio
 
             AudioVolumeChanged?.Invoke();
         }
+
+        public void UpdateProgress() => 
+            SetAudioVolume();
 
         protected abstract void SetProgress(int volume);
 

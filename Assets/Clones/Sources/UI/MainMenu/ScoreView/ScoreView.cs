@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.UI
 {
-    public class ScoreView : MonoBehaviour
+    public class ScoreView : MonoBehaviour, IProgressReader
     {
         [SerializeField] private TMP_Text _bestScore;
         [SerializeField] private TMP_Text _lastScore;
@@ -16,11 +16,17 @@ namespace Clones.UI
         {
             _persistentProgress = persistentProgress;
 
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateScores;
+            Subscribe();
         }
 
         private void OnDestroy() => 
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= UpdateScores;
+           Unsubscribe();
+
+        public void UpdateProgress()
+        {
+            Unsubscribe();
+            Subscribe();
+        }
 
         private void UpdateScores()
         {
@@ -29,5 +35,11 @@ namespace Clones.UI
             _bestScore.text = selectedCloneData.BestScore.ToString();
             _lastScore.text = selectedCloneData.LastScore.ToString();
         }
+
+        private void Subscribe() => 
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateScores;
+
+        private void Unsubscribe() => 
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= UpdateScores;
     }
 }

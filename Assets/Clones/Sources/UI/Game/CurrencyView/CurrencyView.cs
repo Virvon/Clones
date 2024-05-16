@@ -1,30 +1,43 @@
 ﻿using Clones.Data;
+using Clones.Services;
 using System;
 using TMPro;
 using UnityEngine;
 
 namespace Clones.UI
 {
-    public abstract class CurrencyView : MonoBehaviour
+    public abstract class CurrencyView : MonoBehaviour, IProgressReader
     {
         [SerializeField] private TMP_Text _currencyValue;
-
-        protected Wallet Wallet { get; private set; }
+        protected IPersistentProgressService PersistentProgress { get; private set; }
         protected TMP_Text CurrencyValue => _currencyValue;
 
-        public void Init(Wallet wallet)
+        public void Init(IPersistentProgressService persistentProgress)
         {
-            Wallet = wallet;
+            PersistentProgress = persistentProgress;
 
-            Wallet.CurrencyCountChanged += UpdateCurrencyValue;
+            Subscribe();
         }
 
         private void Start() =>
             UpdateCurrencyValue();
 
         private void OnDisable() =>
-            Wallet.CurrencyCountChanged -= UpdateCurrencyValue;
+            Unsubscribe();
+
+        public void UpdateProgress()
+        {
+            Unsubscribe();
+            Subscribe();
+            UpdateCurrencyValue();
+        }
 
         protected abstract void UpdateCurrencyValue();
+
+        private void Subscribe() =>
+            PersistentProgress.Progress.Wallet.CurrencyCountChanged += UpdateCurrencyValue;
+
+        private void Unsubscribe() =>
+            PersistentProgress.Progress.Wallet.CurrencyCountChanged -= UpdateCurrencyValue;
     }
 }

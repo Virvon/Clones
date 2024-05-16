@@ -3,11 +3,12 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using Clones.Data;
+using Clones.Services;
 
 namespace Clones.UI
 {
     [RequireComponent(typeof(Button))]
-    public abstract class UpgradeButton : MonoBehaviour, IBuyable
+    public abstract class UpgradeButton : MonoBehaviour, IBuyable, IProgressReader
     {
         [SerializeField] private TMP_Text _textPrice;
         [SerializeField] private GameObject _cantUpgradeVisuals;
@@ -17,17 +18,17 @@ namespace Clones.UI
         public abstract bool CanBuy { get; }
 
         protected int Price { get; private set; }
-        protected Wallet Wallet { get; private set; }
+        protected IPersistentProgressService PersistentProgress { get; private set; }
 
         public event Action BuyTried;
 
-        public void Init(Wallet wallet)
+        public void Init(IPersistentProgressService persistentProgress)
         {
-            Wallet = wallet;
+            PersistentProgress = persistentProgress;
 
             _button = GetComponent<Button>();
 
-            Wallet.CurrencyCountChanged += CheckPrice;
+            Subscribe();
             _button.onClick.AddListener(OnButtonClicked);
 
             CheckPrice();
@@ -35,7 +36,7 @@ namespace Clones.UI
 
         private void OnDisable()
         {
-            Wallet.CurrencyCountChanged -= CheckPrice;
+            Unsubscribe();
             _button.onClick.RemoveListener(OnButtonClicked);
         }
 
@@ -53,6 +54,12 @@ namespace Clones.UI
             _textPrice.text = "";
         }
 
+        public void UpdateProgress()
+        {
+            Unsubscribe();
+            Subscribe();
+        }
+
         private void OnButtonClicked() =>
             BuyTried?.Invoke();
 
@@ -63,5 +70,11 @@ namespace Clones.UI
             else
                 _cantUpgradeVisuals.SetActive(true);
         }
+
+        private void Subscribe() => 
+            PersistentProgress.Progress.Wallet.CurrencyCountChanged += CheckPrice;
+
+        private void Unsubscribe() =>
+            PersistentProgress.Progress.Wallet.CurrencyCountChanged -= CheckPrice;
     }
 }
