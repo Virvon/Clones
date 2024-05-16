@@ -12,19 +12,22 @@ namespace Clones.Infrastructure
         private readonly IMainMenuFactory _mainMenuFactory;
         private readonly IMainMenuStaticDataService _mainMenuStaticDataService;
         private readonly ICharacterFactory _characterFactory;
+        private readonly IProgressReadersReporter _progressReadersReporter;
 
-        public MainMenuLoopState(IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService, ICharacterFactory characterFactory)
+        public MainMenuLoopState(IMainMenuFactory mainMenuFactory, IMainMenuStaticDataService mainMenuStaticDataService, ICharacterFactory characterFactory, IProgressReadersReporter progressReadersReporter)
         {
             _mainMenuFactory = mainMenuFactory;
             _mainMenuStaticDataService = mainMenuStaticDataService;
             _characterFactory = characterFactory;
+            _progressReadersReporter = progressReadersReporter;
         }
 
         public void Enter() => 
             CreateMainMenu();
 
 
-        public void Exit() { }
+        public void Exit() => 
+            _progressReadersReporter.Clear();
 
         private void CreateMainMenu()
         {
@@ -44,6 +47,7 @@ namespace Clones.Infrastructure
             SelectCurrentOrDefaultCards(clonesCardsView, wandsCardsView);
 
             wandsCardsView.gameObject.SetActive(false);
+            _progressReadersReporter.Register(_mainMenuFactory);
         }
 
         private static void SelectCurrentOrDefaultCards(ClonesCardsView clonesCardsView, WandsCardsView wandsCardsView)

@@ -43,6 +43,9 @@ namespace Clones.UI
 
         public void ScrollToCard()
         {
+            if (_content.gameObject.activeSelf == false)
+                return;
+
             StartCoroutine(SizeDeltaWaiter(callback: () =>
             {
                 if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_content, _cardView.CurrentCard.transform.position, null, out Vector2 localPoint))

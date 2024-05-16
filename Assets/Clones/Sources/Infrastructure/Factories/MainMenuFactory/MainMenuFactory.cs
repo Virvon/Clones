@@ -20,12 +20,15 @@ namespace Clones.Infrastructure
         private readonly IMainMenuStaticDataService _staticDataService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly ILeaderboard _leaderboard;
+        private readonly IProgressReadersReporter _progressReadersReporter;
 
         private MainMenuContainers _containers;
         private ClonesCardsView _clonesCardsView;
         private WandsCardsView _wandsCardsView;
+        private HashSet<CloneType> _createdCloneTypes;
+        private HashSet<WandType> _createdWandTypes;
 
-        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService, ISaveLoadService saveLoadService, ILeaderboard leaderboard)
+        public MainMenuFactory(IAssetProvider assets, IGameStateMachine gameStateMachine, IPersistentProgressService persistentProgress, IMainMenuStaticDataService staticDataService, ISaveLoadService saveLoadService, ILeaderboard leaderboard, IProgressReadersReporter progressReadersReporter)
         {
             _assets = assets;
             _gameStateMachine = gameStateMachine;
@@ -33,6 +36,24 @@ namespace Clones.Infrastructure
             _staticDataService = staticDataService;
             _saveLoadService = saveLoadService;
             _leaderboard = leaderboard;
+            _progressReadersReporter = progressReadersReporter;
+
+            _createdCloneTypes = new();
+            _createdWandTypes = new();
+        }
+
+        public void UpdateProgress()
+        {
+            _clonesCardsView.Unsubscribe();
+            _clonesCardsView.Clear();
+            _wandsCardsView.Unsubscribe();
+            _wandsCardsView.Clear();
+
+            CreateClonesCards(_createdCloneTypes.ToArray());
+            CreateWandsCards(_createdWandTypes.ToArray());
+
+            _clonesCardsView.SelectCurrentOrDefault();
+            _wandsCardsView.SelectCurrentOrDefault();
         }
 
         public GameObject CreateMainMenu()
@@ -43,11 +64,11 @@ namespace Clones.Infrastructure
 
             menu
                 .GetComponentInChildren<MoneyView>()
-                .Init(_persistentProgress.Progress.Wallet);
+                .Init(_persistentProgress);
 
             menu
                 .GetComponentInChildren<DnaView>()
-                .Init(_persistentProgress.Progress.Wallet);
+                .Init(_persistentProgress);
 
             foreach (var switcher in menu.GetComponents<AudioSwitcherSlider>())
                 switcher.Init(_persistentProgress);
@@ -63,6 +84,13 @@ namespace Clones.Infrastructure
                 .Leaderboard
                 .GetComponent<LeaderboardView>()
                 .Init(_leaderboard, this, _persistentProgress);
+
+            _containers
+                .AuthorizeView
+                .GetComponent<AuthorizeView>()
+                .Init(_persistentProgress, _saveLoadService, _progressReadersReporter);
+
+            Register(menu);
 
             return menu;
         }
@@ -80,7 +108,9 @@ namespace Clones.Infrastructure
 
             if (isBuyed == false)
             {
-                card.GetComponent<BuyCardView>().Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+                card
+                    .GetComponent<BuyCardView>()
+                    .Init(cloneStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
             }
             else
             {
@@ -95,6 +125,7 @@ namespace Clones.Infrastructure
             }
 
             card.Init(isBuyed);
+            _createdCloneTypes.Add(type);
         }
 
         public void CreateWandCard(WandType type)
@@ -111,7 +142,9 @@ namespace Clones.Infrastructure
 
             if (isBuyed == false)
             {
-                cardObject.GetComponent<BuyCardView>().Init(wandStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
+                cardObject
+                    .GetComponent<BuyCardView>()
+                    .Init(wandStaticData.BuyPrice, _persistentProgress.Progress.Wallet);
             }
             else
             {
@@ -121,6 +154,8 @@ namespace Clones.Infrastructure
                     .GetComponent<WandLevelView>()
                     .Init(_persistentProgress, type);
             }
+
+            _createdWandTypes.Add(type);
         }
 
         public ClonesCardsView CreateClonesCardsView()
@@ -188,6 +223,8 @@ namespace Clones.Infrastructure
 
             statsView.GetComponent<StatsView>()
                 .Init(_persistentProgress);
+
+            Register(statsView);
         }
 
         public void CreateUpgradeView()
@@ -198,10 +235,12 @@ namespace Clones.Infrastructure
                 .Init(_persistentProgress, _staticDataService, _saveLoadService);
 
             upgradeView.GetComponentInChildren<CloneUpgradeButton>()
-                .Init(_persistentProgress.Progress.Wallet);
+                .Init(_persistentProgress);
 
             upgradeView.GetComponentInChildren<WandUpgradeButton>()
-                .Init(_persistentProgress.Progress.Wallet);
+                .Init(_persistentProgress);
+
+            Register(upgradeView);
         }
 
         public void CreateCloneModelPoint(ICharacterFactory characterFactory)
@@ -235,6 +274,26 @@ namespace Clones.Infrastructure
             scoreViewObject
                 .GetComponent<ScoreView>()
                 .Init(_persistentProgress);
+
+            Register(scoreViewObject);
+        }
+
+        private void Register(GameObject gameObject)
+        {
+            foreach (IProgressReader progressReader in gameObject.GetComponentsInChildren<IProgressReader>())
+                _progressReadersReporter.Register(progressReader);
+        }
+
+        private void CreateClonesCards(CloneType[] types)
+        {
+            foreach (var type in types)
+                CreateCloneCard(type);
+        }
+
+        private void CreateWandsCards(WandType[] types)
+        {
+            foreach (var type in types)
+                CreateWandCard(type);
         }
     }
 }

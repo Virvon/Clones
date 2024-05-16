@@ -2,6 +2,6 @@
 {
     public class CloneUpgradeButton : UpgradeButton
     {
-        public override bool CanBuy => Wallet.Dna >= Price;
+        public override bool CanBuy => PersistentProgress.Progress.Wallet.Dna >= Price;
     }
 }

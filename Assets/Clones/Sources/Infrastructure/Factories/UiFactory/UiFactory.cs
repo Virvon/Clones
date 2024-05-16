@@ -60,11 +60,11 @@ namespace Clones.Infrastructure
             
             _wallet
                 .GetComponentInChildren<DnaView>()
-                .Init(_persistentProgressService.Progress.Wallet);
+                .Init(_persistentProgressService);
 
             _wallet
                 .GetComponentInChildren<MoneyView>()
-                .Init(_persistentProgressService.Progress.Wallet);
+                .Init(_persistentProgressService);
         }
 
         public GameObject CreateControl(Player player)

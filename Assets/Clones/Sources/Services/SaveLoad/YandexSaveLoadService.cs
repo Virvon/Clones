@@ -1,5 +1,6 @@
 ﻿using Agava.YandexGames.Utility;
 using Clones.Data;
+using Clones.Infrastructure;
 using Debug = UnityEngine.Debug;
 
 namespace Clones.Services
@@ -10,16 +11,22 @@ namespace Clones.Services
 
         private readonly IPersistentProgressService _persistentProgress;
 
-        public YandexSaveLoadService(IPersistentProgressService persistentProgress) => 
+        public YandexSaveLoadService(IPersistentProgressService persistentProgress)
+        {
             _persistentProgress = persistentProgress;
+        }
 
-        public PlayerProgress LoadProgress() =>
-            PlayerPrefs.GetString(Key)?.ToDeserialized<PlayerProgress>();
+        public PlayerProgress LoadProgress()
+        {
+            PlayerProgress playerProgress = PlayerPrefs.GetString(Key)?.ToDeserialized<PlayerProgress>();
+
+            return playerProgress;
+        }
 
         public void SaveProgress()
         {
             PlayerPrefs.SetString(Key, _persistentProgress.Progress.ToJson());
-            PlayerPrefs.Save(onSuccessCallback: ()=> Debug.Log("success save prefs"), onErrorCallback: (value) => Debug.Log("error save prefs " + value));
+            PlayerPrefs.Save();
         }
     }
 }

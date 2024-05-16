@@ -37,7 +37,7 @@ namespace Clones.Services
 #if UNITY_WEBGL && !UNITY_EDITOR
             if (PlayerAccount.IsAuthorized == false)
                 return;
-  
+
             _leaderboardPlayers.Clear();
 
             Leaderboard.GetEntries(LeaderboardName, onSuccessCallback: (result) =>
@@ -55,7 +55,7 @@ namespace Clones.Services
                 }
 
                 UserRank = result.userRank;
-              
+
                 callback?.Invoke();
             });
 #else

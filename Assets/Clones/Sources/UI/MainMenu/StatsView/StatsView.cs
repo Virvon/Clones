@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Clones.UI
 {
-    public class StatsView : MonoBehaviour
+    public class StatsView : MonoBehaviour, IProgressReader
     {
         [SerializeField] private TMP_Text _health;
         [SerializeField] private TMP_Text _damage;
@@ -19,20 +19,16 @@ namespace Clones.UI
         {
             _persistentProgress = persistentProgress;
 
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateStats;
-            _persistentProgress.Progress.AvailableWands.SelectedWandChanged += UpdateStats;
-
-            _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded += UpdateStats;
-            _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded += UpdateStats;
+            Subscribe();
         }
 
-        private void OnDisable()
-        {
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= UpdateStats;
-            _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= UpdateStats;
+        private void OnDisable() => 
+            Unsubscribe();
 
-            _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded -= UpdateStats;
-            _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded -= UpdateStats;
+        public void UpdateProgress()
+        {
+            Unsubscribe();
+            Subscribe();
         }
 
         private void UpdateStats()
@@ -51,6 +47,24 @@ namespace Clones.UI
             _damage.text = NumberFormatter.DivideIntegerOnDigits(damage);
             _attackSpeed.text = NumberFormatter.DivideFloatOnDigits(attackSpeed);
             _resourceMultiplier.text = NumberFormatter.DivideFloatOnDigits(resourceMultiplier);
+        }
+
+        private void Subscribe()
+        {
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += UpdateStats;
+            _persistentProgress.Progress.AvailableWands.SelectedWandChanged += UpdateStats;
+
+            _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded += UpdateStats;
+            _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded += UpdateStats;
+        }
+
+        private void Unsubscribe()
+        {
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= UpdateStats;
+            _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= UpdateStats;
+
+            _persistentProgress.Progress.AvailableClones.SelectedCloneUpgraded -= UpdateStats;
+            _persistentProgress.Progress.AvailableWands.SelectedWandUpgraded -= UpdateStats;
         }
     }
 }

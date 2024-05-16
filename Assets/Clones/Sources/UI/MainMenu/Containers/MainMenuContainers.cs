@@ -11,5 +11,6 @@ namespace Clones.UI
         public Transform Characters;
         public GameObject Leaderboard;
         public Transform Header;
+        public GameObject AuthorizeView;
     }
 }

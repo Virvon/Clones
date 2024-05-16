@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.UI
 {
-    public class UpgradeButtonsView : MonoBehaviour
+    public class UpgradeButtonsView : MonoBehaviour, IProgressReader
     {
         [SerializeField] private UpgradeButton _cloneUpgradeButton;
         [SerializeField] private UpgradeButton _wandUpgradeButton;
@@ -20,8 +20,7 @@ namespace Clones.UI
             _mainMenuStaticDataService = mainMenuStaticDataService;
             _saveLoadService = saveLoadService;
 
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += OnSelectedCloneChanged;
-            _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
+            SubscribeToProgress();
 
             _cloneUpgradeButton.BuyTried += UpgradeClone;
             _wandUpgradeButton.BuyTried += UpgradeWand;
@@ -29,11 +28,16 @@ namespace Clones.UI
 
         private void OnDisable()
         {
-            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= OnSelectedCloneChanged;
-            _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= OnSelectedWandChanged;
+            UnsubscribeFromProgress();
 
             _cloneUpgradeButton.BuyTried -= UpgradeClone;
             _wandUpgradeButton.BuyTried -= UpgradeWand;
+        }
+
+        public void UpdateProgress()
+        {
+            UnsubscribeFromProgress();
+            SubscribeToProgress();
         }
 
         private void OnSelectedCloneChanged()
@@ -71,6 +75,18 @@ namespace Clones.UI
                 _saveLoadService.SaveProgress();
                 _wandUpgradeButton.SetPrice(wandData.UpgradePrice);
             }
+        }
+
+        private void SubscribeToProgress()
+        {
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged += OnSelectedCloneChanged;
+            _persistentProgress.Progress.AvailableWands.SelectedWandChanged += OnSelectedWandChanged;
+        }
+
+        private void UnsubscribeFromProgress()
+        {
+            _persistentProgress.Progress.AvailableClones.SelectedCloneChanged -= OnSelectedCloneChanged;
+            _persistentProgress.Progress.AvailableWands.SelectedWandChanged -= OnSelectedWandChanged;
         }
     }
 }
