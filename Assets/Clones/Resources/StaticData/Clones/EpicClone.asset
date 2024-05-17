@@ -16,18 +16,18 @@ MonoBehaviour:
   Prefab: {fileID: 8931962915480580132, guid: 6e158d679bef4fb42b6345de557da114, type: 3}
   Model: {fileID: 2662455025583865989, guid: af310a0ffdfd6eb4e934387b7d11fbab, type: 3}
   Card: {fileID: 3729764337796188301, guid: cf2c37de0d7401147b50098e3bcd6846, type: 3}
-  Helath: 750
-  Damage: 150
+  Helath: 1250
+  Damage: 120
   AttackCooldown: 1.1
-  ResourceMultiplier: 4
-  UpgradePrice: 1000
-  IncreaseHealth: 35
+  ResourceMultiplier: 3.5
+  UpgradePrice: 1500
+  IncreaseHealth: 30
   IncreaseDamage: 10
   IncreaseAttackCooldown: 0.025
-  IncreaseResourceMultiplier: 0.8
-  IncreasePrice: 250
-  MinAttackCooldow: 0.8
-  DisuseTime: 90
+  IncreaseResourceMultiplier: 0.3
+  IncreasePrice: 200
+  MinAttackCooldow: 0.3
+  DisuseTime: 360
   MovementSpeed: 10
   RotationSpeed: 1080
   MiningRadius: 8

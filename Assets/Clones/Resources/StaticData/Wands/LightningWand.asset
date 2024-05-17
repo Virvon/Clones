@@ -24,7 +24,7 @@ MonoBehaviour:
   IsBuyed: 0
   WandStats:
     HealthIncreasePercentage: 0
-    DamageIncreasePercentage: 15
+    DamageIncreasePercentage: 10
     AttackCooldownDecreasePercentage: 0
     PreyResourcesIncreasePercentage: 8
     MaxAttackCooldownDecreasePercentage: 0
