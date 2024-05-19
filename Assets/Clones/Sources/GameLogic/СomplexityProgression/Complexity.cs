@@ -20,7 +20,7 @@ namespace Clones.GameLogic
         public float GetComplexity(int currentWave)
         {
             float waveWeight = 0.95f + (float)Math.Pow(currentWave, 1.5f) / 20;
-            float complexity = _playerSkillCoefficient * waveWeight * (_cloneLevel * 0.45f);
+            float complexity = _playerSkillCoefficient * waveWeight * (_cloneLevel * 0.65f);
 
             complexity = complexity >= 1 ? complexity : 1;
 

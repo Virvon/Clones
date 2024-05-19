@@ -27,11 +27,11 @@ MonoBehaviour:
     DamageIncreasePercentage: 34
     AttackCooldownDecreasePercentage: 4
     PreyResourcesIncreasePercentage: 0
-    MaxAttackCooldownDecreasePercentage: 4
+    MaxAttackCooldownDecreasePercentage: 12
   WandStatsIncrease:
     HealthIncrease: 3
     DamageIncrease: 0
     AttackCooldownDecrease: 0
-    PreyResourcesIncrease: 0
+    PreyResourcesIncrease: 1
   ShootAudio: {fileID: 8300000, guid: fb742f5a26e45e84187ee331de9c776e, type: 3}
   ShootAudioVolume: 1

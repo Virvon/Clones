@@ -17,17 +17,17 @@ MonoBehaviour:
   Model: {fileID: 2662455025583865989, guid: fa08d24cdf9668c4eb08ea917557b2b9, type: 3}
   Card: {fileID: 3729764337796188301, guid: 894f019b6bda01a4d940ce618f39392b, type: 3}
   Helath: 1800
-  Damage: 100
+  Damage: 110
   AttackCooldown: 0.9
   ResourceMultiplier: 5
   UpgradePrice: 2500
-  IncreaseHealth: 45
-  IncreaseDamage: 8
+  IncreaseHealth: 60
+  IncreaseDamage: 7
   IncreaseAttackCooldown: 0.03
   IncreaseResourceMultiplier: 0.4
   IncreasePrice: 250
   MinAttackCooldow: 0.5
-  DisuseTime: 540
+  DisuseTime: 360
   MovementSpeed: 10
   RotationSpeed: 1080
   MiningRadius: 8

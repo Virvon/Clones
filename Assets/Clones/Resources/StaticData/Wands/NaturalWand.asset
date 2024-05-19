@@ -23,7 +23,7 @@ MonoBehaviour:
   BuyPrice: 2000
   IsBuyed: 0
   WandStats:
-    HealthIncreasePercentage: 24
+    HealthIncreasePercentage: 25
     DamageIncreasePercentage: 0
     AttackCooldownDecreasePercentage: 5
     PreyResourcesIncreasePercentage: 0
@@ -32,6 +32,6 @@ MonoBehaviour:
     HealthIncrease: 5
     DamageIncrease: 0
     AttackCooldownDecrease: 1
-    PreyResourcesIncrease: 0
+    PreyResourcesIncrease: 2
   ShootAudio: {fileID: 8300000, guid: 4edd4a947b925c94b844558b8eeb4659, type: 3}
   ShootAudioVolume: 1

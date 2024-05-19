@@ -94,7 +94,7 @@ namespace Clones.Infrastructure
             _gameFactory.CreateMusic(_currentBiome);
             _gameFactory.CreateFreezingScreen(_playerObject);
 
-            CreateScoreCounters(questsCreator, enemiesSpawner);
+            CreateScoreCounters(questsCreator, enemiesSpawner, complexity);
             CreateGameTimer();
             CreatePlayerDeath(hud, enemiesSpawner);
 
@@ -105,14 +105,14 @@ namespace Clones.Infrastructure
             _gameTimer.Start();
         }
 
-        private void CreateScoreCounters(IQuestsCreator questsCreator, EnemiesSpawner enemiesSpawner)
+        private void CreateScoreCounters(IQuestsCreator questsCreator, EnemiesSpawner enemiesSpawner, Complexity complexity)
         {
             ScoreCounterStaticData scoreCounterData = _gameStaticDataService.GetScoreCounter();
 
             _mainScoreCounter = new GameScoreCounter();
-            IScoreCounter scorePerItemsCounter = new ScorePerItemsCounter(_itemsCounter, scoreCounterData.ScorePerItem);
-            IScoreCounter scorePerQuestsCounter = new ScorePerQuestsCounter(questsCreator, scoreCounterData.ScorePerQuest);
-            IScoreCounter scorePerEnemiesCounter = new ScorePerEnemiesCounter(_killer, enemiesSpawner, scoreCounterData.ScorePerKill);
+            IScoreCounter scorePerItemsCounter = new ScorePerItemsCounter(_itemsCounter, enemiesSpawner, complexity, scoreCounterData.ScorePerItem);
+            IScoreCounter scorePerQuestsCounter = new ScorePerQuestsCounter(questsCreator, enemiesSpawner, complexity, scoreCounterData.ScorePerQuest);
+            IScoreCounter scorePerEnemiesCounter = new ScorePerEnemiesCounter(_killer, enemiesSpawner, complexity, scoreCounterData.ScorePerKill);
 
             _mainScoreCounter.Add(scorePerItemsCounter);
             _mainScoreCounter.Add(scorePerQuestsCounter);

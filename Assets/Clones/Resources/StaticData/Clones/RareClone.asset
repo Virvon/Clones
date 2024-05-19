@@ -22,12 +22,12 @@ MonoBehaviour:
   ResourceMultiplier: 2
   UpgradePrice: 800
   IncreaseHealth: 100
-  IncreaseDamage: 5
+  IncreaseDamage: 3
   IncreaseAttackCooldown: 0.032
   IncreaseResourceMultiplier: 0.2
   IncreasePrice: 150
   MinAttackCooldow: 0.6
-  DisuseTime: 180
+  DisuseTime: 120
   MovementSpeed: 10
   RotationSpeed: 1080
   MiningRadius: 8
