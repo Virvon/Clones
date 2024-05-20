@@ -21,8 +21,8 @@ MonoBehaviour:
     MinSpawnRadius: 0
     MaxSpawnRadius: 8
   - SpawnedEnemies: 070000000800000009000000
-    Complexity: 7
-    WaveWeight: 320000
+    Complexity: 10
+    WaveWeight: 650000
     Position: {x: 200, y: 0}
     MinSpawnRadius: 18
     MaxSpawnRadius: 22
