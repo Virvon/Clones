@@ -11,13 +11,13 @@
         public const string CurrencyItems = "StaticData/World/Items/Currency";
         public const string Enemies = "StaticData/Enemies";
         public const string Bullets = "StaticData/Bullets";
-        public const string EnemiesSpawner = "StaticData/EnemiesSpawner";
+        public const string EnemiesSpawner = "StaticData/EnemiesSpawner/EnemiesSpawner";
         public const string Quest = "StaticData/Quests/Quest";
         public const string Complexity = "StaticData/Complexity";
         public const string ItemsCounter = "StaticData/CurrencyCounter";
         public const string EducationQuest = "StaticData/Quests/EducationQuest";
-        public const string EducationPreyResourcesSpawner = "StaticData/Education/EducationPreyResourcesSpawner";
-        public const string EducationEnemiesSpawner = "StaticData/Education/EducationEnemiesSpawner";
+        public const string EducationPreyResourcesSpawner = "StaticData/EducationPreyResourcesSpawner";
+        public const string EducationEnemiesSpawner = "StaticData/EnemiesSpawner/EducationEnemiesSpawner";
         public const string ScoreCounter = "StaticData/ScoreCounter";
     }
 }
