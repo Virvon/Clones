@@ -16,22 +16,22 @@ MonoBehaviour:
   Card: {fileID: 2162005049245178766, guid: 71fc2f813241d5645af4646809e01325, type: 3}
   Type: 1
   Bullet: 4
-  UpgradePrice: 500
+  UpgradePrice: 100
   UpgradePriceIncrease: 50
   KnockbackForse: 1000
   KnockbackOffset: 0
   BuyPrice: 0
   IsBuyed: 1
   WandStats:
-    HealthIncreasePercentage: 4
-    DamageIncreasePercentage: 0
+    HealthIncreasePercentage: 10
+    DamageIncreasePercentage: 34
     AttackCooldownDecreasePercentage: 4
     PreyResourcesIncreasePercentage: 0
-    MaxAttackCooldownDecreasePercentage: 4
+    MaxAttackCooldownDecreasePercentage: 12
   WandStatsIncrease:
-    HealthIncrease: 2
+    HealthIncrease: 3
     DamageIncrease: 0
     AttackCooldownDecrease: 0
-    PreyResourcesIncrease: 0
+    PreyResourcesIncrease: 1
   ShootAudio: {fileID: 8300000, guid: fb742f5a26e45e84187ee331de9c776e, type: 3}
   ShootAudioVolume: 1

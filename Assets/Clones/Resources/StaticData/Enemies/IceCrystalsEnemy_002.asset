@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 8286768699524046424, guid: 8fc9187b049b71d4e9aed407976aa89a, type: 3}
   Type: 4
-  Damage: 80
-  Health: 25
+  Damage: 60
+  Health: 70
   AttackCooldown: 0.6
   MinStopDistance: 3
   MaxStopDistance: 4

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28a1eb4e0b66c045b574325ab6d421d, type: 3}
   m_Name: ScoreCounter
   m_EditorClassIdentifier: 
-  ScorePerItem: 10
-  ScorePerQuest: 225
-  ScorePerKill: 7
+  ScorePerItem: 1
+  ScorePerQuest: 250
+  ScorePerKill: 15
