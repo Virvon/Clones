@@ -1,3 +1,7 @@
+using Clones.Character;
+using Clones.Character.Enemy;
+using Clones.Environment;
+
 namespace Clones.StateMachine
 {
     public class MiningTransition : AttackTransition

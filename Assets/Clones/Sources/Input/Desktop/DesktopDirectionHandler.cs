@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clones.Character.Player;
+using System;
 using UnityEngine;
 
 namespace Clones.Input

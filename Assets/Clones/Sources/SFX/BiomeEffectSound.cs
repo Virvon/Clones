@@ -4,7 +4,7 @@ namespace Clones.SFX
 {
     public class BiomeEffectSound : MonoBehaviour
     {
-        [SerializeField] private BiomeEffects _biomeEffects;
+        [SerializeField] private BiomeEffects.BiomeEffects _biomeEffects;
         [SerializeField] private AudioSource _audioSource;
 
         private void OnEnable() =>

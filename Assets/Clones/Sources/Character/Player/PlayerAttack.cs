@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour, IAttackble
+namespace Clones.Character.Player
 {
-    [SerializeField] private int _damage;
-    [SerializeField] private float _attackSpeed;
+    public class PlayerAttack : MonoBehaviour, IAttackble
+    {
+        [SerializeField] private int _damage;
+        [SerializeField] private float _attackSpeed;
 
-    public int Damage => _damage;
+        public int Damage => _damage;
 
-    public float AttackSpeed => _attackSpeed;
+        public float AttackSpeed => _attackSpeed;
+    }
 }

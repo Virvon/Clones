@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class LimitedLifetimeEffect : MonoBehaviour
+namespace Clones.BulletSystem
 {
-    [SerializeField] private float _lifeTime;
-
-    private void Start() => 
-        StartCoroutine(Timer());
-
-    private IEnumerator Timer()
+    public class LimitedLifetimeEffect : MonoBehaviour
     {
-        yield return new WaitForSeconds(_lifeTime);
+        [SerializeField] private float _lifeTime;
 
-        Destroy(gameObject);
+        private void Start() =>
+            StartCoroutine(Timer());
+
+        private IEnumerator Timer()
+        {
+            yield return new WaitForSeconds(_lifeTime);
+
+            Destroy(gameObject);
+        }
     }
 }

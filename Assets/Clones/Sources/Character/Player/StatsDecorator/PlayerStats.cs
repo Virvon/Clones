@@ -1,5 +1,8 @@
-﻿public class PlayerStats
+﻿namespace Clones.Character.Player
 {
-    public float MovementSpeed { get; set; }
-    public float AttackCooldown { get; set; }
+    public class PlayerStats
+    {
+        public float MovementSpeed { get; set; }
+        public float AttackCooldown { get; set; }
+    }
 }

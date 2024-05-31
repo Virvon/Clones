@@ -8,8 +8,14 @@ using Clones.Biomes;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 using Clones.Types;
-using Clones.Data;
 using Clones.SFX;
+using Clones.BulletSystem;
+using Clones.Character;
+using Clones.Environment;
+using Clones.Items;
+using Clones.Character.Bars;
+using Clones.Character.Enemy;
+using Clones.Character.Attack;
 
 namespace Clones.Infrastructure
 {

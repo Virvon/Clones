@@ -1,3 +1,6 @@
+using Clones.Character;
+using Clones.Character.Attack;
+using Clones.Character.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;

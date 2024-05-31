@@ -1,4 +1,5 @@
-﻿using Clones.GameLogic;
+﻿using Clones.Character.Enemy;
+using Clones.GameLogic;
 using Clones.Infrastructure;
 using Clones.Types;
 using System;

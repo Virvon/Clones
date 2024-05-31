@@ -1,3 +1,4 @@
+using Clones.Character;
 using UnityEngine;
 
 namespace Clones.StateMachine

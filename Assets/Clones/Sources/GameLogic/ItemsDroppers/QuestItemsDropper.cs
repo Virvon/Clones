@@ -1,4 +1,8 @@
-﻿using Clones.Infrastructure;
+﻿using Clones.Character;
+using Clones.Character.Attack;
+using Clones.Environment;
+using Clones.Infrastructure;
+using Clones.Items;
 using Clones.Types;
 using UnityEngine;
 

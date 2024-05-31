@@ -1,4 +1,6 @@
 ﻿using Cinemachine;
+using Clones.Character.Attack;
+using Clones.Character.Player;
 using Clones.EducationLogic;
 using Clones.GameLogic;
 using Clones.Services;

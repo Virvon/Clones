@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clones.Items;
+using System;
 
 namespace Clones.GameLogic
 {

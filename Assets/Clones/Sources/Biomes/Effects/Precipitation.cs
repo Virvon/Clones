@@ -3,68 +3,71 @@ using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(BiomeEffects))]
-public class Precipitation : MonoBehaviour
+namespace Clones.BiomeEffects
 {
-    [SerializeField] private ParticleSystem[] _precipitationsPrefabs;
-    [SerializeField] private float _destroyTime;
-
-    private BiomeEffects _biomeEffects;
-    private ParticleSystem _currentPrecipitation;
-    private ParticleSystem _precipitationPrefab;
-    private Coroutine _precipitationDestroyer;
-
-    private void OnEnable()
+    [RequireComponent(typeof(BiomeEffects))]
+    public class Precipitation : MonoBehaviour
     {
-        if (_precipitationsPrefabs == null)
-            throw new NullReferenceException(nameof(_precipitationsPrefabs));
+        [SerializeField] private ParticleSystem[] _precipitationsPrefabs;
+        [SerializeField] private float _destroyTime;
 
-        _precipitationPrefab = _precipitationsPrefabs[Random.Range(0, _precipitationsPrefabs.Length)];
-        _biomeEffects = GetComponent<BiomeEffects>();
+        private BiomeEffects _biomeEffects;
+        private ParticleSystem _currentPrecipitation;
+        private ParticleSystem _precipitationPrefab;
+        private Coroutine _precipitationDestroyer;
 
-        _biomeEffects.EffectStateChanged += OnEffectStateChanged;
-    }
+        private void OnEnable()
+        {
+            if (_precipitationsPrefabs == null)
+                throw new NullReferenceException(nameof(_precipitationsPrefabs));
 
-    private void OnDisable() => 
-        _biomeEffects.EffectStateChanged -= OnEffectStateChanged;
+            _precipitationPrefab = _precipitationsPrefabs[Random.Range(0, _precipitationsPrefabs.Length)];
+            _biomeEffects = GetComponent<BiomeEffects>();
 
-    private void OnEffectStateChanged()
-    {
-        if (_biomeEffects.EffectIsPlayed)
-            PlayEffect();
-        else
-            StopEffect();
-    }
+            _biomeEffects.EffectStateChanged += OnEffectStateChanged;
+        }
 
-    private void PlayEffect()
-    {
-        if (_currentPrecipitation != null)
+        private void OnDisable() =>
+            _biomeEffects.EffectStateChanged -= OnEffectStateChanged;
+
+        private void OnEffectStateChanged()
+        {
+            if (_biomeEffects.EffectIsPlayed)
+                PlayEffect();
+            else
+                StopEffect();
+        }
+
+        private void PlayEffect()
+        {
+            if (_currentPrecipitation != null)
+            {
+                if (_precipitationDestroyer != null)
+                    StopCoroutine(_precipitationDestroyer);
+
+                _currentPrecipitation.Play();
+            }
+            else
+            {
+                _currentPrecipitation = Instantiate(_precipitationPrefab, _biomeEffects.Biome.Player.transform.position, _biomeEffects.Biome.Player.transform.rotation, _biomeEffects.Biome.Player.transform);
+            }
+        }
+
+        private void StopEffect()
         {
             if (_precipitationDestroyer != null)
                 StopCoroutine(_precipitationDestroyer);
 
-            _currentPrecipitation.Play();
+            _precipitationDestroyer = StartCoroutine(PrecipitationDestroyer());
         }
-        else
+
+        private IEnumerator PrecipitationDestroyer()
         {
-            _currentPrecipitation = Instantiate(_precipitationPrefab, _biomeEffects.Biome.Player.transform.position, _biomeEffects.Biome.Player.transform.rotation, _biomeEffects.Biome.Player.transform);
+            _currentPrecipitation.Stop();
+
+            yield return new WaitForSeconds(_destroyTime);
+
+            Destroy(_currentPrecipitation.gameObject);
         }
-    }
-
-    private void StopEffect()
-    {
-        if (_precipitationDestroyer != null)
-            StopCoroutine(_precipitationDestroyer);
-
-        _precipitationDestroyer = StartCoroutine(PrecipitationDestroyer());
-    }
-
-    private IEnumerator PrecipitationDestroyer()
-    {
-        _currentPrecipitation.Stop();
-
-        yield return new WaitForSeconds(_destroyTime);
-
-        Destroy(_currentPrecipitation.gameObject);
     }
 }

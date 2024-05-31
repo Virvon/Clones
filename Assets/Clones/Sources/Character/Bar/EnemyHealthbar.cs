@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-public class EnemyHealthbar : Healthbar
+namespace Clones.Character.Bars
 {
-    private Camera _camera;
-
-    public void Init(IHealthChanger healthble) =>
-        TakeHealthble(healthble);
-
-    private void Awake() => 
-        _camera = Camera.main;
-
-    private void LateUpdate()
+    public class EnemyHealthbar : Healthbar
     {
-        transform.LookAt(new Vector3(transform.position.x, _camera.transform.position.y, _camera.transform.position.z));
-        transform.Rotate(0, 180, 0);
+        private Camera _camera;
+
+        public void Init(IHealthChanger healthble) =>
+            TakeHealthble(healthble);
+
+        private void Awake() =>
+            _camera = Camera.main;
+
+        private void LateUpdate()
+        {
+            transform.LookAt(new Vector3(transform.position.x, _camera.transform.position.y, _camera.transform.position.z));
+            transform.Rotate(0, 180, 0);
+        }
     }
 }

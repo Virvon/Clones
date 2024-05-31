@@ -1,4 +1,7 @@
-﻿namespace Clones.GameLogic
+﻿using Clones.Character.Enemy;
+using Clones.Environment;
+
+namespace Clones.GameLogic
 {
     public interface IDroppableVisitor
     {

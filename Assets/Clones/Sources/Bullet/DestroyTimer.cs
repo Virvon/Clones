@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class DestroyTimer : MonoBehaviour
+namespace Clones.DestroySystem
 {
-    [SerializeField] private float _time;
-
-    public virtual void Destroy() => 
-        StartCoroutine(Destroyer());
-
-    private IEnumerator Destroyer()
+    public class DestroyTimer : MonoBehaviour
     {
-        yield return new WaitForSeconds(_time);
+        [SerializeField] private float _time;
 
-        Destroy(gameObject);
+        public virtual void Destroy() =>
+            StartCoroutine(Destroyer());
+
+        private IEnumerator Destroyer()
+        {
+            yield return new WaitForSeconds(_time);
+
+            Destroy(gameObject);
+        }
     }
 }

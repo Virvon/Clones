@@ -2,13 +2,16 @@
 using Clones.Types;
 using UnityEngine;
 
-public class QuestItem : MonoBehaviour, IItem
+namespace Clones.Items
 {
-    public QuestItemType Type { get; private set; }
+    public class QuestItem : MonoBehaviour, IItem
+    {
+        public QuestItemType Type { get; private set; }
 
-    public void Init(QuestItemType type) =>
-        Type = type;
+        public void Init(QuestItemType type) =>
+            Type = type;
 
-    public void Accept(IItemVisitor visitor) => 
-        visitor.Visit(this);
+        public void Accept(IItemVisitor visitor) =>
+            visitor.Visit(this);
+    }
 }

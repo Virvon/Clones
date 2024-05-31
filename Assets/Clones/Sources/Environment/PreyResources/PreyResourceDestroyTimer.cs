@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿using Clones.DestroySystem;
+using UnityEngine;
 
-public class PreyResourceDestroyTimer : DestroyTimer
+namespace Clones.Environment
 {
-    [SerializeField] private Collider _collider;
-    [SerializeField] private GameObject _model;
-
-    public override void Destroy()
+    public class PreyResourceDestroyTimer : DestroyTimer
     {
-        _collider.enabled = false;
-        _model.SetActive(false);
-        base.Destroy();
+        [SerializeField] private Collider _collider;
+        [SerializeField] private GameObject _model;
+
+        public override void Destroy()
+        {
+            _collider.enabled = false;
+            _model.SetActive(false);
+            base.Destroy();
+        }
     }
 }

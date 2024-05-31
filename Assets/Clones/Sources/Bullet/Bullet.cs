@@ -1,15 +1,19 @@
-using Clones.Data;
+using Clones.Character;
+using Clones.StaticData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Bullet : MonoBehaviour
+namespace Clones.BulletSystem
 {
-    public abstract BulletStaticData BulletData { get; }
+    public abstract class Bullet : MonoBehaviour
+    {
+        public abstract BulletStaticData BulletData { get; }
 
-    public abstract event Action Shooted;
+        public abstract event Action Shooted;
 
-    protected abstract event Action<List<DamageableKnockbackInfo>> DamageableHitted;
-    public abstract void Init(BulletStaticData bulletData);
-    public abstract void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableKnockbackInfo>> Hitted = null);
+        protected abstract event Action<List<DamageableKnockbackInfo>> DamageableHitted;
+        public abstract void Init(BulletStaticData bulletData);
+        public abstract void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableKnockbackInfo>> Hitted = null);
+    }
 }

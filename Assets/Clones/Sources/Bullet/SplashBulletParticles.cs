@@ -1,29 +1,32 @@
 using UnityEngine;
 
-public class SplashBulletParticles : BulletParticles
+namespace Clones.BulletSystem
 {
-    private GameObject _projectile;
-
-    protected override void OnShooted()
+    public class SplashBulletParticles : BulletParticles
     {
-        ((HittableBullet)Bullet).Hitted += OnHitted;
+        private GameObject _projectile;
 
-        CreateMuzzle();
-        CreateProjectile();
-    }
+        protected override void OnShooted()
+        {
+            ((HittableBullet)Bullet).Hitted += OnHitted;
 
-    protected override void CreateProjectile() => 
-        _projectile = Instantiate(Bullet.BulletData.BulletProjectile, transform.position, transform.rotation, transform);
+            CreateMuzzle();
+            CreateProjectile();
+        }
 
-    protected override void CreateMuzzle() => 
-        Instantiate(Bullet.BulletData.BulletMuzzle, transform.position, transform.rotation);
+        protected override void CreateProjectile() =>
+            _projectile = Instantiate(Bullet.BulletData.BulletProjectile, transform.position, transform.rotation, transform);
 
-    protected override void OnHitted()
-    {
-        Destroy(_projectile);
+        protected override void CreateMuzzle() =>
+            Instantiate(Bullet.BulletData.BulletMuzzle, transform.position, transform.rotation);
 
-        Instantiate(Bullet.BulletData.BulletHitEffect, transform.position, Quaternion.identity);
+        protected override void OnHitted()
+        {
+            Destroy(_projectile);
 
-        ((HittableBullet)Bullet).Hitted -= OnHitted;
+            Instantiate(Bullet.BulletData.BulletHitEffect, transform.position, Quaternion.identity);
+
+            ((HittableBullet)Bullet).Hitted -= OnHitted;
+        }
     }
 }

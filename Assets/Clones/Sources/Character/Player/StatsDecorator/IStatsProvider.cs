@@ -1,4 +1,7 @@
-﻿public interface IStatsProvider
+﻿namespace Clones.Character.Player
 {
-    PlayerStats GetStats();
+    public interface IStatsProvider
+    {
+        PlayerStats GetStats();
+    }
 }

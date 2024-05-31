@@ -1,12 +1,12 @@
 ﻿using Cinemachine;
+using Clones.Character.Attack;
+using Clones.Character.Player;
 using Clones.Data;
 using Clones.GameLogic;
 using Clones.Services;
 using Clones.StaticData;
 using Clones.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Clones.Infrastructure

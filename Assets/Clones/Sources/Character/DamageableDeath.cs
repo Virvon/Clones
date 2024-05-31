@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 
-public class DamageableDeath : MonoBehaviour
+namespace Clones.Character
 {
-    private GameObject _effect;
-    private Vector3 _effectOffset;
-
-    public void Init(GameObject effect, Vector3 effectOffset, IDamageable damageable)
+    public class DamageableDeath : MonoBehaviour
     {
-        _effect = effect;
-        _effectOffset = effectOffset;
+        private GameObject _effect;
+        private Vector3 _effectOffset;
 
-        damageable.Died += OnDied;
-    }
+        public void Init(GameObject effect, Vector3 effectOffset, IDamageable damageable)
+        {
+            _effect = effect;
+            _effectOffset = effectOffset;
 
-    private void OnDied(IDamageable damageable)
-    {
-        damageable.Died -= OnDied;
+            damageable.Died += OnDied;
+        }
 
-        Instantiate(_effect, transform.position + _effectOffset, Quaternion.identity);
+        private void OnDied(IDamageable damageable)
+        {
+            damageable.Died -= OnDied;
+
+            Instantiate(_effect, transform.position + _effectOffset, Quaternion.identity);
+        }
     }
 }

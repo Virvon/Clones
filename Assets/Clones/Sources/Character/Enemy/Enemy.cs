@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+namespace Clones.Character.Enemy
 {
-    public GameObject Target { get; private set; }
+    public class Enemy : MonoBehaviour
+    {
+        public GameObject Target { get; private set; }
 
-    public void Init(GameObject target) => 
-        Target = target;
+        public void Init(GameObject target) =>
+            Target = target;
+    }
 }

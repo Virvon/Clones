@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Clones.BulletSystem;
+using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New TopDownBullet", menuName = "Data/Bullet/Create new top down bullet", order = 51)]
     public class TopDownBulletData : BulletStaticData

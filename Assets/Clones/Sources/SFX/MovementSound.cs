@@ -1,4 +1,5 @@
-﻿using Clones.StateMachine;
+﻿using Clones.Character.Player;
+using Clones.StateMachine;
 using System;
 using UnityEngine;
 

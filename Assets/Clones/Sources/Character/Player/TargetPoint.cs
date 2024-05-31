@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Clones.StateMachine
+namespace Clones.Character.Player
 {
     public class TargetPoint : MonoBehaviour
     {

@@ -1,4 +1,5 @@
-﻿using Clones.Infrastructure;
+﻿using Clones.Character.Enemy;
+using Clones.Infrastructure;
 using Clones.Services;
 using Clones.StaticData;
 using Clones.Types;

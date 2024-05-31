@@ -1,34 +1,38 @@
+using Clones.Character.Player;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
-public class TreeWithEyes : MonoBehaviour
+namespace Clones.Environment
 {
-    private TreeEye[] _eyes;
-
-    private void Start() =>
-        _eyes = GetComponentsInChildren<TreeEye>();
-
-    private void OnTriggerEnter(Collider other)
+    [RequireComponent(typeof(Collider))]
+    public class TreeWithEyes : MonoBehaviour
     {
-        if (other.TryGetComponent(out Player player))
-            SetTarget(player.transform);
-    }
+        private TreeEye[] _eyes;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out Player player))
-            RemoveTarget(player.transform);
-    }
+        private void Start() =>
+            _eyes = GetComponentsInChildren<TreeEye>();
 
-    private void RemoveTarget(Transform transform)
-    {
-        foreach (var eye in _eyes)
-            eye.RemoveTarget();
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out Player player))
+                SetTarget(player.transform);
+        }
 
-    private void SetTarget(Transform target)
-    {
-        foreach (var eye in _eyes)
-            eye.LookToTarget(target);
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent(out Player player))
+                RemoveTarget(player.transform);
+        }
+
+        private void RemoveTarget(Transform transform)
+        {
+            foreach (var eye in _eyes)
+                eye.RemoveTarget();
+        }
+
+        private void SetTarget(Transform target)
+        {
+            foreach (var eye in _eyes)
+                eye.LookToTarget(target);
+        }
     }
 }

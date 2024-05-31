@@ -5,6 +5,8 @@ using Clones.GameLogic;
 using Clones.Input;
 using Clones.SFX;
 using Clones.Audio;
+using Clones.Character.Player;
+using Clones.Character.Bars;
 
 namespace Clones.Infrastructure
 {

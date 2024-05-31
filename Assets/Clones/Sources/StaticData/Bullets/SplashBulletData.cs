@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Clones.BulletSystem;
+using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New SplashBullet", menuName = "Data/Bullet/Create new splash bullet", order = 51)]
     public class SplashBulletData : BulletStaticData

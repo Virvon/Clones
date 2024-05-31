@@ -1,4 +1,5 @@
 using BehaviorDesigner.Runtime.Tasks;
+using Clones.Character.Player;
 using UnityEngine;
 
 namespace Clones.BehaviorTree

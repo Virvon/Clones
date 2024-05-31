@@ -1,4 +1,6 @@
-﻿using Clones.Services;
+﻿using Clones.Character;
+using Clones.Character.Player;
+using Clones.Services;
 using Clones.UI;
 using System;
 

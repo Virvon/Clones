@@ -1,7 +1,10 @@
 ﻿using System;
 
-public interface IHealthChanger
+namespace Clones.Character
 {
-    public int Health { get; }
-    public event Action HealthChanged;
+    public interface IHealthChanger
+    {
+        public int Health { get; }
+        public event Action HealthChanged;
+    }
 }

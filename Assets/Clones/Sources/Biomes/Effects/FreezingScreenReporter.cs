@@ -1,28 +1,32 @@
-﻿using UnityEngine;
+﻿using Clones.Character.Player;
+using UnityEngine;
 
-public class FreezingScreenReporter : MonoBehaviour
+namespace Clones.BiomeEffects
 {
-    private FreezingScreen _freezingScreen;
-    private Freezing _freezing;
-
-    public void Init(FreezingScreen freezingScreen) => 
-        _freezingScreen = freezingScreen;
-
-    private void OnDestroy()
+    public class FreezingScreenReporter : MonoBehaviour
     {
-        if (_freezing != null)
-            _freezing.FreezPercentChanged -= OnFreezPercentChanged;
+        private FreezingScreen _freezingScreen;
+        private Freezing _freezing;
+
+        public void Init(FreezingScreen freezingScreen) =>
+            _freezingScreen = freezingScreen;
+
+        private void OnDestroy()
+        {
+            if (_freezing != null)
+                _freezing.FreezPercentChanged -= OnFreezPercentChanged;
+        }
+
+        public void SetFreezing(Freezing freezing)
+        {
+            if (_freezing != null)
+                _freezing.FreezPercentChanged -= OnFreezPercentChanged;
+            _freezing = freezing;
+
+            _freezing.FreezPercentChanged += OnFreezPercentChanged;
+        }
+
+        private void OnFreezPercentChanged(float percent) =>
+            _freezingScreen.SetFreezPercent(percent);
     }
-
-    public void SetFreezing(Freezing freezing)
-    {
-        if(_freezing != null)
-            _freezing.FreezPercentChanged -= OnFreezPercentChanged;
-        _freezing = freezing;
-
-        _freezing.FreezPercentChanged += OnFreezPercentChanged;
-    }
-
-    private void OnFreezPercentChanged(float percent) => 
-        _freezingScreen.SetFreezPercent(percent);
 }

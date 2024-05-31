@@ -1,5 +1,10 @@
-﻿public class PlayerHealthbar : Healthbar
+﻿using Clones.Character.Player;
+
+namespace Clones.Character.Bars
 {
-    public void Init(PlayerHealth playerHealth) => 
-        TakeHealthble(playerHealth);
+    public class PlayerHealthbar : Healthbar
+    {
+        public void Init(PlayerHealth playerHealth) =>
+            TakeHealthble(playerHealth);
+    }
 }

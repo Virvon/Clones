@@ -1,3 +1,6 @@
+using Clones.Character;
+using Clones.Environment;
+
 namespace Clones.StateMachine
 {
     public class MiningState : AttackState

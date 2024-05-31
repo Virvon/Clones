@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Clones.BulletSystem;
+using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     [CreateAssetMenu(fileName = "New EnemyBullet", menuName = "Data/Bullet/Create new enemy bullet", order = 51)]
     public class EnemyBulletData : BulletStaticData

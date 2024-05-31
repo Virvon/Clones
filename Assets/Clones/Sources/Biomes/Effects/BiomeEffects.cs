@@ -3,49 +3,52 @@ using System;
 using Random = UnityEngine.Random;
 using UnityEngine;
 
-public class BiomeEffects : MonoBehaviour 
+namespace Clones.BiomeEffects
 {
-    [SerializeField] private Biome _biome;
-    [SerializeField, Range(0, 100)] private float _spawnChancePercent;
-
-    private bool _isSuccessToSpawn;
-
-    public bool EffectIsPlayed { get; private set; }
-    public Biome Biome => _biome;
-
-    public event Action EffectStateChanged;
-
-    private void OnEnable()
+    public class BiomeEffects : MonoBehaviour
     {
-        _isSuccessToSpawn = Random.Range(0, 101) < _spawnChancePercent;
+        [SerializeField] private Biome _biome;
+        [SerializeField, Range(0, 100)] private float _spawnChancePercent;
 
-        if(_isSuccessToSpawn)
+        private bool _isSuccessToSpawn;
+
+        public bool EffectIsPlayed { get; private set; }
+        public Biome Biome => _biome;
+
+        public event Action EffectStateChanged;
+
+        private void OnEnable()
         {
-            _biome.PlayerEntered += OnPlayerEntered;
-            _biome.PlayerExited += OnPlayerExited;
-        }
-    }
+            _isSuccessToSpawn = Random.Range(0, 101) < _spawnChancePercent;
 
-    private void OnDisable()
-    {
-        if (_isSuccessToSpawn)
+            if (_isSuccessToSpawn)
+            {
+                _biome.PlayerEntered += OnPlayerEntered;
+                _biome.PlayerExited += OnPlayerExited;
+            }
+        }
+
+        private void OnDisable()
         {
-            _biome.PlayerEntered -= OnPlayerEntered;
-            _biome.PlayerExited -= OnPlayerExited;
+            if (_isSuccessToSpawn)
+            {
+                _biome.PlayerEntered -= OnPlayerEntered;
+                _biome.PlayerExited -= OnPlayerExited;
+            }
         }
-    }
 
-    private void OnPlayerEntered(Biome biome)
-    {
-        EffectIsPlayed = true;
+        private void OnPlayerEntered(Biome biome)
+        {
+            EffectIsPlayed = true;
 
-        EffectStateChanged?.Invoke();
-    }
+            EffectStateChanged?.Invoke();
+        }
 
-    private void OnPlayerExited()
-    {
-        EffectIsPlayed = false;
+        private void OnPlayerExited()
+        {
+            EffectIsPlayed = false;
 
-        EffectStateChanged?.Invoke();
+            EffectStateChanged?.Invoke();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Clones.GameLogic;
+﻿using Clones.Character.Player;
+using Clones.GameLogic;
 using Clones.Input;
 using Clones.Services;
 using UnityEngine;

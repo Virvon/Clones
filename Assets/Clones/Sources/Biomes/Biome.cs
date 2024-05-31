@@ -1,6 +1,7 @@
 using Clones.Types;
 using System;
 using UnityEngine;
+using Player = Clones.Character.Player.Player;
 
 namespace Clones.Biomes
 {

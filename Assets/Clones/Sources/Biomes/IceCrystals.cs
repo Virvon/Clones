@@ -1,4 +1,6 @@
-﻿namespace Clones.Biomes
+﻿using Clones.Character.Player;
+
+namespace Clones.Biomes
 {
     public class IceCrystals : Biome
     {

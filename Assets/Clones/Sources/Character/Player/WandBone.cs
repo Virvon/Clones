@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class WandBone : MonoBehaviour
+namespace Clones.Character.Player
 {
-    public Transform Bone;
+    public class WandBone : MonoBehaviour
+    {
+        public Transform Bone;
+    }
 }

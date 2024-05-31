@@ -1,6 +1,9 @@
 ﻿using System;
 
-public interface IKiller
+namespace Clones.Character.Attack
 {
-    public event Action<IDamageable> Killed;
+    public interface IKiller
+    {
+        public event Action<IDamageable> Killed;
+    }
 }

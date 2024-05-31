@@ -1,4 +1,6 @@
-﻿namespace Clones.GameLogic
+﻿using Clones.Character.Attack;
+
+namespace Clones.GameLogic
 {
     public class AttackShake : IDisabled
     {

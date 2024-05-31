@@ -1,45 +1,49 @@
+using Clones.Character;
 using Clones.GameLogic;
 using Clones.Types;
 using System;
 using UnityEngine;
 
-public class PreyResource : MonoBehaviour, IDroppable
+namespace Clones.Environment
 {
-    [SerializeField] private PreyResourceDestroyTimer _destroyTimer;
-
-    private bool _isAlive;
-    private int _hitsCountToDie;
-
-    public bool IsAlive => _isAlive;
-    public QuestItemType DroppedItem { get; private set; }
-
-    public event Action<IDamageable> Died;
-    public event Action Damaged;
-
-    public void Init(int hitsCountToDie, QuestItemType droppedItem)
+    public class PreyResource : MonoBehaviour, IDroppable
     {
-        _isAlive = true;
+        [SerializeField] private PreyResourceDestroyTimer _destroyTimer;
 
-        _hitsCountToDie = hitsCountToDie;
-        DroppedItem = droppedItem;
-    }
+        private bool _isAlive;
+        private int _hitsCountToDie;
 
-    public void Accept(IDroppableVisitor visitor) => 
-        visitor.Visit(this);
+        public bool IsAlive => _isAlive;
+        public QuestItemType DroppedItem { get; private set; }
 
-    public void TakeDamage(float damage)
-    {
-        _hitsCountToDie--;
+        public event Action<IDamageable> Died;
+        public event Action Damaged;
 
-        if(_hitsCountToDie <= 0)
+        public void Init(int hitsCountToDie, QuestItemType droppedItem)
         {
-            _isAlive = false;
-            Died?.Invoke(this);
-            _destroyTimer.Destroy();
+            _isAlive = true;
+
+            _hitsCountToDie = hitsCountToDie;
+            DroppedItem = droppedItem;
         }
-        else
+
+        public void Accept(IDroppableVisitor visitor) =>
+            visitor.Visit(this);
+
+        public void TakeDamage(float damage)
         {
-            Damaged?.Invoke();
+            _hitsCountToDie--;
+
+            if (_hitsCountToDie <= 0)
+            {
+                _isAlive = false;
+                Died?.Invoke(this);
+                _destroyTimer.Destroy();
+            }
+            else
+            {
+                Damaged?.Invoke();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Clones.Character.Player;
+using System.Collections;
 using UnityEngine;
 
 namespace Clones.Biomes

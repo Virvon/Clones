@@ -6,6 +6,7 @@ using Clones.GameLogic;
 using Object = UnityEngine.Object;
 using Clones.Types;
 using UnityEngine.AI;
+using Clones.BiomeEffects;
 
 namespace Clones.Infrastructure
 {

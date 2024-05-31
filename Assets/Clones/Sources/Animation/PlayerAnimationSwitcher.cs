@@ -1,5 +1,7 @@
 using UnityEngine;
 using Clones.Services;
+using Clones.Character.Attack;
+using Clones.Character.Player;
 
 namespace Clones.Animation
 {

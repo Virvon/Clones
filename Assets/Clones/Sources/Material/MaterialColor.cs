@@ -1,84 +1,87 @@
 using System.Collections;
 using UnityEngine;
 
-public class MaterialColor : MonoBehaviour
+namespace Clones.Material
 {
-    [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
-
-    public Color StartColor { get; private set; }
-    public Color StartEmission { get; private set; }
-    public Color CurrentColor { get; private set; }
-    public Color CurrentEmission { get; private set; }
-
-    private Material _material;
-    private Coroutine _pulsator;
-    private bool _isColorPulsed;
-
-    private void Awake()
+    public class MaterialColor : MonoBehaviour
     {
-        _material = _skinnedMeshRenderer.material;
+        [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
 
-        StartColor = _material.color;
-        StartEmission = _material.GetColor("_EmissionColor");
-        CurrentColor = StartColor;
-        CurrentEmission = StartEmission;
-    }
+        public Color StartColor { get; private set; }
+        public Color StartEmission { get; private set; }
+        public Color CurrentColor { get; private set; }
+        public Color CurrentEmission { get; private set; }
 
-    private void OnDisable() => 
-        _material.color = StartColor;
+        private UnityEngine.Material _material;
+        private Coroutine _pulsator;
+        private bool _isColorPulsed;
 
-    public void LerpColor(Color start, Color end, float interpolation)
-    {
-        CurrentColor = Color.Lerp(start, end, interpolation);
-
-        if (_isColorPulsed == false)
-            _material.color = CurrentColor;
-    }
-
-    public void LerpEmission(Color start, Color end, float interpolation)
-    {
-        CurrentEmission = Color.Lerp(start, end, interpolation);
-
-        if (_isColorPulsed == false)
-            _material.SetColor("_EmissionColor", CurrentEmission);
-    }
-
-    public void SetPulseColor(Color color, Color emission, float delay)
-    {
-        if (_pulsator != null)
-            return;
-
-        _pulsator = StartCoroutine(Pulsator(color, emission, delay));
-    }
-
-    private IEnumerator Pulsator(Color targetColor, Color targetEmission, float delay)
-    {
-        _isColorPulsed = true;
-
-        float time = 0;
-
-        while (time < delay / 2)
+        private void Awake()
         {
-            time += Time.deltaTime;
+            _material = _skinnedMeshRenderer.material;
 
-            _material.color = Color.Lerp(CurrentColor, targetColor, time / (delay / 2));
-            _material.SetColor("_EmissionColor", Color.Lerp(CurrentEmission, targetEmission, time / (delay / 2)));
-
-            yield return null;
+            StartColor = _material.color;
+            StartEmission = _material.GetColor("_EmissionColor");
+            CurrentColor = StartColor;
+            CurrentEmission = StartEmission;
         }
 
-        while (time < delay)
+        private void OnDisable() =>
+            _material.color = StartColor;
+
+        public void LerpColor(Color start, Color end, float interpolation)
         {
-            time += Time.deltaTime;
+            CurrentColor = Color.Lerp(start, end, interpolation);
 
-            _material.color = Color.Lerp(targetColor, CurrentColor, time / delay);
-            _material.SetColor("_EmissionColor", Color.Lerp(targetEmission, CurrentEmission, time / delay));
-
-            yield return null;
+            if (_isColorPulsed == false)
+                _material.color = CurrentColor;
         }
 
-        _isColorPulsed = false;
+        public void LerpEmission(Color start, Color end, float interpolation)
+        {
+            CurrentEmission = Color.Lerp(start, end, interpolation);
 
-        _pulsator = null;
+            if (_isColorPulsed == false)
+                _material.SetColor("_EmissionColor", CurrentEmission);
+        }
+
+        public void SetPulseColor(Color color, Color emission, float delay)
+        {
+            if (_pulsator != null)
+                return;
+
+            _pulsator = StartCoroutine(Pulsator(color, emission, delay));
+        }
+
+        private IEnumerator Pulsator(Color targetColor, Color targetEmission, float delay)
+        {
+            _isColorPulsed = true;
+
+            float time = 0;
+
+            while (time < delay / 2)
+            {
+                time += Time.deltaTime;
+
+                _material.color = Color.Lerp(CurrentColor, targetColor, time / (delay / 2));
+                _material.SetColor("_EmissionColor", Color.Lerp(CurrentEmission, targetEmission, time / (delay / 2)));
+
+                yield return null;
+            }
+
+            while (time < delay)
+            {
+                time += Time.deltaTime;
+
+                _material.color = Color.Lerp(targetColor, CurrentColor, time / delay);
+                _material.SetColor("_EmissionColor", Color.Lerp(targetEmission, CurrentEmission, time / delay));
+
+                yield return null;
+            }
+
+            _isColorPulsed = false;
+
+            _pulsator = null;
+        }
     }
 }

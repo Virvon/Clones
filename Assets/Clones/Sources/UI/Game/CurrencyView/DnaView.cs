@@ -1,4 +1,6 @@
-﻿namespace Clones.UI
+﻿using Clones.Auxiliary;
+
+namespace Clones.UI
 {
     public class DnaView : CurrencyView
     {

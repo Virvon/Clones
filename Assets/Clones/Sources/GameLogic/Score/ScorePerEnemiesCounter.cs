@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Clones.Character;
+using Clones.Character.Attack;
+using System;
 
 namespace Clones.GameLogic
 {

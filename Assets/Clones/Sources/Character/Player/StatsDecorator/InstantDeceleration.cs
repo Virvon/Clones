@@ -1,16 +1,19 @@
-﻿public class InstantDeceleration : StatsDecorator
+﻿namespace Clones.Character.Player
 {
-    private readonly int _movementSpeedPercent;
-
-    public InstantDeceleration(IStatsProvider wrappedEntity, int movementSpeedPercent) : base(wrappedEntity) => 
-        _movementSpeedPercent = movementSpeedPercent;
-
-    protected override PlayerStats GetStatsInternal()
+    public class InstantDeceleration : StatsDecorator
     {
-        return new PlayerStats()
+        private readonly int _movementSpeedPercent;
+
+        public InstantDeceleration(IStatsProvider wrappedEntity, int movementSpeedPercent) : base(wrappedEntity) =>
+            _movementSpeedPercent = movementSpeedPercent;
+
+        protected override PlayerStats GetStatsInternal()
         {
-            MovementSpeed = WrappedEntity.GetStats().MovementSpeed * (_movementSpeedPercent / 100f),
-            AttackCooldown = WrappedEntity.GetStats().AttackCooldown
-        };
+            return new PlayerStats()
+            {
+                MovementSpeed = WrappedEntity.GetStats().MovementSpeed * (_movementSpeedPercent / 100f),
+                AttackCooldown = WrappedEntity.GetStats().AttackCooldown
+            };
+        }
     }
 }

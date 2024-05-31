@@ -2,63 +2,66 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(BiomeEffects))]
-public class Fog : MonoBehaviour
+namespace Clones.BiomeEffects
 {
-    [SerializeField] private float _density;
-    [SerializeField] private float _foggingSpeed;
-    [SerializeField] private Color _color;
-
-    private BiomeEffects _biomeEffects;
-    private Coroutine _fogDensity;
-
-    private void OnEnable()
+    [RequireComponent(typeof(BiomeEffects))]
+    public class Fog : MonoBehaviour
     {
-        _biomeEffects = GetComponent<BiomeEffects>();
+        [SerializeField] private float _density;
+        [SerializeField] private float _foggingSpeed;
+        [SerializeField] private Color _color;
 
-        _biomeEffects.EffectStateChanged += OnEffectStateChanged;
-    }
+        private BiomeEffects _biomeEffects;
+        private Coroutine _fogDensity;
 
-    private void OnDisable() => _biomeEffects.EffectStateChanged -= OnEffectStateChanged;
-
-    private void OnEffectStateChanged()
-    {
-        if(_biomeEffects.EffectIsPlayed)
+        private void OnEnable()
         {
-            RenderSettings.fog = true;
-            RenderSettings.fogColor = _color;
+            _biomeEffects = GetComponent<BiomeEffects>();
 
-            SetFogDensity(_density, _foggingSpeed);
-        }
-        else
-        {
-            SetFogDensity(0, _foggingSpeed);
-        }
-    }
-
-    private void SetFogDensity(float targetDensity, float foggingSpeed)
-    {
-        if (_fogDensity != null)
-            StopCoroutine(_fogDensity);
-
-        _fogDensity = StartCoroutine(FogDensity(targetDensity, foggingSpeed));
-    }
-
-    private IEnumerator FogDensity(float targetDensity, float foggingSpeed)
-    {
-        float time = 0;
-        float startDensity = RenderSettings.fogDensity;
-
-        while(RenderSettings.fogDensity != targetDensity)
-        {
-            time += Time.deltaTime;
-
-            RenderSettings.fogDensity = (float)Math.Round(Mathf.Lerp(startDensity, targetDensity, time / foggingSpeed), 3);
-
-            yield return null;
+            _biomeEffects.EffectStateChanged += OnEffectStateChanged;
         }
 
-        if(RenderSettings.fogDensity == 0)
-            RenderSettings.fog = false;
+        private void OnDisable() => _biomeEffects.EffectStateChanged -= OnEffectStateChanged;
+
+        private void OnEffectStateChanged()
+        {
+            if (_biomeEffects.EffectIsPlayed)
+            {
+                RenderSettings.fog = true;
+                RenderSettings.fogColor = _color;
+
+                SetFogDensity(_density, _foggingSpeed);
+            }
+            else
+            {
+                SetFogDensity(0, _foggingSpeed);
+            }
+        }
+
+        private void SetFogDensity(float targetDensity, float foggingSpeed)
+        {
+            if (_fogDensity != null)
+                StopCoroutine(_fogDensity);
+
+            _fogDensity = StartCoroutine(FogDensity(targetDensity, foggingSpeed));
+        }
+
+        private IEnumerator FogDensity(float targetDensity, float foggingSpeed)
+        {
+            float time = 0;
+            float startDensity = RenderSettings.fogDensity;
+
+            while (RenderSettings.fogDensity != targetDensity)
+            {
+                time += Time.deltaTime;
+
+                RenderSettings.fogDensity = (float)Math.Round(Mathf.Lerp(startDensity, targetDensity, time / foggingSpeed), 3);
+
+                yield return null;
+            }
+
+            if (RenderSettings.fogDensity == 0)
+                RenderSettings.fog = false;
+        }
     }
 }

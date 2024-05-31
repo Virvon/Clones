@@ -1,22 +1,25 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Bullet))]
-public abstract class BulletParticles : MonoBehaviour
+namespace Clones.BulletSystem
 {
-    protected Bullet Bullet { get; private set; }
-
-    private void OnEnable()
+    [RequireComponent(typeof(Bullet))]
+    public abstract class BulletParticles : MonoBehaviour
     {
-        Bullet = GetComponent<Bullet>();
+        protected Bullet Bullet { get; private set; }
 
-        Bullet.Shooted += OnShooted;
+        private void OnEnable()
+        {
+            Bullet = GetComponent<Bullet>();
+
+            Bullet.Shooted += OnShooted;
+        }
+
+        private void OnDisable() =>
+            Bullet.Shooted -= OnShooted;
+
+        protected abstract void OnShooted();
+        protected abstract void CreateProjectile();
+        protected abstract void CreateMuzzle();
+        protected abstract void OnHitted();
     }
-
-    private void OnDisable() =>
-        Bullet.Shooted -= OnShooted;
-
-    protected abstract void OnShooted();
-    protected abstract void CreateProjectile();
-    protected abstract void CreateMuzzle();
-    protected abstract void OnHitted();
 }

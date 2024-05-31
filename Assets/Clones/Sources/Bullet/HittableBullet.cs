@@ -1,6 +1,9 @@
 ﻿using System;
 
-public abstract class HittableBullet : Bullet
+namespace Clones.BulletSystem
 {
-    public abstract event Action Hitted;
+    public abstract class HittableBullet : Bullet
+    {
+        public abstract event Action Hitted;
+    }
 }

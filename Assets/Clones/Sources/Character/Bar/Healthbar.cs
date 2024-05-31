@@ -1,32 +1,35 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public abstract class Healthbar : Bar
+namespace Clones.Character.Bars
 {
-    [SerializeField] private TMP_Text _healthValue;
-
-    private IHealthChanger _healthble;
-    private int _health;
-
-    private void OnDisable() => 
-        _healthble.HealthChanged -= OnDamageTaked;
-
-    protected void TakeHealthble(IHealthChanger healthble)
+    public abstract class Healthbar : Bar
     {
-        _healthble = healthble;
-        _health = _healthble.Health;
-        _healthValue.text = _health.ToString();
+        [SerializeField] private TMP_Text _healthValue;
 
-        Slider.value = Mathf.Clamp(_healthble.Health / _health, 0, 1);
+        private IHealthChanger _healthble;
+        private int _health;
 
-        _healthble.HealthChanged += OnDamageTaked;
-    }
+        private void OnDisable() =>
+            _healthble.HealthChanged -= OnDamageTaked;
 
-    private void OnDamageTaked()
-    {
-        float targetValue = Mathf.Clamp((float)_healthble.Health / _health, 0, 1);
-        _healthValue.text = _healthble.Health.ToString();
+        protected void TakeHealthble(IHealthChanger healthble)
+        {
+            _healthble = healthble;
+            _health = _healthble.Health;
+            _healthValue.text = _health.ToString();
 
-        StartAnimation(targetValue);
+            Slider.value = Mathf.Clamp(_healthble.Health / _health, 0, 1);
+
+            _healthble.HealthChanged += OnDamageTaked;
+        }
+
+        private void OnDamageTaked()
+        {
+            float targetValue = Mathf.Clamp((float)_healthble.Health / _health, 0, 1);
+            _healthValue.text = _healthble.Health.ToString();
+
+            StartAnimation(targetValue);
+        }
     }
 }

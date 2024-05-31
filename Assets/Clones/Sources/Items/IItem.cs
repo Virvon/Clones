@@ -1,6 +1,9 @@
 ﻿using Clones.GameLogic;
 
-public interface IItem
+namespace Clones.Items
 {
-    void Accept(IItemVisitor visitor);
+    public interface IItem
+    {
+        void Accept(IItemVisitor visitor);
+    }
 }

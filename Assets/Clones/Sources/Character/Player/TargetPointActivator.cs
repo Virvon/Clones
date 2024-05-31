@@ -1,48 +1,51 @@
 using UnityEngine;
 using Clones.StateMachine;
 
-public class TargetPointActivator : MonoBehaviour
+namespace Clones.Character.Player
 {
-    private AttackState[] _attackStates;
-    private TargetPoint _currentPoint;
-
-    private void OnEnable()
+    public class TargetPointActivator : MonoBehaviour
     {
-        _attackStates = GetComponents<AttackState>();
+        private AttackState[] _attackStates;
+        private TargetPoint _currentPoint;
 
-        foreach (var state in _attackStates)
+        private void OnEnable()
         {
-            state.TargetSelected += OnTargetSelected;
-            state.TargetRejected += OnTargetRejected;
+            _attackStates = GetComponents<AttackState>();
+
+            foreach (var state in _attackStates)
+            {
+                state.TargetSelected += OnTargetSelected;
+                state.TargetRejected += OnTargetRejected;
+            }
         }
-    }
 
-    private void OnDisable()
-    {
-        foreach (var state in _attackStates)
+        private void OnDisable()
         {
-            state.TargetSelected -= OnTargetSelected;
-            state.TargetRejected -= OnTargetRejected;
+            foreach (var state in _attackStates)
+            {
+                state.TargetSelected -= OnTargetSelected;
+                state.TargetRejected -= OnTargetRejected;
+            }
         }
-    }
 
-    private void OnTargetSelected(GameObject target)
-    {
-        TargetPoint targetPoint = target.GetComponentInChildren<TargetPoint>();
-
-        if (targetPoint != null)
+        private void OnTargetSelected(GameObject target)
         {
-            _currentPoint = targetPoint;
-            targetPoint.Active();
+            TargetPoint targetPoint = target.GetComponentInChildren<TargetPoint>();
+
+            if (targetPoint != null)
+            {
+                _currentPoint = targetPoint;
+                targetPoint.Active();
+            }
         }
-    }
 
-    private void OnTargetRejected()
-    {
-        if(_currentPoint != null )
+        private void OnTargetRejected()
         {
-            _currentPoint.Deactive();
-            _currentPoint = null;
+            if (_currentPoint != null)
+            {
+                _currentPoint.Deactive();
+                _currentPoint = null;
+            }
         }
     }
 }

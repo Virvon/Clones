@@ -8,6 +8,9 @@ using Clones.StateMachine;
 using Clones.Types;
 using Clones.SFX;
 using Clones.Services;
+using Clones.Character.Player;
+using Clones.Items;
+using Clones.Character.Attack;
 
 namespace Clones.Infrastructure
 {

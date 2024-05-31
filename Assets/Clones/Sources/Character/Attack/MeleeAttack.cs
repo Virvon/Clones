@@ -1,21 +1,24 @@
 using System;
 
-public class MeleeAttack : CharacterAttack
+namespace Clones.Character.Attack
 {
-    private float _cooldown;
-    private float _damage;
-
-    protected override float CoolDown => _cooldown;
-
-    public void Init(float damage, float cooldown)
+    public class MeleeAttack : CharacterAttack
     {
-        _damage = damage;
-        _cooldown = cooldown;
-    }
+        private float _cooldown;
+        private float _damage;
 
-    protected override void Attack()
-    {
-        if(Target.IsAlive)
-            Target.TakeDamage(_damage);
+        protected override float CoolDown => _cooldown;
+
+        public void Init(float damage, float cooldown)
+        {
+            _damage = damage;
+            _cooldown = cooldown;
+        }
+
+        protected override void Attack()
+        {
+            if (Target.IsAlive)
+                Target.TakeDamage(_damage);
+        }
     }
 }

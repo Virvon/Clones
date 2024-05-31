@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(ParticleSystem))]
-public class AutoDestroyEffect : MonoBehaviour
+namespace Clones.BulletSystem
 {
-    private void Start() => 
-        StartCoroutine(Timer());
-
-    private IEnumerator Timer()
+    [RequireComponent(typeof(ParticleSystem))]
+    public class AutoDestroyEffect : MonoBehaviour
     {
-        var particleSystem = GetComponent<ParticleSystem>();
+        private void Start() =>
+            StartCoroutine(Timer());
 
-        yield return new WaitWhile(particleSystem.IsAlive);
+        private IEnumerator Timer()
+        {
+            var particleSystem = GetComponent<ParticleSystem>();
 
-        Destroy(gameObject);
+            yield return new WaitWhile(particleSystem.IsAlive);
+
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
-public class MovementSlider : MonoBehaviour
+namespace Clones.Character.Movement
 {
+    public class MovementSlider : MonoBehaviour {}
 }

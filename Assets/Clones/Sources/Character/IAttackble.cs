@@ -1,4 +1,7 @@
-﻿public interface IAttackble
+﻿namespace Clones.Character
 {
-    public int Damage { get; }
+    public interface IAttackble
+    {
+        public int Damage { get; }
+    }
 }

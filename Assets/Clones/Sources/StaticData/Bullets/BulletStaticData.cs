@@ -1,7 +1,8 @@
-﻿using Clones.Types;
+﻿using Clones.BulletSystem;
+using Clones.Types;
 using UnityEngine;
 
-namespace Clones.Data
+namespace Clones.StaticData
 {
     public abstract class BulletStaticData : ScriptableObject
     {
