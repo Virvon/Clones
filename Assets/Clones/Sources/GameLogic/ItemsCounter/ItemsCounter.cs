@@ -12,11 +12,13 @@ namespace Clones.GameLogic
             _itemVisitor = new ItemVisitor(questsCreator, persistenntProgress, DNAReward, questItemReward);
 
         public event Action ItemTaked;
+        public event Action Scored;
 
         public void TakeItem(IItem item)
         {
             item.Accept(_itemVisitor);
             ItemTaked?.Invoke();
+            Scored?.Invoke();
         }
 
         private class ItemVisitor : IItemVisitor

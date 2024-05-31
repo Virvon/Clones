@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Clones.GameLogic;
+using System;
 
 namespace Clones.Character.Attack
 {
-    public interface IKiller
+    public interface IKiller : IScoreable
     {
-        public event Action<IDamageable> Killed;
+        event Action<IDamageable> Killed;
     }
 }

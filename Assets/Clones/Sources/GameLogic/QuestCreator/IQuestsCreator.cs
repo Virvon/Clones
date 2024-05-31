@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Clones.GameLogic
 {
-    public interface IQuestsCreator
+    public interface IQuestsCreator : IScoreable
     {
         event Action Created;
         event Action<Quest> Updated;

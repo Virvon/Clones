@@ -20,6 +20,7 @@ namespace Clones.Character.Attack
         private Player.Player _player;
 
         public event Action<IDamageable> Killed;
+        public event Action Scored;
 
         protected override float CoolDown => _player.StatsProvider.GetStats().AttackCooldown;
 
@@ -52,7 +53,10 @@ namespace Clones.Character.Attack
                 cell.Damageable.TakeDamage(_damage);
 
                 if (cell.Damageable.IsAlive == false)
+                {
                     Killed?.Invoke(cell.Damageable);
+                    Scored?.Invoke();
+                }
             }
         }
 

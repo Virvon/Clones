@@ -110,9 +110,10 @@ namespace Clones.Infrastructure
             ScoreCounterStaticData scoreCounterData = _gameStaticDataService.GetScoreCounter();
 
             _mainScoreCounter = new GameScoreCounter();
-            IScoreCounter scorePerItemsCounter = new ScorePerItemsCounter(_itemsCounter, enemiesSpawner, complexity, scoreCounterData.ScorePerItem);
-            IScoreCounter scorePerQuestsCounter = new ScorePerQuestsCounter(questsCreator, enemiesSpawner, complexity, scoreCounterData.ScorePerQuest);
-            IScoreCounter scorePerEnemiesCounter = new ScorePerEnemiesCounter(_killer, enemiesSpawner, complexity, scoreCounterData.ScorePerKill);
+
+            IScoreCounter scorePerItemsCounter = new ScoreCounter(_itemsCounter, enemiesSpawner, complexity, scoreCounterData.ScorePerItem);
+            IScoreCounter scorePerQuestsCounter = new ScoreCounter(questsCreator, enemiesSpawner, complexity, scoreCounterData.ScorePerQuest);
+            IScoreCounter scorePerEnemiesCounter = new ScoreCounter(_killer, enemiesSpawner, complexity, scoreCounterData.ScorePerKill);
 
             _mainScoreCounter.Add(scorePerItemsCounter);
             _mainScoreCounter.Add(scorePerQuestsCounter);

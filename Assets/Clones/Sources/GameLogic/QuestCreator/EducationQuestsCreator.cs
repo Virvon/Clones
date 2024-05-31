@@ -29,6 +29,7 @@ namespace Clones.GameLogic
         public event Action Created;
         public event Action<Quest> Updated;
         public event Action Completed;
+        public event Action Scored;
 
         public int Reward { get; private set; }
         public float Complexity { get; private set; }
@@ -62,6 +63,7 @@ namespace Clones.GameLogic
             {
                 _persistentProgress.Progress.Wallet.CollectMoney(Reward);
                 Completed?.Invoke();
+                Scored?.Invoke();
 
                 Create();
             }

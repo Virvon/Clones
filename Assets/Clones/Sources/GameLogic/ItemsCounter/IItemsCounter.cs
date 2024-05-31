@@ -3,7 +3,7 @@ using System;
 
 namespace Clones.GameLogic
 {
-    public interface IItemsCounter
+    public interface IItemsCounter : IScoreable
     {
         public event Action ItemTaked;
 
