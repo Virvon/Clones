@@ -23,19 +23,19 @@ namespace Clones.GameLogic
         {
             private readonly IQuestsCreator _questsCreator;
             private readonly IPersistentProgressService _persistenntProgress;
-            private readonly int _DNAReward;
+            private readonly int _dnaReward;
             private readonly int _questItemReward;
 
             public ItemVisitor(IQuestsCreator questsCreator, IPersistentProgressService persistenntProgress, int DNAReward, int questItemReward)
             {
                 _questsCreator = questsCreator;
                 _persistenntProgress = persistenntProgress;
-                _DNAReward = DNAReward;
+                _dnaReward = DNAReward;
                 _questItemReward = questItemReward;
             }
 
             public void Visit(CurrencyItem currencyItem) => 
-                _persistenntProgress.Progress.Wallet.CollectDna(_DNAReward);
+                _persistenntProgress.Progress.Wallet.CollectDna(_dnaReward);
 
             public void Visit(QuestItem questItem) => 
                 _questsCreator.TakeItem(questItem.Type, _questItemReward);

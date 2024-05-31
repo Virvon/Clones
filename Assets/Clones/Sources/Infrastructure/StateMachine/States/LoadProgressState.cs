@@ -61,7 +61,7 @@ namespace Clones.Infrastructure
 
         private void CreateNewAvailableClones(List<CloneData> availableClones, CloneType[] cloneTypes)
         {
-            foreach(var type in cloneTypes)
+            foreach (var type in cloneTypes)
             {
                 CloneStaticData cloneStaticData = _mainMenuStaticDataService.GetClone(type);
 

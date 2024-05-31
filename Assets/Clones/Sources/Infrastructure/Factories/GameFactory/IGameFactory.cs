@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Clones.Infrastructure
 {
-    public interface IGameFacotry : IService
+    public interface IGameFactory : IService
     {
         WorldGenerator CreateWorldGenerator(GameObject player, IPartsFactory partsFactory);
         CinemachineVirtualCamera CreateVirtualCamera(GameObject player);

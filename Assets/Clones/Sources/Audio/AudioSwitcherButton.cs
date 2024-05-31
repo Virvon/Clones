@@ -37,7 +37,7 @@ namespace Clones.Audio
             _button.onClick.AddListener(OnButtonClick);
         }
 
-        private void OnDestroy() => 
+        private void OnDestroy() =>
             _button.onClick.RemoveListener(OnButtonClick);
 
         private void OnButtonClick()

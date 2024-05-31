@@ -3,14 +3,14 @@ using Clones.StaticData;
 using UnityEngine;
 using Clones.Services;
 using Clones.GameLogic;
-using Object = UnityEngine.Object;
 using Clones.Types;
 using UnityEngine.AI;
 using Clones.BiomeEffects;
+using Object = UnityEngine.Object;
 
 namespace Clones.Infrastructure
 {
-    public class GameFactory : IGameFacotry
+    public class GameFactory : IGameFactory
     {
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly IAssetProvider _assets;
@@ -97,7 +97,7 @@ namespace Clones.Infrastructure
 
         private void RegisterTimeScalables(GameObject gameObject)
         {
-            foreach(ITimeScalable timeScalable in gameObject.GetComponentsInChildren<ITimeScalable>())
+            foreach (ITimeScalable timeScalable in gameObject.GetComponentsInChildren<ITimeScalable>())
                 _timeScale.Add(timeScalable);
         }
     }

@@ -12,12 +12,12 @@ namespace Clones.StateMachine
 
         public void Enter(IInputService inputService)
         {
-            if(enabled == false)
+            if (enabled == false)
             {
                 InputServiece = inputService;
                 enabled = true;
 
-                foreach(var transition in _transitions)
+                foreach (var transition in _transitions)
                 {
                     transition.Init(inputService);
                     transition.enabled = true;

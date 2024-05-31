@@ -12,7 +12,7 @@ namespace Clones.GameLogic
     {
         private IPartsFactory _partsFactory;
         private Transform _player;
-        BiomeType[] _generationBiomes;
+        private BiomeType[] _generationBiomes;
         private float _viewRadius;
         private float _destroyRadius;
         private float _cellSize;
@@ -119,9 +119,9 @@ namespace Clones.GameLogic
         private Vector3Int WorldToGridPosition(Vector3 worldPosition)
         {
             return new Vector3Int(
-                (int)((worldPosition.x) / _cellSize),
-                (int)((worldPosition.y) / _cellSize),
-                (int)((worldPosition.z) / _cellSize));
+                (int)(worldPosition.x / _cellSize),
+                (int)(worldPosition.y / _cellSize),
+                (int)(worldPosition.z / _cellSize));
         }
     }
 }

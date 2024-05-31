@@ -105,7 +105,6 @@ namespace Clones.Infrastructure
 
             bool isBuyed = _persistentProgress.Progress.AvailableClones.Clones.Any(cloneData => cloneData.Type == type);
 
-
             if (isBuyed == false)
             {
                 card
@@ -250,7 +249,6 @@ namespace Clones.Infrastructure
             point
                 .GetComponent<WandModelCreator>()
                 .Init(_wandsCardsView, characterFactory);
-
 
             point
                 .GetComponent<CloneModelCreator>()

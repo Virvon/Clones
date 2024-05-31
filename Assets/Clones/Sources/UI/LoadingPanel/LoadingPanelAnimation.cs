@@ -8,12 +8,11 @@ namespace Clones.UI
     public class LoadingPanelAnimation : MonoBehaviour
     {
         [SerializeField] private TMP_Text _text;
-        [SerializeField, Range(0, 1)] private float _maxTransparency;
-        [SerializeField, Range(0, 1)] private float _minTransparency;
+        [SerializeField][Range(0, 1)] private float _maxTransparency;
+        [SerializeField][Range(0, 1)] private float _minTransparency;
         [SerializeField] private float _speed;
 
         private bool _isWorked;
-
 
         public void OnEnable() => 
             StartCoroutine(Animator());

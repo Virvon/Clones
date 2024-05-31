@@ -6,16 +6,16 @@ namespace Clones.Biomes
 {
     public class PoisonForest : Biome
     {
-        [SerializeField, Range(0, 100)] private float _damagePercentage;
+        [SerializeField][Range(0, 100)] private float _damagePercentage;
         [SerializeField] private float _coolDown;
 
-        private void OnEnable() => 
+        private void OnEnable() =>
             PlayerEntered += OnPlayerEntered;
 
-        private void OnDisable() => 
+        private void OnDisable() =>
             PlayerEntered -= OnPlayerEntered;
 
-        private void OnPlayerEntered(Biome biome) => 
+        private void OnPlayerEntered(Biome biome) =>
             StartCoroutine(Poisoning(Player.GetComponent<PlayerHealth>()));
 
         private IEnumerator Poisoning(PlayerHealth health)

@@ -8,7 +8,7 @@ namespace Clones.StateMachine
     {
         protected override bool IsTargetsEnter(int overlapCount)
         {
-            for(var i = 0; i < overlapCount; i++)
+            for (var i = 0; i < overlapCount; i++)
             {
                 if (_overlapColliders[i].TryGetComponent(out Enemy _))
                     return false;

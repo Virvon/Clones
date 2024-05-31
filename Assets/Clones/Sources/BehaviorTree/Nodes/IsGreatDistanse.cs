@@ -14,7 +14,7 @@ namespace Clones.BehaviorTree
         private GameObject Target => Enemy.Value.Target;
         private float Distance => NavMeshAgent.Value.stoppingDistance;
 
-        public override void OnStart() => 
+        public override void OnStart() =>
             _stoppingDistance = NavMeshAgent.Value.stoppingDistance;
 
         public override TaskStatus OnUpdate()

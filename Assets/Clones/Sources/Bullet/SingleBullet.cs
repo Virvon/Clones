@@ -1,8 +1,8 @@
-﻿using Clones.Character;
+﻿using System;
+using Clones.Character;
 using Clones.Character.Enemy;
 using Clones.DestroySystem;
 using Clones.StaticData;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

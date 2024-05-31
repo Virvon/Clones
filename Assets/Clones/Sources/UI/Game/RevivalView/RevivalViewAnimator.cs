@@ -1,5 +1,5 @@
-﻿using Clones.Animation;
-using System;
+﻿using System;
+using Clones.Animation;
 using UnityEngine;
 
 namespace Clones.UI

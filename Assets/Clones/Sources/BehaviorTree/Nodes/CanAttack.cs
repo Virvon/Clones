@@ -20,7 +20,7 @@ namespace Clones.BehaviorTree
 
         public override TaskStatus OnUpdate()
         {
-            if(Distance > TargetRadius.Value)
+            if (Distance > TargetRadius.Value)
                 return TaskStatus.Failure;
             else
                 return TaskStatus.Success;

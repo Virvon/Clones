@@ -1,14 +1,14 @@
-﻿using Clones.Biomes;
-using System;
-using Random = UnityEngine.Random;
+﻿using System;
+using Clones.Biomes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Clones.BiomeEffects
 {
     public class BiomeEffects : MonoBehaviour
     {
         [SerializeField] private Biome _biome;
-        [SerializeField, Range(0, 100)] private float _spawnChancePercent;
+        [SerializeField][Range(0, 100)] private float _spawnChancePercent;
 
         private bool _isSuccessToSpawn;
 

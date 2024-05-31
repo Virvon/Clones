@@ -1,9 +1,7 @@
-﻿using Agava.YandexGames;
-using Clones.Services;
+﻿using Clones.Services;
 using Clones.StaticData;
 using Clones.Types;
 using Clones.UI;
-using UnityEngine;
 
 namespace Clones.Infrastructure
 {
@@ -24,7 +22,6 @@ namespace Clones.Infrastructure
 
         public void Enter() => 
             CreateMainMenu();
-
 
         public void Exit() => 
             _progressReadersReporter.Clear();
@@ -50,7 +47,7 @@ namespace Clones.Infrastructure
             _progressReadersReporter.Register(_mainMenuFactory);
         }
 
-        private static void SelectCurrentOrDefaultCards(ClonesCardsView clonesCardsView, WandsCardsView wandsCardsView)
+        private void SelectCurrentOrDefaultCards(ClonesCardsView clonesCardsView, WandsCardsView wandsCardsView)
         {
             clonesCardsView.SelectCurrentOrDefault();
             wandsCardsView.SelectCurrentOrDefault();

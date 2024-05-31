@@ -3,10 +3,8 @@ using UnityEngine;
 using Clones.Services;
 using Clones.GameLogic;
 using System;
-using Object = UnityEngine.Object;
 using Clones.Biomes;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 using Clones.Types;
 using Clones.SFX;
 using Clones.BulletSystem;
@@ -16,6 +14,8 @@ using Clones.Items;
 using Clones.Character.Bars;
 using Clones.Character.Enemy;
 using Clones.Character.Attack;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Clones.Infrastructure
 {
@@ -43,7 +43,7 @@ namespace Clones.Infrastructure
                 .stoppingDistance = (float)Math.Round(Random.Range(enemyData.MinStopDistance, enemyData.MaxStopDistance), 2);
 
             float speedIncrease = Mathf.Min(currentWave, enemyData.MaxWavesWithSpeedIncrease) * enemyData.SpeedIncreasePerWave;
-            enemyObject.GetComponent<NavMeshAgent>().speed *= (1 + speedIncrease);
+            enemyObject.GetComponent<NavMeshAgent>().speed *= 1 + speedIncrease;
 
             MeleeAttack meleeAttack = enemyObject.GetComponentInChildren<MeleeAttack>();
             ShootingAttack shootingAttack = enemyObject.GetComponentInChildren<ShootingAttack>();

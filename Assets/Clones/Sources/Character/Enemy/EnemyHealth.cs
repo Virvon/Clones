@@ -1,5 +1,5 @@
-﻿using Clones.GameLogic;
-using System;
+﻿using System;
+using Clones.GameLogic;
 using UnityEngine;
 
 namespace Clones.Character.Enemy

@@ -24,7 +24,7 @@ namespace Clones.GameLogic
 
         public void Clear()
         {
-            foreach(IScoreCounter scoreCounter in _scoreCounters)
+            foreach (IScoreCounter scoreCounter in _scoreCounters)
                 scoreCounter.ScoreUpdated -= () => ScoreUpdated?.Invoke();
 
             _scoreCounters.Clear();

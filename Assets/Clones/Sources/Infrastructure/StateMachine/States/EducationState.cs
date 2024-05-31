@@ -14,7 +14,7 @@ namespace Clones.Infrastructure
 {
     public class EducationState : IState
     {
-        private readonly IGameFacotry _gameFactory;
+        private readonly IGameFactory _gameFactory;
         private readonly IPartsFactory _partsFactory;
         private readonly IGameStaticDataService _gameStaticDataService;
         private readonly IPersistentProgressService _persistentProgress;
@@ -38,7 +38,7 @@ namespace Clones.Infrastructure
         private QuestItemsDropper _questItemsDropper;
         private CurrencyDropper _currencyDropper;
 
-        public EducationState(IGameFacotry gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScaler timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory, ISaveLoadService saveLoadService)
+        public EducationState(IGameFactory gameFactory, IPartsFactory partsFactory, IGameStaticDataService gameStaticDataService, IPersistentProgressService persistentProgress, IUiFactory uiFactory, IInputService inputService, IEducationFactory educationFactory, ITimeScaler timeScale, ICoroutineRunner coroutineRunner, ILocalization localization, ICharacterFactory characterFactory, ISaveLoadService saveLoadService)
         {
             _gameFactory = gameFactory;
             _partsFactory = partsFactory;

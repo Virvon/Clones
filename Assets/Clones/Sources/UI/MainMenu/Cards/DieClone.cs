@@ -8,10 +8,10 @@ namespace Clones.UI
 {
     public class DieClone : MonoBehaviour
     {
+        private const float Delay = 1;
+
         [SerializeField] private GameObject _dieVisuals;
         [SerializeField] private TMP_Text _timeToRestoreText;
-
-        private const float Delay = 1;
 
         private DateTime _disuseEndDate;
 

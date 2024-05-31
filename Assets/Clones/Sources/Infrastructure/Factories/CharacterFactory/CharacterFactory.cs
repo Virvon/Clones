@@ -2,7 +2,6 @@
 using Clones.StaticData;
 using UnityEngine;
 using Clones.GameLogic;
-using Object = UnityEngine.Object;
 using Clones.Data;
 using Clones.StateMachine;
 using Clones.Types;
@@ -11,6 +10,7 @@ using Clones.Services;
 using Clones.Character.Player;
 using Clones.Items;
 using Clones.Character.Attack;
+using Object = UnityEngine.Object;
 
 namespace Clones.Infrastructure
 {
@@ -63,7 +63,6 @@ namespace Clones.Infrastructure
             player
                 .GetComponent<Player>()
                 .Init(cloneStaticData.MovementSpeed, attackCooldown);
-
 
             PlayerAnimationSwitcher playerAnimationSwitcher = _playerObject.GetComponent<PlayerAnimationSwitcher>();
 

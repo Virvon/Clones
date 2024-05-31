@@ -13,7 +13,7 @@ namespace Clones.Infrastructure
 {
     public class GameLoopState : IState
     {
-        private readonly IGameFacotry _gameFactory;
+        private readonly IGameFactory _gameFactory;
         private readonly IUiFactory _uiFactory;
         private readonly IPartsFactory _partsFactory;
         private readonly IPersistentProgressService _persistentProgress;
@@ -37,7 +37,7 @@ namespace Clones.Infrastructure
         private CurrentBiome _currentBiome;
         private IMainScoreCounter _mainScoreCounter;
 
-        public GameLoopState(IGameFacotry gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScaler timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory, ILeaderboard leaderBoard)
+        public GameLoopState(IGameFactory gameFactory, IUiFactory uiFacotry, IPartsFactory partsFactory, IPersistentProgressService persistentProgress, ITimeScaler timeScale, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService, IGameStaticDataService gameStaticDataService, ICoroutineRunner coroutineRunner, IAdvertisingDisplay advertisingDisplay, ILocalization localization, ICharacterFactory characterFactory, ILeaderboard leaderBoard)
         {
             _gameFactory = gameFactory;
             _uiFactory = uiFacotry;

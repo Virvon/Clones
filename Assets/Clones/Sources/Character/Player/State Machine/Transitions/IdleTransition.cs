@@ -6,9 +6,9 @@ namespace Clones.StateMachine
 {
     public class IdleTransition : Transition
     {
-        [SerializeField] private MiningState _miningState;
-
         private readonly Collider[] _overlapColliders = new Collider[64];
+
+        [SerializeField] private MiningState _miningState;
 
         protected override void Init() =>
             InputService.Deactivated += OnDeactivated;

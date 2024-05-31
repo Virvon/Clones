@@ -1,6 +1,6 @@
+using System;
 using Clones.Character;
 using Clones.StaticData;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 

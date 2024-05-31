@@ -61,7 +61,7 @@ namespace Clones.Audio
             AudioVolumeChanged?.Invoke();
         }
 
-        public void UpdateProgress() => 
+        public void UpdateProgress() =>
             SetAudioVolume();
 
         protected abstract void SetProgress(int volume);

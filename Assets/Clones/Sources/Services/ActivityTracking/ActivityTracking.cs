@@ -27,7 +27,6 @@ namespace Clones.Services
         ~ActivityTracking() =>
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
 
-
         private void OnInBackgroundChange(bool inBackground)
         {
             if (inBackground)

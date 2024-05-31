@@ -39,7 +39,7 @@ namespace Clones.Animation
             _characterAttack.AttackStarted += OnAttackStarted;
         }
 
-        private void Update() => 
+        private void Update() =>
             _animator.SetFloat(AnimationPath.Player.Float.MovementAnimationSpeed, AnimationMovementSpeed);
 
         private void OnDestroy()
@@ -50,7 +50,7 @@ namespace Clones.Animation
             _inputService.Deactivated -= OnStop;
         }
 
-        private void OnAttackStarted() => 
+        private void OnAttackStarted() =>
             _animator.SetTrigger(AnimationPath.Player.Trigger.Attack);
 
         private void OnMove()
@@ -64,10 +64,10 @@ namespace Clones.Animation
 
         private void OnStop()
         {
-            if(_isMoved)
+            if (_isMoved)
             {
                 _animator.SetBool(AnimationPath.Player.Bool.IsMoved, false);
-                _isMoved = false; ;
+                _isMoved = false; 
             }
         }            
     }

@@ -13,7 +13,6 @@ namespace Clones.SFX
         private void OnEnable() => 
             _characterAttack.AttackCompleted += OnAttacked;
 
-
         private void OnDisable() => 
             _characterAttack.AttackCompleted -= OnAttacked;
 

@@ -1,8 +1,8 @@
+using System;
 using Clones.Character;
 using Clones.Character.Enemy;
 using Clones.DestroySystem;
 using Clones.StaticData;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +12,9 @@ namespace Clones.BulletSystem
     [RequireComponent(typeof(Rigidbody))]
     public class SplashBullet : HittableBullet
     {
-        [SerializeField] private DestroyTimer _destroyTimer;
-
         private readonly Collider[] _overlapColliders = new Collider[64];
+
+        [SerializeField] private DestroyTimer _destroyTimer;
 
         private SplashBulletData _bulletData;
         private Vector3 _direction;

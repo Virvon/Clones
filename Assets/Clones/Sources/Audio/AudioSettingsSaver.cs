@@ -10,7 +10,7 @@ namespace Clones.Audio
         public void Init(ISaveLoadService saveLoagService) =>
             _saveLoadService = saveLoagService;
 
-        private void OnDisable() => 
+        private void OnDisable() =>
             _saveLoadService.SaveProgress();
     }
 }

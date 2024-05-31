@@ -4,7 +4,7 @@ namespace Clones.GameLogic
 {
     public class AttackShake : IDisabled
     {
-        private const float _amplitudeGain =1;
+        private const float _amplitudeGain = 1;
         private const float _frequencyGain = 1;
         private const float _delay = 0.2f;
 

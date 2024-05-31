@@ -10,9 +10,9 @@ namespace Clones.StateMachine
 {
     public abstract class AttackState : State
     {
-        [SerializeField] private CharacterAttack _characterAttack;
-
         private readonly Collider[] _overlapColliders = new Collider[128];
+
+        [SerializeField] private CharacterAttack _characterAttack;
 
         private float _attackRadius;
         private float _lookRotationSpeed;

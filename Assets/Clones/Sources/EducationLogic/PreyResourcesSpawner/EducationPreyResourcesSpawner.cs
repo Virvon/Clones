@@ -18,7 +18,7 @@ namespace Clones.EducationLogic
 
         public void Create()
         {
-            foreach(var cell in _preyResourceCells)
+            foreach (var cell in _preyResourceCells)
                 _partsFactory.CreatePreyResource(cell.Type, cell.Position, GetRotation(), transform);
         }
 

@@ -6,7 +6,7 @@ namespace Clones.BehaviorTree
     {
         public SharedEnemyHealth EnemyHealth;
 
-        public override void OnStart() => 
+        public override void OnStart() =>
             EnemyHealth.Value.Disappear();
     }
 }

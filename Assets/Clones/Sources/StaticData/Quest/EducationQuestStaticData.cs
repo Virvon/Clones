@@ -18,11 +18,11 @@ namespace Clones.StaticData
         {
             Quest[][] allQuests = new Quest[_allQuestsInfos.Length][];
 
-            for(var i = 0; i < allQuests.Length; i++)
+            for (var i = 0; i < allQuests.Length; i++)
             {
                 allQuests[i] = new Quest[_allQuestsInfos[i].Quests.Length];
 
-                for(var j = 0; j < allQuests[i].Length; j++)
+                for (var j = 0; j < allQuests[i].Length; j++)
                 {
                     QuestInfo questInfo = _allQuestsInfos[i].Quests[j];
                     QuestItemStaticData itemStaticData = staticDataService.GetItem(questInfo.Type);

@@ -8,13 +8,13 @@ namespace Clones.Biomes
 
         protected override void OnPlayerEntered()
         {
-            if(_playerFreezing == null)
+            if (_playerFreezing == null)
                 _playerFreezing = Player.GetComponentInChildren<PlayerFreezing>();
 
             _playerFreezing.Freez();
         }
 
-        protected override void OnPlayerExited() => 
+        protected override void OnPlayerExited() =>
             _playerFreezing.Defrost();
     }
 }
