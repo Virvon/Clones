@@ -8,7 +8,7 @@ public abstract class CharacterAttack : MonoBehaviour
     protected IDamageable Target { get; private set; }
     protected abstract float CoolDown { get; }
 
-    public event Action Attacked;
+    public event Action AttackCompleted;
     public event Action AttackStarted;
 
     private void Update()
@@ -20,7 +20,7 @@ public abstract class CharacterAttack : MonoBehaviour
     private void OnAttack()
     {
         Attack();
-        Attacked?.Invoke();
+        AttackCompleted?.Invoke();
     }
 
     public void TryAttack(IDamageable target)

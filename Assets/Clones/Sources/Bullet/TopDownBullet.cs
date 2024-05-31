@@ -18,7 +18,7 @@ public class TopDownBullet : Bullet
     private SphereCollider _collider;
 
     public override event Action Shooted;
-    protected override event Action<List<DamageableCell>> s_Hitted;
+    protected override event Action<List<DamageableKnockbackInfo>> DamageableHitted;
 
     public override void Init(BulletStaticData bulletData) =>
         _bulletData = (TopDownBulletData)bulletData;
@@ -32,16 +32,16 @@ public class TopDownBullet : Bullet
 
             Vector3 knockbackDirection = other.transform.position - transform.position;
 
-            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, knockbackDirection) });
+            DamageableHitted?.Invoke(new List<DamageableKnockbackInfo> { new DamageableKnockbackInfo(damageable, knockbackDirection) });
         }
     }
 
-    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint = null, Action<List<DamageableCell>> Hitted = null)
+    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint = null, Action<List<DamageableKnockbackInfo>> Hitted = null)
     {
         _collider = GetComponent<SphereCollider>();
         _collider.center = new Vector3(0, UpOffset, 0);
 
-        s_Hitted = Hitted;
+        DamageableHitted = Hitted;
         Muzzle = shootPoint;
 
         if (targetDamageable.IsAlive)

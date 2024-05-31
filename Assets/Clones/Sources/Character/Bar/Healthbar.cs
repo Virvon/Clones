@@ -5,13 +5,13 @@ public abstract class Healthbar : Bar
 {
     [SerializeField] private TMP_Text _healthValue;
 
-    private IHealthble _healthble;
+    private IHealthChanger _healthble;
     private int _health;
 
     private void OnDisable() => 
         _healthble.HealthChanged -= OnDamageTaked;
 
-    protected void TakeHealthble(IHealthble healthble)
+    protected void TakeHealthble(IHealthChanger healthble)
     {
         _healthble = healthble;
         _health = _healthble.Health;

@@ -27,7 +27,7 @@ namespace Clones.Infrastructure
         private readonly ICharacterFactory _characterFactory;
         private readonly ILeaderboard _leaderBoard;
 
-        private List<IDisable> _disables;
+        private List<IDisabled> _disables;
         private GameTimer _gameTimer;
         private IItemsCounter _itemsCounter;
         private GameObject _playerObject;
@@ -64,7 +64,7 @@ namespace Clones.Infrastructure
             _persistentProgress.Progress.AveragePlayTime.Add((int)_gameTimer.LastMeasurement);
 
             foreach (var disable in _disables)
-                disable.OnDisable();
+                disable.Disable();
 
             AddScoreSelectedClone(_mainScoreCounter.Score);
             UseSelectedClone();

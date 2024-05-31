@@ -9,20 +9,20 @@ public class HitColor : MonoBehaviour
     [SerializeField] private Color _emission;
     [SerializeField] private float _delay;
 
-    private IHealthble _healthble;
+    private IHealthChanger _healthble;
 
     private void OnValidate()
     {
-        if(_healthbleBehaviour && _healthbleBehaviour is not IHealthble)
+        if(_healthbleBehaviour && _healthbleBehaviour is not IHealthChanger)
         {
-            Debug.LogError(nameof(_healthbleBehaviour) + " needs to implement " + nameof(IHealthble));
+            Debug.LogError(nameof(_healthbleBehaviour) + " needs to implement " + nameof(IHealthChanger));
             _healthbleBehaviour = null;
         }
     }
 
     private void OnEnable()
     {
-        _healthble = (IHealthble)_healthbleBehaviour;
+        _healthble = (IHealthChanger)_healthbleBehaviour;
 
         _healthble.HealthChanged += OnDamageTaked;
     }

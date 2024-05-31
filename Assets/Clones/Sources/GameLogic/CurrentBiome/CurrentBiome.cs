@@ -20,7 +20,7 @@ namespace Clones.GameLogic
             _worldGenerator.TileDestroyed += OnTileDestroyed;
         }
 
-        public void OnDisable()
+        public void Disable()
         {
             _worldGenerator.TileCreated -= OnTileCreated;
             _worldGenerator.TileDestroyed -= OnTileDestroyed;

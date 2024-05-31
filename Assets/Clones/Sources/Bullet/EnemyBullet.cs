@@ -17,7 +17,7 @@ public class EnemyBullet : HittableBullet
 
     public override event Action Hitted;
     public override event Action Shooted;
-    protected override event Action<List<DamageableCell>> s_Hitted;
+    protected override event Action<List<DamageableKnockbackInfo>> DamageableHitted;
 
     public override void Init(BulletStaticData bulletData) =>
         _bulletData = (EnemyBulletData)bulletData;
@@ -39,13 +39,13 @@ public class EnemyBullet : HittableBullet
             _isCollisioned = true;
             HitTarget = damageable;
 
-            s_Hitted?.Invoke(new List<DamageableCell> { new DamageableCell(damageable, Vector3.zero) });
+            DamageableHitted?.Invoke(new List<DamageableKnockbackInfo> { new DamageableKnockbackInfo(damageable, Vector3.zero) });
             Hitted?.Invoke();
             Destroy(gameObject);
         }
     }
 
-    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
+    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableKnockbackInfo>> Hitted)
     {
         if (targetDamageable.IsAlive)
             _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1.8f, 0)) - shootPoint.transform.position;
@@ -56,7 +56,7 @@ public class EnemyBullet : HittableBullet
 
         transform.rotation = Quaternion.LookRotation(_direction);
 
-        s_Hitted = Hitted;
+        DamageableHitted = Hitted;
 
         Shooted?.Invoke();
     }

@@ -1,6 +1,6 @@
 ﻿namespace Clones.GameLogic
 {
-    public class AttackShake : IDisable
+    public class AttackShake : IDisabled
     {
         private const float _amplitudeGain =1;
         private const float _frequencyGain = 1;
@@ -14,11 +14,11 @@
             _characterAttack = characterAttack;
             _cameraShake = cameraShake;
 
-            _characterAttack.Attacked += OnAttacked;
+            _characterAttack.AttackCompleted += OnAttacked;
         }
 
-        public void OnDisable() =>
-            _characterAttack.Attacked -= OnAttacked;
+        public void Disable() =>
+            _characterAttack.AttackCompleted -= OnAttacked;
 
         private void OnAttacked() => 
             _cameraShake.Shake(_amplitudeGain, _frequencyGain, _delay);

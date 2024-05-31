@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Clones.GameLogic
 {
-    public class QuestItemsDropper : IDisable
+    public class QuestItemsDropper : IDisabled
     {
         private const float DropSpeed = 2;
         private const float DropRadius = 2;
@@ -30,7 +30,7 @@ namespace Clones.GameLogic
                 TryDrop(preyResource.DroppedItem, preyResource.transform.position);
         }
 
-        public void OnDisable() =>
+        public void Disable() =>
             _characterAttack.Killed -= OnKilled;
 
         private void TryDrop(QuestItemType type, Vector3 position)

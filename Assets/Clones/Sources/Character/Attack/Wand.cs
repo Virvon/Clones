@@ -36,13 +36,13 @@ public class Wand : CharacterAttack, IKiller
         bullet.Shoot(Target, gameObject, _shootingPoint, OnHitted);
     }
 
-    private void OnHitted(List<DamageableCell> damageableCells)
+    private void OnHitted(List<DamageableKnockbackInfo> damageableCells)
     {
         MakeDamage(damageableCells);
         Knockback(damageableCells);
     }
 
-    private void MakeDamage(List<DamageableCell> damageableCells)
+    private void MakeDamage(List<DamageableKnockbackInfo> damageableCells)
     {
         foreach (var cell in damageableCells)
         {
@@ -53,7 +53,7 @@ public class Wand : CharacterAttack, IKiller
         }
     }
 
-    private void Knockback(List<DamageableCell> damageableCells)
+    private void Knockback(List<DamageableKnockbackInfo> damageableCells)
     {
         foreach (var cell in damageableCells)
         {

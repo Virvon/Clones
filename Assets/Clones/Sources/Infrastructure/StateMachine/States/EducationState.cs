@@ -25,7 +25,7 @@ namespace Clones.Infrastructure
         private readonly ICharacterFactory _characterFactory;
         private readonly ISaveLoadService _saveLoadService;
 
-        private List<IDisable> _disables;
+        private List<IDisabled> _disables;
         private GameObject _playerObject;
         private IQuestsCreator _questCreator;
         private EducationEnemiesSpawner _enemiesSpawner;
@@ -50,7 +50,7 @@ namespace Clones.Infrastructure
             _localization = localization;
             _saveLoadService = saveLoadService;
 
-            _disables = new List<IDisable>();
+            _disables = new List<IDisabled>();
             _characterFactory = characterFactory;
         }
 
@@ -62,7 +62,7 @@ namespace Clones.Infrastructure
             _saveLoadService.SaveProgress();
 
             foreach (var disable in _disables)
-                disable.OnDisable();
+                disable.Disable();
         }
 
         private void CreateEducation()

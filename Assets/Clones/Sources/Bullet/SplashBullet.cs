@@ -20,7 +20,7 @@ public class SplashBullet : HittableBullet
 
     public override event Action Hitted;
     public override event Action Shooted;
-    protected override event Action<List<DamageableCell>> s_Hitted;
+    protected override event Action<List<DamageableKnockbackInfo>> DamageableHitted;
 
     public override void Init(BulletStaticData bulletData) =>
         _bulletData = (SplashBulletData)bulletData;
@@ -44,23 +44,23 @@ public class SplashBullet : HittableBullet
 
             _isCollisioned = true;
 
-            List<DamageableCell> damageableCells = new List<DamageableCell>();
+            List<DamageableKnockbackInfo> damageableCells = new List<DamageableKnockbackInfo>();
             int overlapCount = Physics.OverlapSphereNonAlloc(transform.position, _bulletData.Radius, _overlapColliders);
 
             for (var i = 0; i < overlapCount; i++)
             {
                 if (_overlapColliders[i].TryGetComponent(out IDamageable damageable1) && damageable1 != _selfObject.GetComponent<IDamageable>())
-                    damageableCells.Add(new DamageableCell(damageable1, ((MonoBehaviour)damageable1).transform.position - _selfObject.transform.position));
+                    damageableCells.Add(new DamageableKnockbackInfo(damageable1, ((MonoBehaviour)damageable1).transform.position - _selfObject.transform.position));
             }
 
-            s_Hitted?.Invoke(damageableCells);
+            DamageableHitted?.Invoke(damageableCells);
             Hitted?.Invoke();
 
             _destroyTimer.Destroy();
         }
     }
 
-    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted)
+    public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableKnockbackInfo>> Hitted)
     {
         if (targetDamageable.IsAlive)
             _direction = (((MonoBehaviour)targetDamageable).transform.position + new Vector3(0, 1, 0)) - shootPoint.transform.position;
@@ -72,7 +72,7 @@ public class SplashBullet : HittableBullet
         transform.rotation = Quaternion.LookRotation(_direction);
     
         _selfObject = selfObject;
-        s_Hitted = Hitted;
+        DamageableHitted = Hitted;
 
         Shooted?.Invoke();
     }

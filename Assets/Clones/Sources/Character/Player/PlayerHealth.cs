@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-public class PlayerHealth : MonoBehaviour, IDamageable, IHealthble
+public class PlayerHealth : MonoBehaviour, IDamageable, IHealthChanger
 {
     private bool _invulnerabled;
 

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class DamageableCell
+public class DamageableKnockbackInfo
 {
     public IDamageable Damageable { get; private set; }
     public Vector3 KnockbackDirection { get; private set; }
 
-    public DamageableCell(IDamageable damageable, Vector3 knockbackDirection)
+    public DamageableKnockbackInfo(IDamageable damageable, Vector3 knockbackDirection)
     {
         Damageable = damageable;
 

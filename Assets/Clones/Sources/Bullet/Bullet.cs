@@ -9,7 +9,7 @@ public abstract class Bullet : MonoBehaviour
 
     public abstract event Action Shooted;
 
-    protected abstract event Action<List<DamageableCell>> s_Hitted;
+    protected abstract event Action<List<DamageableKnockbackInfo>> DamageableHitted;
     public abstract void Init(BulletStaticData bulletData);
-    public abstract void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableCell>> Hitted = null);
+    public abstract void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableKnockbackInfo>> Hitted = null);
 }

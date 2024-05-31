@@ -2,7 +2,7 @@
 
 namespace Clones.GameLogic
 {
-    public interface ICurrentBiome : IDisable
+    public interface ICurrentBiome : IDisabled
     {
         BiomeType Type { get; }
     }

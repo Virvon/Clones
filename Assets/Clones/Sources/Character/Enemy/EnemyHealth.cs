@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour, IDroppable, IHealthble
+public class EnemyHealth : MonoBehaviour, IDroppable, IHealthChanger
 {
     public int Health { get; private set; }
     public bool IsAlive { get; private set; }

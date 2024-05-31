@@ -4,7 +4,7 @@ using System;
 
 namespace Clones.GameLogic
 {
-    public class PlayerDeath : IDisable
+    public class PlayerDeath : IDisabled
     {
         private readonly IOpenableView _openableView;
         private readonly PlayerHealth _player;
@@ -24,7 +24,7 @@ namespace Clones.GameLogic
             _player.Reborned += OnReborned;
         }
 
-        public void OnDisable()
+        public void Disable()
         {
             _player.Died -= OnDied;
             _player.Reborned -= OnReborned;

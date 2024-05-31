@@ -4,7 +4,7 @@ public class EnemyHealthbar : Healthbar
 {
     private Camera _camera;
 
-    public void Init(IHealthble healthble) =>
+    public void Init(IHealthChanger healthble) =>
         TakeHealthble(healthble);
 
     private void Awake() => 

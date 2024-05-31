@@ -27,7 +27,7 @@ public class ShootingAttack : CharacterAttack
         bullet.Shoot(Target, gameObject, _shootingPoint, OnHitted);
     }
 
-    private void OnHitted(List<DamageableCell> damageableCells)
+    private void OnHitted(List<DamageableKnockbackInfo> damageableCells)
     {
         foreach(var cell in damageableCells)
             cell.Damageable.TakeDamage(_damage);

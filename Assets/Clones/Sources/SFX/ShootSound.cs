@@ -10,11 +10,11 @@ namespace Clones.SFX
         protected AudioSource AudioSource => _audioSource;
 
         private void OnEnable() => 
-            _characterAttack.Attacked += OnAttacked;
+            _characterAttack.AttackCompleted += OnAttacked;
 
 
         private void OnDisable() => 
-            _characterAttack.Attacked -= OnAttacked;
+            _characterAttack.AttackCompleted -= OnAttacked;
 
         private void OnAttacked() => 
             _audioSource.Play();
