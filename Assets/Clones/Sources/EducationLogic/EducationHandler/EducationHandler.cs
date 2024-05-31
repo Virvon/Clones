@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Clones.EducationLogic
+﻿namespace Clones.EducationLogic
 {
     public abstract class EducationHandler
     {

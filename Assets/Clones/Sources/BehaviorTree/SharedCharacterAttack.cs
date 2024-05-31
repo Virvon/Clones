@@ -7,6 +7,6 @@ namespace Clones.BehaviorTree
     [Serializable]
     public class SharedCharacterAttack : SharedVariable<CharacterAttack>
     {
-        public static implicit operator SharedCharacterAttack(CharacterAttack value) => new SharedCharacterAttack { Value = value};
+        public static implicit operator SharedCharacterAttack(CharacterAttack value) => new SharedCharacterAttack { Value = value };
     }
 }

@@ -67,7 +67,7 @@ namespace Clones.UI
                 yield return null;
             }
 
-            _revivalViewAnimator.Close(()=> _gameOverView.Open());
+            _revivalViewAnimator.Close(() => _gameOverView.Open());
         }
     }
 }

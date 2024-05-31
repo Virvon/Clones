@@ -18,10 +18,20 @@ namespace Clones.GameLogic
         private float _cellSize;
         private HashSet<GameObject> _tilesMatrix;
 
-        private Vector3 PlayerPosition => new Vector3(_player.position.x, _player.position.y, _player.position.z);
-
         public event Action<GameObject> TileCreated;
         public event Action<GameObject> TileDestroyed;
+
+        private Vector3 PlayerPosition =>
+            new Vector3(_player.position.x, _player.position.y, _player.position.z);
+
+        private void Update()
+        {
+            if (_player == null)
+                return;
+
+            FillRadius(PlayerPosition, _viewRadius);
+            EmptyAroundRadius(PlayerPosition, _destroyRadius);
+        }
 
         public void Init(IPartsFactory partsFacotry, Transform player, BiomeType[] templates, float viewRadius, float destroyRadius, float cellSize)
         {
@@ -33,15 +43,6 @@ namespace Clones.GameLogic
             _player = player;
 
             _tilesMatrix = new();
-        }
-
-        private void Update()
-        {
-            if (_player == null)
-                return;
-
-            FillRadius(PlayerPosition, _viewRadius);
-            EmptyAroundRadius(PlayerPosition, _destroyRadius);
         }
 
         private void FillRadius(Vector3 center, float viewRadius)

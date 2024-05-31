@@ -11,10 +11,9 @@ namespace Clones.GameLogic
 
         private readonly PlayerHealth _player;
         private readonly IAdvertisingDisplay _advertising;
+        private int _revivivalsCount = 0;
 
         public bool CanRivival => _revivivalsCount < MaxRevivivalsCount;
-
-        private int _revivivalsCount = 0;
 
         public GamePlayerRevival(PlayerHealth player, IAdvertisingDisplay advertising)
         {
@@ -34,7 +33,7 @@ namespace Clones.GameLogic
 
                 successCallback?.Invoke();
             },
-            errorCallback: ()=> failureCallback?.Invoke());
+            errorCallback: () => failureCallback?.Invoke());
 
             return true;
         }

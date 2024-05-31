@@ -4,8 +4,8 @@ namespace Clones.UI
 {
     public interface IBuyable
     {
-        bool CanBuy { get; }
-
         event Action BuyTried;
+
+        bool CanBuy { get; }
     }
 }

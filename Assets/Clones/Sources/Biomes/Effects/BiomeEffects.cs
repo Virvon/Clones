@@ -12,10 +12,10 @@ namespace Clones.BiomeEffects
 
         private bool _isSuccessToSpawn;
 
+        public event Action EffectStateChanged;
+
         public bool EffectIsPlayed { get; private set; }
         public Biome Biome => _biome;
-
-        public event Action EffectStateChanged;
 
         private void OnEnable()
         {

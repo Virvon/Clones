@@ -59,5 +59,4 @@ namespace Clones.GameLogic
             SetShake(0, 0);
         }
     }
-
 }

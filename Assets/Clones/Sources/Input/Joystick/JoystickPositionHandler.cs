@@ -2,7 +2,7 @@ using Clones.Input;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(JoysticDirectionHandler))]
+[RequireComponent(typeof(JoystickDirectionHandler))]
 public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     [SerializeField] private RectTransform _slidingArea;
@@ -15,11 +15,11 @@ public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler, IDrag
     {
         _handleBackgroundStartPosition = _handleBackground.anchoredPosition;
 
-        JoysticDirectionHandler.Deactivated += OnDeactivated;
+        JoystickDirectionHandler.Deactivated += OnDeactivated;
     }
 
     private void OnDisable() =>
-        JoysticDirectionHandler.Deactivated -= OnDeactivated;
+        JoystickDirectionHandler.Deactivated -= OnDeactivated;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -30,7 +30,7 @@ public class JoystickPositionHandler : MonoBehaviour, IPointerDownHandler, IDrag
     }
 
     public void OnDrag(PointerEventData eventData) => 
-        _handle.anchoredPosition = JoysticDirectionHandler.Direction * (_handleBackground.sizeDelta / 2);
+        _handle.anchoredPosition = JoystickDirectionHandler.Direction * (_handleBackground.sizeDelta / 2);
 
     private void OnDeactivated()
     {

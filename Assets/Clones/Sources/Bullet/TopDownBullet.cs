@@ -12,11 +12,6 @@ namespace Clones.BulletSystem
     [RequireComponent(typeof(SphereCollider))]
     public class TopDownBullet : Bullet
     {
-        public Transform Muzzle { get; private set; }
-        public Vector3 TargetPosition { get; private set; }
-        public float UpOffset => _bulletData.UpOffset;
-        public override BulletStaticData BulletData => _bulletData;
-
         private TopDownBulletData _bulletData;
         private GameObject _selfObject;
         private SphereCollider _collider;
@@ -24,8 +19,10 @@ namespace Clones.BulletSystem
         public override event Action Shooted;
         protected override event Action<List<DamageableKnockbackInfo>> DamageableHitted;
 
-        public override void Init(BulletStaticData bulletData) =>
-            _bulletData = (TopDownBulletData)bulletData;
+        public Transform Muzzle { get; private set; }
+        public Vector3 TargetPosition { get; private set; }
+        public float UpOffset => _bulletData.UpOffset;
+        public override BulletStaticData BulletData => _bulletData;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -39,6 +36,10 @@ namespace Clones.BulletSystem
                 DamageableHitted?.Invoke(new List<DamageableKnockbackInfo> { new DamageableKnockbackInfo(damageable, knockbackDirection) });
             }
         }
+
+        public override void Init(BulletStaticData bulletData) =>
+           _bulletData = (TopDownBulletData)bulletData;
+
 
         public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint = null, Action<List<DamageableKnockbackInfo>> Hitted = null)
         {

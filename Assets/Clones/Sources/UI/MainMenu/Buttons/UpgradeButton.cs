@@ -16,12 +16,18 @@ namespace Clones.UI
 
         private Button _button;
 
+        public event Action BuyTried;
+
         public abstract bool CanBuy { get; }
 
         protected int Price { get; private set; }
         protected IPersistentProgressService PersistentProgress { get; private set; }
 
-        public event Action BuyTried;
+        private void OnDisable()
+        {
+            Unsubscribe();
+            _button.onClick.RemoveListener(OnButtonClicked);
+        }
 
         public void Init(IPersistentProgressService persistentProgress)
         {
@@ -33,12 +39,6 @@ namespace Clones.UI
             _button.onClick.AddListener(OnButtonClicked);
 
             CheckPrice();
-        }
-
-        private void OnDisable()
-        {
-            Unsubscribe();
-            _button.onClick.RemoveListener(OnButtonClicked);
         }
 
         public void SetPrice(int price)

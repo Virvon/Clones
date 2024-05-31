@@ -4,17 +4,17 @@ using UnityEngine.EventSystems;
 
 namespace Clones.Input
 {
-    public class JoysticDirectionHandler : MonoBehaviour, IDragHandler, IStopable
+    public class JoystickDirectionHandler : MonoBehaviour, IDragHandler, IStopable
     {
         [SerializeField] private RectTransform _handleBackground;
 
         private PlayerInput _input;
         private bool _isActivated;
 
-        public static Vector2 Direction { get; private set; }
-
         public static event Action Activated;
         public static event Action Deactivated;
+
+        public static Vector2 Direction { get; private set; }
 
         private void OnEnable()
         {

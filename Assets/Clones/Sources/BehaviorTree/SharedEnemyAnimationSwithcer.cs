@@ -7,6 +7,6 @@ namespace Clones.BehaviorTree
     [Serializable]
     public class SharedEnemyAnimationSwithcer : SharedVariable<EnemyAnimationSwitcher>
     {
-        public static implicit operator SharedEnemyAnimationSwithcer(EnemyAnimationSwitcher value) => new SharedEnemyAnimationSwithcer { Value = value};
+        public static implicit operator SharedEnemyAnimationSwithcer(EnemyAnimationSwitcher value) => new SharedEnemyAnimationSwithcer { Value = value };
     }
 }

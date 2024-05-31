@@ -6,11 +6,11 @@ namespace Clones.Character.Enemy
 {
     public class EnemyHealth : MonoBehaviour, IDroppable, IHealthChanger
     {
-        public int Health { get; private set; }
-        public bool IsAlive { get; private set; }
-
         public event Action HealthChanged;
         public event Action<IDamageable> Died;
+
+        public int Health { get; private set; }
+        public bool IsAlive { get; private set; }
 
         public void Init(int health)
         {

@@ -14,8 +14,6 @@ namespace Clones.Data
         public WandStats WandStats;
         public int Level;
 
-        public event Action Upgraded;
-
         public WandData(WandType type, int upgradePrice, WandStats wandStats)
         {
             Type = type;
@@ -24,6 +22,8 @@ namespace Clones.Data
 
             Level = StartLevel;
         }
+
+        public event Action Upgraded;
 
         public void Upgrade(int upgradePrice, WandStatsIncrease wandStatsIncrease)
         {

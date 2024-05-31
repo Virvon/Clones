@@ -17,15 +17,6 @@ namespace Clones.GameLogic
         private List<Quest> _currentQuests;
         private int _questNumber;
 
-        public int Reward { get; private set; }
-        public float Complexity { get; private set; }
-        public IReadOnlyList<Quest> Quests => _currentQuests;
-
-
-        public event Action Created;
-        public event Action<Quest> Updated;
-        public event Action Completed;
-
         public EducationQuestsCreator(Quest[][] allQuests, int reward, int rewardIncrease, IPersistentProgressService persistentProgress)
         {
             _allQuests = allQuests;
@@ -35,6 +26,14 @@ namespace Clones.GameLogic
 
             _questNumber = 0;
         }
+
+        public event Action Created;
+        public event Action<Quest> Updated;
+        public event Action Completed;
+
+        public int Reward { get; private set; }
+        public float Complexity { get; private set; }
+        public IReadOnlyList<Quest> Quests => _currentQuests;
 
         public void Create()
         {

@@ -23,10 +23,6 @@ namespace Clones.Character.Player
         private float CurrentMovementSpeed;
         private float CurrentAttackCooldown;
 
-        public float CurrentFreezingPercent { get; private set; }
-
-        public event Action<float> FreezPercentChanged;
-
         public Freezing(IStatsProvider wrappedEntity, PlayerHealth playerHealth, ICoroutineRunner coroutineRunner) : base(wrappedEntity)
         {
             _playerHealth = playerHealth;
@@ -35,6 +31,10 @@ namespace Clones.Character.Player
             _defaultMovementSpeed = wrappedEntity.GetStats().MovementSpeed;
             _defaultAttackCooldown = wrappedEntity.GetStats().AttackCooldown;
         }
+
+        public event Action<float> FreezPercentChanged;
+
+        public float CurrentFreezingPercent { get; private set; }
 
         public void Freez() =>
             ChangeFreezePercent(100, FreezingSpeed);

@@ -12,14 +12,14 @@ namespace Clones.Data
         public WandType SelectedWand;
         public List<WandData> Wands;
 
-        public event Action SelectedWandChanged;
-        public event Action SelectedWandUpgraded;
-
         public AvailableWands()
         {
             SelectedWand = WandType.Undefined;
             Wands = new();
         }
+
+        public event Action SelectedWandChanged;
+        public event Action SelectedWandUpgraded;
 
         public void SetSelectedWand(WandType type)
         {

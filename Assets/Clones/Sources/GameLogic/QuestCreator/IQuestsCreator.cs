@@ -6,13 +6,13 @@ namespace Clones.GameLogic
 {
     public interface IQuestsCreator
     {
-        int Reward { get; }
-        float Complexity { get; }
-        IReadOnlyList<Quest> Quests { get; }
-
         event Action Created;
         event Action<Quest> Updated;
         event Action Completed;
+
+        int Reward { get; }
+        float Complexity { get; }
+        IReadOnlyList<Quest> Quests { get; }
 
         void Create();
         bool IsQuestItem(QuestItemType type);

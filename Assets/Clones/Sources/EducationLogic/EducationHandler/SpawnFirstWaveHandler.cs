@@ -1,5 +1,4 @@
 ﻿using Clones.UI;
-using UnityEngine;
 
 namespace Clones.EducationLogic
 {

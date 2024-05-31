@@ -18,7 +18,7 @@ namespace Clones.UI
 
         public void Revival()
         {
-            _playerRevival.TryRevive(successCallback: ()=> _revivalView.Close(), failureCallback: ()=> _revivalView.Close(_gameOverView.Open));
+            _playerRevival.TryRevive(successCallback: () => _revivalView.Close(), failureCallback: () => _revivalView.Close(_gameOverView.Open));
             _revivalView.StopTimer();
         }
     }

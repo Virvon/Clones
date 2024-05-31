@@ -7,15 +7,15 @@ namespace Clones.Character.Player
     {
         private bool _invulnerabled;
 
-        public bool IsAlive => Health > 0;
-
-        public int Health { get; private set; }
-        public int MaxHealth { get; private set; }
-
         public event Action<IDamageable> Died;
         public event Action HealthChanged;
         public event Action DamageTaked;
         public event Action Reborned;
+
+        public bool IsAlive => Health > 0;
+
+        public int Health { get; private set; }
+        public int MaxHealth { get; private set; }
 
         public void Init(int health)
         {

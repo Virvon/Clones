@@ -38,7 +38,7 @@ namespace Clones.Infrastructure
                 _stateMachine.Enter<LoadSceneState, (string, bool)>((MainMenuScene, false), _stateMachine.Enter<MainMenuLoopState>);
         }
 
-        public void Exit(){}
+        public void Exit() { }
 
         private void LoadProgressOrInitNew() =>
             _persistentProgressService.Progress = _saveLoadService.LoadProgress() ?? CreateNewProgress();

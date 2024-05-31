@@ -24,12 +24,14 @@ namespace Clones.GameLogic
         private IPartsFactory _partsFactory;
         private float _timeScale;
         private Complexity _complexity;
-
         private bool _isFinish;
+
+        public event Action CreatedWave;
 
         public int CurrentWave { get; private set; }
 
-        public event Action CreatedWave;
+        private void OnDisable() =>
+            _isFinish = true;
 
         public void Init(float startDelay, float spawnCooldown, float waveWeight, float minRadius, float maxRadius, ICurrentBiome currentBiome, IGameStaticDataService staticDataService, GameObject playerObject, Complexity complexity, IPartsFactory partsFactory)
         {
@@ -47,9 +49,6 @@ namespace Clones.GameLogic
             CurrentWave = 0;
             _timeScale = 1;
         }
-
-        private void OnDisable() =>
-            _isFinish = true;
 
         public void StartSpawn()
         {

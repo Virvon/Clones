@@ -10,8 +10,6 @@ namespace Clones.GameLogic
 
         private readonly WorldGenerator _worldGenerator;
 
-        public BiomeType Type { get; private set; }
-
         public CurrentBiome(WorldGenerator worldGenerator)
         {
             _worldGenerator = worldGenerator;
@@ -19,6 +17,8 @@ namespace Clones.GameLogic
             _worldGenerator.TileCreated += OnTileCreated;
             _worldGenerator.TileDestroyed += OnTileDestroyed;
         }
+
+        public BiomeType Type { get; private set; }
 
         public void Disable()
         {

@@ -9,12 +9,7 @@ namespace Clones.GameLogic
         private readonly IKiller _killer;
         private readonly EnemiesSpawner _enemiesSpawner;
         private readonly Complexity _complexity;
-
         private readonly int _scorePerKill;
-
-        public int Score { get; private set; }
-
-        public event Action ScoreUpdated;
 
         public ScorePerEnemiesCounter(IKiller killer, EnemiesSpawner enemiesSpawner, Complexity complexity, int scorePerKill)
         {
@@ -28,6 +23,10 @@ namespace Clones.GameLogic
 
         ~ScorePerEnemiesCounter() =>
             _killer.Killed -= OnKilled;
+
+        public event Action ScoreUpdated;
+
+        public int Score { get; private set; }
 
         private void OnKilled(IDamageable obj)
         {

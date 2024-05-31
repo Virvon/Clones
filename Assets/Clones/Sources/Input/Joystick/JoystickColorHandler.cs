@@ -16,16 +16,16 @@ public class JoystickColorHandler : MonoBehaviour, IPointerDownHandler
 
     private void OnEnable()
     {
-        JoysticDirectionHandler.Deactivated += SetDeactivateColor;
-        JoysticDirectionHandler.Activated += SetActivateColor;
+        JoystickDirectionHandler.Deactivated += SetDeactivateColor;
+        JoystickDirectionHandler.Activated += SetActivateColor;
 
         SetDeactivateColor();
     }
 
     private void OnDisable()
     {
-        JoysticDirectionHandler.Activated -= SetActivateColor;
-        JoysticDirectionHandler.Deactivated -= SetDeactivateColor;
+        JoystickDirectionHandler.Activated -= SetActivateColor;
+        JoystickDirectionHandler.Deactivated -= SetDeactivateColor;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -44,5 +44,4 @@ public class JoystickColorHandler : MonoBehaviour, IPointerDownHandler
         _handle.color = _deactivateHandleColor;
         _handleBackground.color = _deactivateHandleBackgroundColor;
     }
-
 }

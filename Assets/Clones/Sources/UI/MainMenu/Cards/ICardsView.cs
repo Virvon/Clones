@@ -4,7 +4,8 @@ namespace Clones.UI
 {
     public interface ICardsView
     {
-        Card CurrentCard { get; }
         event Action CardSelected;
+
+        Card CurrentCard { get; }
     }
 }

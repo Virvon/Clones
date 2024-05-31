@@ -4,8 +4,8 @@ namespace Clones.Character
 {
     public interface IDamageable
     {
-        public bool IsAlive { get; }
         public event Action<IDamageable> Died;
+        public bool IsAlive { get; }
 
         public abstract void TakeDamage(float damage);
     }

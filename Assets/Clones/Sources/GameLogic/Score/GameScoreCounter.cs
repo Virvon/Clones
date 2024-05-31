@@ -8,17 +8,18 @@ namespace Clones.GameLogic
     {
         private List<IScoreCounter> _scoreCounters;
 
-        public int Score => _scoreCounters.Sum(scoreCounter => scoreCounter.Score);
+        public GameScoreCounter() => 
+            _scoreCounters = new();
 
         public event Action ScoreUpdated;
 
-        public GameScoreCounter() => 
-            _scoreCounters = new();
+        public int Score =>
+            _scoreCounters.Sum(scoreCounter => scoreCounter.Score);
 
         public void Add(IScoreCounter scoreCounter)
         {
             _scoreCounters.Add(scoreCounter);
-            scoreCounter.ScoreUpdated += ()=> ScoreUpdated?.Invoke();
+            scoreCounter.ScoreUpdated += () => ScoreUpdated?.Invoke();
         }
 
         public void Clear()

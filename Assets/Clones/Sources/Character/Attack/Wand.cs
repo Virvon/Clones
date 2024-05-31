@@ -19,9 +19,9 @@ namespace Clones.Character.Attack
         private float _damage;
         private Player.Player _player;
 
-        protected override float CoolDown => _player.StatsProvider.GetStats().AttackCooldown;
-
         public event Action<IDamageable> Killed;
+
+        protected override float CoolDown => _player.StatsProvider.GetStats().AttackCooldown;
 
         public void Init(IPartsFactory partsFactory, BulletType bulletType, int damage, float knockbackForce, float knockbackOffset, Player.Player player)
         {

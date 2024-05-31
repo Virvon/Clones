@@ -12,18 +12,18 @@ namespace Clones.UI
         protected IPersistentProgressService PersistentProgress { get; private set; }
         protected TMP_Text CurrencyValue => _currencyValue;
 
+        private void Start() =>
+            UpdateCurrencyValue();
+
+        private void OnDisable() =>
+            Unsubscribe();
+
         public void Init(IPersistentProgressService persistentProgress)
         {
             PersistentProgress = persistentProgress;
 
             Subscribe();
         }
-
-        private void Start() =>
-            UpdateCurrencyValue();
-
-        private void OnDisable() =>
-            Unsubscribe();
 
         public void UpdateProgress()
         {

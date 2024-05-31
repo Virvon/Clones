@@ -11,16 +11,17 @@ namespace Clones.Data
         public CloneType SelectedClone;
         public List<CloneData> Clones;
 
-        public int ScoreSum => Clones.Sum(cloneData => cloneData.BestScore);
-
-        public event Action SelectedCloneChanged;
-        public event Action SelectedCloneUpgraded;
-
         public AvailableClones()
         {
             SelectedClone = CloneType.Undefined;
             Clones = new();
         }
+
+        public event Action SelectedCloneChanged;
+        public event Action SelectedCloneUpgraded;
+
+        public int ScoreSum => 
+            Clones.Sum(cloneData => cloneData.BestScore);
 
         public void SetSelectedClone(CloneType type)
         {

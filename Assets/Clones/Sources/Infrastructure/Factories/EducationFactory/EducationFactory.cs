@@ -55,6 +55,5 @@ namespace Clones.Infrastructure
 
         public Transform CreateSecondDirectionMarkerTarget() =>
             _assets.Instantiate(AssetPath.SecondDirectionMarketTarget).transform;
-
     }
 }

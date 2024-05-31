@@ -21,14 +21,11 @@ namespace Clones.BulletSystem
         private GameObject _selfObject;
         private bool _isCollisioned = false;
 
-        public override BulletStaticData BulletData => _bulletData;
-
         public override event Action Hitted;
         public override event Action Shooted;
         protected override event Action<List<DamageableKnockbackInfo>> DamageableHitted;
 
-        public override void Init(BulletStaticData bulletData) =>
-            _bulletData = (SplashBulletData)bulletData;
+        public override BulletStaticData BulletData => _bulletData;
 
         private void Start()
         {
@@ -64,6 +61,9 @@ namespace Clones.BulletSystem
                 _destroyTimer.Destroy();
             }
         }
+
+        public override void Init(BulletStaticData bulletData) =>
+            _bulletData = (SplashBulletData)bulletData;
 
         public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableKnockbackInfo>> Hitted)
         {

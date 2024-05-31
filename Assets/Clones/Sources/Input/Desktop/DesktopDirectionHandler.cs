@@ -14,13 +14,10 @@ namespace Clones.Input
         private Player _player;
         private bool _isActivated;
 
-        public static Vector2 Direction { get; private set; }
-
         public static event Action Activated;
         public static event Action Deactivated;
 
-        public void Init(Player player) =>
-            _player = player;
+        public static Vector2 Direction { get; private set; }
 
         private void OnEnable()
         {
@@ -43,6 +40,9 @@ namespace Clones.Input
 
             _input.Disable();
         }
+
+        public void Init(Player player) =>
+            _player = player;
 
         public void Stop() => 
             OnUpTouch();

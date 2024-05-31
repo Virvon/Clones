@@ -13,11 +13,11 @@ namespace Clones.Environment
         private bool _isAlive;
         private int _hitsCountToDie;
 
-        public bool IsAlive => _isAlive;
-        public QuestItemType DroppedItem { get; private set; }
-
         public event Action<IDamageable> Died;
         public event Action Damaged;
+
+        public bool IsAlive => _isAlive;
+        public QuestItemType DroppedItem { get; private set; }
 
         public void Init(int hitsCountToDie, QuestItemType droppedItem)
         {

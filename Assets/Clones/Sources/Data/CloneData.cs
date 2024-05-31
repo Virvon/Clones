@@ -19,10 +19,6 @@ namespace Clones.Data
         public int BestScore;
         public int LastScore;
 
-        public bool IsUsed => GetDisuseEndDate() - DateTime.Now > TimeSpan.Zero;
-
-        public event Action Upgraded;
-
         public CloneData(CloneType type, int health, int damage, float attackCooldown, float resourceMultiplier, int upgradePrice)
         {
             Type = type;
@@ -35,6 +31,11 @@ namespace Clones.Data
 
             DisuseEndDate = DateTime.MinValue.ToString();
         }
+
+        public event Action Upgraded;
+
+        public bool IsUsed =>
+            GetDisuseEndDate() - DateTime.Now > TimeSpan.Zero;
 
         public void Upgrade(int health, int damage, float attackCooldown, float resourceMultiplier, int price)
         {

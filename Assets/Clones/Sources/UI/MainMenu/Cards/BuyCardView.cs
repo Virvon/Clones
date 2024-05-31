@@ -16,10 +16,16 @@ namespace Clones.UI
         private int _price;
         private Wallet _wallet;
 
-        public bool CanBuy => _wallet.Money >= _price;
-
         public event Action<Card> BuyCardTried;
         public event Action BuyTried;
+
+        public bool CanBuy => _wallet.Money >= _price;
+
+        private void OnDestroy()
+        {
+            if (_wallet != null)
+                _wallet.CurrencyCountChanged -= CheckPrice;
+        }
 
         public void Init(int price, Wallet wallet)
         {
@@ -33,12 +39,6 @@ namespace Clones.UI
             _textPrice.text = NumberFormatter.DivideIntegerOnDigits(_price);
 
             CheckPrice();
-        }
-
-        private void OnDestroy()
-        {
-            if (_wallet != null)
-                _wallet.CurrencyCountChanged -= CheckPrice;
         }
 
         private void CheckPrice()

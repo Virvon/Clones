@@ -38,6 +38,5 @@ namespace Clones.GameLogic
 
         private bool CanSpawned() =>
             Random.Range(0, 101) <= _percentageFilled;
-
     }
 }

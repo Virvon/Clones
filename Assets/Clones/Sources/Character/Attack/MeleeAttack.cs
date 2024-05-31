@@ -1,5 +1,3 @@
-using System;
-
 namespace Clones.Character.Attack
 {
     public class MeleeAttack : CharacterAttack

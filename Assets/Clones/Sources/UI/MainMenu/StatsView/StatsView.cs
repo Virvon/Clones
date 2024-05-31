@@ -16,15 +16,15 @@ namespace Clones.UI
 
         private IPersistentProgressService _persistentProgress;
 
+        private void OnDisable() => 
+            Unsubscribe();
+
         public void Init(IPersistentProgressService persistentProgress)
         {
             _persistentProgress = persistentProgress;
 
             Subscribe();
         }
-
-        private void OnDisable() => 
-            Unsubscribe();
 
         public void UpdateProgress()
         {

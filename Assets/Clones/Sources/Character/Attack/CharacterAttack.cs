@@ -7,22 +7,16 @@ namespace Clones.Character.Attack
     {
         private float _currentCooldown;
 
-        protected IDamageable Target { get; private set; }
-        protected abstract float CoolDown { get; }
-
         public event Action AttackCompleted;
         public event Action AttackStarted;
+
+        protected IDamageable Target { get; private set; }
+        protected abstract float CoolDown { get; }
 
         private void Update()
         {
             if (_currentCooldown > 0)
                 _currentCooldown -= Time.deltaTime;
-        }
-
-        private void OnAttack()
-        {
-            Attack();
-            AttackCompleted?.Invoke();
         }
 
         public void TryAttack(IDamageable target)
@@ -37,5 +31,11 @@ namespace Clones.Character.Attack
         }
 
         protected abstract void Attack();
+
+        private void OnAttack()
+        {
+            Attack();
+            AttackCompleted?.Invoke();
+        }
     }
 }

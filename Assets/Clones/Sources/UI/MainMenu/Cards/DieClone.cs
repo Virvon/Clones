@@ -15,9 +15,12 @@ namespace Clones.UI
 
         private DateTime _disuseEndDate;
 
+        public event Action Disused;
+
         public bool IsUsed { get; private set; }
 
-        public event Action Disused;
+        private void OnEnable() =>
+            Wait();
 
         public void Init(DateTime disuseEndDate)
         {
@@ -25,9 +28,6 @@ namespace Clones.UI
 
             Wait();
         }
-
-        private void OnEnable() =>
-            Wait();
 
         private void Wait()
         {

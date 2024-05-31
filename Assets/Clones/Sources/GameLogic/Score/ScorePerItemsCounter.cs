@@ -9,10 +9,6 @@ namespace Clones.GameLogic
         private readonly Complexity _complexity;
         private readonly int _scorePerItem;
 
-        public int Score { get; private set; }
-
-        public event Action ScoreUpdated;
-
         public ScorePerItemsCounter(IItemsCounter itemsCounter, EnemiesSpawner enemiesSpawner, Complexity complexity, int scorePerItem)
         {
             _itemsCounter = itemsCounter;
@@ -25,6 +21,10 @@ namespace Clones.GameLogic
 
         ~ScorePerItemsCounter() =>
             _itemsCounter.ItemTaked -= OnItemTaked;
+
+        public event Action ScoreUpdated;
+
+        public int Score { get; private set; }
 
         private void OnItemTaked()
         {

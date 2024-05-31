@@ -12,11 +12,11 @@ namespace Clones.Services
 
         private readonly List<LeaderboardPlayer> _leaderboardPlayers;
 
-        public IReadOnlyList<LeaderboardPlayer> LeaderboardPlayers => _leaderboardPlayers;
-        public int UserRank { get; private set; }
-
         public YandexLeaderboard() =>
             _leaderboardPlayers = new();
+
+        public IReadOnlyList<LeaderboardPlayer> LeaderboardPlayers => _leaderboardPlayers;
+        public int UserRank { get; private set; }
 
         public void SetPlayerScore(int score)
         {

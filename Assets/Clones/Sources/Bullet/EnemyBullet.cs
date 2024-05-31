@@ -11,10 +11,6 @@ namespace Clones.BulletSystem
     [RequireComponent(typeof(Rigidbody))]
     public class EnemyBullet : HittableBullet
     {
-        public IDamageable HitTarget { get; private set; }
-
-        public override BulletStaticData BulletData => _bulletData;
-
         private EnemyBulletData _bulletData;
         private Vector3 _direction;
         private bool _isCollisioned = false;
@@ -23,8 +19,9 @@ namespace Clones.BulletSystem
         public override event Action Shooted;
         protected override event Action<List<DamageableKnockbackInfo>> DamageableHitted;
 
-        public override void Init(BulletStaticData bulletData) =>
-            _bulletData = (EnemyBulletData)bulletData;
+        public IDamageable HitTarget { get; private set; }
+
+        public override BulletStaticData BulletData => _bulletData;
 
         private void Start()
         {
@@ -48,6 +45,9 @@ namespace Clones.BulletSystem
                 Destroy(gameObject);
             }
         }
+
+        public override void Init(BulletStaticData bulletData) =>
+            _bulletData = (EnemyBulletData)bulletData;
 
         public override void Shoot(IDamageable targetDamageable, GameObject selfObject, Transform shootPoint, Action<List<DamageableKnockbackInfo>> Hitted)
         {

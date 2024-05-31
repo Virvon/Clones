@@ -23,15 +23,6 @@ namespace Clones.GameLogic
         private List<Quest> _quests;
         private int _currentQuest = 0;
 
-        public IReadOnlyList<Quest> Quests => _quests;
-        public int Reward { get; private set; }
-
-        public float Complexity => _complexity == null ? 1 : _complexity.GetComplexity(_currentQuest);
-
-        public event Action Created;
-        public event Action<Quest> Updated;
-        public event Action Completed;
-
         public QuestsCreator(IPersistentProgressService persistentProgress, QuestItemType[] questTypes, Complexity complexity, int itemsCount, int minItemsCountPercentInQuest, int reward, IGameStaticDataService staticDataService, ILocalization localization)
         {
             _persistentProgress = persistentProgress;
@@ -43,6 +34,16 @@ namespace Clones.GameLogic
             _staticDataService = staticDataService;
             _localization = localization;
         }
+
+        public event Action Created;
+        public event Action<Quest> Updated;
+        public event Action Completed;
+
+        public int Reward { get; private set; }
+        public IReadOnlyList<Quest> Quests => _quests;
+
+        public float Complexity =>
+            _complexity == null ? 1 : _complexity.GetComplexity(_currentQuest);
 
         public void Create()
         {

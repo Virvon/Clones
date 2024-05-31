@@ -12,15 +12,15 @@ namespace Clones.UI
 
         private IPersistentProgressService _persistentProgress;
 
+        private void OnDestroy() => 
+           Unsubscribe();
+
         public void Init(IPersistentProgressService persistentProgress)
         {
             _persistentProgress = persistentProgress;
 
             Subscribe();
         }
-
-        private void OnDestroy() => 
-           Unsubscribe();
 
         public void UpdateProgress()
         {

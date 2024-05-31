@@ -4,8 +4,7 @@ namespace Clones.GameLogic
 {
     public interface IScoreCounter
     {
-        int Score { get; }
-
         event Action ScoreUpdated;
+        int Score { get; }
     }
 }

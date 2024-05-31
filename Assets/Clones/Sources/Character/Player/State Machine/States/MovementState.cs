@@ -18,10 +18,10 @@ namespace Clones.StateMachine
         private Player _player;
         private bool _isMoved;
 
-        private float MovementSpeed => _player.StatsProvider.GetStats().MovementSpeed;
-
         public event Action Started;
         public event Action Stopped;
+        
+        private float MovementSpeed => _player.StatsProvider.GetStats().MovementSpeed;
 
         public void Init(IInputService inputService, Player player, float rotationSpeed)
         {

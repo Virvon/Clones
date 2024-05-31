@@ -7,14 +7,11 @@ namespace Clones.Biomes
 {
     public class Biome : MonoBehaviour
     {
-        public Player Player { get; private set; }
-        public BiomeType Type { get; private set; }
-
         public event Action<Biome> PlayerEntered;
         public event Action PlayerExited;
 
-        public void Init(BiomeType type) =>
-            Type = type;
+        public Player Player { get; private set; }
+        public BiomeType Type { get; private set; }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -37,6 +34,9 @@ namespace Clones.Biomes
                 OnPlayerExited();
             }
         }
+
+        public void Init(BiomeType type) =>
+            Type = type;
 
         protected virtual void OnPlayerEntered() { }
 

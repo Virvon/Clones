@@ -7,14 +7,14 @@ namespace Clones.Material
     {
         [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
 
+        private UnityEngine.Material _material;
+        private Coroutine _pulsator;
+        private bool _isColorPulsed;
+
         public Color StartColor { get; private set; }
         public Color StartEmission { get; private set; }
         public Color CurrentColor { get; private set; }
         public Color CurrentEmission { get; private set; }
-
-        private UnityEngine.Material _material;
-        private Coroutine _pulsator;
-        private bool _isColorPulsed;
 
         private void Awake()
         {

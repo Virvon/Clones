@@ -4,7 +4,7 @@ namespace Clones.Character
 {
     public interface IHealthChanger
     {
-        public int Health { get; }
         public event Action HealthChanged;
+        public int Health { get; }
     }
 }

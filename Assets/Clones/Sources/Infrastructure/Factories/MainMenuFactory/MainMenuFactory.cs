@@ -264,7 +264,6 @@ namespace Clones.Infrastructure
             leaderboardElement.Init(player.Rank, player.Name, player.Score);
 
             return leaderboardElement;
-
         }
 
         public void CreateScoreView()

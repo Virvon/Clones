@@ -9,10 +9,6 @@ namespace Clones.GameLogic
         private readonly Complexity _complexity;
         private readonly int _scorePerQuest;
 
-        public int Score { get; private set; }
-
-        public event Action ScoreUpdated;
-
         public ScorePerQuestsCounter(IQuestsCreator questsCreator, EnemiesSpawner enemiesSpawner, Complexity complexity, int scorePerQuest)
         {
             _questsCreator = questsCreator;
@@ -25,6 +21,10 @@ namespace Clones.GameLogic
 
         ~ScorePerQuestsCounter() =>
             _questsCreator.Completed -= OnQuestCompleted;
+
+        public event Action ScoreUpdated;
+
+        public int Score { get; private set; }
 
         private void OnQuestCompleted()
         {

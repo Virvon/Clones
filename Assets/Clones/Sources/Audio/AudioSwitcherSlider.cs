@@ -15,13 +15,13 @@ namespace Clones.Audio
 
         [SerializeField] private string _mixerName;
         [SerializeField] private AudioMixerGroup _mixer;
-        [SerializeField] private Slider _audioSlider;  
+        [SerializeField] private Slider _audioSlider;
+
+        public event Action AudioVolumeChanged;
 
         public bool IsAudioActive => CheckAudioActive();
 
         protected IPersistentProgressService Progress { get; private set; }
-
-        public event Action AudioVolumeChanged;
 
         public void Init(IPersistentProgressService progress) =>
             Progress = progress;

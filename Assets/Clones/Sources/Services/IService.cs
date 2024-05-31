@@ -1,7 +1,4 @@
 ﻿namespace Clones.Services
 {
-    public interface IService
-    {
-
-    }
+    public interface IService { }
 }

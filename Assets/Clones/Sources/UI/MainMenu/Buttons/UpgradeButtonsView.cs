@@ -14,6 +14,14 @@ namespace Clones.UI
         private IMainMenuStaticDataService _mainMenuStaticDataService;
         private ISaveLoadService _saveLoadService;
 
+        private void OnDisable()
+        {
+            UnsubscribeFromProgress();
+
+            _cloneUpgradeButton.BuyTried -= UpgradeClone;
+            _wandUpgradeButton.BuyTried -= UpgradeWand;
+        }
+
         public void Init(IPersistentProgressService persistenProgress, IMainMenuStaticDataService mainMenuStaticDataService, ISaveLoadService saveLoadService)
         {
             _persistentProgress = persistenProgress;
@@ -24,14 +32,6 @@ namespace Clones.UI
 
             _cloneUpgradeButton.BuyTried += UpgradeClone;
             _wandUpgradeButton.BuyTried += UpgradeWand;
-        }
-
-        private void OnDisable()
-        {
-            UnsubscribeFromProgress();
-
-            _cloneUpgradeButton.BuyTried -= UpgradeClone;
-            _wandUpgradeButton.BuyTried -= UpgradeWand;
         }
 
         public void UpdateProgress()

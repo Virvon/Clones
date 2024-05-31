@@ -9,18 +9,6 @@ namespace Clones.UI
 
         private DieClone _dieClone;
 
-        private void OnDisused()
-        {
-            _dieClone.Disused -= OnDisused;
-            ActiveVisuals();
-        }
-
-        private void ActiveVisuals()
-        {
-            SelectButton.interactable = true;
-            _unlock.SetActive(true);
-        }
-
         protected override void Unlock()
         {
             _dieClone = GetComponent<DieClone>();
@@ -34,6 +22,18 @@ namespace Clones.UI
             {
                 ActiveVisuals();
             }
+        }
+
+        private void OnDisused()
+        {
+            _dieClone.Disused -= OnDisused;
+            ActiveVisuals();
+        }
+
+        private void ActiveVisuals()
+        {
+            SelectButton.interactable = true;
+            _unlock.SetActive(true);
         }
     }
 }
