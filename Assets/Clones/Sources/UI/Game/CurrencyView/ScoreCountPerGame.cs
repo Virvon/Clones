@@ -1,4 +1,5 @@
-﻿using Clones.GameLogic;
+﻿using Clones.Auxiliary;
+using Clones.GameLogic;
 using TMPro;
 using UnityEngine;
 
@@ -25,6 +26,6 @@ namespace Clones.UI
             _scoreCounter.ScoreUpdated -= OnScoreUpdated;
 
         private void OnScoreUpdated() => 
-            _scoreValue.text = _scoreCounter.Score.ToString();
+            _scoreValue.text = NumberFormatter.DivideIntegerOnDigits(_scoreCounter.Score);
     }
 }

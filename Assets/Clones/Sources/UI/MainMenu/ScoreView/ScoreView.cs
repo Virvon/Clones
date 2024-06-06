@@ -1,4 +1,5 @@
-﻿using Clones.Data;
+﻿using Clones.Auxiliary;
+using Clones.Data;
 using Clones.Services;
 using TMPro;
 using UnityEngine;
@@ -32,8 +33,8 @@ namespace Clones.UI
         {
             CloneData selectedCloneData = _persistentProgress.Progress.AvailableClones.GetSelectedCloneData();
 
-            _bestScore.text = selectedCloneData.BestScore.ToString();
-            _lastScore.text = selectedCloneData.LastScore.ToString();
+            _bestScore.text = NumberFormatter.DivideIntegerOnDigits(selectedCloneData.BestScore);
+            _lastScore.text = NumberFormatter.DivideIntegerOnDigits(selectedCloneData.LastScore);
         }
 
         private void Subscribe() => 
